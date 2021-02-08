@@ -133,9 +133,6 @@ header a:hover {
     text-align: center;
 }
 
-#rating-and-comment-modal-contents textarea {
-    margin-top: 15px;
-}
 #wanna-watch-or-rating img {
     width: 80px;
     height: 80px;
@@ -145,6 +142,7 @@ header a:hover {
     text-decoration: none;
     color: black;
 }
+
 #wanna-watch-or-rating a:hover {
     font-weight: bold;
 }
@@ -195,6 +193,7 @@ header a:hover {
 #rating-and-comment-modal-title {
     text-align: center;
 }
+
 #star-rating {
     display: inline-block;
     position: relative;
@@ -222,6 +221,32 @@ header a:hover {
 
 #link-for-star-rating:hover {
     cursor: pointer;
+}
+
+#member-comment-zone {
+    width: 1000px;
+    height: 90px;
+    margin: 0 auto;
+    padding: 25px;
+    border: 0.5px solid #e3e3e3;
+    border-radius: 0.4rem;
+    margin-bottom: 20px;
+    font-size: 18px;
+    display: none;
+}
+
+#member-comment-zone div {
+    display: inline-block;
+}
+
+#write-comment-button {
+    position: relative;
+    right: -250px;
+    width: 250px;
+    height: 40px;
+    border: 1px solid #aaa;
+    background-color: transparent;
+    border-radius: 0.4rem;
 }
 #main-info-container {
     width: 1000px;
@@ -418,6 +443,13 @@ header a:hover {
     padding: 15px;
 }
 
+/* 말줄임 처리 */
+.comment p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical; 
+}
 
 .like-and-report button {
     font-size: 18px;

@@ -279,10 +279,11 @@ header a:hover {
     width: 270px;
     height: 67px;
 }
-.slider-elements a {
+
+#staffs-slider a {
     color: black;
 }
-.slider-elements a:hover {
+#staffs-slider a:hover {
     color: black;
     font-weight: bold;
     text-decoration: none;
@@ -362,7 +363,13 @@ header a:hover {
     padding: 15px;
 }
 
-
+/* 말줄임 처리 */
+.comment p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical; 
+}
 .like-and-report button {
     font-size: 18px;
     border: none;
