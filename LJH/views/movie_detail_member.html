@@ -157,7 +157,7 @@
                                         <img src="img/star_empty.svg" alt="">
                                         <span id="rating-message">최고예요!</span>
                                     </div>
-                                    <textarea id="modal-comment-zone" row="1" cols="1" rows="1"
+                                    <textarea id="rating-modal-comment-zone" row="1" cols="1" rows="1"
                                         placeholder="이 영화에 대한 감상평을 자유롭게 남겨주세요."
                                         style="resize: none; width: 400px; height: 300px; padding: 10px;"></textarea>
                                 </div>
@@ -167,7 +167,7 @@
                                 <div>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                                         aria-label="Close" id="button-for-cancel">취소</button>
-                                    <button type="button" class="btn btn-primary" id="button-for-submit">확인</button>
+                                    <button type="button" class="btn btn-primary" id="button-for-submit" data-dismiss="modal">확인</button>
                                 </div>
                             </div>
                         </div>
@@ -190,8 +190,51 @@
         </div>
         <div id="member-comment-zone">
             <div id="comment-zone-ment">멋진 평가네요. 이지현 님의 생각을 글로 남겨보세요.</div>
-            <div><button id="write-comment-button">코멘트 남기기</button></div>
+            <div><button id="write-comment-button" data-toggle="modal" data-target="#comment-modal"
+                data-dismiss="modal">코멘트 남기기</button></div>
         </div>
+
+        <div id="after-comment-zone">
+            <div id="my-comment-zone">어쩌구저쩌구</div>
+            <div><button id="">코멘트 남기기</button></div>
+        </div>
+
+        <!-- 코멘트 남기기 모달 -->
+        
+        <div class="modal fade" id="comment-modal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" id="rating-and-comment-modal-header">
+                        <h5 class="modal-title" id="rating-and-comment-modal-title">코멘트 등록하기</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="rating-and-comment-modal-contents">
+                            <div id="modal-movie-title">
+                                <h5>소울</h5>
+                            </div>
+                           
+                            <textarea id="modal-only-comment-zone" row="1" cols="1" rows="1"
+                                placeholder="이 영화에 대한 감상평을 자유롭게 남겨주세요."
+                                style="resize: none; width: 400px; height: 300px; padding: 10px;"></textarea>
+                        </div>
+                        <!-- 스포일러 포함/미포함 구현할지 생각해보기 -->
+                    </div>
+                    <div class="modal-footer" id="footer-buttons">
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close"
+                                id="button-for-cancel">취소</button>
+                            <button type="button" class="btn btn-primary" id="button-for-comment-submit" data-dismiss="modal"
+                            onclick="val()">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="main-info-container">
             <div id="trailer-zone" class="detail-info">
                 <div id="trailer-title">
@@ -357,7 +400,12 @@
                             </div>
                             <div class="comment">
                                 <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.</p>
                             </div>
                             <div class="like-count-zone">
                                 <img src="img/like.svg" id="like-thumb" />
@@ -625,10 +673,27 @@
             // 별점 부여 후 코멘트 div 나타내는 스크립트
             var buttonForShowDiv = document.getElementById("link-for-star-rating");
             var memberCommentDiv = document.getElementById("member-comment-zone");
-            
-            buttonForShowDiv.onclick = function() {
+
+            buttonForShowDiv.onclick = function () {
                 memberCommentDiv.style.display = "block";
             }
+
+            // 코멘트 작성 후 div 바뀌게 하는 스크립트
+            var afterCommentDiv = document.getElementById("after-comment-zone");
+            var memberCommentZone = document.getElementById("modal-only-comment-zone");
+            var myCommentZone = document.getElementById("my-comment-zone");
+
+            function val() {
+                var commentOfMember = memberCommentZone.value;
+                console.log(commentOfMember);
+                
+                myCommentZone.innerHTML = commentOfMember;
+                memberCommentDiv.style.display = "none";
+                afterCommentDiv.style.display = "block";
+                
+            }
+
+            
         </script>
 </body>
 

@@ -190,6 +190,16 @@ header a:hover {
     font-size: 18px;
 }
 
+#button-for-comment-submit {
+    width: 100px;
+    border: none;
+    background-color: rgb(255, 7, 88);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
 #rating-and-comment-modal-title {
     text-align: center;
 }
@@ -248,6 +258,23 @@ header a:hover {
     background-color: transparent;
     border-radius: 0.4rem;
 }
+
+#after-comment-zone {
+    width: 1000px;
+    height: 90px;
+    margin: 0 auto;
+    padding: 25px;
+    border: 0.5px solid #e3e3e3;
+    border-radius: 0.4rem;
+    margin-bottom: 20px;
+    font-size: 18px;
+    display: none;
+}
+
+#after-comment-zone div {
+    display: inline-block;
+}
+
 #main-info-container {
     width: 1000px;
     height: 395vh;
