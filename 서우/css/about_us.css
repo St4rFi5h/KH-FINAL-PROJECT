@@ -8,11 +8,12 @@
   outline: none;
   list-style: none;
   font-family: 'Noto Sans KR', sans-serif;
+
 }
 
 main{
-    margin: 100px 150px;
-    padding:0 100px;
+    margin: 100px 100px;
+    padding:0 50px;
 
     }
  
@@ -29,17 +30,19 @@ a, a:link{
 .about-section{
     display: block;
     background: url(/img/t.png) no-repeat left;
-    background-size: 34%;
+    background-size: 24%;
     background-color: #fdfdfd;
-    overflow: hidden;
+    /* overflow: hidden; */
+    contain: content;
+    margin-bottom: 7px;
 
 }
 
 .about-inner-container{
-    width: 64%;
+    width: 70%;
     float: right;
     background-color: #fdfdfd;
-    padding: 90px;
+    padding: 29px;
 }
 
 .inner-container h1{
@@ -105,12 +108,14 @@ a, a:link{
   border: 1px solid green;
   border-style: none;
   position: relative;
-  padding:50px 100px;
+  padding: 5%;
+  /* padding:50px 100px;
   padding-left: 130px;
-  margin-left: 110px;
+  margin-left: 110px; */
   display: inline-block;
   justify-content: center;
   background-color:transparent;
+  max-width: 1200px;
 
 }
 

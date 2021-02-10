@@ -1,15 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap'); 
 
 
- *{
-    box-sizing: border-box;
-    border-style: none;
-    text-decoration: none;
-    outline: none;
-    list-style: none;
- }
+
 body,
-html{
+html{ outline: none;
+    border-style: none;
+    box-sizing: border-box;   
+    text-decoration: none;   
+    list-style: none;
     scroll-behavior: smooth;
     height: 100%;
     margin: 0;
@@ -20,22 +18,23 @@ html{
 header{
 
   /* position: absolute;  */
-  position: fixed; 
+
+  display: fixed !important ;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100px;
+  height: 90px;
   background-color: white;
   z-index: 1000;
   min-width: 1200px;
 }
 
-.wrap {
+/* .wrap {
   min-height: 100%;
-  padding-top: 100px;
+  padding-top: 90px;
   padding-bottom: 280px;
   background-color: none;
-}
+} */
 
 li{
     list-style: none;
@@ -44,6 +43,7 @@ li{
 #logo{
     width: 240px; 
     height:40px; 
+    margin-left: 10px;
 }
 
 .wrapper .navbar{
@@ -81,6 +81,9 @@ li{
     position: relative;
     z-index: 1;
   }
+
+
+
 .navbar .menu a::after{
     content: "";
     position: absolute;
@@ -96,9 +99,15 @@ li{
 .navbar .menu a:hover::after {
     width: 100%;
 }
+/* .icon{
+  cursor: pointer;
+} */
 
 /*검색창*/
+
+
 .search_box{
+ 
     display: flex; 
     -webkit-box-align: center;
     align-items: center;
@@ -107,7 +116,7 @@ li{
     border-style: none;
     border-bottom: 1px solid #1c1d1f;
     border-width: 1px;
-    width: 290px;
+    width: 280px;
     height: 35px;
     padding: 7px 10px 8px 20px;
     border-radius: 2px;
@@ -120,24 +129,32 @@ li{
 }
 
 .searchbar input[type=text]{
+  outline: none;
     border: 1px solid rgb(51,51,51);
     box-sizing: border-box;
     border-width: 0px;
     padding: 0 1px;
     height: 35px;
-    width: 220px;
+    width: 200px;
     border-radius: 3px;
     line-height: 30px;
     background: transparent;
     border-color: #33333385;
-    /* text-overflow: ellipsis; */
+    /* text-overflow: ellipsis;  */
     letter-spacing: -0.3px;
     font-size: 0.75em;
     font-weight: bold;
-
-
+    /* display: inline-block; */
+    
   }  
-
+  .search_btn{
+    border-style: none;
+    background-color: transparent;
+    color:#33333346;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;}
 
 @media screen and (max-width: 730px){
   .wrapper .navbar{
@@ -175,7 +192,7 @@ footer{
 
 footer > div {
   position: relative; 
-  width: 100%; 
+  /* width: 100%;  */
   padding: 20px 0 ;
   margin: 0 auto;
 }
