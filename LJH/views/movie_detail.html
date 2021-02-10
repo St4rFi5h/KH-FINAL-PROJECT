@@ -20,7 +20,9 @@
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <!-- xeicon -->
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-
+    <!--별점-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/fontawesome-stars.css">
 
 </head>
 
@@ -116,18 +118,14 @@
 
                 <div id="star-rating">
                     <p>평가하기</p>
-                    <div class="starRev"data-toggle="modal" data-target="#star-rating-modal">
-                        <span class="star starR1">0.5</span>
-                        <span class="star starR2">1</span>
-                        <span class="star starR1">1.5</span>
-                        <span class="star starR2">2</span>
-                        <span class="star starR1">2.5</span>
-                        <span class="star starR2">3</span>
-                        <span class="star starR1">3.5</span>
-                        <span class="star starR2">4</span>
-                        <span class="star starR1">4.5</span>
-                        <span class="star starR2">5</span>
-                    </div>
+                    <select id="example">
+                        <option value=""></option>
+                        <option value="1"><a href="#" data-toggle="modal" data-target="star-rating-modal">1</a></option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
 
                 </div>
 
@@ -608,6 +606,11 @@
                 slidesToShow: 4,
                 slidesToScroll: 4
             });
+
+            $('.br-widget').children().on('click', function() {
+                alert("hi!");
+            })
+            
 
         </script>
 </body>
