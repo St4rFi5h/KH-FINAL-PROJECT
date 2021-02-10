@@ -201,6 +201,7 @@ footer > .footer-left {
   text-align: left; 
   line-height: 100%;
   margin-left: 200px;
+  width: 50%;
 }
 
 footer > .footer-left div a {
