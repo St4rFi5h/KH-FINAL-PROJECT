@@ -114,12 +114,19 @@
 
                 <div id="star-rating">
                     <p>평가하기</p>
-                    <span><a id="link-for-star-rating" data-toggle="modal" data-target="#star-rating-modal"><img
-                                src="img/star_empty.svg" alt=""></a></span>
-                    <span><img src="img/star_empty.svg" alt=""></span>
-                    <span><img src="img/star_empty.svg" alt=""></span>
-                    <span><img src="img/star_empty.svg" alt=""></span>
-                    <span><img src="img/star_empty.svg" alt=""></span>
+                    <div class="starRev" data-toggle="modal" data-target="#star-rating-modal">
+                        <span class="star starR1">0.5</span>
+                        <span class="star starR2">1</span>
+                        <span class="star starR1">1.5</span>
+                        <span class="star starR2">2</span>
+                        <span class="star starR1">2.5</span>
+                        <span class="star starR2">3</span>
+                        <span class="star starR1">3.5</span>
+                        <span class="star starR2">4</span>
+                        <span class="star starR1">4.5</span>
+                        <span class="star starR2">5</span>
+                    </div>
+
                 </div>
 
                 <div class="modal fade" id="star-rating-modal" tabindex="-1" role="dialog"
@@ -188,24 +195,26 @@
                 <div class="detail-info">
                     <h4 id="actor-and-pd">출연/제작</h4>
                     <div class="my-slider" id="staffs-slider">
-                        <div class='slider-elements'>
-                            <a href="">
+                        <a href="staff_detail.html">
+                            <div class='slider-elements'>
                                 <img src="img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">피트 닥터</div>
                                     <div class="staff-role">감독</div>
                                 </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
+                            </div>
+                        </a>
+                        <a href="staff_detail.html">
+                            <div class='slider-elements'>
+
                                 <img src="img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">켐프 파워스</div>
                                     <div class="staff-role">감독</div>
                                 </div>
-                            </a>
-                        </div>
+
+                            </div>
+                        </a>
                         <div class='slider-elements'>
                             <a href="staff_detail.html">
                                 <img src="img/profile.svg" class="profile-img">
@@ -316,8 +325,13 @@
                                 <div class="comment-star-rating">★ 5.0</div>
                             </div>
                             <div class="comment">
-                                <p>최고의 영화</p>
-                                <p>읏챠피디아를 뒤집어 놓으셨다</p>
+                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.</p>
                             </div>
                             <div class="like-count-zone">
                                 <img src="img/like.svg" id="like-thumb" />
@@ -527,6 +541,7 @@
 
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+       
         <script>
             var ctx = document.getElementById("myChart");
             var myChart = new Chart(ctx, {
