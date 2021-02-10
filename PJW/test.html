@@ -1,63 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <!-- bar-rating -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/fontawesome-stars.css">
-<link rel="stylesheet" href="css/bars-square.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.1/themes/bars-reversed.min.css">
-<link rel="stylesheet" href="">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.1/jquery.barrating.min.js"></script>
-<script type="text/javascript" src="js/jquery.barrating.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/fontawesome-stars.css"> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .star {
+            cursor: pointer;
+        }
+        .starR1 {
+            background: url('img/star_empty.svg') no-repeat 0;
+            background-size: auto 100%;
+            width: 20px;
+            height: 42px;
+            float: left;
+            text-indent: -9999px;
+            
+        }
+
+        .starR2 {
+            background: url('img/star_empty.svg') no-repeat right 0;
+            background-size: auto 100%;
+            width: 20px;
+            height: 42px;
+            float: left;
+            text-indent: -9999px;
+            
+        }
+
+        .starR1.on {
+            background: url('img/star_rated.svg') no-repeat right 0;
+
+            background-position: 0 0;
+        }
+
+        .starR2.on {
+
+            background: url('img/star_rated.svg') no-repeat right 0;
+
+            background-position: -22px 0;
+        }
+    </style>
 </head>
+
 <body>
-  <select id="example">
+    <div class="starRev">
+        <span class="star starR1">0.5</span>
+        <span class="star starR2">1</span>
+        <span class="star starR1">1.5</span>
+        <span class="star starR2">2</span>
+        <span class="star starR1">2.5</span>
+        <span class="star starR2">3</span>
+        <span class="star starR1">3.5</span>
+        <span class="star starR2">4</span>
+        <span class="star starR1">4.5</span>
+        <span class="star starR2">5</span>
+    </div>
 
-    <option value=""></option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-  
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        var star = document.getElementsByClassName('star');
+        var starIsFilled = false;
+        for(var i=0; i<star.length; i++) {
+            star[i].onclick = function() {
+                console.log($(this).html());
 
+                if ($(this).hasClass('on')) {
+                    $(this).parent().children().removeClass('on');
+                    
+                    starIsFilled = false;
+                } else {
+                    $(this).addClass('on').prevAll('span').addClass('on');
+                    starIsFilled = true;
+                }
+            }
+        }
 
-
-
-  <script type="text/javascript">
-
-
-     $('#example').barrating({
-       theme: 'fontawesome-stars'
-
-       ,allowEmpty : true
-       
-  ,initialRating : null
-  ,deselectable : true 
-
-});
-
-
-// jQuery / jQuery Bar Rating
-  // FontAwesome / Bootstrap / jBR plugin
-
-
-
-  $(function() {
-    $('#example2').barrating({
-      theme: 'bars-reversed',
-      initialRating: '8',
-      readonly: 'true'
-    });
-  });
-  </script>
-  
+    </script>
 </body>
+
 </html>
