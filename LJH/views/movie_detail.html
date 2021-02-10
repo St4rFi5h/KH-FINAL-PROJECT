@@ -1,618 +1,146 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="shortcut icon" href="img/logo_favicon.ico">
-    <link rel="stylesheet" href="css/index.css" type="text/css" />
-    <link rel="stylesheet" href="css/movie_detail.css" type="text/css" />
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/bootstrap-reboot.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-    <!--icon-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <script src="js/jquery.min.js"></script>
-    <!-- slick js-->
-    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <!-- slick css -->
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <!-- xeicon -->
-    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <!--별점-->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/fontawesome-stars.css">
+    <div class="main_slider">
 
-</head>
+        <h1 class="slider_title" >읏챠피디아 컬렉션</h1>
 
-<body>
-    <header>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="navbar_logo">
-                    <img id="logo" src="img/logo.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                </div>
-                <div class="menu">
-                    <ul>
-                        <span>
-                            <li><a href="#">ABOUT US</a></li>
-                        </span>
-                        <span>
-                            <li><a href="#">평가하기</a></li>
-                        </span>
-                        <span>
-                            <li><a href="#">고객센터</a></li>
-                        </span>
-                    </ul>
-                </div>
+           <div class="movie_slider" id="collection_slider">
 
-                <!--검색창-->
-                <div class="searchbar">
-                    <form action="#">
-                        <div class="search_box">
-                            <div class="icon"><i class="fas fa-search"></i>
-                                <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                  <div class="movie_box" >
+                       <a href="#">
+                        <ul class="photo_list" style="  list-style: none;">
+                          <li class="photo_box">
+                              <img class="photo-img" src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1554782052/eypltjzz2tkzgv1g5lye.jpg">
+                          </li>
+                          <li class="photo_box">
+                              <img class="photo-img"  src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                          </li>
+                          <li class="photo_box">
+                              <img class="photo-img" src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                          </li>
+                          <li class="photo_box">
+                              <img class="photo-img"src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                          </li>
+                      </ul>  
 
-                <div class="menu">
-                    <ul>
-                        <span>
-                            <li><a href="#">로그인</a></li>
-                        </span>
-                        <span>
-                            <li><a href="#">회원가입</a></li>
-                        </span>
-                    </ul>
-                </div>
-            </div>
+                      <div class="movie_info"> 
+                        <h4><a href="#" class="movie_title">읏챠 엄선 컬렉션!</a></h4>
+                      </div> 
+                      </a>
+                  </div>
+
+                  <div class="movie_box" >
+                    <a href="#">
+                     <ul class="photo_list column" style="  list-style: none;">
+                       <li class="photo_box">
+                           <img class="photo-img" src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1554782052/eypltjzz2tkzgv1g5lye.jpg">
+                       </li>
+                       <li class="photo_box">
+                           <img class="photo-img"  src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                       </li>
+                       <li class="photo_box">
+                           <img class="photo-img" src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                       </li>
+                       <li class="photo_box">
+                           <img class="photo-img"src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                       </li>
+                   </ul>  
+
+                    <div class="movie_info"> 
+                      <h4><a href="#" class="movie_title">개발자 지현 PICK!</a></h4>
+                    </div> 
+                    </a>
+                   </div>
+
+               <div class="movie_box" >
+                <a href="#">
+                 <ul class="photo_list column" style="  list-style: none;">
+                   <li class="photo_box">
+                       <img class="photo-img" src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1554782052/eypltjzz2tkzgv1g5lye.jpg">
+                   </li>
+                   <li class="photo_box">
+                       <img class="photo-img"  src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                   </li>
+                   <li class="photo_box">
+                       <img class="photo-img" src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                   </li>
+                   <li class="photo_box">
+                       <img class="photo-img"src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                   </li>
+                 </ul>  
+
+                <div class="movie_info"> 
+                  <h4><a href="#" class="movie_title">개발자 은규 PICK!</a></h4>
+                </div> 
+                </a>
+              </div>
+
+             <div class="movie_box" >
+               <a href="#">
+                <ul class="photo_list column" style="  list-style: none;">
+                  <li class="photo_box">
+                      <img class="photo-img" src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1554782052/eypltjzz2tkzgv1g5lye.jpg">
+                  </li>
+                  <li class="photo_box">
+                      <img class="photo-img"  src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                  </li>
+                  <li class="photo_box">
+                      <img class="photo-img" src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                  </li>
+                  <li class="photo_box">
+                      <img class="photo-img"src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg">
+                  </li>
+                  </ul>  
+
+                  <div class="movie_info"> 
+                    <h4><a href="#" class="movie_title">개발자 종웅 PICK!</a></h4>
+                  </div> 
+                </a>
+             </div>
         </div>
-    </header>
-
-    <div id="main-container">
-        <div id="basic-info-and-rating">
-            <div id="poster">
-                <img alt="" src="img/220px-영화_소울.jpg" style="width: 160px; height: 240px" />
-            </div>
-            <div id="basic-info">
-                <h1 id="title">소울</h1>
-                <div id="year-genre-country">2020・애니메이션・미국</div>
-                <div id="star-average">평균 ★4.2 (3만명)</div>
-                <div id="watch-or-comment">
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="wanna-watch"
-                        data-target="#wanna-watch-modal">보고싶어요</button>
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="wanna-watch-modal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header" id="modal-title-wrapper">
-                                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div id="modal-contents">
-                                    <img src="img/bookmark_gray.svg">
-                                    <p>로그인이 필요한 기능이에요.</p>
-                                    <p>회원가입 혹은 로그인 후 이용해주세요.</p>
-                                </div>
-                            </div>
-                            <div class="modal-footer" id="footer-buttons">
-                                <div class="footer-button-wrapper">
-                                    <button type="button" class="btn btn-secondary" id="button-for-signup">회원가입</button>
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-primary" id="button-for-signin">로그인</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="star-rating">
-                    <p>평가하기</p>
-                    <select id="example">
-                        <option value=""></option>
-                        <option value="1"><a href="#" data-toggle="modal" data-target="star-rating-modal">1</a></option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-
-                </div>
-
-                <div class="modal fade" id="star-rating-modal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header" id="modal-title-wrapper">
-                                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div id="modal-contents">
-                                    <img src="img/star_rated.svg">
-                                    <p>로그인이 필요한 기능이에요.</p>
-                                    <p>회원가입 혹은 로그인 후 이용해주세요.</p>
-                                </div>
-                            </div>
-                            <div class="modal-footer" id="footer-buttons">
-                                <div class="footer-button-wrapper">
-                                    <button type="button" class="btn btn-secondary" id="button-for-signup">회원가입</button>
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-primary" id="button-for-signin">로그인</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div id="main-info-container">
-            <div id="trailer-zone" class="detail-info">
-                <div id="trailer-title">
-                    <h4>예고편</h4>
-                </div>
-                <div id="video-zone">
-                    <iframe width="900" height="550" src="https://www.youtube.com/embed/Q0zFPlArth0" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="detail-info" id="movie-basic-info">
-                <div>
-                    <h4>기본 정보</h4>
-                    <span class="more-info"><a href="movie_more_info.html">더보기</a></span>
-                </div>
-                <div>Soul</div>
-                <div>2020・애니메이션・미국</div>
-                <div>1시간 40분</div>
-                <div id="plot">
-                    <p>나는 어떻게 ‘나’로 태어나게 되었을까? 지구에 오기 전 영혼들이 머무는 ‘태어나기 전 세상’이 있다면?</p>
-                    <p>뉴욕에서 음악 선생님으로 일하던 ‘조’는 꿈에 그리던 최고의 밴드와 재즈 클럽에서 연주하게 된 그 날, 예기치 못한 사고로 영혼이 되어 ‘태어나기 전 세상’에
-                        떨어진다. 탄생
-                        전 영혼들이 멘토와 함께 자신의 관심사를 발견하면 지구 통행증을 발급하는 ‘태어나기 전 세상’. ‘조’는 그 곳에서 유일하게 지구에 가고 싶어하지 않는 시니컬한 영혼
-                        ‘22’의 멘토가 된다.
-                    </p>
-                    <p>링컨, 간디, 테레사 수녀도 멘토되길 포기한 영혼 ‘22’. 꿈의 무대에 서려면 ‘22’의 지구 통행증이 필요한 ‘조’. 그는 다시 지구로 돌아가 꿈의 무대에 설 수
-                        있을까?</p>
-                </div>
-            </div>
-
-            <div id="staffs">
-                <div class="detail-info">
-                    <h4 id="actor-and-pd">출연/제작</h4>
-                    <div class="my-slider" id="staffs-slider">
-                        <a href="staff_detail.html">
-                            <div class='slider-elements'>
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">피트 닥터</div>
-                                    <div class="staff-role">감독</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="staff_detail.html">
-                            <div class='slider-elements'>
-
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">켐프 파워스</div>
-                                    <div class="staff-role">감독</div>
-                                </div>
-
-                            </div>
-                        </a>
-                        <div class='slider-elements'>
-                            <a href="staff_detail.html">
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">제이미 폭스</div>
-                                    <div class="staff-role">성우 | 조 가드너</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">티나 페이</div>
-                                    <div class="staff-role">성우 | 22</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">그레이엄 노튼</div>
-                                    <div class="staff-role">성우 | 문윈드</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">레이첼 하우스</div>
-                                    <div class="staff-role">성우 | 테리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">엘리스 브라가</div>
-                                    <div class="staff-role">성우 | 제리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">리처드 아이오아디</div>
-                                    <div class="staff-role">성우 | 제리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">도넬 로우링스</div>
-                                    <div class="staff-role">성우 | 데즈</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">아미어-칼리브 톰슨</div>
-                                    <div class="staff-role">성우 | 컬리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">안젤라 바셋</div>
-                                    <div class="staff-role">성우 | 도로시아</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="img/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">다비드 딕스</div>
-                                    <div class="staff-role">성우 | 폴</div>
-                                </div>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="detail-info">
-                    <h4>별점 그래프</h4>
-                    <div id="chart-container">
-                        <canvas id="myChart" style="width: 600px; height: 300px;"></canvas>
-                    </div>
-                </div>
-                <div class="detail-info">
-                    <h4>코멘트</h4>
-                    <span class="more-info"><a href="rating_more.html">더보기</a></span>
-                    <div id="comment-zone">
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="img/profile.svg" class="profile-img" />
-                                <div class="user-nickname">지니어스현</div>
-                                <div class="comment-star-rating">★ 5.0</div>
-                            </div>
-                            <div class="comment">
-                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt mollit anim id est laborum.</p>
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="img/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="img/profile.svg" class="profile-img" />
-                                <div class="user-nickname">김은규</div>
-                                <div class="comment-star-rating">★ 4.5</div>
-                            </div>
-                            <div class="comment">
-                                <p>인생영화 각</p>
-
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="img/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
-
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="img/profile.svg" class="profile-img" />
-                                <div class="user-nickname">박서우</div>
-                                <div class="comment-star-rating">★ 5.0</div>
-                            </div>
-                            <div class="comment">
-                                <p>읏챠피디아를 뒤집어 놓으셨다</p>
-                                <p>최고의 영화</p>
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="img/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
+      </div>
 
 
-                        <!-- like Modal -->
-                        <div class="modal fade" id="like-modal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header" id="modal-title-wrapper">
-                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div id="modal-contents">
-                                            <img src="img/thumb.svg">
-                                            <p>로그인이 필요한 기능이에요.</p>
-                                            <p>회원가입 혹은 로그인 후 이용해주세요.</p>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer" id="footer-buttons">
-                                        <div class="footer-button-wrapper">
-                                            <button type="button" class="btn btn-secondary"
-                                                id="button-for-signup">회원가입</button>
-                                        </div>
-                                        <div>
-                                            <button type="button" class="btn btn-primary"
-                                                id="button-for-signin">로그인</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- siren Modal -->
-                        <div class="modal fade" id="report-modal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header" id="modal-title-wrapper">
-                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div id="modal-contents">
-                                            <img src="img/siren.png">
-                                            <p>로그인이 필요한 기능이에요.</p>
-                                            <p>회원가입 혹은 로그인 후 이용해주세요.</p>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer" id="footer-buttons">
-                                        <div class="footer-button-wrapper">
-                                            <button type="button" class="btn btn-secondary"
-                                                id="button-for-signup">회원가입</button>
-                                        </div>
-                                        <div>
-                                            <button type="button" class="btn btn-primary"
-                                                id="button-for-signin">로그인</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="detail-info" id="collection">
-                    <h4>이 작품이 담긴 컬렉션</h4>
-                    <div>
-                        <div class="my-slider" id="collection-slider">
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">읏챠피디아 엄선 컬렉션</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">디즈니&픽사 완전 정복</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 윤지 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 은규 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 지현 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 종웅 PICK!</div>
-                                </div>
-                            </a>
-                        </div>
-                        </a>
-                    </div>
-                </div>
 
 
-            </div>
-        </div>
-        <!-- 여기부터 footer-->
-        <footer>
-            <div class="row-space">
 
-                <section class="count_space">
-                    <span class="count">지금까지<em> ★ 123,534,545 개의 평가가 </em> 쌓였어요.</span>
-                </section>
 
-                <section class="container">
 
-                    <div class="footer_box">
-                        <ul class="footer_list_box">
-                            <li>서비스 이용약관 | 개인정보 처리방침 | 회사안내</li>
-                            <span class="box_space">
-                                <li>고객센터 | cs@eutcharpedia.com, 02-123-4567</li>
-                                <li>제휴 및 대외 협력 | contact@eutcha.com</li>
-                            </span>
-                            <li>주식회사 읏챠 | 대표 이지현 | 서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F,20F</li>
-                            <li>사업자 등록번호 211-12-34567</li>
-                            <li>© 2021 by EUTCHA, Inc. All right reserved</li>
-                        </ul>
-                    </div>
 
-                    <div class="social_container">
-                        <div class="social_icons">
-                            <span><a href="#"><i class="fab fa-instagram"></i></a></span>
-                            <span><a href="#"><i class="fab fa-facebook-f"></i></a></span>
-                            <span><a href="#"><i class="fab fa-twitter"></i></a></span>
-                        </div>
-                    </div>
 
-                </section>
-            </div>
-        </footer>
-        <!-- scripts -->
+---------------------------------------css-----------------
 
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-        <script src="js/jquery.barrating.min.js"></script>
-        <script type="text/javascript">
-            $(function () {
-                $('#example').barrating({
-                    theme: 'fontawesome-stars',
-                    initialRating: null,
-                    deselectable: true
-                });
-            });
-        </script>
 
-        <script>
-            var ctx = document.getElementById("myChart");
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['0.5점', '1점', '1.5점', '2점', '2.5점', '3점', '3.5점', '4점', '4.5점', '5점'],
-                    datasets: [{
-                        label: '별점',
-                        data: [12, 1, 3, 20, 4, 7, 3, 22, 6, 34],
-                        backgroundColor: [
-                            'rgba(255, 99 , 132, 0.2)',
-                            'rgba(255, 99 , 132, 0.2)',
-                            'rgba(255, 99 , 132, 0.2)',
-                            'rgba(255, 99 , 132, 0.2)',
-                            'rgba(255, 99 , 132, 0.2)',
-                            'rgba(255, 99 , 132, 0.2)',
-                            'rgba(255, 99 , 132, 0.2)',
-                            'rgba(255, 99 , 132, 0.2)',
-                            'rgba(255, 99 , 132, 0.2)',
-                            'rgba(255, 99 , 132, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99 , 132, 1)',
-                            'rgba(255, 99 , 132, 1)',
-                            'rgba(255, 99 , 132, 1)',
-                            'rgba(255, 99 , 132, 1)',
-                            'rgba(255, 99 , 132, 1)',
-                            'rgba(255, 99 , 132, 1)',
-                            'rgba(255, 99 , 132, 1)',
-                            'rgba(255, 99 , 132, 1)',
-                            'rgba(255, 99 , 132, 1)',
-                            'rgba(255, 99 , 132, 1)',
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
 
-            // slider script
-            $('.my-slider').slick({
-                infinite: true,
-                slidesToShow: 4,
-                slidesToScroll: 4
-            });
 
-            $('.br-widget').children().on('click', function() {
-                alert("hi!");
-            })
-            
+ /*----------컬렉션-------------*/
+ 
+ .photo_list {
+    flex-flow: column wrap;
+    flex-direction: column;
+    display: flex;
+    /* width: auto; */
+    width: 250px;
+    height: 260px;
+    background-color: burlywood;
+}
+.photo_box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 
-        </script>
-</body>
-
-</html>
+    justify-content: space-around;
+    align-content: space-around; 
+    background-color: cadetblue;
+     
+}
+.photo-img{
+    width: 90px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    object-fit: cover;
+}
