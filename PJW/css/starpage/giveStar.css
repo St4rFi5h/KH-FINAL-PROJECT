@@ -31,7 +31,7 @@ ul{
 .modal_button {
     float: right;
     position: relative;
-    right: -320px;
+    right: -290px;
 }
 
 
@@ -315,3 +315,36 @@ padding: 0px;
     }
 
 
+/* 별점 */
+.star {
+    cursor: pointer;
+}
+.starR1 {
+    background: url('/PJW/svg/star_empty.svg') no-repeat 0;
+    background-size: auto 100%;
+    width: 20px;
+    height: 44px;
+    float: left;
+    text-indent: -9999px;
+    
+}
+
+.starR2 {
+    background: url('/PJW/svg/star_empty.svg') no-repeat right 0;
+    background-size: auto 100%;
+    width: 20px;
+    height: 44px;
+    float: left;
+    text-indent: -9999px;
+    
+}
+
+.starR1.on {
+    background: url('/PJW/svg/star_rated.svg') no-repeat right 0;
+    background-position: 0 0;
+}
+
+.starR2.on {
+    background: url('/PJW/svg/star_rated.svg') no-repeat right 0;
+    background-position: -23px 0;
+}

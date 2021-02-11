@@ -181,7 +181,7 @@ header a:hover {
 }
 
 
-#button-for-submit {
+#button-for-submit, #button-for-comment-submit, #button-for-delete-submit {
     width: 100px;
     border: none;
     background-color: rgb(255, 7, 88);
@@ -189,16 +189,6 @@ header a:hover {
     font-weight: bold;
     font-size: 18px;
 }
-
-#button-for-comment-submit {
-    width: 100px;
-    border: none;
-    background-color: rgb(255, 7, 88);
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-}
-
 
 #rating-and-comment-modal-title {
     text-align: center;

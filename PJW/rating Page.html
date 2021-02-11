@@ -23,12 +23,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
         integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
         crossorigin="anonymous"></script>
-    <!--star-->
-    <link rel="stylesheet" href="css/fontawesome-stars.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.1/jquery.barrating.min.js"></script>
-    <script type="text/javascript" src="js/jquery.barrating.min.js"></script>
-
+    <script type="text/javascript" src="js/star.js"></script>
 
     <title>평가하기</title>
 
@@ -114,22 +109,28 @@
                         <div class="movie_info">
                             2009-미국
                         </div>
-                        <select class="starRate">
-                            <option value="" ></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-
+                        <div id="star-rating-zone">
+                            <div class="starRev">
+                                <span class="star starR1">0.5</span>
+                                <span class="star starR2">1</span>
+                                <span class="star starR1">1.5</span>
+                                <span class="star starR2">2</span>
+                                <span class="star starR1">2.5</span>
+                                <span class="star starR2">3</span>
+                                <span class="star starR1">3.5</span>
+                                <span class="star starR2">4</span>
+                                <span class="star starR1">4.5</span>
+                                <span class="star starR2">5</span>
+                            </div>
+          
+                        </div>
 
 
                     </div>
                 </li>
             </ul>
         </div>
-        <!---------------------------------------- 임시시작---------------------------------------------->
+        <!---------------------------------------- 임시시작 ---------------------------------------------->
         <div id="mid_wrap">
             <ul class="movie">
                 <li class="eachMovie">
@@ -152,15 +153,21 @@
                             2016-미국
                         </div>
                           
-                        <select class="starRate">
-                            <option value=""></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </span>
+                        <div id="star-rating-zone">
+                            <div class="starRev">
+                                <span class="star starR1">0.5</span>
+                                <span class="star starR2">1</span>
+                                <span class="star starR1">1.5</span>
+                                <span class="star starR2">2</span>
+                                <span class="star starR1">2.5</span>
+                                <span class="star starR2">3</span>
+                                <span class="star starR1">3.5</span>
+                                <span class="star starR2">4</span>
+                                <span class="star starR1">4.5</span>
+                                <span class="star starR2">5</span>
+                            </div>
+          
+                        </div>
 
 
 
@@ -189,15 +196,22 @@
                         <div class="movie_info">
                             2020-미국
                         </div>
+                        <div id="star-rating-zone">
+                            <div class="starRev">
+                                <span class="star starR1">0.5</span>
+                                <span class="star starR2">1</span>
+                                <span class="star starR1">1.5</span>
+                                <span class="star starR2">2</span>
+                                <span class="star starR1">2.5</span>
+                                <span class="star starR2">3</span>
+                                <span class="star starR1">3.5</span>
+                                <span class="star starR2">4</span>
+                                <span class="star starR1">4.5</span>
+                                <span class="star starR2">5</span>
+                            </div>
+          
+                        </div>
 
-                        <select class="starRate"  >
-                            <option value="" ></option>
-                            <option value="1" >1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
 
 
                     </div>
@@ -267,7 +281,66 @@
                 </div>
             </div>
         </div>
+<script>
+                $('.star').on('click', function () {
+                // console.log($(this).text());
 
+                if ($(this).hasClass('on')) {
+                    $(this).parent().children().removeClass('on');
+                    memberCommentDiv.style.display = "none";
+                    var starMessage = document.getElementById("star-message");
+
+                    starMessage.innerText = "평가하기";
+
+                } else {
+                    $(this).addClass('on').prevAll('span').addClass('on');
+                    memberCommentDiv.style.display = "block";
+                    var starMessage = document.getElementById("star-message");
+                    var ratedStar = $(this).html();
+
+                    var starCount = $(this).prevAll().length/2 + 0.5; 
+                    console.log(starCount);
+                    ratedStar = starCount;
+                    
+                    
+                    console.log(ratedStar);
+
+                    switch (ratedStar) {
+                        case 0.5:
+                            starMessage.innerText = "최악이에요";
+                            break;
+                        case 1:
+                            starMessage.innerText = "싫어요";
+                            break;
+                        case 1.5:
+                            starMessage.innerText = "재미없어요";
+                            break;
+                        case 2:
+                            starMessage.innerText = "별로예요";
+                            break;
+                        case 2.5:
+                            starMessage.innerText = "부족해요";
+                            break;
+                        case 3:
+                            starMessage.innerText = "보통이에요";
+                            break;
+                        case 3.5:
+                            starMessage.innerText = "볼만해요";
+                            break;
+                        case 4:
+                            starMessage.innerText = "재미있어요";
+                            break;
+                        case 4.5:
+                            starMessage.innerText = "훌륭해요!";
+                            break;
+                        case 5:
+                            starMessage.innerText = "최고예요!";
+                            break;
+                    }
+                }
+            })
+
+    </script>
         <script src="js/star.js"></script>
         <script src="js/scroll.js"></script>
         <script src="js/jquery.min.js"></script>
