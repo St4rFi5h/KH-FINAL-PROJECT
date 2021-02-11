@@ -306,7 +306,8 @@
                     <div class="modal-footer" id="footer-buttons">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"
                             id="button-for-cancel">취소</button>
-                        <button type="button" class="btn btn-primary" id="button-for-comment-submit">확인</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" 
+                        id="button-for-delete-submit">확인</button>
                     </div>
                 </div>
             </div>
@@ -752,30 +753,28 @@
             // 별점 부여 후 코멘트 div 나타내는 스크립트
             var buttonForShowDiv = document.getElementById("star-rating");
             var memberCommentDiv = document.getElementById("member-comment-zone");
-
+            var afterCommentZone = document.getElementById("after-comment-zone");
             // 별점 
             $('.star').on('click', function () {
                 // console.log($(this).text());
 
-                if ($(this).hasClass('on')) {
+                if ($(this).hasClass('on')) { 
+                    // 별점 지우기
                     $(this).parent().children().removeClass('on');
-                    memberCommentDiv.style.display = "none";
                     var starMessage = document.getElementById("star-message");
-
                     starMessage.innerText = "평가하기";
+                    memberCommentDiv.style.display = "none";
+                    afterCommentZone.style.display = "none";
 
                 } else {
                     $(this).addClass('on').prevAll('span').addClass('on');
                     memberCommentDiv.style.display = "block";
                     var starMessage = document.getElementById("star-message");
-                    var ratedStar = $(this).html();
 
+                    var ratedStar = $(this).html();
                     var starCount = $(this).prevAll().length/2 + 0.5; 
-                    console.log(starCount);
                     ratedStar = starCount;
-                    
-                    
-                    console.log(ratedStar);
+        
 
                     switch (ratedStar) {
                         case 0.5:
@@ -851,6 +850,14 @@
                 $('#wanna-watch').css('font-weight', 'bold');
             }
 
+            // 코멘트 삭제하기
+            var buttonForDelete = document.getElementById("button-for-delete-submit");
+
+            buttonForDelete.onclick = function() {
+                alert("코멘트가 삭제되었습니다.");
+                afterCommentZone.style.display = "none";
+                memberCommentDiv.style.display = "block";
+            }
         </script>
 </body>
 
