@@ -30,8 +30,8 @@ li{
 }
 
 #logo{
-    width: 150px; 
-    height: 40px; 
+    width: 200px; 
+    height: 50px; 
 }
 
 
@@ -42,7 +42,6 @@ li{
   width: 100%;  
   height: 75px;
   padding: 0 30px;
-
   background: #ffffff;;
   position: relative;
 }

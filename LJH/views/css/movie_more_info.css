@@ -24,6 +24,7 @@ header {
     position: relative;
     width: 1280px;
     margin: 0 auto;
+    height: 140vh;
 }
 
 #back-button {

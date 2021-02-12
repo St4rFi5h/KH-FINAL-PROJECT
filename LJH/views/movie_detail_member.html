@@ -27,19 +27,14 @@
         <div class="wrapper">
             <div class="navbar">
                 <div class="navbar_logo">
-                    <img id="logo" src="img/logo.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                </div>
+                    <a href="#"><img id="logo" src="img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
+                </div> </a>
+
                 <div class="menu">
                     <ul>
-                        <span>
-                            <li><a href="#">ABOUT US</a></li>
-                        </span>
-                        <span>
-                            <li><a href="#">평가하기</a></li>
-                        </span>
-                        <span>
-                            <li><a href="#">고객센터</a></li>
-                        </span>
+                        <li><a href="#">ABOUT US</a></li>
+                        <li><a href="#">평가하기</a></li>
+                        <li><a href="#">고객센터</a></li>
                     </ul>
                 </div>
 
@@ -49,6 +44,8 @@
                         <div class="search_box">
                             <div class="icon"><i class="fas fa-search"></i>
                                 <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
+                                <button class="search_btn" type="submit"> <i class="fas fa-times"></i>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -56,17 +53,14 @@
 
                 <div class="menu">
                     <ul>
-                        <span>
-                            <li><a href="#">로그인</a></li>
-                        </span>
-                        <span>
-                            <li><a href="#">회원가입</a></li>
-                        </span>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </header>
+
 
     <div id="main-container">
         <div id="basic-info-and-rating">
@@ -104,7 +98,7 @@
                                         </div>
                                     </div>
                                     <div id="wanna-watch-or-rating">
-                                        <a href="">
+                                        <a href="" data-dismiss="modal" aria-label="Close" onclick="afterWannaWatch()">
                                             <div id="wanna-watch-button">
                                                 <img src="img/bookmark_gray.svg" alt="">
                                                 <div>보고싶어요</div>
@@ -149,15 +143,21 @@
                                         <h5>소울</h5>
                                     </div>
                                     <div id="star-rating-zone">
-
-                                        <img src="img/star_empty.svg" alt="">
-                                        <img src="img/star_empty.svg" alt="">
-                                        <img src="img/star_empty.svg" alt="">
-                                        <img src="img/star_empty.svg" alt="">
-                                        <img src="img/star_empty.svg" alt="">
+                                        <div class="starRev">
+                                            <span class="star starR1">0.5</span>
+                                            <span class="star starR2">1</span>
+                                            <span class="star starR1">1.5</span>
+                                            <span class="star starR2">2</span>
+                                            <span class="star starR1">2.5</span>
+                                            <span class="star starR2">3</span>
+                                            <span class="star starR1">3.5</span>
+                                            <span class="star starR2">4</span>
+                                            <span class="star starR1">4.5</span>
+                                            <span class="star starR2">5</span>
+                                        </div>
                                         <span id="rating-message">최고예요!</span>
                                     </div>
-                                    <textarea id="modal-comment-zone" row="1" cols="1" rows="1"
+                                    <textarea id="rating-modal-comment-zone" row="1" cols="1" rows="1"
                                         placeholder="이 영화에 대한 감상평을 자유롭게 남겨주세요."
                                         style="resize: none; width: 400px; height: 300px; padding: 10px;"></textarea>
                                 </div>
@@ -167,7 +167,8 @@
                                 <div>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                                         aria-label="Close" id="button-for-cancel">취소</button>
-                                    <button type="button" class="btn btn-primary" id="button-for-submit">확인</button>
+                                    <button type="button" class="btn btn-primary" id="button-for-submit"
+                                        data-dismiss="modal">확인</button>
                                 </div>
                             </div>
                         </div>
@@ -177,18 +178,137 @@
 
 
                 <div id="star-rating">
-                    <p>평가하기</p>
-                    <span><a id="link-for-star-rating" data-toggle="modal" data-target="#star-rating-modal"><img
-                                src="img/star_empty.svg" alt=""></a></span>
-                    <span><img src="img/star_empty.svg" alt=""></span>
-                    <span><img src="img/star_empty.svg" alt=""></span>
-                    <span><img src="img/star_empty.svg" alt=""></span>
-                    <span><img src="img/star_empty.svg" alt=""></span>
+                    <p id="star-message">평가하기</p>
+                    <div class="starRev">
+                        <span class="star starR1"></span>
+                        <span class="star starR2"></span>
+                        <span class="star starR1"></span>
+                        <span class="star starR2"></span>
+                        <span class="star starR1"></span>
+                        <span class="star starR2"></span>
+                        <span class="star starR1"></span>
+                        <span class="star starR2"></span>
+                        <span class="star starR1"></span>
+                        <span class="star starR2"></span>
+                    </div>
                 </div>
 
 
             </div>
         </div>
+        <div id="member-comment-zone">
+            <div id="comment-zone-ment">멋진 평가네요. 이지현 님의 생각을 글로 남겨보세요.</div>
+            <div><button id="write-comment-button" data-toggle="modal" data-target="#comment-modal"
+                    data-dismiss="modal">코멘트 남기기</button></div>
+        </div>
+
+        <div id="after-comment-zone">
+            <div id="my-comment-zone">어쩌구저쩌구</div>
+            <div id="buttons-edit-delete">
+                <div><button id="btn-edit" data-toggle="modal" data-target="#comment-edit-modal"
+                        onclick="editComment()">수정하기</button></div>
+                <div><button id="btn-delete" data-toggle="modal" data-target="#comment-delete-modal">삭제하기</button></div>
+            </div>
+        </div>
+
+        <!-- 코멘트 남기기 모달 -->
+
+        <div class="modal fade" id="comment-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" id="rating-and-comment-modal-header">
+                        <h5 class="modal-title" id="rating-and-comment-modal-title">코멘트 등록하기</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="rating-and-comment-modal-contents">
+                            <div id="modal-movie-title">
+                                <h5>소울</h5>
+                            </div>
+
+                            <textarea id="modal-only-comment-zone" row="1" cols="1" rows="1"
+                                placeholder="이 영화에 대한 감상평을 자유롭게 남겨주세요."
+                                style="resize: none; width: 400px; height: 300px; padding: 10px;"></textarea>
+                        </div>
+                        <!-- 스포일러 포함/미포함 구현할지 생각해보기 -->
+                    </div>
+                    <div class="modal-footer" id="footer-buttons">
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close"
+                                id="button-for-cancel">취소</button>
+                            <button type="button" class="btn btn-primary" id="button-for-comment-submit"
+                                data-dismiss="modal" onclick="val()">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 코멘트 수정하기 모달 -->
+
+        <div class="modal fade" id="comment-edit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" id="rating-and-comment-modal-header">
+                        <h5 class="modal-title" id="rating-and-comment-modal-title">코멘트 수정하기</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="rating-and-comment-modal-contents">
+                            <div id="modal-movie-title">
+                                <h5>소울</h5>
+                            </div>
+
+                            <textarea id="modal-only-comment-edit-zone" row="1" cols="1" rows="1"
+                                placeholder="이 영화에 대한 감상평을 자유롭게 남겨주세요."
+                                style="resize: none; width: 400px; height: 300px; padding: 10px;"></textarea>
+                        </div>
+                        <!-- 스포일러 포함/미포함 구현할지 생각해보기 -->
+                    </div>
+                    <div class="modal-footer" id="footer-buttons">
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close"
+                                id="button-for-cancel">취소</button>
+                            <button type="button" class="btn btn-primary" id="button-for-comment-submit"
+                                data-dismiss="modal" onclick="editCommentSubmit()">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 코멘트 삭제하기 모달 -->
+        <div class="modal fade" id="comment-delete-modal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">코멘트 삭제하기</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="comment-delete-contents">
+                        <h5>코멘트를 삭제하시겠습니까?</h5>
+                    </div>
+                    <div class="modal-footer" id="footer-buttons">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            id="button-for-cancel">취소</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                            id="button-for-delete-submit">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
         <div id="main-info-container">
             <div id="trailer-zone" class="detail-info">
                 <div id="trailer-title">
@@ -353,16 +473,20 @@
                                 <div class="comment-star-rating">★ 5.0</div>
                             </div>
                             <div class="comment">
-                                <p>최고의 영화</p>
-                                <p>읏챠피디아를 뒤집어 놓으셨다</p>
+                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.</p>
                             </div>
                             <div class="like-count-zone">
                                 <img src="img/like.svg" id="like-thumb" />
                                 <span id="like-count">123</span>
                             </div>
                             <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
+                                <span><button id="like-button">좋아요</button></span>
                                 <span><button data-toggle="modal" id="report-button"
                                         data-target="#report-modal">신고하기</button></span>
                             </div>
@@ -529,41 +653,46 @@
             </div>
         </div>
         <!-- 여기부터 footer-->
+
+        <!------------ footer ------------>
+
         <footer>
-            <div class="row-space">
 
-                <section class="count_space">
-                    <span class="count">지금까지<em> ★ 123,534,545 개의 평가가 </em> 쌓였어요.</span>
-                </section>
+            <section class="count-space">
+                <span class="count">지금까지<em> ★ 123,534,545 개의 평가가 </em> 쌓였어요.</span>
+            </section>
 
-                <section class="container">
-
-                    <div class="footer_box">
-                        <ul class="footer_list_box">
-                            <li>서비스 이용약관 | 개인정보 처리방침 | 회사안내</li>
-                            <span class="box_space">
-                                <li>고객센터 | cs@eutcharpedia.com, 02-123-4567</li>
-                                <li>제휴 및 대외 협력 | contact@eutcha.com</li>
-                            </span>
-                            <li>주식회사 읏챠 | 대표 이지현 | 서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F,20F</li>
-                            <li>사업자 등록번호 211-12-34567</li>
-                            <li>© 2021 by EUTCHA, Inc. All right reserved</li>
-                        </ul>
-                    </div>
-
-                    <div class="social_container">
-                        <div class="social_icons">
-                            <span><a href="#"><i class="fab fa-instagram"></i></a></span>
-                            <span><a href="#"><i class="fab fa-facebook-f"></i></a></span>
-                            <span><a href="#"><i class="fab fa-twitter"></i></a></span>
-                        </div>
-                    </div>
-
-                </section>
+            <div class="footer-right">
+                <div class="social-icons">
+                    <span><a href="#"><i class="fab fa-instagram"></i></a></span>
+                    <span><a href="#"><i class="fab fa-facebook-f"></i></a></span>
+                    <span><a href="#"><i class="fab fa-twitter"></i></a></span>
+                </div>
             </div>
-        </footer>
-        <!-- scripts -->
 
+            <div class="footer-left">
+                <div>
+                    <a href="#"> 서비스 이용약관</a>
+                    <a href="#"> 개인정보 처리방침</a>
+                    <a href="#"> 회사 안내</a>
+                </div>
+
+                <div>
+                    <p>
+                        고객센터<span> | </span>cs@eutchapedia.com, 02-123-4567 <br />
+                        제휴 및 대외 협력<span> | </span>contact@eutcha.com</p>
+                    <p>
+                        주식회사 읏챠<span> | </span>대표 이지현<span> | </span>서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F,20F<br />
+                        사업자 등록 번호 211-12-34567<br />
+                        © 2021 by EUTCHA, Inc. All rights reserved.
+                    </p>
+                </div>
+            </div>
+
+        </footer>
+
+
+        <!-- scripts -->
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script>
@@ -620,6 +749,114 @@
                 slidesToScroll: 4
             });
 
+            // 별점 부여 후 코멘트 div 나타내는 스크립트
+            var buttonForShowDiv = document.getElementById("star-rating");
+            var memberCommentDiv = document.getElementById("member-comment-zone");
+            var afterCommentZone = document.getElementById("after-comment-zone");
+            // 별점 
+            $('.star').on('click', function () {
+                // console.log($(this).text());
+
+                if ($(this).hasClass('on')) {
+                    // 별점 지우기
+                    $(this).parent().children().removeClass('on');
+                    var starMessage = document.getElementById("star-message");
+                    starMessage.innerText = "평가하기";
+                    memberCommentDiv.style.display = "none";
+                    afterCommentZone.style.display = "none";
+
+                } else {
+                    $(this).addClass('on').prevAll('span').addClass('on');
+                    memberCommentDiv.style.display = "block";
+                    var starMessage = document.getElementById("star-message");
+
+                    var ratedStar = $(this).html();
+                    var starCount = $(this).prevAll().length / 2 + 0.5;
+                    ratedStar = starCount;
+
+
+                    switch (ratedStar) {
+                        case 0.5:
+                            starMessage.innerText = "최악이에요";
+                            break;
+                        case 1:
+                            starMessage.innerText = "싫어요";
+                            break;
+                        case 1.5:
+                            starMessage.innerText = "재미없어요";
+                            break;
+                        case 2:
+                            starMessage.innerText = "별로예요";
+                            break;
+                        case 2.5:
+                            starMessage.innerText = "부족해요";
+                            break;
+                        case 3:
+                            starMessage.innerText = "보통이에요";
+                            break;
+                        case 3.5:
+                            starMessage.innerText = "볼만해요";
+                            break;
+                        case 4:
+                            starMessage.innerText = "재미있어요";
+                            break;
+                        case 4.5:
+                            starMessage.innerText = "훌륭해요!";
+                            break;
+                        case 5:
+                            starMessage.innerText = "최고예요!";
+                            break;
+                    }
+                }
+            })
+
+            // 코멘트 작성 후 div 바뀌게 하는 스크립트
+            var afterCommentDiv = document.getElementById("after-comment-zone");
+            var memberCommentZone = document.getElementById("modal-only-comment-zone");
+            var myCommentZone = document.getElementById("my-comment-zone");
+            var commentEditZone = document.getElementById("modal-only-comment-edit-zone");
+            function val() {
+                var commentOfMember = memberCommentZone.value;
+                console.log(commentOfMember);
+
+                myCommentZone.innerHTML = commentOfMember;
+                memberCommentDiv.style.display = "none";
+                afterCommentDiv.style.display = "block";
+
+            }
+
+            // 코멘트 수정하기
+            function editComment() {
+                var commentOfMember = myCommentZone.innerHTML;
+                console.log(commentOfMember);
+
+                commentEditZone.innerHTML = commentOfMember;
+            }
+
+            // 코멘트 수정 제출
+            function editCommentSubmit() {
+                var comment = commentEditZone.value;
+                console.log(comment);
+
+                myCommentZone.innerHTML = comment;
+            }
+
+            function afterWannaWatch() {
+                $('#wanna-watch').text("+ 보고싶어요");
+                $('#wanna-watch').css('background-color', 'white');
+                $('#wanna-watch').css('color', 'rgb(255, 7, 88)');
+                $('#wanna-watch').css('border', '2px solid rgb(255, 7, 88)');
+                $('#wanna-watch').css('font-weight', 'bold');
+            }
+
+            // 코멘트 삭제하기
+            var buttonForDelete = document.getElementById("button-for-delete-submit");
+
+            buttonForDelete.onclick = function () {
+                alert("코멘트가 삭제되었습니다.");
+                afterCommentZone.style.display = "none";
+                memberCommentDiv.style.display = "block";
+            }
         </script>
 </body>
 

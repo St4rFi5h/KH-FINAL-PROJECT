@@ -13,7 +13,7 @@
 }
 .mybody-wrapper {
   position: relative;
-  min-height: 100%;
+  height: 150%;
   margin: 0 auto;
   width: 500px;
   font-family: "Noto Sans KR", sans-serif;
