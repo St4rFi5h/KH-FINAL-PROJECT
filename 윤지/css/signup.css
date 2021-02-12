@@ -3,7 +3,7 @@
 
 * {
     font-family: 'Noto Sans', sans-serif;
-    font-family: 'Noto Sans KR', sans-serif; 
+    /* font-family: 'Noto Sans KR', sans-serif;  */
 }
 
 .main-body {
@@ -48,6 +48,7 @@
 .login-form {
     margin: 0px 20px 20px 20px;
     padding: 0px 12px;
+
     
 }
 
@@ -97,7 +98,9 @@
     border-radius: 6px;
     border: none;
 }
-
+.form-box > .error {
+    text-align: left;
+}
 .login-button {
     padding: 0px;
     border: none;
