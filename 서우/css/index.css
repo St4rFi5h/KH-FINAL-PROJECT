@@ -1,6 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 
+*{
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
 
 body,
 html{ outline: none;
@@ -12,14 +16,12 @@ html{ outline: none;
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Noto Sans KR', sans-serif;
   }
   
 header{
 
-  /* position: absolute;  */
-
-  display: fixed !important ;
+  position: absolute; 
+  /* display: fixed*/
   top: 0;
   left: 0;
   width: 100%;
@@ -51,8 +53,7 @@ li{
   justify-content: space-between;
   align-items: center;
   width: 100%;  
-  height: 100px;
-  /* padding: 0 30px; */
+  height: 90px;
   background: #ffffff;;
   position: relative;
 }
@@ -68,6 +69,7 @@ li{
   text-decoration: none;
   letter-spacing: 1.5px;
   font-size: 23px;
+  font-family: 'Noto Sans KR', sans-serif;
   
 }
 
@@ -77,9 +79,9 @@ li{
     font-weight: 500;
     padding: 5px; 
     font-weight: bold;
-    /* text-transform: uppercase; */
     position: relative;
     z-index: 1;
+    font-family: 'Noto Sans KR', sans-serif;
   }
 
 
@@ -116,16 +118,15 @@ li{
     border-style: none;
     border-bottom: 1px solid #1c1d1f;
     border-width: 1px;
-    width: 280px;
+    width: 290px;
     height: 35px;
-    padding: 7px 10px 8px 20px;
+    padding: 7px 10px 8px 10px;
     border-radius: 2px;
     border-image: initial;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     overflow: hidden;
     color: #7e7e7e80;
-    /* background:#ccc9c93a; */
-    background-color: transparent;
+    background-color:#ffffff;
 }
 
 .searchbar input[type=text]{
@@ -135,15 +136,16 @@ li{
     border-width: 0px;
     padding: 0 1px;
     height: 35px;
-    width: 200px;
+    width: 220px;
     border-radius: 3px;
     line-height: 30px;
     background: transparent;
     border-color: #33333385;
     /* text-overflow: ellipsis;  */
     letter-spacing: -0.3px;
-    font-size: 0.75em;
+    font-size: 0.85em;
     font-weight: bold;
+    caret-color: rgb(53, 53, 53);
     /* display: inline-block; */
     
   }  

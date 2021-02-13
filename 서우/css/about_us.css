@@ -9,32 +9,38 @@
   list-style: none;
   font-family: 'Noto Sans KR', sans-serif;
 
-}
+} 
+
+
+
 
 main{
-    margin: 100px 100px;
-    padding:0 50px;
+  padding: 7% 5%;
+    /* margin: 100px 100px; */
+    /* padding:0 50px; */
 
     }
  
 
 a, a:link{
-  text-decoration: none;
-  color: unset;
-  size: unset;
-
+  outline: none;
+  border-style: none;
+  box-sizing: border-box;   
+  text-decoration: none;   
+  color: none;
 } 
 
 /*about us */
 
 .about-section{
     display: block;
+    
     background: url(/img/t.png) no-repeat left;
     background-size: 24%;
     background-color: #fdfdfd;
     /* overflow: hidden; */
     contain: content;
-    margin-bottom: 7px;
+    margin-left: 50px;
 
 }
 
@@ -155,7 +161,7 @@ div #member-container ul li {
 
 /* float:left; */
 z-index: 10; 
-margin: 15px;
+margin: 20px;
 list-style: none;
 height: 270px;
 overflow: hidden;
@@ -207,6 +213,8 @@ margin-top: -66px;
  display: inline-block;
  /* justify-content: space-around;  */
  justify-content: center;
- padding: 0;
+ padding-left: 25px;
   
 }
+
+
