@@ -2,6 +2,29 @@
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,vscode,macos,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,vscode,macos,windows
 
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+
 ### Eclipse ###
 .metadata
 bin/
@@ -47,7 +70,12 @@ local.properties
 
 # STS (Spring Tool Suite)
 .springBeans
-
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.sts4-cache
 # Code Recommenders
 .recommenders/
 
