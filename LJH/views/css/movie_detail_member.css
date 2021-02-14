@@ -207,3 +207,21 @@
     font-size: 20px;
     font-weight: bold;
 }
+
+/* 모달창 내부 별점 css */
+.star-in-modal {
+    position: relative;
+    top: -10px;
+    left: 130px;
+}
+
+/* 보고싶어요 클릭 후 첨가 css */
+#wanna-watch-after {
+    width: 250px;
+    height: 40px;
+    background-color: white;
+    color: rgb(255, 7, 88);
+    border: 2px solid rgb(255, 7, 88);
+    font-weight: bold;
+    padding: 0 16px;
+}

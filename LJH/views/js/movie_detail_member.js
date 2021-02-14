@@ -5,7 +5,6 @@ var afterCommentZone = document.getElementById("after-comment-zone");
 
 // 별점 
 $('.star').on('click', function () {
-    // console.log($(this).text());
 
     if ($(this).hasClass('on')) {
         // 별점 지우기
@@ -23,7 +22,6 @@ $('.star').on('click', function () {
         var ratedStar = $(this).html();
         var starCount = $(this).prevAll().length / 2 + 0.5;
         ratedStar = starCount;
-
 
         switch (ratedStar) {
             case 0.5:
@@ -60,6 +58,8 @@ $('.star').on('click', function () {
     }
 })
 
+// 모달 내부 별점
+
 // 코멘트 작성 후 div 바뀌게 하는 스크립트
 var afterCommentDiv = document.getElementById("after-comment-zone");
 var memberCommentZone = document.getElementById("modal-only-comment-zone");
@@ -75,6 +75,19 @@ function val() {
     afterCommentDiv.style.display = "block";
 
 }
+
+// modal 내에서 코멘트 작성 후 div 바뀌는 스크립트
+function modalCommentSubmit() {
+    var commentOfMember = document.getElementById("rating-modal-comment-zone").value;
+    console.log(commentOfMember);
+
+    myCommentZone.innerHTML = commentOfMember;
+    memberCommentDiv.style.display = "none";
+    afterCommentDiv.style.display = "block";
+}
+
+
+
 
 // 코멘트 수정하기
 function editComment() {
@@ -94,12 +107,14 @@ function editCommentSubmit() {
 
 function afterWannaWatch() {
     $('#wanna-watch').text("+ 보고싶어요");
-    $('#wanna-watch').css('background-color', 'white');
-    $('#wanna-watch').css('color', 'rgb(255, 7, 88)');
-    $('#wanna-watch').css('border', '2px solid rgb(255, 7, 88)');
-    $('#wanna-watch').css('font-weight', 'bold');
+    $('#wanna-watch').attr("id", "wanna-watch-after")
+    $('#wanna-watch-button').css('background-color', '#eee');
 }
 
+// 보고싶어요 해제하기 
+$('#wanna-watch-after').on('click', function() {
+    $(this).attr("id", "wanna-watch");
+})
 // 코멘트 삭제하기
 var buttonForDelete = document.getElementById("button-for-delete-submit");
 

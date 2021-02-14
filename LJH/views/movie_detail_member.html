@@ -144,19 +144,18 @@
                                         <h5>소울</h5>
                                     </div>
                                     <div id="star-rating-zone">
-                                        <div class="starRev">
-                                            <span class="star starR1">0.5</span>
-                                            <span class="star starR2">1</span>
-                                            <span class="star starR1">1.5</span>
-                                            <span class="star starR2">2</span>
-                                            <span class="star starR1">2.5</span>
-                                            <span class="star starR2">3</span>
-                                            <span class="star starR1">3.5</span>
-                                            <span class="star starR2">4</span>
-                                            <span class="star starR1">4.5</span>
-                                            <span class="star starR2">5</span>
+                                        <div class="starRev" id="star-rating-in-modal">
+                                            <span class="star starR1 star-in-modal"></span>
+                                            <span class="star starR2 star-in-modal"></span>
+                                            <span class="star starR1 star-in-modal"></span>
+                                            <span class="star starR2 star-in-modal"></span>
+                                            <span class="star starR1 star-in-modal"></span>
+                                            <span class="star starR2 star-in-modal"></span>
+                                            <span class="star starR1 star-in-modal"></span>
+                                            <span class="star starR2 star-in-modal"></span>
+                                            <span class="star starR1 star-in-modal"></span>
+                                            <span class="star starR2 star-in-modal"></span>
                                         </div>
-                                        <span id="rating-message">최고예요!</span>
                                     </div>
                                     <textarea id="rating-modal-comment-zone" row="1" cols="1" rows="1"
                                         placeholder="이 영화에 대한 감상평을 자유롭게 남겨주세요."
@@ -169,7 +168,7 @@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                                         aria-label="Close" id="button-for-cancel">취소</button>
                                     <button type="button" class="btn btn-primary" id="button-for-submit"
-                                        data-dismiss="modal">확인</button>
+                                        data-dismiss="modal" onclick="modalCommentSubmit()">확인</button>
                                 </div>
                             </div>
                         </div>
