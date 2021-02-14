@@ -348,3 +348,38 @@ padding: 0px;
     background: url('/PJW/svg/star_rated.svg') no-repeat right 0;
     background-position: -23px 0;
 }
+
+
+
+
+
+/* 지현님 css */
+#button-for-signup {
+    background-color: rgb(255, 7, 88);
+    color: white;
+    width: 200px;
+    border: none;
+    font-weight: bold;
+}
+
+#button-for-signin {
+    width: 200px;
+    border: none;
+    background-color: white;
+    color: rgb(255, 7, 88);
+    font-weight: bold;
+}
+#modal-contents {
+    text-align: center;
+}
+
+#modal-contents img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+#modal-contents p {
+    font-weight: bold;
+
+}
