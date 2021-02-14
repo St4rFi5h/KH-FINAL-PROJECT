@@ -86,9 +86,6 @@ function modalCommentSubmit() {
     afterCommentDiv.style.display = "block";
 }
 
-
-
-
 // 코멘트 수정하기
 function editComment() {
     var commentOfMember = myCommentZone.innerHTML;
