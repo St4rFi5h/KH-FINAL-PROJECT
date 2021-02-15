@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="shortcut icon" href="/img/logo_favicon.ico">
-    <link rel="stylesheet" href="/css/index.css" type="text/css" />
-    <link rel="stylesheet" href="/css/movie_detail_common.css" type="text/css" />
-    <link rel="stylesheet" href="/css/movie_detail.css" type="text/css" />
+    <link rel="stylesheet" href="/css/movie/index.css" type="text/css" />
+    <link rel="stylesheet" href="/css/movie/movie_detail_common.css" type="text/css" />
+    <link rel="stylesheet" href="/css/movie/movie_detail.css" type="text/css" />
     <link rel="stylesheet" href="/css/bootstrap-grid.min.css" type="text/css" />
     <link rel="stylesheet" href="/css/bootstrap-reboot.min.css" type="text/css" />
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
@@ -30,7 +30,7 @@
         <div class="wrapper">
             <div class="navbar">
                 <div class="navbar_logo">
-                    <a href="/서우/main.html"><img id="logo" src="img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
+                    <a href="/서우/main.html"><img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
                 </div> </a>
 
                 <div class="menu">
@@ -67,7 +67,7 @@
     <div id="main-container">
         <div id="basic-info-and-rating">
             <div id="poster">
-                <img alt="" src="img/220px-영화_소울.jpg" style="width: 160px; height: 240px" />
+                <img alt="" src="/img/movie/220px-영화_소울.jpg" style="width: 160px; height: 240px" />
             </div>
             <div id="basic-info">
                 <h1 id="title">소울</h1>
@@ -91,7 +91,7 @@
                             </div>
                             <div class="modal-body">
                                 <div id="modal-contents">
-                                    <img src="img/bookmark_gray.svg">
+                                    <img src="/img/movie/bookmark_gray.svg">
                                     <p>로그인이 필요한 기능이에요.</p>
                                     <p>회원가입 혹은 로그인 후 이용해주세요.</p>
                                 </div>
@@ -137,7 +137,7 @@
                             </div>
                             <div class="modal-body">
                                 <div id="modal-contents">
-                                    <img src="img/star_rated.svg">
+                                    <img src="/img/movie/star_rated.svg">
                                     <p>로그인이 필요한 기능이에요.</p>
                                     <p>회원가입 혹은 로그인 후 이용해주세요.</p>
                                 </div>
@@ -193,7 +193,7 @@
                     <div class="my-slider" id="staffs-slider">
                         <a href="staff_detail.html">
                             <div class='slider-elements'>
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">피트 닥터</div>
                                     <div class="staff-role">감독</div>
@@ -203,7 +203,7 @@
                         <a href="staff_detail.html">
                             <div class='slider-elements'>
 
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">켐프 파워스</div>
                                     <div class="staff-role">감독</div>
@@ -213,7 +213,7 @@
                         </a>
                         <div class='slider-elements'>
                             <a href="staff_detail.html">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">제이미 폭스</div>
                                     <div class="staff-role">성우 | 조 가드너</div>
@@ -222,7 +222,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">티나 페이</div>
                                     <div class="staff-role">성우 | 22</div>
@@ -231,7 +231,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">그레이엄 노튼</div>
                                     <div class="staff-role">성우 | 문윈드</div>
@@ -240,7 +240,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">레이첼 하우스</div>
                                     <div class="staff-role">성우 | 테리</div>
@@ -249,7 +249,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">엘리스 브라가</div>
                                     <div class="staff-role">성우 | 제리</div>
@@ -258,7 +258,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">리처드 아이오아디</div>
                                     <div class="staff-role">성우 | 제리</div>
@@ -267,7 +267,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">도넬 로우링스</div>
                                     <div class="staff-role">성우 | 데즈</div>
@@ -276,7 +276,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">아미어-칼리브 톰슨</div>
                                     <div class="staff-role">성우 | 컬리</div>
@@ -285,7 +285,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">안젤라 바셋</div>
                                     <div class="staff-role">성우 | 도로시아</div>
@@ -294,7 +294,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">다비드 딕스</div>
                                     <div class="staff-role">성우 | 폴</div>
@@ -316,7 +316,7 @@
                     <div id="comment-zone">
                         <div class="comment-card">
                             <div class="user-info-and-rating">
-                                <img src="img/profile.svg" class="profile-img" />
+                                <img src="/img/movie/profile.svg" class="profile-img">
                                 <div class="user-nickname">지니어스현</div>
                                 <div class="comment-star-rating">★ 5.0</div>
                             </div>
@@ -330,7 +330,7 @@
                                     deserunt mollit anim id est laborum.</p>
                             </div>
                             <div class="like-count-zone">
-                                <img src="img/like.svg" id="like-thumb" />
+                                <img src="/img/movie/like.svg" id="like-thumb" />
                                 <span id="like-count">123</span>
                             </div>
                             <div class="like-and-report">
@@ -342,7 +342,7 @@
                         </div>
                         <div class="comment-card">
                             <div class="user-info-and-rating">
-                                <img src="img/profile.svg" class="profile-img" />
+                                <img src="/img/movie/profile.svg" class="profile-img" />
                                 <div class="user-nickname">김은규</div>
                                 <div class="comment-star-rating">★ 4.5</div>
                             </div>
@@ -351,7 +351,7 @@
 
                             </div>
                             <div class="like-count-zone">
-                                <img src="img/like.svg" id="like-thumb" />
+                                <img src="/img/movie/like.svg" id="like-thumb" />
                                 <span id="like-count">123</span>
                             </div>
                             <div class="like-and-report">
@@ -364,7 +364,7 @@
 
                         <div class="comment-card">
                             <div class="user-info-and-rating">
-                                <img src="img/profile.svg" class="profile-img" />
+                                <img src="/img/movie/profile.svg" class="profile-img" />
                                 <div class="user-nickname">박서우</div>
                                 <div class="comment-star-rating">★ 5.0</div>
                             </div>
@@ -373,7 +373,7 @@
                                 <p>최고의 영화</p>
                             </div>
                             <div class="like-count-zone">
-                                <img src="img/like.svg" id="like-thumb" />
+                                <img src="/img/movie/like.svg" id="like-thumb" />
                                 <span id="like-count">123</span>
                             </div>
                             <div class="like-and-report">
@@ -398,7 +398,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div id="modal-contents">
-                                            <img src="img/thumb.svg">
+                                            <img src="/img/movie/thumb.svg">
                                             <p>로그인이 필요한 기능이에요.</p>
                                             <p>회원가입 혹은 로그인 후 이용해주세요.</p>
                                         </div>
@@ -430,7 +430,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div id="modal-contents">
-                                            <img src="img/siren.png">
+                                            <img src="/img/movie/siren.png">
                                             <p>로그인이 필요한 기능이에요.</p>
                                             <p>회원가입 혹은 로그인 후 이용해주세요.</p>
                                         </div>
@@ -535,10 +535,10 @@
         </footer>
         <!-- scripts -->
 
-        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/movie/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="/js/mychart.js"></script>
-        <script src="/js/myslider.js"></script>
+        <script src="/js/movie/mychart.js"></script>
+        <script src="/js/movie/myslider.js"></script>
 </body>
 
 </html>
