@@ -68,21 +68,18 @@
     border: none;
 }
 
-.input-email >.xbutton {
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    width: 24px;
-    height: 100%;
+#searchclear {
+    display: inline-block;
+    /* background:  center center / cover no-repeat; */
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    color: rgba(140, 140, 140);
 }
 
-.xbtn {
-    display: inline;
-    background: url(https://cdn4.iconfinder.com/data/icons/xbox-one-thin-line-set/64/ico-xbx-bttn-x-512.png) center center / cover no-repeat;;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
 .input {
     display: flex;
     -webkit-box-align: center;
@@ -96,6 +93,7 @@
     border-radius: 6px;
     border: none;
 }
+
 input {
     outline: none;
 }
