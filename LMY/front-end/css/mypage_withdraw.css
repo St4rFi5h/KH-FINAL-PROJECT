@@ -41,7 +41,7 @@
   margin-bottom: 100px;
 }
 
-.complainbox {
+#complainbox {
   padding: 10px;
   border-radius: 10px;
   color: white;
@@ -100,6 +100,10 @@
   transition: 0.5s;
 }
 
-.complain-check {
+#complain-check {
   margin-left: 20px;
+}
+
+#reason {
+  font-size: 1.2rem;
 }

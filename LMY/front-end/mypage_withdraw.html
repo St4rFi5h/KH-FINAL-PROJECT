@@ -84,43 +84,42 @@
                 지금 탈퇴하시면 회원님이 작성하신 수많은 리뷰와 평가들이 사라지며 복구가 불가합니다.<br>
                 어떤 점이 불편하셨는 지 선택해 주시면 반영하여 더 좋은 서비스를 제공하는 읏챠피디아가 되겠습니다. 
                 </div>
-                <div class='complainbox'>
-                    <div class='complain-check'>
-                        <input id='check' type="checkbox" name="complain" value='영화정보가 부족함'>
-                        <label>&nbsp;영화정보가 부족함</label>
-                    </div>
-                    <div class='complain-check'>
-                        <input  id='check' type="checkbox" name="complain" value="평가 및 리뷰정보가 도움이 되지 않음">
-                        <label>&nbsp;평가 및 리뷰정보가 도움이 되지 않음</label>
-                    </div >
-                    <div class='complain-check'>
-                        <input id='check' type="checkbox" name="complain" value="홈페이지 기능이 별로 없음">
-                        <label>&nbsp;홈페이지 기능이 별로 없음</label>
-                    </div>
-                    <div class='complain-check'>
-                        <input  id='check' type="checkbox" name="complain" value="다른 서비스를 이용하고 있음">
-                        <label>&nbsp;다른 서비스를 이용하고 있음</label>
-                    </div>
-
-
-                </div>      
+                      
                
             </div>
         </div>
 
         <div class='body-main'>
-            <form>
+
+            <form method="post" action="#" onsubmit='return test_checkbox'>
+              <div id='complainbox'>
+                <div id='complain-check'>
+                    <input id='check' type="checkbox" name="complain" value=0>
+                    <label id='reason'>&nbsp;영화정보가 부족함</label>
+                </div>
+                <div id='complain-check'>
+                    <input  id='check' type="checkbox" name="complain" value=0>
+                    <label id='reason'>&nbsp;평가 및 리뷰정보가 도움이 되지 않음</label>
+                </div >
+                <div id='complain-check'>
+                    <input id='check' type="checkbox" name="complain" value=0>
+                    <label id='reason'>&nbsp;홈페이지 기능이 별로 없음</label>
+                </div>
+                <div id='complain-check'>
+                    <input  id='check' type="checkbox" name="complain" value=0> 
+                    <label id='reason'>&nbsp;다른 서비스를 이용하고 있음</label>
+                </div>
+
+
+            </div>
                 <div>
                     <p><label>비밀번호입력</label></p>
                     <input id='inputdiv' type='password' placeholder="비밀번호입력">
                 </div>
 
                 <div>
-                    <input id='inputdiv2' type='submit' value='탈퇴'>
+                    <input id='inputdiv2' type='submit' value='탈퇴' onclick='alert()'>
                 </div>
-              
-
-                
             </form>
 
         </div>
@@ -171,6 +170,34 @@
     <script src="/LMY/front-end/js/mypage_chart.js"></script>
 
 
+    <script>
+      function test_checkbox() {
+        var flag = false;
+        var values = document.getElementsByName("complain");
+        var pwd = document.getElementById('inputdiv').value;
+        var count=0;
+        for(var i=0; i<values.length; i++ ) {
+          if(values[i].checked) {
+            alert(value[i].value);
+            count++;
+          }
+        }
+      }
+
+      if(count<1) {
+        alert ("탈퇴 사유를 한 개 이상 선택해 주세요.");
+      } 
+      else if{if{(!pwd=="")
+        alert ("비밀번호를 입력해주세요.");}
+        
+      }
+      
+      else {
+        flag= true ;
+      }
+      return flag;
+
+    </script>
   </body>
     
 </html>
