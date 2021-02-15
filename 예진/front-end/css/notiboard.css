@@ -6,7 +6,6 @@
 
 .page_notiboard_sction {
     height: auto !important;
-    padding-top: 20px;
 }
 
 .page_notiboard_sction div {
@@ -315,6 +314,7 @@ svg:not(:root) {
 
 .buttons {
     padding-top: 10px;
+    float: right;
 }
 
 .write_btn {
