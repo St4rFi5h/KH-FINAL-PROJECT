@@ -1,7 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eutchapedia</title>
+    <link rel="shortcut icon" href="/img/logo_favicon.ico">
+    <link rel="stylesheet" href="/css/movie/index.css" type="text/css" />
+    <link rel="stylesheet" href="/css/movie/rating_more.css" type="text/css" />
+	<link rel="stylesheet" href="/css/bootstrap-grid.min.css" type="text/css" />
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css" type="text/css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+    <!--icon-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <script src="/js/jquery.min.js"></script>
+</head>
+
+<body>
+<!-- header -->
+ <jsp:include page="/WEB-INF/view/user/inc/header.jsp"/>
+<!-- header 끝 -->
     <div id="main-container">
         <div>
             <button id="back-button" onclick="location.href='movie_detail.html'">←</button>
@@ -190,4 +212,15 @@
         </div>
         </form>
     </div>
+<!-- footer 시작 -->
+<jsp:include page="/WEB-INF/view/user/inc/footer.jsp"/>
+<!-- footer 끝 -->
 
+
+        <!-- scripts -->
+
+        <script src="/js/movie/bootstrap.bundle.min.js"></script>
+        
+</body>
+
+</html>

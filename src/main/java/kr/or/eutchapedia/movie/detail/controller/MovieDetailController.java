@@ -10,7 +10,7 @@ public class MovieDetailController {
 	
 	@RequestMapping("/detail")
 	public ModelAndView movieDetail() {
-		ModelAndView mv = new ModelAndView("movie_detail");
+		ModelAndView mv = new ModelAndView("/user/movie/detail/movie_detail");
 		
 		return mv;
 	}
@@ -19,7 +19,7 @@ public class MovieDetailController {
 	public ModelAndView movieDetailOverview() {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("movie_more_info");
+		mv.setViewName("/user/movie/detail/movie_more_info");
 		
 		return mv;
 	}
@@ -28,7 +28,7 @@ public class MovieDetailController {
 	public ModelAndView staffDetail() {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("staff_detail");
+		mv.setViewName("/user/movie/detail/staff_detail");
 		
 		return mv;
 	}
@@ -37,7 +37,7 @@ public class MovieDetailController {
 	public ModelAndView commentOverview() {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("rating_more");
+		mv.setViewName("/user/movie/detail/rating_more");
 		
 		return mv;
 	}
