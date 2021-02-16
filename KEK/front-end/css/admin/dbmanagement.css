@@ -61,3 +61,6 @@
     margin-left: auto;
     margin-right: auto;
 }
+#db-info > :last-child{
+cursor: pointer;
+}
