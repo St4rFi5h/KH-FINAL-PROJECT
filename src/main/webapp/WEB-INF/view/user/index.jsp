@@ -19,10 +19,10 @@
 	<%
 	request.setCharacterEncoding("UTF-8");
 	
-	// inc
-	String inc = "index_main.jsp";
-	if(request.getParameter("inc") != null) {
-		inc = request.getParameter("inc");
+	// main
+	String main = "index_main.jsp";
+	if(request.getParameter("main") != null) {
+		main = request.getParameter("main");
 		
 	}
 	
@@ -33,7 +33,7 @@
 
     <!-- main -->
 	<div class="section">
-	<jsp:include page="<%=inc %>"/>
+	<jsp:include page="<%=main %>"/>
 	</div>
 	 <!-- footer -->
    	<%@ include file="footer.jsp" %>
