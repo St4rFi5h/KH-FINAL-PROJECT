@@ -105,7 +105,10 @@ li {
 
 /*°Ë»öÃ¢*/
 
-
+#usermy{
+	font-size: 37px;
+	color: rgb(51, 51, 51);
+}
 .search_box {
 
   display: flex;
