@@ -12,9 +12,9 @@
     <link rel="shortcut icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="/css/movie/index.css" type="text/css" />
     <link rel="stylesheet" href="/css/movie/rating_more.css" type="text/css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
 	<link rel="stylesheet" href="/css/bootstrap-grid.min.css" type="text/css" />
     <link rel="stylesheet" href="/css/bootstrap-reboot.min.css" type="text/css" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
     <!--icon-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <script src="/js/jquery.min.js"></script>
@@ -28,7 +28,7 @@
         <div>
             <button id="back-button" onclick="location.href='movie_detail.html'">←</button>
         </div>
-        <form>
+        
         <div class="title">코멘트</div>
         <div class="title" id="rating-title">관람객 평점 <span style="font-weight: bold;">2,345</span>건</div>
         <div class="dropdown" id="sort-dropdown">
@@ -67,7 +67,8 @@
                     <span>123</span>
                 </div>
 
-                <div class="like-and-report"><span><button data-toggle="modal" id="like-button"
+                <div class="like-and-report">
+                	<span><button data-toggle="modal" id="like-button"
                             data-target="#like-modal">좋아요</button></span>
                     <span><button data-toggle="modal" id="report-button"
                             data-target="#report-modal">신고하기</button></span>
@@ -210,16 +211,15 @@
             <span><button>></button></span>
 
         </div>
-        </form>
+        
     </div>
-<!-- footer 시작 -->
-<jsp:include page="/WEB-INF/view/user/inc/footer.jsp"/>
-<!-- footer 끝 -->
+	<!-- footer 시작 -->
+	<jsp:include page="/WEB-INF/view/user/inc/footer.jsp"/>
+	<!-- footer 끝 -->
 
 
         <!-- scripts -->
-
-        <script src="/js/movie/bootstrap.bundle.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
         
 </body>
 

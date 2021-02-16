@@ -1,6 +1,6 @@
 package kr.or.eutchapedia.movie.detail.domain;
 
-public class MovieVo {
+public class MovieInfoVo {
 
 	private String movieDocId;
 	private String title;
@@ -12,7 +12,8 @@ public class MovieVo {
 	private String posterUri;
 	private String genre;
 	private String plot;
-	
+	private String movieTrailer;
+	private int movieHitCount;
 	
 	public String getMovieDocId() {
 		return movieDocId;
@@ -74,4 +75,18 @@ public class MovieVo {
 	public void setPlot(String plot) {
 		this.plot = plot;
 	}
+	public String getMovieTrailer() {
+		return movieTrailer;
+	}
+	public void setMovieTrailer(String movieTrailer) {
+		this.movieTrailer = movieTrailer;
+	}
+	public int getMovieHitCount() {
+		return movieHitCount;
+	}
+	public void setMovieHitCount(int movieHitCount) {
+		this.movieHitCount = movieHitCount;
+	}
+	
+	
 }

@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="/css/movie/index.css" type="text/css" />
     <link rel="stylesheet" href="/css/movie/movie_detail_common.css" type="text/css" />
     <link rel="stylesheet" href="/css/movie/movie_detail.css" type="text/css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="/css/bootstrap-grid.min.css" type="text/css" />
     <link rel="stylesheet" href="/css/bootstrap-reboot.min.css" type="text/css" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
      <!--icon-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <script src="/js/jquery.min.js"></script>
@@ -29,15 +29,15 @@
 <!-- header -->
  <jsp:include page="/WEB-INF/view/user/inc/header.jsp"/>
 <!-- header 끝 -->
-
+	
     <div id="main-container">
         <div id="basic-info-and-rating">
             <div id="poster">
-                <img alt="" src="/img/movie/220px-영화_소울.jpg" style="width: 160px; height: 240px" />
+                <img alt="" src="${movieInfoVo.posterUri }" style="width: 160px; height: 240px" />
             </div>
             <div id="basic-info">
-                <h1 id="title">소울</h1>
-                <div id="year-genre-country">2020・애니메이션・미국</div>
+                <h1 id="title">${movieInfoVo.title }</h1>
+                <div id="year-genre-country">${movieInfoVo.prodYear }・${movieInfoVo.genre }・${movieInfoVo.nation }</div>
                 <div id="star-average">평균 ★4.2 (3만명)</div>
                 <div id="watch-or-comment">
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="wanna-watch"
@@ -47,31 +47,7 @@
                 <!-- Modal -->
                 <div class="modal fade" id="wanna-watch-modal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header" id="modal-title-wrapper">
-                                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div id="modal-contents">
-                                    <img src="/img/movie/bookmark_gray.svg">
-                                    <p>로그인이 필요한 기능이에요.</p>
-                                    <p>회원가입 혹은 로그인 후 이용해주세요.</p>
-                                </div>
-                            </div>
-                            <div class="modal-footer" id="footer-buttons">
-                                <div class="footer-button-wrapper">
-                                    <button type="button" class="btn btn-secondary" id="button-for-signup">회원가입</button>
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-primary" id="button-for-signin">로그인</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   <jsp:include page="modal/wanna_watch_modal.jsp"/>
                 </div>
 
                 <div id="star-rating">
@@ -93,31 +69,7 @@
 
                 <div class="modal fade" id="star-rating-modal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header" id="modal-title-wrapper">
-                                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div id="modal-contents">
-                                    <img src="/img/movie/star_rated.svg">
-                                    <p>로그인이 필요한 기능이에요.</p>
-                                    <p>회원가입 혹은 로그인 후 이용해주세요.</p>
-                                </div>
-                            </div>
-                            <div class="modal-footer" id="footer-buttons">
-                                <div class="footer-button-wrapper">
-                                    <button type="button" class="btn btn-secondary" id="button-for-signup">회원가입</button>
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-primary" id="button-for-signin">로그인</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <jsp:include page="modal/star_rating_modal.jsp"/>
                 </div>
 
             </div>
@@ -136,20 +88,13 @@
             <div class="detail-info" id="movie-basic-info">
                 <div>
                     <h4>기본 정보</h4>
-                    <span class="more-info"><a href="movie_more_info.html">더보기</a></span>
+                    <span class="more-info"><a href="/movie/detail/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
                 </div>
-                <div>Soul</div>
-                <div>2020・애니메이션・미국</div>
-                <div>1시간 40분</div>
+                <div>${movieInfoVo.titleOrg }</div>
+                <div>${movieInfoVo.prodYear }・${movieInfoVo.genre }・${movieInfoVo.nation }</div>
+                <div>${movieInfoVo.movieRunningTime }분</div>
                 <div id="plot">
-                    <p>나는 어떻게 ‘나’로 태어나게 되었을까? 지구에 오기 전 영혼들이 머무는 ‘태어나기 전 세상’이 있다면?</p>
-                    <p>뉴욕에서 음악 선생님으로 일하던 ‘조’는 꿈에 그리던 최고의 밴드와 재즈 클럽에서 연주하게 된 그 날, 예기치 못한 사고로 영혼이 되어 ‘태어나기 전 세상’에
-                        떨어진다. 탄생
-                        전 영혼들이 멘토와 함께 자신의 관심사를 발견하면 지구 통행증을 발급하는 ‘태어나기 전 세상’. ‘조’는 그 곳에서 유일하게 지구에 가고 싶어하지 않는 시니컬한 영혼
-                        ‘22’의 멘토가 된다.
-                    </p>
-                    <p>링컨, 간디, 테레사 수녀도 멘토되길 포기한 영혼 ‘22’. 꿈의 무대에 서려면 ‘22’의 지구 통행증이 필요한 ‘조’. 그는 다시 지구로 돌아가 꿈의 무대에 설 수
-                        있을까?</p>
+                    <p>${movieInfoVo.plot}</p>
                 </div>
             </div>
 
@@ -354,67 +299,14 @@
                         <!-- like Modal -->
                         <div class="modal fade" id="like-modal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header" id="modal-title-wrapper">
-                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div id="modal-contents">
-                                            <img src="/img/movie/thumb.svg">
-                                            <p>로그인이 필요한 기능이에요.</p>
-                                            <p>회원가입 혹은 로그인 후 이용해주세요.</p>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer" id="footer-buttons">
-                                        <div class="footer-button-wrapper">
-                                            <button type="button" class="btn btn-secondary"
-                                                id="button-for-signup">회원가입</button>
-                                        </div>
-                                        <div>
-                                            <button type="button" class="btn btn-primary"
-                                                id="button-for-signin">로그인</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <jsp:include page="modal/like_modal_non_member.jsp"/>
                         </div>
 
                         <!-- siren Modal -->
                         <div class="modal fade" id="report-modal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header" id="modal-title-wrapper">
-                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div id="modal-contents">
-                                            <img src="/img/movie/siren.png">
-                                            <p>로그인이 필요한 기능이에요.</p>
-                                            <p>회원가입 혹은 로그인 후 이용해주세요.</p>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer" id="footer-buttons">
-                                        <div class="footer-button-wrapper">
-                                            <button type="button" class="btn btn-secondary"
-                                                id="button-for-signup">회원가입</button>
-                                        </div>
-                                        <div>
-                                            <button type="button" class="btn btn-primary"
-                                                id="button-for-signin">로그인</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <jsp:include page="modal/report_modal_non_member.jsp"/>
+                    	</div>
 
                 </div>
                 <div class="detail-info" id="collection">
@@ -470,7 +362,7 @@
         <!-- footer 끝 -->
     <!-- scripts -->
 
-        <script src="/js/movie/bootstrap.bundle.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script src="/js/movie/mychart.js"></script>
         <script src="/js/movie/myslider.js"></script>
