@@ -4,14 +4,14 @@
 <html lang="en">
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="/LMY/front-end/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="/LMY/front-end/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="/LMY/front-end/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="/LMY/front-end/img/logo_favicon.ico"> <!--favicon-->
-    <link rel="icon" href="/LMY/front-end/img/logo_favicon.ico">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/img/logo_favicon.ico"> <!--favicon-->
+    <link rel="icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
-    <link rel="stylesheet" href="/LMY/front-end/css/mypage_withdraw.css"><!--css경로수정-->
-    <link rel="stylesheet" href="/LMY/front-end/css/indexnew.css">
+    <link rel="stylesheet" href="/css/mypage_withdraw.css"><!--css경로수정-->
+    <link rel="stylesheet" href="/css/indexnew.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <!-- 차트 링크 --> 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
     <title>EUTCHAPEDIA</title>
@@ -22,7 +22,7 @@
         <div class="wrapper">
             <div class="navbar">
                 <div class="navbar_logo">
-                  <a href="#"><img id="logo" src="img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
+                  <a href="#"><img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
                </div> </a>
     
                 <div class="menu">
@@ -58,7 +58,7 @@
 
       <h3 class="main-title">
         <div class='title-div'>
-            <a class='atag' href='/LMY/front-end/mypage.html'>마이페이지
+            <a class='atag' href='#'>마이페이지
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bookmark-heart" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
@@ -73,7 +73,7 @@
 
     <div class='mybody-wrapper'>
         <div class='body-header'>
-            <img id="logo" src="/LMY/front-end/img/original.png">
+            <img id="logo" src="/img/original.png">
             <p></p>
             <div>
                 <p class='ment'>회원님 ! 다시 한 번 생각해 보세요
@@ -120,7 +120,7 @@
                 </div>
 
                 <div>
-                    <input id='inputdiv2' type='submit' value='탈퇴' onclick='alert()'>
+                    <input id='inputdiv2' type='submit' value='탈퇴' >
                 </div>
             </form>
 
@@ -166,10 +166,10 @@
 </footer>
 
     <!--부트스트랩이 jquery를 사용하고있어 어떠한 js파일보다 상위에 있어야함-->
-    <script src="/LMY/front-end/js/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
-    <script src="/LMY/front-end/js/bootstrap.bundle.min.js"></script>
-    <script src="/LMY/front-end/js/mypage_chart.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/mypage_chart.js"></script>
 
 
     <script>

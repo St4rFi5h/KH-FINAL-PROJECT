@@ -1,4 +1,4 @@
-package kr.or.eutchapedia.movie.detail.model.vo;
+package kr.or.eutchapedia.movie.detail.domain;
 
 public class StaffInfoVo {
 	private int staffIndex;

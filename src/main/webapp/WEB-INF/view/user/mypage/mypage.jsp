@@ -4,14 +4,14 @@
 <html lang="en">
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="/LMY/front-end/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="/LMY/front-end/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="/LMY/front-end/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="/LMY/front-end/img/logo_favicon.ico"> <!--favicon-->
-    <link rel="icon" href="/LMY/front-end/img/logo_favicon.ico">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/img/logo_favicon.ico"> <!--favicon-->
+    <link rel="icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
-    <link rel="stylesheet" href="/LMY/front-end/css/mypagenew.css">
-    <link rel="stylesheet" href="/LMY/front-end/css/indexnew.css">
+    <link rel="stylesheet" href="/css/mypagenew.css">
+    <link rel="stylesheet" href="/css/indexnew.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <!-- 차트 링크 --> 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
     <title>EUTCHAPEDIA</title>
@@ -22,7 +22,7 @@
         <div class="wrapper">
             <div class="navbar">
                 <div class="navbar_logo">
-                  <a href="#"><img id="logo" src="img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
+                  <a href="#"><img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
                </div> </a>
     
                 <div class="menu">
@@ -71,7 +71,7 @@
             <div class="left">
                 
                 <div id='profileimg'>    
-                    <img src='/LMY/front-end/img/emoji.PNG' width="200px"; height="250px">
+                    <img src='/img/emoji.PNG' width="200px"; height="250px">
                 </div>
                 <h2>겨울왕국</h2>
 
@@ -110,7 +110,7 @@
                     <p></p>
 
                     <div  class='sidebar-menu'>
-                        <a href="/LMY/front-end/mypage_editprofile.html">정보 수정
+                        <a href="#">정보 수정
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
                                 <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                                 <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -127,16 +127,16 @@
                     <h4>영화</h4>
                     <span class='sub-title'>보고싶어요</span><span class='starcount'> 156 </span>
                     <!-- center1박스 부분 디브 시작!!! -->
-                    <a href='/LMY/front-end/mypage_iwantosee.html'> <!-- 보고싶어요 링크 이동 -->
+                    <a href='#'> <!-- 보고싶어요 링크 이동 -->
                     <div class='center1-box'>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터11.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터16.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터2.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터15.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터10.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터17.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터6.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터7.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
                     </div>
                     </a>
                     <!-- center1박스 부분 디브 끝!!! -->
@@ -147,14 +147,14 @@
                     <!-- center2박스 부분 디브 시작!!! -->
                     <a href='/LMY/front-end/mypage_ratedmoviesfinal.html'> <!-- 평가한작품 링크 이동 -->
                     <div class='center2-box'>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터8.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터9.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터10.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터18.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터12.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터3.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터14.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/LMY/front-end/img/포스터19.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="#" width="125px"; height="150px" alt="포스터없음"></div>
                     </div>
                      </a>
                     <!-- center2박스 부분 디브 끝!!! -->
@@ -230,10 +230,10 @@
 
 </footer>
     <!--부트스트랩이 jquery를 사용하고있어 어떠한 js파일보다 상위에 있어야함-->
-    <script src="/LMY/front-end/js/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
-    <script src="/LMY/front-end/js/bootstrap.bundle.min.js"></script>
-    <script src="/LMY/front-end/js/mypage_chart.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/mypage_chart.js"></script>
   </body>
     
 </html>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>    
     <main class="main">
 
       <section id="movie" style="margin: auto; display: inline-block;">
