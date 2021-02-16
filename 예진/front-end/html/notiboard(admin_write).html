@@ -3,23 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/front-end/css/index.css">
-    <link rel="shortcut icon" href="/img/logo_favicon.ico"> <!--favicon-->
-    <link rel="icon" href="/img/logo_favicon.ico">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
-    <!-- 네이버 스마트 에디터 -->
-    <script type="text/javascript" src="/front-end/js/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
-
-    <!--그리드시스템을 위한 css파일-->
-    <link rel="stylesheet" href="/front-end/css/bootstrap-grid.min.css">
-    <!--reboot.css 는 태그속성들이 다른 브라우저에서 호환이 가능하게끔 스타일을 맞춰주는 css파일 -->
-    <link rel="stylesheet" href="/front-end/css/bootstrap-reboot.min.css">
-    <!--부트스트랩 기능들의 css-->
-    <link rel="stylesheet" href="/front-end/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/notiboard.css">
     <title>고객센터 공지사항</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
+    <!--그리드시스템을 위한 css파일-->
+    <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
+    <!--reboot.css 는 태그속성들이 다른 브라우저에서 호환이 가능하게끔 스타일을 맞춰주는 css파일 -->
+    <link rel="stylesheet" href="../css/bootstrap-reboot.min.css">
+    <!--부트스트랩 기능들의 css-->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/notiboard.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="shortcut icon" href="../../img/logo_favicon.ico"> <!--favicon-->
+    <link rel="icon" href="../../img/logo_favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
+    <!-- 네이버 스마트 에디터 -->
+    <script type="text/javascript" src="../js/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
         <div class="wrapper">
             <div class="navbar">
                 <div class="navbar_logo">
-                    <img id="logo" src="/img/12345.001.png"> <!-- 이미지파일 이동 시 경로 확인!-->
+                    <img id="logo" src="../../img/12345.001.png"> <!-- 이미지파일 이동 시 경로 확인!-->
                 </div>
     
                 <div class="menu">
@@ -86,15 +86,16 @@
             <div class="article_right">
                 <div class="notiboard_section">
                     <div class="head_aticle">
-                        <h3 class="tit">
-                            공지사항
+                        <h2 class="tit">
+                            <strong>공지사항</strong>
                             <span class="tit_sub">
                                 읏챠피디아의 새로운 소식들과 유용한 정보들을 확인하세요.
                             </span>
-                        </h3>
+                        </h2>
                         <div class="tt_tbl"></div>
                     </div>
                     <div class="page_section section_qna">
+
                         <div class="xans-board-write">
                             <form name="fm" id="fm" method="post" action="/shop/mypage/indb.php" enctype="multipart/form-data" onsubmit="return chkForm(this)" style="height: 100%;">
                                 <input type="hidden" name="mode" value="add_qna">
@@ -102,26 +103,29 @@
                                 <input type="hidden" name="sno" value="0">
                         
                                 <table id="table_after" class="boardWrite2" width="100%">
-                                    <colgroup>
-                                        <col width="14%" align="right">
-                                    </colgroup>
-                                    <tbody>
-                                        <tr>
+                                    <colgroup><col width="14%" align="right">
+                                    </colgroup><tbody><tr>
+
                                         <th class="input_txt" style="padding-top:20px;">제목</th>
                                         <td><br>
                                         <input type="text" name="subject" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="">
                                         </td>
                                         </tr>
-
                                         <tr>
                                         <th class="input_txt">내용</th>
                                         <td class="edit_area" style="position: relative;">
-                                            <strong class="tit qna_public"></strong>             
+                                        <strong class="tit qna_public"></strong>             
                                         <dl class="list qna_public">
                                         </dl>
                                         
+
+
+
                                         <!-- textarea -->
-                                        <textarea id="contents" name="contents" style="width: 100%; height: 474px;" class="editing_area" required="" fld_essential="" label="내용"></textarea>
+                                        <!-- <textarea id="contents" name="contents" style="width: 100%; height: 474px;" class="editing_area" required="" fld_essential="" label="내용"></textarea>-->
+                                        <textarea name="ir1" id="ir1" rows="10" cols="123">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>
+                                        <!---->
+                                        
                                         </td>
                                         </tr>
                                         <tr>
@@ -222,20 +226,32 @@
 
 
     <!--부트스트랩이 jquery를 사용하고있어 어떠한 js파일보다 상위에 있어야함-->
-    <script src="/front-end/js/jquery.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
-    <script src="/front-end/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(".accordion_banner .accordion_title").click(function() {
-            if($(this).next("div").is(":visible")){
-            $(this).next("div").slideUp("fast");
-            } else {
-                $(".accordion_banner .accordion_sub").slideUp("fast");
-                $(this).next("div").slideToggle("fast");
-            }
-        });
+    var oEditors = [];
+    nhn.husky.EZCreator.createInIFrame({
+     oAppRef: oEditors,
+     elPlaceHolder: "ir1",
+     sSkinURI: "../js/se2/SmartEditor2Skin.html",
+     fCreator: "createSEditor2"
     });
 </script>
+<script>
+// ‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
+function submitContents(elClickedObj) {
+// 에디터의 내용이 textarea에 적용된다.
+oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+
+// 에디터의 내용에 대한 값 검증은 이곳에서
+// document.getElementById("ir1").value를 이용해서 처리한다.
+
+try {
+   elClickedObj.form.submit();
+} catch(e) {
+}
+}
+      </script>
 </html>
