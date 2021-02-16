@@ -69,7 +69,7 @@
                 </div>
                 <h2 class="title">로그인</h2>
                 <div class="login-form">
-                    <form method="POST" id="login-form" action="#" onsubmit="return login();">
+                    <form method="POST" id="login-form" action="login" onsubmit="return login();">
                         <p>
                             <input class="input-email" type="email" name="email" id="email" placeholder="이메일">
                             <span id="searchclear"><i class="fas fa-times"></i></span>

@@ -68,12 +68,12 @@
             </div>
             <h2 class="title">회원가입</h2>
             <div class="login-form">
-                <form method="POST" action="#" onsubmit="return checkForm(this)">
+                <form method="POST" action="signup" name="signup-form" onsubmit="return checkForm(this)">
                     <div class="form-box"> 
                         <label>
                             <input class="input-nickname" type="text" name="nickname" id="input-nickname" placeholder="닉네임" autocomplete="off" required />
                         </label>
-                        <!-- <span class="error" id="nickname-required" style="font-size: 13px;">닉네임을 입력해 주세요</span>  -->
+                        <span class="error" id="nickname-required" style="font-size: 13px;">닉네임은 필수입니다.</span>
                     </div>
                     <div class="form-box">
                         <label>
@@ -144,6 +144,7 @@
     <script src="js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/member/signup.js"></script>
 </body>
 
 
