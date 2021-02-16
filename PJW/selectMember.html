@@ -87,10 +87,10 @@
                     
                      <li class='has-sub'><a href='#'><span>영화관리</span></a>
                         <ul>
-                           <li><a href='/KEK/front-end/addpick.html'><span>pick 추가</span></a></li>
-                           <li><a href='/KEK/front-end/'><span>pick 삭제</span></a></li>
-                           <li><a href='/KEK/front-end/comment-enrollment.html'><span>코맨트 관리</span></a></li>
-                           <li class='last'><a href='/KEK/front-end/editMovie.html'><span>영화DB 관리</span></a></li>
+                          <li><a href='/KEK/front-end/pick-add.html'><span>pick 추가</span></a></li>
+                          <li><a href='/KEK/front-end/pick-delete.html'><span>pick 삭제</span></a></li>
+                          <li><a href='/KEK/front-end/comment-enrollment.html'><span>코맨트 관리</span></a></li>
+                          <li class='last'><a href='/KEK/front-end/dbmanagement.html'><span>영화DB 관리</span></a></li>
                         </ul>
                      </li>
                   </ul>
@@ -107,8 +107,8 @@
         <div id="title">
           <h1 style="font-weight: bold;">회원정보조회</h1>
         </div>
-        <div id="allsize">
-          <div id="search-block">
+        <div id="allsize" class="col-lg-12 ">
+          <div id="search-block" class="col-lg-12 ">
 
             <select class="custom-select" id="select-search">
               <option selected>검색항목을 고르세요</option>
@@ -121,9 +121,9 @@
 
           </div>
 
-          <div id="table-contorll">
-            <table class="table table-hover">
-              <thead>
+          <div id="table-contorll" class="col-lg-12 ">
+            <table class="table table-hover col-lg-12" >
+              <thead >
                 <tr>
                   <th scope="col">No.</th>
                   <th scope="col"></th>
@@ -133,7 +133,7 @@
                   <th scope="col">가입날자</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody  >
                 <tr>
                   <th scope="row">1</th>
                   <td> <input class="form-check-input" type="checkbox" value="" id="userSelect"></td>
