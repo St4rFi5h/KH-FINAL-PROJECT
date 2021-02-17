@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,8 @@
     <link rel="shortcut icon" href="/img/logo_favicon.ico"> <!--favicon-->
     <link rel="icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
-    <link rel="stylesheet" href="/css/mypage_withdraw.css"><!--css경로수정-->
-    <link rel="stylesheet" href="/css/indexnew.css">
+    <link rel="stylesheet" href="/css/mypage/mypage_withdraw.css"><!--css경로수정-->
+    <link rel="stylesheet" href="/css/mypage/indexnew.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <!-- 차트 링크 --> 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
     <title>EUTCHAPEDIA</title>
@@ -58,7 +59,7 @@
 
       <h3 class="main-title">
         <div class='title-div'>
-            <a class='atag' href='#'>마이페이지
+            <a class='atag' href='/mypage/index'>마이페이지
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bookmark-heart" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
@@ -96,19 +97,19 @@
             <form method="post" action="#" onsubmit='return test_checkbox'>
               <div id='complainbox'>
                 <div id='complain-check'>
-                    <input id='check' type="checkbox" name="complain" value=0>
+                    <input id='check' type="checkbox" name="complains" value="1">
                     <label id='reason'>&nbsp;영화정보가 부족함</label>
                 </div>
                 <div id='complain-check'>
-                    <input  id='check' type="checkbox" name="complain" value=0>
+                    <input  id='check' type="checkbox" name="complains" value="2">
                     <label id='reason'>&nbsp;평가 및 리뷰정보가 도움이 되지 않음</label>
                 </div >
                 <div id='complain-check'>
-                    <input id='check' type="checkbox" name="complain" value=0>
+                    <input id='check' type="checkbox" name="complains" value="3">
                     <label id='reason'>&nbsp;홈페이지 기능이 별로 없음</label>
                 </div>
                 <div id='complain-check'>
-                    <input  id='check' type="checkbox" name="complain" value=0> 
+                    <input  id='check' type="checkbox" name="complains" value="4"> 
                     <label id='reason'>&nbsp;다른 서비스를 이용하고 있음</label>
                 </div>
 
@@ -169,11 +170,11 @@
     <script src="/js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/mypage_chart.js"></script>
+    <script src="/js/mypage/mypage_chart.js"></script>
 
 
     <script>
-      function test_checkbox() {
+ /*      function test_checkbox() {
         var flag = false;
         var values = document.getElementsByName("complain");
         var pwd = document.getElementById('inputdiv').value;
@@ -198,7 +199,7 @@
         flag= true ;
       }
       return flag;
-
+ */
     </script>
   </body>
     
