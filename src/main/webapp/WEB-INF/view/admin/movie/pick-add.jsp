@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,8 +38,9 @@
                         <div id="addpick-input-tag">
                             <select class="custom-select" id="addpick-select-search">
                             <option selected>장르</option>
-                            <option value="1">닉네임</option>
-                            <option value="2">이메일</option>
+                            <option value="1">로맨스</option>
+                            <option value="2">액션</option>
+                            <option value="2">느와르</option>
                           </select>
                         </div>
                         <div id="addpick-input-text">
@@ -63,56 +64,27 @@
                         <table id="send-table-data" class="table table-hover">
                             <thead>
                               <tr>
-                                <th scope="col">#</th>
-                                
+                                <th scope="col">영화id</th>
                                 <th scope="col">영화제목</th>
-                                <th scope="col">감독</th>
+                                <th scope="col">제작국가</th>
                                 <th scope="col">장르</th>
-                                <th scope="col">유형</th>
+                                <th scope="col">조회수</th>
 
                               </tr>
                             </thead>
                             <tbody>
+                            <c:forEach var="m" items="${movielist}" end="7">
                               <tr>
-                                <th scope="row">1</th>
-                               
-                                <td>가구야 공주 이야기</td>
-                                <td>타카하타 이사오</td>
-                                <td>로맨스</td>
-                                <td>애니메이션</td>
+                                <td>${m.docid}</td>
+                                <td>${m.title}</td>
+                                <td>${m.nation}</td>
+                                <td>${m.genre}</td>
+                                <td>${m.movieHitCount}</td>
                               </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                               
-                                <td>가디언즈</td>
-                                <td>피터 램지</td>
-                                <td>액션</td>
-                                <td>애니메이션</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                
-                                <td>가디언즈 오브 갤럭시</td>
-                                <td>제임스 건</td>
-                                <td>액션</td>
-                                <td>sf</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">4</th>
-                               
-                                <td>가려진 시간</td>
-                                <td>엄태화</td>
-                                <td>느와르</td>
-                                <td>판타지</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">5</th>
-                              
-                                <td>기생충</td>
-                                <td>봉준호</td>
-                                <td>액션</td>
-                                <td>스릴러</td>
-                              </tr>
+                            </c:forEach>
+                            
+                            
+                             
                               
                             </tbody>
                           </table>
@@ -150,9 +122,9 @@
                               
                                 <th scope="col">삭제</th>
                                 <th scope="col">영화제목</th>
-                                <th scope="col">감독</th>
+                                <th scope="col">제작국가</th>
                                 <th scope="col">장르</th>
-                                <th scope="col">유형</th>
+                                <th scope="col">조회수</th>
                               </tr>
                             </thead>
                             <tbody id="get-table-data">
