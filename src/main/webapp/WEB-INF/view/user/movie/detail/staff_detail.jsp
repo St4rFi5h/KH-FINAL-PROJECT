@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,18 +22,28 @@
    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
     <div id="main-container">
         <div>
-            <button id="back-button" onclick="location.href='movie_detail.html'">←</button>
+            <button id="back-button" onclick="javascript:history.back();">←</button>
         </div>
         <div id="staff-info-wrapper">
             <img src="/img/movie/profile.svg">
             <div id="staff-name-and-role">
-                <h4>피트 닥터</h4>
-                <div>감독</div>
+                <h4>${staffName }</h4>
+                <div>${staffRole }</div>
             </div>
         </div>
 
         <div id="movie-info-wrapper">
+        <c:forEach var="staffFilmoList" items="${staffFilmoList }">
             <div class="movie-info">
+            <input type="hidden" value="${staffFilmoList.movieDocId}">
+                <a href="/movie/detail?movieDocId=${staffFilmoList.movieDocId }">
+                    <img src="${staffFilmoList.posterUri }" alt="">
+                    <div id="movie-title">${staffFilmoList.title }</div>
+                    <div>${staffFilmoList.prodYear }</div>
+                </a>
+            </div>
+        </c:forEach>
+           <!--  <div class="movie-info">
                 <a href="movie_detail.html">
                     <img src="/img/movie/220px-영화_소울.jpg" alt="">
                     <div>소울</div>
@@ -80,14 +91,7 @@
                     <div>소울</div>
                     <div>2020</div>
                 </a>
-            </div>
-            <div class="movie-info">
-                <a href="movie_detail.html">
-                    <img src="/img/movie/220px-영화_소울.jpg" alt="">
-                    <div>소울</div>
-                    <div>2020</div>
-                </a>
-            </div>
+            </div> -->
         </div>
     </div> 
 

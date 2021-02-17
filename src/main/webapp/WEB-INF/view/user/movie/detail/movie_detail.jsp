@@ -102,117 +102,20 @@
                 <div class="detail-info">
                     <h4 id="actor-and-pd">출연/제작</h4>
                     <div class="my-slider" id="staffs-slider">
-                        <a href="staff_detail.html">
-                            <div class='slider-elements'>
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">피트 닥터</div>
-                                    <div class="staff-role">감독</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="staff_detail.html">
-                            <div class='slider-elements'>
-
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">켐프 파워스</div>
-                                    <div class="staff-role">감독</div>
-                                </div>
-
-                            </div>
-                        </a>
-                        <div class='slider-elements'>
-                            <a href="staff_detail.html">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">제이미 폭스</div>
-                                    <div class="staff-role">성우 | 조 가드너</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">티나 페이</div>
-                                    <div class="staff-role">성우 | 22</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">그레이엄 노튼</div>
-                                    <div class="staff-role">성우 | 문윈드</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">레이첼 하우스</div>
-                                    <div class="staff-role">성우 | 테리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">엘리스 브라가</div>
-                                    <div class="staff-role">성우 | 제리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">리처드 아이오아디</div>
-                                    <div class="staff-role">성우 | 제리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">도넬 로우링스</div>
-                                    <div class="staff-role">성우 | 데즈</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">아미어-칼리브 톰슨</div>
-                                    <div class="staff-role">성우 | 컬리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">안젤라 바셋</div>
-                                    <div class="staff-role">성우 | 도로시아</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">다비드 딕스</div>
-                                    <div class="staff-role">성우 | 폴</div>
-                                </div>
-                            </a>
-                        </div>
-
+                        <c:forEach var="staffList" items="${staffList }">
+	                            <div class='slider-elements'>
+	                        <a href="/movie/detail/staff?staffName=${staffList.staffName }&staffIndex=${staffList.staffIndex}">
+	                                <img src="/img/movie/profile.svg" class="profile-img">
+	                                <div class="name-and-role">
+	                                	<input type="hidden" value="${staffList.staffIndex }"/>
+	                                    <div class="staff-name">${staffList.staffName }</div>
+	                                    <div class="staff-role">${staffList.staffRoleGroup }
+	                                    <div>${staffList.staffRole }</div>
+	                                    </div>
+	                                </div>
+	                        </a>
+	                            </div>
+	                    </c:forEach>
                     </div>
                 </div>
                 <div class="detail-info">

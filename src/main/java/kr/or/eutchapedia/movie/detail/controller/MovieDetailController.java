@@ -1,5 +1,7 @@
 package kr.or.eutchapedia.movie.detail.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
+import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
+import kr.or.eutchapedia.movie.detail.domain.StaffInfoVo;
 import kr.or.eutchapedia.movie.detail.service.MovieDetailDao;
 
 @RequestMapping("/movie")
@@ -21,9 +25,13 @@ public class MovieDetailController {
 		ModelAndView mv = new ModelAndView();
 		
 		MovieInfoVo movieInfoVo = dao.selectMovieInfo(movieDocId);
+		List<StaffInfoVo> staffList = dao.selectStaffInfo(movieDocId);
+		
 		mv.addObject("movieInfoVo", movieInfoVo);
+		mv.addObject("staffList", staffList);
 		
 		mv.setViewName("/user/movie/detail/movie_detail");
+		
 		return mv;
 	}
 	
@@ -32,6 +40,7 @@ public class MovieDetailController {
 		ModelAndView mv = new ModelAndView();
 		
 		MovieInfoVo movieInfoVo = dao.selectMovieInfo(movieDocId);
+		
 		mv.addObject("movieInfoVo", movieInfoVo);
 		
 		mv.setViewName("/user/movie/detail/movie_more_info");
@@ -40,8 +49,16 @@ public class MovieDetailController {
 	}
 	
 	@RequestMapping("/detail/staff")
-	public ModelAndView staffDetail(String staffName) {
+	public ModelAndView staffDetail(String staffName, int staffIndex) {
 		ModelAndView mv = new ModelAndView();
+		
+		List<StaffFilmoVo> staffFilmoList = dao.selectStaffFilmo(staffName, staffIndex);
+		staffName = staffFilmoList.get(0).getStaffName();
+		String staffRole = staffFilmoList.get(0).getStaffRoleGroup();	
+		
+		mv.addObject("staffFilmoList", staffFilmoList);
+		mv.addObject("staffName", staffName);
+		mv.addObject("staffRole", staffRole);
 		
 		mv.setViewName("/user/movie/detail/staff_detail");
 		

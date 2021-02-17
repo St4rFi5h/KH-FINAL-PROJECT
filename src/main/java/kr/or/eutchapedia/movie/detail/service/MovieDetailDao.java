@@ -1,10 +1,15 @@
 package kr.or.eutchapedia.movie.detail.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
+import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
+import kr.or.eutchapedia.movie.detail.domain.StaffInfoVo;
 import kr.or.eutchapedia.movie.detail.repository.MovieDetailMapper;
 
 @Service
@@ -17,22 +22,60 @@ public class MovieDetailDao {
 	// 영화 정보 반환 
 	public MovieInfoVo selectMovieInfo(String movieDocId) {
 		
-		System.out.println("영화정보 select start");
-		
-		MovieInfoVo movieInfoVo = null;
+		MovieInfoVo movieInfoVo = new MovieInfoVo();
 		
 		try {
 			movieInfoVo = mapper.selectMovieInfo(movieDocId);
 			
-			if (movieInfoVo != null) {
-				System.out.println("select 성공");
-			}
-		} catch (Exception e) {
+			String prodYear = movieInfoVo.getProdYear().substring(0, 4);
+			movieInfoVo.setProdYear(prodYear);
+			
+		} catch (Exception e) {                                                                                                                                                                                                                                                                                                                                                                                                                                          
 			e.printStackTrace();
 		}
 		
 		return movieInfoVo;
 		
 	}
+	
+	// 스태프 List 반환 
+	public List<StaffInfoVo> selectStaffInfo(String movieDocId) {
 
+		List<StaffInfoVo> staffList = new ArrayList<>();
+		
+		try {
+			staffList = mapper.selectStaffList(movieDocId);
+			
+			for (StaffInfoVo s : staffList) {
+				if (s.getStaffRole().equals("null")) {
+					s.setStaffRole("");
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return staffList;
+	}
+	
+	// staff filmo 반환, 동명이인 문제 해결해야
+	public List<StaffFilmoVo> selectStaffFilmo(String staffName, int staffIndex) {
+	
+		List<StaffFilmoVo> staffFilmoList = new ArrayList<>();
+		
+		try {
+			staffFilmoList = mapper.selectStaffFilmo(staffName, staffIndex);
+
+			for (StaffFilmoVo s : staffFilmoList) {
+				String prodYear = s.getProdYear().substring(0, 4);
+				s.setProdYear(prodYear);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return staffFilmoList;
+	}
 }

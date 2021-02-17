@@ -3,33 +3,85 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
-<mapper namespace="kr.or.eutchapedia.movie.detail.repository.MovieDetailMapper">
 
-<!-- 영화정보 select -->
-<select id="selectMovieInfo" resultMap="movieInfo" parameterType="String">
+<mapper
+	namespace="kr.or.eutchapedia.movie.detail.repository.MovieDetailMapper">
 
-	SELECT * FROM movie_info 
-	WHERE movie_docid = #{_parameter}
+	<!-- 영화정보 select -->
+	<select id="selectMovieInfo" resultMap="movieInfo"
+		parameterType="String">
 
-</select>
+		SELECT * FROM movie_info
+		WHERE movie_docid = #{_parameter}
 
-<!-- resultmap -->
-<resultMap id="movieInfo" type="kr.or.eutchapedia.movie.detail.domain.MovieInfoVo">
-	<result column="movie_docid" property="movieDocId"/>
-	<result column="title" property="title"/>
-	<result column="title_org" property="titleOrg"/>
-	<result column="nation" property="nation"/>
-	<result column="movie_running_time" property="movieRunningTime"/>
-	<result column="rating" property="rating"/>
-	<result column="prodyear" property="prodYear"/>
-	<result column="poster_uri" property="posterUri"/>
-	<result column="genre" property="genre"/>
-	<result column="plot" property="plot"/>
-	<result column="movie_trailer" property="movieTrailer"/>
-	<result column="movie_hit_count" property="movieHitCount"/>
+	</select>
 
-</resultMap>
+	<!-- staff 정보 select -->
+	<select id="selectStaffList" resultMap="staffInfo"
+		parameterType="String">
+		SELECT * FROM staffs_info
+		WHERE fk_movie_docid = #{_parameter}
+	</select>
 
+	<select id="selectStaffInfo" resultMap="staffInfo"
+		parameterType="Integer">
 
+		SELECT * FROM staffs_info s
+		JOIN movie_info m
+		ON s.fk_movie_docid = m.movie_docid
+		WHERE s.staff_index = #{_parameter}
+
+	</select>
+
+	<select id="selectStaffFilmo" resultMap="staffFilmo">
+		SELECT m.title, m.prodyear, s.staff_name, s.staff_role_group, s.staff_index, 
+		m.movie_docid, m.poster_uri
+		FROM staffs_info s
+		JOIN movie_info m
+		ON s.fk_movie_docid = m.movie_docid
+		WHERE s.staff_name LIKE '%${staffName}%' 
+		OR  s.staff_index = #{staffIndex}
+		ORDER BY m.prodyear DESC
+		
+	</select>
+	<!-- resultmap -->
+	<resultMap
+		type="kr.or.eutchapedia.movie.detail.domain.MovieInfoVo"
+		id="movieInfo">
+		<result column="movie_docid" property="movieDocId" />
+		<result column="title" property="title" />
+		<result column="title_org" property="titleOrg" />
+		<result column="nation" property="nation" />
+		<result column="movie_running_time" property="movieRunningTime" />
+		<result column="rating" property="rating" />
+		<result column="prodyear" property="prodYear" />
+		<result column="poster_uri" property="posterUri" />
+		<result column="genre" property="genre" />
+		<result column="plot" property="plot" />
+		<result column="movie_trailer" property="movieTrailer" />
+		<result column="movie_hit_count" property="movieHitCount" />
+
+	</resultMap>
+
+	<resultMap
+		type="kr.or.eutchapedia.movie.detail.domain.StaffInfoVo"
+		id="staffInfo">
+		<result column="staff_index" property="staffIndex" />
+		<result column="fk_movie_docid" property="movieDocId" />
+		<result column="staff_name" property="staffName" />
+		<result column="staff_role_group" property="staffRoleGroup" />
+		<result column="staff_role" property="staffRole" />
+	</resultMap>
+
+	<resultMap
+		type="kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo"
+		id="staffFilmo">
+		<result column="staff_index" property="staffIndex" />
+		<result column="title" property="title" />
+		<result column="prodyear" property="prodYear" />
+		<result column="staff_name" property="staffName" />
+		<result column="staff_role_group" property="staffRoleGroup" />
+		<result column="movie_docid" property="movieDocId" />
+		<result column="poster_uri" property="posterUri" />
+	</resultMap>
 </mapper>
