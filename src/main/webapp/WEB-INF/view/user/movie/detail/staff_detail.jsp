@@ -18,7 +18,7 @@
 </head>
 
 <body>
-   <jsp:include page="/WEB-INF/view/user/inc/header.jsp"/>
+   <jsp:include page="/WEB-INF/view/user/header.jsp"/>
     <div id="main-container">
         <div>
             <button id="back-button" onclick="location.href='movie_detail.html'">←</button>
@@ -92,7 +92,7 @@
     </div> 
 
     <!-- 여기부터 footer-->
-    <jsp:include page="/WEB-INF/view/user/inc/footer.jsp"/>
+    <jsp:include page="/WEB-INF/view/user/footer.jsp"/>
 
 </body>
 

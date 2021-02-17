@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 </head>
 <!-- header -->
- <jsp:include page="/WEB-INF/view/user/inc/header.jsp"/>
+ <jsp:include page="/WEB-INF/view/user/header.jsp"/>
 <!-- header 끝 -->
 	
     <div id="main-container">
@@ -358,7 +358,7 @@
             </div>
         </div>
         <!-- 여기부터 footer-->
-        <jsp:include page="/WEB-INF/view/user/inc/footer.jsp"/>
+        <jsp:include page="/WEB-INF/view/user/footer.jsp"/>
         <!-- footer 끝 -->
     <!-- scripts -->
 

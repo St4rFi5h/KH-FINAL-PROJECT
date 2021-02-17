@@ -21,7 +21,7 @@
 </head>
 <body>
 <!-- header -->
- <jsp:include page="/WEB-INF/view/user/inc/header.jsp"/>
+ <jsp:include page="/WEB-INF/view/user/header.jsp"/>
 <!-- header 끝 -->
     <div id="main-container">
         <div>
@@ -67,7 +67,7 @@
 
 
 <!-- footer 시작 -->
-<jsp:include page="/WEB-INF/view/user/inc/footer.jsp"/>
+<jsp:include page="/WEB-INF/view/user/footer.jsp"/>
 <!-- footer 끝 -->
 
         <!-- scripts -->
