@@ -7,7 +7,6 @@
     margin-top: 20px;
 }
 #dbmanagement-input-tag{
-    width: 100px;
     display: inline-block;
 
     
@@ -29,10 +28,11 @@
 
 #dbmanagement-select-search{
     margin-bottom: 9px;
+    width: 150px
 }
 
 #dbmanagement-mtext{
-    width: 300px;
+    width: 250px;
 }
 #dbmanagement-btn-click{
     display: inline-block;

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +10,7 @@
 <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/admin/adminmovie/admin-header.css">
-    <link rel="stylesheet" href="/css/admin/adminmovie/admin-nav.css">
-    <link rel="stylesheet" href="/css/admin/adminmovie/admin-content.css">
-    <link rel="stylesheet" href="/css/admin/adminmovie/content-pickadd.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
 </head>
 <body>
 	<div class="container" style="height: 100%;">
@@ -46,7 +45,7 @@
                         <div id="addpick-input-text">
                             <div id="addpick-mtext" class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                  <span class="input-group-text" id="basic-addon1"><img src="svg/search.svg" alt="bootstrap"></span>
+                                  <span class="input-group-text" id="basic-addon1"><img src="/svg/admin/search.svg" alt="bootstrap"></span>
                                 </div>
                                 <input type="text" class="form-control" placeholder="영화제목" aria-label="Username" aria-describedby="basic-addon1">
                               </div>
@@ -121,9 +120,9 @@
                           <nav id="addpick-data-page" aria-label="Page navigation example">
                               <ul class="pagination">
                                 <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <c:forEach var="i" begin="0" end="4">
+                                <li class="page-item"><a class="page-link" href="?p=${1+i}&t=&q=">${1+i}</a></li>
+                                </c:forEach>
                                 <li class="page-item"><a class="page-link" href="#">다음</a></li>
                               </ul>
                             </nav>

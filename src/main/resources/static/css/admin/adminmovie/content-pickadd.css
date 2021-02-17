@@ -31,6 +31,7 @@
 }
 
 #addpick-select-search{
+	width:200px;
     margin-bottom: 9px;
 }
 
@@ -49,7 +50,7 @@
     border: 2px solid #dcdcdc;
 }
 #addpick-data-page{
-    width: 220px;
+    width: 285px;
     margin-left: auto;
     margin-right: auto;
 }

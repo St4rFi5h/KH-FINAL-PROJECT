@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/admin")
 @RestController
 public class AdminMovieController {
+	
 
 	@RequestMapping("/adminhome")
 	public ModelAndView AdminHome() {

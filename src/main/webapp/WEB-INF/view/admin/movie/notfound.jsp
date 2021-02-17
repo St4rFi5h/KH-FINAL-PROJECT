@@ -5,14 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/bootstrap-grid.min.css">
    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/admin/admin-header.css">
-  <link rel="stylesheet" href="css/admin/admin-nav.css">
-  <link rel="stylesheet" href="css/admin/admin-content.css">
-  <link rel="stylesheet" href="css/admin/notfound.css">
+  <link rel="stylesheet" href="/css/admin/admin.css">
 </head>
 <body>
 	<div class="container" style="height: 100%;">

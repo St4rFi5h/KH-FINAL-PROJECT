@@ -5,14 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/admin/adminmovie/admin-header.css">
-    <link rel="stylesheet" href="/css/admin/adminmovie/admin-nav.css">
-    <link rel="stylesheet" href="/css/admin/adminmovie/admin-content.css">
-    <link rel="stylesheet" href="/css/admin/adminmovie/admin-dashboard.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    
 </head>
 <body>
 	<div class="container" style="height: 100%;">
@@ -54,7 +51,7 @@
                                 <!--new 사용자 반복-->
                                 <div id="newperson-main" style="height: 50px;">
                                     <div id="dash-main-img" style="display: inline-block;">
-                                        <img src="img/person.png" alt="" style="width: 30px; height: 30px; margin-bottom: 20px;">
+                                        <img src="/img/admin/person.png" alt="" style="width: 30px; height: 30px; margin-bottom: 20px;">
                                     </div>
                                     <div id="dash-main-info" style="display: inline-block; font-size: 14px;">
                                     <span>박서우</span>
