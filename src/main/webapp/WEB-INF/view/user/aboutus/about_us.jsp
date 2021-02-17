@@ -16,7 +16,11 @@
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
+<!-- header -->
+<jsp:include page="/WEB-INF/view/user/header.jsp"/>
+<!-- header 끝 -->
 
+<div class="section">
     <main id="aboutus">
 
       <div class="about-section">
@@ -48,7 +52,7 @@
           <div id="member-container">
             <ul style="margin:auto">
               <li>
-                <img src="img/jihyeon.png" alt="" width="200px">
+                <img src="/img/aboutus/jihyeon.png" alt="" width="200px">
                 <h3>PM</h3>
                 <h4>Lee Jihyeon</h4>
                 <div class="member_inner">
@@ -175,6 +179,14 @@
 
 
     </main>
+    </div>
+    
+    
+<!-- footer -->
+<jsp:include page="/WEB-INF/view/user/footer.jsp"/>
+<!-- footer 끝 -->
+
+    
   <!-- scripts -->
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.bundle.min.js"></script>

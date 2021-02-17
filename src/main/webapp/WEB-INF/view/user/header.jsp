@@ -1,21 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>EUTCHAPEDIA</title>
-	<link rel="stylesheet" href="/css/movie/index.css">
-	<!--favicon-->
-	<link rel="icon" href="/img/logo_favicon.ico">
-	<link rel="shortcut icon" href="/img/logo_favicon.ico">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"><!--icon-->
-	<link rel="stylesheet" href="/css/bootstrap-grid.min.css">
-	<link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
-</head>
-<body>
+
  <header id="header">
  
 <%
@@ -103,5 +88,3 @@
       <%} %>
       
     </header>
-</body>
-</html>

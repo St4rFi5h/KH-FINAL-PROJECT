@@ -6,11 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>EUTCHAPEDIA</title>
+<link rel="stylesheet" href="/css/movie/index.css">
+	<!--favicon-->
+	<link rel="icon" href="/img/logo_favicon.ico">
+	<link rel="shortcut icon" href="/img/logo_favicon.ico">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"><!--icon-->
+	<link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-  
-    <main>
+<!-- header -->
+<jsp:include page="header.jsp"/>
+<!-- header 끝 -->
 
+  <div class="section">
+    <main>
+	
       <section id="movie" style="margin: auto; display: inline-block;">
 
         <!--박스오피스 슬라이드 -->
@@ -1220,12 +1232,17 @@
 
 
     </main>
+</div>
+
+<!-- footer -->
+<jsp:include page="footer.jsp"/>
+<!-- footer 끝 -->
 
 
 
   <!-- scripts -->
 
-  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script>
 
