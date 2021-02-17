@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,8 @@
     <link rel="shortcut icon" href="/img/logo_favicon.ico"> <!--favicon-->
     <link rel="icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
-    <link rel="stylesheet" href="/css/indexnew.css">
-    <link rel="stylesheet" href="/css/ratedmoviesfinal.css">
+    <link rel="stylesheet" href="/css/mypage/indexnew.css">
+    <link rel="stylesheet" href="/css/mypage/mypageratedmoviesfinal.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <!-- 차트 링크 --> 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
     <title>EUTCHAPEDIA</title>
@@ -58,8 +59,8 @@
 
       <div class='mybody-wrapper'>
         <div class='iconwrapper'>
-            <a  href="#">
-                <img  data-bs-toggle="tooltip" data-bs-placement="top" title="마이페이지로 이동" src="/img/arrow-left-short.svg" alt="" width="40" height="40" >
+            <a  href="/mypage/index">
+                <img  data-bs-toggle="tooltip" data-bs-placement="top" title="마이페이지로 이동" src="/img/mypage/arrow-left-short.svg" alt="" width="40" height="40" >
             </a>
         </div>
 
@@ -107,7 +108,7 @@
             <div class='moviewrapper'>
                 <div class='movie-div'>
                     <a href="#"> 
-                        <img class="poster" src="/img/포스터2.PNG" width="150px";  height="200px"; alt="포스터없음">
+                        <img class="poster" src="/img/mypage/포스터2.PNG" width="150px";  height="200px"; alt="포스터없음">
                     </a>
                     <li class="movietitle">기생충</li>
                     <!-- <li>2018 | 드라마</li> -->
@@ -116,7 +117,7 @@
             <div class='moviewrapper'>
                 <div class='movie-div'>
                     <a href="#"> 
-                        <img class="poster" src="/img/포스터13.PNG" width="150px";  height="200px"; alt="포스터없음">
+                        <img class="poster" src="/img/mypage/포스터13.PNG" width="150px";  height="200px"; alt="포스터없음">
                     </a>
                     <li class="movietitle">기생충</li>
                     <!-- <li>2018 | 드라마</li> -->
@@ -125,7 +126,7 @@
             <div class='moviewrapper'>
                 <div class='movie-div'>
                     <a href="#"> 
-                        <img class="poster" src="/img/포스터14.PNG" width="150px";  height="200px"; alt="포스터없음">
+                        <img class="poster" src="/img/mypage/포스터14.PNG" width="150px";  height="200px"; alt="포스터없음">
                     </a>
                     <li class="movietitle">기생충</li>
                     <!-- <li>2018 | 드라마</li> -->
@@ -139,13 +140,13 @@
             <div class='dividestar'>
                 <div class="title-sub">5.0점 준 영화
                     <span class='starcount'> 10 </span>
-                    <span ><a  class='starallview' href='#'>더보기</a></span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore'>더보기</a></span>
 
                 </div> 
                 <div class='moviewrapper'>
                     <div class='movie-div'>
                         <a href="#"> 
-                            <img class="poster" src="/img/포스터2.PNG" width="150px";  height="200px"; alt="포스터없음">
+                            <img class="poster" src="/img/mypage/포스터2.PNG" width="150px";  height="200px"; alt="포스터없음">
                         </a>
                         <li class="movietitle">기생충</li>
                         <!-- <li>2018 | 드라마</li> -->
@@ -154,7 +155,7 @@
                 <div class='moviewrapper'>
                     <div class='movie-div'>
                         <a href="#"> 
-                            <img class="poster" src="/img/포스터8.PNG" width="150px";  height="200px"; alt="포스터없음">
+                            <img class="poster" src="/img/mypage/포스터8.PNG" width="150px";  height="200px"; alt="포스터없음">
                         </a>
                         <li class="movietitle">기생충</li>
                         <!-- <li>2018 | 드라마</li> -->
@@ -164,7 +165,7 @@
                 <div class='moviewrapper'>
                     <div class='movie-div'>
                         <a href="#"> 
-                            <img class="poster" src="/img/포스터5.PNG" width="150px";  height="200px"; alt="포스터없음">
+                            <img class="poster" src="/img/mypage/포스터5.PNG" width="150px";  height="200px"; alt="포스터없음">
                         </a>
                         <li class="movietitle">기생충</li>
                         <!-- <li>2018 | 드라마</li> -->
@@ -172,16 +173,31 @@
                 </div>
               
             </div>
-    
             <div class='dividestar'>
-                <div class="title-sub">4.0점 준 영화
+                <div class="title-sub">4.5점 준 영화
                     <span class='starcount'> 10 </span>
-                    <span ><a  class='starallview' href='#'>더보기</a></span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore'>더보기</a></span>
                 </div> 
                 <div class='moviewrapper'>
                     <div class='movie-div'>
                         <a href="#"> 
-                            <img class="poster" src="/img/포스터3.PNG" width="150px";  height="200px"; alt="포스터없음">
+                            <img class="poster" src="/img/mypage/포스터3.PNG" width="150px";  height="200px"; alt="포스터없음">
+                        </a>
+                        <li class="movietitle">기생충</li>
+                        <!-- <li>2018 | 드라마</li> -->
+                    </div>
+                </div>
+            </div>
+    
+            <div class='dividestar'>
+                <div class="title-sub">4.0점 준 영화
+                    <span class='starcount'> 10 </span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore'>더보기</a></span>
+                </div> 
+                <div class='moviewrapper'>
+                    <div class='movie-div'>
+                        <a href="#"> 
+                            <img class="poster" src="/img/mypage/포스터3.PNG" width="150px";  height="200px"; alt="포스터없음">
                         </a>
                         <li class="movietitle">기생충</li>
                         <!-- <li>2018 | 드라마</li> -->
@@ -192,12 +208,12 @@
             <div class='dividestar'>
                 <div class="title-sub">3.5점 준 영화
                     <span class='starcount'> 10 </span>
-                    <span ><a  class='starallview' href='#'>더보기</a></span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore'>더보기</a></span>
                 </div> 
                 <div class='moviewrapper'>
                     <div class='movie-div'>
                         <a href="#"> 
-                            <img class="poster" src="/img/포스터4.PNG" width="150px";  height="200px"; alt="포스터없음">
+                            <img class="poster" src="/img/mypage/포스터4.PNG" width="150px";  height="200px"; alt="포스터없음">
                         </a>
                         <li class="movietitle">기생충</li>
                         <!-- <li>2018 | 드라마</li> -->
@@ -208,12 +224,12 @@
             <div class='dividestar'>
                 <div class="title-sub">3.0점 준 영화
                     <span class='starcount'> 10 </span>
-                    <span ><a  class='starallview' href='#'>더보기</a></span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore'>더보기</a></span>
                 </div> 
                 <div class='moviewrapper'>
                     <div class='movie-div'>
                         <a href="#"> 
-                            <img class="poster" src="/img/포스터5.PNG" width="150px";  height="200px"; alt="포스터없음">
+                            <img class="poster" src="/img/mypage/포스터5.PNG" width="150px";  height="200px"; alt="포스터없음">
                         </a>
                         <li class="movietitle">기생충</li>
                         <!-- <li>2018 | 드라마</li> -->
@@ -224,12 +240,12 @@
             <div class='dividestar'>
                 <div class="title-sub">2.5점 준 영화
                     <span class='starcount'> 10 </span>
-                    <span ><a  class='starallview' href='#'>더보기</a></span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore'>더보기</a></span>
                 </div> 
                 <div class='moviewrapper'>
                     <div class='movie-div'>
                         <a href="#"> 
-                            <img class="poster" src="/img/포스터6.PNG" width="150px";  height="200px"; alt="포스터없음">
+                            <img class="poster" src="/img/mypage/포스터6.PNG" width="150px";  height="200px"; alt="포스터없음">
                         </a>
                         <li class="movietitle">기생충</li>
                         <!-- <li>2018 | 드라마</li> -->
@@ -240,12 +256,12 @@
             <div class='dividestar'>
                 <div class="title-sub">2.0점 준 영화
                     <span class='starcount'> 10 </span>
-                    <span ><a  class='starallview' href='#'>더보기</a></span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore'>더보기</a></span>
                 </div> 
                 <div class='moviewrapper'>
                     <div class='movie-div'>
                         <a href="#"> 
-                            <img class="poster" src="/img/포스터7.PNG" width="150px";  height="200px"; alt="포스터없음">
+                            <img class="poster" src="/img/mypage/포스터7.PNG" width="150px";  height="200px"; alt="포스터없음">
                         </a>
                         <li class="movietitle">기생충</li>
                         <!-- <li>2018 | 드라마</li> -->
@@ -256,12 +272,12 @@
             <div class='dividestar'>
                 <div class="title-sub">1.5점 준 영화
                     <span class='starcount'> 10 </span>
-                    <span ><a  class='starallview' href='#'>더보기</a></span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore'>더보기</a></span>
                 </div> 
                 <div class='moviewrapper'>
                     <div class='movie-div'>
                         <a href="#"> 
-                            <img class="poster" src="/img/포스터8.PNG" width="150px";  height="200px"; alt="포스터없음">
+                            <img class="poster" src="/img/mypage/포스터8.PNG" width="150px";  height="200px"; alt="포스터없음">
                         </a>
                         <li class="movietitle">기생충</li>
                         <!-- <li>2018 | 드라마</li> -->
@@ -272,12 +288,12 @@
             <div class='dividestar'>
                 <div class="title-sub">1.0점 준 영화
                     <span class='starcount'> 10 </span>
-                    <span ><a  class='starallview' href='#'>더보기</a></span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore'>더보기</a></span>
                 </div> 
                 <div class='moviewrapper'>
                     <div class='movie-div'>
                         <a href="#"> 
-                            <img class="poster" src="/img/포스터9.PNG" width="150px";  height="200px"; alt="포스터없음">
+                            <img class="poster" src="/img/mypage/포스터9.PNG" width="150px";  height="200px"; alt="포스터없음">
                         </a>
                         <li class="movietitle">기생충</li>
                         <!-- <li>2018 | 드라마</li> -->
@@ -288,12 +304,12 @@
             <div class='dividestar'>
                 <div class="title-sub">0.5점 준 영화
                     <span class='starcount'> 10 </span>
-                    <span ><a  class='starallview' href='#'>더보기</a></span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore'>더보기</a></span>
                 </div> 
                 <div class='moviewrapper'>
                     <div class='movie-div'>
                         <a href="#"> 
-                            <img class="poster" src="/img/포스터10.PNG" width="150px";  height="200px"; alt="포스터없음">
+                            <img class="poster" src="/img/mypage/포스터10.PNG" width="150px";  height="200px"; alt="포스터없음">
                         </a>
                         <li class="movietitle">기생충</li>
                         <!-- <li>2018 | 드라마</li> -->
@@ -349,7 +365,6 @@
     <script src="/js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/mypage_chart.js"></script>
 
     <script>
         $(function() {

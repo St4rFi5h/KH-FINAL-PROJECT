@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,8 @@
     <link rel="shortcut icon" href="/img/logo_favicon.ico"> <!--favicon-->
     <link rel="icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
-    <link rel="stylesheet" href="/css/mypage_member.css">
-    <link rel="stylesheet" href="/css/indexnew.css">
+    <link rel="stylesheet" href="/css/mypage/mypage_member.css">
+    <link rel="stylesheet" href="/css/mypage/indexnew.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <!-- 차트 링크 --> 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
     <title>EUTCHAPEDIA</title>
@@ -71,7 +72,7 @@
                 <!-- <p></p>
                 <h3>eutcha's<br>취향분석</h3><br><br> -->
                 <div id='profileimg'>    
-                    <img src='/img/emoji.PNG' width="200px"; height="250px">
+                    <img src='/img/mypage/emoji.PNG' width="200px"; height="250px">
                 </div>
                 
                 <p class="info-title">───Introduce───</p>
@@ -95,16 +96,16 @@
                     <h4>영화</h4>
                     <span class='sub-title'>보고싶어요</span><span class='starcount'> 156 </span>
                     <!-- center1박스 부분 디브 시작!!! -->
-                    <a href='#'> <!-- 보고싶어요 링크 이동 -->
+                    <a href='/mypage/wannawatch'> <!-- 보고싶어요 링크 이동 -->
                     <div class='center1-box'>
-                        <div class='center-box-img'><img src="/img/포스터11.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터16.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터2.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터15.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터10.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터17.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터6.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터7.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터11.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터16.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터2.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터15.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터10.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터17.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터6.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터7.PNG" width="125px"; height="150px" alt="포스터없음"></div>
                     </div>
                     </a>
                     <!-- center1박스 부분 디브 끝!!! -->
@@ -113,16 +114,16 @@
                 <div class="center2">
                     <span class='sub-title'>평가한 작품</span><span class='starcount'> 251 </span>
                     <!-- center2박스 부분 디브 시작!!! -->
-                    <a href='mypage_ratedmoviesfinal'> <!-- 평가한작품 링크 이동 -->
+                    <a href='/mypage/ratedmovies'> <!-- 평가한작품 링크 이동 -->
                     <div class='center2-box'>
-                        <div class='center-box-img'><img src="/img/포스터8.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터9.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터10.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터18.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터12.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터3.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터14.PNG" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/포스터19.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터8.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터9.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터10.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터18.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터12.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터3.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터14.PNG" width="125px"; height="150px" alt="포스터없음"></div>
+                        <div class='center-box-img'><img src="/img/mypage/포스터19.PNG" width="125px"; height="150px" alt="포스터없음"></div>
                     </div>
                      </a>
                     <!-- center2박스 부분 디브 끝!!! -->
@@ -203,7 +204,7 @@
     <script src="/js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/mypage_chart.js">
+    <script src="/js/mypage/mypage_chart.js"></script>
      
    </body>
     
