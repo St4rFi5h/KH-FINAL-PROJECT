@@ -349,3 +349,8 @@ CREATE SEQUENCE MOVIE_PICK_SEQ
 START WITH 1
 INCREMENT BY 1
 NOCYCLE;
+
+
+/* movie_info 테이블 수정 */
+ALTER TABLE movie_info ADD(movie_trailer varchar2(1000));
+ALTER TABLE movie_info ADD(movie_hit_count NUMBER DEFAULT 0 NOT NULL);
