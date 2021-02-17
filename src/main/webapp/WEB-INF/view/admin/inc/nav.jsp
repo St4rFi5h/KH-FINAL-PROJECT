@@ -5,12 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/admin/admin-header.css">
-    <link rel="stylesheet" href="css/admin/admin-nav.css">
-    <link rel="stylesheet" href="css/admin/admin-content.css">
+    
 </head>
 <body>
 <div id="nav-col" class="col-lg-2">
@@ -49,10 +44,10 @@
                                 
                                  <li class='has-sub'><a href='#'><span>영화관리</span></a>
                                     <ul>
-                                       <li><a href='/KEK/front-end/pick-add.html'><span>pick 추가</span></a></li>
-                                       <li><a href='/KEK/front-end/pick-delete.html'><span>pick 삭제</span></a></li>
-                                       <li><a href='/KEK/front-end/comment-enrollment.html'><span>코맨트 관리</span></a></li>
-                                       <li class='last'><a href='/KEK/front-end/dbmanagement.html'><span>영화DB 관리</span></a></li>
+                                       <li><a href='#'><span>pick 추가</span></a></li>
+                                       <li><a href='#'><span>pick 삭제</span></a></li>
+                                       <li><a href='#'><span>코맨트 관리</span></a></li>
+                                       <li class='last'><a href='#'><span>영화DB 관리</span></a></li>
                                     </ul>
                                  </li>
                               </ul>
@@ -62,9 +57,10 @@
                         </div>
                     </div>
                 </div>
-                <script src="/js/movie/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="/js/movie/mychart.js"></script>
-        <script src="/js/movie/myslider.js"></script>
+                <script src="/js/jquery.min.js"></script>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="/js/admin/adminmovie/accordion.js"></script>
 </body>
 </html>

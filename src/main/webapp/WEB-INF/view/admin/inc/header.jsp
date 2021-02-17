@@ -22,14 +22,14 @@
                     
                         <div id="logo-container">
                             <div id="logo">
-                                <img  src="img/adminLogo.png" alt="" height="280" width="180">
+                                <img  src="/img/admin/adminLogo.png" alt="" height="280" width="180">
                                 <div id="icons">
                                     <div id="gohome">
-                                        <img src="img/home.png" alt="">
+                                        <img src="/img/admin/home.png" alt="">
                                         <span>home</span>
                                     </div>
                                     <div id="logout">
-                                        <img src="img/logout.png" alt="">
+                                        <img src="/img/admin/logout.png" alt="">
                                         <span>logout</span>
 
                                     </div>
@@ -46,9 +46,10 @@
                 </div>
             </div>
        
-        <script src="/js/movie/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="/js/movie/mychart.js"></script>
-        <script src="/js/movie/myslider.js"> </script>
+        <script src="/js/jquery.min.js"></script>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="/js/admin/adminmovie/js/accordion.js"></script>
 </body>
 </html>
