@@ -1,4 +1,4 @@
-package kr.or.eutchapedia.login.model.vo;
+package kr.or.eutchapedia.login.vo;
 
 import java.sql.Date;
 
