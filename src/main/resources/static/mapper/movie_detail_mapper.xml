@@ -17,31 +17,22 @@
 	</select>
 
 	<!-- staff 정보 select -->
-	<select id="selectStaffList" resultMap="staffInfo"
+	<select id="selectStaffInfo" resultMap="staffInfo"
 		parameterType="String">
 		SELECT * FROM staffs_info
 		WHERE fk_movie_docid = #{_parameter}
 	</select>
 
-	<select id="selectStaffInfo" resultMap="staffInfo"
-		parameterType="Integer">
 
-		SELECT * FROM staffs_info s
-		JOIN movie_info m
-		ON s.fk_movie_docid = m.movie_docid
-		WHERE s.staff_index = #{_parameter}
-
-	</select>
-
-	<select id="selectStaffFilmo" resultMap="staffFilmo">
+	<select id="selectStaffFilmo" resultMap="staffFilmo"
+		parameterType="String">
 		SELECT m.title, m.prodyear, s.staff_name, s.staff_role_group, s.staff_index, 
-		m.movie_docid, m.poster_uri
+		m.movie_docid, m.poster_uri, s.staff_id
 		FROM staffs_info s
 		JOIN movie_info m
 		ON s.fk_movie_docid = m.movie_docid
-		WHERE s.staff_name LIKE '%${staffName}%' 
-		OR  s.staff_index = #{staffIndex}
-		ORDER BY m.prodyear DESC
+		WHERE s.staff_id = #{_parameter}
+		ORDER BY m.prodyear DESC;
 		
 	</select>
 	<!-- resultmap -->
@@ -71,17 +62,18 @@
 		<result column="staff_name" property="staffName" />
 		<result column="staff_role_group" property="staffRoleGroup" />
 		<result column="staff_role" property="staffRole" />
+		<result column="staff_id" property="staffId" />
 	</resultMap>
 
 	<resultMap
 		type="kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo"
 		id="staffFilmo">
-		<result column="staff_index" property="staffIndex" />
 		<result column="title" property="title" />
 		<result column="prodyear" property="prodYear" />
 		<result column="staff_name" property="staffName" />
 		<result column="staff_role_group" property="staffRoleGroup" />
 		<result column="movie_docid" property="movieDocId" />
 		<result column="poster_uri" property="posterUri" />
+		<result column="staff_id" property="staffId" />
 	</resultMap>
 </mapper>

@@ -2,20 +2,15 @@ package kr.or.eutchapedia.movie.detail.domain;
 
 // 임시. 더 좋은 방법 찾아야 함 
 public class StaffFilmoVo {
-	private int staffIndex;
+	
 	private String title;
 	private String prodYear;
 	private String staffName;
 	private String staffRoleGroup;
 	private String movieDocId;
 	private String posterUri;
+	private String staffId;
 	
-	public int getStaffIndex() {
-		return staffIndex;
-	}
-	public void setStaffIndex(int staffIndex) {
-		this.staffIndex = staffIndex;
-	}
 	public String getTitle() {
 		return title;
 	}
@@ -54,6 +49,13 @@ public class StaffFilmoVo {
 	}
 	public void setPosterUri(String posterUri) {
 		this.posterUri = posterUri;
+	}
+	
+	public String getStaffId() {
+		return staffId;
+	}
+	public void setStaffId(String staffId) {
+		this.staffId = staffId;
 	}
 	@Override
 	public String toString() {

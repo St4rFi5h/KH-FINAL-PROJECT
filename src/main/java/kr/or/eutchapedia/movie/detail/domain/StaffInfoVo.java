@@ -6,6 +6,7 @@ public class StaffInfoVo {
 	private String staffName;
 	private String staffRoleGroup;
 	private String staffRole;
+	private String staffId;
 	
 	public int getStaffIndex() {
 		return staffIndex;
@@ -37,5 +38,12 @@ public class StaffInfoVo {
 	public void setStaffRole(String staffRole) {
 		this.staffRole = staffRole;
 	}
+	public String getStaffId() {
+		return staffId;
+	}
+	public void setStaffId(String staffId) {
+		this.staffId = staffId;
+	}
+	
 	
 }

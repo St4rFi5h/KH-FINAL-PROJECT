@@ -59,13 +59,13 @@ public class MovieDetailDao {
 		return staffList;
 	}
 	
-	// staff filmo 반환, 동명이인 문제 해결해야
-	public List<StaffFilmoVo> selectStaffFilmo(String staffName, int staffIndex) {
+	// staff filmo 반환, 동명이인 문제 해결 완료 
+	public List<StaffFilmoVo> selectStaffFilmo(String staffId) {
 	
 		List<StaffFilmoVo> staffFilmoList = new ArrayList<>();
 		
 		try {
-			staffFilmoList = mapper.selectStaffFilmo(staffName, staffIndex);
+			staffFilmoList = mapper.selectStaffFilmo(staffId);
 
 			for (StaffFilmoVo s : staffFilmoList) {
 				String prodYear = s.getProdYear().substring(0, 4);

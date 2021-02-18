@@ -49,11 +49,11 @@ public class MovieDetailController {
 	}
 	
 	@RequestMapping("/detail/staff")
-	public ModelAndView staffDetail(String staffName, int staffIndex) {
+	public ModelAndView staffDetail(String staffId) {
 		ModelAndView mv = new ModelAndView();
 		
-		List<StaffFilmoVo> staffFilmoList = dao.selectStaffFilmo(staffName, staffIndex);
-		staffName = staffFilmoList.get(0).getStaffName();
+		List<StaffFilmoVo> staffFilmoList = dao.selectStaffFilmo(staffId);
+		String staffName = staffFilmoList.get(0).getStaffName();
 		String staffRole = staffFilmoList.get(0).getStaffRoleGroup();	
 		
 		mv.addObject("staffFilmoList", staffFilmoList);

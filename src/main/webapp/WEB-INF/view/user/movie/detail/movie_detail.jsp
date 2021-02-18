@@ -104,10 +104,10 @@
                     <div class="my-slider" id="staffs-slider">
                         <c:forEach var="staffList" items="${staffList }">
 	                            <div class='slider-elements'>
-	                        <a href="/movie/detail/staff?staffName=${staffList.staffName }&staffIndex=${staffList.staffIndex}">
+	                        <a href="/movie/detail/staff?staffId=${staffList.staffId}">
 	                                <img src="/img/movie/profile.svg" class="profile-img">
 	                                <div class="name-and-role">
-	                                	<input type="hidden" value="${staffList.staffIndex }"/>
+	                                	<input type="hidden" value="${staffList.staffId }"/>
 	                                    <div class="staff-name">${staffList.staffName }</div>
 	                                    <div class="staff-role">${staffList.staffRoleGroup }
 	                                    <div>${staffList.staffRole }</div>
