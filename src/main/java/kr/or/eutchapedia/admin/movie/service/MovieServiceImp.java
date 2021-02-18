@@ -21,10 +21,18 @@ public class MovieServiceImp implements MovieService {
 		
 		return movielist;
 	}
+
 	@Override
-	public List<StaffInfo> getstaffList() {
-		List<StaffInfo> stafflist = moviedao.getstaffList();
-		return stafflist;
+	public List<MovieInfo> getsearchMovie(String title) {
+		List<MovieInfo> searchMovie = moviedao.getsearchMovie(title);
+		return searchMovie;
 	}
+
+	@Override
+	public List<MovieInfo> getmovieList2() {
+		List<MovieInfo> movielist = moviedao.getmovieList2();
+		return movielist;
+	}
+	
 
 }

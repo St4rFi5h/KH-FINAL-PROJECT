@@ -4,17 +4,22 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.entity.StaffInfo;
 
+@Repository
 @Mapper
 public interface MovieDao {
-	@Select("SELECT * FROM MOVIE_INFO")
+
 	List<MovieInfo> getmovieList();
+
+	List<MovieInfo> getsearchMovie(String title);
+
+	List<MovieInfo> getmovieList2();
 	
-	@Select("SELECT * FROM STAFFS_INFO")
-	List<StaffInfo> getstaffList();
+	
 	
 	
 

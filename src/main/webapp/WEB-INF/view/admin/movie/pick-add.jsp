@@ -34,13 +34,14 @@
                         <h1>pick 추가</h1>
 
                     </div>
+                    <form action="/admin/pickadd/search" method="get">
                     <div id="addpick-search-container">
                         <div id="addpick-input-tag">
-                            <select class="custom-select" id="addpick-select-search">
+                            <select class="custom-select" id="addpick-select-search" name="f">
                             <option selected>장르</option>
-                            <option value="1">로맨스</option>
-                            <option value="2">액션</option>
-                            <option value="2">느와르</option>
+                            <option value="1">장르로검색</option>
+                            <option value="2">이름으로검색</option>
+                            <option value="3">배우로검색</option>
                           </select>
                         </div>
                         <div id="addpick-input-text">
@@ -48,17 +49,18 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text" id="basic-addon1"><img src="/svg/admin/search.svg" alt="bootstrap"></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="영화제목" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" id="movienameval" name="q" value="" class="form-control" placeholder="영화제목" aria-label="Username" aria-describedby="basic-addon1">
                               </div>
 
                         </div>
                         <div id="addpick-btn-click">
-                            <button type="button" class="btn btn-primary btn-sm" id="addpick-select-button">조회</button>
+                            <button type="submit" class="btn btn-primary btn-sm" id="addpick-select-button">조회</button>
                         </div>
 
 
 
                     </div>
+                    </form>
                     
                     <div id="addpick-input-data" class="col-lg-12">
                         <table id="send-table-data" class="table table-hover">
@@ -90,12 +92,27 @@
                           </table>
                               
                           <nav id="addpick-data-page" aria-label="Page navigation example">
-                              <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">이전</a></li>
+                              <c:set var="page" value="${(param.p == null)?1:param.p}"/>
+                              <c:set var="startNum" value="${page-(page-1)%5}" />
+                              <c:set var="lastNum" value="23"/>
+                              <ul id="pagiedit" class="pagination">
+                              <c:if test="${startNum-1>0}">
+                                <li class="page-item" ><a class="page-link" href="?p=${startNum-1}&t=&q=">이전</a></li>
+                              </c:if>
+                              <c:if test="${startNum<=1}">
+                                <li class="page-item" ><a class="page-link" onclick="alert('첫번째 페이지입니다.')">이전</a></li>
+                              </c:if>
+                              
+                              
                                 <c:forEach var="i" begin="0" end="4">
-                                <li class="page-item"><a class="page-link" href="?p=${1+i}&t=&q=">${1+i}</a></li>
+                                <li class="page-item"><a class="page-link" href="?p=${startNum+i}&t=&q=">${startNum+i}</a></li>
                                 </c:forEach>
-                                <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                                <c:if test="${startNum+5<lastNum}">
+                                <li class="page-item"><a class="page-link" href="?p=${startNum+5}&t=&q=">다음</a></li>
+                                </c:if>
+                                <c:if test="${startNum+5>=lastNum}">
+                                <li class="page-item"><a class="page-link" onclick="alert('다음 페이지가 없습니다.')">다음</a></li>
+                                </c:if>
                               </ul>
                             </nav>
                         </div>
@@ -193,6 +210,28 @@
     
 
 
+      </script>
+      
+      <script>
+$("#addpick-select-button").on("click","button" function({
+	
+	var string = movienameval
+      $.ajax({
+    		type: "GET", //요청 메소드 방식
+    		url:"/AjaxTest/ex01.do",
+    		dataType:"text", //서버가 요청 URL을 통해서 응답하는 내용의 타입
+    		success : function(result){
+    			//서버의 응답데이터가 클라이언트에게 도착하면 자동으로 실행되는함수(콜백)
+    			//result - 응답데이터
+    			//$('#result').text(result);
+    			alert(result);
+    		},
+    		error : function(a, b, c){
+    			//통신 실패시 발생하는 함수(콜백)
+    			alert(a + b + c);
+    		}
+    	});
+}))
       </script>
 </body>
 </html>

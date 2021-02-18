@@ -12,6 +12,9 @@ public interface MovieService {
 
 	List<MovieInfo> getmovieList();
 
-	List<StaffInfo> getstaffList();
+	List<MovieInfo> getsearchMovie(String title);
+
+	List<MovieInfo> getmovieList2();
+
 
 }

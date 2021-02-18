@@ -50,10 +50,16 @@
     border: 2px solid #dcdcdc;
 }
 #addpick-data-page{
-    width: 285px;
+    width: 35%;
+    text-align:center;
     margin-left: auto;
     margin-right: auto;
 }
+
+#pagiedit > li > a{
+	    padding: .5rem .60rem;
+}
+
 #addpick-input-title{
     float: right;
     margin-top: 30px;
