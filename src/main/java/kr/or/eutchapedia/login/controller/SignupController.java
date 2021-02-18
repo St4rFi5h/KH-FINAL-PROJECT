@@ -3,6 +3,7 @@ package kr.or.eutchapedia.login.controller;
 import javax.inject.Inject;
 
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,8 +13,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.or.eutchapedia.login.service.MemberService;
 import kr.or.eutchapedia.login.vo.MemberVo;
 
-@RestController
-@RequestMapping("/member")
+@Controller
+@RequestMapping
 public class SignupController {
 
 	private final MemberService memberService;
@@ -40,6 +41,11 @@ public class SignupController {
 		return "redirect:/user/member/login"; 
 
 	}
-
+	
+	//로그인 임시
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String login() throws Exception {
+		return "/user/member/login";
+	}
 
 }

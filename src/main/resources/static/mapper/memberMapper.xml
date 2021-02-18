@@ -7,13 +7,17 @@
 
 	<!-- 회원 가입 -->
     <insert id="signup">
-	     insert into member(member_email, member_nickname, member_pwd)
-	     values(#{memberEmail}, #{memberNickname}, #{memberPwd})   
+	     insert into member
+	     values
+	     (#{memberEmail}, 
+	      #{memberNickname}, 
+	      #{memberPwd}, 
+	      #{memberPwdSalt}, default, default, default, null, null, default)   
     </insert>
 	
 	<!-- 로그인 -->
 	<select id="login" resultType="kr.or.eutchapedia.login.vo.MemberVo">
-		select memberEamil, memberPwd from member
-		where memberEamil = #{memberEmail} and memberPwd = #{memberPwd}
+		select member_email, member_pwd from member
+		where memberEamil = #{memberEmail} and member_pwd = #{memberPwd}
 	</select>
 </mapper>
