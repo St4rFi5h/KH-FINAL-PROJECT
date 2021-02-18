@@ -6,7 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
-@RequestMapping("/aaaa")
+@RequestMapping("/movie")
 @RestController
 public class MovieRateController {
 	

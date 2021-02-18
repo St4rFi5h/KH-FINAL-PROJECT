@@ -4,14 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/admin/admin-header.css">
-  <link rel="stylesheet" href="css/admin/admin-nav.css">
-  <link rel="stylesheet" href="css/admin/admin-content.css">
-  <link rel="stylesheet" href="css/admin/admin-wrap.css">
-  <link rel="stylesheet" href="css/selectMember.css" type="text/css">
+  <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/css/admin/admin.css">
   <title>회원정보조회</title>
 </head>
  <div class="container">
@@ -19,7 +15,7 @@
 
     <!--content 반응형-->
     <div class="row">
-	<jsp:include page="/WEB-INF/view/admin/inc/header.jsp"/>
+				<jsp:include page="/WEB-INF/view/admin/inc/nav.jsp"/>
       <!--section 반응형-->
       <div id="section-col" class="col-lg-10">
 
@@ -174,10 +170,10 @@
 
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/accordion.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/accordion.js"></script>
 <body>
-Test용 File - 설정 끝나면 지우기 
+
 </body>
 </html>
