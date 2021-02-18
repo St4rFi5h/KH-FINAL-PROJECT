@@ -27,8 +27,8 @@ public class MovieDetailController {
 		
 		MovieInfoVo movieInfoVo = dao.selectMovieInfo(movieDocId);
 		List<StaffInfoVo> staffList = dao.selectStaffList(movieDocId);
-		dao.updateHitCount(movieDocId);
 		Map<String, Object> starAvgMap = dao.selectStarAvg(movieDocId);
+		dao.updateHitCount(movieDocId);
 		
 		mv.addObject("movieInfoVo", movieInfoVo);
 		mv.addObject("staffList", staffList);
