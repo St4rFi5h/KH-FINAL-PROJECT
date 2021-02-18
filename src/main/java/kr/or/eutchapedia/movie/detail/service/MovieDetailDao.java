@@ -39,7 +39,7 @@ public class MovieDetailDao {
 	}
 	
 	// 스태프 List 반환 
-	public List<StaffInfoVo> selectStaffInfo(String movieDocId) {
+	public List<StaffInfoVo> selectStaffList(String movieDocId) {
 
 		List<StaffInfoVo> staffList = new ArrayList<>();
 		
@@ -77,5 +77,20 @@ public class MovieDetailDao {
 		}
 		
 		return staffFilmoList;
+	}
+	
+	// 영화 클릭 시 조회수 update
+	public int updateHitCount(String movieDocId) {
+		int result = 0;
+		
+		try {
+			mapper.updateHitCount(movieDocId);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+		
 	}
 }

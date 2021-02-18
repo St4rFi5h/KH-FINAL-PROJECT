@@ -17,24 +17,29 @@
 	</select>
 
 	<!-- staff 정보 select -->
-	<select id="selectStaffInfo" resultMap="staffInfo"
+	<select id="selectStaffList" resultMap="staffInfo"
 		parameterType="String">
 		SELECT * FROM staffs_info
 		WHERE fk_movie_docid = #{_parameter}
 	</select>
 
 
-	<select id="selectStaffFilmo" resultMap="staffFilmo"
-		parameterType="String">
-		SELECT m.title, m.prodyear, s.staff_name, s.staff_role_group, s.staff_index, 
+	<select id="selectStaffFilmo" resultMap="staffFilmo" parameterType="String">
+		SELECT m.title, m.prodyear, s.staff_name, s.staff_role_group, 
 		m.movie_docid, m.poster_uri, s.staff_id
 		FROM staffs_info s
 		JOIN movie_info m
 		ON s.fk_movie_docid = m.movie_docid
 		WHERE s.staff_id = #{_parameter}
-		ORDER BY m.prodyear DESC;
+		ORDER BY m.prodyear DESC
 		
 	</select>
+	
+	<update id="updateHitCount" parameterType="String">
+		UPDATE movie_info 
+		SET movie_hit_count = movie_hit_count + 1 
+		WHERE movie_docid = #{_parameter}
+	</update>
 	<!-- resultmap -->
 	<resultMap
 		type="kr.or.eutchapedia.movie.detail.domain.MovieInfoVo"

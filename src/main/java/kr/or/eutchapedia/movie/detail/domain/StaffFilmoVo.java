@@ -57,6 +57,7 @@ public class StaffFilmoVo {
 	public void setStaffId(String staffId) {
 		this.staffId = staffId;
 	}
+	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

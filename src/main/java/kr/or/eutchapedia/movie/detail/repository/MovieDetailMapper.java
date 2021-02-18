@@ -16,5 +16,6 @@ public interface MovieDetailMapper {
 	public MovieInfoVo selectMovieInfo(String movieDocId);
 	public List<StaffInfoVo> selectStaffList(String movieDocId);
 	public List<StaffFilmoVo> selectStaffFilmo(String staffId);
+	public void updateHitCount(String movieDocId);
 	
 }

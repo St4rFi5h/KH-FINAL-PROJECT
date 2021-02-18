@@ -25,7 +25,8 @@ public class MovieDetailController {
 		ModelAndView mv = new ModelAndView();
 		
 		MovieInfoVo movieInfoVo = dao.selectMovieInfo(movieDocId);
-		List<StaffInfoVo> staffList = dao.selectStaffInfo(movieDocId);
+		List<StaffInfoVo> staffList = dao.selectStaffList(movieDocId);
+		dao.updateHitCount(movieDocId);
 		
 		mv.addObject("movieInfoVo", movieInfoVo);
 		mv.addObject("staffList", staffList);
@@ -48,7 +49,7 @@ public class MovieDetailController {
 		return mv;
 	}
 	
-	@RequestMapping("/detail/staff")
+	@RequestMapping(value = "/detail/staff", method = RequestMethod.GET)
 	public ModelAndView staffDetail(String staffId) {
 		ModelAndView mv = new ModelAndView();
 		
