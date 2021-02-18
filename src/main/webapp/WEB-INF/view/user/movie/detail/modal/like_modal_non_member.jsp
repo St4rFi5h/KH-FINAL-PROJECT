@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>	
 <!-- 비회원 좋아요 모달 -->
 <div class="modal-dialog" role="document">
 	<div class="modal-content">
@@ -20,7 +21,7 @@
 		<div class="modal-footer" id="footer-buttons">
 			<div class="footer-button-wrapper">
 				<button type="button" class="btn btn-secondary"
-					id="button-for-signup">회원가입</button>
+					id="button-for-signup" onclick="location.href='/signup'">회원가입</button>
 			</div>
 			<div>
 				<button type="button" class="btn btn-primary" id="button-for-signin">로그인</button>

@@ -21,7 +21,7 @@
 		<div class="modal-footer" id="footer-buttons">
 			<div class="footer-button-wrapper">
 				<button type="button" class="btn btn-secondary"
-					id="button-for-signup">회원가입</button>
+					id="button-for-signup" onclick="location.href='/signup'">회원가입</button>
 			</div>
 			<div>
 				<button type="button" class="btn btn-primary" id="button-for-signin">로그인</button>

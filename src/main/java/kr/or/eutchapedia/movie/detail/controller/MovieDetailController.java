@@ -74,4 +74,14 @@ public class MovieDetailController {
 		
 		return mv;
 	}
+	
+	// 모달 확인용(임시) 
+	@RequestMapping("/detail/member")
+	public ModelAndView movieDetailMember() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("/user/movie/detail/movie_detail_member");
+		
+		return mv;
+	}
 }

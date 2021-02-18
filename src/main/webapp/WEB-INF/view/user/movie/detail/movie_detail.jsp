@@ -26,6 +26,7 @@
     <!-- xeicon -->
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 </head>
+<body>
 <!-- header -->
  <jsp:include page="/WEB-INF/view/user/header.jsp"/>
 <!-- header 끝 -->

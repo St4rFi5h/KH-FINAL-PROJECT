@@ -354,3 +354,6 @@ NOCYCLE;
 /* movie_info 테이블 수정 */
 ALTER TABLE movie_info ADD(movie_trailer varchar2(1000));
 ALTER TABLE movie_info ADD(movie_hit_count NUMBER DEFAULT 0 NOT NULL);
+
+/* staff_info 테이블 수정 - 스태프 고유번호 컬럼 추가*/
+ALTER TABLE staffs_info ADD(staff_id VARCHAR2(1000));
