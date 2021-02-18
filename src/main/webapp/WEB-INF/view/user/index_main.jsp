@@ -7,10 +7,15 @@
 <meta charset="UTF-8">
 <title>EUTCHAPEDIA</title>
 <link rel="stylesheet" href="/css/movie/index.css">
+<link rel="stylesheet" href="/css/main/index_main.css">
 	<!--favicon-->
 	<link rel="icon" href="/img/logo_favicon.ico">
 	<link rel="shortcut icon" href="/img/logo_favicon.ico">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"><!--icon-->
+	<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"><!-- xeicon -->
+ 	<script src="/js/jquery.min.js"></script>
+ 	<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> <!-- slick js-->
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /><!-- slick css -->
 	<link rel="stylesheet" href="/css/bootstrap-grid.min.css">
 	<link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -32,7 +37,7 @@
             <div class="movie_box">
               <a href="#">
                 <div class="poster">
-                  <img src="img/soul.jpg" alt="" class="movie_img">
+                  <img src="https://an2-img.amz.wtchn.net/image/v2/612c4dc5b5b7b0df57bcf7aa02402dd2.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpBNU9UZzFNakE1TURjeU56VTFNVEkzSWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5Lmp3NllkRWtRTkE1UFBRTWdRMFRPOGRRRDMwcE1xLVY2RnBNbTY2UWNaWWs" alt="" class="movie_img">
                   <div class="rank">1</div>
                   <div class="movie_info">
                     <h4 class="movie_title">소울</h4>
@@ -1244,18 +1249,6 @@
 
   <script src="/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script>
-
-
-
-    // slider script
-    $('.movie_slider').slick({
-      infinite: true,
-      slidesToShow: 5,
-      slidesToScroll: 5
-    });
-
-
-  </script>
+  <script src="/js/main/movieslider.js"></script>
 </body>
 </html>
