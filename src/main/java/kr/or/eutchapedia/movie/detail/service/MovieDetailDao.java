@@ -1,7 +1,9 @@
 package kr.or.eutchapedia.movie.detail.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -92,5 +94,19 @@ public class MovieDetailDao {
 		
 		return result;
 		
+	}
+	
+	public Map<String, Object> selectStarAvg(String movieDocId) {
+		
+		Map<String, Object> starAvgMap = new HashMap<>();
+		
+		try {
+			starAvgMap = mapper.selectStarAvg(movieDocId);
+			System.out.println(starAvgMap.toString()); // 키값 대소문자 구별 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return starAvgMap;
 	}
 }

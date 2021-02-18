@@ -1,6 +1,7 @@
 package kr.or.eutchapedia.movie.detail.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,9 +28,11 @@ public class MovieDetailController {
 		MovieInfoVo movieInfoVo = dao.selectMovieInfo(movieDocId);
 		List<StaffInfoVo> staffList = dao.selectStaffList(movieDocId);
 		dao.updateHitCount(movieDocId);
+		Map<String, Object> starAvgMap = dao.selectStarAvg(movieDocId);
 		
 		mv.addObject("movieInfoVo", movieInfoVo);
 		mv.addObject("staffList", staffList);
+		mv.addObject("starAvgMap", starAvgMap);
 		
 		mv.setViewName("/user/movie/detail/movie_detail");
 		

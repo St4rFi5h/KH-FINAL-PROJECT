@@ -39,7 +39,7 @@
             <div id="basic-info">
                 <h1 id="title">${movieInfoVo.title }</h1>
                 <div id="year-genre-country">${movieInfoVo.prodYear }・${movieInfoVo.genre }・${movieInfoVo.nation }</div>
-                <div id="star-average">평균 ★4.2 (3만명)</div>
+                <div id="star-average">평균 ★${starAvgMap.STARAVG }(${starAvgMap.STARCNT }명)</div>
                 <div id="watch-or-comment">
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="wanna-watch"
                         data-target="#wanna-watch-modal">보고싶어요</button>

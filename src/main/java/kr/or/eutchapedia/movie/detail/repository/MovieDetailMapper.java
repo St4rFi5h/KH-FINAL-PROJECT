@@ -2,6 +2,7 @@ package kr.or.eutchapedia.movie.detail.repository;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -17,5 +18,5 @@ public interface MovieDetailMapper {
 	public List<StaffInfoVo> selectStaffList(String movieDocId);
 	public List<StaffFilmoVo> selectStaffFilmo(String staffId);
 	public void updateHitCount(String movieDocId);
-	
+	public Map<String, Object> selectStarAvg(String movieDocId);
 }
