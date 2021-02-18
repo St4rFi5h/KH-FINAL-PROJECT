@@ -102,11 +102,25 @@ public class MovieDetailDao {
 		
 		try {
 			starAvgMap = mapper.selectStarAvg(movieDocId);
-			System.out.println(starAvgMap.toString()); // 키값 대소문자 구별 
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return starAvgMap;
+	}
+	
+	// 별점 데이터 반환 
+	public List<Map<String, Object>> selectStarData(String movieDocId) {
+		List<Map<String, Object>> starDataList = new ArrayList<>();
+		
+		try {
+			starDataList = mapper.selectStarData(movieDocId);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return starDataList;
 	}
 }
