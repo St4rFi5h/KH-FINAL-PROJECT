@@ -1,12 +1,21 @@
 package kr.or.eutchapedia.mypage.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import kr.or.eutchapedia.mypage.entity.LeaveMemberVo;
+import kr.or.eutchapedia.mypage.entity.MemberVo;
+import kr.or.eutchapedia.mypage.service.MypageService;
 
 @RequestMapping("/mypage")
 @RestController
 public class MypageController {
+	
+	@Autowired
+	MypageService service;
 	
 	@RequestMapping("/index")
 	//okok
@@ -78,6 +87,29 @@ public class MypageController {
 		return mv;
 	}
 	
+	//탈퇴do
+	@RequestMapping(value="/withdraw.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView mypagewithdrawdo(MemberVo vo, LeaveMemberVo vo2) {
+		
+		service.withdrawdo(vo,vo2);
+
+		
+		ModelAndView mv = new ModelAndView("/user/mypage/mypage");//임시
+		
+		return mv;
+	}
+	
+	//탈퇴페이지 비밀번호 확인 ajax
+	@RequestMapping(value="/passChk", method= RequestMethod.POST)
+	public int mypagepassChk(MemberVo vo) {
+		System.out.println(vo.getMemberEmail());
+		System.out.println("비밀번호는 :" +vo.getMemberPwd());
+		int result = service.passchk(vo);
+		System.out.println(result);
+		
+		return result;
+	}
+
 	
 }
 

@@ -94,36 +94,42 @@
 
         <div class='body-main'>
 
-            <form method="post" action="#" onsubmit='return test_checkbox'>
-              <div id='complainbox'>
-                <div id='complain-check'>
-                    <input id='check' type="checkbox" name="complains" value="1">
-                    <label id='reason'>&nbsp;영화정보가 부족함</label>
-                </div>
-                <div id='complain-check'>
-                    <input  id='check' type="checkbox" name="complains" value="2">
-                    <label id='reason'>&nbsp;평가 및 리뷰정보가 도움이 되지 않음</label>
-                </div >
-                <div id='complain-check'>
-                    <input id='check' type="checkbox" name="complains" value="3">
-                    <label id='reason'>&nbsp;홈페이지 기능이 별로 없음</label>
-                </div>
-                <div id='complain-check'>
-                    <input  id='check' type="checkbox" name="complains" value="4"> 
-                    <label id='reason'>&nbsp;다른 서비스를 이용하고 있음</label>
-                </div>
-
-
-            </div>
-                <div>
-                    <p><label>비밀번호입력</label></p>
-                    <input id='inputdiv' type='password' placeholder="비밀번호입력">
-                </div>
-
-                <div>
-                    <input id='inputdiv2' type='submit' value='탈퇴' >
-                </div>
+            <form method="post" id='delForm' action="/mypage/withdraw.do">
+            	<input type='hidden'  id='hiddenemail' name='memberEmail' value="abc@naver.com">
+	              <div id='complainbox'>
+	                <div id='complain-check'>
+	                    <input id='check1' type="checkbox">
+	                    <input type='hidden' name='reason1' id='reason1' value=0>
+	                    <label id='reason'>&nbsp;영화정보가 부족함</label>
+	                </div>
+	                <div id='complain-check'>
+	                    <input  id='check2' type="checkbox">
+	                    <input type='hidden' name='reason2'  id='reason2' value=0>
+	                    <label id='reason'>&nbsp;평가 및 리뷰정보가 도움이 되지 않음</label>
+	                </div >
+	                <div id='complain-check'>
+	                    <input id='check3' type="checkbox">
+	                    <input type='hidden' name='reason3'  id='reason3' value=0>
+	                    <label id='reason'>&nbsp;홈페이지 기능이 별로 없음</label>
+	                </div>
+	                <div id='complain-check'>
+	                    <input  id='check4' type="checkbox">
+						<input type='hidden' name='reason4'  id='reason4' value=0>
+	                    <label id='reason'>&nbsp;다른 서비스를 이용하고 있음</label>
+	                </div>
+	
+				
+	            </div>
+	                <div>
+	                    <p><label>비밀번호입력</label></p>
+	                    <input id='inputdiv' type='password' value="1234" name='memberPwd'  placeholder="비밀번호입력">
+	                </div>
+	
+	                <div>
+	                    <input id='inputdiv2' type='submit' value='탈퇴' >
+	                </div>
             </form>
+            
 
         </div>
 
@@ -164,43 +170,73 @@
       </div>
     </div>
 
-</footer>
+	</footer>
 
     <!--부트스트랩이 jquery를 사용하고있어 어떠한 js파일보다 상위에 있어야함-->
     <script src="/js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/mypage/mypage_chart.js"></script>
 
+ 	<script>
+            var reason1 = $('input#reason1').val();
+			var reason2 = $('input#reason2').val();
+			var reason3 = $('input#reason3').val();
+			var reason4 = $('input#reason4').val();
 
-    <script>
- /*      function test_checkbox() {
-        var flag = false;
-        var values = document.getElementsByName("complain");
-        var pwd = document.getElementById('inputdiv').value;
-        var count=0;
-        for(var i=0; i<values.length; i++ ) {
-          if(values[i].checked) {
-            alert(value[i].value);
-            count++;
-          }
-        }
-      }
+			
+			if($('#check1').is(":checked") ) {
+				reason1 =1;
+			}
+			if($('#check2').is(":checked") ) {
+				reason2 =1;
+			}
+			if($('#check3').is(":checked") ) {
+				reason3 =1;
+			}
+			if($('#check4').is(":checked") ) {
+				reason4 =1;
+			}
 
-      if(count<1) {
-        alert ("탈퇴 사유를 한 개 이상 선택해 주세요.");
-      } 
-      else if{if{(!pwd=="")
-        alert ("비밀번호를 입력해주세요.");}
-        
-      }
-      
-      else {
-        flag= true ;
-      }
-      return flag;
- */
-    </script>
+			
+			$(document).ready(function(){
+
+				var memberPwd = $("#inputdiv").val();
+				var memberEmail = $("#hiddenemail").val();
+					
+				console.log(memberEmail);
+				
+			$("#inputdiv2").on("click", function(){
+				if($("#inputdiv").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#inputdiv").focus();
+					return false;
+				}
+				$.ajax({
+					async:false,
+					url : "/mypage/passChk",
+					type : "POST",
+					data : {memberPwd : memberPwd, memberEmail : memberEmail  },
+					success: function(result){
+						
+						if(result==1){
+							if(confirm("정말로 탈퇴 하시겠습니까?")){
+								$("#delForm").submit();
+							}
+						}else{
+							alert("패스워드가 일치하지 않습니다.");
+							return;
+							
+						}
+					}
+				})
+				
+			});
+			
+				
+			
+		});
+	</script>
+   
   </body>
     
 </html>
