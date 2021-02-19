@@ -25,7 +25,8 @@ ul{
     margin-left: auto;
     margin-right: auto;
     margin-top: 110px;
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .modal_button {
