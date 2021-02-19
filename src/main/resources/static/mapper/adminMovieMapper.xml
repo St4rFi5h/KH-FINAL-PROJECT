@@ -13,7 +13,7 @@ FROM (SELECT *
       FROM MOVIE_INFO
       ) m
       )
-WHERE NUM BETWEEN 1 AND 10
+WHERE NUM BETWEEN #{page} AND #{amount}
 
 	</select>
 	<!-- 영화제목으로검색 -->
