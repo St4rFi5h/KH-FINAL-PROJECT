@@ -29,9 +29,28 @@ public class AdminMovieController {
 		
 	}
 	@RequestMapping("/pickadd")
-	public ModelAndView pickAdd(Model model) {
+	public ModelAndView pickAdd(Model model,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView("admin/movie/pick-add");
-		List<MovieInfo> movielist = service.getmovieList();
+		
+		String field_ = req.getParameter("f");
+		String query_ = req.getParameter("q");
+		String field = "title_";
+		if(field_ != null)
+			field = field_;
+		
+		String query = "";
+		if(query_ != null)
+			query = query_;
+		
+		
+		Integer page_ = 1;
+		Integer page = (1+(page_-1)*10);
+		Integer amount = (page_ * 10);
+		System.out.println(page);
+		System.out.println(amount);
+		
+		List<MovieInfo> movielist = service.getmovieList(page,amount);
+		
 		
 		model.addAttribute("movielist", movielist);
 		return mv;
@@ -39,11 +58,6 @@ public class AdminMovieController {
 	@RequestMapping("/pickadd/search")
 	public ModelAndView pickAddSearch(Model model,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView("admin/movie/pick-add");
-		
-		String title = req.getParameter("q");
-		List<MovieInfo> searchMovie = service.getsearchMovie(title);
-		model.addAttribute("movielist", searchMovie);
-		System.out.println(title);
 		return mv;
 	}
 		
@@ -62,17 +76,12 @@ public class AdminMovieController {
 	@RequestMapping("/moviemanagement")
 	public ModelAndView movieManagement(Model model) {
 		ModelAndView mv = new ModelAndView("admin/movie/dbmanagement");
-		List<MovieInfo> movielist = service.getmovieList();
-		model.addAttribute("movielist",movielist);
 		return mv;
 		
 	}
 	@RequestMapping("/moviemanagement/search")
 	public ModelAndView movieManagementSearch(Model model,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView("admin/movie/dbmanagement");
-		String title = req.getParameter("p");
-		List<MovieInfo> searchMovie = service.getsearchMovie(title);
-		model.addAttribute("movielist", searchMovie);
 		return mv;
 		
 	}
