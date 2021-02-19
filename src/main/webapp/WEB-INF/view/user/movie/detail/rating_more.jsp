@@ -26,7 +26,7 @@
 <!-- header 끝 -->
     <div id="main-container">
         <div>
-            <button id="back-button" onclick="location.href='movie_detail.html'">←</button>
+            <button id="back-button" onclick="javascript:history.back();'">←</button>
         </div>
         
         <div class="title">코멘트</div>

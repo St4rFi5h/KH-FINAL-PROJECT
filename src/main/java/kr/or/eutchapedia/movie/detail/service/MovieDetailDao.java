@@ -99,7 +99,7 @@ public class MovieDetailDao {
 	public Map<String, Object> selectStarAvg(String movieDocId) {
 		
 		Map<String, Object> starAvgMap = new HashMap<>();
-		
+
 		try {
 			starAvgMap = mapper.selectStarAvg(movieDocId);
 			
@@ -122,5 +122,24 @@ public class MovieDetailDao {
 		}
 		
 		return starDataList;
+	}
+	
+	// 코멘트 상위 3개 반환
+	public List<Map<String, Object>> selectComments(String movieDocId) {
+		List<Map<String, Object>> commentList = new ArrayList<>();
+		
+		try {
+			commentList = mapper.selectComments(movieDocId);
+			
+			for (Map<String, Object> map : commentList) {
+				if (map.get("PHOTO") == null) {
+					map.put("PHOTO", "/img/movie/profile.svg");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return commentList;
 	}
 }

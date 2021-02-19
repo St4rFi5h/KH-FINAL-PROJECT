@@ -127,79 +127,32 @@
                 </div>
                 <div class="detail-info">
                     <h4>코멘트</h4>
-                    <span class="more-info"><a href="rating_more.html">더보기</a></span>
+                    <span class="more-info"><a href="/movie/comment/overview">더보기</a></span>
                     <div id="comment-zone">
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="user-nickname">지니어스현</div>
-                                <div class="comment-star-rating">★ 5.0</div>
-                            </div>
-                            <div class="comment">
-                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt mollit anim id est laborum.</p>
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="/img/movie/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="/img/movie/profile.svg" class="profile-img" />
-                                <div class="user-nickname">김은규</div>
-                                <div class="comment-star-rating">★ 4.5</div>
-                            </div>
-                            <div class="comment">
-                                <p>인생영화 각</p>
-
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="/img/movie/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
-
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="/img/movie/profile.svg" class="profile-img" />
-                                <div class="user-nickname">박서우</div>
-                                <div class="comment-star-rating">★ 5.0</div>
-                            </div>
-                            <div class="comment">
-                                <p>읏챠피디아를 뒤집어 놓으셨다</p>
-                                <p>최고의 영화</p>
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="/img/movie/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
-
-
+	                    <c:forEach var="commentList" items="${commentList }">
+	                        <div class="comment-card">
+	                            <div class="user-info-and-rating">
+	                                <img src="${commentList.PHOTO }" class="profile-img">
+	                                <div class="user-nickname">${commentList.NICKNAME }</div>
+	                                <div class="comment-star-rating">★ ${commentList.STARS }</div>
+	                            </div>
+	                            <div class="comment">
+	                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
+	                                <p>${commentList.TEXT }</p>
+	                            </div>
+	                            <div class="like-count-zone">
+	                                <img src="/img/movie/like.svg" id="like-thumb" />
+	                                <span id="like-count">${commentList.LIKECOUNT }</span>
+	                            </div>
+	                            <div class="like-and-report">
+	                                <span><button data-toggle="modal" id="like-button"
+	                                        data-target="#like-modal">좋아요</button></span>
+	                                <span><button data-toggle="modal" id="report-button"
+	                                        data-target="#report-modal">신고하기</button></span>
+	                            </div>
+	                        </div>
+	                    </c:forEach>
+                        
                         <!-- like Modal -->
                         <div class="modal fade" id="like-modal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
