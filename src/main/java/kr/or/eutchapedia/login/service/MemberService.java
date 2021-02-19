@@ -29,6 +29,8 @@ public class MemberService {
 		try {
 			utils = new Utils();
 			memberVo.setMemberPwdSalt(utils.getSalt());
+			memberVo.setMemberPwd(utils.getEncrypt(memberVo.getMemberPwd(), memberVo.getMemberPwdSalt()));
+			
 			resultCnt = memberDao.signup(memberVo);
 		} catch (SQLException e) {
 			e.printStackTrace();
