@@ -3,10 +3,10 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.or.eutchapedia.login.mapper.MemberMapper">
+<mapper namespace="kr.or.eutchapedia.login.dao.MemberDaoInterface">
 
 	<!-- 회원 가입 -->
-    <insert id="signup">
+    <insert id="signup" parameterType="kr.or.eutchapedia.login.vo.MemberVo">
 	     insert into member
 	     values
 	     (#{memberEmail}, 
