@@ -6,14 +6,20 @@
 <mapper namespace="kr.or.eutchapedia.admin.movie.dao.MovieDao"> 
 <!-- movie리스트뽑아오기 -->
 <select id="getmovieList" resultType="kr.or.eutchapedia.admin.movie.entity.MovieInfo">
-	
-		SELECT * FROM MOVIE_INFO
 		
+		SELECT * FROM(
+SELECT ROWNUM NUM, m.*
+FROM (SELECT *
+      FROM MOVIE_INFO
+      ) m
+      )
+WHERE NUM BETWEEN 1 AND 10
 
 	</select>
 	<!-- 영화제목으로검색 -->
 	<select id="getsearchMovie" resultType="kr.or.eutchapedia.admin.movie.entity.MovieInfo">
-		SELECT * FROM MOVIE_INFO WHERE TITLE LIKE '_'||#{title} || '%'
+		SELECT * FROM MOVIE_INFO WHERE TITLE LIKE '_'||#{title}||'%'
+		
 		
 	</select>
 	<select id="getmovieList2" resultType="kr.or.eutchapedia.admin.movie.entity.MovieInfo">

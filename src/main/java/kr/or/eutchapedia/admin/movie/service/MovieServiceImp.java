@@ -15,24 +15,15 @@ public class MovieServiceImp implements MovieService {
 	@Autowired
 	private MovieDao moviedao;
 	
+
+	
 	@Override
-	public List<MovieInfo> getmovieList() {
-		List<MovieInfo> movielist = moviedao.getmovieList();
-		
+	public List<MovieInfo> getmovieList(Integer page,Integer amount) {
+		List<MovieInfo> movielist = moviedao.getmovieList(page,amount);
 		return movielist;
 	}
 
-	@Override
-	public List<MovieInfo> getsearchMovie(String title) {
-		List<MovieInfo> searchMovie = moviedao.getsearchMovie(title);
-		return searchMovie;
-	}
-
-	@Override
-	public List<MovieInfo> getmovieList2() {
-		List<MovieInfo> movielist = moviedao.getmovieList2();
-		return movielist;
-	}
+	
 	
 
 }

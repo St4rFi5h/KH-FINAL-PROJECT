@@ -1,4 +1,4 @@
-package kr.or.eutchapedia.movierate.dao;
+package kr.or.eutchapedia.movie.rate.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;

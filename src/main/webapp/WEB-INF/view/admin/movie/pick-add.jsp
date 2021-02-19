@@ -38,10 +38,9 @@
                     <div id="addpick-search-container">
                         <div id="addpick-input-tag">
                             <select class="custom-select" id="addpick-select-search" name="f">
-                            <option selected>장르</option>
-                            <option value="1">장르로검색</option>
-                            <option value="2">이름으로검색</option>
-                            <option value="3">배우로검색</option>
+                            <option  selected value="title_">제목</option>
+                            <option  value="nation_">제작국가</option>
+                            
                           </select>
                         </div>
                         <div id="addpick-input-text">
@@ -49,7 +48,7 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text" id="basic-addon1"><img src="/svg/admin/search.svg" alt="bootstrap"></span>
                                 </div>
-                                <input type="text" id="movienameval" name="q" value="" class="form-control" placeholder="영화제목" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" id="movienameval" name="q" value="${param.q}" class="form-control" placeholder="영화제목" aria-label="Username" aria-describedby="basic-addon1">
                               </div>
 
                         </div>
@@ -75,13 +74,13 @@
                               </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="m" items="${movielist}" end="7">
+                            <c:forEach var="m" items="${movielist}" end="10">
                               <tr>
-                                <td>${m.docid}</td>
+                                <td>${m.movie_docid}</td>
                                 <td>${m.title}</td>
                                 <td>${m.nation}</td>
                                 <td>${m.genre}</td>
-                                <td>${m.movieHitCount}</td>
+                                <td>${m.movie_hit_count}</td>
                               </tr>
                             </c:forEach>
                             
@@ -97,7 +96,7 @@
                               <c:set var="lastNum" value="23"/>
                               <ul id="pagiedit" class="pagination">
                               <c:if test="${startNum-1>0}">
-                                <li class="page-item" ><a class="page-link" href="?p=${startNum-1}&t=&q=">이전</a></li>
+                                <li class="page-item" ><a class="page-link" href="?p=${startNum-1}&f=${param.f}&q=${param.q}">이전</a></li>
                               </c:if>
                               <c:if test="${startNum<=1}">
                                 <li class="page-item" ><a class="page-link" onclick="alert('첫번째 페이지입니다.')">이전</a></li>
@@ -105,10 +104,10 @@
                               
                               
                                 <c:forEach var="i" begin="0" end="4">
-                                <li class="page-item"><a class="page-link" href="?p=${startNum+i}&t=&q=">${startNum+i}</a></li>
+                                <li class="page-item"><a class="page-link" href="?p=${startNum+i}&f=${param.f}&q=${param.q}">${startNum+i}</a></li>
                                 </c:forEach>
                                 <c:if test="${startNum+5<lastNum}">
-                                <li class="page-item"><a class="page-link" href="?p=${startNum+5}&t=&q=">다음</a></li>
+                                <li class="page-item"><a class="page-link" href="?p=${startNum+5}&f=&q=">다음</a></li>
                                 </c:if>
                                 <c:if test="${startNum+5>=lastNum}">
                                 <li class="page-item"><a class="page-link" onclick="alert('다음 페이지가 없습니다.')">다음</a></li>

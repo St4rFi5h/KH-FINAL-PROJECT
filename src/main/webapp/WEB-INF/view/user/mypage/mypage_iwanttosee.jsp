@@ -94,146 +94,32 @@
                                 <div id="sorttext"><a  href=# style="text-decoration:none; color:black">신작순</a></div>
                                 <div id="sorttext"><a  href=# style="text-decoration:none; color:black">구작순</a></div>
                                 <div id="sorttext"><a  href=# style="text-decoration:none; color:black">담은순</a></div>
-
                             </div>
-                         
                         </div>
-
                         <!-- 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div> 
                         -->
-
                     </div>
-                    
                     </div>
                 </div>
-
-
-         
         </div>
 
         
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터2.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터3.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터4.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터5.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터6.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터7.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터8.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터9.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터10.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터11.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터12.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터13.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터14.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-
-        </div>
+             <c:forEach var="n" items="${list}" >
+		        <div class='moviewrapper'>
+		 
+			            <div class='movie-div'>
+			                <a href="#">
+			                    <img class="poster" src="${n.posterUri }" width="150px";  height="200px"; alt="포스터없음">
+			                <li class="movietitle" >${n.title }</li>
+			                </a>
+			                <!-- <li>2018 | 드라마</li> -->
+			            </div>
+		       </div>
+			</c:forEach>
+    </div>
         
  <!------------ footer ------------>
 

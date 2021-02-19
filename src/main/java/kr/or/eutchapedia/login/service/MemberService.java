@@ -20,7 +20,7 @@ public class MemberService {
 	private MemberDaoInterface memberDao;
 	private Utils utils;
 
-	//회원가입
+//회원가입
 	public int signup(MemberVo memberVo) {
 
 		int resultCnt = 0;
@@ -51,3 +51,6 @@ public class MemberService {
 		return resultCnt;
 	}
 }	
+
+
+

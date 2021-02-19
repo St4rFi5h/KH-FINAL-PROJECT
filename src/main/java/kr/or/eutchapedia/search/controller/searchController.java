@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class searchController {
 
-	@RequestMapping(value = "/search", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public ModelAndView search() {
 		ModelAndView mv = new ModelAndView("user/search/searchpage");
 		return mv;

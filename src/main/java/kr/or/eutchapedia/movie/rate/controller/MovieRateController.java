@@ -1,4 +1,4 @@
-package kr.or.eutchapedia.movierate.controller;
+package kr.or.eutchapedia.movie.rate.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;

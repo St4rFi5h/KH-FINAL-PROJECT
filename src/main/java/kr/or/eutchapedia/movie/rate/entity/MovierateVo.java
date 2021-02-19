@@ -1,4 +1,4 @@
-package kr.or.eutchapedia.movierate.entity;
+package kr.or.eutchapedia.movie.rate.entity;
 
 public class MovierateVo {
 	private String docid;

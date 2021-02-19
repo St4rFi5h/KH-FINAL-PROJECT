@@ -1,4 +1,4 @@
-package kr.or.eutchapedia.movierate.service;
+package kr.or.eutchapedia.movie.rate.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 

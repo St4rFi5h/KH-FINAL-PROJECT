@@ -84,6 +84,9 @@
             <div class="article_right">
                 <div class="notiboard_section">
                     <div class="head_aticle">
+                    	<!-- test -->
+                    	<h3>${list }</h3>
+                    	<!-- test -->
                         <h3 class="tit">
                             공지사항
                             <span class="tit_sub">
@@ -105,18 +108,20 @@
                             <div class="accordion_title">
                                 <div class="tbl_notice_info">
                                     <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
+                                    <c:forEach var="l" items="${list }">
+                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="" class="checkbox">
                                             <span class="blind">체크박스</span>
                                         </p>
-                                        <p class="tbl_info_type">17
+                                        <p class="tbl_info_type">${l.noticeIdx }
                                             <span class="blind">번호</span>
                                         </p>
-                                        <p class="tbl_info_tit">[공지] 개인정보 처리방침 변경 사전 안내
+                                        <p class="tbl_info_tit">${l.noticeTitle }
                                             <span class="blind">제목</span>
                                         </p>
-                                        <p class="tbl_info_date">2020-12-29
+                                        <p class="tbl_info_date">${l.noticeDate }
                                             <span class="blind">작성일</span>
                                         </p>
+                                    </c:forEach>
                                     </div>
                                 </div>
                             </div>
@@ -124,14 +129,12 @@
                                 <div class="reply_row">
                                     <div class="notice_wrap">
                                         <div>
-                                            <p>안녕하세요</p>
-                                            <p>읏챠피디아 입니다.</p>
-                                            <p>더 나은 서비스를 제공할 수 있도록 개인정보 처리방침 문서를
-                                                변경하였음을 알려드립니다.</p>
-
+                                        <c:forEach var="l" items="${list }">
+                                        	<p>${l.noticeContent }</p>
                                                 <span class="modi_span">
                                                     <a href="notiboard(admin_modify).html" class="modi_btn">수정</a>
                                                 </span>
+                                        </c:forEach>
                                         </div>
                                     </div>
                                 </div>
