@@ -34,22 +34,24 @@ public class AdminMovieController {
 		
 		String field_ = req.getParameter("f");
 		String query_ = req.getParameter("q");
-		String field = "title_";
-		if(field_ != null)
+		String number_ = req.getParameter("p");
+		String field = "title";
+		if(field_ != null && !field_.equals(""))
 			field = field_;
-		
 		String query = "";
-		if(query_ != null)
+		if(query_ != null && !query_.equals(""))
 			query = query_;
+		int number = 1;
+		
+		if(number_ != null && !number_.equals(""))
+			number = Integer.parseInt(number_);
+		int page = 1+(number-1)*10;
+		int amount = number*10;
 		
 		
-		Integer page_ = 1;
-		Integer page = (1+(page_-1)*10);
-		Integer amount = (page_ * 10);
-		System.out.println(page);
-		System.out.println(amount);
 		
-		List<MovieInfo> movielist = service.getmovieList(page,amount);
+		List<MovieInfo> movielist = service.getmovieList(field, query, page,amount);
+		
 		
 		
 		model.addAttribute("movielist", movielist);

@@ -57,6 +57,22 @@
 		GROUP BY star_rating
 		ORDER BY star_rating ASC
 	</select>
+	
+	<!-- 코멘트 상위 3개 출력 -->
+	<select id="selectComments" parameterType="String" resultType="HashMap">
+		SELECT sr.fk_movie_docid movieid, m.member_nickname nickname, m.member_photo photo, ec.comment_index commentindex,
+		ec.comment_text text, ec.comment_like_count likecount, ec.comment_date commentdate, sr.star_rating stars
+		FROM eutcha_comment ec 
+		INNER JOIN star_rating sr
+		ON ec.fk_star_index = sr.star_index
+		INNER JOIN member m
+		ON sr.fk_member_email = m.member_email
+		WHERE sr.fk_movie_docid = #{_parameter}
+		<![CDATA[AND ROWNUM < 4]]>
+		AND comment_blind_check = '0'
+		ORDER BY comment_like_count ASC,
+		comment_date ASC
+	</select>
 	<!-- resultmap -->
 	<resultMap
 		type="kr.or.eutchapedia.movie.detail.domain.MovieInfoVo"

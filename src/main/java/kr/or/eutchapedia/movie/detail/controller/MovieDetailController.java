@@ -29,12 +29,14 @@ public class MovieDetailController {
 		List<StaffInfoVo> staffList = dao.selectStaffList(movieDocId);
 		Map<String, Object> starAvgMap = dao.selectStarAvg(movieDocId);
 		List<Map<String, Object>> starDataList = dao.selectStarData(movieDocId);
+		List<Map<String, Object>> commentList = dao.selectComments(movieDocId);
 		dao.updateHitCount(movieDocId);
 		
 		mv.addObject("movieInfoVo", movieInfoVo);
 		mv.addObject("staffList", staffList);
 		mv.addObject("starAvgMap", starAvgMap);
 		mv.addObject("starDataList", starDataList);
+		mv.addObject("commentList", commentList);
 		
 		mv.setViewName("/user/movie/detail/movie_detail");
 		

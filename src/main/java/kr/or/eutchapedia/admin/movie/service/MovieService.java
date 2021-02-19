@@ -10,7 +10,11 @@ import kr.or.eutchapedia.admin.movie.entity.StaffInfo;
 
 public interface MovieService {
 
-	List<MovieInfo> getmovieList(Integer page,Integer amount);
+	List<MovieInfo> getmovieList();
+	List<MovieInfo> getmovieList(int page,int amount);
+	List<MovieInfo> getmovieList(String field, String query, int page,int amount);
+
+
 	
 	
 
