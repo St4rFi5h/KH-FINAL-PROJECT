@@ -25,7 +25,6 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView("user/board/notice/notiboard");
 		List<NoticeVo> list = noticeService.selectList();
 		mv.addObject("list", list);
-		
 		return mv;
 	}
 	
