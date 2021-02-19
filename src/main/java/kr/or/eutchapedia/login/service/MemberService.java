@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.eutchapedia.login.controller.Utils;
 import kr.or.eutchapedia.login.dao.MemberDaoInterface;
 import kr.or.eutchapedia.login.vo.MemberVo;
 
@@ -15,6 +16,7 @@ public class MemberService {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	private MemberDaoInterface memberDao;
+	private Utils utils;
 	
 //회원가입
 	public int signup(MemberVo memberVo) {
@@ -23,6 +25,8 @@ public class MemberService {
 		
 		memberDao = sqlSession.getMapper(MemberDaoInterface.class);
 		try {
+			utils = new Utils();
+			memberVo.setMemberPwdSalt(utils.getSalt());
 			resultCnt = memberDao.signup(memberVo);
 		} catch (SQLException e) {
 			// TODO: handle exception
