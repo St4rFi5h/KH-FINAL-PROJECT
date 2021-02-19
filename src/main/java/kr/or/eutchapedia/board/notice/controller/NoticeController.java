@@ -22,7 +22,7 @@ public class NoticeController {
 	
 	@RequestMapping("/list")
 	public ModelAndView openNoticeList() throws Exception {
-		ModelAndView mv = new ModelAndView("user/board/notice/noticeboard");
+		ModelAndView mv = new ModelAndView("user/board/notice/notiboard");
 		List<NoticeVo> list = noticeService.selectList();
 		mv.addObject("list", list);
 		

@@ -86,7 +86,6 @@
                     <div class="head_aticle">
                     	<!-- test -->
                     	<h3>${list }</h3>
-                    	<h2>${list.noticeTitle }</h2>
                     	<!-- test -->
                         <h3 class="tit">
                             공지사항
