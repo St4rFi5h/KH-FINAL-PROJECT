@@ -104,18 +104,18 @@
                     <h4 id="actor-and-pd">출연/제작</h4>
                     <div class="my-slider" id="staffs-slider">
                         <c:forEach var="staffList" items="${staffList }">
-	                            <div class='slider-elements'>
-	                        <a href="/movie/detail/staff?staffId=${staffList.staffId}">
-	                                <img src="/img/movie/profile.svg" class="profile-img">
-	                                <div class="name-and-role">
-	                                	<input type="hidden" value="${staffList.staffId }"/>
-	                                    <div class="staff-name">${staffList.staffName }</div>
-	                                    <div class="staff-role">${staffList.staffRoleGroup }
-	                                    <div>${staffList.staffRole }</div>
-	                                    </div>
-	                                </div>
-	                        </a>
-	                            </div>
+							<div class='slider-elements'>
+		                        <a href="/movie/detail/staff?staffId=${staffList.staffId}">
+		                                <img src="/img/movie/profile.svg" class="profile-img">
+		                                <div class="name-and-role">
+		                                	<input type="hidden" value="${staffList.staffId }"/>
+		                                    <div class="staff-name">${staffList.staffName }</div>
+		                                    <div class="staff-role">${staffList.staffRoleGroup }</div>
+		                                    <div>${staffList.staffRole }</div>
+		                                    
+		                                </div>
+	                        	</a>
+	                       </div>
 	                    </c:forEach>
                     </div>
                 </div>
@@ -268,7 +268,74 @@
 
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="/js/movie/mychart.js"></script>
+
+        <script>
+			var starData = [];
+	        var starLabels = [];
+	
+	        <c:forEach var="starDataList" items="${starDataList}">
+	        	starData.push('${starDataList.CNT}');
+	        	starLabels.push('${starDataList.STARDATA}');
+	        </c:forEach>
+	
+	        var ctx = document.getElementById("myChart");
+	        var myChart = new Chart(ctx, {
+	            type: 'bar',
+	            data: {
+	                labels: starLabels,
+	                datasets: [{
+	                    label: '별점',
+	                    data: starData,
+	                    backgroundColor: [
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)'
+	                    ],
+	                    borderColor: [
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                    ],
+	                    borderWidth: 1
+	                }]
+	            },
+	            options: {
+	                maintainAspectRatio: false,
+	                legend: { display: false },
+	                scales: {
+	                    xAxes: [{
+	                        gridLines: {
+	                            display: false
+	                        }
+	                    }],
+	                    yAxes: [{
+	                        ticks: {
+	                            beginAtZero: true,
+	                            stepSize: 30
+	                        },
+	                        gridLines: {
+	                            display: false
+	                        }
+	                    }]
+	                }
+	            }
+	        }
+	        );   
+        </script>
         <script src="/js/movie/myslider.js"></script>
 </body>
 

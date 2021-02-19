@@ -48,6 +48,15 @@
 		FROM star_rating 
 		WHERE fk_movie_docid = #{_parameter}
 	</select>
+	
+	<!-- 차트를 위한 쿼리문 -->
+	<select id="selectStarData" parameterType="String" resultType="HashMap">
+		SELECT star_rating stardata, COUNT(star_rating) cnt
+		FROM star_rating
+		WHERE fk_movie_docid = #{_parameter}
+		GROUP BY star_rating
+		ORDER BY star_rating ASC
+	</select>
 	<!-- resultmap -->
 	<resultMap
 		type="kr.or.eutchapedia.movie.detail.domain.MovieInfoVo"

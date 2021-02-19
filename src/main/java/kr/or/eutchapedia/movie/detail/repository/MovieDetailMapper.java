@@ -19,4 +19,5 @@ public interface MovieDetailMapper {
 	public List<StaffFilmoVo> selectStaffFilmo(String staffId);
 	public void updateHitCount(String movieDocId);
 	public Map<String, Object> selectStarAvg(String movieDocId);
+	public List<Map<String, Object>> selectStarData(String movieDocId);
 }
