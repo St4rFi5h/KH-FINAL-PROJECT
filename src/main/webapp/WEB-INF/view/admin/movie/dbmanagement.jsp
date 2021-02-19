@@ -5,14 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/admin/admin-header.css">
-    <link rel="stylesheet" href="css/admin/admin-nav.css">
-    <link rel="stylesheet" href="css/admin/admin-content.css">
-    <link rel="stylesheet" href="css/admin/dbmanagement.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
 </head>
 <body>
 	<div class="container" style="height: 100%;">
@@ -27,7 +23,7 @@
 
 				<!--nav영역-->
 				<!-- nav시작 -->
-				<jsp:include page="/WEB-INF/view/admin/inc/header.jsp"/>
+				<jsp:include page="/WEB-INF/view/admin/inc/nav.jsp"/>
 				<!-- nav끝 -->
 	
 			<!--section 반응형-->
@@ -47,7 +43,7 @@
                         <div id="dbmanagement-input-text">
                             <div id="dbmanagement-mtext" class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                  <span class="input-group-text" id="basic-addon1"><img src="svg/search.svg" alt="bootstrap"></span>
+                                  <span class="input-group-text" id="basic-addon1"><img src="/svg/admin/search.svg" alt="bootstrap"></span>
                                 </div>
                                 <input type="text" class="form-control" placeholder="영화제목" aria-label="Username" aria-describedby="basic-addon1">
                               </div>

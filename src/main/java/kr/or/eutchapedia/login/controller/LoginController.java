@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.or.eutchapedia.login.model.vo.MemberVo;
+import kr.or.eutchapedia.login.vo.MemberVo;
 
 @RestController
 public class LoginController {
 	
 	@RequestMapping(value = "/login", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView login(MemberVo memberVo, HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("user/login/login");
+		ModelAndView mv = new ModelAndView("user/member/login");
 		HttpSession session = request.getSession();
 		
 		String email = request.getParameter("email");

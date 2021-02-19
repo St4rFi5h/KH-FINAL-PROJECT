@@ -1,18 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/admin/admin-header.css">
-    <link rel="stylesheet" href="css/admin/admin-nav.css">
-    <link rel="stylesheet" href="css/admin/admin-content.css">
-    <link rel="stylesheet" href="css/admin/content-pickadd.css">
+<link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
 </head>
 <body>
 	<div class="container" style="height: 100%;">
@@ -27,7 +25,7 @@
 
 				<!--nav영역-->
 				<!-- nav시작 -->
-				<jsp:include page="/WEB-INF/view/admin/inc/header.jsp"/>
+				<jsp:include page="/WEB-INF/view/admin/inc/nav.jsp"/>
 				<!-- nav끝 -->
 				
 				<!--section 반응형-->
@@ -36,96 +34,88 @@
                         <h1>pick 추가</h1>
 
                     </div>
+                    <form action="/admin/pickadd" method="get">
                     <div id="addpick-search-container">
                         <div id="addpick-input-tag">
-                            <select class="custom-select" id="addpick-select-search">
-                            <option selected>장르</option>
-                            <option value="1">닉네임</option>
-                            <option value="2">이메일</option>
+                            <select class="custom-select" id="addpick-select-search" name="f">
+                            <option ${(param.f == "title")?"selected":""} value="title">제목</option>
+                            <option ${(param.f == "nation")?"selected":""} value="nation">제작국가</option>
+                            <option ${(param.f == "genre")?"selected":""} value="genre">장르</option>
+                            
+                            
                           </select>
                         </div>
                         <div id="addpick-input-text">
                             <div id="addpick-mtext" class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                  <span class="input-group-text" id="basic-addon1"><img src="svg/search.svg" alt="bootstrap"></span>
+                                  <span class="input-group-text" id="basic-addon1"><img src="/svg/admin/search.svg" alt="bootstrap"></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="영화제목" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" id="movienameval" name="q" value="${param.q}" class="form-control" placeholder="영화제목" aria-label="Username" aria-describedby="basic-addon1">
                               </div>
 
                         </div>
                         <div id="addpick-btn-click">
-                            <button type="button" class="btn btn-primary btn-sm" id="addpick-select-button">조회</button>
+                            <button type="submit" class="btn btn-primary btn-sm" id="addpick-select-button">조회</button>
                         </div>
 
 
 
                     </div>
+                    </form>
                     
                     <div id="addpick-input-data" class="col-lg-12">
                         <table id="send-table-data" class="table table-hover">
                             <thead>
                               <tr>
-                                <th scope="col">#</th>
-                                
+                                <th scope="col">영화id</th>
                                 <th scope="col">영화제목</th>
-                                <th scope="col">감독</th>
+                                <th scope="col">제작국가</th>
                                 <th scope="col">장르</th>
-                                <th scope="col">유형</th>
+                                <th scope="col">조회수</th>
 
                               </tr>
                             </thead>
                             <tbody>
+                            <c:forEach var="m" items="${movielist}" end="10">
                               <tr>
-                                <th scope="row">1</th>
-                               
-                                <td>가구야 공주 이야기</td>
-                                <td>타카하타 이사오</td>
-                                <td>로맨스</td>
-                                <td>애니메이션</td>
+                                <td>${m.movie_docid}</td>
+                                <td>${m.title}</td>
+                                <td>${m.nation}</td>
+                                <td>${m.genre}</td>
+                                <td>${m.movie_hit_count}</td>
                               </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                               
-                                <td>가디언즈</td>
-                                <td>피터 램지</td>
-                                <td>액션</td>
-                                <td>애니메이션</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                
-                                <td>가디언즈 오브 갤럭시</td>
-                                <td>제임스 건</td>
-                                <td>액션</td>
-                                <td>sf</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">4</th>
-                               
-                                <td>가려진 시간</td>
-                                <td>엄태화</td>
-                                <td>느와르</td>
-                                <td>판타지</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">5</th>
-                              
-                                <td>기생충</td>
-                                <td>봉준호</td>
-                                <td>액션</td>
-                                <td>스릴러</td>
-                              </tr>
+                            </c:forEach>
+                            
+                            
+                             
                               
                             </tbody>
                           </table>
-                              
+                          <div style="margin-bottom:30px ">
+                              <span>현재페이지 1/1 page</span>
+                          </div>
                           <nav id="addpick-data-page" aria-label="Page navigation example">
-                              <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                              <c:set var="page" value="${(param.p == null)?1:param.p}"/>
+                              <c:set var="startNum" value="${page-(page-1)%5}" />
+                              <c:set var="lastNum" value="200"/>
+                              <ul id="pagiedit" class="pagination">
+                              <c:if test="${startNum-1>0}">
+                                <li class="page-item" ><a class="page-link" href="?p=${startNum-1}&f=${param.f}&q=${param.q}">이전</a></li>
+                              </c:if>
+                              <c:if test="${startNum<=1}">
+                                <li class="page-item" ><a class="page-link" onclick="alert('첫번째 페이지입니다.')">이전</a></li>
+                              </c:if>
+                              
+                              
+                                <c:forEach var="i" begin="0" end="4">
+                                <li class="page-item"><a class="page-link" href="?p=${startNum+i}&f=${param.f}&q=${param.q}">${startNum+i}</a></li>
+                                </c:forEach>
+                                <c:if test="${startNum+5<lastNum}">
+                                <li class="page-item"><a class="page-link" href="?p=${startNum+5}&f=&q=">다음</a></li>
+                                </c:if>
+                                <c:if test="${startNum+5>=lastNum}">
+                                <li class="page-item"><a class="page-link" onclick="alert('다음 페이지가 없습니다.')">다음</a></li>
+                                </c:if>
                               </ul>
                             </nav>
                         </div>
@@ -152,9 +142,9 @@
                               
                                 <th scope="col">삭제</th>
                                 <th scope="col">영화제목</th>
-                                <th scope="col">감독</th>
+                                <th scope="col">제작국가</th>
                                 <th scope="col">장르</th>
-                                <th scope="col">유형</th>
+                                <th scope="col">조회수</th>
                               </tr>
                             </thead>
                             <tbody id="get-table-data">
@@ -176,10 +166,10 @@
 		
 	</div>
 	</div>
-	<script src="js/jquery.min.js"></script>
+	<script src="/js/jquery.min.js"></script>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/accordion.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/admin/adminmovie/js/accordion.js"></script>
     <script>
       $("#send-table-data tbody tr").click(function(){
         
@@ -223,6 +213,28 @@
     
 
 
+      </script>
+      
+      <script>
+$("#addpick-select-button").on("click","button" function({
+	
+	var string = movienameval
+      $.ajax({
+    		type: "GET", //요청 메소드 방식
+    		url:"/AjaxTest/ex01.do",
+    		dataType:"text", //서버가 요청 URL을 통해서 응답하는 내용의 타입
+    		success : function(result){
+    			//서버의 응답데이터가 클라이언트에게 도착하면 자동으로 실행되는함수(콜백)
+    			//result - 응답데이터
+    			//$('#result').text(result);
+    			alert(result);
+    		},
+    		error : function(a, b, c){
+    			//통신 실패시 발생하는 함수(콜백)
+    			alert(a + b + c);
+    		}
+    	});
+}))
       </script>
 </body>
 </html>

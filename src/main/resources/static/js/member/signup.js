@@ -31,7 +31,7 @@ $("#input-nickname").focusout(function () {
 
     $.ajax({
         type: 'POST',
-        url: 'signup',
+        url: '/emailchk',
         async : false,
         data: {nickname: nickname},
         success: function (result) {

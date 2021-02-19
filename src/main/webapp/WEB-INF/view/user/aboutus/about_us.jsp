@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>EUTCHAPEDIA | About Us</title>
 	<link rel="stylesheet" href="/css/movie/index.css">
+	<link rel="stylesheet" href="/css/main/about_us.css">
 	<!--favicon-->
 	<link rel="icon" href="/img/logo_favicon.ico">
 	<link rel="shortcut icon" href="/img/logo_favicon.ico">
@@ -44,8 +45,8 @@
 
       <!--member_info-->
 
-      <div class="member-wrap" style=" display:table;margin:auto;">
-        <h2 class="member-title">we are <span class="member-color">EUTCHA<em>PEDIA</em></span></h2>
+      <div class="member-wrap">
+        <h2 class="member-title">we are <span class="member-color">EUTCHA<em>PEDIA</em></span></h2></br>
 
         <div class="member-outbox">
 
@@ -67,7 +68,7 @@
               </li>
 
               <li>
-                <img src="img/seowoo.png" alt="" width="200px">
+                <img src="/img/aboutus/seowoo.png" alt="" width="200px">
                 <h3>DEVELOPER</h3>
                 <h4>Park Seowoo</h4>
                 <div class="member_inner">
@@ -82,7 +83,7 @@
               </li>
 
               <li>
-                <img src="img/yoonji.png" alt="" width="200px">
+                <img src="/img/aboutus/yoonji.png" alt="" width="200px">
                 <h3>DEVELOPER</h3>
                 <h4>Je Yoonji</h4>
                 <div class="member_inner">
@@ -97,7 +98,7 @@
               </li>
 
               <li>
-                <img src="img/minyoung.png" alt="" width="200px">
+                <img src="/img/aboutus/minyoung.png" alt="" width="200px">
                 <h3>DEVELOPER</h3>
                 <h4>Lee Minyoung</h4>
                 <div class="member_inner">
@@ -112,7 +113,7 @@
               </li>
 
               <li>
-                <img src="img/minjin.png" alt="" width="200px">
+                <img src="/img/aboutus/minjin.png" alt="" width="200px">
                 <h3>DEVELOPER</h3>
                 <h4>Kim Minjin</h4>
                 <div class="member_inner">
@@ -127,7 +128,7 @@
               </li>
 
               <li>
-                <img src="img/yejin.png" alt="" width="200px">
+                <img src="/img/aboutus/yejin.png" alt="" width="200px">
                 <h3>DEVELOPER</h3>
                 <h4>Cha Yejin</h4>
                 <div class="member_inner">
@@ -142,7 +143,7 @@
               </li>
 
               <li>
-                <img src="img/eungyu.png" alt="" width="200px">
+                <img src="/img/aboutus/eungyu.png" alt="" width="200px">
                 <h3>DEVELOPER</h3>
                 <h4>Kim Eungyu</h4>
                 <div class="member_inner">
@@ -157,7 +158,7 @@
               </li>
 
               <li>
-                <img src="img/jongwoong.png" alt="" width="200px">
+                <img src="/img/aboutus/jongwoong.png" alt="" width="200px">
                 <h3>DEVELOPER</h3>
                 <h4>Paek Jongwoong</h4>
                 <div class="member_inner">

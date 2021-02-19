@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.eutchapedia.mypage.dao.MypageDao">
+
+   <!-- 보고싶어요 영화 select -->
+   <select id="selectwannawatch" parameterType="String" resultMap="WannaWatchVo" >
+	    select a.*, b.title, b.prodyear, b.poster_uri  from wanna_watch a join movie_info b 
+	    on a.fk_movie_docid = b.movie_docid 
+	    where a.fk_member_email = #{_parameter}
+   </select>
+
+  <!-- 탈퇴페이지에서 비밀번호 체크 -->
+  <select id="passchk" resultMap="MemberVoTemp" parameterType="kr.or.eutchapedia.mypage.entity.MemberVo">
+    select member_pwd , member_pwd_salt , member_email from member where member_email = #{memberEmail}
+  </select>
+
+  <!--탈퇴회원정보 insert  -->
+  <insert id="insertleavemember" parameterType="kr.or.eutchapedia.mypage.entity.LeaveMemberVo">
+    insert into leave_member values 
+    (seq_leave_member_index.nextval, #{memberEmail}, #{reason1}, #{reason2}, #{reason3}, #{reason4}, default)
+  </insert>
+  
+ <!--  탈퇴 후 멤버테이블 회원상태 변경--> 
+  <update id="updatestatus" parameterType="kr.or.eutchapedia.mypage.entity.MemberVo">
+    update member set member_status='D' where member_email=#{memberEmail}
+  </update>
+
+<!--회원가입 멤버 insert  -->
+  <insert id="insertmember" parameterType="kr.or.eutchapedia.mypage.entity.MemberVo">
+    insert into member values(#{memberEmail},#{memberNickname},#{memberPwd},#{memberPwdSalt},default,default,default,null,null,default)
+  </insert>
+  
+  <resultMap
+		type="kr.or.eutchapedia.mypage.entity.MemberVoTemp" id="MemberVoTemp">
+		<result column="member_pwd" property="memberPwd" />
+		<result column="member_pwd_salt" property="memberPwdSalt" />
+		<result column="member_email" property="memberEmail" />
+  </resultMap>
+  
+  <resultMap
+		type="kr.or.eutchapedia.mypage.entity.WannaWatchVo" id="WannaWatchVo">
+		<result column="wanna_watch_index" property="wannaWatchIndex" />
+		<result column="fk_member_email" property="memberEmail" />
+		<result column="fk_movie_docid" property="movieDocid" />
+		<result column="wanna_watch_date" property="wannaWatchDate" />
+		<result column="title" property="title" />
+		<result column="prodyear" property="prodYear" />
+		<result column="poster_uri" property="posterUri" />
+  </resultMap>
+
+</mapper> 

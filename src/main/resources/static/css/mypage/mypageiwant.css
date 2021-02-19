@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
 
 .mybody-wrapper {
-  height: 100%;
+  height: 150%;
   font-family: "Noto Sans KR", sans-serif;
   margin-left: 30px;
 }
@@ -51,4 +51,17 @@
 #xbtn {
   color: rgb(255, 7, 88);
   font-weight: bolder;
+}
+
+.movietitle {
+	text-overflow:ellipsis;
+	text-decoration: none;
+	color: black;
+}
+
+.movie-div {
+	margin-left : 5px;
+	width: 150px;  
+	height:210px;
+	margin-bottom: 50px;
 }

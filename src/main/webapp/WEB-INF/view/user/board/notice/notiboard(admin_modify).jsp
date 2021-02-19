@@ -7,20 +7,20 @@
 	<meta charset="utf-8"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
     <!--그리드시스템을 위한 css파일-->
-    <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
     <!--reboot.css 는 태그속성들이 다른 브라우저에서 호환이 가능하게끔 스타일을 맞춰주는 css파일 -->
-    <link rel="stylesheet" href="../css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
     <!--부트스트랩 기능들의 css-->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/notiboard.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/board/notice/notiboard.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="shortcut icon" href="../../img/logo_favicon.ico"> <!--favicon-->
-    <link rel="icon" href="../../img/logo_favicon.ico">
+    <link rel="stylesheet" href="/css/movie/index.css"">
+    <link rel="shortcut icon" href="/img/logo_favicon.ico"> <!--favicon-->
+    <link rel="icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
     <!-- 네이버 스마트 에디터 -->
-    <script type="text/javascript" src="../js/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/board/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 	<title>EUTCHAPEDIA</title>
 </head>
 <body>
@@ -29,14 +29,14 @@
             <div class="wrapper">
                 <div class="navbar">
                     <div class="navbar_logo">
-                        <img id="logo" src="../../img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
+                        <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
                     </div>
     
                 <div class="menu">
                 <ul>
                     <span><li><a href="#">ABOUT US</a></li></span>
-                    <span> <li><a href="#">평가하기</a></li></span>
-                    <span> <li><a href="#">고객센터</a></li></span>
+                    <span><li><a href="#">평가하기</a></li></span>
+                    <span><li><a href="#">고객센터</a></li></span>
                 </ul>
                 </div>
     
@@ -121,7 +121,7 @@
                         
                         <!-- textarea -->
                         <!-- <textarea id="contents" name="contents" style="width: 100%; height: 474px;" class="editing_area" required="" fld_essential="" label="내용"></textarea>-->
-                        <textarea name="ir1" id="ir1" rows="10" cols="123">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>
+                        <textarea name="ir1" id="ir1" rows="10" cols="146">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>
                         <!---->
                                         
                         </td>
@@ -224,16 +224,16 @@
 
 
     <!--부트스트랩이 jquery를 사용하고있어 어떠한 js파일보다 상위에 있어야함-->
-    <script src="/front-end/js/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
-    <script src="/front-end/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 <script type="text/javascript">
     var oEditors = [];
     nhn.husky.EZCreator.createInIFrame({
      oAppRef: oEditors,
      elPlaceHolder: "ir1",
-     sSkinURI: "../js/se2/SmartEditor2Skin.html",
+     sSkinURI: "/js/board/se2/SmartEditor2Skin.html",
      fCreator: "createSEditor2"
     });
 </script>

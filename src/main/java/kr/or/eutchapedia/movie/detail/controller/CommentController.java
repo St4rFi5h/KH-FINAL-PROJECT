@@ -1,0 +1,36 @@
+package kr.or.eutchapedia.movie.detail.controller;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import kr.or.eutchapedia.movie.detail.domain.CommentPage;
+import kr.or.eutchapedia.movie.detail.service.CommentDao;
+
+@RequestMapping("/comment")
+@RestController
+public class CommentController {
+
+	@Autowired
+	CommentDao commentDao;
+
+	@RequestMapping("/overview")
+	public ModelAndView commentOverview(String movieDocId) {
+		ModelAndView mv = new ModelAndView();
+		
+		CommentPage page = new CommentPage();
+		
+		Map<String, Object> map = commentDao.selectCommentList(movieDocId, page);
+		
+		mv.addObject("commentList", map.get("commentList"));
+		mv.addObject("commentCount", map.get("commentCount"));
+		mv.addObject("page", page);
+		mv.setViewName("/user/movie/detail/rating_more");
+		
+		return mv;
+	}
+	
+}

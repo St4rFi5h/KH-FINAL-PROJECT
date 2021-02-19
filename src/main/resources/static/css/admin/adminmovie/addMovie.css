@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+
+.allcontents{
+    font-family: "Noto Sans KR", sans-serif;
+    
+}
+
+
+
+#movie_posters{
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#movie_poster{
+    margin-top: 30px ;
+}
+.custom-file-label{
+    margin-left: 135px;
+    margin-right: auto;
+
+    width: 555px;
+}
+
+#title{
+    margin-top: 150px;
+    margin-bottom: 30px;
+    font-family: "Noto Sans KR", sans-serif;
+   text-align: center;
+}
+.whiteBox{
+    margin-left: auto;
+    margin-right: auto;
+    height: 570px;
+    width:800px;
+    text-align: center;
+    background-color: white;
+
+}
+
+
+
+#file_upload{   
+     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+#movieType{
+    margin-top: 50px;
+    margin-bottom: 60px;
+
+}
+
+
+#movie_type_move{
+    margin-top: 20px;
+}
+
+.custom-select{
+
+    width: 555px;
+    margin-left: -110px;
+}
+
+
+#drName, #movieId,  #movieNames{
+    width: 555px;
+}

@@ -26,6 +26,7 @@
     <!-- xeicon -->
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 </head>
+<body>
 <!-- header -->
  <jsp:include page="/WEB-INF/view/user/header.jsp"/>
 <!-- header 끝 -->
@@ -38,7 +39,7 @@
             <div id="basic-info">
                 <h1 id="title">${movieInfoVo.title }</h1>
                 <div id="year-genre-country">${movieInfoVo.prodYear }・${movieInfoVo.genre }・${movieInfoVo.nation }</div>
-                <div id="star-average">평균 ★4.2 (3만명)</div>
+                <div id="star-average">평균 ★${starAvgMap.STARAVG }(${starAvgMap.STARCNT }명)</div>
                 <div id="watch-or-comment">
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="wanna-watch"
                         data-target="#wanna-watch-modal">보고싶어요</button>
@@ -102,117 +103,20 @@
                 <div class="detail-info">
                     <h4 id="actor-and-pd">출연/제작</h4>
                     <div class="my-slider" id="staffs-slider">
-                        <a href="staff_detail.html">
-                            <div class='slider-elements'>
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">피트 닥터</div>
-                                    <div class="staff-role">감독</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="staff_detail.html">
-                            <div class='slider-elements'>
-
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">켐프 파워스</div>
-                                    <div class="staff-role">감독</div>
-                                </div>
-
-                            </div>
-                        </a>
-                        <div class='slider-elements'>
-                            <a href="staff_detail.html">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">제이미 폭스</div>
-                                    <div class="staff-role">성우 | 조 가드너</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">티나 페이</div>
-                                    <div class="staff-role">성우 | 22</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">그레이엄 노튼</div>
-                                    <div class="staff-role">성우 | 문윈드</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">레이첼 하우스</div>
-                                    <div class="staff-role">성우 | 테리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">엘리스 브라가</div>
-                                    <div class="staff-role">성우 | 제리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">리처드 아이오아디</div>
-                                    <div class="staff-role">성우 | 제리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">도넬 로우링스</div>
-                                    <div class="staff-role">성우 | 데즈</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">아미어-칼리브 톰슨</div>
-                                    <div class="staff-role">성우 | 컬리</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">안젤라 바셋</div>
-                                    <div class="staff-role">성우 | 도로시아</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class='slider-elements'>
-                            <a href="">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="name-and-role">
-                                    <div class="staff-name">다비드 딕스</div>
-                                    <div class="staff-role">성우 | 폴</div>
-                                </div>
-                            </a>
-                        </div>
-
+                        <c:forEach var="staffList" items="${staffList }">
+							<div class='slider-elements'>
+		                        <a href="/movie/detail/staff?staffId=${staffList.staffId}">
+		                                <img src="/img/movie/profile.svg" class="profile-img">
+		                                <div class="name-and-role">
+		                                	<input type="hidden" value="${staffList.staffId }"/>
+		                                    <div class="staff-name">${staffList.staffName }</div>
+		                                    <div class="staff-role">${staffList.staffRoleGroup }</div>
+		                                    <div>${staffList.staffRole }</div>
+		                                    
+		                                </div>
+	                        	</a>
+	                       </div>
+	                    </c:forEach>
                     </div>
                 </div>
                 <div class="detail-info">
@@ -223,79 +127,32 @@
                 </div>
                 <div class="detail-info">
                     <h4>코멘트</h4>
-                    <span class="more-info"><a href="rating_more.html">더보기</a></span>
+                    <span class="more-info"><a href="/movie/comment/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
                     <div id="comment-zone">
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="/img/movie/profile.svg" class="profile-img">
-                                <div class="user-nickname">지니어스현</div>
-                                <div class="comment-star-rating">★ 5.0</div>
-                            </div>
-                            <div class="comment">
-                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt mollit anim id est laborum.</p>
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="/img/movie/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="/img/movie/profile.svg" class="profile-img" />
-                                <div class="user-nickname">김은규</div>
-                                <div class="comment-star-rating">★ 4.5</div>
-                            </div>
-                            <div class="comment">
-                                <p>인생영화 각</p>
-
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="/img/movie/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
-
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="/img/movie/profile.svg" class="profile-img" />
-                                <div class="user-nickname">박서우</div>
-                                <div class="comment-star-rating">★ 5.0</div>
-                            </div>
-                            <div class="comment">
-                                <p>읏챠피디아를 뒤집어 놓으셨다</p>
-                                <p>최고의 영화</p>
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="/img/movie/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
-
-
+	                    <c:forEach var="commentList" items="${commentList }">
+	                        <div class="comment-card">
+	                            <div class="user-info-and-rating">
+	                                <img src="${commentList.PHOTO }" class="profile-img">
+	                                <div class="user-nickname">${commentList.NICKNAME }</div>
+	                                <div class="comment-star-rating">★ ${commentList.STARS }</div>
+	                            </div>
+	                            <div class="comment">
+	                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
+	                                <p>${commentList.TEXT }</p>
+	                            </div>
+	                            <div class="like-count-zone">
+	                                <img src="/img/movie/like.svg" id="like-thumb" />
+	                                <span id="like-count">${commentList.LIKECOUNT }</span>
+	                            </div>
+	                            <div class="like-and-report">
+	                                <span><button data-toggle="modal" id="like-button"
+	                                        data-target="#like-modal">좋아요</button></span>
+	                                <span><button data-toggle="modal" id="report-button"
+	                                        data-target="#report-modal">신고하기</button></span>
+	                            </div>
+	                        </div>
+	                    </c:forEach>
+                        
                         <!-- like Modal -->
                         <div class="modal fade" id="like-modal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -364,7 +221,74 @@
 
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="/js/movie/mychart.js"></script>
+
+        <script>
+			var starData = [];
+	        var starLabels = [];
+	
+	        <c:forEach var="starDataList" items="${starDataList}">
+	        	starData.push('${starDataList.CNT}');
+	        	starLabels.push('${starDataList.STARDATA}');
+	        </c:forEach>
+	
+	        var ctx = document.getElementById("myChart");
+	        var myChart = new Chart(ctx, {
+	            type: 'bar',
+	            data: {
+	                labels: starLabels,
+	                datasets: [{
+	                    label: '별점',
+	                    data: starData,
+	                    backgroundColor: [
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)',
+	                        'rgba(255, 99 , 132, 0.2)'
+	                    ],
+	                    borderColor: [
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                        'rgba(255, 99 , 132, 1)',
+	                    ],
+	                    borderWidth: 1
+	                }]
+	            },
+	            options: {
+	                maintainAspectRatio: false,
+	                legend: { display: false },
+	                scales: {
+	                    xAxes: [{
+	                        gridLines: {
+	                            display: false
+	                        }
+	                    }],
+	                    yAxes: [{
+	                        ticks: {
+	                            beginAtZero: true,
+	                            stepSize: 30
+	                        },
+	                        gridLines: {
+	                            display: false
+	                        }
+	                    }]
+	                }
+	            }
+	        }
+	        );   
+        </script>
         <script src="/js/movie/myslider.js"></script>
 </body>
 

@@ -15,13 +15,5 @@ public class MainController {
 		
 		return mv;
 	}
-	
-	@RequestMapping(value = "/aboutus")
-	public ModelAndView aboutus() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("user/aboutus/about_us");
-		
-		return mv;
-	}
+
 }
