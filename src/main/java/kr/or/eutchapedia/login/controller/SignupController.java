@@ -27,7 +27,7 @@ public class SignupController {
 	//회원가입 컨트롤러
 	@RequestMapping(value="/signup", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView signup(MemberVo memberVo) {
-		ModelAndView mv = new ModelAndView("user/index_main");
+		ModelAndView mv = new ModelAndView("user/member/signup_complete");
 		//회원가입 메서드
 		System.out.println(memberService.signup(memberVo));
 		
