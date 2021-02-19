@@ -84,6 +84,10 @@
             <div class="article_right">
                 <div class="notiboard_section">
                     <div class="head_aticle">
+                    	<!-- test -->
+                    	<h3>${list }</h3>
+                    	<h2>${list.noticeTitle }</h2>
+                    	<!-- test -->
                         <h3 class="tit">
                             공지사항
                             <span class="tit_sub">
@@ -105,16 +109,16 @@
                             <div class="accordion_title">
                                 <div class="tbl_notice_info">
                                     <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
+                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="" class="checkbox">
                                             <span class="blind">체크박스</span>
                                         </p>
-                                        <p class="tbl_info_type">17
+                                        <p class="tbl_info_type">
                                             <span class="blind">번호</span>
                                         </p>
-                                        <p class="tbl_info_tit">[공지] 개인정보 처리방침 변경 사전 안내
+                                        <p class="tbl_info_tit">
                                             <span class="blind">제목</span>
                                         </p>
-                                        <p class="tbl_info_date">2020-12-29
+                                        <p class="tbl_info_date">
                                             <span class="blind">작성일</span>
                                         </p>
                                     </div>
