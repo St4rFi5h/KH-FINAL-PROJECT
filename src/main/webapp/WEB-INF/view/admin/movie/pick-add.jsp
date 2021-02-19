@@ -34,12 +34,14 @@
                         <h1>pick 추가</h1>
 
                     </div>
-                    <form action="/admin/pickadd/search" method="get">
+                    <form action="/admin/pickadd" method="get">
                     <div id="addpick-search-container">
                         <div id="addpick-input-tag">
                             <select class="custom-select" id="addpick-select-search" name="f">
-                            <option  selected value="title_">제목</option>
-                            <option  value="nation_">제작국가</option>
+                            <option ${(param.f == "title")?"selected":""} value="title">제목</option>
+                            <option ${(param.f == "nation")?"selected":""} value="nation">제작국가</option>
+                            <option ${(param.f == "genre")?"selected":""} value="genre">장르</option>
+                            
                             
                           </select>
                         </div>
@@ -89,11 +91,13 @@
                               
                             </tbody>
                           </table>
-                              
+                          <div style="margin-bottom:30px ">
+                              <span>현재페이지 1/1 page</span>
+                          </div>
                           <nav id="addpick-data-page" aria-label="Page navigation example">
                               <c:set var="page" value="${(param.p == null)?1:param.p}"/>
                               <c:set var="startNum" value="${page-(page-1)%5}" />
-                              <c:set var="lastNum" value="23"/>
+                              <c:set var="lastNum" value="200"/>
                               <ul id="pagiedit" class="pagination">
                               <c:if test="${startNum-1>0}">
                                 <li class="page-item" ><a class="page-link" href="?p=${startNum-1}&f=${param.f}&q=${param.q}">이전</a></li>
