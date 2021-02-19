@@ -43,55 +43,6 @@
                 </a>
             </div>
         </c:forEach>
-           <!--  <div class="movie-info">
-                <a href="movie_detail.html">
-                    <img src="/img/movie/220px-영화_소울.jpg" alt="">
-                    <div>소울</div>
-                    <div>2020</div>
-                </a>
-            </div>
-            <div class="movie-info">
-                <a href="movie_detail.html">
-                    <img src="/img/movie/220px-영화_소울.jpg" alt="">
-                    <div>소울</div>
-                    <div>2020</div>
-                </a>
-            </div>
-            <div class="movie-info">
-                <a href="movie_detail.html">
-                    <img src="/img/movie/220px-영화_소울.jpg" alt="">
-                    <div>소울</div>
-                    <div>2020</div>
-                </a>
-            </div>
-            <div class="movie-info">
-                <a href="movie_detail.html">
-                    <img src="/img/movie/220px-영화_소울.jpg" alt="">
-                    <div>소울</div>
-                    <div>2020</div>
-                </a>
-            </div>
-            <div class="movie-info">
-                <a href="movie_detail.html">
-                    <img src="/img/movie/220px-영화_소울.jpg" alt="">
-                    <div>소울</div>
-                    <div>2020</div>
-                </a>
-            </div>
-            <div class="movie-info">
-                <a href="movie_detail.html">
-                    <img src="/img/movie/220px-영화_소울.jpg" alt="">
-                    <div>소울</div>
-                    <div>2020</div>
-                </a>
-            </div>
-            <div class="movie-info">
-                <a href="movie_detail.html">
-                    <img src="/img/movie/220px-영화_소울.jpg" alt="">
-                    <div>소울</div>
-                    <div>2020</div>
-                </a>
-            </div> -->
         </div>
     </div> 
 

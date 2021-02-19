@@ -46,7 +46,7 @@
                 </div>
 
 				<!-- if session.getAttribute("id") != null -->
-				<!-- jstl 쓸 수 있는지 Test 완료 -->
+				<!-- css 합칠 때 아이디값 바꿔야 함 -->
                 <!-- 보고싶어요/별점 및 코멘트 남기기 Modal -->
                 <div class="modal fade" id="wanna-watch-modal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">

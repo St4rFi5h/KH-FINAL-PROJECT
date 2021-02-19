@@ -70,8 +70,8 @@
 		WHERE sr.fk_movie_docid = #{_parameter}
 		<![CDATA[AND ROWNUM < 4]]>
 		AND comment_blind_check = '0'
-		ORDER BY comment_like_count ASC,
-		comment_date ASC
+		ORDER BY comment_like_count DESC,
+		comment_date DESC
 	</select>
 	<!-- resultmap -->
 	<resultMap

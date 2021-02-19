@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffInfoVo;
+import kr.or.eutchapedia.movie.detail.service.CommentDao;
 import kr.or.eutchapedia.movie.detail.service.MovieDetailDao;
 
 @RequestMapping("/movie")
@@ -20,6 +21,7 @@ public class MovieDetailController {
 	
 	@Autowired
 	MovieDetailDao dao;
+	
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public ModelAndView movieDetail(String movieDocId) {
@@ -69,15 +71,6 @@ public class MovieDetailController {
 		mv.addObject("staffRole", staffRole);
 		
 		mv.setViewName("/user/movie/detail/staff_detail");
-		
-		return mv;
-	}
-	
-	@RequestMapping("/comment/overview")
-	public ModelAndView commentOverview() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("/user/movie/detail/rating_more");
 		
 		return mv;
 	}
