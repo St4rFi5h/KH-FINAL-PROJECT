@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,29 +46,49 @@
                               </tr>
                             </thead>
                             <tbody>
+                              <c:forEach var="pick" items="${pickinfo}" end="10">
+                              
                               <tr>
                                
-                                <td>kh0001</td>
-                                <td>은규pick</td>
+                                <td>${pick.fkMemberEmail}</td>
+                                <td>${pick.pickName}</td>
                               </tr>
-                              <tr>
-                                
-                                <td>kh0002</td>
-                                <td>ㄱㄱㄱpick</td>
-                              </tr>
-                              <tr>
+                              </c:forEach>
+                             
                                
                             </tbody>
                           </table>
                               
                         </div>
+                        
+                         <c:set var="page" value="${(param.p == null)?1:param.p}"/>
+                              <c:set var="startNum" value="${page-(page-1)%5}" />
+                              <c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"/>
+                          <div style="margin-bottom:30px ">
+                              <span>현재페이지 ${(empty param.p)?1:param.p}</span>
+                              /${lastNum} page
+                          </div>
                         <nav id="adddel-data-page" aria-label="Page navigation example">
-                          <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                          <ul id="pick-delete-pagiedit" class="pagination">
+                          <c:if test="${startNum-1>0}">
+                                <li class="page-item" ><a class="page-link" href="?p=${startNum-1}">이전</a></li>
+                              </c:if>
+                              <c:if test="${startNum<=1}">
+                                <li class="page-item" ><a class="page-link" onclick="alert('첫번째 페이지입니다.')">이전</a></li>
+                              </c:if>
+                              
+                                <c:forEach var="i" begin="0" end="4">
+                                <c:if test="${(startNum+i) <= lastNum}">
+                                <li class="page-item ${(page==(startNum+i))?'active':''}"><a class="page-link" href="?p=${startNum+i}">${startNum+i}</a></li>
+                                </c:if>
+                                
+                                </c:forEach>
+                                <c:if test="${startNum+4<lastNum}">
+                                <li class="page-item"><a class="page-link" href="?p=${startNum+5}">다음</a></li>
+                                </c:if>
+                                <c:if test="${startNum+4>=lastNum}">
+                                <li class="page-item"><a class="page-link" onclick="alert('다음 페이지가 없습니다.')">다음</a></li>
+                                </c:if>
                           </ul>
                         </nav>
 
@@ -74,80 +96,27 @@
                         <table class="table table-hover">
                             <thead>
                               <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">선택</th>
                                 <th scope="col">pick이름</th>
-                                <th scope="col">영화이름</th>
-                                <th scope="col">감독</th>
+                                <th scope="col">영화ID</th>
+                                <th scope="col">영화제목</th>
+                                <th scope="col">제작국가</th>
                                 <th scope="col">장르</th>
-                                <th scope="col">유형</th>
+                                <th scope="col">조회수</th>
                               </tr>
 
                             </thead>
                             <tbody>
                               <tr>
-                                <th scope="row">1</th>
                                 <td><input type="checkbox"/></td>
                                 <td>은규pick</td>
-                                <td>가구야 공주 이야기</td>
-                                <td>타카하타 이사오</td>
+                                <td>F12345</td>
+                                <td>가나다아아아아아아ㅏ아아아아아ㅏ아아</td>
+                                <td>미국</td>
                                 <td>로맨스</td>
-                                <td>애니메이션</td>
+                                <td>120</td>
                               </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td><input type="checkbox"/></td>
-                                <td>은규pick</td>
-                                <td>가디언즈</td>
-                                <td>피터 램지</td>
-                                <td>액션</td>
-                                <td>애니메이션</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td><input type="checkbox"/></td>
-                                <td>은규pick</td>
-                                <td>가디언즈 오브 갤럭시</td>
-                                <td>제임스 건</td>
-                                <td>액션</td>
-                                <td>sf</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">4</th>
-                                <td><input type="checkbox"/></td>
-                                <td>은규pick</td>
-                                <td>가려진 시간</td>
-                                <td>엄태화</td>
-                                <td>느와르</td>
-                                <td>판타지</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">5</th>
-                                <td><input type="checkbox"/></td>
-                                <td>은규pick</td>
-                                <td>기생충</td>
-                                <td>봉준호</td>
-                                <td>액션</td>
-                                <td>스릴러</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">6</th>
-                                <td><input type="checkbox"/></td>
-                                <td>은규pick</td>
-                                <td>기생충</td>
-                                <td>봉준호</td>
-                                <td>액션</td>
-                                <td>스릴러</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">7</th>
-                                <td><input type="checkbox"/></td>
-                                <td>은규pick</td>
-                                <td>기생충</td>
-                                <td>봉준호</td>
-                                <td>액션</td>
-                                <td>스릴러</td>
-                              </tr>
+                              
                             </tbody>
                           </table>
                               

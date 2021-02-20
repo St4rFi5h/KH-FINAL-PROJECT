@@ -138,13 +138,14 @@
                         </div>
 
                     </div>
-                   
+                   <form action="/admin/pickadd/submit" method="get">
                     <div id="follow-data-container">
                         <table id="follow-data" class="table table-sm" class="col-lg-12">
                             <thead>
                               <tr>
                               
                                 <th scope="col">삭제</th>
+                                <th scope="col">영화id</th>
                                 <th scope="col">영화제목</th>
                                 <th scope="col">제작국가</th>
                                 <th scope="col">장르</th>
@@ -160,8 +161,9 @@
                               
 
                     <div id="addpick-submit">
-                        <button type="button" class="btn btn-primary">추가하기</button>
+                        <button type="submit" class="btn btn-primary">추가하기</button>
                     </div>
+                   </form>
 
                     
                 </div>
@@ -187,20 +189,23 @@
         var tr = $(this);
         var td = tr.children();
         //값저장
+        var mid = td.eq(0).text();
         var mname = td.eq(1).text();
-        var name = td.eq(2).text();
+        var nation = td.eq(2).text();
         var genre = td.eq(3).text();
-        var type = td.eq(4).text();
+        var hit = td.eq(4).text();
         
 
         var html = ""
           
       html += '<tr>';
       html += '<td><button id="delbtn" type="button" class="btn btn-primary btn-sm">삭제</button></td>';
+      html += '<td>' + mid + '</td>';
       html += '<td>' + mname + '</td>';
-      html += '<td>' + name + '</td>';
+      html += '<td>' + nation + '</td>';
       html += '<td>' + genre + '</td>';
-      html += '<td>' + type + '</td>';
+      html += '<td>' + hit + '</td>';
+      html += '<input type="hidden" name="mid" value='+mid+'>'+'</td>';
       html += '</tr>';
       
       $("#get-table-data").append(html);

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.eutchapedia.admin.movie.entity.MovieCount;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
+import kr.or.eutchapedia.admin.movie.entity.PickInfo;
 import kr.or.eutchapedia.admin.movie.service.MovieService;
 
 @RequestMapping("/admin")
@@ -66,10 +67,43 @@ public class AdminMovieController {
 		return mv;
 	}
 	
+	@RequestMapping("/pickadd/submit")
+	public ModelAndView pickAddSubmit(Model model,HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/admin/pickadd");
+		
+		String[] a = req.getParameterValues("mid");
+		for (int i = 0; i < a.length; i++) {
+			System.out.println(a);
+		}
+		return mv;
+	}
+	
 		
 	@RequestMapping("/pickdelete")
-	public ModelAndView pickDelete() {
+	public ModelAndView pickDelete(Model model,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView("admin/movie/pick-delete");
+		String number_ = req.getParameter("p");
+        int number = 1;
+		
+		if(number_ != null && !number_.equals(""))
+			number = Integer.parseInt(number_);
+		int page = 1+(number-1)*10;
+		int amount = number*10;
+		
+		List<PickInfo> picklist = service.getPickInfoList(page,amount);
+		
+		String count = null;
+		if(!picklist.isEmpty())
+			count = picklist.get(picklist.size() - 1).getNum();
+		
+		System.out.println(picklist.size());
+		System.out.println("총 갯수 : " + count);
+		model.addAttribute("pickinfo",picklist);
+		model.addAttribute("count",count);
+		
+		
+		
 		return mv;
 		
 	}

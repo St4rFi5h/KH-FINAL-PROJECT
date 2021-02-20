@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import kr.or.eutchapedia.admin.movie.dao.MovieDao;
 import kr.or.eutchapedia.admin.movie.entity.MovieCount;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
-import kr.or.eutchapedia.admin.movie.entity.StaffInfo;
+import kr.or.eutchapedia.admin.movie.entity.PickInfo;
 
 @Service
 public class MovieServiceImp implements MovieService {
 	
 	@Autowired
 	private MovieDao moviedao;
-
+	//픽추가
 	@Override
 	public List<MovieInfo> getmovieList() {
 		
@@ -38,6 +38,12 @@ public class MovieServiceImp implements MovieService {
 	public List<MovieCount> getmovieCount(String field, String query) {
 		List<MovieCount> moviecount = moviedao.getmovieCount(field,query);
 		return moviecount;
+	}
+	//픽삭제
+	@Override
+	public List<PickInfo> getPickInfoList(int page, int amount) {
+		List<PickInfo> picklist = moviedao.getPickInfoList(page,amount);
+		return picklist;
 	}
 
 
