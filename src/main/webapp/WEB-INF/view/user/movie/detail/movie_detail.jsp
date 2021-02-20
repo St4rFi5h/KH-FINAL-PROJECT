@@ -127,7 +127,7 @@
                 </div>
                 <div class="detail-info">
                     <h4>코멘트</h4>
-                    <span class="more-info"><a href="/movie/comment/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
+                    <span class="more-info"><a href="/comment/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
                     <div id="comment-zone">
 	                    <c:forEach var="commentList" items="${commentList }">
 	                        <div class="comment-card">

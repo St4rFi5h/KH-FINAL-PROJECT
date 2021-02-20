@@ -101,8 +101,4 @@ public class CommentPage {
 		this.movieDocId = movieDocId;
 	}
 
-
-
-
-
 }

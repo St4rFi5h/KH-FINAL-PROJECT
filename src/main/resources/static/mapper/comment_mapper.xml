@@ -16,7 +16,7 @@
 		AND ec.comment_blind_check = '0'
 	
 	</select>
-	<!-- 코멘트 더보기 기본 select -->
+	<!-- 코멘트 더보기 기본 select(좋아요 높은 순 + 최신순) -->
 	<select id="selectCommentList" parameterType="kr.or.eutchapedia.movie.detail.domain.CommentPage"
 		resultType="kr.or.eutchapedia.movie.detail.domain.CommentListVo" >
 		SELECT * FROM (

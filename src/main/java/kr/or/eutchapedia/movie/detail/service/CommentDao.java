@@ -28,12 +28,12 @@ public class CommentDao {
 
 		try {
 			int totalListSize = mapper.totalListSize(page);
-
+			
 			page.setTotalListSize(totalListSize);
 			if (page.getNowPage() == 0) {
 				page.setNowPage(1);
-
 			}
+			
 			page.pageCompute();
 
 			for (CommentListVo vo : commentList) {

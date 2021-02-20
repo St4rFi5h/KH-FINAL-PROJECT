@@ -12,6 +12,7 @@ public class CommentListVo {
 	private String likeCount;
 	private Timestamp commentDate;
 	private Long stars;
+	private String sortBy;
 	
 	
 	public String getMovieDocId() {
@@ -61,6 +62,12 @@ public class CommentListVo {
 	}
 	public void setStars(Long stars) {
 		this.stars = stars;
+	}
+	public String getSortBy() {
+		return sortBy;
+	}
+	public void setSortBy(String sortBy) {
+		this.sortBy = sortBy;
 	}
 	
 	

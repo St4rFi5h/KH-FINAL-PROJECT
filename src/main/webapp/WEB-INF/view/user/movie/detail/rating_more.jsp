@@ -28,19 +28,20 @@
         <div>
             <button id="back-button" onclick="location.href='/movie/detail?movieDocId=${movieDocId}'">←</button>
         </div>
-        
+        <form method="POST" name="comment_overview" id="comment_overview" action="/comment/overview?movieDocId=${movieDocId }">
+        <input type="hidden" name="movieDocId" id="movieDocId" value="${movieDocId }"/>
         <div class="title">코멘트</div>
         <div class="title" id="rating-title">관람객 평점 <span style="font-weight: bold;">${commentCount }</span>건</div>
         <div class="dropdown" id="sort-dropdown">
-            <select>
+            <select id="sort-dropdown-select" name="sortBy" onchange="selectOpt(this.options[this.selectedIndex.value])">
                 <option value="">정렬 기준 선택</option>
-                <option value="좋아요 많은 순">좋아요 많은 순</option>
-                <option value="최신순">최신순</option>
-                <option value="평점 높은 순">평점 높은 순</option>
-                <option value="평점 낮은 순">평점 낮은 순</option>
+                <option value="Likes">좋아요 많은 순</option>
+                <option value="Latest">최신순</option>
+                <option value="HighStars">평점 높은 순</option>
+                <option value="LowStars">평점 낮은 순</option>
             </select>
         </div>
-        <div class="rating-zone">
+        <div class="rating-zone" id="rating-zone">
         <c:forEach var="commentList" items="${commentList }">
 	            <div class="comment-card">
 	                <div class="profile-and-rating">
@@ -89,9 +90,9 @@
                     <jsp:include page="modal/report_modal_non_member.jsp"/>
                 </div>
         </div>
-
+	
         <!-- paging -->
-        <form method="POST" name="pagination" id="pagination" action="/comment/overview?movieDocId=${movieDocId }">
+        
 	        <div class="paging-zone">
 	        <input type="hidden" name="nowPage" id="nowPage" value="${empty param.nowPage ? 1 : param.nowPage }"/>
 						<c:if test="${page.startPage > 1 }">
@@ -122,10 +123,40 @@
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script>
     	function goPage(page) {
-			var frm = document.getElementById("pagination");
+    		var frm = document.getElementById("comment_overview");
 			var nowPage = document.getElementById('nowPage');
+			var nowDropdown = document.getElementById('sort-dropdown-select');
+			
 			nowPage.value = page;
+			console.log($(frm).serialize());
 			frm.submit();
+        }
+
+        function selectOpt(option) {
+        	var frm = document.getElementById("comment_overview");
+            var dropDown = document.getElementById('sort-dropdown-select');
+
+            var formData = {movieDocId: 'F52167', nowPage: 1, sortBy:'Likes'};
+			
+			console.log(formData);
+			$.ajax({
+				url : '/comment/AjaxControl',
+				type : 'POST',
+				dataType : "text",
+				contentType : "application/json; charset=utf-8",
+				data : JSON.stringify(formData),
+				success : function(data) {
+					alert("hello!");
+					console.log(data);
+
+					},
+				error: function() {
+					alert("error");
+				
+					}
+
+				});
+			
         }
     	
         </script>
