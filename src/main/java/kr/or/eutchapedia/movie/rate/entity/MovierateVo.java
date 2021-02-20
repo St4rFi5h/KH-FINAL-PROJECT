@@ -1,42 +1,30 @@
 package kr.or.eutchapedia.movie.rate.entity;
 
 public class MovierateVo {
-	private String docid;
+	private String num;
+	private String movie_docid;
 	private String title;
-	private String titleOrg;
+	private String title_Org;
 	private String nation;
-	private String runningtime;
+	private String movie_running_time;
 	private String rating;
 	private String prodyear;
-	private String posteruri;
+	private String poster_uri;
 	private String genre;
 	private String plot;
-	private String movieTrailer;
-	private int movieHitCount;
-	
-	
-	
-	public MovieInfo(String docid, String title, String titleOrg, String nation, String runningtime, String rating,
-			String prodyear, String posteruri, String genre, String plot, String movieTrailer, int movieHitCount) {
-		super();
-		this.docid = docid;
-		this.title = title;
-		this.titleOrg = titleOrg;
-		this.nation = nation;
-		this.runningtime = runningtime;
-		this.rating = rating;
-		this.prodyear = prodyear;
-		this.posteruri = posteruri;
-		this.genre = genre;
-		this.plot = plot;
-		this.movieTrailer = movieTrailer;
-		this.movieHitCount = movieHitCount;
+	private String movie_trailer;
+	private int movie_hit_count;
+	public String getNum() {
+		return num;
 	}
-	public String getDocid() {
-		return docid;
+	public void setNum(String num) {
+		this.num = num;
 	}
-	public void setDocid(String docid) {
-		this.docid = docid;
+	public String getMovie_docid() {
+		return movie_docid;
+	}
+	public void setMovie_docid(String movie_docid) {
+		this.movie_docid = movie_docid;
 	}
 	public String getTitle() {
 		return title;
@@ -44,11 +32,11 @@ public class MovierateVo {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getTitleOrg() {
-		return titleOrg;
+	public String getTitle_Org() {
+		return title_Org;
 	}
-	public void setTitleOrg(String titleOrg) {
-		this.titleOrg = titleOrg;
+	public void setTitle_Org(String title_Org) {
+		this.title_Org = title_Org;
 	}
 	public String getNation() {
 		return nation;
@@ -56,11 +44,11 @@ public class MovierateVo {
 	public void setNation(String nation) {
 		this.nation = nation;
 	}
-	public String getRunningtime() {
-		return runningtime;
+	public String getMovie_running_time() {
+		return movie_running_time;
 	}
-	public void setRunningtime(String runningtime) {
-		this.runningtime = runningtime;
+	public void setMovie_running_time(String movie_running_time) {
+		this.movie_running_time = movie_running_time;
 	}
 	public String getRating() {
 		return rating;
@@ -74,11 +62,11 @@ public class MovierateVo {
 	public void setProdyear(String prodyear) {
 		this.prodyear = prodyear;
 	}
-	public String getPosteruri() {
-		return posteruri;
+	public String getPoster_uri() {
+		return poster_uri;
 	}
-	public void setPosteruri(String posteruri) {
-		this.posteruri = posteruri;
+	public void setPoster_uri(String poster_uri) {
+		this.poster_uri = poster_uri;
 	}
 	public String getGenre() {
 		return genre;
@@ -92,17 +80,18 @@ public class MovierateVo {
 	public void setPlot(String plot) {
 		this.plot = plot;
 	}
-	public String getMovieTrailer() {
-		return movieTrailer;
+	public String getMovie_trailer() {
+		return movie_trailer;
 	}
-	public void setMovieTrailer(String movieTrailer) {
-		this.movieTrailer = movieTrailer;
+	public void setMovie_trailer(String movie_trailer) {
+		this.movie_trailer = movie_trailer;
 	}
-	public int getMovieHitCount() {
-		return movieHitCount;
+	public int getMovie_hit_count() {
+		return movie_hit_count;
 	}
-	public void setMovieHitCount(int movieHitCount) {
-		this.movieHitCount = movieHitCount;
+	public void setMovie_hit_count(int movie_hit_count) {
+		this.movie_hit_count = movie_hit_count;
 	}
+	
 	
 }

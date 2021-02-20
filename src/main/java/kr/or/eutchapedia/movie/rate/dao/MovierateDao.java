@@ -1,14 +1,15 @@
 package kr.or.eutchapedia.movie.rate.dao;
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-
-import kr.or.eutchapedia.movierate.entity.MovierateVo;
+import kr.or.eutchapedia.movie.rate.entity.MovierateVo;
 @Repository
 @Mapper
-public class MovierateDao {
-	List<MovierateVo> getmovieList();
+public interface MovierateDao {
+
+	List<MovierateVo> getmovierateList(String email, String genre );
+
 }

@@ -15,6 +15,7 @@ import kr.or.eutchapedia.admin.movie.service.MovieService;
 
 @RequestMapping("/admin")
 @RestController
+//셀렉트멤버
 public class AdminMemberController {
 	@RequestMapping("/selectmember")
 	public ModelAndView selectMember() {
@@ -23,7 +24,7 @@ public class AdminMemberController {
 		
 	}
 	
-	
+//차단유저	
 	@RequestMapping("/blockmember")
 	public ModelAndView blockmember() {
 		ModelAndView mv = new ModelAndView("admin/member/blockMember");

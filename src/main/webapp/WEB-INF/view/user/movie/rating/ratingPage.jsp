@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+		<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
 <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
 <link rel="stylesheet" href="/css/movie/giveStar.css">
-    <script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
 	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
 	crossorigin="anonymous"></script>
@@ -43,11 +44,20 @@
 
 			<select class="custom-select" id="select-search">
 				<option selected>장르</option>
-				<option value="1">액션</option>
-				<option value="2">로멘스</option>
-				<option value="3">스릴러</option>
+				<option ${(param.f == "action")?"selected":""} value="action">액션</option>
+				<option ${(param.f == "romance")?"selected":""} value="romance">로멘스</option>
+				<option ${(param.f == "thriller")?"selected":""} value="thriller">스릴러</option>
+				<option ${(param.f == "sf")?"selected":""} value="sf">SF</option>
+				<option ${(param.f == "adventure")?"selected":""} value="adventure">어드벤처</option>
+				<option ${(param.f == "drama")?"selected":""} value="drama">드라마</option>
+				<option ${(param.f == "family")?"selected":""} value="family">가족</option>
+				<option ${(param.f == "animation")?"selected":""} value="animation">애니메이션</option>
+				<option ${(param.f == "comedy")?"selected":""} value="comedy">코미디</option>
+			
+
 			</select>
 		</div>
+		      <c:forEach var="m" items="${movielist}" end="10">
 		<div id="mid_wrap">
 			<ul class="movie">
 				<li class="eachMovie">
@@ -60,7 +70,7 @@
 
 					<div class="movie_name">
 						<h3 class="movie_title">
-							뮬란
+							${m.title}
 							<div class="modal_button">
 								<button class="fas fa-ellipsis-v" id="modal_btn"
 									data-toggle="modal" data-target="#exampleModal"></button>
@@ -83,6 +93,8 @@
 				</li>
 			</ul>
 		</div>
+     </c:forEach>
+                              
 		<!---------------------------------------- 임시시작 ---------------------------------------------->
 		<div id="mid_wrap">
 			<ul class="movie">
@@ -228,12 +240,12 @@
 			</div>
 		</div>
 	</div>
-	
 
-		<script src="/js/movie/star.js"></script>
-		<script src="/js/movie/scroll.js"></script>
-		<script src="/js/jquery.min.js"></script>
-		<script src="/js/bootstrap.bundle.min.js"></script>
-		
+
+	<script src="/js/movie/star.js"></script>
+	<script src="/js/movie/scroll.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
