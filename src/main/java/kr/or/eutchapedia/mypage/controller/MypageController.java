@@ -1,6 +1,7 @@
 package kr.or.eutchapedia.mypage.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.eutchapedia.mypage.entity.LeaveMemberVo;
 import kr.or.eutchapedia.mypage.entity.MemberVo;
+import kr.or.eutchapedia.mypage.entity.StarRatingForMainVo;
 import kr.or.eutchapedia.mypage.entity.WannaWatchVo;
 import kr.or.eutchapedia.mypage.salt.Utils;
 import kr.or.eutchapedia.mypage.service.MypageService;
@@ -23,9 +25,37 @@ public class MypageController {
 	MypageService service;
 	
 	@RequestMapping("/index")
-	public ModelAndView mypageindex() {
-		ModelAndView mv = new ModelAndView("/user/mypage/mypage");
+	public ModelAndView mypageindex(String memberemail) {
+		ModelAndView mv = new ModelAndView();
 		
+		memberemail = "200@naver.com";
+		List<WannaWatchVo> ww = new ArrayList<WannaWatchVo>();
+		List<StarRatingForMainVo> sr = new ArrayList<StarRatingForMainVo>();
+		MemberVo vo = new MemberVo();
+		
+		vo = service.getMemberinfo(memberemail);
+		ww = service.wannawatch(memberemail);
+		sr = service.getratinginfo(memberemail);
+		
+        // 영화감상시간계산로직
+		int sum=0; 
+		int time=0;
+		
+		for(int i=0; i<sr.size(); i++) {
+			time = Integer.parseInt(sr.get(i).getMovieRunningTime());
+			sum += time;
+		}
+		int hour = sum/60; 
+		int minute = sum%60; 
+		System.out.println(hour +" 시간 " + minute +" 분 ");
+		
+		
+		mv.addObject("member", vo);
+		mv.addObject("wannawatch", ww);
+		mv.addObject("star", sr);
+		mv.addObject("hour", hour);
+		mv.addObject("minute", minute);
+		mv.setViewName("/user/mypage/mypage");
 		return mv;
 	}
 	
@@ -40,7 +70,7 @@ public class MypageController {
 	public ModelAndView mypageiwantosee(String memberemail) {
 		ModelAndView mv = new ModelAndView();
 		
-		memberemail = "100@naver.com";  //임시..추후엔 세션으로 받아와야겠지../
+		memberemail = "200@naver.com";
 	
 		List <WannaWatchVo> list = new ArrayList<WannaWatchVo>();
 		System.out.println(memberemail);
@@ -90,10 +120,6 @@ public class MypageController {
 	@RequestMapping(value="/withdraw.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView mypagewithdrawdo(MemberVo vo, LeaveMemberVo vo2) {
 		ModelAndView mv = new ModelAndView();
-		
-//		Utils utils = new Utils();
-//		String pwd = utils.getEncrypt(vo.getMemberPwd());
-//		vo.setMemberPwd(pwd);
 		
 		System.out.println(vo.getMemberEmail());
 		System.out.println(vo.getMemberPwd());

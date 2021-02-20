@@ -3,7 +3,7 @@
 .mybody-wrapper {
   height: 150%;
   font-family: "Noto Sans KR", sans-serif;
-  margin-left: 30px;
+  margin-left: 50px;
 }
 .title {
   margin-left: 20px;
@@ -15,7 +15,7 @@
 }
 
 .moviewrapper {
-  margin-left: 10px;
+  margin-left:10px;
   float: left;
 }
 
@@ -53,15 +53,24 @@
   font-weight: bolder;
 }
 
-.movietitle {
-	text-overflow:ellipsis;
-	text-decoration: none;
+.movietitle{
+	margin-top:3px;
+	max-height: 20px;
+	width : 140px;
+	display : inline-block;
 	color: black;
+	font-size: 0.9rem;
+	font-weight:500;
+	overflow:hidden;
+	text-overflow:ellipsis;
 }
 
 .movie-div {
-	margin-left : 5px;
 	width: 150px;  
-	height:210px;
+	height:200px;
 	margin-bottom: 50px;
+}
+
+.poster {
+	border-radius: 5px;
 }

@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class MemberVo {
 	
+	private String memberEmail;
 	private String memberNickname;
 	private String memberPwd;
 	private String memberPwdSalt;
@@ -13,7 +14,6 @@ public class MemberVo {
 	private String memberPhoto;
 	private String memberIntroduce;
 	private String memberJoinRoute;
-	private String memberEmail;
 	
 	
 	public String getMemberEmail() {

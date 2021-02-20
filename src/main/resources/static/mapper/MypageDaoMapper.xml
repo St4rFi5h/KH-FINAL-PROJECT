@@ -23,15 +23,37 @@
     (seq_leave_member_index.nextval, #{memberEmail}, #{reason1}, #{reason2}, #{reason3}, #{reason4}, default)
   </insert>
   
- <!--  탈퇴 후 멤버테이블 회원상태 변경--> 
+  <!--  탈퇴 후 멤버테이블 회원상태 변경--> 
   <update id="updatestatus" parameterType="kr.or.eutchapedia.mypage.entity.MemberVo">
     update member set member_status='D' where member_email=#{memberEmail}
   </update>
 
-<!--회원가입 멤버 insert  -->
+  <!--회원가입 멤버 insert  -->
   <insert id="insertmember" parameterType="kr.or.eutchapedia.mypage.entity.MemberVo">
     insert into member values(#{memberEmail},#{memberNickname},#{memberPwd},#{memberPwdSalt},default,default,default,null,null,default)
   </insert>
+  
+  <!-- 회원정보 select -->
+  <select id="getMemberinfo" parameterType="String" resultMap="MemberVo" >
+	    select * from member where member_email = #{_parameter}
+   </select>
+   
+   <!-- 평가영화관련 select -->
+   <select id="getratinginfo" parameterType="String" resultMap="StarRatingForMainVo" >
+	    select a. *, 
+		c.title, 
+		c.nation, 
+		c.movie_running_time, 
+		c.prodyear, 
+		c.poster_uri, 
+		c.genre, 
+		c.major_genre
+		from star_rating a, (SELECT A.*, B.MAJOR_GENRE 
+		FROM MOVIE_INFO A JOIN MAJOR_GENRE B 
+		ON A.MOVIE_DOCID = B.FK_MOVIE_DOCID ) c
+		where a.fk_member_email = #{_parameter}
+		and a.fk_movie_docid = c.movie_docid
+   </select>
   
   <resultMap
 		type="kr.or.eutchapedia.mypage.entity.MemberVoTemp" id="MemberVoTemp">
@@ -50,5 +72,34 @@
 		<result column="prodyear" property="prodYear" />
 		<result column="poster_uri" property="posterUri" />
   </resultMap>
+  
+  <resultMap
+		type="kr.or.eutchapedia.mypage.entity.MemberVo" id="MemberVo">
+		<result column="member_email" property="memberEmail" />
+		<result column="member_nickname" property="memberNickname" />
+		<result column="member_pwd" property="memberPwd" />
+		<result column="member_pwd_salt" property="memberPwdSalt" />
+		<result column="member_date" property="memberDate" />
+		<result column="admin_check" property="adminCheck" />
+		<result column="member_status" property="memberStatus" />
+		<result column="member_photo" property="memberPhoto" />
+		<result column="member_introduce" property="memberIntroduce" />
+		<result column="member_join_route" property="memberJoinRoute" />
+  </resultMap>
 
+	<resultMap
+		type="kr.or.eutchapedia.mypage.entity.StarRatingForMainVo" id="StarRatingForMainVo">
+		<result column="star_index" property="starIndex" />
+		<result column="fk_movie_docid" property="movieDocId" />
+		<result column="fk_member_email" property="memberEmail" />
+		<result column="star_rating" property="starRating" />
+		<result column="title" property="title" />
+		<result column="nation" property="nation" />
+		<result column="movie_running_time" property="movieRunningTime" />
+		<result column="prodyear" property="prodYear" />
+		<result column="poster_uri" property="posterUri" />
+		<result column="genre" property="genre" />
+		<result column="major_genre" property="majorGenre" />
+  </resultMap>
+  
 </mapper> 

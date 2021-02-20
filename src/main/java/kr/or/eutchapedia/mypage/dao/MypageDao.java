@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import kr.or.eutchapedia.mypage.entity.LeaveMemberVo;
 import kr.or.eutchapedia.mypage.entity.MemberVo;
 import kr.or.eutchapedia.mypage.entity.MemberVoTemp;
+import kr.or.eutchapedia.mypage.entity.StarRatingForMainVo;
 import kr.or.eutchapedia.mypage.entity.WannaWatchVo;
 
 @Repository
@@ -23,5 +24,11 @@ public interface MypageDao {
 	
 	//보고싶어요한 영화 select
 	public List<WannaWatchVo> selectwannawatch(String memberemail);
+	
+	//마이페이지 회원정보 select
+	public MemberVo getMemberinfo(String memberemail);
+	
+	//메인 평가한작품 & 취향분석 관련
+	public List<StarRatingForMainVo> getratinginfo(String memberemail);
 
 }

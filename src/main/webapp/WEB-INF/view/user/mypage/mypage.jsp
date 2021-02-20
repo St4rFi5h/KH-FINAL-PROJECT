@@ -19,43 +19,7 @@
 </head>
 
 <body>
-    <header>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="navbar_logo">
-                  <a href="#"><img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-               </div> </a>
-    
-                <div class="menu">
-                  <ul>
-                     <li><a href="#">ABOUT US</a></li>
-                     <li><a href="#">평가하기</a></li>
-                     <li><a href="#">고객센터</a></li>
-                  </ul>
-                </div>
-    
-                 <!--검색창-->
-                 <div class="searchbar">
-                  <form action="#">
-                    <div class="search_box"> 
-                       <div class="icon"><i class="fas fa-search"></i> 
-                          <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                            <button class="search_btn" type="submit"> <i class="fas fa-times"></i>
-                         </button> 
-                       </div>
-                    </div>
-                  </form>
-              </div>
-    
-                <div class="menu">
-                    <ul>
-                      <li><a href="#">로그인</a></li>
-                      <li><a href="#">회원가입</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-       </header>
+   <jsp:include page="/WEB-INF/view/user/header.jsp"/>
         
         
     <h3 class="main-title">
@@ -74,18 +38,15 @@
                 <div id='profileimg'>    
                     <img src='/img/mypage/emoji.PNG' width="200px"; height="250px">
                 </div>
-                <h2>겨울왕국</h2>
+                <h4 id='nickname'>${member.memberNickname }</h4>
 
                 <p class="info-title">───Introduce───</p>
                 <div class="info">
                 <p class="info-text">
-                    영화평론가 이동진입니다 / 1980년 이전 영화는 별점을 매기지 않습니다 / 가장 낮은 별점은 한개입니다
+                    ${member.memberIntroduce }
                 </p>
-                    
 
                 </div>
-
-      
 
                 <div class="sidebar">
 
@@ -108,7 +69,6 @@
                     </div>
 
                     <p></p>
-                    <p></p>
 
                     <div  class='sidebar-menu'>
                         <a href="/mypage/edit">정보 수정
@@ -128,25 +88,13 @@
                     <h4>영화</h4>
                     <span class='sub-title'>보고싶어요</span><span class='starcount'> 156 </span>
                     <!-- center1박스 부분 디브 시작!!! -->
-                    <a href='/mypage/wannawatch'> <!-- 보고싶어요 링크 이동 -->
-                    <div class='center1-box'>
-                    
-                    	<%-- 
-                    	<c:forEach var="n" items="${ }" begin="1" end="8">
-                    	<div class='center-box-img'><img src="${n. }" width="125px"; height="150px" alt="포스터없음"></div>
+		                    <a href='/mypage/wannawatch'> <!-- 보고싶어요 링크 이동 -->
+				            	<div class='center1-box'>
+                    	<c:forEach var="n" items="${wannawatch}" begin="1" end="8">
+				                	<div class='center-box-img'><img id='posterimg' src="${n.posterUri}" width="110px"; height="135px" alt="포스터없음"></div>
                     	</c:forEach> 
-                    	--%>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        
-                    </div>
-                    </a>
+				                </div>
+		                    </a>
                     <!-- center1박스 부분 디브 끝!!! -->
                 </div>
 
@@ -154,21 +102,11 @@
                     <span class='sub-title'>평가한 작품</span><span class='starcount'> 251 </span>
                     <!-- center2박스 부분 디브 시작!!! -->
                     <a href='/mypage/ratedmovies'> <!-- 평가한작품 링크 이동 -->
-                    <div class='center2-box'>
-                    	<%-- 
-                    	<c:forEach var="n" items="${ }" begin="1" end="8">
-                    	<div class='center-box-img'><img src="${n. }" width="125px"; height="150px" alt="포스터없음"></div>
+		                    <div class='center2-box'>
+                    	<c:forEach var="star" items="${star}" begin="1" end="8">
+		                    	<div class='center-box-img'><img id='posterimg'src="${star.posterUri}" width="110px"; height="135px" alt="포스터없음"></div>
                     	</c:forEach> 
-                    	--%>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                        <div class='center-box-img'><img src="/img/mypage/포스터.png" width="125px"; height="150px" alt="포스터없음"></div>
-                    </div>
+		                    </div>
                      </a>
                     <!-- center2박스 부분 디브 끝!!! -->
                 </div>
@@ -199,49 +137,14 @@
                 <div class="right3">
                     <h6>영화 감상 시간</h6>
                     <div class='right3-box'>
-                        <h4>47시간 23분</h4>
+                        <h4>${hour}시간 ${minute}분</h4>
                         <p>조금 더 평가를 매겨 보세요!</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-   <!------------ footer ------------>
-
-   <footer>
-
-    <section class="count-space">
-      <span class="count">지금까지<em> ★ 123,534,545 개의 평가가 </em> 쌓였어요.</span>
-    </section>
-
-    <div class="footer-right">
-      <div class="social-icons">
-        <span><a href="#"><i class="fab fa-instagram"></i></a></span> 
-        <span><a href="#"><i class="fab fa-facebook-f"></i></a></span> 
-        <span><a href="#"><i class="fab fa-twitter"></i></a></span> 
-      </div>
-    </div>
-
-    <div class="footer-left">
-      <div>
-          <a href="#"> 서비스 이용약관</a>
-          <a href="#"> 개인정보 처리방침</a>
-          <a href="#"> 회사 안내</a>
-      </div>
-
-      <div>
-        <p>
-          고객센터<span> | </span>cs@eutchapedia.com, 02-123-4567 <br/>
-          제휴 및 대외 협력<span> | </span>contact@eutcha.com</p>
-        <p>
-          주식회사 읏챠<span> | </span>대표 이지현<span> | </span>서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F,20F<br/>
-          사업자 등록 번호 211-12-34567<br/>
-          © 2021 by EUTCHA, Inc. All rights reserved.
-        </p>
-      </div>
-    </div>
-
-</footer>
+	<jsp:include page="/WEB-INF/view/user/footer.jsp"/>
     <!--부트스트랩이 jquery를 사용하고있어 어떠한 js파일보다 상위에 있어야함-->
     <script src="/js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->

@@ -10,6 +10,7 @@ import kr.or.eutchapedia.mypage.dao.MypageDao;
 import kr.or.eutchapedia.mypage.entity.LeaveMemberVo;
 import kr.or.eutchapedia.mypage.entity.MemberVo;
 import kr.or.eutchapedia.mypage.entity.MemberVoTemp;
+import kr.or.eutchapedia.mypage.entity.StarRatingForMainVo;
 import kr.or.eutchapedia.mypage.entity.WannaWatchVo;
 import kr.or.eutchapedia.mypage.salt.Utils;
 
@@ -63,5 +64,23 @@ public class MypageServiceImpl implements MypageService {
 	    list = Dao.selectwannawatch(memberemail);
 		
 		return list;
+	}
+
+	@Override
+	public List<StarRatingForMainVo> getratinginfo(String memberemail) {
+		
+		List<StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
+		list = Dao.getratinginfo(memberemail);
+		return list;
+	}
+
+	@Override
+	public MemberVo getMemberinfo(String memberemail) {
+		MemberVo vo = new MemberVo();
+		
+		vo = Dao.getMemberinfo(memberemail);
+		
+		
+		return vo;
 	}
 }
