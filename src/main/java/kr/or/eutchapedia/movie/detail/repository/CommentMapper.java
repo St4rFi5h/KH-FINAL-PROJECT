@@ -11,6 +11,6 @@ import kr.or.eutchapedia.movie.detail.domain.CommentPage;
 @Repository
 @Mapper
 public interface CommentMapper {
-	public int totalListSize(String movieDocId);
+	public int totalListSize(CommentPage page);
 	public List<CommentListVo> selectCommentList(CommentPage page);
 } 

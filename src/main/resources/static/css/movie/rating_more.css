@@ -105,12 +105,17 @@ header {
 .comment-and-date {
     width: 600px;
     display: inline-block;
-
+	position: relative;
+	top: -20px;
 }
 .comment {
     display: inline-block;
-    position: relative;
-    top: -2px;
+    
+}
+
+.date {
+	position: relative;
+	top: 20px;
 }
 .like {
     position: relative;
@@ -191,12 +196,12 @@ header {
     margin: 0 auto;
 }
 
-.paging-zone button {
+.paging-zone input[type=button] {
     margin: 5px;
     border: none;
     background-color: transparent;
 }
 
-.paging-zone button:hover {
+.paging-zone input[type=button]:hover {
     font-weight: bold;
 }

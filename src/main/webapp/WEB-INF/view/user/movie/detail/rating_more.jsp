@@ -26,9 +26,9 @@
 <!-- header 끝 -->
     <div id="main-container">
         <div>
-            <button id="back-button" onclick="javascript:history.back();'">←</button>
+            <button id="back-button" onclick="location.href='/movie/detail?movieDocId=${movieDocId}'">←</button>
         </div>
-        <form name="comment_form">
+        
         <div class="title">코멘트</div>
         <div class="title" id="rating-title">관람객 평점 <span style="font-weight: bold;">${commentCount }</span>건</div>
         <div class="dropdown" id="sort-dropdown">
@@ -91,25 +91,27 @@
         </div>
 
         <!-- paging -->
-        <div class="paging-zone">
-        <input type="hidden" name="nowPage" value="${empty param.nowPage ? 1 : param.nowPage }"/>
-					<c:if test="${page.startPage > 1 }">
-						<input type='button' value="처음" id="btnFirst" onclick="goPage(1)" />
-						<input type="button" value="이전" id="btnPrev" onclick="goPage(${page.startPage - 1})"/>
-					</c:if>
-					
-					
-					<c:forEach var='i' begin='${page.startPage }' end='${page.endPage }'>
-						<input type='button' value='${i }' ${(param.nowPage == i) ? 'disabled' : '' } onclick='goPage(${i})' />
-					</c:forEach>
-					
-					<c:if test="${page.endPage < page.totalPage }">
-						<input type='button' value='다음' id="btnNext" onclick="goPage(${page.endPage + 1})" />
-						<input type="button" value="맨끝" id="btnLast" onclick="goPage(${page.totalPage})"/> 
-					</c:if>
-
-        </div>
+        <form method="POST" name="pagination" id="pagination" action="/comment/overview?movieDocId=${movieDocId }">
+	        <div class="paging-zone">
+	        <input type="hidden" name="nowPage" id="nowPage" value="${empty param.nowPage ? 1 : param.nowPage }"/>
+						<c:if test="${page.startPage > 1 }">
+							<input type='button' value="처음" id="btnFirst" onclick="goPage(1)" />
+							<input type="button" value="이전" id="btnPrev" onclick="goPage(${page.startPage - 1})"/>
+						</c:if>
+						
+						
+						<c:forEach var='i' begin='${page.startPage }' end='${page.endPage }'>
+							<input type='button' value='${i }' ${(param.nowPage == i) ? 'disabled' : '' } onclick='goPage(${i})' />
+						</c:forEach>
+						
+						<c:if test="${page.endPage < page.totalPage }">
+							<input type='button' value='다음' id="btnNext" onclick="goPage(${page.endPage + 1})" />
+							<input type="button" value="맨끝" id="btnLast" onclick="goPage(${page.totalPage})"/> 
+						</c:if>
+	
+	        </div>
         </form>
+        
     </div>
 	<!-- footer 시작 -->
 	<jsp:include page="/WEB-INF/view/user/footer.jsp"/>
@@ -119,7 +121,12 @@
         <!-- scripts -->
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script>
-    	
+    	function goPage(page) {
+			var frm = document.getElementById("pagination");
+			var nowPage = document.getElementById('nowPage');
+			nowPage.value = page;
+			frm.submit();
+        }
     	
         </script>
         

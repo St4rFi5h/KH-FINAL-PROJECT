@@ -7,12 +7,13 @@
 	namespace="kr.or.eutchapedia.movie.detail.repository.CommentMapper">
 
 	<!-- 페이징 -->
-	<select id="totalListSize" parameterType="String"
+	<select id="totalListSize" parameterType="kr.or.eutchapedia.movie.detail.domain.CommentPage"
 		resultType="int">
 		SELECT COUNT(*) FROM eutcha_comment ec 
 		JOIN star_rating sr
 		ON ec.fk_star_index = sr.star_index
-		WHERE sr.fk_movie_docid = #{_parameter}
+		WHERE sr.fk_movie_docid = #{movieDocId}
+		AND ec.comment_blind_check = '0'
 	
 	</select>
 	<!-- 코멘트 더보기 기본 select -->
