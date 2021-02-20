@@ -1,10 +1,10 @@
-/* ê³„ì • ìƒì„± ë° ê¶Œí•œ ë¶€ì—¬ */
+/* ê³„ì • ?ƒ?„± ë°? ê¶Œí•œ ë¶??—¬ */
 CREATE USER eutcha
 IDENTIFIED BY 1234;
 
 GRANT CONNECT, RESOURCE, DBA TO eutcha;
 
-/* í…Œì´ë¸” ì‚­ì œ */
+/* ?…Œ?´ë¸? ?‚­? œ */
 DROP TABLE member;
 DROP TABLE leave_member;
 DROP TABLE movie_info;
@@ -19,9 +19,10 @@ DROP TABLE faq;
 DROP TABLE qna;
 DROP TABLE notice;
 DROP TABLE wanna_watch;
+DROP TABLE PICK;
 DROP TABLE movie_pick;
 
-/* ì‹œí€€ìŠ¤ ì‚­ì œ */
+/* ?‹œ???Š¤ ?‚­? œ */
 DROP SEQUENCE seq_leave_member_index;
 DROP SEQUENCE notice_seq;
 DROP SEQUENCE qna_seq;
@@ -35,9 +36,10 @@ DROP SEQUENCE seq_star_rating;
 DROP SEQUENCE seq_eutcha_comment;
 DROP SEQUENCE seq_comment_like;
 DROP SEQUENCE seq_comment_report;
+DROP SEQUENCE PICK_SEQ;
 DROP SEQUENCE movie_pick_seq;
 
-/* íšŒì› í…Œì´ë¸” */
+/* ?šŒ?› ?…Œ?´ë¸? */
 CREATE TABLE MEMBER (
     member_email VARCHAR2(128) PRIMARY KEY,
     member_nickname VARCHAR2(45) UNIQUE NOT NULL,
@@ -51,7 +53,7 @@ CREATE TABLE MEMBER (
     member_join_route VARCHAR2(50)DEFAULT 'O' NOT NULL 
 );
 
-/* íƒˆí‡´íšŒì› í…Œì´ë¸” */
+/* ?ƒˆ?‡´?šŒ?› ?…Œ?´ë¸? */
 CREATE TABLE LEAVE_MEMBER (
     leave_member_index NUMBER PRIMARY KEY,
     fk_member_email VARCHAR2(128) NOT NULL,
@@ -63,7 +65,7 @@ CREATE TABLE LEAVE_MEMBER (
     FOREIGN KEY(fk_member_email) REFERENCES member(member_email) on delete cascade
 );
 
-/* íƒˆí‡´íšŒì› ì‹œí€€ìŠ¤ */
+/* ?ƒˆ?‡´?šŒ?› ?‹œ???Š¤ */
 CREATE SEQUENCE seq_leave_member_index
 START WITH 1
 INCREMENT BY 1
@@ -71,7 +73,7 @@ MINVALUE 1
 MAXVALUE 9999999
 NOCYCLE; 
 
-/* ì˜í™”ì •ë³´ í…Œì´ë¸” */
+/* ?˜?™”? •ë³? ?…Œ?´ë¸? */
 CREATE TABLE MOVIE_INFO (
 	MOVIE_DOCID	VARCHAR2(100) PRIMARY KEY,
     TITLE VARCHAR2(200)  NULL,
@@ -85,7 +87,7 @@ CREATE TABLE MOVIE_INFO (
 	PLOT	VARCHAR2(4000) NULL
 );
 
-/*ìŠ¤íƒœí”„ì •ë³´í…Œì´ë¸”*/
+/*?Š¤?ƒœ?”„? •ë³´í…Œ?´ë¸?*/
 CREATE TABLE STAFFS_INFO (
 	staff_INDEX	NUMBER	NOT NULL,
 	FK_MOVIE_DOCID	VARCHAR2(100)	NOT NULL,
@@ -94,24 +96,24 @@ CREATE TABLE STAFFS_INFO (
     STAFF_ROLE VARCHAR2(100) NULL
 );
 
-/*ìŠ¤íƒœí”„ì œì•½ì¡°ê±´*/
+/*?Š¤?ƒœ?”„? œ?•½ì¡°ê±´*/
 ALTER TABLE STAFFS_INFO
 ADD CONSTRAINT FK_STAFFS_INFO FOREIGN KEY(FK_MOVIE_DOCID) REFERENCES MOVIE_INFO(MOVIE_DOCID)
 ON DELETE CASCADE;
 
-/*í‚¤ì›Œë“œì •ë³´í…Œì´ë¸”*/
+/*?‚¤?›Œ?“œ? •ë³´í…Œ?´ë¸?*/
 CREATE TABLE KEYWORD_INFO (
 	KEYWORD_INDEX	NUMBER	NOT NULL,
 	FK_MOVIE_DOCID	VARCHAR2(100)	NOT NULL,
 	KEYWORD_INFO	VARCHAR2(100)	NULL
 );
 
-/*í‚¤ì›Œë“œ ì œì•½ì¡°ê±´*/
+/*?‚¤?›Œ?“œ ? œ?•½ì¡°ê±´*/
 ALTER TABLE KEYWORD_INFO
 ADD CONSTRAINT FK_KEYWORD_INFO FOREIGN KEY(FK_MOVIE_DOCID) REFERENCES MOVIE_INFO(MOVIE_DOCID)
 ON DELETE CASCADE;
 
-/*ì‹œí€€ìŠ¤ëª¨ìŒ*/
+/*?‹œ???Š¤ëª¨ìŒ*/
 CREATE SEQUENCE MOVIE_INFO_SEQ
 START WITH 1
 INCREMENT BY 1
@@ -127,7 +129,7 @@ START WITH 1
 INCREMENT BY 1
 NOCYCLE;
 
-/* í”Œëž«í¼ë³„ ì˜í™” ìˆœìœ„ */
+/* ?”Œ?ž«?¼ë³? ?˜?™” ?ˆœ?œ„ */
 CREATE TABLE MOVIE_RANKING(
     MOVIE_RANKING_INDEX NUMBER PRIMARY KEY,
     FK_MOVIE_DOCID VARCHAR2(100) NOT NULL,
@@ -136,7 +138,7 @@ CREATE TABLE MOVIE_RANKING(
     FOREIGN KEY(FK_MOVIE_DOCID) REFERENCES MOVIE_INFO(MOVIE_DOCID) ON DELETE CASCADE
 );
     
-/* MOVIE_RANKING_INDEX ì‹œí€€ìŠ¤ */
+/* MOVIE_RANKING_INDEX ?‹œ???Š¤ */
 CREATE SEQUENCE SEQ_MOVIE_RANKING_INDEX
 START WITH 1
 INCREMENT BY 1
@@ -144,7 +146,7 @@ MINVALUE 1
 MAXVALUE 9999999
 NOCYCLE; 
 
-/* ë³´ê³ ì‹¶ì–´ìš” */
+/* ë³´ê³ ?‹¶?–´?š” */
 CREATE TABLE WANNA_WATCH (
     wanna_watch_index NUMBER NOT NULL, --seq
     fk_member_email VARCHAR2(128)   NOT NULL,
@@ -154,7 +156,7 @@ CREATE TABLE WANNA_WATCH (
     FOREIGN KEY(fk_member_email) REFERENCES MEMBER (MEMBER_EMAIL) on delete cascade
 );
 
-/* ë³´ê³ ì‹¶ì–´ìš” ì‹œí€€ìŠ¤ */
+/* ë³´ê³ ?‹¶?–´?š” ?‹œ???Š¤ */
 CREATE SEQUENCE SEQ_WANNA_WATCH_INDEX
 START WITH 1
 INCREMENT BY 1
@@ -162,7 +164,7 @@ MINVALUE 1
 MAXVALUE 9999999
 NOCYCLE;
 
-/* ë³„ì  í…Œì´ë¸” */
+/* ë³„ì  ?…Œ?´ë¸? */
 CREATE TABLE star_rating(
     star_index NUMBER PRIMARY KEY,
     fk_movie_docid VARCHAR2(100) NOT NULL,
@@ -170,14 +172,14 @@ CREATE TABLE star_rating(
     star_rating NUMBER NOT NULL
 );
 
-/* ë³„ì  ì‹œí€€ìŠ¤ */
+/* ë³„ì  ?‹œ???Š¤ */
 CREATE SEQUENCE seq_star_rating 
 START WITH 1 
 INCREMENT BY 1 
 MAXVALUE 999999
 NOCYCLE;
 
-/* ë³„ì  FK ì œì•½ì¡°ê±´ */
+/* ë³„ì  FK ? œ?•½ì¡°ê±´ */
 ALTER TABLE star_rating 
 ADD CONSTRAINT fk_member_star_rating
 FOREIGN KEY (fk_member_email) REFERENCES member (member_email) ON DELETE CASCADE ;
@@ -186,7 +188,7 @@ ALTER TABLE star_rating
 ADD CONSTRAINT fk_movie_docid_star_rating
 FOREIGN KEY (fk_movie_docid) REFERENCES movie_info (movie_docid) ON DELETE CASCADE ;
 
-/* ì½”ë©˜íŠ¸ í…Œì´ë¸” */
+/* ì½”ë©˜?Š¸ ?…Œ?´ë¸? */
 CREATE TABLE eutcha_comment(
     comment_index NUMBER PRIMARY KEY,
     fk_star_index NUMBER NOT NULL,
@@ -197,19 +199,19 @@ CREATE TABLE eutcha_comment(
     comment_date DATE DEFAULT SYSDATE NOT NULL
 );
 
-/* ì½”ë©˜íŠ¸ ì‹œí€€ìŠ¤ */
+/* ì½”ë©˜?Š¸ ?‹œ???Š¤ */
 CREATE SEQUENCE seq_eutcha_comment
 START WITH 1 
 INCREMENT BY 1 
 MAXVALUE 999999
 NOCYCLE;
 
-/* ì½”ë©˜íŠ¸ FK ì œì•½ì¡°ê±´ */
+/* ì½”ë©˜?Š¸ FK ? œ?•½ì¡°ê±´ */
 ALTER TABLE eutcha_comment 
 ADD CONSTRAINT fk_star_index_comment
 FOREIGN KEY (fk_star_index) REFERENCES star_rating (star_index) ON DELETE CASCADE ;
 
-/* ì¢‹ì•„ìš” í…Œì´ë¸” */
+/* ì¢‹ì•„?š” ?…Œ?´ë¸? */
 CREATE TABLE comment_like(
     like_index NUMBER PRIMARY KEY,
     fk_comment_index NUMBER NOT NULL,
@@ -217,14 +219,14 @@ CREATE TABLE comment_like(
     like_check NUMBER DEFAULT 0 NOT NULL
 );
 
-/* comment_like ì‹œí€€ìŠ¤ */
+/* comment_like ?‹œ???Š¤ */
 CREATE SEQUENCE seq_comment_like
 START WITH 1 
 INCREMENT BY 1 
 MAXVALUE 999999
 NOCYCLE;
 
-/* ì¢‹ì•„ìš” FK ì œì•½ì¡°ê±´ */
+/* ì¢‹ì•„?š” FK ? œ?•½ì¡°ê±´ */
 ALTER TABLE comment_like 
 ADD CONSTRAINT fk_member_comment_like
 FOREIGN KEY (fk_member_email) REFERENCES member (member_email) ON DELETE CASCADE ;
@@ -233,7 +235,7 @@ ALTER TABLE comment_like
 ADD CONSTRAINT fk_comment_index_comment_like
 FOREIGN KEY (fk_comment_index) REFERENCES eutcha_comment (comment_index) ON DELETE CASCADE ;
 
-/* ì‹ ê³ í•˜ê¸° í…Œì´ë¸” */
+/* ?‹ ê³ í•˜ê¸? ?…Œ?´ë¸? */
 CREATE TABLE comment_report(
     report_index NUMBER PRIMARY KEY,
     fk_comment_index NUMBER NOT NULL,
@@ -241,14 +243,14 @@ CREATE TABLE comment_report(
     report_text VARCHAR2(2000) NOT NULL
 );
 
-/* comment_report ì‹œí€€ìŠ¤ */
+/* comment_report ?‹œ???Š¤ */
 CREATE SEQUENCE seq_comment_report
 START WITH 1 
 INCREMENT BY 1 
 MAXVALUE 999999
 NOCYCLE;
 
-/* comment_report FK ì œì•½ì¡°ê±´ */
+/* comment_report FK ? œ?•½ì¡°ê±´ */
 ALTER TABLE comment_report 
 ADD CONSTRAINT fk_member_comment_report
 FOREIGN KEY (fk_member_email) REFERENCES member (member_email) ON DELETE CASCADE ;
@@ -257,7 +259,7 @@ ALTER TABLE comment_report
 ADD CONSTRAINT fk_comment_index_report
 FOREIGN KEY (fk_comment_index) REFERENCES eutcha_comment (comment_index) ON DELETE CASCADE ;
 
-/* ê³µì§€ì‚¬í•­ */
+/* ê³µì??‚¬?•­ */
 CREATE TABLE NOTICE (
     NOTICE_NO NUMBER PRIMARY KEY,
     member_email VARCHAR2(128) NOT NULL,
@@ -268,7 +270,7 @@ CREATE TABLE NOTICE (
     NOTICE_PUB NUMBER NOT NULL
 );
 
-/* ìžì£¼ë¬»ëŠ”ì§ˆë¬¸ */
+/* ?žì£¼ë¬»?Š”ì§ˆë¬¸ */
 CREATE TABLE FAQ (
     FAQ_NO NUMBER PRIMARY KEY,
     member_email VARCHAR2(128) NOT NULL,
@@ -277,7 +279,7 @@ CREATE TABLE FAQ (
     FAQ_PUB NUMBER NOT NULL
 );
 
-/* ì¼ëŒ€ì¼ë¬¸ì˜ */
+/* ?¼???¼ë¬¸ì˜ */
 CREATE TABLE QNA (
     QNA_NO NUMBER PRIMARY KEY,
     member_email VARCHAR2(128) NOT NULL,
@@ -290,7 +292,7 @@ CREATE TABLE QNA (
     ANSWER_FILES NVARCHAR2(1000) NULL
 );
 
-/* NOTICE_SEQ ì‹œí€€ìŠ¤ ìƒì„± */
+/* NOTICE_SEQ ?‹œ???Š¤ ?ƒ?„± */
 CREATE SEQUENCE NOTICE_SEQ
     MINVALUE 1
     MAXVALUE 999999999999
@@ -298,7 +300,7 @@ CREATE SEQUENCE NOTICE_SEQ
     INCREMENT BY 1
     NOCYCLE;
 
-/* QNA_SEQ ì‹œí€€ìŠ¤ ìƒì„± */
+/* QNA_SEQ ?‹œ???Š¤ ?ƒ?„± */
 CREATE SEQUENCE QNA_SEQ
     MINVALUE 1
     MAXVALUE 999999999999
@@ -306,7 +308,7 @@ CREATE SEQUENCE QNA_SEQ
     INCREMENT BY 1
     NOCYCLE;
 
-/* FAQ_SEQ ì‹œí€€ìŠ¤ ìƒì„± */
+/* FAQ_SEQ ?‹œ???Š¤ ?ƒ?„± */
 CREATE SEQUENCE FAQ_SEQ
     MINVALUE 1
     MAXVALUE 999999999999
@@ -314,46 +316,60 @@ CREATE SEQUENCE FAQ_SEQ
     INCREMENT BY 1
     NOCYCLE;
     
-/*NOTICE ì™¸ëž˜í‚¤ ì œì•½ì¡°ê±´*/
+/*NOTICE ?™¸?ž˜?‚¤ ? œ?•½ì¡°ê±´*/
 ALTER TABLE NOTICE ADD CONSTRAINT FK_MEMBER_TO_NOTICE
 FOREIGN KEY (MEMBER_EMAIL)REFERENCES MEMBER (MEMBER_EMAIL) ON DELETE CASCADE ;
 
-/*FAQ ì™¸ëž˜í‚¤ ì œì•½ì¡°ê±´*/
+/*FAQ ?™¸?ž˜?‚¤ ? œ?•½ì¡°ê±´*/
 ALTER TABLE FAQ ADD CONSTRAINT FK_MEMBER_TO_FAQ 
 FOREIGN KEY (MEMBER_EMAIL)REFERENCES MEMBER (MEMBER_EMAIL) ON DELETE CASCADE ;
 
-/*QNA ì™¸ëž˜í‚¤ ì œì•½ì¡°ê±´*/
+/*QNA ?™¸?ž˜?‚¤ ? œ?•½ì¡°ê±´*/
 ALTER TABLE QNA ADD CONSTRAINT FK_MEMBER_TO_QNA FOREIGN KEY 
 (MEMBER_EMAIL)REFERENCES MEMBER (MEMBER_EMAIL) ON DELETE CASCADE ;
 
 
-/* ì˜í™”í”½ í…Œì´ë¸” */
-CREATE TABLE MOVIE_PICK (
-	pick_index	NUMBER	 PRIMARY KEY,
-	fk_movie_docid	VARCHAR2(100)	NOT NULL,
-	fk_member_email	VARCHAR2(128)	NOT NULL,
-	pick_name	VARCHAR2(128)	NOT NULL
+/* ?˜?™”?”½ ?…Œ?´ë¸? */
+CREATE TABLE PICK(
+PICK_INDEX NUMBER PRIMARY KEY,
+FK_MEMBER_EMAIL VARCHAR2(128),
+PICK_NAME VARCHAR2(100)
 );
 
-/* ì˜í™”í”½ FKì œì•½ì¡°ê±´ */
+CREATE TABLE MOVIE_PICK (
+	PICKMOVIE_INDEX	NUMBER	 PRIMARY KEY,
+	FK_PICK_INDEX NUMBER,
+    FK_MOVIE_DOCID VARCHAR2(50)
+);
+
+/* ?˜?™”?”½ FK? œ?•½ì¡°ê±´ */
+ALTER TABLE PICK
+ADD CONSTRAINT FK_PICK FOREIGN KEY(FK_MEMBER_EMAIL) REFERENCES MEMBER(MEMBER_EMAIL)
+ON DELETE CASCADE;
+
 ALTER TABLE MOVIE_PICK
-ADD CONSTRAINT FK_MOVIE_PICK FOREIGN KEY(FK_member_email) REFERENCES MEMBER(member_email)
+ADD CONSTRAINT FK_PICK_INDEX FOREIGN KEY(FK_PICK_INDEX) REFERENCES PICK(PICK_INDEX)
 ON DELETE CASCADE;
 
 ALTER TABLE MOVIE_PICK
 ADD CONSTRAINT FK_MOVIE_PICK_DOCID FOREIGN KEY(fk_movie_docid) REFERENCES MOVIE_INFO(MOVIE_DOCID)
 ON DELETE CASCADE;
 
-/* ì˜í™”í”½ ì‹œí€€ìŠ¤ */
+/* ?˜?™”?”½ ?‹œ???Š¤ */
+CREATE SEQUENCE PICK_SEQ
+START WITH 1
+INCREMENT BY 1
+NOCYCLE;
+
 CREATE SEQUENCE MOVIE_PICK_SEQ
 START WITH 1
 INCREMENT BY 1
 NOCYCLE;
 
 
-/* movie_info í…Œì´ë¸” ìˆ˜ì • */
+/* movie_info ?…Œ?´ë¸? ?ˆ˜? • */
 ALTER TABLE movie_info ADD(movie_trailer varchar2(1000));
 ALTER TABLE movie_info ADD(movie_hit_count NUMBER DEFAULT 0 NOT NULL);
 
-/* staff_info í…Œì´ë¸” ìˆ˜ì • - ìŠ¤íƒœí”„ ê³ ìœ ë²ˆí˜¸ ì»¬ëŸ¼ ì¶”ê°€*/
+/* staff_info ?…Œ?´ë¸? ?ˆ˜? • - ?Š¤?ƒœ?”„ ê³ ìœ ë²ˆí˜¸ ì»¬ëŸ¼ ì¶”ê?*/
 ALTER TABLE staffs_info ADD(staff_id VARCHAR2(1000));

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,12 +34,14 @@
                     <h1>DB관리</h1>
 
                 </div>  
+                <form action="/admin/moviemanagement" method="get">
+                
                   <div id="dbmanagement-search-container">
                         <div id="dbmanagement-input-tag">
-                            <select class="custom-select" id="dbmanagement-select-search">
-                            <option selected>장르</option>
-                            <option value="1">닉네임</option>
-                            <option value="2">이메일</option>
+                            <select class="custom-select" id="dbmanagement-select-search" name="f">
+                            <option ${(param.f == "title")?"selected":""} value="title">제목</option>
+                            <option ${(param.f == "nation")?"selected":""} value="nation">제작국가</option>
+                            <option ${(param.f == "genre")?"selected":""} value="genre">장르</option>
                           </select>
                         </div>
                         <div id="dbmanagement-input-text">
@@ -45,75 +49,78 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text" id="basic-addon1"><img src="/svg/admin/search.svg" alt="bootstrap"></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="영화제목" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" id="movienameval" name="q" value="${param.q}" class="form-control" placeholder="영화제목" aria-label="Username" aria-describedby="basic-addon1">
                               </div>
 
                         </div>
                         <div id="dbmanagement-btn-click">
-                            <button type="button" class="btn btn-primary btn-sm" id="dbmanagement-select-button">조회</button>
+                            <button type="submit" class="btn btn-primary btn-sm" id="dbmanagement-select-button">조회</button>
                         </div>
 
 
 
                     </div>
+                </form>
                     
                     <div id="dbmanagement-input-data" class="col-lg-12">
                         <table id="db-info" class="table table-hover">
                             <thead>
                               <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">선택</th>
-                                <th scope="col">ID</th>
-                                <th scope="col">감독</th>
+                                <th scope="col">영화id</th>
+                                <th scope="col">영화제목</th>
+                                <th scope="col">제작국가</th>
                                 <th scope="col">장르</th>
-                                <th scope="col">유형</th>
+                                <th scope="col">조회수</th>
 
                               </tr>
                             </thead>
                             <tbody>
+                             <c:forEach var="m" items="${movielist}" end="10">
                               <tr>
-                                <th scope="row">1</th>
                                 <td><input type="checkbox"/></td>
-                                <td>가구야 공주 이야기</td>
-                                <td>타카하타 이사오</td>
-                                <td>로맨스</td>
-                                <td>애니메이션</td>
+                                <td>${m.movie_docid}</td>
+                                <td>${m.title}</td>
+                                <td>${m.nation}</td>
+                                <td>${m.genre}</td>
+                                <td>${m.movie_hit_count}</td>
+                                
                               </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td><input type="checkbox"/></td>
-                                <td>가디언즈</td>
-                                <td>피터 램지</td>
-                                <td>액션</td>
-                                <td>애니메이션</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td><input type="checkbox"/></td>
-                                <td>가디언즈 오브 갤럭시</td>
-                                <td>제임스 건</td>
-                                <td>액션</td>
-                                <td>sf</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">4</th>
-                                <td><input type="checkbox"/></td>
-                                <td>가려진 시간</td>
-                                <td>엄태화</td>
-                                <td>느와르</td>
-                                <td>판타지</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">5</th>
-                                <td><input type="checkbox"/></td>
-                                <td>기생충</td>
-                                <td>봉준호</td>
-                                <td>액션</td>
-                                <td>스릴러</td>
-                              </tr>
+                           </c:forEach>
                               
                             </tbody>
                           </table>
+                          <c:set var="page" value="${(param.p == null)?1:param.p}"/>
+                              <c:set var="startNum" value="${page-(page-1)%5}" />
+                              <c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"/>
+                              
+                              <div style="margin-bottom:30px ">
+                              <span>현재페이지 ${(empty param.p)?1:param.p}</span>
+                              /${lastNum} page
+                          </div>
+                          <nav id="dbmanagement-data-page" aria-label="Page navigation example">
+                            <ul id="dbmanagement-pagiedit" class="pagination">
+                              <c:if test="${startNum-1>0}">
+                                <li class="page-item" ><a class="page-link" href="?p=${startNum-1}&f=${param.f}&q=${param.q}">이전</a></li>
+                              </c:if>
+                              <c:if test="${startNum<=1}">
+                                <li class="page-item" ><a class="page-link" onclick="alert('첫번째 페이지입니다.')">이전</a></li>
+                              </c:if>
+                              
+                                <c:forEach var="i" begin="0" end="4">
+                                <c:if test="${(startNum+i) <= lastNum}">
+                                <li class="page-item ${(page==(startNum+i))?'active':''}"><a class="page-link" href="?p=${startNum+i}&f=${param.f}&q=${param.q}">${startNum+i}</a></li>
+                                </c:if>
+                                
+                                </c:forEach>
+                                <c:if test="${startNum+4<lastNum}">
+                                <li class="page-item"><a class="page-link" href="?p=${startNum+5}&f=${param.f}&q=${param.q}">다음</a></li>
+                                </c:if>
+                                <c:if test="${startNum+4>=lastNum}">
+                                <li class="page-item"><a class="page-link" onclick="alert('다음 페이지가 없습니다.')">다음</a></li>
+                                </c:if>
+                            </ul>
+                          </nav>
                           <div id="dbmanagement-btn-container">
                             <button id="dbmanagement-del-one" type="button" class="btn btn-primary" data-toggle="modal" data-target="#d-del-one">선택삭제</button>
                              <!--modal1-->
@@ -139,15 +146,7 @@
                             <button id="dbmanagement-del-all" type="button" class="btn btn-primary" OnClick="location.href ='addMovie.html'" >전체삭제</button>
                         </div>
 
-                          <nav id="dbmanagement-data-page" aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">다음</a></li>
-                            </ul>
-                          </nav>
+                          
                       </div>
                 </div>
 			

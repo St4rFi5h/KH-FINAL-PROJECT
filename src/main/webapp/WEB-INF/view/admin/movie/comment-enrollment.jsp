@@ -35,7 +35,7 @@
                         <div id="comment-move-enrollment" style="background-color: #3498DB;">
                             <h2>등록</h2>
                         </div>
-                        <div id="comment-move-cancel" OnClick="location.href ='comment-cansel.html'">
+                        <div id="comment-move-cancel" OnClick="location.href ='/admin/commentcansel'">
                             <h2>취소</h2>
                         </div>
                     </div>

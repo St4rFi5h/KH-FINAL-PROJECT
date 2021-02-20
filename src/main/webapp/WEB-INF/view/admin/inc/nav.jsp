@@ -46,7 +46,7 @@
                                     <ul>
                                        <li><a href='/admin/pickadd'><span>pick 추가</span></a></li>
                                        <li><a href='/admin/pickdelete'><span>pick 삭제</span></a></li>
-                                       <li><a href='/admin/commentmanagement'><span>코맨트 관리</span></a></li>
+                                       <li><a href='/admin/commentenroll'><span>코맨트 관리</span></a></li>
                                        <li class='last'><a href='/admin/moviemanagement'><span>영화DB 관리</span></a></li>
                                     </ul>
                                  </li>

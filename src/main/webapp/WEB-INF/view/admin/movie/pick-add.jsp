@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,13 +92,14 @@
                               
                             </tbody>
                           </table>
-                          <div style="margin-bottom:30px ">
-                              <span>현재페이지 1/1 page</span>
-                          </div>
-                          <nav id="addpick-data-page" aria-label="Page navigation example">
                               <c:set var="page" value="${(param.p == null)?1:param.p}"/>
                               <c:set var="startNum" value="${page-(page-1)%5}" />
-                              <c:set var="lastNum" value="200"/>
+                              <c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"/>
+                          <div style="margin-bottom:30px ">
+                              <span>현재페이지 ${(empty param.p)?1:param.p}</span>
+                              /${lastNum} page
+                          </div>
+                          <nav id="addpick-data-page" aria-label="Page navigation example">
                               <ul id="pagiedit" class="pagination">
                               <c:if test="${startNum-1>0}">
                                 <li class="page-item" ><a class="page-link" href="?p=${startNum-1}&f=${param.f}&q=${param.q}">이전</a></li>
@@ -106,14 +108,16 @@
                                 <li class="page-item" ><a class="page-link" onclick="alert('첫번째 페이지입니다.')">이전</a></li>
                               </c:if>
                               
-                              
                                 <c:forEach var="i" begin="0" end="4">
-                                <li class="page-item"><a class="page-link" href="?p=${startNum+i}&f=${param.f}&q=${param.q}">${startNum+i}</a></li>
-                                </c:forEach>
-                                <c:if test="${startNum+5<lastNum}">
-                                <li class="page-item"><a class="page-link" href="?p=${startNum+5}&f=&q=">다음</a></li>
+                                <c:if test="${(startNum+i) <= lastNum}">
+                                <li class="page-item ${(page==(startNum+i))?'active':''}"><a class="page-link" href="?p=${startNum+i}&f=${param.f}&q=${param.q}">${startNum+i}</a></li>
                                 </c:if>
-                                <c:if test="${startNum+5>=lastNum}">
+                                
+                                </c:forEach>
+                                <c:if test="${startNum+4<lastNum}">
+                                <li class="page-item"><a class="page-link" href="?p=${startNum+5}&f=${param.f}&q=${param.q}">다음</a></li>
+                                </c:if>
+                                <c:if test="${startNum+4>=lastNum}">
                                 <li class="page-item"><a class="page-link" onclick="alert('다음 페이지가 없습니다.')">다음</a></li>
                                 </c:if>
                               </ul>

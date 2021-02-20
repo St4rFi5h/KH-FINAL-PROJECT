@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.eutchapedia.admin.movie.dao.MovieDao;
+import kr.or.eutchapedia.admin.movie.entity.MovieCount;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.entity.StaffInfo;
 
@@ -32,6 +33,13 @@ public class MovieServiceImp implements MovieService {
 		List<MovieInfo> movielist = moviedao.getmovieList(field,query,page,amount);
 		return movielist;
 	}
+
+	@Override
+	public List<MovieCount> getmovieCount(String field, String query) {
+		List<MovieCount> moviecount = moviedao.getmovieCount(field,query);
+		return moviecount;
+	}
+
 
 	
 

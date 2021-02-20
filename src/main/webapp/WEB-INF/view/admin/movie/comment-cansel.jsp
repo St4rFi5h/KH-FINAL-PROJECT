@@ -33,7 +33,7 @@
                       </div>
 
                     <div id="comment-move-container">
-                        <div id="comment-move-enrollment" OnClick="location.href ='comment-enrollment.html'">
+                        <div id="comment-move-enrollment" OnClick="location.href ='/admin/commentenroll'">
                             <h2>등록</h2>
                         </div>
                         <div id="comment-move-cancel"style="background-color: #3498DB;">

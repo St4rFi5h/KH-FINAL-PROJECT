@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.or.eutchapedia.admin.movie.entity.MovieCount;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.service.MovieService;
 
@@ -49,19 +50,22 @@ public class AdminMovieController {
 		int amount = number*10;
 		
 		
-		
 		List<MovieInfo> movielist = service.getmovieList(field, query, page,amount);
+		
+		String count = null;
+		List<MovieCount> moviecount = service.getmovieCount(field,query);
+		if(!moviecount.isEmpty())
+			count = moviecount.get(moviecount.size() - 1).getNum();
+		System.out.println("총 갯수 : " + count);
+		
 		
 		
 		
 		model.addAttribute("movielist", movielist);
+		model.addAttribute("count",count);
 		return mv;
 	}
-	@RequestMapping("/pickadd/search")
-	public ModelAndView pickAddSearch(Model model,HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView("admin/movie/pick-add");
-		return mv;
-	}
+	
 		
 	@RequestMapping("/pickdelete")
 	public ModelAndView pickDelete() {
@@ -69,22 +73,52 @@ public class AdminMovieController {
 		return mv;
 		
 	}
-	@RequestMapping("/commentmanagement")
-	public ModelAndView commentManagement() {
+	@RequestMapping("/commentenroll")
+	public ModelAndView commentEnroll() {
 		ModelAndView mv = new ModelAndView("admin/movie/comment-enrollment");
 		return mv;
 		
 	}
+	@RequestMapping("/commentcansel")
+	public ModelAndView commentCansel() {
+		ModelAndView mv = new ModelAndView("admin/movie/comment-cansel");
+		return mv;
+		
+	}
+	
 	@RequestMapping("/moviemanagement")
-	public ModelAndView movieManagement(Model model) {
+	public ModelAndView movieManagement(Model model,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView("admin/movie/dbmanagement");
+		String field_ = req.getParameter("f");
+		String query_ = req.getParameter("q");
+		String number_ = req.getParameter("p");
+		String field = "title";
+		if(field_ != null && !field_.equals(""))
+			field = field_;
+		String query = "";
+		if(query_ != null && !query_.equals(""))
+			query = query_;
+		int number = 1;
+		
+		if(number_ != null && !number_.equals(""))
+			number = Integer.parseInt(number_);
+		int page = 1+(number-1)*10;
+		int amount = number*10;
+		
+		
+		List<MovieInfo> movielist = service.getmovieList(field, query, page,amount);
+		
+		String count = null;
+		List<MovieCount> moviecount = service.getmovieCount(field,query);
+		if(!moviecount.isEmpty())
+			count = moviecount.get(moviecount.size() - 1).getNum();
+		System.out.println("총 갯수 : " + count);
+		
+		model.addAttribute("movielist", movielist);
+		model.addAttribute("count",count);
+		
 		return mv;
 		
 	}
-	@RequestMapping("/moviemanagement/search")
-	public ModelAndView movieManagementSearch(Model model,HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView("admin/movie/dbmanagement");
-		return mv;
-		
-	}
+	
 }

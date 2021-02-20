@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import kr.or.eutchapedia.admin.movie.entity.MovieCount;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 
 @Repository
@@ -13,13 +14,22 @@ import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 public interface MovieDao {
 
 
-	List<MovieInfo> getmovieList(@Param("field")String field, @Param("query")String query,@Param("page")int page,@Param("amount")int amount);
+	List<MovieInfo> getmovieList(
+			@Param("field")String field, 
+			@Param("query")String query,
+			@Param("page")int page,
+			@Param("amount")int amount);
 
-
-
-	
-	
-	
-	
+	List<MovieCount> getmovieCount(
+			@Param("field")String field,
+			@Param("query")String query);
 
 }
+
+
+
+	
+	
+	
+	
+

@@ -19,8 +19,11 @@
 		<result column="PLOT" property="plot"/>
 		<result column="MOVIE_TRAILER" property="movie_trailer"/>
 		<result column="MOVIE_HIT_COUNT" property="movie_hit_count"/>
-		
 	</resultMap>
+	<resultMap type="kr.or.eutchapedia.admin.movie.entity.MovieCount" id="moviecount">
+	<result column="NUM" property="num"/>
+	</resultMap>
+		
 	<!-- movie리스트뽑아오기 -->
 	<select id="getmovieList"
 		resultMap="moviepage" parameterType="map">
@@ -34,7 +37,14 @@
 		WHERE NUM BETWEEN #{page} AND #{amount}
 
 	</select>
-	
+	<select id="getmovieCount" resultMap="moviecount" parameterType="map">
+	SELECT * FROM(
+		SELECT ROWNUM NUM, m.*
+		FROM (SELECT *
+		FROM MOVIE_INFO WHERE ${field} LIKE '%'||#{query}||'%'
+		) m
+		)
+	</select>
 
 
 
