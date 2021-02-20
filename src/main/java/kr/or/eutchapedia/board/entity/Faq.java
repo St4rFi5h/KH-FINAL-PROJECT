@@ -11,6 +11,17 @@ public class Faq {
 	public Faq() {
 	}
 
+
+	public Faq(int faqNo, String memberEmail, String faqTitle, String faqContent, String faqFiles, int faqPub) {
+		super();
+		this.faqNo = faqNo;
+		this.memberEmail = memberEmail;
+		this.faqTitle = faqTitle;
+		this.faqContent = faqContent;
+		this.faqFiles = faqFiles;
+		this.faqPub = faqPub;
+	}
+
 	public int getFaqNo() {
 		return faqNo;
 	}
