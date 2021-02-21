@@ -22,20 +22,10 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 
-	/*
-	@RequestMapping(value="/list")
-    public String boardList(Model model) throws Exception {
-        
-        List<NoticeVo> list = noticeService.boardList();    
-        model.addAttribute("list", list);
-        return "user/board/notice/notiboard";
-    }
-	*/
-	
 	@RequestMapping("/list")
 	public String boardList(Criteria cri, Model model) throws Exception {
 		List<NoticeVo> list = noticeService.boardList(cri);
-		int total = noticeService.totalCnt();
+		int total = noticeService.totalCnt(cri);
 
 		model.addAttribute("list", list);
 		model.addAttribute("paging", new Paging(cri, total));
@@ -47,7 +37,8 @@ public class NoticeController {
 	public String openInsertForm() {
 		return "/user/board/notice/notiboard(admin_write)";
 	}
-	// 등록 기능
+	
+	// 등록 기능 
 	@RequestMapping("/insert.do")
 	public String insertNotice(NoticeVo board) throws Exception {
 		noticeService.insertNotice(board);
@@ -77,7 +68,6 @@ public class NoticeController {
 		noticeService.deleteNotice(noticeIdx);
 		return "redirect:/notice/list";
 	}
-	
-	
+
 	
 }

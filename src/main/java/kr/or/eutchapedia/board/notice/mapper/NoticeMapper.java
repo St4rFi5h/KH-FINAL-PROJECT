@@ -9,7 +9,6 @@ import kr.or.eutchapedia.board.notice.domain.NoticeVo;
 
 @Mapper
 public interface NoticeMapper {
-	//public List<NoticeVo> boardList() throws Exception;
 	public int insertNotice(NoticeVo board) throws Exception;
 	public int updateNotice(NoticeVo board) throws Exception;
 	public int deleteNotice(int noticeIdx) throws Exception;

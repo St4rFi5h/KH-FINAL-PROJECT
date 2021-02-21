@@ -1,5 +1,6 @@
 package kr.or.eutchapedia.board.notice.domain;
 
+
 //게시판 하단의 페이징
 public class Paging {
 	
@@ -9,23 +10,29 @@ public class Paging {
 	private boolean next;
 	
 	private int total;
+	private int displayPageNum = 10;
+
 	private Criteria cri;
 	
 	public Paging(Criteria cri, int total) {
 		this.cri=cri;
 		this.total=total;
 		
-		this.endPage = (int)(Math.ceil(cri.getPageNum() / 10.0)) * 10;
-		this.startPage = getEndPage()-9;
+		this.endPage = (int)(Math.ceil(cri.getPageNum() / (double) displayPageNum) * displayPageNum);
+
+		this.startPage = (endPage - displayPageNum) + 1;
 		
-		int realEnd = (int)((Math.ceil(total / 1.0) / cri.getAmount()));
+		int realEnd = (int)(Math.ceil(total / (double)cri.getAmount()));
 
 		if(realEnd < endPage) {
 			this.endPage=realEnd;
 		}
 		
-		this.prev = getStartPage()>1;
-		this.next = getEndPage() < realEnd;
+		this.prev = this.startPage>1;
+		this.next = this.endPage < realEnd;
+		
+		prev= startPage == 1? false:true;
+		next = endPage * cri.getAmount() >= total ? false:true;
 	}
 	public Criteria getCri() {
 		return cri;
@@ -35,6 +42,21 @@ public class Paging {
 		this.cri = cri;
 	}
 
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+	public int getDisplayPageNum() {
+		return displayPageNum;
+	}
+
+	public void setDisplayPageNum(int displayPageNum) {
+		this.displayPageNum = displayPageNum;
+	}
 	public int getStartPage() {
 		return startPage;
 	}
@@ -76,6 +98,6 @@ public class Paging {
 	
 	
 	
-    
- 
+  
+
 }

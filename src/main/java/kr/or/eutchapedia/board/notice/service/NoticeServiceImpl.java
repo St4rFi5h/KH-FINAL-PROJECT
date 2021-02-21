@@ -35,14 +35,14 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeMapper.boardList(cri);
 	}
 
-	@Override
-	public int totalCnt() throws Exception {
-		return noticeMapper.totalCnt();
-	}
 
 	@Override
 	public NoticeVo boardDetail(int noticeIdx) throws Exception {
 		return noticeMapper.boardDetail(noticeIdx);
+	}
+	@Override
+	public int totalCnt(Criteria cri) throws Exception {
+		return noticeMapper.totalCnt();
 	}
 
 
