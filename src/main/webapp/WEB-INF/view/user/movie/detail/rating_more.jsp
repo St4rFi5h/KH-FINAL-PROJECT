@@ -135,8 +135,10 @@
         function selectOpt(option) {
         	var frm = document.getElementById("comment_overview");
             var dropDown = document.getElementById('sort-dropdown-select');
+            var nowPageValue = document.getElementById('nowPage').value;
+            var sortByValue = document.getElementById("sort-dropdown-select").value;
 
-            var formData = {movieDocId: 'F52167', nowPage: 1, sortBy:'Likes'};
+            var formData = {movieDocId: "${movieDocId}", nowPage: nowPageValue, sortBy: sortByValue};
 			
 			console.log(formData);
 			$.ajax({
