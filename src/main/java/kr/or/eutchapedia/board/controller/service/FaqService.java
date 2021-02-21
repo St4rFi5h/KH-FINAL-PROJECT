@@ -23,9 +23,6 @@ public interface FaqService {
 	// 자세한 페이지 요청할 때
 	FaqView getView(int faqNo);
 
-	Faq getNext(int faqNo);
-
-	Faq getPrev(int faqNo);
 
 	// 일괄공개를 요청할 때
 	int updateAll(int[] pubIds, int[] closeIds);

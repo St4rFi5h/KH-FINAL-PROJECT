@@ -56,17 +56,6 @@ public class FaqServiceImp implements FaqService{
 		return faq;
 	}
 
-	@Override
-	public Faq getNext(int faqNo) {
-		// TODO Auto-generated method stub
-		return faqDao.getNext(faqNo);
-	}
-
-	@Override
-	public Faq getPrev(int faqNo) {
-		// TODO Auto-generated method stub
-		return faqDao.getPrev(faqNo);
-	}
 
 	@Override
 	public int updateAll(int[] pubIds, int[] closeIds) {

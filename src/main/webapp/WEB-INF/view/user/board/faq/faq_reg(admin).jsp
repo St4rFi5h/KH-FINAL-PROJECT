@@ -71,7 +71,7 @@
                                 <a href="">공지사항</a>
                             </li>
                             <li class="list_menu on">
-                                <a href="faq_list(admin).html">자주하는 질문</a>
+                                <a href="faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu">
                                 <a href="">1:1 문의</a>
@@ -86,14 +86,13 @@
                 </div>
                 
                 <div class="xans-board-write">
-                <form name="fm" id="fm" method="post" action="/shop/mypage/indb.php" enctype="multipart/form-data" onsubmit="return chkForm(this)" style="height: 100%;">
+                <form action="faq_reg(admin)" method = "POST" enctype="multipart/form-data" onsubmit="return chkForm(this)" style="height: 100%;">
                 <input type="hidden" name="mode" value="add_qna">
                 <input type="hidden" name="itemcd" value="">
                 <input type="hidden" name="sno" value="0">
                 <table id="table_after" class="boardWrite2" width="100%">
                 <colgroup><col width="14%" align="right">
                 </colgroup><tbody><tr>
-              
                 <th class="input_txt" style="padding-top:20px;">제목</th>
                 <td><br>
                 <input type="text" name="subject" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="">
@@ -105,8 +104,6 @@
                 <strong class="tit qna_public"></strong>             
                 <dl class="list qna_public">
                 </dl>
-                
-                
                 
                 <!-- <textarea name="contents" style="width:100%;height:474px;" class="editing_area" required="" fld_esssential="" label="내용"></textarea> -->
                 <textarea name="ir1" id="ir1" rows="10" cols="137">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>

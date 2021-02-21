@@ -27,7 +27,23 @@
 		WHERE FAQ_NO=#{faqNo}
 	</update>
 	<insert id="insert" parameterType="kr.or.eutchapedia.board.entity.Faq">
-		
+		INSERT INTO FAQ(
+			FAQ_NO
+			,MEMBER_EMAIL
+			,FAQ_TITLE
+			,FAQ_CONTENT
+			,FAQ_PUB
+			,FAQ_FILES
+			,FAQ_REGDATE
+		) VALUES (
+			#{faqNo}
+			,#{memberEmail}
+			,#{faqTitle}
+			,#{faqContent}
+			,#{faqPub}
+			,#{faqFiles}
+			,#{faqRegdate}
+		)
 	</insert>
 	<delete id="delete" parameterType="kr.or.eutchapedia.board.entity.Faq">
 		DELETE FAQ WHERE FAQ_NO=#{faqNo}
