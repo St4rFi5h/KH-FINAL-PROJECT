@@ -95,7 +95,6 @@
                         </h3>
                         <div class="tt_tbl"></div>
                     </div>
-                    <form name="notiboard_frm" id="notiFrm" action="">
                         <div class="accordion_banner" id="tbl_notice">
                             <div class="tbl_notice_tit">
                                 <div class="tbl_notice_info">
@@ -151,7 +150,7 @@
 							<div class="pagination_section">
                                 <div class="custom_pagination">
 		                            <c:if test="${paging.prev }">
-	                                    <span class="pagination_prev disabled">
+	                                    <span class="pagination_button prev">
 	                                        <a href="${paging.startPage - 1 }">
 	                                            <ruler-svg-icon-prev>
 	                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -165,10 +164,10 @@
 	                                    </span>
 	                                </c:if>
 	                                <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="num">
-        								<span class="pagenum"><a href="${num }">${num }</a></span>
+        								<span class="paginate_button pagenum" ${paging.cri.pageNum == num ? "active":"" }><a href="${num }">${num }</a></span>
    									 </c:forEach>
    									 <c:if test="${paging.next }">
-	                                    <span class="pagination_next">
+	                                    <span class="paginate_button next">
 	                                        <a href="${paging.endPage + 1 }">
 	                                            <ruler-svg-icon-next width="11" height="22" stroke="#000">
 	                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -183,13 +182,12 @@
 	                                 </c:if>
                                 </div>
                                 
-                                <form id="pagingFrm" name="pagingForm" action="/notice/list" method="get">
+                                <form id="pagingFrm" name="pagingFrm" action="/notice/list" method="get">
 									<input type="hidden" id="pageNum" name="pageNum" value="${paging.cri.pageNum }">
 									<input type="hidden" id="amount" name="amount" value="${paging.cri.amount }">
 								</form>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -265,5 +263,19 @@
             }
         });
     });
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var actionForm = $("#pagingFrm");
+		
+		$(".paginate_button a").on("click", function(e){
+			e.preventDefault();
+			console.log('click');
+			
+			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+			actionForm.submit();
+		});
+
+	});
 </script>
 </html>

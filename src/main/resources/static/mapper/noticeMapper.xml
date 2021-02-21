@@ -14,11 +14,13 @@
 							, NOTICE_PUB
 					FROM (
 						SELECT /*+INDEX_DESC(NOTICE PK_BOARD) */
-								ROWNUM RNUM, NOTICE_NO, member_email, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_FILES, NOTICE_PUB
+								ROW_NUMBER() OVER (ORDER BY NOTICE_NO DESC) RNUM
+								, NOTICE_NO, member_email, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_FILES, NOTICE_PUB
 							FROM NOTICE
 							WHERE ROWNUM <= #{pageNum} * #{amount}
 						)
 					WHERE RNUM > (#{pageNum}-1) * #{amount}
+						ORDER BY NOTICE_NO DESC
 				]]>
 	</select>
 	<select id="totalCnt" resultType="int">

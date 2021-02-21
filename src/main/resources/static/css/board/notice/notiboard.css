@@ -241,20 +241,15 @@
     text-decoration: none;
 }
 
-.custom_pagination .pagination_prev {
-    position: absolute;
+.custom_pagination .pagination_button {
     left: 0;
     margin: -11px 10px 0;
 }
 
-.custom_pagination .pagination_next {
-    position: absolute;
-    right: 0;
-    margin: -11px 10px 0;
-}
 
-.custom_pagination .pagination_prev,
-.custom_pagination .pagination_next {
+
+.pagination_button prev,
+.pagination_button next {
     display: inline-block;
     width: 22px;
     margin: 0 10px;

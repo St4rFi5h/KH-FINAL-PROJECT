@@ -36,7 +36,7 @@ public class NoticeController {
 	public String boardList(Criteria cri, Model model) throws Exception {
 		List<NoticeVo> list = noticeService.boardList(cri);
 		int total = noticeService.totalCnt();
-		
+
 		model.addAttribute("list", list);
 		model.addAttribute("paging", new Paging(cri, total));
 		return "/user/board/notice/notiboard";

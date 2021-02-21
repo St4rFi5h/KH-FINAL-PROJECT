@@ -8,20 +8,24 @@ public class Paging {
 	private boolean prev;
 	private boolean next;
 	
+	private int total;
 	private Criteria cri;
 	
 	public Paging(Criteria cri, int total) {
 		this.cri=cri;
-		int realEnd = (int)(Math.ceil((total * 1.0) / cri.getAmount()));
-		this.endPage = (int)(Math.ceil(cri.getPageNum() / 10.0) * 10);
+		this.total=total;
+		
+		this.endPage = (int)(Math.ceil(cri.getPageNum() / 10.0)) * 10;
 		this.startPage = getEndPage()-9;
 		
-		if(realEnd < this.endPage) {
+		int realEnd = (int)((Math.ceil(total / 1.0) / cri.getAmount()));
+
+		if(realEnd < endPage) {
 			this.endPage=realEnd;
 		}
 		
-		this.next = getEndPage() < realEnd;
 		this.prev = getStartPage()>1;
+		this.next = getEndPage() < realEnd;
 	}
 	public Criteria getCri() {
 		return cri;
