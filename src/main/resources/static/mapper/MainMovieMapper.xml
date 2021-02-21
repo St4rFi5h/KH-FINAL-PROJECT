@@ -23,7 +23,15 @@
 		ON mr.fk_movie_docid = mi.movie_docid
 		WHERE mr.movie_platform = 'W'
 	</select>
-
+	
+	<!-- 넷플릭스 순위 -->
+	<select id="selectNetflixList" resultMap="movieInfo" parameterType="map">
+		SELECT mi.*,mr.* FROM movie_ranking mr
+		JOIN movie_info mi
+		ON mr.fk_movie_docid = mi.movie_docid
+		WHERE mr.movie_platform = 'N'
+	</select>
+	
 	<!-- 평균 별점, 사용자 명수 -->
 	<select id="selectStarAvg" parameterType="String"
 		resultType="HashMap">
@@ -33,8 +41,7 @@
 	</select>
 
 	<!-- resultmap -->
-	<resultMap type="kr.or.eutchapedia.main.entity.MovieInfoVo"
-		id="movieInfo">
+	<resultMap type="kr.or.eutchapedia.main.entity.MovieInfoVo" id="movieInfo">
 		<result column="movie_docid" property="movieDocId" />
 		<result column="title" property="title" />
 		<result column="title_org" property="titleOrg" />
@@ -47,11 +54,9 @@
 		<result column="plot" property="plot" />
 		<result column="movie_trailer" property="movieTrailer" />
 		<result column="movie_hit_count" property="movieHitCount" />
-		<result column="movie_ranking_index"
-			property="movie_ranking_index" />
+		<result column="movie_ranking_index" property="movie_ranking_index" />
 		<result column="movie_ranking" property="movie_Ranking" />
-		<result column="movie_platform"
-			property="movie_platform" />
+		<result column="movie_platform" property="movie_platform" />
 
 
 	</resultMap>

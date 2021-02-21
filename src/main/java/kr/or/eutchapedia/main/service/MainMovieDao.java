@@ -60,4 +60,16 @@ public class MainMovieDao {
 		}
 		
 		
+		//넷플릭스 순위 
+
+		public List<MovieInfoVo> selectNetflixList() {
+			
+			List<MovieInfoVo> netflixList = mapper.selectNetflixList();
+		
+			
+			return netflixList;
+		}
+		
+		
+		
 }
