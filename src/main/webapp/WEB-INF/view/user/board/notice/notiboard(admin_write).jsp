@@ -98,7 +98,7 @@
                     <div class="page_section section_qna">
 
                         <div class="xans-board-write">
-                            <form name="fm" id="fm" method="post" action="/shop/mypage/indb.php" enctype="multipart/form-data" onsubmit="return chkForm(this)" style="height: 100%;">
+                            <form name="fm" id="fm" method="post" action="/notice/insert.do" enctype="multipart/form-data" onsubmit="return chkForm(this)" style="height: 100%;">
                                 <input type="hidden" name="mode" value="add_qna">
                                 <input type="hidden" name="itemcd" value="">
                                 <input type="hidden" name="sno" value="0">
@@ -109,7 +109,7 @@
 
                                         <th class="input_txt" style="padding-top:20px;">제목</th>
                                         <td><br>
-                                        <input type="text" name="subject" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="">
+                                        <input type="text" id="title" name="title" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="">
                                         </td>
                                         </tr>
                                         <tr>
@@ -168,7 +168,7 @@
                                         <table width="60%">
                                         <tbody><tr>
                                         <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
-                                            <input type="submit" class="bhs_button yb" value="저장" style="float:none;">
+                                            <input type="submit" id="submit" class="bhs_button yb" value="저장" style="float:none;">
                                             <a href="">
                                                 <input type="button" class="cancel_btn" value="취소"/>
                                             </a>
