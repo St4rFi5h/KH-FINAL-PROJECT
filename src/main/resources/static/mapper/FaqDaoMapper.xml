@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.eutchapedia.board.dao.FaqDao">
+	<select id="getViewList" resultType="kr.or.eutchapedia.board.entity.FaqView">
+		SELECT * FROM (
+		SELECT ROWNUM NUM, F.* 
+		FROM (SELECT * FROM FAQ_VIEW 
+        WHERE ${field} LIKE '%${query}%' 
+        ORDER BY FAQ_REGDATE DESC) F 
+        ) 
+        WHERE NUM BETWEEN #{offset} AND #{size}
+	</select>
+	<select id="getCount">
+		SELECT COUNT(FAQ_NO) COUNT FROM FAQ 
+        WHERE ${field} LIKE '%${query}%' 
+	</select>
+	<select id="getView" resultType="kr.or.eutchapedia.board.entity.FaqView">
+		SELECT * FROM FAQ 
+        WHERE FAQ_NO=#{faqNo}
+	</select>
+	<update id="update" parameterType="kr.or.eutchapedia.board.entity.Faq">
+		UPDATE FAQ SET 
+			FAQ_TITLE=#{faqTitle}, 
+			FAQ_CONTENT=#{faqContent} 
+		WHERE FAQ_NO=#{faqNo}
+	</update>
+	<insert id="insert" parameterType="kr.or.eutchapedia.board.entity.Faq">
+		
+	</insert>
+	<delete id="delete" parameterType="kr.or.eutchapedia.board.entity.Faq">
+		DELETE FAQ WHERE FAQ_NO=#{faqNo}
+	</delete>
+	
+</mapper>

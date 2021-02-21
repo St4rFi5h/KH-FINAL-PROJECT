@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.eutchapedia.board.controller.service.FaqService;
 import kr.or.eutchapedia.board.entity.Faq;
+import kr.or.eutchapedia.board.entity.FaqView;
 import oracle.net.ano.Service;
 
 
@@ -22,7 +23,7 @@ public class FaqController {
 	@RequestMapping("faq_list") 
 	public String list(Model model) {
 				
-		List<Faq> list = service.getList();
+		List<FaqView> list = service.getViewList();
 		model.addAttribute("list", list);
 		
 		return "/user/board/faq/faq_list";  
