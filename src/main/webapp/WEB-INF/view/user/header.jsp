@@ -13,7 +13,7 @@
           <div class="menu">
             <ul>
               <li><a href="aboutus">ABOUT US</a></li>
-              <li><a href="movierate">평가하기</a></li>
+              <li><a href="movie/movierate">평가하기</a></li>
               <li><a href="faq_list">고객센터</a></li>
             </ul>
           </div>
@@ -36,7 +36,7 @@
           <div class="menu">
             <ul>
               <li><a href="login">로그인</a></li>
-              <li><a href="#">회원가입</a></li>
+              <li><a href="form">회원가입</a></li>
             </ul>
           </div>
           
