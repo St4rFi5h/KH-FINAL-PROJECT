@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -260,7 +262,10 @@
 	                  <div class="rank">${MovieInfoVo.movie_Ranking}</div>
 	                  <div class="movie_info">
 	                    <h4 class="movie_title">${MovieInfoVo.title}</h4>
-	                    <p><div class="movie_yearNnation">${MovieInfoVo.prodYear}<span>·</span>${MovieInfoVo.nation}</div></p>
+	                    <p><div class="movie_yearNnation">
+	                    <fmt:parseDate value='${MovieInfoVo.prodYear}' var='prodYear' pattern="yyyyMMdd" scope="page"/>
+	                    <fmt:formatDate value="${prodYear}" pattern="yyyy"/>
+	                    <span>·</span>${MovieInfoVo.nation}</div></p>
 	                    <p><div class="movie_average">평균<span>★</span>평점</div></p>
 	                  </div>
 	                </div>
@@ -285,8 +290,10 @@
 		                  <div class="rank">${MovieInfoVo.movie_Ranking}</div>
 		                  <div class="movie_info">
 		                    <h4 class="movie_title">${MovieInfoVo.title}</h4>
-		                    <p>
-		                    <div class="movie_yearNnation">${MovieInfoVo.prodYear}<span>·</span>${MovieInfoVo.nation}</div>
+		                    <p><div class="movie_yearNnation">
+		                    <fmt:parseDate value='${MovieInfoVo.prodYear}' var='prodYear' pattern="yyyyMMdd" scope="page"/>
+	                    	<fmt:formatDate value="${prodYear}" pattern="yyyy"/>
+		                    <span>·</span>${MovieInfoVo.nation}</div>
 		                    </p>
 		                    <p>
 		                    <div class="movie_average">평균<span>★</span>3.1</div>
