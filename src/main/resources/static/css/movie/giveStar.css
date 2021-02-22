@@ -21,7 +21,7 @@ ul{
     
     background-color: white;
     width: 600px;
-    height: 600px;
+    height: 1800px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 110px;
@@ -30,9 +30,9 @@ ul{
 }
 
 .modal_button {
-    float: right;
+
     position: relative;
-    right: -290px;
+    right: -450px;
 }
 
 
@@ -151,11 +151,16 @@ padding: 0px;
 {
     background-color: white;
     width: 600px;
-    height: 600px;
+    height: 1200px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
+  
+  
+  #mid_wrap{
+  	background: white;
+  }
   
 #modal_btn{
     cursor: pointer;
@@ -316,7 +321,7 @@ padding: 0px;
     }
 
 
-/* 蹂꾩젏 */
+/* 癰귢쑴�젎 */
 .star {
     cursor: pointer;
 }
@@ -351,7 +356,7 @@ padding: 0px;
 
 
 
-/* 吏��쁽�떂 css */
+/* 筌욑옙占쎌겱占쎈뻷 css */
 #button-for-signup {
     background-color: rgb(255, 7, 88);
     color: white;

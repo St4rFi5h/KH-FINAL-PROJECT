@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,32 +52,17 @@
                 </tr>
               </thead>
               <tbody  >
+                 <c:forEach var="m" items="${memberlist}" end="10">
                 <tr>
                   <th scope="row">1</th>
                   <td> <input class="form-check-input" type="checkbox" value="" id="userSelect"></td>
-                  <td>이은규</td>
-                  <td>cuteeungyu@naver.com</td>
-                  <td>영구정지</td>
-                  <td>2021/02/01</td>
+                  <td>${m.memberNickname}</td>
+                  <td>${m.memberEmail}</td>
+                  <td>${m.memberStatus}</td>
+                  <td>${m.memberJoinRoute}</td>
                 </tr>
+ 			 </c:forEach>
 
-                <tr>
-                  <th scope="row">2</th>
-                  <td> <input class="form-check-input" type="checkbox" value="" id="userSelect"></td>
-                  <td>백종웅</td>
-                  <td>jjeremy@naver.com</td>
-                  <td>없음</td>
-                  <td>2021/02/01</td>
-                </tr>
-
-                <tr>
-                  <th scope="row">3</th>
-                  <td> <input class="form-check-input" type="checkbox" value="" id="userSelect"></td>
-                  <td>방부제</td>
-                  <td>bang@naver.com</td>
-                  <td>코멘트차단</td>
-                  <td>2021/02/01</td>
-                </tr>
               </tbody>
             </table>
             </br></br></br></br></br></br></br></br>
