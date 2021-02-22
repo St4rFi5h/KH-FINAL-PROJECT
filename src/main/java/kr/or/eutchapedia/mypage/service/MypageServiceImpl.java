@@ -1,7 +1,9 @@
 package kr.or.eutchapedia.mypage.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,7 +82,32 @@ public class MypageServiceImpl implements MypageService {
 		
 		vo = Dao.getMemberinfo(memberemail);
 		
-		
 		return vo;
+	}
+
+	@Override
+	public Map<String, Object> getmostRatedStar(String memberemail) {
+		
+		Map<String, Object> getmostRatedStar = new HashMap<String, Object>();
+		
+		getmostRatedStar = Dao.selectmostRatedStar(memberemail);
+		return getmostRatedStar;
+	}
+
+	@Override
+	public List<Map<String, Object>> getStarNum(String memberemail) {
+		
+		List<Map<String,Object>> map = new ArrayList<Map<String, Object>>();
+		
+		map = Dao.selectStarNum(memberemail);
+		return map;
+	}
+
+	@Override
+	public List<Map<String, Object>> getdoughnutNum(String memberemail) {
+		
+		List<Map<String, Object>> map = new ArrayList<Map<String, Object>>();
+		map = Dao.selectDoughnutNum(memberemail);
+		return map;
 	}
 }

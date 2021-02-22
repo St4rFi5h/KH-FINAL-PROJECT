@@ -164,9 +164,11 @@ background-color : rgb(255,153,153);
 .right1-box {
   max-height: 220px;
   min-height: 220px;
+  margin-bottom: 10px;
 }
 
 .right1-box-text {
+font-weight:bold;
   width: 550px;
   height: 30px;
   display: flex;
@@ -181,6 +183,7 @@ background-color : rgb(255,153,153);
 }
 
 .right2 {
+	margin-top: 30px;
   height: 280px;
 }
 

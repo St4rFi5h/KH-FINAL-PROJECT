@@ -1,6 +1,7 @@
 package kr.or.eutchapedia.mypage.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -30,5 +31,14 @@ public interface MypageDao {
 	
 	//메인 평가한작품 & 취향분석 관련
 	public List<StarRatingForMainVo> getratinginfo(String memberemail);
+	
+	//가장많이평가한별
+	public Map<String, Object> selectmostRatedStar(String memberemail);
+	
+	//별점별로 개수구하기
+	public List<Map<String, Object>> selectStarNum(String memberemail);
+	
+	//장르별 건수
+	public List<Map<String, Object>> selectDoughnutNum(String memberemail);
 
 }

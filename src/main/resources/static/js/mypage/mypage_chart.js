@@ -5,28 +5,39 @@ var ctx3 = document.getElementById('myChart');
 var myChart = new Chart(ctx3, { 
     type: 'bar', 
     data: { labels: ['', '1', '', '2', '', '3','','4','','5'], 
-            datasets: [{ label: '별점분포', data: [22, 19, 45, 50, 85, 44, 46, 12, 88, 63], 
+            datasets: [{ label: '별점분포', 
+						 data: [
+							22, 
+							19, 
+							45, 
+							50, 
+							85, 
+							44, 
+							46, 
+							12, 
+							88, 
+							63], 
             backgroundColor: [ 'rgba(255, 204, 000)', 
-                              'rgba(255, 204, 000)', 
-                              'rgba(255, 204, 000)', 
-                              'rgba(255, 204, 000)', 
-                              'rgba(255, 204, 000)', 
-                              'rgba(255, 204, 000)',
-                              'rgba(255, 204, 000)',
-                              'rgba(255, 204, 000)',
-                              'rgba(255, 204, 000)',
-                              'rgba(255, 204, 000)'
+                               'rgba(255, 204, 000)', 
+                               'rgba(255, 204, 000)', 
+                               'rgba(255, 204, 000)', 
+                               'rgba(255, 204, 000)', 
+                               'rgba(255, 204, 000)',
+                               'rgba(255, 204, 000)',
+                               'rgba(255, 204, 000)',
+                               'rgba(255, 204, 000)',
+                               'rgba(255, 204, 000)'
                              ], 
-            borderColor: [ 'rgba(255, 204, 000)', 
-            'rgba(255, 204, 000)', 
-            'rgba(255, 204, 000)', 
-            'rgba(255, 204, 000)', 
-            'rgba(255, 204, 000)', 
-            'rgba(255, 204, 000)',
-            'rgba(255, 204, 000)',
-            'rgba(255, 204, 000)',
-            'rgba(255, 204, 000)',
-            'rgba(255, 204, 000)'], 
+            borderColor: [     'rgba(255, 204, 000)', 
+					           'rgba(255, 204, 000)', 
+					           'rgba(255, 204, 000)', 
+					           'rgba(255, 204, 000)', 
+					           'rgba(255, 204, 000)', 
+					           'rgba(255, 204, 000)',
+					           'rgba(255, 204, 000)',
+					           'rgba(255, 204, 000)',
+					           'rgba(255, 204, 000)',
+					           'rgba(255, 204, 000)'], 
             borderWidth: 1 
             }] 
           }, 
@@ -54,10 +65,10 @@ var myChart = new Chart(ctx3, {
 //도넛,파이 작성 2
         var num = Math.random(); 
         var data = { 
-          labels: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"], 
+          labels: ["공포", "기타", "드라마", "멜로/로맨스", "액션/스릴러/범죄", "코메디", "판타지/SF"], 
           datasets: [ { 
             data: [ 
-              
+              Math.random(), 
               Math.random(), 
               Math.random(), 
               Math.random(), 
@@ -65,7 +76,7 @@ var myChart = new Chart(ctx3, {
               Math.random(), 
               Math.random() ], 
             backgroundColor: [ 
-              "#f79546", "#9bba57", "#4f81bb", "#5f497a", "#a94069", "#ff5f34", "#41774e", "#003663", "#49acc5", "#c0504e" ], 
+              "#f79546", "#9bba57", "#4f81bb", "#5f497a", "#a94069", "#ff5f34", "#41774e"], 
             borderWidth: 0, 
             label: "Dataset 1" 
           }] 

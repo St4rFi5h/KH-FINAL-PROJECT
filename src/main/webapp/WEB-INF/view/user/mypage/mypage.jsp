@@ -86,8 +86,7 @@
                 <div class="center1">
                     <p></p>
                     <h4>영화</h4>
-                    <span class='sub-title'>보고싶어요</span><span class='starcount'> 156 </span>
-                    <!-- center1박스 부분 디브 시작!!! -->
+                    <span class='sub-title'>보고싶어요</span><span class='starcount'> ${wannacount } </span>
 		                    <a href='/mypage/wannawatch'> <!-- 보고싶어요 링크 이동 -->
 				            	<div class='center1-box'>
                     	<c:forEach var="n" items="${wannawatch}" begin="1" end="8">
@@ -95,12 +94,10 @@
                     	</c:forEach> 
 				                </div>
 		                    </a>
-                    <!-- center1박스 부분 디브 끝!!! -->
                 </div>
 
                 <div class="center2">
-                    <span class='sub-title'>평가한 작품</span><span class='starcount'> 251 </span>
-                    <!-- center2박스 부분 디브 시작!!! -->
+                    <span class='sub-title'>평가한 작품</span><span class='starcount'> ${ratedStarNum } </span>
                     <a href='/mypage/ratedmovies'> <!-- 평가한작품 링크 이동 -->
 		                    <div class='center2-box'>
                     	<c:forEach var="star" items="${star}" begin="1" end="8">
@@ -108,7 +105,6 @@
                     	</c:forEach> 
 		                    </div>
                      </a>
-                    <!-- center2박스 부분 디브 끝!!! -->
                 </div>
             </div>
 
@@ -123,9 +119,9 @@
                       <canvas id="myChart"></canvas> 
                     </div>
                     <div class="right1-box-text">
-                      <p >3.9<br>별점평균</p>
-                      <p >125<br>별점개수</p>
-                      <p >3.5<br>많이 준 별점</p>
+                      <p >${avg }<br>별점평균</p>
+                      <p >${ratedStarNum }<br>별점개수</p>
+                      <p >${mostRatedStar.star }<br>많이 준 별점</p>
                     </div>
                 </div>
                 <div class="right2">
@@ -149,7 +145,160 @@
     <script src="/js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/mypage/mypage_chart.js"></script>
+<!--<script src="/js/mypage/mypage_chart.js"></script>--> 
+    <script>
+    var ctx4 =document.getElementById('myChart2');
+    var ctx3 = document.getElementById('myChart');
+
+    var ratedNum = [];	
+
+    <c:forEach var="n" items="${graphMap}">
+    	ratedNum.push('${n.starCount}');
+    </c:forEach>
+    
+    //막대그래프
+    var myChart = new Chart(ctx3, { 
+        type: 'bar', 
+        data: { labels: ['', '1', '', '2', '', '3','','4','','5'], 
+                datasets: [{ label: '별점분포', data: ratedNum, 
+                backgroundColor: [ 'rgba(255, 204, 000)', 
+                                   'rgba(255, 204, 000)', 
+                                   'rgba(255, 204, 000)', 
+                                   'rgba(255, 204, 000)', 
+                                   'rgba(255, 204, 000)', 
+                                   'rgba(255, 204, 000)',
+                                   'rgba(255, 204, 000)',
+                                   'rgba(255, 204, 000)',
+                                   'rgba(255, 204, 000)',
+                                   'rgba(255, 204, 000)'
+                                 ], 
+                borderColor: [     'rgba(255, 204, 000)', 
+    					           'rgba(255, 204, 000)', 
+    					           'rgba(255, 204, 000)', 
+    					           'rgba(255, 204, 000)', 
+    					           'rgba(255, 204, 000)', 
+    					           'rgba(255, 204, 000)',
+    					           'rgba(255, 204, 000)',
+    					           'rgba(255, 204, 000)',
+    					           'rgba(255, 204, 000)',
+    					           'rgba(255, 204, 000)'], 
+                borderWidth: 1 
+                }] 
+              }, 
+          options: { 
+            maintainAspectRatio : false,
+            legend : {display : false},
+            scales: { 
+              xAxes: [{
+                gridLines: {
+                display:false
+                }
+              }],
+              yAxes: [{ 
+                ticks: { 
+                  beginAtZero: true,
+                  stepSize : 30 },
+                gridLines: {
+                  display:false
+                }
+                   }] 
+                  } 
+                } 
+              }
+            ); 
+    //도넛,파이 작성 2
+    		var genre = [];
+    		var num = [];
+
+    	    <c:forEach var="n" items="${doughnutMap}">
+    	    	genre.push('${n.genre}');
+    	    </c:forEach>
+
+    	    <c:forEach var="n" items="${doughnutMap}">
+    	    	num.push('${n.count}');
+    	    </c:forEach>
+    	    
+            var data = { 
+              labels: genre, 
+              datasets: [ { 
+                data: num, 
+                backgroundColor: [ 
+                  "#f79546", "#9bba57", "#4f81bb", "#5f497a", "#a94069", "#ff5f34", "#41774e"], 
+                borderWidth: 0, 
+                label: "Dataset 1" 
+              }] 
+            }; 
+            window.onload = function() { 
+              var ctx8 = $('#myChart2').get(0).getContext("2d"); 
+              window.theChart8 = new Chart(
+                ctx8, { 
+                  type: 'doughnut', 
+                  data: data, 
+                  options: { 
+                    responsive: true, 
+                    legend: false, 
+                    maintainAspectRatio : false, 
+                    animation: false, 
+                    pieceLabel: { 
+                      mode:"label", 
+                      position:"border", 
+                      fontSize: 11, 
+                      fontStyle: 'bold' } 
+                    } 
+                  }
+                )
+            };
+
+
+    /*
+        //도넛차트 
+        var myChart2 = new Chart(ctx4, { 
+        type: 'doughnut', 
+        data: { labels: ['로맨스', '액션', '호러', '다큐', '애니매이션'], 
+                datasets: [{ label: '별점분포', data: [22, 19, 45, 50, 85], 
+                backgroundColor: [ 
+                'rgba(051, 204, 102)', 
+                'rgba(000, 102, 051)', 
+                'rgba(000, 153, 102)', 
+                'rgba(051, 153, 102)', 
+                'rgba(051, 204, 153)' 
+                                    
+                                 ], 
+                borderColor: [ 
+                  'rgba(051, 204, 102)',
+                  'rgba(000, 102, 051)',
+                  'rgba(000, 153, 102)',
+                  'rgba(051, 153, 102)',
+                  'rgba(051, 204, 153)'], 
+                borderWidth: 1 
+                }] 
+              }, 
+          options: { 
+            maintainAspectRatio : false,
+            legend : {display : false},
+            scales: { 
+              xAxes: [{
+                gridLines: {
+                display:false
+                }
+               
+              }],
+              yAxes: [{ 
+                ticks: { 
+                  beginAtZero: true,
+                  stepSize : 30 },
+                gridLines: {
+                  display:false
+                }
+                
+                   }] 
+                  } 
+                } 
+              }
+            ); 
+
+            */
+    </script>
   </body>
     
 </html>

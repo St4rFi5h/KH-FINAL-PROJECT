@@ -1,8 +1,9 @@
 package kr.or.eutchapedia.mypage.controller;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,10 +33,46 @@ public class MypageController {
 		List<WannaWatchVo> ww = new ArrayList<WannaWatchVo>();
 		List<StarRatingForMainVo> sr = new ArrayList<StarRatingForMainVo>();
 		MemberVo vo = new MemberVo();
+		Map<String,Object> mostRatedStar = new HashMap<String,Object>();
+		List<Map<String,Object>> graphMap = new ArrayList<Map<String, Object>>();
+		List<Map<String,Object>> doughnutMap = new ArrayList<Map<String, Object>>();
 		
 		vo = service.getMemberinfo(memberemail);
 		ww = service.wannawatch(memberemail);
 		sr = service.getratinginfo(memberemail);
+		mostRatedStar = service.getmostRatedStar(memberemail);
+		graphMap = service.getStarNum(memberemail);
+		doughnutMap = service.getdoughnutNum(memberemail);
+		
+		// 보고싶어요 개수
+		
+		int wannacount  = ww.size();
+		
+		// 별점영역필요로직
+		int ratedStarNum = sr.size(); //평가개수 
+		
+		float avg = 0; 
+		float point = 0;
+		float pointsum = 0;
+		
+		for(int i=0; i<sr.size(); i++) {
+			point = Float.parseFloat(sr.get(i).getStarRating());
+			pointsum += point;
+		}
+		
+		avg = pointsum / ratedStarNum; //별점평균
+		
+		// 별점개수뽑아보자
+		for(int i=0; i<graphMap.size(); i++) {
+			
+			System.out.println(graphMap.get(i).get("starRating")  );
+			System.out.println( graphMap.get(i).get("starCount")  );
+		}
+		
+		for(int i=0; i<sr.size(); i++) {
+			point = Float.parseFloat(sr.get(i).getStarRating());
+			pointsum += point;
+		}
 		
         // 영화감상시간계산로직
 		int sum=0; 
@@ -45,16 +82,23 @@ public class MypageController {
 			time = Integer.parseInt(sr.get(i).getMovieRunningTime());
 			sum += time;
 		}
-		int hour = sum/60; 
-		int minute = sum%60; 
-		System.out.println(hour +" 시간 " + minute +" 분 ");
+		int hour = sum / 60;
+		int minute = sum % 60; 
 		
+		System.out.println(hour +" 시간 " + minute +" 분 ");
+		System.out.println(mostRatedStar.get("star"));
 		
 		mv.addObject("member", vo);
 		mv.addObject("wannawatch", ww);
 		mv.addObject("star", sr);
 		mv.addObject("hour", hour);
 		mv.addObject("minute", minute);
+		mv.addObject("wannacount", wannacount);
+		mv.addObject("ratedStarNum", ratedStarNum);
+		mv.addObject("mostRatedStar", mostRatedStar);
+		mv.addObject("avg", avg);
+		mv.addObject("graphMap", graphMap);
+		mv.addObject("doughnutMap", doughnutMap);
 		mv.setViewName("/user/mypage/mypage");
 		return mv;
 	}
