@@ -2,16 +2,9 @@ var page = 2;
 var dataloading = false;
 var genre = $("#select-search option:selected").val();
 
-$(window).scroll(function() {
-    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-      console.log(++page);
-      $("body").append('<div class="movielist"><h1>Page ' + page + '</h1></div>');
-      
-    }
-});
 
 		
-		$('.camping-list').scroll(function() {
+		$(window).scroll(function() {
 			var scrollTop = $(this).scrollTop();
 			var boxheight = $(this).height();
 			var listheight = 0;	
@@ -22,7 +15,7 @@ $(window).scroll(function() {
 				
 			if (!dataloading) {
 				
-				if((boxheight+scrollTop+100) > listheight){
+				if($(window).scrollTop() == $(document).height() - $(window).height()){
 					
 					$.ajax({
 						type:"GET",
