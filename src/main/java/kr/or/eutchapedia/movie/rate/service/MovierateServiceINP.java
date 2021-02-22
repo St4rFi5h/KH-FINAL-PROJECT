@@ -1,5 +1,6 @@
 package kr.or.eutchapedia.movie.rate.service;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,12 @@ public class MovierateServiceINP implements MovierateService {
 		List<MovierateVo> movielist = dao.getmovierateList(email, genre );
 		
 		return movielist;
+	}
+
+	@Override
+	public List<MovierateVo> getMovieLists(Map<String, Object> param) {
+		List<MovierateVo> getmovielists= dao.getMovieLists(param);
+		return getmovielists;
 	}
 	
 	

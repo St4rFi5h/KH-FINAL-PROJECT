@@ -91,7 +91,7 @@
 				</li>
 			</ul>
 		</div>
- 		
+ 		  
                               
 	
 		<!--  <div class="movielist">
@@ -160,7 +160,7 @@
 		</div>
 	</div>
 	
-     </c:forEach>
+       </c:forEach>
 </div>
 
 	<script src="/js/movie/star.js"></script>
