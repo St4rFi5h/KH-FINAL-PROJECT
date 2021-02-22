@@ -76,10 +76,15 @@ public class MovieDetailController {
 	}
 	
 	// 모달 확인용(임시) 
-	@RequestMapping("/detail/member")
-	public ModelAndView movieDetailMember() {
+	@RequestMapping(value = "/detail/member", method = RequestMethod.GET)
+	public ModelAndView movieDetailMember(String movieDocId) {
 		ModelAndView mv = new ModelAndView();
 		
+		List<Map<String, Object>> commentList = dao.selectComments(movieDocId);
+		dao.updateHitCount(movieDocId);
+		
+		mv.addObject("commentList", commentList);
+
 		mv.setViewName("/user/movie/detail/movie_detail_member");
 		
 		return mv;

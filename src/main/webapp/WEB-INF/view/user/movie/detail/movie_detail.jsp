@@ -132,6 +132,7 @@
 	                    <c:forEach var="commentList" items="${commentList }">
 	                        <div class="comment-card">
 	                            <div class="user-info-and-rating">
+	                            		<input type="hidden" name="commentIndex" value="${commentList.COMMENTINDEX }"/>
 	                                <img src="${commentList.PHOTO }" class="profile-img">
 	                                <div class="user-nickname">${commentList.NICKNAME }</div>
 	                                <div class="comment-star-rating">★ ${commentList.STARS }</div>

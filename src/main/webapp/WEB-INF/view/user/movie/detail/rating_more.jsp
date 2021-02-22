@@ -28,8 +28,9 @@
         <div>
             <button id="back-button" onclick="location.href='/movie/detail?movieDocId=${movieDocId}'">←</button>
         </div>
-        <form method="POST" name="comment_overview" id="comment_overview" action="/comment/overview">
+        <form method="GET" name="comment_overview" id="comment_overview" action="/comment/overview?movieDocId=${movieDocId }&sortBy=${page.sortBy }nowPage=${param.nowPage}">
         <input type="hidden" name="movieDocId" id="movieDocId" value="${movieDocId }"/>
+        <input type="text" value="${page.sortBy }"/>
         <div class="title">코멘트</div>
         <div class="title" id="rating-title">관람객 평점 <span style="font-weight: bold;">${commentCount }</span>건</div>
         <div class="dropdown" id="sort-dropdown">
@@ -128,36 +129,19 @@
 			var nowDropdown = document.getElementById('sort-dropdown-select');
 
 			frm.nowPage.value = page;
+			frm.sortBy.selectedIndex.value = nowDropdown.selectedIndex.value;
 			console.log($(frm).serialize());
 			frm.submit();
         }
 
         function selectOpt(option) {
-        	var frm = document.getElementById("comment_overview");
-            var dropDown = document.getElementById('sort-dropdown-select');
-            var nowPageValue = document.getElementById('nowPage').value;
-            var sortByValue = document.getElementById("sort-dropdown-select").value;
+    		var frm = document.getElementById("comment_overview");
+			/* var nowPage = document.getElementById('nowPage'); */
+			var nowDropdown = document.getElementById('sort-dropdown-select');
 
-            var formData = {movieDocId: "${movieDocId}", nowPage: nowPageValue, sortBy: sortByValue};
-			
-			console.log(formData);
-			$.ajax({
-				url : '/comment/ajaxcontrol',
-				type : 'POST',
-				dataType : "text",
-				contentType : "application/json; charset=utf-8",
-				data : JSON.stringify(formData),
-				success : function(data) {
-					alert("hello!");
-					console.log(data);
-
-					},
-				error: function() {
-					alert("error");
-				
-					}
-
-				});
+			frm.sortBy.value = nowDropdown.value;
+			console.log($(frm).serialize());
+			frm.submit();
 			
         }
     	
