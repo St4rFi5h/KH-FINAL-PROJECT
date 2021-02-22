@@ -131,7 +131,7 @@
                                         <div>
                                             <p>${board.noticeContent }</p>
                                                 <span class="modi_span">
-                                                    <a href="/notice/insert" class="modi_btn">수정</a>
+                                                    <a href="/notice/update.do" class="modi_btn">수정</a>
                                                 </span>
                                         </div>
                                     </div>

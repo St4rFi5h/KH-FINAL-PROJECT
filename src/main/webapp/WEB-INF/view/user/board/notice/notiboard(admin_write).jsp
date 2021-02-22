@@ -169,8 +169,8 @@
                                         <tbody><tr>
                                         <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
                                             <input type="submit" id="submit" class="bhs_button yb" value="저장" style="float:none;">
-                                            <a href="">
-                                                <input type="button" class="cancel_btn" value="취소"/>
+                                            <a href="/notice/list">
+                                                <button type="button" class="cancel_btn">목록</button>
                                             </a>
                                         </td>
                                     </tr>

@@ -31,7 +31,7 @@ public class NoticeController {
 		model.addAttribute("paging", new Paging(cri, total));
 		return "/user/board/notice/notiboard";
 	}
-	
+
 	// 등록 화면 호출
 	@RequestMapping("/insert")
 	public String openInsertForm() {
@@ -52,9 +52,11 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/update.do")
-	public int updateNotice(HttpServletRequest request) throws Exception {
+	public String updateNotice(HttpServletRequest request) throws Exception {
 		NoticeVo board = (NoticeVo)request.getParameterMap();
-		return noticeService.updateNotice(board);
+
+		noticeService.updateNotice(board);
+		return "redirect:/notice/list";
 	}
 	
 	@RequestMapping("/list/{noticeIdx}")

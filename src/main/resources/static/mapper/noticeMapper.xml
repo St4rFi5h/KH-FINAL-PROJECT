@@ -5,7 +5,8 @@
 <mapper namespace="kr.or.eutchapedia.board.notice.mapper.NoticeMapper">
 	<select id="boardList" parameterType="kr.or.eutchapedia.board.notice.domain.Criteria" resultType="kr.or.eutchapedia.board.notice.domain.NoticeVo">
 		<![CDATA[
-				SELECT NOTICE_NO
+					SELECT
+							NOTICE_NO
 							, member_email
 							, NOTICE_TITLE
 							, NOTICE_CONTENT
@@ -13,7 +14,7 @@
 							, NOTICE_FILES
 							, NOTICE_PUB
 					FROM (
-						SELECT /*+INDEX_DESC(NOTICE NOTICE_NO) */
+						SELECT /*+INDEX_DESC(NOTICE NOTICE_PK) */
 								ROWNUM AS RNUM
 										, NOTICE_NO
 										, member_email
@@ -23,9 +24,9 @@
 										, NOTICE_FILES
 										, NOTICE_PUB
 							FROM NOTICE
-							WHERE ROWNUM <= #{pageNum} * #{amount}
+							WHERE ROWNUM <= #{pageNum} * #{amount}+1
 						)
-					WHERE RNUM > (#{pageNum}-1) * #{amount}
+					WHERE RNUM BETWEEN (#{pageNum}-1) * #{amount}+1 AND #{pageNum} * #{amount}
 				]]>
 	</select>
 	<select id="totalCnt" resultType="int">

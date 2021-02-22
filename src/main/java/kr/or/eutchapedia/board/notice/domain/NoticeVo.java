@@ -21,7 +21,7 @@ public class NoticeVo {
 		this.noticeFiles = noticeFiles;
 		this.noticePub = noticePub;
 	}
-	
+
 	public int getNoticeIdx() {
 		return noticeIdx;
 	}

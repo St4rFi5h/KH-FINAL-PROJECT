@@ -107,7 +107,7 @@
                         </colgroup><tbody><tr>
                         <th class="input_txt" style="padding-top:20px;">제목</th>
                         <td><br>
-                        <input type="text" name="subject" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="">
+                        <input type="text" name="subject" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="${detail.title }">
                         </td>
                         </tr>
                         <tr>
@@ -121,7 +121,7 @@
                         
                         <!-- textarea -->
                         <!-- <textarea id="contents" name="contents" style="width: 100%; height: 474px;" class="editing_area" required="" fld_essential="" label="내용"></textarea>-->
-                        <textarea name="ir1" id="ir1" rows="10" cols="146">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>
+                        <textarea name="ir1" id="ir1" rows="10" cols="146">${detail.ir1 }</textarea>
                         <!---->
                                         
                         </td>
