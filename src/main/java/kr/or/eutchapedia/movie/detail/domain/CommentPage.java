@@ -12,6 +12,7 @@ public class CommentPage {
 	private int listSize = 5;
 	private int blockSize = 5;
 	private String movieDocId;
+	private String sortBy;
 
 	public CommentPage() {
 
@@ -101,4 +102,13 @@ public class CommentPage {
 		this.movieDocId = movieDocId;
 	}
 
+	public String getSortBy() {
+		return sortBy;
+	}
+
+	public void setSortBy(String sortBy) {
+		this.sortBy = sortBy;
+	}
+	
+	
 }

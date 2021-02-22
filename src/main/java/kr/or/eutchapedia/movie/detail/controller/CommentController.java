@@ -31,15 +31,24 @@ public class CommentController {
 		mv.addObject("commentCount", map.get("commentCount"));
 		mv.addObject("movieDocId", map.get("movieDocId"));
 		mv.addObject("page", page);
+		
 		mv.setViewName("/user/movie/detail/rating_more");
 		
 		return mv;
 	}
 	
-	@RequestMapping(value = "/AjaxControl", method = RequestMethod.POST)
-	public @ResponseBody String commentAjax(@RequestBody Map<String, Object> data) {
-		System.out.println(data.toString());
+	@RequestMapping(value = "/ajaxcontrol", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> commentAjax(@RequestBody Map<String, Object> data) {
 		
-		return "ok";
+		CommentPage page = new CommentPage();
+		page.setMovieDocId((String) data.get("movieDocId"));
+		page.setNowPage(Integer.parseInt((String) data.get("nowPage")));
+		page.setSortBy((String) data.get("sortBy"));
+		
+		Map<String, Object> map = commentDao.selectCommentList(page);
+		System.out.println(map.toString());
+		
+		return map;
+		
 	}
 }

@@ -35,19 +35,18 @@ public class CommentDao {
 			}
 			
 			page.pageCompute();
-
+			System.out.println(page.getMovieDocId());
+			commentList = mapper.selectCommentList(page);
 			for (CommentListVo vo : commentList) {
 				if (vo.getPhoto() == null) {
 					vo.setPhoto("/img/movie/profile.svg");
 				}
 			}
-
-			commentList = mapper.selectCommentList(page);
-
+			
 			commentListMap.put("page", page);
 			commentListMap.put("commentList", commentList);
 			commentListMap.put("commentCount", totalListSize);
-			commentListMap.put("movieDocId", commentList.get(0).getMovieDocId());
+			commentListMap.put("movieDocId", page.getMovieDocId());
 
 		} catch (Exception e) {
 			e.printStackTrace();

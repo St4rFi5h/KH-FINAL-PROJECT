@@ -32,8 +32,21 @@
 				ON sr.fk_member_email = m.member_email
 				WHERE sr.fk_movie_docid = #{movieDocId}
 				AND comment_blind_check = '0'
-				ORDER BY comment_like_count DESC,
-				comment_date DESC
+				ORDER BY 
+				<choose>
+					<when test="sortBy == 'HighStars'">
+						sr.star_rating DESC
+					</when>
+					<when test="sortBy == 'Likes'">
+						comment_like_count DESC
+					</when>
+					<when test="sortBy == 'LowStars'">
+						sr.star_rating ASC
+					</when>
+					<otherwise>
+						comment_date DESC, comment_like_count DESC
+					</otherwise>
+				</choose>
 			) eclist
 		) WHERE no BETWEEN #{startNo} AND #{endNo}
 	</select>

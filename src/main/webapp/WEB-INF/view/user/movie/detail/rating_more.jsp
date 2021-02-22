@@ -28,7 +28,7 @@
         <div>
             <button id="back-button" onclick="location.href='/movie/detail?movieDocId=${movieDocId}'">←</button>
         </div>
-        <form method="POST" name="comment_overview" id="comment_overview" action="/comment/overview?movieDocId=${movieDocId }">
+        <form method="POST" name="comment_overview" id="comment_overview" action="/comment/overview">
         <input type="hidden" name="movieDocId" id="movieDocId" value="${movieDocId }"/>
         <div class="title">코멘트</div>
         <div class="title" id="rating-title">관람객 평점 <span style="font-weight: bold;">${commentCount }</span>건</div>
@@ -124,10 +124,10 @@
         <script>
     	function goPage(page) {
     		var frm = document.getElementById("comment_overview");
-			var nowPage = document.getElementById('nowPage');
+			/* var nowPage = document.getElementById('nowPage'); */
 			var nowDropdown = document.getElementById('sort-dropdown-select');
-			
-			nowPage.value = page;
+
+			frm.nowPage.value = page;
 			console.log($(frm).serialize());
 			frm.submit();
         }
@@ -142,7 +142,7 @@
 			
 			console.log(formData);
 			$.ajax({
-				url : '/comment/AjaxControl',
+				url : '/comment/ajaxcontrol',
 				type : 'POST',
 				dataType : "text",
 				contentType : "application/json; charset=utf-8",
