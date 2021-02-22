@@ -20,37 +20,54 @@ public class MemberService {
 	private MemberDaoInterface memberDao;
 	private Utils utils;
 
-//회원가입
+	//회원가입
 	public int signup(MemberVo memberVo) {
 
 		int resultCnt = 0;
-//		memberDao = sqlSession.getMapper(MemberDaoInterface.class);
 
 		try {
 			utils = new Utils();
 			memberVo.setMemberPwdSalt(utils.getSalt());
 			memberVo.setMemberPwd(utils.getEncrypt(memberVo.getMemberPwd(), memberVo.getMemberPwdSalt()));
-			
+
 			resultCnt = memberDao.signup(memberVo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return resultCnt;
 	}
+	
+	//로그인
+	public MemberVo login(MemberVo memberVo) throws Exception {
+		return memberDao.login(memberVo);
+	}
 
-	//이메일 중복 체크
-	public int emailchk(MemberVo memberVo) {
-		int resultCnt = 0;
-//		memberDao = sqlSession.getMapper(MemberDaoInterface.class);
+	/*
+	 * //이메일 중복 체크 public int emailchk(String memberEmail) { int resultCnt = 0;
+	 * 
+	 * try { resultCnt = memberDao.emailchk(memberEmail);
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); } return resultCnt; }
+	 * 
+	 * //닉네임 중복 체크 public int nicknamechk(String memberNickname) { int resultCnt =
+	 * 0;
+	 * 
+	 * try { resultCnt = memberDao.emailchk(memberNickname);
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); } return resultCnt; }
+	 */
 
-		try {
-			resultCnt = memberDao.emailchk(memberVo);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
-		return resultCnt;
+	public int emailchk(String memberEmail) throws Exception {
+
+		return memberDao.emailchk(memberEmail); 
+	}
+
+
+	public int nicknamechk(String memberNickname) throws Exception {
+
+		return memberDao.nicknamechk(memberNickname);
 	}
 }	
 

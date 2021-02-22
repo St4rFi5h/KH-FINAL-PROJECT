@@ -9,14 +9,14 @@ public class FindPasswordController {
 	
 	@RequestMapping(value = "/findpassword")
 	public ModelAndView findpassword() {
-		ModelAndView mv = new ModelAndView("user/login/find_password1");
+		ModelAndView mv = new ModelAndView("user/member/find_password1");
 		
 		return mv;
 	}
 	
 	@RequestMapping(value = "/findpassword2")
 	public ModelAndView findpassword2() {
-		ModelAndView mv = new ModelAndView("user/login/find_password2");
+		ModelAndView mv = new ModelAndView("user/member/find_password2");
 				
 		return mv;
 	}

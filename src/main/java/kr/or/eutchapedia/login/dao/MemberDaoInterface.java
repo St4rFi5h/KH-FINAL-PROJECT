@@ -10,13 +10,16 @@ import kr.or.eutchapedia.login.vo.MemberVo;
 @Repository
 @Mapper
 public interface MemberDaoInterface {
-	
+
 	//회원가입
 	int signup(MemberVo memberVo) throws SQLException;
-	
+
 	//이메일 중복 체크
-	int emailchk(MemberVo memberVo) throws Exception;
-	
+	int emailchk(String memberEmail) throws Exception;
+
 	//닉네임 중복 체크
-	int nicknamechk(MemberVo memberVo) throws Exception;
+	int nicknamechk(String memberNickname) throws Exception;
+
+	//로그인
+	MemberVo login(MemberVo memberVo) throws Exception;
 }
