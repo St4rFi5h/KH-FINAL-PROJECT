@@ -112,7 +112,7 @@
                                         <p class="tbl_info_type"><input type="checkbox" name="del-id" value="" class="checkbox">
                                             <span class="blind">체크박스</span>
                                         </p>
-                                        <p class="tbl_info_type">${board.noticeIdx }
+                                        <p class="tbl_info_type">${board.noticeNo }
                                             <span class="blind">번호</span>
                                         </p>
                                         <p class="tbl_info_tit">${board.noticeTitle }
@@ -131,7 +131,7 @@
                                         <div>
                                             <p>${board.noticeContent }</p>
                                                 <span class="modi_span">
-                                                    <a href="/notice/update.do" class="modi_btn">수정</a>
+                                                    <a href="/notice/update/{noticeNo}" class="modi_btn">수정</a>
                                                 </span>
                                         </div>
                                     </div>
@@ -141,7 +141,7 @@
 
                             <!-- 관리자 버튼-->
                             <div class="buttons">
-                                <a href="/notice/insert"><input type="button" class="write_btn yb" value="글쓰기"/></a>
+                                <a href="/notice/insertview"><input type="button" class="write_btn yb" value="글쓰기"/></a>
                                 <input type="submit" class="write_btn yb" name="cmd" value="삭제" onclick="return confirm('정말로 삭제하시겠습니까?')"/>
                                 <input type="submit" class="write_btn yb" name="cmd" value="공개"/>
                             </div>
