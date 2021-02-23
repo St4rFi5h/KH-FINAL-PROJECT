@@ -55,7 +55,7 @@
         </div>
         <div class='body-main'>
             <form method="post" id='delForm' action="/mypage/withdraw.do" onsubmit="return check();">
-            	<input type='hidden'  id='hiddenemail' name='memberEmail' value="hihi@naver.com">
+            	<input type='hidden'  id='hiddenemail' name='memberEmail' value="200@naver.com">
 	              <div id='complainbox'>
 	                <div id='complain-check'>
 	                    <input id='check1' type="checkbox" name="checkbox">

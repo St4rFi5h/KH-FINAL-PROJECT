@@ -110,4 +110,31 @@ public class MypageServiceImpl implements MypageService {
 		map = Dao.selectDoughnutNum(memberemail);
 		return map;
 	}
+
+	@Override
+	public List<Map<String, Object>> getStarNumDesc(String memberemail) {
+		List<Map<String,Object>> map = new ArrayList<Map<String, Object>>();
+		
+		map = Dao.selectStarNumDesc(memberemail);
+		return map;
+	}
+
+	@Override
+	public MemberVo getMemberInfo(String memberemail) {
+		
+		MemberVo member = Dao.selectMember(memberemail);
+		return member;
+	}
+
+	@Override
+	public void editprofile(MemberVo vo) {
+		
+		 Dao.updatememberinfo(vo);
+		
+	}
+
+
+	
+
+	
 }
