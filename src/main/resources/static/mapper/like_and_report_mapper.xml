@@ -2,16 +2,58 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.or.eutchapedia.movie.detail.repository.LikeAndReportMapper">
+<mapper namespace="kr.or.eutchapedia.movie.detail.repository.CommentLikeMapper">
 
-<!-- 좋아요 쿼리문 -->
+<!-- 해당 사용자가 좋아요 누른 적 있는지 확인 -->
+<select id="likeCheck" parameterType="String" resultType="int">
+	SELECT like_check FROM comment_like WHERE fk_member_email = ?
+</select>
+
+<!-- 최초 좋아요 쿼리문 -->
 <insert id="pressLike" parameterType="kr.or.eutchapedia.movie.detail.domain.LikeVo">
 	INSERT INTO comment_like VALUES(
 		seq_comment_like.nextval,
 		${commentIndex},
 		#{memberEmail},
 		1
-	);
+	)
 </insert>
+<!-- 코멘트 좋아요 숫자 올리기 -->
+<update id="updateLikeCount" parameterType="int">
+	UPDATE eutcha_comment 
+	SET comment_like_count = comment_like_count + 1 
+	WHERE comment_index = #{_parameter}
+</update>
 
+<!-- 좋아요 취소 쿼리문 -->
+<update id="cancelLike" parameterType="kr.or.eutchapedia.movie.detail.domain.LikeVo">
+	UPDATE comment_like 
+	SET comment_check = 0
+	WHERE fk_member_email = #{memberEmail}
+	AND fk_comment_index = #{commentIndex}
+	
+</update>
+
+<!-- 좋아요 취소 시 코멘트 좋아요 숫자 내리기 -->
+<update id="cancelLikeCount" parameterType="int">
+	UPDATE eutcha_comment
+	SET comment_like_count = comment_like_count - 1
+	WHERE comment_index = #{_parameter}
+</update>
+
+<!-- 좋아요 취소 후 그 회원이 다시 좋아요 누를 시 -->
+<update id="updateLikeCheck" parameterType="kr.or.eutchapedia.movie.detail.domain.LikeVo">
+	UPDATE comment_like
+	SET comment_check = 1
+	WHERE fk_member_email = #{memberEmail}
+	AND fk_comment_index = #{commentIndex}
+</update>
+ 
+<resultMap type="kr.or.eutchapedia.movie.detail.domain.LikeVo" id="likeVo">
+	<result column="like_index" property="likeIndex"/>
+	<result column="fk_comment_index" property="commentIndex"/>
+	<result column="fk_member_email" property="memberEmail"/>
+	<result column="like_check" property="likeCheck"/>
+
+</resultMap>
 </mapper>

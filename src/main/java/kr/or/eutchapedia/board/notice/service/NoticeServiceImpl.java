@@ -16,18 +16,18 @@ public class NoticeServiceImpl implements NoticeService {
 	private NoticeMapper noticeMapper;
 
 	@Override
-	public int insertNotice(NoticeVo board) throws Exception {
-		return noticeMapper.insertNotice(board);
+	public void insertNotice(NoticeVo board) throws Exception {
+		noticeMapper.insertNotice(board);
 	}
 
 	@Override
-	public int updateNotice(NoticeVo board) throws Exception {
-		return noticeMapper.updateNotice(board);
+	public void updateNotice(NoticeVo board) throws Exception {
+		noticeMapper.updateNotice(board);
 	}
 
 	@Override
-	public int deleteNotice(int noticeIdx) throws Exception {
-		return noticeMapper.deleteNotice(noticeIdx);
+	public void deleteNotice(NoticeVo board) throws Exception {
+		noticeMapper.deleteNotice(board);
 	}
 
 	@Override
@@ -37,8 +37,8 @@ public class NoticeServiceImpl implements NoticeService {
 
 
 	@Override
-	public NoticeVo boardDetail(int noticeIdx) throws Exception {
-		return noticeMapper.boardDetail(noticeIdx);
+	public NoticeVo boardDetail(NoticeVo board) throws Exception {
+		return noticeMapper.boardDetail(board);
 	}
 	@Override
 	public int totalCnt(Criteria cri) throws Exception {

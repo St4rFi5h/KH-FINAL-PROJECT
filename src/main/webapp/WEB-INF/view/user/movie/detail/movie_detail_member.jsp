@@ -291,7 +291,7 @@
 	                                <span id="like-count">${commentList.LIKECOUNT }</span>
 	                            </div>
 	                            <div class="like-and-report">
-	                                <span><button data-toggle="modal" id="like-button">좋아요</button></span>
+	                                <span><button data-toggle="modal" id="like-button" class="like-button">좋아요</button></span>
 	                                <span><button data-toggle="modal" id="report-button"
 	                                        data-target="#report-modal">신고하기</button></span>
 	                            </div>
@@ -367,11 +367,29 @@
 		<jsp:include page="/WEB-INF/view/user/footer.jsp"/>
 		<!-- footer 끝 -->
 		<script>
-			$("#like-button").on('click', function() {
+			$(".like-button").on('click', function() {
 				var commentIndex = $("#commentIndex").val();
 				console.log(commentIndex);
 				
+				$.ajax({
+					type : 'POST',
+					url : '/commentLike',
+					async : false,
+					data : {'commentIndex' : commentIndex},
+					success : function(result) {
+						alert("hello!");
+						console.log(result);
+						$(this).css("background-color", "rgb(255, 7, 88)")
+						$(this).css("color", "white");
 
+						},
+					error : function() {
+						alert("error!");
+
+						}
+
+					})
+					
 
 				})
 				

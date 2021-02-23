@@ -40,5 +40,15 @@ public interface MypageDao {
 	
 	//장르별 건수
 	public List<Map<String, Object>> selectDoughnutNum(String memberemail);
+	
+	public List<StarRatingForMainVo> getratinginfodesc(String memberemail);
+	
+	public List<Map<String, Object>> selectStarNumDesc(String memberemail);
+	
+	public MemberVo selectMember(String memberemail);
+	
+	public void updatememberinfo(MemberVo vo);
+	
+	
 
 }

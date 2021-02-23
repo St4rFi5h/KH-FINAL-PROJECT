@@ -10,10 +10,16 @@
   margin-left: 20px;
   font-size: 1.4em;
   font-weight: 600;
-  /* border-bottom: 1px solid rgb(194, 194, 194); */
+  border-bottom: 1px solid rgb(194, 194, 194); 
   line-height: 3em;
 }
 
+.moviewrapper {
+  margin-left: 25px;
+  display: inline-block; 
+ /*  float:left; */
+  
+}
 .title-sub {
   margin-left: 20px;
   font-size: 1.2rem;
@@ -22,10 +28,6 @@
   line-height: 3em;
 }
 
-.moviewrapper {
-  margin-left: 10px;
-  display: inline-block;
-}
 
 .movie-div {
   float: left;
@@ -146,3 +148,26 @@
   color: rgb(255, 7, 88);
   font-weight: bold;
 }
+
+.movietitle{
+	margin-top:3px;
+	max-height: 20px;
+	width : 140px;
+	display : inline-block;
+	color: black;
+	font-size: 0.9rem;
+	font-weight:500;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+.movie-div {
+	width: 150px;  
+	height:200px;
+	margin-bottom: 50px;
+}
+
+.poster {
+	border-radius: 5px;
+}
+

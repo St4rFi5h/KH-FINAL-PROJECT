@@ -42,21 +42,21 @@
             <div class='maintitle'> 
             <h1 class='bodytitle'>나의정보수정</h1>
             </div>
-            <form class="formbox" name="#" method="post" action="#" onsubmit="#">
+            <form class="formbox"  method="post" action="edit.do" onsubmit="#">
                 
-                <img class='profile' id='profile' src='/img/mypage/emoji.PNG' width="200px"; height="250px">
-
+                <img class='profile' id='profile' src='${member.memberPhoto}' width="200px"; height="250px">
+				
                
                 <div class='inputbox-div'>
                     <label>닉네임
                     <span id="info">이미 존재하는 닉네임입니다.</span>
                     </label>
-                    <input class='inputbox' type='text' placeholder="한글,영문,숫자 2자 이상 가능">
+                    <input class='inputbox' name='memberNickname' type='text' placeholder="한글,영문,숫자 2자 이상 가능" value="${member.memberNickname }">
                 </div>
 
                 <div class='inputbox-div'>
                     <label>이메일</label>
-                    <input class='inputbox' id=email type='email' value="abc@naver.com" readonly>
+                    <input class='inputbox' name='memberEmail' id=email type='email' value="${member.memberEmail }" readonly>
                 </div>
 
                 <div class='inputbox-div'>
@@ -64,14 +64,17 @@
                     <span id="info">사진 변경...</span>
                     </label>
                     
-                    <input class='inputbox' id='fileinput' type='file' accept="image/*" onchange="previewImage(this)" / >
+                    <input class='inputbox' name='memberPhoto' id='fileinput' type='file' accept="image/*" onchange="previewImage(this)" / >
+                   
                 </div>
                 <div class='inputbox-div'>
                   <label>현재 비밀번호
                   <span><input type='button' id='changebtn' value='변경' onclick='changepwd()'></span>
                   <span id="info">비밀번호 형식에 맞게 다시 설정해 주세요.</span>
                   </label>
-                  <input class='inputbox' id='nowpwd' type='password' value="12345678" readonly>
+                  <input class='inputbox' id='nowpwd' type='password' value="123456789" readonly>
+                  <input class='inputbox' id='nowpwd' name='memberPwd' type='hidden' value="${member.memberPwd}" readonly>
+                  <input class='inputbox' id='nowpwd' name='memberPwdSalt' type='hidden' value="${member.memberPwdSalt}">
               </div>
 
               <div id='changepwddiv'>
@@ -79,7 +82,7 @@
                     <label>변경할 비밀번호
                     <span id="info">비밀번호 형식에 맞게 다시 설정해 주세요.</span>
                     </label>
-                    <input class='inputbox' id='chgpwd1' type='password' placeholder="소문자,숫자,특수문자 포함 8자 이상 가능">
+                    <input class='inputbox' id='chgpwd1' name='memberPwdChange' type='password' placeholder="소문자,숫자,특수문자 포함 8자 이상 가능">
                 </div>
                 
                 <div class='inputbox-div'>
@@ -93,7 +96,7 @@
                     <label>소개
                     <span id="info">..</span>
                     </label>
-                    <textarea class='inputbox' placeholder="간단한 소개를 남겨보세요! "></textarea>
+                    <textarea class='inputbox' name='memberIntroduce' placeholder="간단한 소개를 남겨보세요!">${member.memberIntroduce}</textarea>
                 </div>
 
                 <div class='inputbox-div'>

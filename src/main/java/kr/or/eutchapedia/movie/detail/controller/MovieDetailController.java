@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffInfoVo;
-import kr.or.eutchapedia.movie.detail.service.CommentDao;
 import kr.or.eutchapedia.movie.detail.service.MovieDetailDao;
 
 @RequestMapping("/movie")
@@ -84,7 +83,7 @@ public class MovieDetailController {
 		dao.updateHitCount(movieDocId);
 		
 		mv.addObject("commentList", commentList);
-
+		
 		mv.setViewName("/user/movie/detail/movie_detail_member");
 		
 		return mv;

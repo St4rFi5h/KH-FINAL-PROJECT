@@ -25,6 +25,39 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 	
+	@RequestMapping("/ratedmovies")
+	public ModelAndView mypageratedmovies(String memberemail) {
+		ModelAndView mv = new ModelAndView();
+		memberemail = "200@naver.com";
+		
+		List <StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
+		List<Map<String,Object>> graphMap = new ArrayList<Map<String, Object>>();
+		graphMap = service.getStarNumDesc(memberemail);
+	
+		list = service.getratinginfo(memberemail);
+		
+		/*test..
+		List<StarRatingForMainVo> test = new ArrayList<StarRatingForMainVo>();
+		
+		float[] point = new float[10];
+		float minPoint = (float) 0.5; 
+			for (int i=0 ; i<point.length; i++) {
+				point[i] = minPoint;
+				minPoint += 0.5;
+				
+			}
+		
+		test = service.getEachStarMovie(memberemail,point);
+		*/
+	
+		
+		
+		mv.addObject("list", list);
+		mv.addObject("point", graphMap);
+		mv.setViewName("/user/mypage/mypage_ratedmoviesfinal");
+		return mv;
+	}
+	
 	@RequestMapping("/index")
 	public ModelAndView mypageindex(String memberemail) {
 		ModelAndView mv = new ModelAndView();
@@ -62,11 +95,11 @@ public class MypageController {
 		
 		avg = pointsum / ratedStarNum; //별점평균
 		
+		String avg2 = String.format("%.2f", avg); //별점평균 소수점 두자리까지 표시
+		
 		// 별점개수뽑아보자
 		for(int i=0; i<graphMap.size(); i++) {
 			
-			System.out.println(graphMap.get(i).get("starRating")  );
-			System.out.println( graphMap.get(i).get("starCount")  );
 		}
 		
 		for(int i=0; i<sr.size(); i++) {
@@ -84,9 +117,7 @@ public class MypageController {
 		}
 		int hour = sum / 60;
 		int minute = sum % 60; 
-		
-		System.out.println(hour +" 시간 " + minute +" 분 ");
-		System.out.println(mostRatedStar.get("star"));
+	
 		
 		mv.addObject("member", vo);
 		mv.addObject("wannawatch", ww);
@@ -96,7 +127,7 @@ public class MypageController {
 		mv.addObject("wannacount", wannacount);
 		mv.addObject("ratedStarNum", ratedStarNum);
 		mv.addObject("mostRatedStar", mostRatedStar);
-		mv.addObject("avg", avg);
+		mv.addObject("avg", avg2);
 		mv.addObject("graphMap", graphMap);
 		mv.addObject("doughnutMap", doughnutMap);
 		mv.setViewName("/user/mypage/mypage");
@@ -125,12 +156,7 @@ public class MypageController {
 		return mv;
 	}
 	
-	@RequestMapping("/ratedmovies")
-	public ModelAndView mypageratedmovies() {
-		ModelAndView mv = new ModelAndView("/user/mypage/mypage_ratedmoviesfinal");
-		
-		return mv;
-	}
+	
 	
 	@RequestMapping("/starviewmore")
 	public ModelAndView mypagestarviewmore() {
@@ -140,9 +166,34 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/edit")
-	public ModelAndView mypageeditprofile() {
-		ModelAndView mv = new ModelAndView("/user/mypage/mypage_editprofile(ver3)");
+	public ModelAndView mypageeditprofile(String memberemail) {
+		ModelAndView mv = new ModelAndView();
+		memberemail = "200@naver.com";
+		MemberVo member = service.getMemberInfo(memberemail);
 		
+		mv.addObject("member", member);
+		mv.setViewName("/user/mypage/mypage_editprofile(ver3)");
+		return mv;
+	}
+	
+	@RequestMapping(value="/edit.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView mypageeditprofileDo(MemberVo vo) {
+		ModelAndView mv = new ModelAndView();
+		
+		if(vo.getMemberPwdChange() != null) {
+			Utils utils = new Utils();
+			vo.setMemberPwdSalt(utils.getSalt());
+			vo.setMemberPwd(utils.getEncrypt(vo.getMemberPwdChange(), vo.getMemberPwdSalt()));
+			
+		}
+		
+		service.editprofile(vo);
+		
+		
+		String nickname = vo.getMemberNickname();
+		System.out.println(nickname);
+		mv.addObject("nickname",nickname);
+		mv.setViewName("/user/mypage/mypage_edit_complete");
 		return mv;
 	}
 	

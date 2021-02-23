@@ -35,18 +35,18 @@
             </div>
             <p></p>
             <div>
-                <p class='ment'>그동안 읏챠피디아를 이용해 주셔서 감사합니다.
+                <p class='ment' style="color:blue">${nickname} 님 
                 
                 </p>
                 <div id='ment2'>
-                회원님의 의견을 반영하여 더 좋은 서비스를 제공하기 위해 노력하겠습니다.
+                정보가 정상적으로 수정되었습니다.
                 </div>
             </div>
         </div>
         <div class='body-main'>
 
 	                <div>
-	                    <input type='button' id='inputdiv2' value='메인으로 이동' onclick="location.href='#'"><!--메인뷰연결-->
+	                    <input type='button' id='inputdiv2' value='마이페이지 이동' onclick="location.href='/mypage/index'"><!--마이페이지메인  -->
 	                </div>
 
         </div>

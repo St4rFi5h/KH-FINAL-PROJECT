@@ -28,4 +28,12 @@ public interface MypageService {
 
 	List<Map<String, Object>> getdoughnutNum(String memberemail);
 
+
+	List<Map<String, Object>> getStarNumDesc(String memberemail);
+
+	MemberVo getMemberInfo(String memberemail);
+
+	void editprofile(MemberVo vo);
+
+
 }

@@ -98,10 +98,8 @@
                     <div class="page_section section_qna">
 
                         <div class="xans-board-write">
-                            <form name="fm" id="fm" method="post" action="/notice/insert.do" enctype="multipart/form-data" onsubmit="return chkForm(this)" style="height: 100%;">
+                            <form name="frm" id="frm" method="post" action="<c:url value='/notice/insert.do'/>" enctype="multipart/form-data" style="height: 100%;">
                                 <input type="hidden" name="mode" value="add_qna">
-                                <input type="hidden" name="itemcd" value="">
-                                <input type="hidden" name="sno" value="0">
                         
                                 <table id="table_after" class="boardWrite2" width="100%">
                                     <colgroup><col width="14%" align="right">
@@ -109,7 +107,8 @@
 
                                         <th class="input_txt" style="padding-top:20px;">제목</th>
                                         <td><br>
-                                        <input type="text" id="title" name="title" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="">
+                                        
+                                        <input type="text" id="noticeTitle" name="noticeTitle" style="width:100%; height:25px;">
                                         </td>
                                         </tr>
                                         <tr>
@@ -124,7 +123,8 @@
 
                                         <!-- textarea -->
                                         <!-- <textarea id="contents" name="contents" style="width: 100%; height: 474px;" class="editing_area" required="" fld_essential="" label="내용"></textarea>-->
-                                        <textarea name="ir1" id="ir1" rows="10" cols="123">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>
+                                        
+                                        <textarea name="noticeContent" id="noticeContent" value="noticeContent" rows="10" cols="123"></textarea>
                                         <!---->
                                         
                                         </td>
@@ -168,7 +168,7 @@
                                         <table width="60%">
                                         <tbody><tr>
                                         <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
-                                            <input type="submit" id="submit" class="bhs_button yb" value="저장" style="float:none;">
+                                            <button type="submit" id="write" name="write" class="bhs_button yb"style="float:none;">저장</button>
                                             <a href="/notice/list">
                                                 <button type="button" class="cancel_btn">목록</button>
                                             </a>
@@ -235,24 +235,37 @@
     var oEditors = [];
     nhn.husky.EZCreator.createInIFrame({
      oAppRef: oEditors,
-     elPlaceHolder: "ir1",
+     elPlaceHolder: "noticeContent",
      sSkinURI: "/js/board/se2/SmartEditor2Skin.html",
      fCreator: "createSEditor2"
     });
 </script>
 <script>
-// ‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
-function submitContents(elClickedObj) {
-// 에디터의 내용이 textarea에 적용된다.
-oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+$("#write").click(function(){ 
+		oEditors.getById["noticeContent"].exec("UPDATE_CONTENTS_FIELD", []); 
+		$("#frm").submit(); 
+	})
 
-// 에디터의 내용에 대한 값 검증은 이곳에서
-// document.getElementById("ir1").value를 이용해서 처리한다.
+</script>
+<script type="text/javascript">
+$(document).ready(function (e){
+	$('#write').click(function(){
+			var frmArr = ["noticeTitle","noticeContent"];
 
-try {
-   elClickedObj.form.submit();
-} catch(e) {
-}
-}
-      </script>
+			//입력 값 널 체크
+			for(var i=0;i<frmArr.length;i++){
+				//alert(arr[i]);
+				if($.trim($('#'+frmArr[i]).val()) == ''){
+					alert('빈 칸을 모두 입력해 주세요.');
+					$('#'+frmArr[i]).focus();
+					return false;
+				}
+			}
+
+			//전송
+			$('#frm').submit();
+	});
+});
+
+</script>
 </html>

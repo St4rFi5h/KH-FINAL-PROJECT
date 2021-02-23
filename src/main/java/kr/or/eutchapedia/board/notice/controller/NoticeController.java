@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.or.eutchapedia.board.notice.domain.Criteria;
 import kr.or.eutchapedia.board.notice.domain.NoticeVo;
@@ -32,42 +33,45 @@ public class NoticeController {
 		return "/user/board/notice/notiboard";
 	}
 
-	// 등록 화면 호출
-	@RequestMapping("/insert")
-	public String openInsertForm() {
+	// 글쓰기 폼
+	@RequestMapping(value="/insertview")
+	public String openInsertForm() throws Exception {
 		return "/user/board/notice/notiboard(admin_write)";
 	}
 	
-	// 등록 기능 
+	// 글 등록
 	@RequestMapping("/insert.do")
-	public String insertNotice(NoticeVo board) throws Exception {
+	public String insertNotice(@ModelAttribute("NoticeVo") NoticeVo board, Model model) throws Exception {
 		noticeService.insertNotice(board);
 		return "redirect:/notice/list";
 	}
 	
-	@RequestMapping("/update/{noticeIdx}")
-	public String openUpdateForm(@PathVariable int noticeIdx, Model model) throws Exception {
-		model.addAttribute("detail", noticeService.boardDetail(noticeIdx));
-		return "redirect:/notice/update";
+	// 수정 뷰
+	@RequestMapping(value="/update/{noticeNo}", method = RequestMethod.GET)
+	public String openUpdateForm(NoticeVo board, Model model) throws Exception {
+		model.addAttribute("detail", noticeService.boardDetail(board));
+		return "/user/board/notice/notiboard(admin_modify)";
 	}
 	
+	// 수정
 	@RequestMapping("/update.do")
 	public String updateNotice(HttpServletRequest request) throws Exception {
 		NoticeVo board = (NoticeVo)request.getParameterMap();
-
+		
 		noticeService.updateNotice(board);
 		return "redirect:/notice/list";
 	}
 	
 	@RequestMapping("/list/{noticeIdx}")
-	public String boardDetail(@PathVariable int noticeIdx, Model model) throws Exception {
-		model.addAttribute("detail", noticeService.boardDetail(noticeIdx));
-		return "redirect:/list";
+	public String boardDetail(NoticeVo board, Model model) throws Exception {
+		model.addAttribute("detail", noticeService.boardDetail(board));
+		return "redirect:/notice/list";
 	}
 	
-	@RequestMapping("/delete/{noticeIdx}")
-	public String deleteNotice(@PathVariable int noticeIdx) throws Exception {
-		noticeService.deleteNotice(noticeIdx);
+	// 삭제
+	@RequestMapping("/delete")
+	public String deleteNotice(NoticeVo board) throws Exception {
+		noticeService.deleteNotice(board);
 		return "redirect:/notice/list";
 	}
 

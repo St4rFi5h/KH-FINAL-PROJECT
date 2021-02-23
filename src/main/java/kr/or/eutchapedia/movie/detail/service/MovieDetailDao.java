@@ -82,8 +82,7 @@ public class MovieDetailDao {
 	}
 	
 	// 영화 클릭 시 조회수 update
-	public int updateHitCount(String movieDocId) {
-		int result = 0;
+	public void updateHitCount(String movieDocId) {
 		
 		try {
 			mapper.updateHitCount(movieDocId);
@@ -91,8 +90,6 @@ public class MovieDetailDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		return result;
 		
 	}
 	
