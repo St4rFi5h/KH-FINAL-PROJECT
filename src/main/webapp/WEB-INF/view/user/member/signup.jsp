@@ -73,19 +73,19 @@
                         <label>
                             <input class="input-nickname" type="text" name="memberNickname" id="input-nickname" placeholder="닉네임" autocomplete="off" required />
                         </label>
-                        <span class="error" id="nickname-required" style="font-size: 13px;">닉네임은 필수입니다.</span>
+                        <span class="error" id="nickname-required">닉네임은 필수입니다.</span>
                     </div>
                     <div class="form-box">
                         <label>
                             <input class="input-email" type="email" name="memberEmail" id="input-email" placeholder="이메일" autocomplete="off" required />
                         </label> 
-                        <!-- <span class="error" id="email-required">이미 가입된 이메일입니다.</span>    -->
+                        <span class="error" id="email-required">이메일은 필수입니다.</span>    
                     </div>
                     <div class="form-box">
                         <label>
                             <input class="input" type="password" name="memberPwd" id="input-password" placeholder="비밀번호" autocomplete="off" required />
                         </label>
-                        <!-- <span clas="error" id="password-required">정확하지 않은 비밀번호입니다.</span>     -->
+                        <span class="error" id="password-required">비밀번호는 필수입니다.</span>
                     </div>
                     <p>
                         <input class="login-button" type="submit" value="회원가입" />

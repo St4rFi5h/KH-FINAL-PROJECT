@@ -1,15 +1,12 @@
 package kr.or.eutchapedia.login.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.or.eutchapedia.login.service.MemberService;
-import kr.or.eutchapedia.login.vo.MemberVo;
 
 @RestController
 public class AjaxController {
@@ -22,7 +19,9 @@ public class AjaxController {
 	@ResponseBody
 	public int emailchk( String memberEmail) throws Exception {
 		int count=0;
+		
 		count = memberService.emailchk(memberEmail);
+		
 		System.out.println(count);
 		return count;
 	}
@@ -34,7 +33,8 @@ public class AjaxController {
 		int count = 0;
 
 		count =  memberService.nicknamechk(memberNickname);
-
+		
+		System.out.println(count);
 		return count;
 	}
 

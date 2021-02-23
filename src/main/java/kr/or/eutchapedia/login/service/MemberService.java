@@ -15,8 +15,6 @@ import kr.or.eutchapedia.login.vo.MemberVo;
 public class MemberService {
 
 	@Autowired
-	private SqlSessionTemplate sqlSession;
-	@Autowired
 	private MemberDaoInterface memberDao;
 	private Utils utils;
 
@@ -42,29 +40,13 @@ public class MemberService {
 		return memberDao.login(memberVo);
 	}
 
-	/*
-	 * //이메일 중복 체크 public int emailchk(String memberEmail) { int resultCnt = 0;
-	 * 
-	 * try { resultCnt = memberDao.emailchk(memberEmail);
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); } return resultCnt; }
-	 * 
-	 * //닉네임 중복 체크 public int nicknamechk(String memberNickname) { int resultCnt =
-	 * 0;
-	 * 
-	 * try { resultCnt = memberDao.emailchk(memberNickname);
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); } return resultCnt; }
-	 */
-
-
-
+	//이메일 중복 체크
 	public int emailchk(String memberEmail) throws Exception {
 
 		return memberDao.emailchk(memberEmail); 
 	}
 
-
+	//닉네임 중복 체크
 	public int nicknamechk(String memberNickname) throws Exception {
 
 		return memberDao.nicknamechk(memberNickname);
