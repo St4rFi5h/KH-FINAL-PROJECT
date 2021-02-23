@@ -2,6 +2,8 @@ package kr.or.eutchapedia.login.service;
 
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,7 @@ public class MemberService {
 			memberVo.setMemberPwd(utils.getEncrypt(memberVo.getMemberPwd(), memberVo.getMemberPwdSalt()));
 
 			resultCnt = memberDao.signup(memberVo);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -36,8 +39,46 @@ public class MemberService {
 	}
 	
 	//로그인
-	public MemberVo login(MemberVo memberVo) throws Exception {
-		return memberDao.login(memberVo);
+	public int login(MemberVo memberVo, HttpSession httpSession) {
+		
+		//로그인 객체 확인
+		System.out.println("//로그인 객체 확인 memberVo : " + memberVo);
+		
+		utils = new Utils();
+		String memberEmail = memberVo.getMemberEmail();
+		String memberPwd = memberVo.getMemberPwd();
+		
+		MemberVo vo = memberDao.login(memberEmail, memberPwd);
+		
+		String salt = vo.getMemberPwdSalt();
+		String pwd = vo.getMemberPwd();
+		String pwdSalt = utils.getEncrypt(memberPwd, salt);
+		
+		System.out.println("//로그인 객체 확인 vo : " + vo);
+		
+		//로그인 결과 값
+		int result = 0;
+		
+		//회원 정보 없을 시
+		if(vo == null) {
+			result = 0;
+			return result;
+		}
+		
+		// 세션에 vo객체 저장
+		httpSession.setAttribute("memberSession", vo);
+		System.out.println("회원 아이디 세션 : " + httpSession.getAttribute("memberSession"));
+		
+		if(pwd.equals(pwdSalt)) {
+			memberDao.login(memberEmail, memberPwd);
+			System.out.println("일치");
+			result = 1;
+		} else {
+			System.out.println("불일치");
+			result = 0;
+		}
+		return result;
+		
 	}
 
 	//이메일 중복 체크

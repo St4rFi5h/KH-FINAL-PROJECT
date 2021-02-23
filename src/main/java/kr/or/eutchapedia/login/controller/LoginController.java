@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.eutchapedia.login.service.MemberService;
 import kr.or.eutchapedia.login.vo.MemberVo;
@@ -29,17 +30,15 @@ public class LoginController {
 		return mv;
 	}
 	
-//	@RequestMapping(value = "/login", method= {RequestMethod.GET, RequestMethod.POST})
-//	@ResponseBody
-//	public int login(MemberVo memberVo, HttpSession httpSession, HttpServletRequest request,
-//			HttpServletResponse response, Model models) {
-//		
-//		int result = 
-//		
-//		
-//		return result;
-//		
-//	}
-	
+	//로그인 처리
+	@RequestMapping(value="/login", method= {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public ModelAndView login(MemberVo memberVo, HttpSession httpSession, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("user/member/login");
+		
+		memberService.login(memberVo, httpSession);
+		
+		return mv;
+	}
 
 }

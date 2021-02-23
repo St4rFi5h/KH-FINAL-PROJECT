@@ -21,5 +21,5 @@ public interface MemberDaoInterface {
 	int nicknamechk(String memberNickname) throws Exception;
 
 	//로그인
-	MemberVo login(MemberVo memberVo) throws Exception;
+	MemberVo login(String memberEmail, String memberPwd);
 }
