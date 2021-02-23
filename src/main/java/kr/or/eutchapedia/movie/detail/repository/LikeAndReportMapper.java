@@ -8,5 +8,7 @@ import kr.or.eutchapedia.movie.detail.domain.LikeVo;
 @Repository
 @Mapper
 public interface LikeAndReportMapper {
+	public int likeCheck(String memberEmail);
 	public int pressLike(LikeVo likeVo);
+	public void updateLikeCount(int commentIndex);
 }

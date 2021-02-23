@@ -4,6 +4,10 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.eutchapedia.movie.detail.repository.LikeAndReportMapper">
 
+<!-- 해당 사용자가 좋아요 누른 적 있는지 확인 -->
+<select id="likeCheck" parameterType="String" resultType="int">
+	SELECT like_check FROM comment_like WHERE fk_member_email = ?
+</select>
 <!-- 좋아요 쿼리문 -->
 <insert id="pressLike" parameterType="kr.or.eutchapedia.movie.detail.domain.LikeVo">
 	INSERT INTO comment_like VALUES(
@@ -11,7 +15,20 @@
 		${commentIndex},
 		#{memberEmail},
 		1
-	);
+	)
 </insert>
+<update id="updateLikeCount" parameterType="int">
+	UPDATE eutcha_comment 
+	SET comment_like_count = comment_like_count + 1 
+	WHERE comment_index = ?
+</update>
 
+ 
+<resultMap type="kr.or.eutchapedia.movie.detail.domain.LikeVo" id="likeVo">
+	<result column="like_index" property="likeIndex"/>
+	<result column="fk_comment_index" property="commentIndex"/>
+	<result column="fk_member_email" property="memberEmail"/>
+	<result column="like_check" property="likeCheck"/>
+
+</resultMap>
 </mapper>

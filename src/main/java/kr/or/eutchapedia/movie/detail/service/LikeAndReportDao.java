@@ -18,7 +18,8 @@ public class LikeAndReportDao {
 		int result = 0;
 		
 		try {
-			likeVo.setMemberEmail("jhlee0912@icloud.com");
+			likeVo.setMemberEmail("kaoo238@naver.com");
+			System.out.println(likeVo.getMemberEmail());
 			result = mapper.pressLike(likeVo);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -27,6 +28,16 @@ public class LikeAndReportDao {
 		System.out.println(result);
 		
 		return result;
+		
+	}
+	
+	public void updateLikeCount(int commentIndex) {
+		try {
+			mapper.updateLikeCount(commentIndex);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 }
