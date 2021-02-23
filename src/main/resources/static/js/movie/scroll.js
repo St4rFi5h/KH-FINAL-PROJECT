@@ -65,7 +65,6 @@ var genre = $("#select-search option:selected").val();
 										row+=	"	</li>";
 										row+=	"</ul>";
 										row+=	"</div>";
-
 										row+=	"	 <div class='modal fade' id='exampleModal${vs.index}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true' >";
 										row+=	"<div class='modal-dialog'>";
 										row+=	"	<div class='modal-content'>";
@@ -106,16 +105,12 @@ var genre = $("#select-search option:selected").val();
 										row+=	"					<img src='/img/movie/cloud.svg' alt='wished'><span>코멘트 작성하기</span>";
 										row+=	"				</div>";
 										row+=	"			</div>";
-								
-								
-								
 										row+=	"			<div class='modal-footer'>";
 										row+=	"				<div aria-label='cancel' role='button' class='css-4w0dnp-ColumnActionButton-CancelButton e1pa47va11' data-dismiss='modal'>취소";
 										row+=	" 				</div>";
 										row+=	"			</div>";
 										row+=	"		</div>";
-										row+=	"	</div>";
-									
+										row+=	"	</div>";							
 										row+=	"	</div>";
 										row+=	"	</div>";
 

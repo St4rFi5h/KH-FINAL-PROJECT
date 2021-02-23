@@ -13,16 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.or.eutchapedia.admin.member.entity.MemberCount;
 import kr.or.eutchapedia.admin.member.entity.Memberinfo;
 import kr.or.eutchapedia.admin.member.service.MemberselectService;
-import kr.or.eutchapedia.admin.movie.entity.MovieCount;
-import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
-import kr.or.eutchapedia.admin.movie.service.MovieService;
 
 
 @RequestMapping("/admin")
 @RestController
 //셀렉트멤버
 public class AdminMemberController {
-
+	@Autowired
 	private MemberselectService service;
 	
 	
@@ -45,7 +42,7 @@ public class AdminMemberController {
 		int page = 1+(number-1)*10;
 		int amount = number*10;
 		
-		
+		System.out.println("여기까지실행됨");
 		List<Memberinfo> memberlist = service.getmemberList(field, query, page,amount);
 		
 		String count = null;

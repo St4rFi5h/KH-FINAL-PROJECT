@@ -8,9 +8,9 @@ import kr.or.eutchapedia.movie.rate.entity.MovierateVo;
 
 public interface MovierateService {
 
-	List<MovierateVo> getMovieLists(String email);
-	List<MovierateVo> getmovierateList(String email, String genre );
 	List<MovierateVo> getMovieLists(Map<String, Object> param);
+	List<MovierateVo> getmovierateList(String email, String genre );
+	List<MovierateVo> getMovieLists(String email);
 
 
 

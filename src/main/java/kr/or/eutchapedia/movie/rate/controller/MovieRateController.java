@@ -26,7 +26,9 @@ public class MovieRateController {
 	@RequestMapping("/movierate")						
 	public ModelAndView movieRate(HttpSession session, Model model) {
 		
+	
 		String email = (String)session.getAttribute("email");
+
 
 		List<MovierateVo> movies = service.getMovieLists(email);
 		model.addAttribute("movies", movies);
@@ -47,13 +49,13 @@ public class MovieRateController {
 		
 		Integer start = (cp-1)*10+1;
 		Integer end = start+10-1;
-		
 		param.put("st",start);
 		param.put("en", end);
 		param.put("genre",genre);
 
-		
-		
+		System.out.println(start);
+		System.out.println(end);
+		System.out.println(genre);
 		return  service.getMovieLists(param);
 			
 		

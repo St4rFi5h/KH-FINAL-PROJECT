@@ -11,31 +11,7 @@ import kr.or.eutchapedia.admin.member.entity.Memberinfo;
 
 @Service
 public class MemberselectServicelmp implements MemberselectService {
-//밑더미
-	@Override
-	public List<Memberinfo> getmemberList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public List<Memberinfo> getmemberList(String field, String query, int page, int amount) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<MemberCount> getmemberCount(String field, String query) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Memberinfo> getmemberList(int page, int amount) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/*
 	@Autowired
 	private MemberselectDao memberselectdao;
 	
@@ -69,6 +45,6 @@ public class MemberselectServicelmp implements MemberselectService {
 		return membercount;
 	}
 	
-		*/
+		
 	
 }

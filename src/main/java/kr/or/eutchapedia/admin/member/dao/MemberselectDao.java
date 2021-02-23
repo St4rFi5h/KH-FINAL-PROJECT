@@ -12,6 +12,8 @@ import kr.or.eutchapedia.admin.member.entity.Memberinfo;
 @Mapper
 public interface MemberselectDao {
 	
+	
+	
 	List<Memberinfo> getmemberList(
 			
 		@Param("field")String field, 
