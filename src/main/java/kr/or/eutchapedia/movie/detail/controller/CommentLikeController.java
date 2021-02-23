@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.or.eutchapedia.movie.detail.domain.LikeVo;
-import kr.or.eutchapedia.movie.detail.service.LikeAndReportDao;
+import kr.or.eutchapedia.movie.detail.service.CommentLikeDao;
 
 @RestController
-public class LikeAndReportController {
+public class CommentLikeController {
 	
 	@Autowired
-	LikeAndReportDao dao;
+	CommentLikeDao dao;
 	
 	@RequestMapping(value = "/commentLike", method = RequestMethod.POST)
 	public Map<String, Object> pressLike(int commentIndex) {
