@@ -58,10 +58,10 @@
 			
 			         <c:forEach items="${watchaList}" var="MovieInfoVo" begin="0" end="9" >
 			            <div class="movie_box">
-			              <a href="movie/detail?List=${MovieInfoVo.title}"> <!-- detail페이지 연결해야함  -->
+			              <a href="movie/detail?List=${MovieInfoVo.movieDocId}"> <!-- detail페이지 연결해야함  -->
 			                <div class="poster">
 			                  <img src="${MovieInfoVo.posterUri}" alt="" class="movie_img">
-			                  <div class="rank">${MovieInfoVo.movie_Ranking}</div>
+			                  <div class="rank">${MovieInfoVo.movieRanking}</div>
 			                  <div class="movie_info">
 			                    <h4 class="movie_title">${MovieInfoVo.title}</h4>
 			                    <p><div class="movie_yearNnation">
@@ -87,10 +87,10 @@
 			     <c:forEach items="${netflixList}" var="MovieInfoVo" begin="0" end="9" >
 		     
 		            <div class="movie_box">
-		              <a href="movie/detail?List=${MovieInfoVo.title}">
+		              <a href="movie/detail?${MovieInfoVo.movieDocId}">
 		                <div class="poster">
 		                  <img src="${MovieInfoVo.posterUri}" alt="" class="movie_img">
-		                  <div class="rank">${MovieInfoVo.movie_Ranking}</div>
+		                  <div class="rank">${MovieInfoVo.movieRanking}</div> 
 		                  <div class="movie_info">
 		                    <h4 class="movie_title">${MovieInfoVo.title}</h4>
 		                    <p><div class="movie_yearNation">
@@ -116,10 +116,10 @@
  		  <c:forEach items="${searchList}" var="MovieInfoVo" begin="0" end="9" >
 
          	   <div class="movie_box">
-		              <a href="movie/detail?List=${MovieInfoVo.title}">
+		              <a href="movie/detail?${MovieInfoVo.movieDocId}">
 		                <div class="poster">
 		                  <img src="${MovieInfoVo.posterUri}" alt="" class="movie_img">
-              		     <div class="rank">${MovieInfoVo.movie_Ranking}</div>
+              		     <div class="rank">${MovieInfo.movieRanking}</div> <!-- 수정해도 안돼유ㅠㅠㅠㅠ -->
 		                  <div class="movie_info">
 		                    <h4 class="movie_title">${MovieInfoVo.title}</h4>
 		                    <p><div class="movie_yearNation">

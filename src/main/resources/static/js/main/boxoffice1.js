@@ -49,7 +49,7 @@ const movie_box = document.querySelector(".movie_box")
 	
 	
 					//&itemPerPage: 1-10위 까지의 데이터가 출력되도록 설정
-			const url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=79497ecabb6e26ac7267da5539baa52f&targetDt=${result}?itemPerPage=10";
+	const url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=79497ecabb6e26ac7267da5539baa52f&targetDt=${result}?itemPerPage=10";
 							
 	
 	fetch(url)
