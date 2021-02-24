@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.eutchapedia.login.service.MemberService;
 import kr.or.eutchapedia.login.vo.MemberVo;
+import kr.or.eutchapedia.login.vo.MemberVoTemp;
 
 @RestController
 public class LoginController {
@@ -34,10 +35,14 @@ public class LoginController {
 	//로그인 처리
 	@RequestMapping(value="/login", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public ModelAndView login(@ModelAttribute MemberVo memberVo, HttpSession httpSession) {
-		ModelAndView mv = new ModelAndView("user/member/login");
+	public ModelAndView login(@ModelAttribute MemberVo memberVo, HttpSession httpSession, MemberVoTemp temp) {
+		ModelAndView mv = new ModelAndView();
 		
-		memberService.login(memberVo, httpSession);
+		int result = memberService.login(memberVo, httpSession, temp);
+		
+		if(result == 1) {
+			mv.setViewName("/user/member/login");
+		}
 		
 		return mv;
 	}

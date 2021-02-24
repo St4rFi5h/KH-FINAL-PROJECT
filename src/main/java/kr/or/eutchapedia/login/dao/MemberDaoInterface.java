@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import kr.or.eutchapedia.login.vo.MemberVo;
+import kr.or.eutchapedia.login.vo.MemberVoTemp;
 
 @Repository
 @Mapper
@@ -21,5 +22,6 @@ public interface MemberDaoInterface {
 	int nicknamechk(String memberNickname) throws Exception;
 
 	//로그인
-	MemberVo login(String memberEmail, String memberPwd);
+	MemberVo login(String memberEmail, String memberPwd, String memberPwdSalt);
+	MemberVoTemp loginchk(String memberEmail, String memberPwd, String memberPwdSalt);
 }

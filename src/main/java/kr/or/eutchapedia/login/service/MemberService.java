@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import kr.or.eutchapedia.login.controller.Utils;
 import kr.or.eutchapedia.login.dao.MemberDaoInterface;
 import kr.or.eutchapedia.login.vo.MemberVo;
+import kr.or.eutchapedia.login.vo.MemberVoTemp;
+
 
 @Service
 public class MemberService {
@@ -39,38 +41,42 @@ public class MemberService {
 	}
 	
 	//로그인
-	public int login(MemberVo memberVo, HttpSession httpSession) {
+	public int login(MemberVo memberVo, HttpSession httpSession, MemberVoTemp temp) {
 		
 		//로그인 객체 확인
 		System.out.println("//로그인 객체 확인 memberVo : " + memberVo);
 		
 		utils = new Utils();
+		
+		MemberVoTemp vtemp = new MemberVoTemp();
+		
 		String memberEmail = memberVo.getMemberEmail();
 		String memberPwd = memberVo.getMemberPwd();
-		MemberVo vo = memberDao.login(memberEmail, memberPwd);
+		String memberPwdSalt = memberVo.getMemberPwdSalt();
+		vtemp = memberDao.loginchk(memberEmail, memberPwd, memberPwdSalt);
 		
 		//비밀번호 암호화
-		String salt = vo.getMemberPwdSalt();
-		String pwd = vo.getMemberPwd();
+		String salt = vtemp.getMemberPwdSalt();
+		String pwd = vtemp.getMemberPwd();
 		String pwdSalt = utils.getEncrypt(memberPwd, salt);
 		
-		System.out.println("//로그인 객체 확인 vo : " + vo);
+		System.out.println("//로그인 객체 확인 vo : " + vtemp);
 		
 		//로그인 결과 값
 		int result = 0;
 		
 		//회원 정보 없을 시
-		if(vo == null) {
+		if(vtemp == null) {
 			result = 0;
 			return result;
 		}
 		
 		// 세션에 vo객체 저장
-		httpSession.setAttribute("memberSession", vo);
+		httpSession.setAttribute("memberSession", vtemp);
 		System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberSession"));
 		
 		if(pwd.equals(pwdSalt)) {
-			memberDao.login(memberEmail, memberPwd);
+			memberDao.loginchk(memberEmail, memberPwd, memberPwdSalt);
 			System.out.println("일치");
 			result = 1;
 		} else {

@@ -28,11 +28,12 @@
     </select>
 	
 	<!-- 로그인 -->
-	<select id="login" resultType="kr.or.eutchapedia.login.vo.MemberVo">
-		SELECT member_email, member_pwd
+	<select id="loginchk" resultType="kr.or.eutchapedia.login.vo.MemberVoTemp" parameterType="String">
+		SELECT member_email, member_pwd, member_pwd_salt
 		FROM member
 		WHERE member_email = #{memberEmail}
 		AND member_pwd = #{memberPwd}
+		AND member_pwd_salt = #{memberPwdSalt}
 	</select>
 	
 	<!-- 비밀번호 찾기 -->
