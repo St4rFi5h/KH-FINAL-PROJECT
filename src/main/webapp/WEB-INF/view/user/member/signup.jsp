@@ -68,7 +68,7 @@
             </div>
             <h2 class="title">회원가입</h2>
             <div class="login-form">
-                <form method="POST" action="/signup" name="signup-form" onsubmit="return checkForm(this)">
+                <form method="POST" action="/signup.do" name="signup-form" onsubmit="return checkForm(this)">
                     <div class="form-box"> 
                         <label>
                             <input class="input-nickname" type="text" name="memberNickname" id="input-nickname" placeholder="닉네임" autocomplete="off" required />

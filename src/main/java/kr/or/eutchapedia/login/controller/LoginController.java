@@ -25,7 +25,7 @@ public class LoginController {
 	private MemberService memberService;
 	
 	//로그인 페이지
-	@RequestMapping(value="/loginform")
+	@RequestMapping(value="/login")
 	public ModelAndView loginPage() {
 		ModelAndView mv = new ModelAndView("user/member/login");
 		
@@ -33,7 +33,7 @@ public class LoginController {
 	}
 	
 	//로그인 처리
-	@RequestMapping(value="/login", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/login.do", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public ModelAndView login(@ModelAttribute MemberVo memberVo, HttpSession httpSession, MemberVoTemp temp) {
 		ModelAndView mv = new ModelAndView();
@@ -41,7 +41,7 @@ public class LoginController {
 		int result = memberService.login(memberVo, httpSession, temp);
 		
 		if(result == 1) {
-			mv.setViewName("/user/member/login");
+			mv.setViewName("/user/index_main"); //경로 임시
 		}
 		
 		return mv;

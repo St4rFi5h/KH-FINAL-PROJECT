@@ -71,7 +71,7 @@
         </div>
         <hr style="width: 500px;"/>
         <div class="btns">
-            <button type="button" onclick="location.href='loginform'">로그인</button>
+            <button type="button" onclick="location.href='login'">로그인</button>
             <button type="button" onclick="location.href='view/user/index'">메인으로가기</button>
         </div>
     </main>

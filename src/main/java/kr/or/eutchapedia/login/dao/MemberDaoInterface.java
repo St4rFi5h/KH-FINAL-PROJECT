@@ -24,4 +24,7 @@ public interface MemberDaoInterface {
 	//로그인
 	MemberVo login(String memberEmail, String memberPwd, String memberPwdSalt);
 	MemberVoTemp loginchk(String memberEmail, String memberPwd, String memberPwdSalt);
+	
+	//비밀번호 찾기
+	void findpwd(MemberVo memberVo);
 }

@@ -37,7 +37,7 @@
 	</select>
 	
 	<!-- 비밀번호 찾기 -->
-	<select id="findpwd" resultType="kr.or.eutchapedia.login.vo.MemberVo">
+	<select id="findpwd" parameterType="kr.or.eutchapedia.login.vo.MemberVo" resultType="kr.or.eutchapedia.login.vo.MemberVo">
 		SELECT member_email from member
 		WHERE member_email = {member_Email}
 	</select>
