@@ -37,12 +37,13 @@ public class MainController {
 		
 		List<MovieInfoVo> watchaList = dao.selectWatchaList();
 		List<MovieInfoVo> netflixList = dao.selectNetflixList();
-		
+		List<MovieInfoVo> searchList = dao.selectSearchList();
 		
 		mv.addObject("starAvgMap", starAvgMap);
 		mv.addObject("starDataList", starDataList);
 		mv.addObject("watchaList", watchaList);
 		mv.addObject("netflixList", netflixList);
+		mv.addObject("searchList", searchList);
 		
 		mv.setViewName("user/index_main");
 		

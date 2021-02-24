@@ -89,5 +89,17 @@ public Map<String, Object> selectStarAvg(String movieDocId) {
 		}
 		
 		
+		//검색 인기 순위 
+
+		public List<MovieInfoVo> selectSearchList() {
+			
+			List<MovieInfoVo> searchList = mapper.selectSearchList();
+		
+			
+			return searchList;
+		}
+		
+		
+		
 		
 }

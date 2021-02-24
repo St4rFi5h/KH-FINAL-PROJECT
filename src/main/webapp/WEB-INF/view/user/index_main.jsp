@@ -108,222 +108,39 @@
         </div>
 
 
-        <!--슬라이드 (이번주 검색 TOP !) -->
+        <!--슬라이드 (읏챠피디아 검색 TOP !) -->
         <div class="main_slider">
-          <h1 class="slider_title">이번주 검색 TOP!</h1>
+          <h1 class="slider_title">읏챠피디아 검색 TOP!</h1>
           <div class="movie_slider" id="search_slider">
 
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466062122/axkk3v81flbf0o1kz0co.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">1</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">귀를 기울이면</h4>
-                    <p>
-                    <div class="movie_yearNation">1995<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.8</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
+ 		  <c:forEach items="${searchList}" var="MovieInfoVo" begin="0" end="9" >
 
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466064258/x8yowmjhm0jnl2ukqans.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">2</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">하울의 움직이는 성</h4>
-                    <p>
-                    <div class="movie_yearNation">2004<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.2</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
+         	   <div class="movie_box">
+		              <a href="movie/detail?List=${MovieInfoVo.title}">
+		                <div class="poster">
+		                  <img src="${MovieInfoVo.posterUri}" alt="" class="movie_img">
+              		     <div class="rank">${MovieInfoVo.movie_Ranking}</div>
+		                  <div class="movie_info">
+		                    <h4 class="movie_title">${MovieInfoVo.title}</h4>
+		                    <p><div class="movie_yearNation">
+		                    <fmt:parseDate value='${MovieInfoVo.prodYear}' var='prodYear' pattern="yyyyMMdd" scope="page"/>
+	                    	<fmt:formatDate value="${prodYear}" pattern="yyyy"/>
+		                    <span>·</span>${MovieInfoVo.nation}</div></p>
+		                    <p><div class="movie_average">평균<span>★</span>3.8</div></p>
+		                  </div>
+		                </div>
+		              </a>
+		            </div>
+		            
+			      </c:forEach>
+		
+		          </div>
+		        </div>
+		
 
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1559555586/miwd1umtsyo1oivmebot.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">3</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">이웃집 토토로</h4>
-                    <p>
-                    <div class="movie_yearNation">1988<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.0</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1559138313/xwqkbklmvpevyzafufbr.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">4</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">기생충</h4>
-                    <p>
-                    <div class="movie_yearNation">2019<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.7</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1607183466/pcynw0x0uewpepasol7k.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">5</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">더 디그</h4>
-                    <p>
-                    <div class="movie_yearNation">2021<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.3</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- 추가 -->
-
-            <div class="movie_box">
-              <a href="#">
-              
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1606989380/ef94pwvtokrxfny6xz3a.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">6</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">꽃다발같은 사랑을 했다</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.2</div>
-                    </p>
-                  </div>
-                </div>
-                
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1587435957/byltsexidgn7rebayp7h.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">7</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">실</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>2.9</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1570899847/depz6qjrcakjnbpih8or.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">8</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">82년생 김지영</h4>
-                    <p>
-                    <div class="movie_yearNnation">2019<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.8</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1511551419/gx7kxjewsp6tn7d17lbd.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">9</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">미스테이러스 스킨</h4>
-                    <p>
-                    <div class="movie_yearNnation">2004<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.6</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1589766437/twkoxyi9dyhl0bvrxt71.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">10</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">미스비헤이비어</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.8</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-          </div>
-        </div>
-
-
-        <!--슬라이드 (이번주 리뷰 TOP !) -->
+        <!--슬라이드 (읏챠피디아 리뷰 TOP !) -->
         <div class="main_slider">
-          <h1 class="slider_title">이번주 리뷰 TOP!</h1>
+          <h1 class="slider_title">읏챠피디아 리뷰 TOP!</h1>
           <div class="movie_slider" id="review_slider">
 
             <div class="movie_box">

@@ -32,6 +32,12 @@
 		WHERE mr.movie_platform = 'N'
 	</select>
 	
+		
+	<!-- 인기 검색어 순위 -->
+	<select id="selectSearchList" resultMap="movieInfo" parameterType="map">
+		select * from movie_info order by movie_hit_count desc
+	</select>
+	
 	<!-- 평균 별점, 사용자 명수 -->
 	<select id="selectStarAvg" parameterType="String" resultType="HashMap">
 		SELECT TRUNC(AVG(star_rating), 1) staravg, COUNT(*) starcnt
