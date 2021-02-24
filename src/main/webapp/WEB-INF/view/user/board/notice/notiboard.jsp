@@ -152,7 +152,7 @@
                                 <div class="custom_pagination">
 		                            <c:if test="${paging.prev }">
 	                                    <span class="pagination_button prev">
-	                                        <a href="${paging.startPage - 1}">
+	                                        <a href="?pageNum=${paging.startPage - 1}&amount=10">
 	                                            <ruler-svg-icon-prev>
 	                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
@@ -165,7 +165,7 @@
 	                                    </span>
 	                                </c:if>
 	                                <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-        								<span class="paginate_button pagenum" ${paging.cri.pageNum == num ? 'active':'' }><a href="${num }">${num}</a></span>
+        								<span class="paginate_button pagenum" ${paging.cri.pageNum == num ? 'active':'' }><a href="${num}">${num}</a></span>
    									 </c:forEach>
    									 <c:if test="${paging.next && paging.endPage > 0}">
 	                                    <span class="paginate_button next">

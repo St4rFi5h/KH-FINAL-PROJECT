@@ -64,6 +64,7 @@ public class NoticeController {
 	@RequestMapping(value="/updateView", method = RequestMethod.GET)
 	public ModelAndView updateForm(@RequestParam long noticeNo) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("페이지 = " +noticeNo);
 		NoticeVo board = noticeService.boardDetail(noticeNo);
 		mv.addObject("board", board);
 		mv.setViewName("/user/board/notice/notiboard(admin_modify)");
@@ -79,8 +80,11 @@ public class NoticeController {
 		noticeService.updateNotice(board);
 		return "redirect:/notice/list";
 	}
-
-	// 삭제
+	
+	/**
+	 * 글 삭제
+	 * @return
+	 * */
 	@RequestMapping(value="/delete", method = RequestMethod.POST)
 	public String deleteNotice(NoticeVo board) throws Exception {
 		noticeService.deleteNotice(board.getNoticeNo());

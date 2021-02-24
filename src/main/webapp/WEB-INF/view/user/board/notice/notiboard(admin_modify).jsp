@@ -99,8 +99,8 @@
                     
                     <div class="page_section section_qna">
                         <div class="xans-board-write">
-                        <c:url var="updateUrl" value="${path }/update.do"/>
-                        <form:form name="frm" id="frm" method="post" action="${updateUrl }" enctype="multipart/form-data" style="height: 100%;" modelAttribute="board">
+                        <c:url var="updateUrl" value="${path }/notice/update.do"/>
+                        <form:form name="board" id="frm" method="post" action="${updateUrl }" enctype="multipart/form-data" style="height: 100%;" modelAttribute="board">
 						<form:input type="hidden" path="noticeNo" value="${board.noticeNo }"/>
 						<form:input type="hidden" path="memberEmail" value="${board.memberEmail }"/>
                         <table id="table_after" class="boardWrite2" width="100%">
