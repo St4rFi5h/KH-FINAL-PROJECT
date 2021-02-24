@@ -294,17 +294,57 @@
 	                                <span><button data-toggle="modal" id="like-button${commentList.COMMENTINDEX }" class="like-button"
 	                                onclick="clickLikeButton(${commentList.COMMENTINDEX})">좋아요</button></span>
 	                                <span><button data-toggle="modal" id="report-button"
-	                                        data-target="#report-modal">신고하기</button></span>
+	                                        data-target="#report-modal${commentList.COMMENTINDEX }">신고하기</button></span>
 	                            </div>
+		
+		                        <!-- siren Modal(member) -->
+		                        <div class="modal fade" id="report-modal${commentList.COMMENTINDEX }" tabindex="-1" role="dialog"
+		                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+									
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header" id="modal-title-wrapper">
+												<h5 class="modal-title" id="exampleModalLabel">신고하기</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<div id="report-modal-contents">
+													<div id="report-modal-movie-title">
+														<h5>제목</h5>
+														<div>${movieInfoVo.title }</div>
+													</div>
+													<div id="report-modal-author">
+														<h5>작성자</h5>
+														<div>${commentList.NICKNAME }</div>
+													</div>
+													<div id="report-modal-comment-contents">
+														<h5>내용</h5>
+														<p>${commentList.TEXT }</p>
+													</div>
+													<textarea id="report-modal-comment-zone" name="reportText" row="1" cols="1" rows="1"
+														placeholder="신고하시는 이유를 작성해주세요."
+														style="resize: none; width: 450px; height: 300px; padding: 10px;"></textarea>
+												</div>
+											</div>
+											<div class="modal-footer" id="footer-buttons">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal"
+													aria-label="Close" id="button-for-cancel">취소</button>
+												<button type="button" class="btn btn-primary" data-toggle="modal"
+													data-target="#report-result-modal" data-dismiss="modal"
+													aria-label="Close" id="button-for-submit">확인</button>
+											</div>
+										</div>
+									</div>
+									
+									
+		                        </div>
+		                        <!-- modal 끝 -->
 	                        </div>
 	                    </c:forEach>
 
-
-                        <!-- siren Modal(member) -->
-                        <div class="modal fade" id="report-modal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<jsp:include page="modal/report_modal_member.jsp"/>
-                        </div>
                     </div>
 
                     <!-- 신고 결과 모달 -->

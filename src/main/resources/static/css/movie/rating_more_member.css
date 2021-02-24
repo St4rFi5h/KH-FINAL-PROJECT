@@ -212,12 +212,12 @@ header {
     margin: 0 auto;
 }
 
-.paging-zone button {
+.paging-zone input[type=button] {
     margin: 5px;
     border: none;
     background-color: transparent;
 }
 
-.paging-zone button:hover {
+.paging-zone input[type=button]:hover {
     font-weight: bold;
 }

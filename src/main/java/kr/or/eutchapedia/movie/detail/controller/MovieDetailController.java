@@ -79,9 +79,11 @@ public class MovieDetailController {
 	public ModelAndView movieDetailMember(String movieDocId) {
 		ModelAndView mv = new ModelAndView();
 		
+		MovieInfoVo movieInfoVo = dao.selectMovieInfo(movieDocId);
 		List<Map<String, Object>> commentList = dao.selectComments(movieDocId);
 		dao.updateHitCount(movieDocId);
 		
+		mv.addObject("movieInfoVo", movieInfoVo);
 		mv.addObject("commentList", commentList);
 		
 		mv.setViewName("/user/movie/detail/movie_detail_member");
