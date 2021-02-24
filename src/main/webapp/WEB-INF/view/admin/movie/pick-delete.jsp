@@ -149,7 +149,7 @@
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                                      <button type="submit" value="1" class="btn btn-primary">확인</button>
+                                      <button type="submit" name="sub" value="1" class="btn btn-primary">확인</button>
                                     </div>
                                   </div>
                                 </div>
@@ -170,7 +170,7 @@
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                                      <button type="button" class="btn btn-primary">확인</button>
+                                      <button type="submit" name="sub" value="2" class="btn btn-primary">확인</button>
                                     </div>
                                   </div>
                                 </div>

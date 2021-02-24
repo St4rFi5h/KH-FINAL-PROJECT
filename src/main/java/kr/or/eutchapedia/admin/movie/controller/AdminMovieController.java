@@ -182,6 +182,7 @@ public class AdminMovieController {
 		String pickno = req.getParameter("pickno");
 		String email = req.getParameter("em");
 		String pickname = req.getParameter("pn");
+		String sub1 = req.getParameter("sub1");
 		System.out.println("pickname"+pickname);
 		int number = 1;
 
@@ -218,6 +219,9 @@ public class AdminMovieController {
 		String pickno = null;
 		String docid = null;
 		String[] dellist = req.getParameterValues("list");
+		String sub = req.getParameter("sub1");
+		System.out.println("sub들어옴 = "+sub);
+		
 		for (int i = 0; i < dellist.length; i++) {
 			String[] split = null;
 			split = dellist[i].split(",");
