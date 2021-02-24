@@ -9,6 +9,8 @@ import kr.or.eutchapedia.admin.movie.dao.MovieDao;
 import kr.or.eutchapedia.admin.movie.entity.MovieCount;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfo;
+import kr.or.eutchapedia.admin.movie.entity.PickInfoDummy;
+import kr.or.eutchapedia.admin.movie.entity.PickMovieInfo;
 
 @Service
 public class MovieServiceImp implements MovieService {
@@ -44,6 +46,66 @@ public class MovieServiceImp implements MovieService {
 	public List<PickInfo> getPickInfoList(int page, int amount) {
 		List<PickInfo> picklist = moviedao.getPickInfoList(page,amount);
 		return picklist;
+	}
+
+	@Override
+	public List<PickMovieInfo> getPickMovieList(String pickname1) {
+		List<PickMovieInfo> getpickmovie = moviedao.getPickMovieList(pickname1);
+		return getpickmovie;
+	}
+	//id로 픽박스불러오기
+	@Override
+	public List<PickInfo> getPick(String userid) {
+		List<PickInfo> getpick = moviedao.getPick(userid);
+		return getpick;
+	}
+
+	@Override
+	public int updatePick(int pick,String movieid) {
+		int updatepick = moviedao.updatePick(pick,movieid);
+		return updatepick;
+	}
+
+	@Override
+	public List<PickInfoDummy> getDummy(String collection, String pickindex) {
+		List<PickInfoDummy> getdummy = moviedao.getDummy(collection,pickindex);
+		return getdummy;
+	}
+
+	@Override
+	public int addPick(String userid, String collection_) {
+		int addpick = moviedao.addPick(userid,collection_);
+		return addpick;
+	}
+
+	@Override
+	public int addPickMovies(String pickindex, String movie) {
+		int addpickmovies = moviedao.addPickMovies(pickindex,movie);
+		return addpickmovies;
+	}
+
+	@Override
+	public List<PickInfo> getPick() {
+		List<PickInfo> getpick = moviedao.getPick();
+		return getpick;
+	}
+
+	@Override
+	public int addPickMovies1(String pickindex1, String movie) {
+		int addpickmovies1 = moviedao.addPickMovies1(pickindex1,movie);
+		return addpickmovies1;
+	}
+
+	@Override
+	public List<PickMovieInfo> getPickMovieforId(String pickno, String email, String pickname) {
+		List<PickMovieInfo> pickmovies = moviedao.getPickMovieforId(pickno,email,pickname);
+		return pickmovies;
+	}
+
+	@Override
+	public int chopickDel(String pickno, String docid) {
+		int chopickdel = moviedao.chopickDel(pickno,docid);
+		return chopickdel;
 	}
 
 

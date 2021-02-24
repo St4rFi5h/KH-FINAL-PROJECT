@@ -42,9 +42,9 @@
                             <option ${(param.f == "title")?"selected":""} value="title">제목</option>
                             <option ${(param.f == "nation")?"selected":""} value="nation">제작국가</option>
                             <option ${(param.f == "genre")?"selected":""} value="genre">장르</option>
-                            
-                            
                           </select>
+                            
+                            
                         </div>
                         <div id="addpick-input-text">
                             <div id="addpick-mtext" class="input-group mb-3">
@@ -127,18 +127,18 @@
                              
                              
                        
+                   <form action="/admin/pickadd/submit" method="get">
                     <div id="addpick-input-title" >
                         <div id="addpick-ctitle">
                             <h5>컬렉션이름</h3>
                             </div>
 
                         <div id="addpick-input-cname">
-                            <input type="text" class="form-control" placeholder="컬렉션이름" aria-label="cname" aria-describedby="basic-addon1">  
+                            <input type="text" name="cbname" value="${param.cbname}" class="form-control" placeholder="컬렉션이름" aria-label="cname" aria-describedby="basic-addon1">  
 
                         </div>
 
                     </div>
-                   <form action="/admin/pickadd/submit" method="get">
                     <div id="follow-data-container">
                         <table id="follow-data" class="table table-sm" class="col-lg-12">
                             <thead>
@@ -163,6 +163,9 @@
                     <div id="addpick-submit">
                         <button type="submit" class="btn btn-primary">추가하기</button>
                     </div>
+                    <input type="hidden" name="f" value="${param.f}">
+                    <input type="hidden" name="q" value="${param.q}">
+                    <input type="hidden" name="p" value="${param.p}">
                    </form>
 
                     
@@ -176,6 +179,7 @@
 
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/admin/adminmovie/js/accordion.js"></script>
+    <script src="plugins/cookie/jquery.cookie.js"></script>  
     <script>
       $("#send-table-data tbody tr").click(function(){
         
@@ -194,10 +198,7 @@
         var nation = td.eq(2).text();
         var genre = td.eq(3).text();
         var hit = td.eq(4).text();
-        
-
         var html = ""
-          
       html += '<tr>';
       html += '<td><button id="delbtn" type="button" class="btn btn-primary btn-sm">삭제</button></td>';
       html += '<td>' + mid + '</td>';
@@ -207,8 +208,9 @@
       html += '<td>' + hit + '</td>';
       html += '<input type="hidden" name="mid" value='+mid+'>'+'</td>';
       html += '</tr>';
-      
       $("#get-table-data").append(html);
+        $.cookie('html',html);  
+      	$.cookie('html');
       
       //삭제
       
@@ -224,26 +226,6 @@
 
       </script>
       
-      <script>
-$("#addpick-select-button").on("click","button" function({
-	
-	var string = movienameval
-      $.ajax({
-    		type: "GET", //요청 메소드 방식
-    		url:"/AjaxTest/ex01.do",
-    		dataType:"text", //서버가 요청 URL을 통해서 응답하는 내용의 타입
-    		success : function(result){
-    			//서버의 응답데이터가 클라이언트에게 도착하면 자동으로 실행되는함수(콜백)
-    			//result - 응답데이터
-    			//$('#result').text(result);
-    			alert(result);
-    		},
-    		error : function(a, b, c){
-    			//통신 실패시 발생하는 함수(콜백)
-    			alert(a + b + c);
-    		}
-    	});
-}))
-      </script>
+ 
 </body>
 </html>

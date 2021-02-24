@@ -33,34 +33,38 @@
                     <div id="pick-h1">
                         <h1>pick 삭제</h1>
                       </div>
-
+						
                       <div id="adddel-input-data" class="col-lg-12">
-                        <table  id="pick-all" class="table table-hover">
+                        
+                        <table id="pick-all" class="table table-hover">
                             <thead>
                               <tr>
-                                
+                                <th scope="col">pickNo</th>
                                 <th scope="col">ID</th>
                                 <th scope="col">pick이름</th>
                                
 
                               </tr>
                             </thead>
+                            
                             <tbody>
+                            
                               <c:forEach var="pick" items="${pickinfo}" end="10">
                               
                               <tr>
-                               
+                              <td>${pick.pickIndex}</td>
                                 <td>${pick.fkMemberEmail}</td>
                                 <td>${pick.pickName}</td>
                               </tr>
+                               	
                               </c:forEach>
                              
                                
                             </tbody>
                           </table>
-                              
                         </div>
                         
+                              <button id="adddel-del-one" type="button" class="btn btn-primary">선택삭제</button>
                          <c:set var="page" value="${(param.p == null)?1:param.p}"/>
                               <c:set var="startNum" value="${page-(page-1)%5}" />
                               <c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"/>
@@ -91,7 +95,7 @@
                                 </c:if>
                           </ul>
                         </nav>
-
+					<form action="/admin/pickdelete/delmovie">
                     <div id="adddel-input-data" class="col-lg-12">
                         <table class="table table-hover">
                             <thead>
@@ -106,16 +110,23 @@
                               </tr>
 
                             </thead>
-                            <tbody>
-                              <tr>
-                                <td><input type="checkbox"/></td>
-                                <td>은규pick</td>
-                                <td>F12345</td>
-                                <td>가나다아아아아아아ㅏ아아아아아ㅏ아아</td>
-                                <td>미국</td>
-                                <td>로맨스</td>
-                                <td>120</td>
+                            <tbody id="get-table-data">
+                            <c:if test="${!empty pickmovies}">
+                            <c:forEach items="${pickmovies}" var="pickmovies">
+                             <tr>
+                                <td><input type="checkbox" name="list" value="${pickmovies.fkPickIndex},${pickmovies.movieDocid}"></input></td>
+                                <td>${pickmovies.pickName}</td>
+                                <td>${pickmovies.movieDocid}</td>
+                                <td>${pickmovies.title}</td>
+                                <td>${pickmovies.nation}</td>
+                                <td>${pickmovies.genre}</td>
+                                <td>${pickmovies.movieHitCount}</td>
                               </tr>
+                            
+                            </c:forEach>
+                            </c:if>
+							
+							
                               
                             </tbody>
                           </table>
@@ -138,7 +149,7 @@
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                                      <button type="button" class="btn btn-primary">확인</button>
+                                      <button type="submit" value="1" class="btn btn-primary">확인</button>
                                     </div>
                                   </div>
                                 </div>
@@ -165,6 +176,7 @@
                                 </div>
                               </div>
                         </div>
+					</form>
                         
                       </div>
 
@@ -176,5 +188,22 @@
 
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/admin/adminmovie/js/accordion.js"></script>
+     <script>
+      $("#pick-all tbody tr").click(function(){
+
+    	  //현재클릭된 row(<tr>)
+          var tr = $(this);
+          var td = tr.children();
+          //값저장
+          var pickno = td.eq(0).text();
+          var em = td.eq(1).text();
+          var pn = td.eq(2).text();
+          console.log(em);
+          console.log(pn);
+          var url = "/admin/pickdelete?pickno="+pickno+"&em="+em+"&pn="+pn;
+          location.href = url;
+          });
+      </script>
+    
 </body>
 </html>

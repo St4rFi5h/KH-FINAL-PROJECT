@@ -14,6 +14,7 @@ public class MovieInfo {
 	private String plot;
 	private String movie_trailer;
 	private int movie_hit_count;
+	
 	public String getNum() {
 		return num;
 	}

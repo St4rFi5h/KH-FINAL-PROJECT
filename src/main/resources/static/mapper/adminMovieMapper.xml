@@ -38,6 +38,28 @@
 		<result column="PICK_NAME" property="pickName" />
 	</resultMap>
 
+	<resultMap
+		type="kr.or.eutchapedia.admin.movie.entity.PickMovieInfo"
+		id="pickmovieinfo">
+		<result column="FK_MEMBER_EMAIL" property="fkMemberEmail" />
+		<result column="PICK_NAME" property="pickName" />
+		<result column="FK_PICK_INDEX" property="fkPickIndex" />
+		<result column="FK_MOVIE_DOCID" property="movieDocid" />
+		<result column="TITLE" property="title" />
+		<result column="NATION" property="nation" />
+		<result column="GENRE" property="genre" />
+		<result column="MOVIE_HIT_COUNT" property="movieHitCount" />
+	</resultMap>
+	<!-- 더미값 -->
+	<resultMap
+		type="kr.or.eutchapedia.admin.movie.entity.PickInfoDummy"
+		id="pickinfodummy">
+		<result column="FK_PICK_INDEX" property="fkPickIndex" />
+		<result column="FK_MOVIE_DOCID" property="fkMovieDocid" />
+		<result column="FK_MEMBER_EMAIL" property="fkMemberEmail" />
+		<result column="PICK_NAME" property="pickName" />
+	</resultMap>
+
 	<!-- movie리스트뽑아오기 -->
 	<select id="getmovieList" resultMap="moviepage"
 		parameterType="map">
@@ -45,11 +67,13 @@
 		SELECT * FROM(
 		SELECT ROWNUM NUM, m.*
 		FROM (SELECT *
-		FROM MOVIE_INFO WHERE
+		FROM
+		MOVIE_INFO WHERE
 		${field} LIKE '%'||#{query}||'%'
 		) m
 		)
-		WHERE NUM BETWEEN #{page} AND
+		WHERE NUM BETWEEN
+		#{page} AND
 		#{amount}
 
 	</select>
@@ -58,7 +82,8 @@
 		SELECT * FROM(
 		SELECT ROWNUM NUM, m.*
 		FROM (SELECT *
-		FROM MOVIE_INFO WHERE
+		FROM
+		MOVIE_INFO WHERE
 		${field} LIKE '%'||#{query}||'%'
 		) m
 		)
@@ -69,12 +94,79 @@
 		SELECT * FROM(
 		SELECT ROWNUM NUM, m.*
 		FROM (SELECT *
-		FROM PICK
+		FROM
+		PICK
 		) m
 		)
 		WHERE NUM BETWEEN #{page} AND #{amount}
 	</select>
+	<select id="getPickMovieList" resultMap="pickmovieinfo"
+		parameterType="map">
+		SELECT
+		p.fk_member_email,
+		p.pick_name,
+		mp.fk_pick_index,
+		mi.movie_docid,
+		mi.title,
+		mi.nation,
+		mi.genre,
+		mi.movie_hit_count
+		FROM PICK
+		p INNER JOIN MOVIE_PICK mp ON p.PICK_INDEX = mp.FK_PICK_INDEX
+		INNER
+		JOIN MOVIE_INFO mi ON mp.fk_movie_docid = mi.movie_docid WHERE
+		p.PICK_NAME = #{pickname1}
+	</select>
 
 
+	<select id="getPick" resultMap="pickinfo" parameterType="map">
+		SELECT*
+		FROM PICK
+	</select>
 
+	<select id="getDummy" resultMap="pickinfodummy"
+		parameterType="map">
+		SELECT
+		*
+		FROM MOVIE_PICK mp INNER JOIN PICK p ON
+		mp.fk_pick_index = p.pick_index
+		WHERE p.pick_name = #{collection} AND
+		FK_PICK_INDEX = ${pickindex}
+	</select>
+
+	<insert id="updatePick">
+		INSERT INTO MOVIE_PICK
+		VALUES(MOVIE_PICK_SEQ.nextval,${pick},#{movieid})
+	</insert>
+	<insert id="addPick">
+		INSERT INTO PICK
+		VALUES(PICK_SEQ.nextval,#{userid},#{collection_})
+	</insert>
+	<insert id="addPickMovies">
+		INSERT INTO MOVIE_PICK
+		VALUES(MOVIE_PICK_SEQ.nextval,${pickindex},#{movie})
+	</insert>
+	<insert id="addPickMovies1">
+		INSERT INTO MOVIE_PICK
+		VALUES(MOVIE_PICK_SEQ.nextval,${pickindex1},#{movie})
+	</insert>
+	<select id="getPickMovieforId" resultMap="pickmovieinfo"
+		parameterType="map">
+		SELECT
+		mp.fk_pick_index,
+		mp.fk_movie_docid,
+		p.fk_member_email,
+		p.pick_name,
+		mi.title,
+		mi.nation,
+		mi.genre,
+		mi.movie_hit_count
+		FROM MOVIE_PICK mp INNER JOIN PICK p ON mp.fk_pick_index = p.pick_index
+		INNER JOIN MOVIE_INFO mi ON mi.movie_docid = mp.fk_movie_docid WHERE
+		p.pick_name = #{pickname} AND mp.fk_pick_index = ${pickno} AND p.fk_member_email
+		= #{email}
+	</select>
+	<update id="chopickDel">
+	DELETE FROM MOVIE_PICK WHERE FK_PICK_INDEX = ${pickno} AND FK_MOVIE_DOCID = #{docid}
+	</update>
 </mapper>

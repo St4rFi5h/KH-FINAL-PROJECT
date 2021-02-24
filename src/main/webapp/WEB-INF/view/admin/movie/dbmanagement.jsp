@@ -61,6 +61,7 @@
 
                     </div>
                 </form>
+                    <form action="/admin/moviemanagement/delete">
                     
                     <div id="dbmanagement-input-data" class="col-lg-12">
                         <table id="db-info" class="table table-hover">
@@ -78,15 +79,15 @@
                             <tbody>
                              <c:forEach var="m" items="${movielist}" end="10">
                               <tr>
-                                <td><input type="checkbox"/></td>
+                                <td><input type="checkbox" name="del" value="${m.movie_docid}"/></td>
                                 <td>${m.movie_docid}</td>
                                 <td>${m.title}</td>
                                 <td>${m.nation}</td>
                                 <td>${m.genre}</td>
                                 <td>${m.movie_hit_count}</td>
-                                
                               </tr>
                            </c:forEach>
+                                
                               
                             </tbody>
                           </table>
@@ -138,13 +139,14 @@
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                                    <button type="button" class="btn btn-primary">확인</button>
+                                    <button type="submit" class="btn btn-primary">확인</button>
                                   </div>
                                 </div>
                               </div>
                             </div>
                             <button id="dbmanagement-del-all" type="button" class="btn btn-primary" OnClick="location.href ='addMovie.html'" >전체삭제</button>
                         </div>
+                    </form>
 
                           
                       </div>
