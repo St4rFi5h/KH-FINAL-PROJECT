@@ -26,8 +26,8 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public void deleteNotice(NoticeVo board) throws Exception {
-		noticeMapper.deleteNotice(board);
+	public void deleteNotice(long noticeNo) throws Exception {
+		noticeMapper.deleteNotice(noticeNo);
 	}
 
 	@Override
@@ -35,14 +35,13 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeMapper.boardList(cri);
 	}
 
-
 	@Override
-	public NoticeVo boardDetail(NoticeVo board) throws Exception {
-		return noticeMapper.boardDetail(board);
+	public NoticeVo boardDetail(long noticeNo) throws Exception {
+		return noticeMapper.boardDetail(noticeNo);
 	}
 	@Override
 	public int totalCnt(Criteria cri) throws Exception {
-		return noticeMapper.totalCnt();
+		return noticeMapper.totalCnt(cri);
 	}
 
 

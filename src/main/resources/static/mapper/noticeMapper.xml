@@ -47,14 +47,16 @@
 	<insert id="insertNotice" parameterType="kr.or.eutchapedia.board.notice.domain.NoticeVo">
 		INSERT INTO
 				NOTICE (
-						member_email
+						NOTICE_NO
+						, member_email
 						, NOTICE_TITLE
 						, NOTICE_CONTENT 
 						, NOTICE_FILES
 						, NOTICE_PUB
 				)
 				VALUES (
-						'admin@eutcha.com'
+						NOTICE_SEQ.NEXTVAL
+						, 'admin@eutcha.com'
 						, #{noticeTitle}
 						, #{noticeContent}
 						, #{noticeFiles,jdbcType=NVARCHAR}
@@ -66,10 +68,10 @@
 			SET 
 				NOTICE_TITLE = #{noticeTitle}
 				, NOTICE_CONTENT = #{noticeContent}
-				, NOTICE_FILES = #{noticeFiles}
+				, NOTICE_FILES = #{noticeFiles,jdbcType=NVARCHAR}
 				, NOTICE_PUB = #{noticePub}
 			WHERE 
-				NOTICE_NO = #{noticeNo}
+				NOTICE_NO = #{noticeNo,jdbcType=LONGVARCHAR}
 	</update>
 	<delete id="deleteNotice" parameterType="int">
 		DELETE

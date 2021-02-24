@@ -244,7 +244,7 @@
 $("#write").click(function(){ 
 		oEditors.getById["noticeContent"].exec("UPDATE_CONTENTS_FIELD", []); 
 		$("#frm").submit(); 
-	})
+})
 
 </script>
 <script type="text/javascript">
