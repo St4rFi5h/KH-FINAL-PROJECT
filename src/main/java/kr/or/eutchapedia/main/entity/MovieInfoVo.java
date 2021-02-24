@@ -13,9 +13,10 @@ public class MovieInfoVo {
 	private String plot;
 	private String movieTrailer;
 	private int movieHitCount;
-	private int movie_ranking_index; 
-	private int movie_Ranking;
-	private String movie_platform;
+	private int movieRankingIndex; 
+	private int movieRanking;
+	private String moviePlatform;
+
 	
 
 	public String getMovieDocId() {
@@ -114,29 +115,30 @@ public class MovieInfoVo {
 		this.movieHitCount = movieHitCount;
 	}
 
-	public int getMovie_ranking_index() {
-		return movie_ranking_index;
+	public int getMovieRankingIndex() {
+		return movieRankingIndex;
 	}
 
-	public void setMovie_ranking_index(int movie_ranking_index) {
-		this.movie_ranking_index = movie_ranking_index;
+	public void setMovieRankingIndex(int movieRankingIndex) {
+		this.movieRankingIndex = movieRankingIndex;
 	}
 
-	public int getMovie_Ranking() {
-		return movie_Ranking;
+	public int getMovieRanking() {
+		return movieRanking;
 	}
 
-	public void setMovie_Ranking(int movie_Ranking) {
-		this.movie_Ranking = movie_Ranking;
+	public void setMovieRanking(int movieRanking) {
+		this.movieRanking = movieRanking;
 	}
 
-	public String getMovie_platform() {
-		return movie_platform;
+	public String getMoviePlatform() {
+		return moviePlatform;
 	}
 
-	public void setMovie_platform(String movie_platform) {
-		this.movie_platform = movie_platform;
+	public void setMoviePlatform(String moviePlatform) {
+		this.moviePlatform = moviePlatform;
 	}
+
 
 
 	
