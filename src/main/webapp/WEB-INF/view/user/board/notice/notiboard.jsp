@@ -134,6 +134,9 @@
                                                 <span class="modi_span">
                                                     <a href="${path }/notice/updateView?noticeNo=${board.noticeNo}" class="modi_btn">수정</a>
                                                 </span>
+                                                <span class="modi_span">
+                                                    <a href="${path }/notice/delete?noticeNo=${board.noticeNo}" class="modi_btn">삭제</a>
+                                        		</span>
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +146,7 @@
                             <!-- 관리자 버튼-->
                             <div class="buttons">
                                 <a href="/notice/insertView"><input type="button" class="write_btn yb" value="글쓰기"/></a>
-                                <input type="submit" class="write_btn yb" name="cmd" value="삭제" onclick="return confirm('정말로 삭제하시겠습니까?')"/>
+                                <input type="submit" class="write_btn yb" name="delete_btn" value="삭제" onclick="return confirm('정말로 삭제하시겠습니까?')"/>
                                 <input type="submit" class="write_btn yb" name="cmd" value="공개"/>
                             </div>
 

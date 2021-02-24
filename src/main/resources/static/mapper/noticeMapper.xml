@@ -77,6 +77,6 @@
 		DELETE
 			FROM NOTICE
 			WHERE
-				NOTICE_NO = #{noticeNo}
+				NOTICE_NO = ${noticeNo}
 	</delete>
 </mapper>

@@ -85,9 +85,9 @@ public class NoticeController {
 	 * 글 삭제
 	 * @return
 	 * */
-	@RequestMapping(value="/delete", method = RequestMethod.POST)
-	public String deleteNotice(NoticeVo board) throws Exception {
-		noticeService.deleteNotice(board.getNoticeNo());
+	@RequestMapping(value="/delete", method = {RequestMethod.GET, RequestMethod.POST})
+	public String deleteNotice(@RequestParam("noticeNo") long noticeNo) throws Exception {
+		noticeService.deleteNotice(noticeNo);
 		return "redirect:/notice/list";
 	}
 
