@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <!--부트스트랩 기능들의 css-->>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/signup_complete.css" type="text/css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/signup/signup_complete.css" type="text/css">
+    <link rel="stylesheet" href="css/signup/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/logo_favicon.ico">
     <!--favicon-->
@@ -63,7 +63,7 @@
 
     <main class="main-body">
         <div class="welcome">
-            <img class=logo src="image/original.png" width="300px" height="50px"> 
+            <img class=logo src="img/original.png" width="300px" height="50px"> 
             <h2 class="title">EUTCHAPEDIA의 회원이 되신것을 환영합니다.</h2>
             <div class="member-email">
                 <span>회원님의 메일주소는 <b>여기이메일</b>입니다.</span>
@@ -71,8 +71,8 @@
         </div>
         <hr style="width: 500px;"/>
         <div class="btns">
-            <button type="button" onclick="location.href='#'">로그인</button>
-            <button type="button" onclick="location.href='#'">메인으로가기</button>
+            <button type="button" onclick="location.href='login'">로그인</button>
+            <button type="button" onclick="location.href='view/user/index'">메인으로가기</button>
         </div>
     </main>
 

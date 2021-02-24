@@ -20,4 +20,19 @@ public class FindPasswordController {
 				
 		return mv;
 	}
+	
+	@RequestMapping(value = "/findpassword3")
+	public ModelAndView findpassword3() {
+		ModelAndView mv = new ModelAndView("user/member/find_password3");
+				
+		return mv;
+	}
+	
+
+	@RequestMapping(value = "/findpasswordcomplete")
+	public ModelAndView findpasswordcomplete() {
+		ModelAndView mv = new ModelAndView("user/member/find_password_complete");
+				
+		return mv;
+	}
 }

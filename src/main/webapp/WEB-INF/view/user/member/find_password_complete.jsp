@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <!--부트스트랩 기능들의 css-->>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/find_password_complete.css" type="text/css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/login/find_password_complete.css" type="text/css">
+    <link rel="stylesheet" href="css/login/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/logo_favicon.ico">
     <!--favicon-->
@@ -76,7 +76,7 @@
             <div class="login-form">
                 <form method="POST" action="#">
                     <p>
-                        <input class="login-button" type="button" value="로그인 하기" onclick="location.href='login.html'">
+                        <input class="login-button" type="button" value="로그인 하기" onclick="location.href='login'">
                     </p>
                 </form>
             </div>

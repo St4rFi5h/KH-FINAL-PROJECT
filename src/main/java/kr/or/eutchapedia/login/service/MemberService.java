@@ -47,9 +47,9 @@ public class MemberService {
 		utils = new Utils();
 		String memberEmail = memberVo.getMemberEmail();
 		String memberPwd = memberVo.getMemberPwd();
-		
 		MemberVo vo = memberDao.login(memberEmail, memberPwd);
 		
+		//비밀번호 암호화
 		String salt = vo.getMemberPwdSalt();
 		String pwd = vo.getMemberPwd();
 		String pwdSalt = utils.getEncrypt(memberPwd, salt);
@@ -67,7 +67,7 @@ public class MemberService {
 		
 		// 세션에 vo객체 저장
 		httpSession.setAttribute("memberSession", vo);
-		System.out.println("회원 아이디 세션 : " + httpSession.getAttribute("memberSession"));
+		System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberSession"));
 		
 		if(pwd.equals(pwdSalt)) {
 			memberDao.login(memberEmail, memberPwd);

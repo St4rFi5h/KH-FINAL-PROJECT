@@ -95,7 +95,7 @@
            
             <div class="signup-block">
                 이미 가입하셨나요?
-                <button type="button" onclick="location.href='login'">로그인</button>
+                <button type="button" onclick="location.href='loginform'">로그인</button>
             </div>
             <hr class="bottom-line">
 

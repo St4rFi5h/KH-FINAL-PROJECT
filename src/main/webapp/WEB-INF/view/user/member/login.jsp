@@ -69,14 +69,14 @@
                 </div>
                 <h2 class="title">로그인</h2>
                 <div class="login-form">
-                    <form method="POST" id="login-form" action="login" onsubmit="return login();">
+                    <form method="POST" id="login-form" action="/login" onsubmit="return login();">
                         <p>
-                            <input class="input-email" type="email" name="email" id="email" placeholder="이메일">
+                            <input class="input-email" type="email" name="memberEmail" id="email" placeholder="이메일">
                             <span id="searchclear"><i class="fas fa-times"></i></span>
                             </input>
                         </p>
                         <p>
-                            <input class="input" type="password" name="pwd" id="pwd" placeholder="비밀번호">
+                            <input class="input" type="password" name="memberPwd" id="pwd" placeholder="비밀번호">
                             <!-- <span id="searchclear"><i class="fas fa-times"></i></span> -->
                             </input>
                         </p>
@@ -142,6 +142,7 @@
     <!-- scripts -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/member/login.js"></script>
     <script>
         var $ipt = $('#email'),
             $clearIpt = $('#searchclear');

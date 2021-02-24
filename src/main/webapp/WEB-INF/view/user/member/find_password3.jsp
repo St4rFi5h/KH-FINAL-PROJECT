@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
         <!--부트스트랩 기능들의 css-->>
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/find_password3.css" type="text/css">
-        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/login/find_password3.css" type="text/css">
+        <link rel="stylesheet" href="css/login/index.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="img/logo_favicon.ico">
         <!--favicon-->

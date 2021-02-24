@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,7 +34,7 @@ public class LoginController {
 	//로그인 처리
 	@RequestMapping(value="/login", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public ModelAndView login(MemberVo memberVo, HttpSession httpSession, HttpServletRequest request) {
+	public ModelAndView login(@ModelAttribute MemberVo memberVo, HttpSession httpSession) {
 		ModelAndView mv = new ModelAndView("user/member/login");
 		
 		memberService.login(memberVo, httpSession);
