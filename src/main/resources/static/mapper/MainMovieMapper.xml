@@ -33,8 +33,7 @@
 	</select>
 	
 	<!-- 평균 별점, 사용자 명수 -->
-	<select id="selectStarAvg" parameterType="String"
-		resultType="HashMap">
+	<select id="selectStarAvg" parameterType="String" resultType="HashMap">
 		SELECT TRUNC(AVG(star_rating), 1) staravg, COUNT(*) starcnt
 		FROM star_rating
 		WHERE fk_movie_docid = #{_parameter}

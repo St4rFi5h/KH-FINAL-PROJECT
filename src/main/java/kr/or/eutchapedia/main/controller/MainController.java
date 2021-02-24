@@ -32,9 +32,15 @@ public class MainController {
 		
 //		mv.addObject("movieInfoVo", movieInfoVo);
 //		mv.addObject("starDataList", starDataList);
+		Map<String, Object> starAvgMap = dao.selectStarAvg(movieDocId);
+		List<Map<String, Object>> starDataList = dao.selectStarData(movieDocId);
+		
 		List<MovieInfoVo> watchaList = dao.selectWatchaList();
 		List<MovieInfoVo> netflixList = dao.selectNetflixList();
 		
+		
+		mv.addObject("starAvgMap", starAvgMap);
+		mv.addObject("starDataList", starDataList);
 		mv.addObject("watchaList", watchaList);
 		mv.addObject("netflixList", netflixList);
 		

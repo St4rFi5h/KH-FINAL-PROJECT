@@ -1,6 +1,7 @@
 package kr.or.eutchapedia.main.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,24 +19,40 @@ public class MainMovieDao {
 	@Autowired
 	MainMapper mapper;
 
-	public MovieInfoVo selectMovieInfo(String movieDocId) {
+//	public MovieInfoVo selectMovieInfo(String movieDocId) {
+//		
+//		MovieInfoVo movieInfoVo = new MovieInfoVo();
+//		
+//		try {
+//			movieInfoVo = mapper.selectMovieInfo(movieDocId);
+//			
+//			String prodYear = movieInfoVo.getProdYear().substring(0, 4);
+//			movieInfoVo.setProdYear(prodYear);
+//			
+//		} catch (Exception e) {                                                                                                                                                                                                                                                                                                                                                                                                                                          
+//			e.printStackTrace();
+//		}
+//		
+//		return movieInfoVo;
+//		
+//	}
+	
+	
+public Map<String, Object> selectStarAvg(String movieDocId) {
 		
-		MovieInfoVo movieInfoVo = new MovieInfoVo();
-		
+		Map<String, Object> starAvgMap = new HashMap<>();
+
 		try {
-			movieInfoVo = mapper.selectMovieInfo(movieDocId);
+			starAvgMap = mapper.selectStarAvg(movieDocId);
 			
-			String prodYear = movieInfoVo.getProdYear().substring(0, 4);
-			movieInfoVo.setProdYear(prodYear);
-			
-		} catch (Exception e) {                                                                                                                                                                                                                                                                                                                                                                                                                                          
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return movieInfoVo;
-		
+		return starAvgMap;
 	}
-	// 별점 데이터 반환 
+
+		// 별점 데이터 반환 
 		public List<Map<String, Object>> selectStarData(String movieDocId) {
 			List<Map<String, Object>> starDataList = new ArrayList<>();
 			
@@ -48,6 +65,7 @@ public class MainMovieDao {
 			
 			return starDataList;
 		}
+		
 		
 		//왓챠 순위 
 

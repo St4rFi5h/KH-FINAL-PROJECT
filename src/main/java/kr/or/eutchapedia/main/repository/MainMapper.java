@@ -18,5 +18,6 @@ import kr.or.eutchapedia.main.entity.MovieInfoVo;
 		public List<MovieInfoVo> selectNetflixList();
 		public Map<String, Object> selectStarAvg(String movieDocId);
 		public List<Map<String, Object>> selectStarData(String movieDocId);
+		
 
 	}
