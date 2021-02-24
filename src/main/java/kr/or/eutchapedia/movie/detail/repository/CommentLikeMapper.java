@@ -1,18 +1,21 @@
 package kr.or.eutchapedia.movie.detail.repository;
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import kr.or.eutchapedia.movie.detail.domain.LikeVo;
 
+
 @Repository
 @Mapper
 public interface CommentLikeMapper {
-	public int likeCheck(String memberEmail);
-	public int pressLike(LikeVo likeVo);
+	public LikeVo likeCheck(Map<String, Object> commandMap);
+	public int pressLike(Map<String, Object> commandMap);
 	public void updateLikeCount(int commentIndex);
-	public void cancelLike(LikeVo likeVo);
+	public void cancelLike(Map<String, Object> commandMap);
 	public void cancelLikeCount(int commentIndex);
-	public void updateLikeCheck(LikeVo likeVo);
+	public void updateLikeCheck(Map<String, Object> commandMap);
 	
 }

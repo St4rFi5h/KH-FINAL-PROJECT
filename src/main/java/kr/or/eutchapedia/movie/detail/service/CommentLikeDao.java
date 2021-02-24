@@ -1,5 +1,8 @@
 package kr.or.eutchapedia.movie.detail.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,30 +18,29 @@ public class CommentLikeDao {
 	CommentLikeMapper mapper;
 	
 	// 해당 사용자가 좋아요 누른 적 있는지 확인 
-	public int likeCheck(String memberEmail) {
-		int result = 0;
+	public LikeVo likeCheck(Map<String, Object> commandMap) {
+		LikeVo likeVo = new LikeVo();
 		
 		try {
-			mapper.likeCheck(memberEmail);
+			likeVo = mapper.likeCheck(commandMap);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return result;
+		return likeVo;
 	}
 	
 	// 최초 좋아요 
-	public int pressLike(LikeVo likeVo) {
+	public int pressLike(Map<String, Object> commandMap) {
 		int result = 0;
 		
 		try {
-			likeVo.setMemberEmail("kaoo238@naver.com");
-			result = mapper.pressLike(likeVo);
+			result = mapper.pressLike(commandMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println(result);
 		
 		return result;
 		
@@ -55,9 +57,9 @@ public class CommentLikeDao {
 	}
 	
 	// 좋아요 취소 
-	public void cancelLike(LikeVo likeVo) {
+	public void cancelLike(Map<String, Object> commandMap) {
 		try {
-			mapper.cancelLike(likeVo);
+			mapper.cancelLike(commandMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -75,9 +77,9 @@ public class CommentLikeDao {
 	}
 	
 	// 좋아요 눌렀던 적 있는 회원이 다시 좋아요 누르면 
-	public void updateLikeCheck(LikeVo likeVo) {
+	public void updateLikeCheck(Map<String, Object> commandMap) {
 		try {
-			mapper.updateLikeCheck(likeVo);
+			mapper.updateLikeCheck(commandMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

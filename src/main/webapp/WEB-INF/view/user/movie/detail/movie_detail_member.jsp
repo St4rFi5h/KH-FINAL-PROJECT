@@ -34,7 +34,7 @@
     <div id="main-container">
         <div id="basic-info-and-rating">
             <div id="poster">
-                <img alt="" src="img/220px-영화_소울.jpg" style="width: 160px; height: 240px" />
+                <img alt="" src="/img/220px-영화_소울.jpg" style="width: 160px; height: 240px" />
             </div>
             <div id="basic-info">
                 <h1 id="title">소울</h1>
@@ -277,7 +277,7 @@
                        <c:forEach var="commentList" items="${commentList }">
 	                        <div class="comment-card">
 	                            <div class="user-info-and-rating">
-	                            		<input type="hidden" id="commentIndex" name="commentIndex" value="${commentList.COMMENTINDEX }"/>
+	                            		<input type="text" id="commentIndex" class="commentIndex" name="commentIndex" value="${commentList.COMMENTINDEX }"/>
 	                                <img src="${commentList.PHOTO }" class="profile-img">
 	                                <div class="user-nickname">${commentList.NICKNAME }</div>
 	                                <div class="comment-star-rating">★ ${commentList.STARS }</div>
@@ -291,7 +291,8 @@
 	                                <span id="like-count">${commentList.LIKECOUNT }</span>
 	                            </div>
 	                            <div class="like-and-report">
-	                                <span><button data-toggle="modal" id="like-button" class="like-button">좋아요</button></span>
+	                                <span><button data-toggle="modal" id="like-button" class="like-button"
+	                                onclick="clickLikeButton(${commentList.COMMENTINDEX})">좋아요</button></span>
 	                                <span><button data-toggle="modal" id="report-button"
 	                                        data-target="#report-modal">신고하기</button></span>
 	                            </div>
@@ -367,15 +368,15 @@
 		<jsp:include page="/WEB-INF/view/user/footer.jsp"/>
 		<!-- footer 끝 -->
 		<script>
-			$(".like-button").on('click', function() {
-				var commentIndex = $("#commentIndex").val();
+			function clickLikeButton(cIndex) {
+				var commentIndex = cIndex;
 				console.log(commentIndex);
 				
 				$.ajax({
 					type : 'POST',
 					url : '/commentLike',
 					async : false,
-					data : {'commentIndex' : commentIndex},
+					data : "commentIndex=" + commentIndex,
 					success : function(result) {
 						alert("hello!");
 						console.log(result);
@@ -388,10 +389,10 @@
 
 						}
 
-					})
+					});
 					
 
-				})
+				}
 				
 				
 		

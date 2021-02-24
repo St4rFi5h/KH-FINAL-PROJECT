@@ -30,5 +30,14 @@ public class LikeVo {
 	public void setLikeCheck(int likeCheck) {
 		this.likeCheck = likeCheck;
 	}
+	@Override
+	public String toString() {
+		return "LikeVo [likeIndex=" + likeIndex + ", commentIndex=" + commentIndex + ", memberEmail=" + memberEmail
+				+ ", likeCheck=" + likeCheck + "]";
+	}
+	
+	
+	
+	
 	
 }
