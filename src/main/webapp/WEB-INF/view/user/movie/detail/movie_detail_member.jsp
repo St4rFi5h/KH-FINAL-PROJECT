@@ -209,7 +209,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">엘리스 브라가</div>
                                     <div class="staff-role">성우 | 제리</div>
@@ -277,7 +277,7 @@
                        <c:forEach var="commentList" items="${commentList }">
 	                        <div class="comment-card">
 	                            <div class="user-info-and-rating">
-	                            		<input type="text" id="commentIndex" class="commentIndex" name="commentIndex" value="${commentList.COMMENTINDEX }"/>
+	                            		<input type="hidden" id="commentIndex" class="commentIndex" name="commentIndex" value="${commentList.COMMENTINDEX }"/>
 	                                <img src="${commentList.PHOTO }" class="profile-img">
 	                                <div class="user-nickname">${commentList.NICKNAME }</div>
 	                                <div class="comment-star-rating">★ ${commentList.STARS }</div>
@@ -288,10 +288,10 @@
 	                            </div>
 	                            <div class="like-count-zone">
 	                                <img src="/img/movie/like.svg" id="like-thumb" />
-	                                <span id="like-count">${commentList.LIKECOUNT }</span>
+	                                <span id="like-count${commentList.COMMENTINDEX }" class="like-count">${commentList.LIKECOUNT }</span>
 	                            </div>
 	                            <div class="like-and-report">
-	                                <span><button data-toggle="modal" id="like-button" class="like-button"
+	                                <span><button data-toggle="modal" id="like-button${commentList.COMMENTINDEX }" class="like-button"
 	                                onclick="clickLikeButton(${commentList.COMMENTINDEX})">좋아요</button></span>
 	                                <span><button data-toggle="modal" id="report-button"
 	                                        data-target="#report-modal">신고하기</button></span>
@@ -370,18 +370,30 @@
 		<script>
 			function clickLikeButton(cIndex) {
 				var commentIndex = cIndex;
-				console.log(commentIndex);
+				var idx = $(event.target);
 				
+				var likeCountIndex = "like-count" + commentIndex;
+				
+				console.log(idx.parents('div').find('.like-count'));
 				$.ajax({
 					type : 'POST',
 					url : '/commentLike',
 					async : false,
 					data : "commentIndex=" + commentIndex,
 					success : function(result) {
-						alert("hello!");
-						console.log(result);
-						$(this).css("background-color", "rgb(255, 7, 88)")
-						$(this).css("color", "white");
+						
+						if (result.likeCheck == 1) {
+							idx.css("background-color", "rgb(255, 7, 88)");
+							idx.css("color", "white");
+							
+						} else if (result.likeCheck == 0) {
+							idx.css("background-color", "#e3e3e3")
+							idx.css("color", "black");
+
+							}
+						$("#" + likeCountIndex).empty();
+						$("#" + likeCountIndex).append(result.likeCount);
+						
 
 						},
 					error : function() {
@@ -393,9 +405,6 @@
 					
 
 				}
-				
-				
-		
 
 		</script>
 

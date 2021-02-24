@@ -32,6 +32,20 @@ public class CommentLikeDao {
 		return likeVo;
 	}
 	
+	// like count select
+	public int selectLikeCount(int commentIndex) {
+		int result = 0;
+		
+		try {
+			result = mapper.selectLikeCount(commentIndex);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 	// 최초 좋아요 
 	public int pressLike(Map<String, Object> commandMap) {
 		int result = 0;

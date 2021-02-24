@@ -12,6 +12,7 @@ import kr.or.eutchapedia.movie.detail.domain.LikeVo;
 @Mapper
 public interface CommentLikeMapper {
 	public LikeVo likeCheck(Map<String, Object> commandMap);
+	public int selectLikeCount(int commentIndex);
 	public int pressLike(Map<String, Object> commandMap);
 	public void updateLikeCount(int commentIndex);
 	public void cancelLike(Map<String, Object> commandMap);

@@ -12,6 +12,14 @@
 	
 </select>
 
+<!-- like 개수 select -->
+<select id="selectLikeCount" parameterType="int" resultType="int">
+	SELECT comment_like_count likeCount
+	FROM eutcha_comment
+	WHERE comment_index = #{commentIndex} 
+	
+</select>
+
 <!-- 최초 좋아요 쿼리문 확인완료 -->
 <insert id="pressLike" parameterType="HashMap">
 	INSERT INTO comment_like VALUES(

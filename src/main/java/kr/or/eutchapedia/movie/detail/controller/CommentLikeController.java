@@ -26,12 +26,11 @@ public class CommentLikeController {
 		 
 		int resultCode = 0;
 		int likeCheck = 0;
+		int likeCount = 0;
 		
 		int commentIndex = Integer.parseInt( (String) commandMap.get("commentIndex"));
 		
-		System.out.println(commentIndex);
 		String memberEmail = "kaoo238@naver.com"; // 임시, 나중에는 세션에서 가져오기
-		
 		commandMap.put("memberEmail", memberEmail); 
 		 
 		try {
@@ -50,17 +49,17 @@ public class CommentLikeController {
 			} else if (likeVo.getLikeCheck() == 1) {
 				dao.cancelLike(commandMap);
 				dao.cancelLikeCount(commentIndex);
-				resultCode = 0;
-				likeCheck = 0;
 			}
-			
+			likeCount = dao.selectLikeCount(commentIndex);
+			System.out.println(likeCount);
 			resultMap.put("likeCheck", likeCheck);
-			resultMap.put("resultCode", resultCode);
+			resultMap.put("likeCount", likeCount);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			resultCode = -1;
 		}
+		resultMap.put("resultCode", resultCode);
 		
 		return resultMap;
 	}
