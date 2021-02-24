@@ -2,6 +2,8 @@ package kr.or.eutchapedia.board.notice.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -86,10 +88,23 @@ public class NoticeController {
 	 * @return
 	 * */
 	@RequestMapping(value="/delete", method = {RequestMethod.GET, RequestMethod.POST})
-	public String deleteNotice(@RequestParam("noticeNo") long noticeNo) throws Exception {
+	public String deleteNotice(@RequestParam("noticeNo") String noticeNo) throws Exception {
 		noticeService.deleteNotice(noticeNo);
 		return "redirect:/notice/list";
 	}
-
+	
+	/**
+	 * 글 선택 삭제
+	 * @throws Exception 
+	 * */
+	@RequestMapping(value = "/deleteChk")
+	public String ajaxTest(HttpServletRequest request) throws Exception {
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i=0; i<size; i++) {
+			noticeService.deleteNotice(ajaxMsg[i]);
+		}
+		return "redirect:/notice/list";
+	}
 	
 }

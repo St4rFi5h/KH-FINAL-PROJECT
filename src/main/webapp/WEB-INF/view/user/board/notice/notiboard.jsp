@@ -99,7 +99,7 @@
                         <div class="accordion_banner" id="tbl_notice">
                             <div class="tbl_notice_tit">
                                 <div class="tbl_notice_info">
-	                                    <p class="tbl_info_type"><input type="checkbox" class="checkall"/></p>
+	                                    <p class="tbl_info_type"><input type="checkbox" name="allCheck" class="checkall"/></p>
 	                                    <p class="tbl_info_type">번호</p>
 	                                    <p class="tbl_info_tit">제목</p>
 	                                    <p class="tbl_info_date">작성일</p>
@@ -110,7 +110,8 @@
                             <div class="accordion_title">
                                 <div class="tbl_notice_info">
                                     <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="" class="checkbox">
+                                        <p class="tbl_info_type">
+                                        	<input type="checkbox" name="RowCheck" class="checkbox" value="${board.noticeNo }"/>
                                             <span class="blind">체크박스</span>
                                         </p>
                                         <p class="tbl_info_type">${board.noticeNo }
@@ -146,8 +147,8 @@
                             <!-- 관리자 버튼-->
                             <div class="buttons">
                                 <a href="/notice/insertView"><input type="button" class="write_btn yb" value="글쓰기"/></a>
-                                <input type="submit" class="write_btn yb" name="delete_btn" value="삭제" onclick="return confirm('정말로 삭제하시겠습니까?')"/>
-                                <input type="submit" class="write_btn yb" name="cmd" value="공개"/>
+                                <input type="button" class="write_btn yb" name="delete_btn" value="선택삭제" onclick="deleteValue();"/>
+                                <input type="button" class="write_btn yb" name="cmd" value="공개"/>
                             </div>
 
                             <!-- 페이징 -->
@@ -257,16 +258,61 @@
         });
     });
 </script>
-<script>
-    $(document).ready(function(){
-        $(".checkall").click(function(){
-            if($(".checkall").prop("checked")){
-                $("input[name=del-id]").prop("checked",true);
-            }else{
-                $("input[name=del-id]").prop("checked",false);
-            }
-        });
-    });
+<script type="text/javascript">
+	$(function (){
+		var chkObj = document.getElementsByName("RowCheck");
+		var rowCnt = chkObj.length;
+
+		$("input[name='allCheck']").click(function(){
+			var chk_listArr = $("input[name='RowCheck']");
+			for (var i=0; i<chk_listArr.length; i++) {
+				chk_listArr[i].checked = this.checked;
+			}
+		});
+
+		$("input[name='RowCheck']").click(function(){
+			if($("input[name='RowCheck']:checked").length == rowCnt) {
+				$("input[name='allCheck']")[0].checked = true;
+			}
+			else {
+				$("input[name='allCheck']")[0].checked = false;
+			}
+		});
+	});
+
+	function deleteValue() {
+		var url = "/notice/deleteChk";	// controller로 보내고자 하는 url
+		var valueArr = new Array();
+		var list = $("input[name='RowCheck']");
+		for(var i=0; i<list.length; i++) {
+			if(list[i].checked){		// 선택되어 있으면 배열에 값을 저장~!~!
+				valueArr.push(list[i].value);
+			}
+		}
+		if(valueArr.length == 0) {
+			alert("선택된 게시글이 없습니다.");
+		}
+		else {
+			var chk = confirm("정말 삭제하시겠습니까?");
+			$.ajax({
+				url : url,					// 전송 url
+				type : 'POST',				// POST 방식
+				traditional: true,
+				data : {
+					valueArr : valueArr		// 보내고자 하는 data 변수 설정
+				},
+				success: function(jdata) {
+					if(jdata = 1) {
+						alert("삭제 성공");
+						location.replace("/notice/list")	// 리스트 페이지로 새로고침
+					}
+					else {
+						alert("삭제 실패");
+					}
+				}
+			});
+		}	
+	}
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){

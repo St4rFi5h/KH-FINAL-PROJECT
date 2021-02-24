@@ -12,7 +12,7 @@ import kr.or.eutchapedia.board.notice.domain.NoticeVo;
 public interface NoticeMapper {
 	public void insertNotice(NoticeVo board) throws Exception;
 	public void updateNotice(NoticeVo board) throws Exception;
-	public void deleteNotice(long noticeNo) throws Exception;
+	public void deleteNotice(String noticeNo) throws Exception;
 	
 	public List<NoticeVo> boardList(Criteria cri) throws Exception;
 	public int totalCnt(Criteria cri) throws Exception;
