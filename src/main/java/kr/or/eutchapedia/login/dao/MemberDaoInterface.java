@@ -22,8 +22,8 @@ public interface MemberDaoInterface {
 	int nicknamechk(String memberNickname) throws Exception;
 
 	//로그인
-	MemberVo login(String memberEmail, String memberPwd, String memberPwdSalt);
-	MemberVoTemp loginchk(String memberEmail, String memberPwd, String memberPwdSalt);
+	MemberVo login(String memberEmail, String memberPwd);
+	MemberVoTemp loginchk(String memberEmail);
 	
 	//비밀번호 찾기
 	void findpwd(MemberVo memberVo);

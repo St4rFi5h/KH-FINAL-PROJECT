@@ -42,46 +42,37 @@ public class MemberService {
 	}
 	
 	//로그인
-	public int login(MemberVo memberVo, HttpSession httpSession, MemberVoTemp temp) {
+	public int login(MemberVo memberVo, HttpSession httpSession) {
 		
 		//로그인 객체 확인
 		System.out.println("//로그인 객체 확인 memberVo : " + memberVo);
 		
 		utils = new Utils();
 		
-		MemberVoTemp vtemp = new MemberVoTemp();
+		MemberVoTemp vtemp = new MemberVoTemp(); //로그인 확인용
 		
-		String memberEmail = memberVo.getMemberEmail();
-		String memberPwd = memberVo.getMemberPwd();
-		String memberPwdSalt = memberVo.getMemberPwdSalt();
+		String memberEmail = memberVo.getMemberEmail(); //사용자 입력 이메일
+		String inputPwd = memberVo.getMemberPwd(); // 사용자 입력 비번
 		
-		//MemberVo vo = memberDao.login(memberEmail, memberPwd, memberPwdSalt);
-		
-		vtemp = memberDao.loginchk(memberEmail, memberPwd, memberPwdSalt);
-		
+		vtemp = memberDao.loginchk(memberEmail);
 		
 		//비밀번호 암호화
 		String salt = vtemp.getMemberPwdSalt(); //솔트
+		System.out.println(salt);
 		String pwd = vtemp.getMemberPwd();
-		String pwdSalt = utils.getEncrypt(memberPwd, salt);
+		String pwdSalt = utils.getEncrypt(inputPwd, salt);
 		
 		System.out.println("//로그인 객체 확인 vo : " + vtemp);
 		
 		//로그인 결과 값
 		int result;
-		
-//		//회원 정보 없을 시
-//		if(vo == null) {
-//			result = 0;
-//			return result;
-//		}
-		
-		// 세션에 vo객체 저장
-		httpSession.setAttribute("memberSession", vtemp);
-		System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberSession"));
+				
+		// 세션에 아이디값 저장
+		httpSession.setAttribute("memberEmail", memberEmail);
+		System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberEmail"));
 		
 		if(pwd.equals(pwdSalt)) {
-			memberDao.login(memberEmail, memberPwd, memberPwdSalt);
+			memberDao.login(memberEmail, inputPwd);
 			System.out.println("일치");
 			result = 1;
 		} else {

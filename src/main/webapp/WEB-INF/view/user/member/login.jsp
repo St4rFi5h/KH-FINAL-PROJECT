@@ -69,7 +69,7 @@
         <!------------ footer ------------>
 
         <jsp:include page="/WEB-INF/view/user/footer.jsp"/>
-    </div>
+   
 
     <!-- scripts -->
     <script src="js/jquery.min.js"></script>

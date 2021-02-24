@@ -35,10 +35,10 @@ public class LoginController {
 	//로그인 처리
 	@RequestMapping(value="/login.do", method= {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public ModelAndView login(@ModelAttribute MemberVo memberVo, HttpSession httpSession, MemberVoTemp temp) {
+	public ModelAndView login(@ModelAttribute MemberVo memberVo, HttpSession httpSession) {
 		ModelAndView mv = new ModelAndView();
 		
-		int result = memberService.login(memberVo, httpSession, temp);
+		int result = memberService.login(memberVo, httpSession);
 		
 		if(result == 1) {
 			mv.setViewName("/user/index_main"); //경로 임시

@@ -23,17 +23,22 @@
     
     <!-- 닉네임 중복 체크 -->
     <select id="nicknamechk" resultType="int">
-    	SELECT COUNT(*) from member  
+    	SELECT COUNT(*) FROM member  
     	WHERE member_nickname = #{memberNickname}
     </select>
 	
 	<!-- 로그인 -->
+	<select id="login" resultType="kr.or.eutchapedia.login.vo.MemberVo">
+		SELECT COUNT(*) FROM member
+		WHERE member_email = #{memberEmail}
+		AND member_pwd = #{memberPwd}
+	</select>
+	
+	<!-- 로그인 확인 -->
 	<select id="loginchk" resultType="kr.or.eutchapedia.login.vo.MemberVoTemp" parameterType="String">
 		SELECT member_email, member_pwd, member_pwd_salt
 		FROM member
 		WHERE member_email = #{memberEmail}
-		AND member_pwd = #{memberPwd}
-		AND member_pwd_salt = #{memberPwdSalt}
 	</select>
 	
 	<!-- 비밀번호 찾기 -->

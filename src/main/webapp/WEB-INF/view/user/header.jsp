@@ -31,7 +31,7 @@
             </form>
           </div>
 
-<%	if(session.getAttribute("id") == null) {	%>
+<%	if(session.getAttribute("memberEmail") == null) {	%>
 
           <div class="menu">
             <ul>
