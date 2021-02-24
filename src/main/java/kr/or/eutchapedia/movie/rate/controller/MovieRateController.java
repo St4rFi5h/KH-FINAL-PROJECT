@@ -46,6 +46,8 @@ public class MovieRateController {
 	{		
 		
 		Map<String, Object> param = new HashMap<String, Object>();
+		System.out.println("현재페이지"+cp);
+	//널값 1로  일단 현제 기본값이없음String start_=
 		
 		Integer start = (cp-1)*10+1;
 		Integer end = start+10-1;
@@ -53,8 +55,8 @@ public class MovieRateController {
 		param.put("en", end);
 		param.put("genre",genre);
 
-		System.out.println(start);
-		System.out.println(end);
+		System.out.println(param.get("st"));
+		System.out.println(param.get("en"));
 		System.out.println(genre);
 		return  service.getMovieLists(param);
 			

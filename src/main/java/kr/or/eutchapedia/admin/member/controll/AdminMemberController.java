@@ -29,7 +29,7 @@ public class AdminMemberController {
 		String field_ = req.getParameter("f");
 		String query_ = req.getParameter("q");
 		String number_ = req.getParameter("p");
-		String field = "memberEmail"; //?
+		String field = "title"; //?
 		if(field_ != null && !field_.equals(""))
 			field = field_;
 		String query = "";
@@ -55,11 +55,7 @@ public class AdminMemberController {
 		model.addAttribute("count",count);
 		
 
-		
-		
-		
 
-	
 		return mv;
 		
 	}

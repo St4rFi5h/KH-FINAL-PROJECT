@@ -22,18 +22,14 @@
 		<result column="MOVIE_HIT_COUNT" property="movie_hit_count" />
 	</resultMap>
 
-	<select id="getMovieLists" resultMap="movierate"
-		parameterType="Map" >
+	<select id="getMovieLists" resultType="Map" parameterType="Map">
+       SELECT * FROM(
+		  SELECT ROWNUM num, m.* FROM (SELECT * FROM movie_info mi LEFT OUTER JOIN star_rating s ON mi.movie_docid = s.fk_movie_docid)m
+		  )WHERE num BETWEEN 1 AND 10
+	</select>
 		
 
 
-       	select * from(
-		  SELECT ROWNUM , m.* 
-          FROM movie_info m LEFT OUTER JOIN star_rating s
-           ON m.movie_docid = s.fk_movie_docid
-          where ROWNUM BETWEEN #{start} AND #{end}
-	)
-	</select>
 
 	<select id="getmovierateList" resultMap="movierate"
 		parameterType="String">
