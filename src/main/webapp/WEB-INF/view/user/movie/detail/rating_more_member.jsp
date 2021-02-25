@@ -22,7 +22,7 @@
 <!-- header 끝 -->
     <div id="main-container">
         <div>
-            <button id="back-button" onclick="location.href='/movie/detail?movieDocId=${movieDocId}'">←</button>
+            <button id="back-button" onclick="location.href='/movie/detail?/member?movieDocId=${movieDocId}'">←</button>
         </div>
         <form method="GET" name="comment_overview" id="comment_overview" onsubmit="return false;">
         <input type="hidden" name="movieDocId" id="movieDocId" value="${movieDocId }"/>
