@@ -31,21 +31,34 @@
             </form>
           </div>
 
-<%	if(session.getAttribute("memberEmail") == null) {	%>
+	 <%	if(session.getAttribute("memberEmail") != null) {	%>
 
-          <div class="menu">
-            <ul>
-              <li><a href="login">로그인</a></li>
-              <li><a href="signup">회원가입</a></li>
-            </ul>
-          </div>
-          
-        <% } else { %> 
-        
-          <div class="menu">
+ 		 <div class="menu">
             <ul>
               <li><a href="logout">로그아웃</a></li>
               <li><a href="mypage"><i class="far fa-user" id="usermy"></i></a></li><!-- 마이페이지 -->
+            </ul>
+          </div>
+          
+        
+        <% } else if (session.getAttribute("admincheck") != null) { %> 
+        
+         
+          <div class="menu">
+            <ul>
+              <li><a href="#" id="admin_home">관리자 홈</a></li><!-- 관리자 홈으로  -->
+              <li><a href="logout">로그아웃</a></li>
+              <li><a href="mypage"><i class="far fa-user" id="usermy"></i></a></li><!-- 마이페이지 -->
+            </ul>
+          </div>
+          
+        
+         <% } else { %> 
+             
+            <div class="menu">
+            <ul>
+              <li><a href="login">로그인</a></li>
+              <li><a href="signup">회원가입</a></li>
             </ul>
           </div>
           

@@ -58,7 +58,8 @@
 			
 			         <c:forEach items="${watchaList}" var="MovieInfoVo" begin="0" end="9" >
 			            <div class="movie_box">
-			              <a href="movie/detail?List=${MovieInfoVo.movieDocId}"> <!-- detail페이지 연결해야함  -->
+			             
+						<a href="/movie/detail?movieDocId=${MovieInfoVo.movieDocId}"><!-- detail페이지 연결해야함  -->
 			                <div class="poster">
 			                  <img src="${MovieInfoVo.posterUri}" alt="" class="movie_img">
 			                  <div class="rank">${MovieInfoVo.movieRanking}</div>
@@ -87,7 +88,8 @@
 			     <c:forEach items="${netflixList}" var="MovieInfoVo" begin="0" end="9" >
 		     
 		            <div class="movie_box">
-		              <a href="movie/detail?${MovieInfoVo.movieDocId}">
+		        
+					<a href="/movie/detail?movieDocId=${MovieInfoVo.movieDocId}">
 		                <div class="poster">
 		                  <img src="${MovieInfoVo.posterUri}" alt="" class="movie_img">
 		                  <div class="rank">${MovieInfoVo.movieRanking}</div> 
@@ -116,10 +118,11 @@
  		  <c:forEach items="${searchList}" var="MovieInfoVo" begin="0" end="9" >
 
          	   <div class="movie_box">
-		              <a href="movie/detail?${MovieInfoVo.movieDocId}">
+		             
+					<a href="/movie/detail?movieDocId=${MovieInfoVo.movieDocId}">
 		                <div class="poster">
 		                  <img src="${MovieInfoVo.posterUri}" alt="" class="movie_img">
-              		     <div class="rank">${MovieInfo.movieRanking}</div> <!-- 수정해도 안돼유ㅠㅠㅠㅠ -->
+     					 <div class="rank">${MovieInfoVo.movieRankingIndex}</div> 
 		                  <div class="movie_info">
 		                    <h4 class="movie_title">${MovieInfoVo.title}</h4>
 		                    <p><div class="movie_yearNation">
@@ -530,7 +533,9 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="/js/main/movieslider.js"></script>
   
- <!-- <script src="/js/main/boxoffice.js"></script>  --> 
-  <script src="/js/main/boxoffice1.js"></script> 
+ <!-- <script src="/js/main/boxoffice.js"></script>  
+  <script src="/js/main/boxoffice1.js"></script> --> 
+    <script src="/js/main/boxoffice2.js"></script> 
+  
 </body>
 </html>
