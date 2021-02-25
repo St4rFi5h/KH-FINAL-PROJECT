@@ -23,36 +23,18 @@ public class CommentController {
 		ModelAndView mv = new ModelAndView(); 
 		
 		Map<String, Object> map = commentDao.selectCommentList(page);
-		
+		String movieDocId = (String) map.get("movieDocId");
+		String title = commentDao.selectMovieTitle(movieDocId);
+
 		mv.addObject("commentList", map.get("commentList"));
 		mv.addObject("commentCount", map.get("commentCount"));
-		mv.addObject("movieDocId", map.get("movieDocId"));
+		mv.addObject("movieDocId", movieDocId);
 		mv.addObject("page", page);
+		mv.addObject("title", title);
 		
 		mv.setViewName("/user/movie/detail/rating_more");
 		
 		return mv;
 	}
-	
-	
-	
-	// 회원 버전 코멘트 overview(임시)
-	@RequestMapping(value = "/overview/member", method= RequestMethod.GET)
-	public ModelAndView commentOverviewMember(CommentPage page) {
-		ModelAndView mv = new ModelAndView(); 
-		
-		Map<String, Object> map = commentDao.selectCommentList(page);
-		
-		mv.addObject("commentList", map.get("commentList"));
-		mv.addObject("commentCount", map.get("commentCount"));
-		mv.addObject("movieDocId", map.get("movieDocId"));
-		mv.addObject("page", page);
-		
-		mv.setViewName("/user/movie/detail/rating_more_member");
-		
-		return mv;
-	}
-	
-	
 	
 }

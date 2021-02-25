@@ -50,5 +50,13 @@
 			) eclist
 		) WHERE no BETWEEN #{startNo} AND #{endNo}
 	</select>
+	
+	<!-- 신고하기 모달을 위한 title 얻어오기 -->
+	<select id="selectMovieTitle" parameterType="String" resultType="String">
+		SELECT title 
+		FROM movie_info
+		WHERE movie_docid = #{_parameter}
+	
+	</select>
 
 </mapper>

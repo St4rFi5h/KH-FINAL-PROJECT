@@ -3,6 +3,8 @@ package kr.or.eutchapedia.movie.detail.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.or.eutchapedia.movie.detail.domain.LikeVo;
+import kr.or.eutchapedia.movie.detail.domain.CommentLikeVo;
 import kr.or.eutchapedia.movie.detail.service.CommentLikeDao;
 
 @RestController
@@ -20,17 +22,16 @@ public class CommentLikeController {
 	CommentLikeDao dao;
 
 	@RequestMapping(value = "/commentLike", method = RequestMethod.POST)
-	public Map<String, Object> pressLike(@RequestParam Map<String, Object> commandMap) {
+	public Map<String, Object> pressLike(@RequestParam Map<String, Object> commandMap, HttpSession session) {
 		Map<String, Object> resultMap = new HashMap<>(); // 값 담아서 보낼 Map
-		LikeVo likeVo = new LikeVo();
+		CommentLikeVo likeVo = new CommentLikeVo();
 		 
 		int resultCode = 0;
 		int likeCheck = 0;
 		int likeCount = 0;
-		
 		int commentIndex = Integer.parseInt( (String) commandMap.get("commentIndex"));
 		
-		String memberEmail = "kaoo238@naver.com"; // 임시, 나중에는 세션에서 가져오기
+		String memberEmail = (String) session.getAttribute("memberEmail");
 		commandMap.put("memberEmail", memberEmail); 
 		 
 		try {

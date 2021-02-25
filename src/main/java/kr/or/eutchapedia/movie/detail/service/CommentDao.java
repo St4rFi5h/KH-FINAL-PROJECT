@@ -54,4 +54,16 @@ public class CommentDao {
 		return commentListMap;
 	}
 
+	// 신고 모달을 위한 영화 제목 받아오기 
+	public String selectMovieTitle(String movieDocId) {
+		String title = "";
+		
+		try {
+			title = mapper.selectMovieTitle(movieDocId);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return title;
+	}
 }
