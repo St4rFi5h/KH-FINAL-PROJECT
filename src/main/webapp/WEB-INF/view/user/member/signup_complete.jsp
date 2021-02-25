@@ -1,5 +1,8 @@
+<%@page import= "kr.or.eutchapedia.login.vo.MemberVoTemp" %>
+<%@page import= "kr.or.eutchapedia.login.vo.MemberVo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,11 +36,11 @@
 			<img class=logo src="img/original.png" width="300px" height="50px">
 			<h2 class="title">EUTCHAPEDIA의 회원이 되신것을 환영합니다.</h2>
 			<div class="member-email">
-				<span>회원님의 메일주소는 <b>여기이메일</b>입니다.
+				<span>회원님의 메일주소는 <b><%= session.getAttribute("memberEmail") %></b>입니다.
 				</span>
 			</div>
 		</div>
-		<hr style="width: 500px;" />
+		<hr style="width: 500px;"/>
 		<div class="btns">
 			<button type="button" onclick="location.href='login'">로그인</button>
 			<button type="button" onclick="location.href='/'">메인으로가기</button>

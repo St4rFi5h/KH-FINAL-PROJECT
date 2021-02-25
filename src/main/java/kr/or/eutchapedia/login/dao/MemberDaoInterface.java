@@ -2,6 +2,8 @@ package kr.or.eutchapedia.login.dao;
 
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -24,6 +26,9 @@ public interface MemberDaoInterface {
 	//로그인
 	MemberVo login(String memberEmail, String memberPwd);
 	MemberVoTemp loginchk(String memberEmail);
+	
+	//로그아웃
+	void logout(HttpSession session);
 	
 	//비밀번호 찾기
 	void findpwd(MemberVo memberVo);

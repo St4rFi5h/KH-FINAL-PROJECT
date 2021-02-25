@@ -59,7 +59,6 @@
                 </div>
                 <hr class="bottom-line" >
 
-                </hr>
                 <div id="naver-login">
                     <a href="#"><img src="img/member/naver.PNG" style="width: 311px; height: 44px;" /></a>
                 </div>

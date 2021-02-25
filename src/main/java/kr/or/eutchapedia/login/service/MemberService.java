@@ -2,11 +2,8 @@ package kr.or.eutchapedia.login.service;
 
 import java.sql.SQLException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,7 +59,7 @@ public class MemberService {
 		String pwd = vtemp.getMemberPwd();
 		String pwdSalt = utils.getEncrypt(inputPwd, salt);
 		
-		System.out.println("//로그인 객체 확인 vo : " + vtemp);
+		System.out.println("//로그인 객체 확인 vtemp : " + vtemp);
 		
 		//로그인 결과 값
 		int result;
@@ -81,6 +78,11 @@ public class MemberService {
 		}
 		return result;
 		
+	}
+	
+	//로그아웃
+	public void logout(HttpSession session) {
+		session.invalidate();
 	}
 
 	//이메일 중복 체크
