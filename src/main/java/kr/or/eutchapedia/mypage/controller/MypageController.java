@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -144,10 +145,10 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/index")
-	public ModelAndView mypageindex(String memberemail) {
+	public ModelAndView mypageindex(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
-		memberemail = "200@naver.com";
+		String memberemail = (String) session.getAttribute("memberEmail");
 		List<WannaWatchVo> ww = new ArrayList<WannaWatchVo>();
 		List<StarRatingForMainVo> sr = new ArrayList<StarRatingForMainVo>();
 		MemberVo vo = new MemberVo();
@@ -203,7 +204,7 @@ public class MypageController {
 		int hour = sum / 60;
 		int minute = sum % 60; 
 		
-		System.out.println("포토유알엘" +vo.getMemberPhoto());
+//		System.out.println("포토유알엘" +vo.getMemberPhoto());
 		
 		mv.addObject("member", vo);
 		mv.addObject("wannawatch", ww);
