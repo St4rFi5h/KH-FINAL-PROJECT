@@ -534,8 +534,8 @@
   <script src="/js/main/movieslider.js"></script>
   
  <!-- <script src="/js/main/boxoffice.js"></script>  
-  <script src="/js/main/boxoffice1.js"></script> --> 
-    <script src="/js/main/boxoffice2.js"></script> 
+    <script src="/js/main/boxoffice2.js"></script> --> 
   
+  <script src="/js/main/boxoffice1.js"></script> 
 </body>
 </html>
