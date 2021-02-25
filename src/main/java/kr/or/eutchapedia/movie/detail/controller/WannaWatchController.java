@@ -36,11 +36,11 @@ public class WannaWatchController {
 		int selectResult = wannaWatchDao.selectWannaWatch(wannaWatchVo);
 		
 		if (selectResult == 0) {
-			wannaWatchDao.addToWannaWatch(wannaWatchVo);
-			result = 1;
+			result = wannaWatchDao.addToWannaWatch(wannaWatchVo);
+			
 		} else if (selectResult == 1) {
-			wannaWatchDao.removeWannaWatch(wannaWatchVo);
-			result = 0;
+			result = wannaWatchDao.removeWannaWatch(wannaWatchVo);
+			
 		}
 		
 		resultMap.put("result", result);
