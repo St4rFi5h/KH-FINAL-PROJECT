@@ -42,8 +42,8 @@
                 <div id="year-genre-country">${movieInfoVo.prodYear }・${movieInfoVo.genre }・${movieInfoVo.nation }</div>
                 <div id="star-average">평균 ★${starAvgMap.STARAVG }(${starAvgMap.STARCNT }명)</div>
                 <div id="watch-or-comment">
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="wanna-watch"
-                        data-target="#wanna-watch-modal">보고싶어요</button>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="wanna-watch"
+	                        data-target="#wanna-watch-modal">보고싶어요</button>
                 </div>
 
                 <!-- Modal -->
@@ -109,13 +109,13 @@
 		                        <a href="/movie/detail/staff?staffId=${staffList.staffId}">
 		                                <img src="/img/movie/profile.svg" class="profile-img">
 		                                <div class="name-and-role">
-		                                	<input type="hidden" value="${staffList.staffId }"/>
-		                                    <div class="staff-name">${staffList.staffName }</div>
-		                                    <div class="staff-role">${staffList.staffRoleGroup }</div>
-		                                    <div>${staffList.staffRole }</div>
-		                                    
+			                                	<input type="hidden" value="${staffList.staffId }"/>
+											<div class="staff-name">${staffList.staffName }</div>
+											<div class="staff-role">${staffList.staffRoleGroup }</div>
+											<div>${staffList.staffRole }</div>
+			                                    
 		                                </div>
-	                        	</a>
+	                        		</a>
 	                       </div>
 	                    </c:forEach>
                     </div>
@@ -228,8 +228,16 @@
                 <div id="year-genre-country">${movieInfoVo.prodYear }・${movieInfoVo.genre }・${movieInfoVo.nation }</div>
                 <div id="star-average">평균 ★${starAvgMap.STARAVG }(${starAvgMap.STARCNT }명)</div>
                 <div id="watch-or-comment">
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="wanna-watch"
-                        data-target="#wanna-watch-modal">보고싶어요</button>
+					<c:choose>
+	                <c:when test="${wannaWatchCheck eq '0' }">
+	                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="wanna-watch"
+	                        data-target="#wanna-watch-modal">보고싶어요</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="wanna-watch-after"
+	                        data-target="#wanna-watch-modal">+ 보고싶어요</button>
+					</c:otherwise>
+					</c:choose>
                 </div>
 
 				<!-- if session.getAttribute("id") != null -->
@@ -418,7 +426,7 @@
 													aria-label="Close" id="button-for-cancel">취소</button>
 												<button type="button" class="btn btn-primary" data-toggle="modal"
 													data-target="#report-result-modal" data-dismiss="modal"
-													aria-label="Close" id="button-for-submit" onclick="submitReport(reportIndex)">확인</button>
+													aria-label="Close" id="button-for-submit" onclick="submitReport(${commentList.commentIndex})">확인</button>
 											</div>
 										</div>
 									</div>
@@ -599,7 +607,68 @@
 					});
 					
 
-				}   
+				}
+			
+
+	    	function submitReport(cIndex) {
+				var commentIndex = cIndex;
+				var reportText = $("#report-modal-comment-zone").val();
+				console.log(reportText);
+				
+				$.ajax({
+					type : 'POST',
+					url : '/reportComment',
+					async : false,
+					data : "commentIndex=" + commentIndex + "&reportText=" + reportText,
+					success : function(result) {
+						console.log(result);
+
+						} ,
+
+					error: function() {
+						alert('error!');
+		
+						}
+
+					});
+					
+	        	}
+
+
+			$("#wanna-watch-button").on('click', function() {
+				var movieDocId = $("#movieDocIdInModal").val();
+				console.log(movieDocId);
+				var bookmarkDiv = $(event.target);
+				
+				$.ajax({
+					type : 'POST',
+					url : '/wannaWatchControl',
+					async : false,
+					data : "movieDocId=" + movieDocId,
+					success : function(resultMap) {
+						if (resultMap.result == 0) {
+							$('#wanna-watch-after').text("보고싶어요");
+							$('#wanna-watch-after').attr("id", "wanna-watch")
+						    $('#wanna-watch-button').css('background-color', 'white');
+						    
+						} else if (resultMap.result == 1) {
+							$('#wanna-watch').text("+ 보고싶어요");
+						    $('#wanna-watch').attr("id", "wanna-watch-after")
+						    $('#wanna-watch-button').css('background-color', '#eee');
+						    
+						} 
+
+					},
+					error : function() {
+						alert('error!');
+						
+						}
+
+
+					});
+				})
+				
+			   
 
         </script>
         <script src="/js/movie/myslider.js"></script>

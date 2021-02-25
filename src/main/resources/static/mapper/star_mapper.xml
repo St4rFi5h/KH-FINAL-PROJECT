@@ -4,5 +4,14 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.or.eutchapedia.movie.detail.repository.StarMapper">
+<insert id="rateStars" parameterType="kr.or.eutchapedia.movie.detail.domain.StarRatingVo">
+	INSERT INTO star_rating VALUES(
+		seq_star_rating.nextval,
+		#{movieDocId},
+		#{memberEmail},
+		#{starRating}
+	
+	)
 
+</insert>
 </mapper>

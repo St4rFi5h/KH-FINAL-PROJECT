@@ -102,16 +102,7 @@ function editCommentSubmit() {
     myCommentZone.innerHTML = comment;
 }
 
-function afterWannaWatch() {
-    $('#wanna-watch').text("+ 보고싶어요");
-    $('#wanna-watch').attr("id", "wanna-watch-after")
-    $('#wanna-watch-button').css('background-color', '#eee');
-}
 
-// 보고싶어요 해제하기 
-$('#wanna-watch-after').on('click', function() {
-    $(this).attr("id", "wanna-watch");
-})
 // 코멘트 삭제하기
 var buttonForDelete = document.getElementById("button-for-delete-submit");
 

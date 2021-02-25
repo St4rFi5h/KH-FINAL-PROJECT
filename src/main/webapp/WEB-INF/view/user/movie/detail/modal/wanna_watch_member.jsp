@@ -11,6 +11,7 @@
 		<div class="modal-body">
 			<div id="modal-contents">
 				<div id="movie-info">
+				<input type="hidden" id = "movieDocIdInModal" value="${movieInfoVo.movieDocId }"/>
 					<div id="modal-movie-poster">
 						<img src="${movieInfoVo.posterUri }" alt="">
 					</div>
@@ -20,17 +21,16 @@
 					</div>
 				</div>
 				<div id="wanna-watch-or-rating">
-					<a href="" data-dismiss="modal" aria-label="Close"
-						onclick="afterWannaWatch()">
+					<a href="" data-dismiss="modal" aria-label="Close">
 						<div id="wanna-watch-button">
-							<img src="/img/bookmark_gray.svg" alt="">
+							<img src="/img/movie/bookmark_gray.svg" alt="">
 							<div>보고싶어요</div>
 						</div>
 					</a> <a href="" data-toggle="modal"
 						data-target="#rating-and-comment-modal" data-dismiss="modal"
 						aria-label="Close">
 						<div id="rating-button">
-							<img src="/img/comment.svg">
+							<img src="/img/movie/comment.svg">
 							<div>별점 및</div>
 							<div>코멘트 남기기</div>
 						</div>

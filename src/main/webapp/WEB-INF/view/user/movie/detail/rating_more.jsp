@@ -266,7 +266,6 @@
 				async : false,
 				data : "commentIndex=" + commentIndex + "&reportText=" + reportText,
 				success : function(result) {
-					alert('hello!');
 					console.log(result);
 
 					} ,

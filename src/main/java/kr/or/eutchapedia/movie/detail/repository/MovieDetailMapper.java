@@ -21,4 +21,5 @@ public interface MovieDetailMapper {
 	public Map<String, Object> selectStarAvg(String movieDocId);
 	public List<Map<String, Object>> selectStarData(String movieDocId);
 	public List<Map<String, Object>> selectComments(String movieDocId);
+	public int selectWannaWatch(Map<String, Object> map);
 }

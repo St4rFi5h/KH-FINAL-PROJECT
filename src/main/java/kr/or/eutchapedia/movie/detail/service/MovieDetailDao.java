@@ -139,4 +139,17 @@ public class MovieDetailDao {
 		
 		return commentList;
 	}
+	
+	public int selectWannaWatch(Map<String, Object> map) {
+		int result = 0;
+		
+		try {
+			result = mapper.selectWannaWatch(map);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

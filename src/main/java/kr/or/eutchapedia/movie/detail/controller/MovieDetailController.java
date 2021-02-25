@@ -1,7 +1,10 @@
 package kr.or.eutchapedia.movie.detail.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,18 +22,28 @@ import kr.or.eutchapedia.movie.detail.service.MovieDetailDao;
 public class MovieDetailController {
 	
 	@Autowired
-	MovieDetailDao dao;
+	MovieDetailDao movieDetailDao;
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public ModelAndView movieDetail(String movieDocId) {
+	public ModelAndView movieDetail(String movieDocId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
-		MovieInfoVo movieInfoVo = dao.selectMovieInfo(movieDocId);
-		List<StaffInfoVo> staffList = dao.selectStaffList(movieDocId);
-		Map<String, Object> starAvgMap = dao.selectStarAvg(movieDocId);
-		List<Map<String, Object>> starDataList = dao.selectStarData(movieDocId);
-		List<Map<String, Object>> commentList = dao.selectComments(movieDocId);
-		dao.updateHitCount(movieDocId);
+		String memberEmail = (String) session.getAttribute("memberEmail");
+		if (memberEmail != null) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("movieDocId", movieDocId);
+			map.put("memberEmail", memberEmail);
+			int wannaWatchCheck = movieDetailDao.selectWannaWatch(map);
+			mv.addObject("wannaWatchCheck", wannaWatchCheck);
+			
+		}
+		
+		MovieInfoVo movieInfoVo = movieDetailDao.selectMovieInfo(movieDocId);
+		List<StaffInfoVo> staffList = movieDetailDao.selectStaffList(movieDocId);
+		Map<String, Object> starAvgMap = movieDetailDao.selectStarAvg(movieDocId);
+		List<Map<String, Object>> starDataList = movieDetailDao.selectStarData(movieDocId);
+		List<Map<String, Object>> commentList = movieDetailDao.selectComments(movieDocId);
+		movieDetailDao.updateHitCount(movieDocId);
 		
 		mv.addObject("movieInfoVo", movieInfoVo);
 		mv.addObject("staffList", staffList);
@@ -47,7 +60,7 @@ public class MovieDetailController {
 	public ModelAndView movieDetailOverview(String movieDocId) {
 		ModelAndView mv = new ModelAndView();
 		
-		MovieInfoVo movieInfoVo = dao.selectMovieInfo(movieDocId);
+		MovieInfoVo movieInfoVo = movieDetailDao.selectMovieInfo(movieDocId);
 		
 		mv.addObject("movieInfoVo", movieInfoVo);
 		
@@ -60,7 +73,7 @@ public class MovieDetailController {
 	public ModelAndView staffDetail(String staffId) {
 		ModelAndView mv = new ModelAndView();
 		
-		List<StaffFilmoVo> staffFilmoList = dao.selectStaffFilmo(staffId);
+		List<StaffFilmoVo> staffFilmoList = movieDetailDao.selectStaffFilmo(staffId);
 		String staffName = staffFilmoList.get(0).getStaffName();
 		String staffRole = staffFilmoList.get(0).getStaffRoleGroup();	
 		
