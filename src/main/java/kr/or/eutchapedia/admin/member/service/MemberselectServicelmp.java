@@ -18,7 +18,7 @@ public class MemberselectServicelmp implements MemberselectService {
 	
 	@Override
  	public List<Memberinfo> getmemberList(){
-		return getmemberList("memberEmail","",1,10);
+		return getmemberList("member_email","",1,10);
 	}
 
 	
@@ -26,7 +26,7 @@ public class MemberselectServicelmp implements MemberselectService {
 	@Override
  	public List<Memberinfo> getmemberList(int page,int amount){
 	
-		return getmemberList("memberEmail","",page,amount);
+		return getmemberList("member_email","",page,amount);
 	}
 
 

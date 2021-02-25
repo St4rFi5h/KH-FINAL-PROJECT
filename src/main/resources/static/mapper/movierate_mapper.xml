@@ -25,7 +25,7 @@
 	<select id="getMovieLists" resultType="Map" parameterType="Map">
        SELECT * FROM(
 		  SELECT ROWNUM num, m.* FROM (SELECT * FROM movie_info mi LEFT OUTER JOIN star_rating s ON mi.movie_docid = s.fk_movie_docid)m
-		  )WHERE num BETWEEN 1 AND 10
+		  )WHERE num BETWEEN #{st} AND #{en} 
 	</select>
 		
 

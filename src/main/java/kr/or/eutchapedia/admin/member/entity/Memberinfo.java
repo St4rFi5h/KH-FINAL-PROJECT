@@ -2,75 +2,73 @@ package kr.or.eutchapedia.admin.member.entity;
 import java.sql.Date;
 
 public class Memberinfo {
-	private String memberEmail;
-	private String memberNickname;
-	private String memberPwd;
-	private String memberPwdSalt;
-	private Date memberDate;
-	private String adminCheck;
-	private String memberStatus;
-	private String memberPhoto;
-	private String memberIntroduce;
-	private String memberJoinRoute;
 	
-	public String getMemberEmail() {
-		return memberEmail;
+	private String num;
+	private String member_email;
+	private String member_nickname;
+	private String member_pwd;
+	private String member_pwd_salt;
+	private Date member_date;
+	private String admin_check;
+	private String member_status;
+	private String member_join_route;
+	
+	
+	
+	
+	public String getNum() {
+		return num;
 	}
-	public void setMemberEmail(String memberEmail) {
-		this.memberEmail = memberEmail;
+	public void setNum(String num) {
+		this.num = num;
 	}
-	public String getMemberNickname() {
-		return memberNickname;
+	public String getMember_email() {
+		return member_email;
 	}
-	public void setMemberNickname(String memberNickname) {
-		this.memberNickname = memberNickname;
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
 	}
-	public String getMemberPwd() {
-		return memberPwd;
+	public String getMember_nickname() {
+		return member_nickname;
 	}
-	public void setMemberPwd(String memberPwd) {
-		this.memberPwd = memberPwd;
+	public void setMember_nickname(String member_nickname) {
+		this.member_nickname = member_nickname;
 	}
-	public String getMemberPwdSalt() {
-		return memberPwdSalt;
+	public String getMember_pwd() {
+		return member_pwd;
 	}
-	public void setMemberPwdSalt(String memberPwdSalt) {
-		this.memberPwdSalt = memberPwdSalt;
+	public void setMember_pwd(String member_pwd) {
+		this.member_pwd = member_pwd;
 	}
-	public Date getMemberDate() {
-		return memberDate;
+	public String getMember_pwd_salt() {
+		return member_pwd_salt;
 	}
-	public void setMemberDate(Date memberDate) {
-		this.memberDate = memberDate;
+	public void setMember_pwd_salt(String member_pwd_salt) {
+		this.member_pwd_salt = member_pwd_salt;
 	}
-	public String getAdminCheck() {
-		return adminCheck;
+	public Date getMember_date() {
+		return member_date;
 	}
-	public void setAdminCheck(String adminCheck) {
-		this.adminCheck = adminCheck;
+	public void setMember_date(Date member_date) {
+		this.member_date = member_date;
 	}
-	public String getMemberStatus() {
-		return memberStatus;
+	public String getAdmin_check() {
+		return admin_check;
 	}
-	public void setMemberStatus(String memberStatus) {
-		this.memberStatus = memberStatus;
+	public void setAdmin_check(String admin_check) {
+		this.admin_check = admin_check;
 	}
-	public String getMemberPhoto() {
-		return memberPhoto;
+	public String getMember_status() {
+		return member_status;
 	}
-	public void setMemberPhoto(String memberPhoto) {
-		this.memberPhoto = memberPhoto;
+	public void setMember_status(String member_status) {
+		this.member_status = member_status;
 	}
-	public String getMemberIntroduce() {
-		return memberIntroduce;
+	public String getMember_join_route() {
+		return member_join_route;
 	}
-	public void setMemberIntroduce(String memberIntroduce) {
-		this.memberIntroduce = memberIntroduce;
+	public void setMember_join_route(String member_join_route) {
+		this.member_join_route = member_join_route;
 	}
-	public String getMemberJoinRoute() {
-		return memberJoinRoute;
-	}
-	public void setMemberJoinRoute(String memberJoinRoute) {
-		this.memberJoinRoute = memberJoinRoute;
-	}
+
 }

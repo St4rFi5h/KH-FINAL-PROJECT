@@ -29,7 +29,7 @@ public class AdminMemberController {
 		String field_ = req.getParameter("f");
 		String query_ = req.getParameter("q");
 		String number_ = req.getParameter("p");
-		String field = "title"; //?
+		String field = "member_email"; 
 		if(field_ != null && !field_.equals(""))
 			field = field_;
 		String query = "";
@@ -41,6 +41,9 @@ public class AdminMemberController {
 			number = Integer.parseInt(number_);
 		int page = 1+(number-1)*10;
 		int amount = number*10;
+		
+		System.out.println(page);
+		System.out.println(amount);
 		
 		System.out.println("여기까지실행됨");
 		List<Memberinfo> memberlist = service.getmemberList(field, query, page,amount);
@@ -54,7 +57,7 @@ public class AdminMemberController {
 		model.addAttribute("memberlist", memberlist);
 		model.addAttribute("count",count);
 		
-
+		
 
 		return mv;
 		

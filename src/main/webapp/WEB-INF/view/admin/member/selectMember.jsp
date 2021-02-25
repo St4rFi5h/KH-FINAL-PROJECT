@@ -26,24 +26,22 @@
 				<h1 style="font-weight: bold;">회원정보조회</h1>
 			</div>
 			<div id="allsize" class="col-lg-12 ">
+			 <form action="/admin/selectmember" method="get">
 				<div id="search-block" class="col-lg-12 ">
 
 					<select class="custom-select" id="select-search">
-						<option selected>검색항목을 고르세요</option>
-						<option value="1">닉네임</option>
-						<option value="2">이메일</option>
-					</select> <input class="form-control" type="text" id="searchbar"
-						placeholder="내용을입력해주세요">
-					<button type="button" class="btn btn-primary " id="search-btn">검색</button>
+						<option ${(param.f == "member_email")?"selected":""} value="member_email">이메일</option>
+					   <option ${(param.f == "member_nickname")?"selected":""} value=member_nickname>닉네임</option>
+					</select><input type="text" id="searchbar"name="q" value="${param.q}" class="form-control" placeholder="검색항목" aria-label="Username" aria-describedby="basic-addon1">
+					<button type="submit" class="btn btn-primary " id="search-btn">검색</button>
 					</br>
 
 				</div>
-
+  			</form>
 				<div id="table-contorll" class="col-lg-12 ">
 					<table class="table table-hover col-lg-12">
 						<thead>
 							<tr>
-								<th scope="col">No.</th>
 								<th scope="col"></th>
 								<th scope="col">이름</th>
 								<th scope="col">이메일</th>
@@ -54,13 +52,13 @@
 						<tbody>
 							<c:forEach var="m" items="${memberlist}" end="10">
 								<tr>
-									<th scope="row">1</th>
+									
 									<td><input class="form-check-input" type="checkbox"
 										value="" id="userSelect"></td>
-									<td>${m.memberNickname}</td>
-									<td>${m.memberEmail}</td>
-									<td>${m.memberStatus}</td>
-									<td>${m.memberJoinRoute}</td>
+									<td>${m.member_nickname}</td>
+									<td>${m.member_email}</td>
+									<td>${m.member_status}</td>
+									<td>${m.member_join_route}</td>
 								</tr>
 							</c:forEach>
 
