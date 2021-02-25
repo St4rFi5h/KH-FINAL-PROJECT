@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.eutchapedia.main.entity.CommentVo;
 import kr.or.eutchapedia.main.entity.MovieInfoVo;
 import kr.or.eutchapedia.main.repository.MainMapper;
 
@@ -19,24 +20,7 @@ public class MainMovieDao {
 	@Autowired
 	MainMapper mapper;
 
-//	public MovieInfoVo selectMovieInfo(String movieDocId) {
-//		
-//		MovieInfoVo movieInfoVo = new MovieInfoVo();
-//		
-//		try {
-//			movieInfoVo = mapper.selectMovieInfo(movieDocId);
-//			
-//			String prodYear = movieInfoVo.getProdYear().substring(0, 4);
-//			movieInfoVo.setProdYear(prodYear);
-//			
-//		} catch (Exception e) {                                                                                                                                                                                                                                                                                                                                                                                                                                          
-//			e.printStackTrace();
-//		}
-//		
-//		return movieInfoVo;
-//		
-//	}
-	
+
 	
 public Map<String, Object> selectStarAvg(String movieDocId) {
 		
@@ -99,7 +83,15 @@ public Map<String, Object> selectStarAvg(String movieDocId) {
 			return searchList;
 		}
 		
+		//리뷰 인기 순위 
+
+		public List<MovieInfoVo> selectReviewList() {
+			
+			List<MovieInfoVo> reviewList = mapper.selectReviewList();
 		
+			
+			return reviewList;
+		}
 		
 		
 }
