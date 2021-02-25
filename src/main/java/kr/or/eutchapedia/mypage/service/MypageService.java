@@ -35,5 +35,7 @@ public interface MypageService {
 
 	void editprofile(MemberVo vo);
 
+	int nicknamechk(String memberNickname);
+
 
 }

@@ -38,7 +38,9 @@
 
     <div class='mybody-wrapper'>
         <div class='body-header'>
+        	<div class='logosize'>
             <img id="logo" src="/img/original.png">
+            </div>
             <p></p>
             <div>
                 <p class='ment'>회원님 ! 다시 한 번 생각해 보세요
@@ -49,7 +51,7 @@
                 </p>
                 <div id='ment2'>
                 지금 탈퇴하시면 회원님이 작성하신 수많은 리뷰와 평가들이 사라지며 복구가 불가합니다.<br>
-                어떤 점이 불편하셨는 지 선택해 주시면 반영하여 더 좋은 서비스를 제공하는 읏챠피디아가 되겠습니다. 
+                어떤 점이 불편하셨는 지 선택해 주시면 반영하여 더 좋은 서비스를 제공하는<br> 읏챠피디아가 되겠습니다. 
                 </div>
             </div>
         </div>

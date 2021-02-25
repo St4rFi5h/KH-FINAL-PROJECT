@@ -42,16 +42,29 @@
             <div class='maintitle'> 
             <h1 class='bodytitle'>나의정보수정</h1>
             </div>
-            <form class="formbox"  method="post" action="edit.do" onsubmit="#">
-                
-                <img class='profile' id='profile' src='${member.memberPhoto}' width="200px"; height="250px">
-				
-               
+            <form class="formbox"  method="post" action="edit.do" onsubmit="#" enctype="multipart/form-data" >
+            	<c:set var="name" value='/img/mypage/originprofile.jpg' />
+            	<c:set var="name2" value='${member.memberPhoto}' />
+            	<c:choose>
+            		<c:when test="${name == name2}"> 
+                		<img class='profile' id='profile'  src='${member.memberPhoto}' width="200px"; height="250px">
+                	</c:when>
+                	<c:when test="${name != name2}">
+               			 <img class='profile' id='profile'  src='/static/upload/${member.memberPhoto}' width="200px"; height="250px">
+                	</c:when>
+				</c:choose>
                 <div class='inputbox-div'>
-                    <label>닉네임
-                    <span id="info">이미 존재하는 닉네임입니다.</span>
+                    <label for='profile'>프로필 사진 변경
                     </label>
-                    <input class='inputbox' name='memberNickname' type='text' placeholder="한글,영문,숫자 2자 이상 가능" value="${member.memberNickname }">
+                    
+                    <input class='inputbox' name='profileimg' id='fileinput' type='file' accept="image/*" onchange="previewImage(this)" / >
+                   
+                </div>
+                <div class='inputbox-div'>
+                    <label>닉네임<br>
+                    <span id="info">""</span>
+                    </label>
+                    <input class='inputbox' id='memberNickname' name='memberNickname' type='text' placeholder="한글,영문,숫자 최대 8자 이하 가능" value="${member.memberNickname }">
                 </div>
 
                 <div class='inputbox-div'>
@@ -59,14 +72,7 @@
                     <input class='inputbox' name='memberEmail' id=email type='email' value="${member.memberEmail }" readonly>
                 </div>
 
-                <div class='inputbox-div'>
-                    <label for='profile'>프로필 사진 변경
-                    <span id="info">사진 변경...</span>
-                    </label>
-                    
-                    <input class='inputbox' name='memberPhoto' id='fileinput' type='file' accept="image/*" onchange="previewImage(this)" / >
-                   
-                </div>
+               
                 <div class='inputbox-div'>
                   <label>현재 비밀번호
                   <span><input type='button' id='changebtn' value='변경' onclick='changepwd()'></span>
@@ -79,24 +85,24 @@
 
               <div id='changepwddiv'>
                 <div class='inputbox-div'>
-                    <label>변경할 비밀번호
-                    <span id="info">비밀번호 형식에 맞게 다시 설정해 주세요.</span>
+                    <label>변경할 비밀번호<br>
+                    <span id="info" class="infopwd">비밀번호 형식에 맞게 다시 설정해 주세요.</span>
                     </label>
                     <input class='inputbox' id='chgpwd1' name='memberPwdChange' type='password' placeholder="소문자,숫자,특수문자 포함 8자 이상 가능">
                 </div>
                 
                 <div class='inputbox-div'>
-                    <label>변경할 비밀번호 확인
-                    <span id="info">비밀번호 형식에 맞게 다시 설정해 주세요.</span>
+                    <label>변경할 비밀번호 확인<br>
+                    <span class="infopwd2"></span>
                     </label>
                     <input class='inputbox' type='password'>
                 </div>
               </div>
                 <div class='inputbox-div'>
                     <label>소개
-                    <span id="info">..</span>
+                    <span id="info">..</span> 
                     </label>
-                    <textarea class='inputbox' name='memberIntroduce' placeholder="간단한 소개를 남겨보세요!">${member.memberIntroduce}</textarea>
+                    <textarea class='inputbox' id='introduce' name='memberIntroduce' placeholder="간단한 소개를 남겨보세요!">${member.memberIntroduce}</textarea>
                 </div>
 
                 <div class='inputbox-div'>
@@ -117,6 +123,7 @@
     <script src="/js/jquery.min.js"></script>
     <!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
     <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/mypage/mypage_edit.js">></script>
     <script>
      
      

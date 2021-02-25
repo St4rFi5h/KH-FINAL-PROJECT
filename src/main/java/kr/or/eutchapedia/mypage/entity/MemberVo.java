@@ -65,6 +65,7 @@ public class MemberVo {
 	public void setMemberStatus(String memberStatus) {
 		this.memberStatus = memberStatus;
 	}
+	
 	public String getMemberPhoto() {
 		return memberPhoto;
 	}

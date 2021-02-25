@@ -49,6 +49,8 @@ public interface MypageDao {
 	
 	public void updatememberinfo(MemberVo vo);
 	
+	public int nicknamechk(String memberNickname);
+	
 	
 
 }

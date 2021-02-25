@@ -1,14 +1,21 @@
 package kr.or.eutchapedia.mypage.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.eutchapedia.mypage.entity.LeaveMemberVo;
@@ -24,6 +31,84 @@ public class MypageController {
 	
 	@Autowired
 	MypageService service;
+	
+	@Autowired
+	ServletContext ctx;
+	
+		
+		@RequestMapping("/edit")
+		public ModelAndView mypageeditprofile(String memberemail) {
+			ModelAndView mv = new ModelAndView();
+			memberemail = "200@naver.com";
+			MemberVo member = service.getMemberInfo(memberemail);
+			
+			mv.addObject("member", member);
+			mv.setViewName("/user/mypage/mypage_editprofile(ver3)");
+			return mv;
+		}
+		
+		@RequestMapping(value="/edit.do", method= {RequestMethod.GET,RequestMethod.POST})
+		public ModelAndView mypageeditprofileDo(MemberVo vo, MultipartFile profileimg, HttpServletRequest request ) throws Exception {
+			ModelAndView mv = new ModelAndView();
+			
+			long size = profileimg.getSize();
+			String fileName = profileimg.getOriginalFilename();
+			System.out.printf("fimeName:%s, fileSize:%d\n",fileName,size);
+			//ServletContext ctx = request.getServletContext();
+			String webPath = "/static/upload";
+			//String webPath = "/upload";
+			String realPath = ctx.getRealPath(webPath);
+			System.out.printf("realPath : %s\n", realPath);
+			//upload파일이 있는지 없는지 확인
+			File savePath = new File(realPath);
+			if(!savePath.exists())
+				savePath.mkdirs(); //없으면 만들어라
+			 
+			realPath += File.separator + fileName;
+			File saveFile = new File(realPath);
+			profileimg.transferTo(saveFile);
+			
+			if(vo.getMemberPwdChange() != null) {
+				Utils utils = new Utils();
+				vo.setMemberPwdSalt(utils.getSalt());
+				vo.setMemberPwd(utils.getEncrypt(vo.getMemberPwdChange(), vo.getMemberPwdSalt()));
+				
+			}
+			
+			
+			vo.setMemberPhoto(fileName);
+			
+			service.editprofile(vo);
+			
+			
+			String nickname = vo.getMemberNickname();
+			System.out.println(nickname);
+			mv.addObject("nickname",nickname);
+			mv.setViewName("/user/mypage/mypage_edit_complete");
+			return mv;
+		}
+		
+		@RequestMapping("/editsocial")
+		public ModelAndView mypageeditprofilesocial() {
+			ModelAndView mv = new ModelAndView("/user/mypage/mypage_editprofile_social");
+			
+			return mv;
+		}
+	
+	
+	// 닉네임 중복 체크
+		@RequestMapping(value="/nicknamechk", method=RequestMethod.POST)
+		@ResponseBody
+		public int nicknamechk(String memberNickname) throws Exception {
+			int count = 0;
+
+			count =  service.nicknamechk(memberNickname);
+			
+			System.out.println(count);
+			return count;
+		}
+	
+	
 	
 	@RequestMapping("/ratedmovies")
 	public ModelAndView mypageratedmovies(String memberemail) {
@@ -117,7 +202,8 @@ public class MypageController {
 		}
 		int hour = sum / 60;
 		int minute = sum % 60; 
-	
+		
+		System.out.println("포토유알엘" +vo.getMemberPhoto());
 		
 		mv.addObject("member", vo);
 		mv.addObject("wannawatch", ww);
@@ -165,44 +251,6 @@ public class MypageController {
 		return mv;
 	}
 	
-	@RequestMapping("/edit")
-	public ModelAndView mypageeditprofile(String memberemail) {
-		ModelAndView mv = new ModelAndView();
-		memberemail = "200@naver.com";
-		MemberVo member = service.getMemberInfo(memberemail);
-		
-		mv.addObject("member", member);
-		mv.setViewName("/user/mypage/mypage_editprofile(ver3)");
-		return mv;
-	}
-	
-	@RequestMapping(value="/edit.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView mypageeditprofileDo(MemberVo vo) {
-		ModelAndView mv = new ModelAndView();
-		
-		if(vo.getMemberPwdChange() != null) {
-			Utils utils = new Utils();
-			vo.setMemberPwdSalt(utils.getSalt());
-			vo.setMemberPwd(utils.getEncrypt(vo.getMemberPwdChange(), vo.getMemberPwdSalt()));
-			
-		}
-		
-		service.editprofile(vo);
-		
-		
-		String nickname = vo.getMemberNickname();
-		System.out.println(nickname);
-		mv.addObject("nickname",nickname);
-		mv.setViewName("/user/mypage/mypage_edit_complete");
-		return mv;
-	}
-	
-	@RequestMapping("/editsocial")
-	public ModelAndView mypageeditprofilesocial() {
-		ModelAndView mv = new ModelAndView("/user/mypage/mypage_editprofile_social");
-		
-		return mv;
-	}
 	
 	@RequestMapping("/withdraw")
 	public ModelAndView mypagewithdraw() {
