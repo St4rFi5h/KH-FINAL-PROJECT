@@ -1,6 +1,6 @@
 package kr.or.eutchapedia.movie.detail.domain;
 
-public class LikeVo {
+public class CommentLikeVo {
 	private int likeIndex;
 	private int commentIndex;
 	private String memberEmail;

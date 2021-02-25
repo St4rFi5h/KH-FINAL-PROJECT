@@ -21,7 +21,6 @@ public class MovieDetailController {
 	@Autowired
 	MovieDetailDao dao;
 	
-	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public ModelAndView movieDetail(String movieDocId) {
 		ModelAndView mv = new ModelAndView();
@@ -74,20 +73,4 @@ public class MovieDetailController {
 		return mv;
 	}
 	
-	// 모달 확인용(임시) 
-	@RequestMapping(value = "/detail/member", method = RequestMethod.GET)
-	public ModelAndView movieDetailMember(String movieDocId) {
-		ModelAndView mv = new ModelAndView();
-		
-		MovieInfoVo movieInfoVo = dao.selectMovieInfo(movieDocId);
-		List<Map<String, Object>> commentList = dao.selectComments(movieDocId);
-		dao.updateHitCount(movieDocId);
-		
-		mv.addObject("movieInfoVo", movieInfoVo);
-		mv.addObject("commentList", commentList);
-		
-		mv.setViewName("/user/movie/detail/movie_detail_member");
-		
-		return mv;
-	}
 }

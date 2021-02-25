@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="modal-footer" id="footer-buttons">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">확인</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal" id="button-for-ok">확인</button>
 
 		</div>
 	</div>

@@ -34,11 +34,13 @@
 	
 		
 	<!-- 인기 검색어 순위 -->
+	
 	<select id="selectSearchList" resultMap="movieInfo" parameterType="map">
-		SELECT rownum movieRanking, mi.* FROM(
+		SELECT rownum movieranking, mi.* FROM(
 		SELECT * FROM movie_info ORDER BY movie_hit_count desc)mi
 		<![CDATA[WHERE rownum < 11]]>
 	</select>
+	
 	
 	<!-- 평균 별점, 사용자 명수 -->
 	<select id="selectStarAvg" parameterType="String" resultType="HashMap">
@@ -61,7 +63,7 @@
 		<result column="plot" property="plot" />
 		<result column="movie_trailer" property="movieTrailer" />
 		<result column="movie_hit_count" property="movieHitCount" />
-		<result column="movie_ranking_index" property="movieRankingIndex" />
+		<result column="MOVIERANKING" property="movieRankingIndex" />
 		<result column="movie_ranking" property="movieRanking" />
 		<result column="movie_platform" property="moviePlatform" />
 

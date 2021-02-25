@@ -5,13 +5,13 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import kr.or.eutchapedia.movie.detail.domain.LikeVo;
+import kr.or.eutchapedia.movie.detail.domain.CommentLikeVo;
 
 
 @Repository
 @Mapper
 public interface CommentLikeMapper {
-	public LikeVo likeCheck(Map<String, Object> commandMap);
+	public CommentLikeVo likeCheck(Map<String, Object> commandMap);
 	public int selectLikeCount(int commentIndex);
 	public int pressLike(Map<String, Object> commandMap);
 	public void updateLikeCount(int commentIndex);

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.or.eutchapedia.movie.detail.domain.LikeVo;
+import kr.or.eutchapedia.movie.detail.domain.CommentLikeVo;
 import kr.or.eutchapedia.movie.detail.repository.CommentLikeMapper;
 
 @Service
@@ -18,8 +18,8 @@ public class CommentLikeDao {
 	CommentLikeMapper mapper;
 	
 	// 해당 사용자가 좋아요 누른 적 있는지 확인 
-	public LikeVo likeCheck(Map<String, Object> commandMap) {
-		LikeVo likeVo = new LikeVo();
+	public CommentLikeVo likeCheck(Map<String, Object> commandMap) {
+		CommentLikeVo likeVo = new CommentLikeVo();
 		
 		try {
 			likeVo = mapper.likeCheck(commandMap);

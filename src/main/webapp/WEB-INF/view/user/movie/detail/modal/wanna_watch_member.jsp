@@ -12,7 +12,7 @@
 			<div id="modal-contents">
 				<div id="movie-info">
 					<div id="modal-movie-poster">
-						<img src="img/220px-영화_소울.jpg" alt="">
+						<img src="${movieInfoVo.posterUri }" alt="">
 					</div>
 					<div id="title-and-year">
 						<div style="font-weight: bold; font-size: 20px;">소울</div>
@@ -23,14 +23,14 @@
 					<a href="" data-dismiss="modal" aria-label="Close"
 						onclick="afterWannaWatch()">
 						<div id="wanna-watch-button">
-							<img src="img/bookmark_gray.svg" alt="">
+							<img src="/img/bookmark_gray.svg" alt="">
 							<div>보고싶어요</div>
 						</div>
 					</a> <a href="" data-toggle="modal"
 						data-target="#rating-and-comment-modal" data-dismiss="modal"
 						aria-label="Close">
 						<div id="rating-button">
-							<img src="img/comment.svg">
+							<img src="/img/comment.svg">
 							<div>별점 및</div>
 							<div>코멘트 남기기</div>
 						</div>
