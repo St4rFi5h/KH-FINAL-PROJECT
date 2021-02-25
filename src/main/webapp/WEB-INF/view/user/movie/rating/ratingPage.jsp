@@ -57,14 +57,14 @@
 
 			</select>
 		</div>
-		      <c:forEach var="m" items="${movielist}" end="10">
+		    <c:forEach var="m" items="${movies}"  varStatus="vs" end="9">
 		<div id="mid_wrap">
 			<ul class="movie">
 				<li class="eachMovie">
 
 					<div class="movie_poster">
 						<div class="movie_wrap">
-							<img class="movie_image" src="img/poster.jpg">
+							<img class="movie_image" src="${m.poster_uri}">
 						</div>
 					</div>
 
@@ -73,10 +73,10 @@
 							${m.title}
 							<div class="modal_button">
 								<button class="fas fa-ellipsis-v" id="modal_btn"
-									data-toggle="modal" data-target="#exampleModal"></button>
+									data-toggle="modal" data-target="#exampleModal${vs.index}"></button>
 							</div>
 						</h3>
-						<div class="movie_info">2009-미국</div>
+						<div class="movie_info">${m.prodyear}-${m.nation}</div>
 						<div id="star-rating-zone">
 							<div class="starRev">
 								<span class="star starR1">0.5</span> <span class="star starR2">1</span>
@@ -87,93 +87,13 @@
 							</div>
 
 						</div>
-
-
 					</div>
 				</li>
 			</ul>
 		</div>
-     </c:forEach>
+ 		  
                               
-		<!---------------------------------------- 임시시작 ---------------------------------------------->
-		<div id="mid_wrap">
-			<ul class="movie">
-				<li class="eachMovie">
-
-					<div class="movie_poster">
-						<div class="movie_wrap">
-							<img class="movie_image"
-								src="https://upload.wikimedia.org/wikipedia/ko/7/74/%EC%97%85_%28%EC%98%81%ED%99%94%29_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg">
-						</div>
-					</div>
-
-					<div class="movie_name">
-						<h3 class="movie_title">
-							업
-							<div class="modal_button">
-								<button class="fas fa-ellipsis-v" id="modal_btn"
-									data-toggle="modal" data-target="#exampleModal"></button>
-							</div>
-						</h3>
-						<div class="movie_info">2016-미국</div>
-
-						<div id="star-rating-zone">
-							<div class="starRev">
-								<span class="star starR1">0.5</span> <span class="star starR2">1</span>
-								<span class="star starR1">1.5</span> <span class="star starR2">2</span>
-								<span class="star starR1">2.5</span> <span class="star starR2">3</span>
-								<span class="star starR1">3.5</span> <span class="star starR2">4</span>
-								<span class="star starR1">4.5</span> <span class="star starR2">5</span>
-							</div>
-
-						</div>
-
-
-
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div id="mid_wrap">
-			<ul class="movie">
-				<li class="eachMovie">
-
-					<div class="movie_poster">
-						<div class="movie_wrap">
-							<a href="/LJH/views/movie_detail_member.html"> <img
-								class="movie_image"
-								src="https://images.chosun.com/resizer/yZQMvczOQBMWykTxGL5NAwPUPhE=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/YN2NTUMNSAEY3HUC4YCXVNUZZA.jpg">
-							</a>
-						</div>
-					</div>
-
-					<div class="movie_name">
-						<h3 class="movie_title">
-							소울
-							<div class="modal_button">
-								<button class="fas fa-ellipsis-v" id="modal_btn"
-									data-toggle="modal" data-target="#exampleModal"></button>
-							</div>
-						</h3>
-						<div class="movie_info">2020-미국</div>
-						<div id="star-rating-zone">
-							<div class="starRev">
-								<span class="star starR1">0.5</span> <span class="star starR2">1</span>
-								<span class="star starR1">1.5</span> <span class="star starR2">2</span>
-								<span class="star starR1">2.5</span> <span class="star starR2">3</span>
-								<span class="star starR1">3.5</span> <span class="star starR2">4</span>
-								<span class="star starR1">4.5</span> <span class="star starR2">5</span>
-							</div>
-
-						</div>
-
-
-
-					</div>
-				</li>
-			</ul>
-		</div>
-		<!---------------------------------------- 임시끝---------------------------------------------->
+	
 		<!--  <div class="movielist">
             <h1>Page 1</h1>
         </div>
@@ -181,10 +101,9 @@
             <h1>Page 2</h1>
         </div>
         -->
-	</div>
 
-	<div class="modal fade" id="exampleModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="exampleModal${vs.index}" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true" >
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -201,7 +120,7 @@
 
 							<div class="movie_wrap">
 
-								<img class="movie_image" src="img/poster.jpg">
+								<img class="movie_image" src="${m.poster_uri}">
 
 							</div>
 						</div>
@@ -209,22 +128,22 @@
 							<div class="movie_name">
 
 								<h3 class="movie_title">
-									뮬란
+									${m.title}
 
 									<div class="modal_button"></div>
 								</h3>
-								<div class="movie_info">2009-미국</div>
+								<div class="movie_info">${m.prodyear}-${m.nation}</div>
 							</div>
 						</div>
 					</div>
 					<div class="css-1k6r5nr-RowActionButtons e1pa47va5">
 						<div aria-label="wished" role="button"
 							class="css-1s4ktoa-RowActionButton-WishButton e1pa47va7">
-							<img src="svg/bookmark.svg" alt="wished"><span>보고싶어요</span>
+							<img src="/img/movie/bookmark.svg" alt="wished"><span>보고싶어요</span>
 						</div>
 						<div aria-label="watching" role="button"
 							class="css-9gb35z-RowActionButton-WatchingButton e1pa47va8">
-							<img src="svg/cloud.svg" alt="wished"><span>코멘트 작성하기</span>
+							<img src="/img/movie/cloud.svg" alt="wished"><span>코멘트 작성하기</span>
 						</div>
 					</div>
 
@@ -234,13 +153,15 @@
 						<div aria-label="cancel" role="button"
 							class="css-4w0dnp-ColumnActionButton-CancelButton e1pa47va11"
 							data-dismiss="modal">취소</div>
-
 					</div>
 				</div>
 			</div>
+	
 		</div>
 	</div>
-
+	
+       </c:forEach>
+</div>
 
 	<script src="/js/movie/star.js"></script>
 	<script src="/js/movie/scroll.js"></script>
