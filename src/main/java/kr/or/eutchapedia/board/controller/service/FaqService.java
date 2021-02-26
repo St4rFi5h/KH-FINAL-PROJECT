@@ -15,6 +15,9 @@ public interface FaqService {
 
 	// 페이지를 요청할 때
 	List<FaqView> getViewList(int page, String field, String query);
+	
+	//공개 여부
+	List<FaqView> getViewPubList(int page, String field, String query);
 
 	int getCount();
 
@@ -31,11 +34,15 @@ public interface FaqService {
 	int deleteAll(int[] ids);
 
 	// 수정 페이지를 요청할 때
-	int update(Faq faq);
+	void update(Faq faq);
 
-	int delete(int faqNo);
+	public void delete(String faqNo) throws Exception;
 
 	int insert(Faq faq);
+	
+	Faq detail(int faqNo);
+
+	void pubList(String[] openIds);
 	
 }
 

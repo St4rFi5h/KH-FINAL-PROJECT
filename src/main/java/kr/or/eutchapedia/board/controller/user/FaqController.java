@@ -2,6 +2,8 @@ package kr.or.eutchapedia.board.controller.user;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,19 +16,39 @@ import oracle.net.ano.Service;
 
 
 @Controller
-@RequestMapping("/user/board/faq/")
+@RequestMapping("/user/board/faq")
 public class FaqController {
 	
 	@Autowired
 	private FaqService service;
 	
-	@RequestMapping("faq_list") 
-	public String list(Model model) {
-				
-		List<FaqView> list = service.getViewList();
-		model.addAttribute("list", list);
-		
-		return "/user/board/faq/faq_list";  
+	@RequestMapping("/faq_list") 
+	public String list(Model model, HttpServletRequest request) {
+	       
+	String field_ = request.getParameter("f");
+    String query_ = request.getParameter("q");
+    String page_ = request.getParameter("p");
+    
+    String field = "FAQ_TITLE";
+    if(field_ != null && !field_.equals(""))
+       field = field_;
+    
+    String query = "";
+    if(query_ != null && !query_.equals(""))
+       query = query_;
+
+    int page = 1;
+    if(page_ != null && !page_.equals(""))
+       page = Integer.parseInt(page_);
+    
+    
+    List<FaqView> list = service.getViewPubList(page, field, query);
+    int count = service.getCount(field, query);
+    //추가
+    model.addAttribute("list", list);
+    model.addAttribute("count", count);
+    //추가 
+    return "/user/board/faq/faq_list";  
 	}
 	
 }

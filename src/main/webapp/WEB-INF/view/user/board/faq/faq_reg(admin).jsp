@@ -86,75 +86,73 @@
                 </div>
                 
                 <div class="xans-board-write">
-                <form action="faq_reg(admin)" method = "POST" enctype="multipart/form-data" onsubmit="return chkForm(this)" style="height: 100%;">
-                <input type="hidden" name="mode" value="add_qna">
-                <input type="hidden" name="itemcd" value="">
-                <input type="hidden" name="sno" value="0">
-                <table id="table_after" class="boardWrite2" width="100%">
-                <colgroup><col width="14%" align="right">
-                </colgroup><tbody><tr>
-                <th class="input_txt" style="padding-top:20px;">제목</th>
-                <td><br>
-                <input type="text" name="subject" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="">
-                </td>
-                </tr>
-                <tr>
-                <th class="input_txt">내용</th>
-                <td class="edit_area" style="position: relative;">
-                <strong class="tit qna_public"></strong>             
-                <dl class="list qna_public">
-                </dl>
-                
-                <!-- <textarea name="contents" style="width:100%;height:474px;" class="editing_area" required="" fld_esssential="" label="내용"></textarea> -->
-                <textarea name="ir1" id="ir1" rows="10" cols="137">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>
-                </td>
-                </tr>
-                <tr>
-                <th class="input_txt">이미지</th>
-                <td>
-                <section id="section">
-                <table width="90%" id="table" cellpadding="0" cellspacing="0" border="0" style="border:solid 1px #f4f4f4; border-collapse:collapse;">
-                    <tbody>
-                        <tr data-tr_value="1">
-                            <td><input type="checkbox" name="checkRow"/></td>
-                            <td width="30" nowrap="" align="center">1</td>
-                            <td width="100%">
-                            <input type="file" name="file[]" style="width:50%" class="linebg">
-                            <!-- <input type="button" name="del_btn" id="delete" class="del_btn" value="삭제"/> -->
-                            </td>
-                        </tr>
-                        <tr data-tr_value="2">
-                            <td><input type="checkbox" name="checkRow"/></td>
-                            <td width="30" nowrap="" align="center">2</td>
-                            <td width="100%">
-                            <input type="file" name="file[]" style="width:50%" class="linebg">
-                            <!-- <input type="button" name="del_btn" id="delete" class="del_btn" value="삭제"/> -->
-                            </td>
-                        </tr>
-                    </tbody>
-                    <div style="padding-left: 630px;">
-                      <input type="button" name="del_btn" id="delete" class="del_button" value="삭제"/>
-                    </div>    
-                </table>
-                </section>
-                <table><tbody><tr><td height="2"></td></tr></tbody></table>
-                <div width="100%" style="padding:5px; padding-top:10px;" class="stxt">
-                <input type="checkbox"/>　바로공개<br>
-                </div>
-                </td>
-                </tr>
-                </tbody></table>
-                
-                <table width="60%">
-                <tbody><tr>
-                <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
-                <input type="submit" class="bhs_button yb" value="저장" style="float:none;">
-                <a href="faq_list(admin)">
-                    <input type="button" class="cancel_btn" value="취소"/>
-                </a>
-                </td>
-                </tr>
-                </tbody></table>
+                <form name="frm" id="frm" action='faq_reg(admin)/do' method="post" style="height: 100%;">
+	                <input type="hidden" name="mode" value="add_qna">
+	                <input type="hidden" name="itemcd" value="">
+	                <input type="hidden" name="sno" value="0">
+	                <table id="table_after" class="boardWrite2" width="100%">
+	                <colgroup><col width="14%" align="right">
+	                </colgroup><tbody><tr>
+	                <th class="input_txt" style="padding-top:20px;">제목</th>
+	                <td><br>
+	                <input type="text" name="faqTitle" id="faqTitle" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="">
+	                </td>
+	                </tr>
+	                <tr>
+	                <th class="input_txt">내용</th>
+	                <td class="edit_area" style="position: relative;">
+	                <strong class="tit qna_public"></strong>             
+	                <dl class="list qna_public">
+	                </dl>
+	                
+	                <!-- <textarea name="contents" style="width:100%;height:474px;" class="editing_area" required="" fld_esssential="" label="내용"></textarea> -->
+	                <textarea name="faqContent" id="faqContent" rows="10" cols="137"></textarea>
+	                </td>
+	                </tr>
+	                <tr>
+	                <th class="input_txt">이미지</th>
+	                <td>
+	                <section id="section">
+	                <table width="90%" id="table" cellpadding="0" cellspacing="0" border="0" style="border:solid 1px #f4f4f4; border-collapse:collapse;">
+	                    <tbody>
+	                        <tr data-tr_value="1">
+	                            <td><input type="checkbox" name="checkRow"/></td>
+	                            <td width="30" nowrap="" align="center">1</td>
+	                            <td width="100%">
+	                            <input type="file" name="file[]" style="width:50%" class="linebg">
+	                            <!-- <input type="button" name="del_btn" id="delete" class="del_btn" value="삭제"/> -->
+	                            </td>
+	                        </tr>
+	                        <tr data-tr_value="2">
+	                            <td><input type="checkbox" name="checkRow"/></td>
+	                            <td width="30" nowrap="" align="center">2</td>
+	                            <td width="100%">
+	                            <input type="file" name="file[]" style="width:50%" class="linebg">
+	                            <!-- <input type="button" name="del_btn" id="delete" class="del_btn" value="삭제"/> -->
+	                            </td>
+	                        </tr>
+	                    </tbody>
+	                    <div style="padding-left: 630px;">
+	                      <input type="button" name="del_btn" id="delete" class="del_button" value="삭제"/>
+	                    </div>    
+	                </table>
+	                </section>
+	                <table><tbody><tr><td height="2"></td></tr></tbody></table>
+	                <div width="100%" style="padding:5px; padding-top:10px;" class="stxt">
+	                <input type="checkbox" id="open" name="open" value="true"/>　바로공개<br>
+	                </div>
+	                </td>
+	                </tr>
+	                </tbody></table>
+	                
+	                <table width="60%">
+	                <tbody><tr>
+	                <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
+	                <button type="submit" id="write" name="write" class="bhs_button yb" style="float:none;">저장</button>
+	                <button type="button" class="cancel_btn" onclick="location.href='faq_list(admin)'">취소</button>
+	                </td>
+	                </tr> 
+	                </tbody></table>
                 </form>
                 </div>
             </div>
@@ -199,27 +197,38 @@
         <!-- scripts -->
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
-      <script type="text/javascript">
-        var oEditors = [];
-        nhn.husky.EZCreator.createInIFrame({
-         oAppRef: oEditors,
-         elPlaceHolder: "ir1",
-         sSkinURI: "/js/board/se2/SmartEditor2Skin.html",
-         fCreator: "createSEditor2"
-        });
-    </script>
-    <script>
-        // ‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
-function submitContents(elClickedObj) {
-// 에디터의 내용이 textarea에 적용된다.
-oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-
-// 에디터의 내용에 대한 값 검증은 이곳에서
-// document.getElementById("ir1").value를 이용해서 처리한다.
-
-try {
- elClickedObj.form.submit();
-} catch(e) {}
-        }
-    </script>
-</html>
+    </body>
+	<script type="text/javascript">
+		    var oEditors = [];
+		    nhn.husky.EZCreator.createInIFrame({
+		     oAppRef: oEditors,
+		     elPlaceHolder: "faqContent",
+		     sSkinURI: "/js/board/se2/SmartEditor2Skin.html",
+		     fCreator: "createSEditor2"
+		    });
+		</script>
+		<script>
+		$("#write").click(function(){ 
+				oEditors.getById["faqContent"].exec("UPDATE_CONTENTS_FIELD", []); 
+				$("#frm").submit(); 
+		})
+		</script>
+		<script type="text/javascript">
+		$(document).ready(function (e){
+			$('#write').click(function(){
+					var frmArr = ["faqContent","faqContent"];
+					//입력 값 널 체크
+					for(var i=0;i<frmArr.length;i++){
+						//alert(arr[i]);
+						if($.trim($('#'+frmArr[i]).val()) == ''){
+							alert('빈 칸을 모두 입력해 주세요.');
+							$('#'+frmArr[i]).focus();
+							return false;
+						}
+					}
+					//전송
+					$('#frm').submit();
+			});
+		});
+		</script>
+  </html>

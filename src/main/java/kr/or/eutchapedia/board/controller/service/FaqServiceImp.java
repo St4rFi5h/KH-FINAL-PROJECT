@@ -15,38 +15,51 @@ public class FaqServiceImp implements FaqService{
 	@Autowired
 	private FaqDao faqDao;
 
-
+	//페이지 요청
 	@Override
 	public List<FaqView> getViewList() {
 		// TODO Auto-generated method stub
-		return getViewList(1, "title", ""); ////////오류 확인해보기 
+		return getViewList(1, "FAQ_TITLE", ""); ////////오류 확인해보기 
 	}
-
+	//검색 요청
 	@Override
 	public List<FaqView> getViewList(String field, String query) {
 		// TODO Auto-generated method stub
 		return getViewList(1, field, query);
 	}
-
+	
+	//페이지 요청
 	@Override
 	public List<FaqView> getViewList(int page, String field, String query) {
 		
-		int size = 10;
-		int offset = 0+(page-1)*size;
+		int offset = 1+(page-1)*10;
+		int size = page*10;
 		
 		List<FaqView> list = faqDao.getViewList(offset, size, field, query);
 		return list;
 	}
-
+	
+	//공개여부 
+	@Override
+	public List<FaqView> getViewPubList(int page, String field, String query) {
+		int offset = 1+(page-1)*10;
+		int size = page*10;
+		
+		List<FaqView> list = faqDao.getViewPubList(offset, size, field, query);
+		return list;
+	}
+	
+	//목록에 대한 개수
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return getCount("title", "");
+		return getCount("FAQ_TITLE", "");
 	}
-
+	
+	//페이징 없이 검색된 결과의 총 개수
 	@Override
 	public int getCount(String field, String query) {
-		// TODO Auto-generated method stub
+		int count = 0;
+		
 		return faqDao.getCount(field, query);	
 		}
 
@@ -65,20 +78,22 @@ public class FaqServiceImp implements FaqService{
 
 	@Override
 	public int deleteAll(int[] ids) {
-		// TODO Auto-generated method stub
+		int result = 0;
+		
 		return faqDao.deleteAll(ids);
 	}
 
 	@Override
-	public int update(Faq faq) {
+	public void update(Faq faq) {
 		// TODO Auto-generated method stub
-		return faqDao.update(faq);
+		faqDao.update(faq);
 	}
 
+
 	@Override
-	public int delete(int faqNo) {
+	public void delete(String faqNo) throws Exception{
 		// TODO Auto-generated method stub
-		return faqDao.delete(faqNo);
+		 faqDao.delete(faqNo);
 	}
 
 	@Override
@@ -86,5 +101,16 @@ public class FaqServiceImp implements FaqService{
 		// TODO Auto-generated method stub
 		return faqDao.insert(faq);
 	}
-
+	@Override
+	public Faq detail(int faqNo) {
+		// TODO Auto-generated method stub
+		return faqDao.detail(faqNo);
+	}
+	@Override
+	public void pubList(String[] openIds) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 }

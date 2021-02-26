@@ -84,8 +84,8 @@
                     <div class="search_bar">
                         <form class="hidden">
                               <select name="f">
-                                <option ${(param.f == "notice_title")?"selected":""} value="notice_title">제목</option> 
-                                <option ${(param.f == "notice_content")?"selected":""} value="notice_content">내용</option>
+                                <option ${(param.f == "faq_title")?"selected":""} value="faq_title">제목</option> 
+                                <option ${(param.f == "faq_content")?"selected":""} value="faq_content">내용</option>
                               </select>
                             <input type="text" name="q" value="${param.q}" id="search-box" />  
                             <input type="submit" class="search-btn yb" style="float: none;" value="검색"/>
@@ -100,25 +100,31 @@
                         </h3>
                         <div class="tt_tbl"></div>
                     </div>
-                    <form name="notiboard_frm" action="">
+                    <form action="faq_list(admin)" method="post">
                         <div class="accordion_banner" id="tbl_notice">
                             <div class="tbl_notice_tit">
                                 <div class="tbl_notice_info">
-                                    <p class="tbl_info_type"><input type="checkbox" class="checkall"/></p>
-                                    <p class="tbl_info_type"><input type="checkbox" class="checkall"/></p>
+                                    <p class="tbl_info_type">삭제</p>
+                                    <p class="tbl_info_type">공개</p>
                                     <p class="tbl_info_tit">제목</p>
                                     <p class="tbl_info_date"></p>
                                 </div>
                             </div>
                             
                             <c:forEach var="f" items="${list}">
+                            
+                            <c:set var="open" value=""/>
+                            <c:if test="${f.faqPub}">
+                            	<c:set var="open" value="checked"/>
+                            </c:if>
+                            
                             <div class="accordion_title">
                                 <div class="tbl_notice_info">
                                     <div class="infoinner">
-                                    	<p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
+                                    	<p class="tbl_info_type"><input type="checkbox" name="del-id" class="checkbox" value="${f.faqNo}">
                                             <span class="blind">체크박스</span>
                                         </p>
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
+                                        <p class="tbl_info_type"><input type="checkbox" name="open-id" ${open} class="checkbox" value="${f.faqNo}">
                                             <span class="blind">체크박스</span>
                                         </p>
                                         <p class="tbl_info_tit">${f.faqTitle}
@@ -134,10 +140,12 @@
                                 <div class="reply_row">
                                     <div class="notice_wrap">
                                         <span class="modi_span">
-                                            <a href="faq_edit(admin)" class="modi_btn">수정</a>
-                                            <p>${f.faqContent}
-                                            </p>
+                                          <a href="${path}/user/board/faq/updateView?faqNo=${f.faqNo }" class="modi_btn">수정</a>
+                                          <a href="${path }/user/board/faq/delete?faqNo=${f.faqNo}" class="modi_btn">삭제</a>
                                         </span>
+                                            <div style="padding-left:140px;">
+                                            	<p>${f.faqContent}</p>
+                                        	</div>
                                     </div>
                                 </div>
                             </div>
@@ -146,56 +154,61 @@
 
                             <!-- 관리자 버튼-->
                             <div id="buttons">
+                            <c:set var="ids" value=""/>
+                            <c:forEach var="f" items="${list}">
+                            	<c:set var="ids" value="${ids} ${f.faqNo}"/>
+                            </c:forEach>
+                            <input type="hidden" id="ids" name="ids" value="${ids}"/>
                                 <a href="faq_reg(admin)"><input type="button" class="write_btn yb" value="글쓰기"/></a>
-                              <input type="submit" class="write_btn yb" name="cmd" value="삭제" style="float: none" onclick="return confirm('정말로 삭제하시겠습니까?')"/>
+                              <input type="submit" class="write_btn yb" name="cmd" value="선택삭제" onclick="deleteValue();"/>
                               <input type="submit" class="write_btn yb" name="cmd" value="공개" style="float: none"/>  
                             </div>
-                            <div class="">
-                                
                             </div>
+                            </form>
+                            
 
-                            <!-- 페이징 -->
-                            <div class="pagination_section">
-                                <div class="custom_pagination">
-                                    <span class="pagination_prev disabled">
-                                        <a href="">
-                                            <ruler-svg-icon-prev>
-                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
-                                                    <path d="M143.492,221.863L336.226,29.129c6.663-6.664,6.663-17.468,0-24.132c-6.665-6.662-17.468-6.662-24.132,0l-204.8,204.8
-                                                        c-6.662,6.664-6.662,17.468,0,24.132l204.8,204.8c6.78,6.548,17.584,6.36,24.132-0.42c6.387-6.614,6.387-17.099,0-23.712
-                                                        L143.492,221.863z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
-                                                </svg>
-                                            </ruler-svg-icon-prev>
-                                        </a>
-                                    </span>
-                                    <span class="pagenum current">
-                                        <span>1</span>
-                                    </span>
-                                    <span class="pagenum">
-                                        <a>2</a>
-                                    </span>
-                                    <span class="pagination_next">
-                                        <a href="">
-                                            <ruler-svg-icon-next width="11" height="22" stroke="#000">
-                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
-                                                    <path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
-                                                            L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
-                                                            C342.889,227.058,342.889,216.255,336.226,209.591z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
-                                                </svg>
-                                            </ruler-svg-icon-next>
-                                        </a>
-                                    </span>
-                                </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- footer -->
-    <footer>
+							
+		                    <!-- 페이징 -->
+		                    <div class="pagination_section">
+		                        <div class="custom_pagination">
+		                            <span class="pagination_prev disabled">
+		                                <a href="">
+		                                    <ruler-svg-icon-prev>
+		                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		                                            viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+		                                            <path d="M143.492,221.863L336.226,29.129c6.663-6.664,6.663-17.468,0-24.132c-6.665-6.662-17.468-6.662-24.132,0l-204.8,204.8
+		                                                c-6.662,6.664-6.662,17.468,0,24.132l204.8,204.8c6.78,6.548,17.584,6.36,24.132-0.42c6.387-6.614,6.387-17.099,0-23.712
+		                                                L143.492,221.863z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
+		                                        </svg>
+		                                    </ruler-svg-icon-prev>
+		                                </a>
+		                            </span>
+		                            <span class="pagenum current">
+		                                <span>1</span>
+		                            </span>
+		                            <span class="pagenum">
+		                                <a>2</a>
+		                            </span>
+		                            <span class="pagination_next">
+		                                <a href="">
+		                                    <ruler-svg-icon-next width="11" height="22" stroke="#000">
+		                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		                                            viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+		                                            <path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
+		                                                    L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
+		                                                    C342.889,227.058,342.889,216.255,336.226,209.591z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
+		                                        </svg>
+		                                    </ruler-svg-icon-next>
+		                                </a>
+		                            </span>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+		    <!-- footer -->
+		    <footer>
 
         <section class="count-space">
           <span class="count">지금까지<em> ★ 123,534,545 개의 평가가 </em> 쌓였어요.</span>
@@ -257,4 +270,57 @@
         })
     })
     </script>
+    <script type="text/javascript">
+	$(function (){
+		var chkObj = document.getElementsByName("del-id");
+		var rowCnt = chkObj.length;
+		$("input[name='allCheck']").click(function(){
+			var chk_listArr = $("input[name='del-id']");
+			for (var i=0; i<chk_listArr.length; i++) {
+				chk_listArr[i].checked = this.checked;
+			}
+		});
+		$("input[name='del-id']").click(function(){
+			if($("input[name='del-id']:checked").length == rowCnt) {
+				$("input[name='allCheck']")[0].checked = true;
+			}
+			else {
+				$("input[name='allCheck']")[0].checked = false;
+			}
+		});
+	});
+	function deleteValue() {
+		var url = "/user/board/faq/deleteChk";	// controller로 보내고자 하는 url
+		var valueArr = new Array();
+		var list = $("input[name='del-id']");
+		for(var i=0; i<list.length; i++) {
+			if(list[i].checked){		// 선택되어 있으면 배열에 값을 저장~!~!
+				valueArr.push(list[i].value);
+			}
+		}
+		if(valueArr.length == 0) {
+			alert("선택된 게시글이 없습니다.");
+		}
+		else {
+			var chk = confirm("정말 삭제하시겠습니까?");
+			$.ajax({
+				url : url,					// 전송 url
+				type : 'POST',				// POST 방식
+				traditional: true,
+				data : {
+					valueArr : valueArr		// 보내고자 하는 data 변수 설정
+				},
+				success: function(jdata) {
+					if(jdata = 1) {
+						alert("삭제 성공");
+						location.replace("/user/board/faq/deleteChk")	// 리스트 페이지로 새로고침
+					}
+					else {
+						alert("삭제 실패");
+					}
+				}
+			});
+		}	
+	}
+</script>
 </html>

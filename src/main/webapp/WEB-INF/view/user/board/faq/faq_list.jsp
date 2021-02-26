@@ -84,8 +84,8 @@
                     <div class="search_bar">
                         <form class="hidden">
                               <select name="f">
-                                <option ${(param.f == "notice_title")?"selected":""} value="notice_title">제목</option> 
-                                <option ${(param.f == "notice_content")?"selected":""} value="notice_content">내용</option>
+                                <option ${(param.f == "faq_title")?"selected":""} value="faq_title">제목</option> 
+                                <option ${(param.f == "faq_content")?"selected":""} value="faq_content">내용</option>
                               </select>
                             <input type="text" name="q" value="${param.q}" id="search-box" />  
                             <input type="submit" class="search-btn yb" style="float: none;" value="검색"/>

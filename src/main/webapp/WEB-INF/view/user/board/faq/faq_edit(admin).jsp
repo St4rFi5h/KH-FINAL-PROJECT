@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,17 +88,18 @@
                 </div>
                 
                 <div class="xans-board-write">
-                <form name="fm" id="fm" method="post" action="/shop/mypage/indb.php" enctype="multipart/form-data" onsubmit="return chkForm(this)" style="height: 100%;">
-                <input type="hidden" name="mode" value="add_qna">
-                <input type="hidden" name="itemcd" value="">
-                <input type="hidden" name="sno" value="0">
+                <c:url var="updateUrl" value="${path}/user/board/faq/update.do"/>
+                <form:form name="board" id="frm" method="post" action="${updateUrl}" enctype="multipart/form-data" style="height: 100%;" modelAttribute="faq">
+		                <form:input type="hidden" path="faqNo" value="${faq.faqNo}"/>
+		                <form:input type="hidden" path="memberEmail" value="${faq.memberEmail}"/>
+                
                 <table id="table_after" class="boardWrite2" width="100%">
                 <colgroup><col width="14%" align="right">
                 </colgroup><tbody><tr>
               
                 <th class="input_txt" style="padding-top:20px;">제목</th>
                 <td><br>
-                <input type="text" name="subject" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="">
+                <form:input path="faqTitle" type="text" name="faqTitle" id="faqTitle" style="width:100%; height:25px;"/>
                 </td>
                 </tr>
                 <tr>
@@ -109,8 +111,8 @@
                 
                 
                 
-                <!-- <textarea name="contents" style="width:100%;height:474px;" class="editing_area" required="" fld_esssential="" label="내용"></textarea> -->
-                <textarea name="ir1" id="ir1" rows="10" cols="137">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>
+                <!-- <textarea> -->
+				<form:textarea path="faqContent" name="faqContent" id="faqContent" value="faqContent" rows="10" cols="146"></form:textarea>                
                 </td>
                 </tr>
                 <tr>
@@ -152,14 +154,14 @@
                 <table width="60%">
                 <tbody><tr>
                 <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
-                <input type="submit" class="bhs_button yb" value="저장" style="float:none;">
+                <button type="submit" id="write" name="write" class="bhs_button yb" style="float:none;">저장</button>
                 <a href="faq_list(admin)">
                     <input type="button" class="cancel_btn" value="취소"/>
                 </a>
                 </td>
                 </tr>
                 </tbody></table>
-                </form>
+                </form:form>
                 </div>
             </div>
         </div>
@@ -203,28 +205,38 @@
         <!-- scripts -->
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
-        </body>
-        <script type="text/javascript">
-          var oEditors = [];
-          nhn.husky.EZCreator.createInIFrame({
-           oAppRef: oEditors,
-           elPlaceHolder: "ir1",
-           sSkinURI: "/js/board/se2/SmartEditor2Skin.html",
-           fCreator: "createSEditor2"
-          });
-      </script>
-      <script>
-          // ‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
-function submitContents(elClickedObj) {
-// 에디터의 내용이 textarea에 적용된다.
-oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-
-// 에디터의 내용에 대한 값 검증은 이곳에서
-// document.getElementById("ir1").value를 이용해서 처리한다.
-
-try {
-   elClickedObj.form.submit();
-} catch(e) {}
-          }
-      </script>
+       </body>
+       <script type="text/javascript">
+		    var oEditors = [];
+		    nhn.husky.EZCreator.createInIFrame({
+		     oAppRef: oEditors,
+		     elPlaceHolder: "faqContent",
+		     sSkinURI: "/js/board/se2/SmartEditor2Skin.html",
+		     fCreator: "createSEditor2"
+		    });
+		</script>
+		<script>
+		$("#write").click(function(){ 
+				oEditors.getById["faqContent"].exec("UPDATE_CONTENTS_FIELD", []); 
+				$("#frm").submit(); 
+		})
+		</script>
+		<script type="text/javascript">
+		$(document).ready(function (e){
+			$('#write').click(function(){
+					var frmArr = ["faqContent","faqContent"];
+					//입력 값 널 체크
+					for(var i=0;i<frmArr.length;i++){
+						//alert(arr[i]);
+						if($.trim($('#'+frmArr[i]).val()) == ''){
+							alert('빈 칸을 모두 입력해 주세요.');
+							$('#'+frmArr[i]).focus();
+							return false;
+						}
+					}
+					//전송
+					$('#frm').submit();
+			});
+		});
+		</script>
   </html>

@@ -1,14 +1,18 @@
 package kr.or.eutchapedia.board.entity;
 
+import java.util.Date;
+
 public class FaqView extends Faq {
 	private String memberNickname;
 	
 	public FaqView() {
 	}
 
-	public FaqView(int faqNo, String memberEmail, String faqTitle, String faqContent, String faqFiles, int faqPub, String memberNickname) {
-		super(faqNo, memberEmail, faqTitle, faqContent, faqFiles, faqPub);
-			this.memberNickname = memberNickname;
+
+	public FaqView(int faqNo, String memberEmail, String faqTitle, String faqContent, boolean faqPub, String faqFiles,
+			Date faqRegdate) {
+		super(faqNo, memberEmail, faqTitle, faqContent, faqPub, faqFiles, faqRegdate);
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getMemberNickname() {
