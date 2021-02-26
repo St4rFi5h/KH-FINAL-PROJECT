@@ -36,8 +36,12 @@ public class MovieDetailController {
 			int wannaWatchCheck = movieDetailDao.selectWannaWatch(map);
 			mv.addObject("wannaWatchCheck", wannaWatchCheck);
 			
+			double ratedStars = movieDetailDao.checkRatedStars(map);
 			
-			
+			if (Double.valueOf(ratedStars) != null) {
+				System.out.println(ratedStars);
+				mv.addObject("ratedStars", ratedStars);
+			}
 		}
 		
 		MovieInfoVo movieInfoVo = movieDetailDao.selectMovieInfo(movieDocId);

@@ -101,6 +101,17 @@
 
 
 	</select>
+	
+	<!-- 별점 데이터 체크 -->
+	<select id="checkRatedStars" parameterType="HashMap"
+	resultType="double">
+		SELECT star_rating
+		FROM star_rating
+		WHERE fk_movie_docid = #{movieDocId}
+		AND fk_member_email = #{memberEmail}
+		 
+	
+	</select>
 
 	<!-- resultmap -->
 

@@ -22,4 +22,5 @@ public interface MovieDetailMapper {
 	public List<Map<String, Object>> selectStarData(String movieDocId);
 	public List<Map<String, Object>> selectComments(String movieDocId);
 	public int selectWannaWatch(Map<String, Object> map);
+	public double checkRatedStars(Map<String, Object> map);
 }

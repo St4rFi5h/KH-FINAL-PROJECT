@@ -258,6 +258,8 @@
 
                 <div id="star-rating">
                     <p id="star-message">평가하기</p>
+                    <input type="hidden" id="ratedStars" value="${ratedStars }"/>
+                    
                     <div class="starRev" id="star-rating-member">
                         <span class="star starR1">0.5</span>
                         <span class="star starR2">1</span>
@@ -669,7 +671,52 @@
 					});
 				})
 				
-			
+				window.onload = function() {
+					var ratedStars = document.getElementById("ratedStars").value;
+					var ratedStarsForAddClass = ratedStars * 2;
+					var starMessage = document.getElementById("star-message").innerText;
+					var addClassSelector = 'star-rating-member span:nth-child(' + ratedStarsForAddClass + ')';
+					
+					if (	ratedStars > 0) {
+						$('#' + addClassSelector).addClass('on').prevAll('span').addClass('on');
+						
+						switch (ratedStars) {
+						case 0.5:
+							starMessage = '최악이에요'; 
+							break;
+						case 1:
+							$('#star-message').html("싫어요");
+							break;
+						case 1.5:
+							$('#star-message').html("재미없어요");
+							break;
+						case 2:
+							$('#star-message').html("별로예요");
+							break;
+						case 2.5:
+							$('#star-message').html("부족해요");
+							break;
+						case 3:
+							$('#star-message').html("보통이에요");
+							break;
+						case 3.5:
+							starMessage = '볼만해요'; 
+							break;
+						case 4:
+							$('#star-message').html("재미있어요");
+							break;
+						case 4.5:
+							$('#star-message').html("훌륭해요!");
+							break;
+						case 5:
+							$('#star-message').html("최고예요!");
+							break;
+						
+					}
+
+				}
+
+			}
 
 				
 			   
