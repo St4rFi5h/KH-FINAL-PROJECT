@@ -27,16 +27,16 @@ public class MainController {
 		ModelAndView mv = new ModelAndView();
 		
 
-		Map<String, Object> starAvgMap = dao.selectStarAvg(movieDocId);
-		List<Map<String, Object>> starDataList = dao.selectStarData(movieDocId);
+		//Map<String, Object> starAvgMap = dao.selectStarAvg(movieDocId);
+	//	List<Map<String, Object>> starDataList = dao.selectStarData(movieDocId);
 		
 		List<MovieInfoVo> watchaList = dao.selectWatchaList();
 		List<MovieInfoVo> netflixList = dao.selectNetflixList();
 		List<MovieInfoVo> searchList = dao.selectSearchList();
 		List<MovieInfoVo> reviewList = dao.selectReviewList();
 		
-		mv.addObject("starAvgMap", starAvgMap);
-		mv.addObject("starDataList", starDataList);
+		//mv.addObject("starAvgMap", starAvgMap);
+	//	mv.addObject("starDataList", starDataList);
 		mv.addObject("watchaList", watchaList);
 		mv.addObject("netflixList", netflixList);
 		mv.addObject("searchList", searchList);

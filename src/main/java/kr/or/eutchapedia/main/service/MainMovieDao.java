@@ -21,36 +21,27 @@ public class MainMovieDao {
 	MainMapper mapper;
 
 
-	
-public Map<String, Object> selectStarAvg(String movieDocId) {
-		
-		Map<String, Object> starAvgMap = new HashMap<>();
-
-		try {
-			starAvgMap = mapper.selectStarAvg(movieDocId);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return starAvgMap;
-	}
-
-		// 별점 데이터 반환 
-		public List<Map<String, Object>> selectStarData(String movieDocId) {
-			List<Map<String, Object>> starDataList = new ArrayList<>();
-			
-			try {
-				starDataList = mapper.selectStarData(movieDocId);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			return starDataList;
-		}
-		
-		
+	/*
+	 * public Map<String, Object> selectStarAvg(String movieDocId) {
+	 * 
+	 * Map<String, Object> starAvgMap = new HashMap<>();
+	 * 
+	 * try { starAvgMap = mapper.selectStarAvg(movieDocId);
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); }
+	 * 
+	 * return starAvgMap; }
+	 * 
+	 * // 별점 데이터 반환 public List<Map<String, Object>> selectStarData(String
+	 * movieDocId) { List<Map<String, Object>> starDataList = new ArrayList<>();
+	 * 
+	 * try { starDataList = mapper.selectStarData(movieDocId);
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); }
+	 * 
+	 * return starDataList; }
+	 * 
+	 */
 		//왓챠 순위 
 
 		public List<MovieInfoVo> selectWatchaList() {

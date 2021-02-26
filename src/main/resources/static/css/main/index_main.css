@@ -195,7 +195,11 @@ main {
     font-size: 15px;
     font-weight: 600;
     margin: 5px 0;
-
+    
+	/*텍스트 글자줄임 추가 */
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;	
 }
 
 .movie_info {
