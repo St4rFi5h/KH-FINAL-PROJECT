@@ -67,7 +67,6 @@
                         <table id="db-info" class="table table-hover">
                             <thead>
                               <tr>
-                                <th scope="col">선택</th>
                                 <th scope="col">영화id</th>
                                 <th scope="col">영화제목</th>
                                 <th scope="col">제작국가</th>
@@ -79,7 +78,6 @@
                             <tbody>
                              <c:forEach var="m" items="${movielist}" end="10">
                               <tr>
-                                <td><input type="checkbox" name="del" value="${m.movie_docid}"/></td>
                                 <td>${m.movie_docid}</td>
                                 <td>${m.title}</td>
                                 <td>${m.nation}</td>
@@ -91,6 +89,7 @@
                               
                             </tbody>
                           </table>
+                          </div>
                           <c:set var="page" value="${(param.p == null)?1:param.p}"/>
                               <c:set var="startNum" value="${page-(page-1)%5}" />
                               <c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"/>
@@ -122,30 +121,7 @@
                                 </c:if>
                             </ul>
                           </nav>
-                          <div id="dbmanagement-btn-container">
-                            <button id="dbmanagement-del-one" type="button" class="btn btn-primary" data-toggle="modal" data-target="#d-del-one">선택삭제</button>
-                             <!--modal1-->
-                             <div class="modal fade" id="d-del-one" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">해제</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                   선택 삭제를 하시겠습니까?
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                                    <button type="submit" class="btn btn-primary">확인</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <button id="dbmanagement-del-all" type="button" class="btn btn-primary" OnClick="location.href ='addMovie.html'" >전체삭제</button>
-                        </div>
+                          
                     </form>
 
                           
@@ -154,11 +130,22 @@
 			
 		
 	</div>
-	</div>
 	<script src="js/jquery.min.js"></script>
 
 	<script src="js/bootstrap.bundle.min.js"></script>
 
 	<script src="js/accordion.js"></script>
+	<script>
+      $("#db-info tbody tr").click(function(){
+
+    	  //현재클릭된 row(<tr>)
+          var tr = $(this);
+          var td = tr.children();
+          //값저장
+          var docid = td.eq(0).text();
+          var url = "/admin/moviemanagement/edit?movieDocid="+docid;
+          location.href = url;
+          });
+      </script>
 </body>
 </html>

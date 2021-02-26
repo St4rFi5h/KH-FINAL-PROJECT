@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import kr.or.eutchapedia.admin.movie.entity.CommentDetail;
+import kr.or.eutchapedia.admin.movie.entity.CommentEnrollment;
 import kr.or.eutchapedia.admin.movie.entity.MovieCount;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfo;
@@ -48,6 +50,42 @@ public interface MovieDao {
 	List<PickMovieInfo> getPickMovieforId(@Param("pickno")String pickno,@Param("email")String email,@Param("pickname")String pickname);
 
 	int chopickDel(@Param("pickno")String pickno,@Param("docid")String docid);
+
+	int allpickDel(String fkpickno);
+
+	List<CommentEnrollment> getNoBlind(@Param("page")int page,@Param("amount")int amount);
+
+	List<MovieCount> getCount();
+
+	List<MovieCount> getBlindCount();
+
+	List<CommentDetail> getCommentDetail(@Param("commentno")String commentno,@Param("page")int page,@Param("amount")int amount);
+
+	List<MovieCount> getCommentCount(@Param("commentno")String commentno,@Param("page")int page,@Param("amount")int amount);
+
+	int setBlindOn(String commentno);
+
+	List<CommentEnrollment> getYesBlind(@Param("page")int page,@Param("amount")int amount);
+
+	List<MovieCount> getYesBlindCount();
+
+	int setBlindOff(String commentindex);
+
+	MovieInfo getMovie(String movieDocid);
+
+	int updateMovieInfo(@Param("docid")String docid,
+			@Param("title")String title,
+			@Param("titleorg")String titleorg,
+			@Param("nation")String nation,
+			@Param("runningtime") String runningtime,
+			@Param("rating") String rating,
+			@Param("prodyear")String prodyear,
+			@Param("posteruri")String posteruri,
+			@Param("genre")String genre, 
+			@Param("plot")String plot, 
+			@Param("traileruri")String traileruri);
+
+	int deleteMovieInfo(String docid);
 
 }
 

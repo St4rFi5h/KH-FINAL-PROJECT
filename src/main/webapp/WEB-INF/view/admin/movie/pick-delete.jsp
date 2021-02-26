@@ -64,7 +64,6 @@
                           </table>
                         </div>
                         
-                              <button id="adddel-del-one" type="button" class="btn btn-primary">선택삭제</button>
                          <c:set var="page" value="${(param.p == null)?1:param.p}"/>
                               <c:set var="startNum" value="${page-(page-1)%5}" />
                               <c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"/>
@@ -115,13 +114,15 @@
                             <c:forEach items="${pickmovies}" var="pickmovies">
                              <tr>
                                 <td><input type="checkbox" name="list" value="${pickmovies.fkPickIndex},${pickmovies.movieDocid}"></input></td>
-                                <td>${pickmovies.pickName}</td>
+                                <td>${pickmovies.pickName} <input type="hidden" name="fkpickno" value="${pickmovies.fkPickIndex}"></td>
                                 <td>${pickmovies.movieDocid}</td>
                                 <td>${pickmovies.title}</td>
                                 <td>${pickmovies.nation}</td>
                                 <td>${pickmovies.genre}</td>
                                 <td>${pickmovies.movieHitCount}</td>
+                             
                               </tr>
+                                
                             
                             </c:forEach>
                             </c:if>
@@ -130,7 +131,6 @@
                               
                             </tbody>
                           </table>
-                              
                         </div>
                         <div id="adddel-btn-container">
                             <button id="adddel-del-one" type="button" class="btn btn-primary" data-toggle="modal" data-target="#a-del-one">선택삭제</button>

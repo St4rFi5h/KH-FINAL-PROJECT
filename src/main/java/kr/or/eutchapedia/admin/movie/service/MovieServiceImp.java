@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.eutchapedia.admin.movie.dao.MovieDao;
+import kr.or.eutchapedia.admin.movie.entity.CommentDetail;
+import kr.or.eutchapedia.admin.movie.entity.CommentEnrollment;
 import kr.or.eutchapedia.admin.movie.entity.MovieCount;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfo;
@@ -108,6 +110,85 @@ public class MovieServiceImp implements MovieService {
 		return chopickdel;
 	}
 
+	@Override
+	public int allpickDel(String fkpickno) {
+		int allpickdel = moviedao.allpickDel(fkpickno);
+		return allpickdel;
+	}
+
+
+	@Override
+	public List<CommentEnrollment> getNoBlind(int page, int amount) {
+		List<CommentEnrollment> getnoblind = moviedao.getNoBlind(page,amount);
+		return getnoblind;
+	}
+
+	@Override
+	public List<MovieCount> getCount() {
+		List<MovieCount> counts = moviedao.getCount();
+		return counts;
+	}
+
+	@Override
+	public List<MovieCount> getBlindCount() {
+		List<MovieCount> getblindcount = moviedao.getBlindCount();
+		return getblindcount;
+	}
+
+	@Override
+	public List<CommentDetail> getCommentDetail(String commentno, int page, int amount) {
+		List<CommentDetail> commentdetail = moviedao.getCommentDetail(commentno,page,amount);
+		return commentdetail;
+	}
+
+	@Override
+	public List<MovieCount> getCommentCount(String commentno, int page, int amount) {
+		List<MovieCount> commentcount = moviedao.getCommentCount(commentno,page,amount);
+		return commentcount;
+	}
+
+	@Override
+	public int setBlindOn(String commentno) {
+		int blindon = moviedao.setBlindOn(commentno);
+		return blindon;
+	}
+
+	@Override
+	public List<CommentEnrollment> getYesBlind(int page, int amount) {
+		List<CommentEnrollment> getyesblind = moviedao.getYesBlind(page,amount);
+		return getyesblind;
+	}
+
+	@Override
+	public List<MovieCount> getYesBlindCount() {
+		List<MovieCount> getblindcount = moviedao.getYesBlindCount();
+		return getblindcount;
+	}
+
+	@Override
+	public int setBlindOff(String commentindex) {
+		int blindoff = moviedao.setBlindOff(commentindex);
+		return blindoff;
+	}
+
+	@Override
+	public MovieInfo getMovie(String movieDocid) {
+		MovieInfo movieinfo = moviedao.getMovie(movieDocid);
+		return movieinfo;
+	}
+
+	@Override
+	public int updateMovieInfo(String docid, String title, String titleorg, String nation, String runningtime,
+			String rating, String prodyear, String posteruri, String genre, String plot, String traileruri) {
+		int updatemovieinfo = moviedao.updateMovieInfo(docid,title,titleorg,nation,runningtime,rating,prodyear,posteruri,genre,plot,traileruri);
+		return updatemovieinfo;
+	}
+
+	@Override
+	public int deleteMovieInfo(String docid) {
+		int deletemovieinfo = moviedao.deleteMovieInfo(docid);
+		return deletemovieinfo;
+	}
 
 	
 

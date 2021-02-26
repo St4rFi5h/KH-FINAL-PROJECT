@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.or.eutchapedia.admin.movie.entity.CommentDetail;
+import kr.or.eutchapedia.admin.movie.entity.CommentEnrollment;
 import kr.or.eutchapedia.admin.movie.entity.MovieCount;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfo;
@@ -182,7 +184,6 @@ public class AdminMovieController {
 		String pickno = req.getParameter("pickno");
 		String email = req.getParameter("em");
 		String pickname = req.getParameter("pn");
-		String sub1 = req.getParameter("sub1");
 		System.out.println("pickname"+pickname);
 		int number = 1;
 
@@ -192,10 +193,10 @@ public class AdminMovieController {
 		int amount = number*10;
 
 		List<PickInfo> picklist = service.getPickInfoList(page,amount);
-
+		List<MovieCount> counts = service.getCount();
 		String count = null;
-		if(!picklist.isEmpty())
-			count = picklist.get(picklist.size() - 1).getNum();
+		if(!counts.isEmpty())
+			count = counts.get(counts.size() - 1).getNum();
 		if(pickname != null) {
 			
 			List<PickMovieInfo> pickmovies = service.getPickMovieforId(pickno,email,pickname);
@@ -207,7 +208,7 @@ public class AdminMovieController {
 
 		model.addAttribute("count",count);
 		
-
+		
 
 
 		return mv;
@@ -219,26 +220,46 @@ public class AdminMovieController {
 		String pickno = null;
 		String docid = null;
 		String[] dellist = req.getParameterValues("list");
-		String sub = req.getParameter("sub1");
+		String sub_ = req.getParameter("sub");
+		String fkpickno = req.getParameter("fkpickno");
+		
+		int sub = Integer.parseInt(sub_);
 		System.out.println("sub들어옴 = "+sub);
 		
-		for (int i = 0; i < dellist.length; i++) {
-			String[] split = null;
-			split = dellist[i].split(",");
-			for(int j = 0; j<split.length; j++) {
-				
-				if(j == 0) {
-					pickno = split[j];
-				}
-				if(j == 1) {
-					docid = split[j];
-					int chopickdel = service.chopickDel(pickno,docid);
+		switch (sub) {
+		case 1:
+			for (int i = 0; i < dellist.length; i++) {
+				String[] split = null;
+				split = dellist[i].split(",");
+				for(int j = 0; j<split.length; j++) {
 					
+					if(j == 0) {
+						pickno = split[j];
+					}
+					if(j == 1) {
+						docid = split[j];
+						int chopickdel = service.chopickDel(pickno,docid);
+						
+					}
 				}
-				
-				
 			}
+					
+					
+			break;
+		case 2:
+			
+						int allpickdel = service.allpickDel(fkpickno);
+					
+					
+					
+				
+			
+			break;
+			
+			
 		}
+			
+			
 				
 			
 		mv.setViewName("redirect:/admin/pickdelete");
@@ -248,17 +269,99 @@ public class AdminMovieController {
 
 	}
 	@RequestMapping("/commentenroll")
-	public ModelAndView commentEnroll() {
+	public ModelAndView commentEnroll(HttpServletRequest req,Model model) {
 		ModelAndView mv = new ModelAndView("admin/movie/comment-enrollment");
-		return mv;
+		String number_ = req.getParameter("p");
+		int number = 1;
 
+		if(number_ != null && !number_.equals(""))
+			number = Integer.parseInt(number_);
+		int page = 1+(number-1)*10;
+		int amount = number*10;
+		List<CommentEnrollment> getnoblind = service.getNoBlind(page,amount);
+		List<MovieCount> getblindcount = service.getBlindCount();
+		String count = null;
+		if(!getblindcount.isEmpty())
+			count = getblindcount.get(getblindcount.size() - 1).getNum();
+		model.addAttribute("getnoblind",getnoblind);
+		model.addAttribute("count",count);
+		
+		return mv;
 	}
+	@RequestMapping("/commentenroll/detail")
+	public ModelAndView commentEnrollDetail(HttpServletRequest req,Model model) {
+		ModelAndView mv = new ModelAndView("admin/movie/comment-detail");
+		String commentno= req.getParameter("commentno");
+		String number_ = req.getParameter("p");
+		int number = 1;
+		if(number_ != null && !number_.equals(""))
+			number = Integer.parseInt(number_);
+		int page = 1+(number-1)*10;
+		int amount = number*10;
+		List<CommentDetail> commentdetail = service.getCommentDetail(commentno,page,amount);
+		List<MovieCount> commentcount = service.getCommentCount(commentno,page,amount);
+		String count = null;
+		if(!commentcount.isEmpty())
+			count = commentcount.get(commentcount.size() - 1).getNum();
+		int ci = commentdetail.get(0).getFkCommentIndex();
+		model.addAttribute("commentdetail", commentdetail);
+		model.addAttribute("count", count);
+		model.addAttribute("ci", ci);
+	
+		
+		return mv;
+	}
+	@RequestMapping("/commentenroll/detail/blindon")
+	public ModelAndView commentblindOn(HttpServletRequest req,Model model) {
+		ModelAndView mv = new ModelAndView();
+		String commentno = req.getParameter("commentno");
+		System.out.println("커맨트넘버"+commentno);
+		int blindon = service.setBlindOn(commentno);
+		mv.setViewName("redirect:/admin/commentenroll");
+		
+	    
+		
+		return mv;
+	}
+
 	@RequestMapping("/commentcansel")
-	public ModelAndView commentCansel() {
+	public ModelAndView commentCansel(Model model,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView("admin/movie/comment-cansel");
-		return mv;
+		String number_ = req.getParameter("p");
+		int number = 1;
 
+		if(number_ != null && !number_.equals(""))
+			number = Integer.parseInt(number_);
+		int page = 1+(number-1)*10;
+		int amount = number*10;
+		List<CommentEnrollment> getyesblind = service.getYesBlind(page,amount);
+		List<MovieCount> getblindcount = service.getYesBlindCount();
+		
+		String count = null;
+		if(!getblindcount.isEmpty())
+			count = getblindcount.get(getblindcount.size() - 1).getNum();
+		model.addAttribute("getyesblind", getyesblind);
+		model.addAttribute("count",count);
+		return mv;
+		
 	}
+	
+	@RequestMapping("/commentcansel/blindoff")
+	public ModelAndView commentBlindOff(Model model,HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String[] commentindex_ = req.getParameterValues("ci");
+		String commentindex = null;
+		for(int i = 0; i<commentindex_.length;i++) {
+			commentindex = commentindex_[i];
+			int blindoff = service.setBlindOff(commentindex);
+		}
+		mv.setViewName("redirect:/admin/commentcansel");
+	
+		return mv;
+		
+	}
+		
+		
 
 	@RequestMapping("/moviemanagement")
 	public ModelAndView movieManagement(Model model,HttpServletRequest req) {
@@ -278,7 +381,7 @@ public class AdminMovieController {
 			number = Integer.parseInt(number_);
 		int page = 1+(number-1)*10;
 		int amount = number*10;
-
+		 
 
 		List<MovieInfo> movielist = service.getmovieList(field, query, page,amount);
 
@@ -294,16 +397,86 @@ public class AdminMovieController {
 		return mv;
 
 	}
-	@RequestMapping("/moviemanagement/delete")
+	@RequestMapping("/moviemanagement/edit")
 	public ModelAndView movieManagementDelete(Model model,HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView("admin/movie/dbmanagement");
+		ModelAndView mv = new ModelAndView("admin/movie/editMovie");
+		String movieDocid = req.getParameter("movieDocid");
+		MovieInfo movieinfo = service.getMovie(movieDocid);
+		
+		model.addAttribute("movieinfo",movieinfo);
+		
 
-		String[] a = req.getParameterValues("del");
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(a[i]);
+		
+		return mv;
+
+	}
+	@RequestMapping("/moviemanagement/edit/submit")
+	public ModelAndView movieManagementSubmit(Model model,HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String docid_ = req.getParameter("docid");
+		String title_ = req.getParameter("title");
+		String titleorg_ = req.getParameter("titleorg");
+		String nation_ = req.getParameter("nation");
+		String runningtime_ = req.getParameter("runningtime");
+		String rating_ = req.getParameter("rating");
+		String prodyear_ = req.getParameter("prodyear");
+		String posteruri_ = req.getParameter("posteruri");
+		String genre_ = req.getParameter("genre");
+		String plot_ = req.getParameter("plot");
+		String traileruri_ = req.getParameter("traileruri");
+		String sub_ = req.getParameter("sub");
+		
+		int sub = Integer.parseInt(sub_);
+		
+		String docid = "";
+		if(docid_ != null && !docid_.equals(""))
+			docid = docid_;
+		String title = "";
+		if(title_ != null && !title_.equals(""))
+			title = title_;
+		String titleorg = "";
+		if(titleorg_ != null && !titleorg_.equals(""))
+			titleorg = titleorg_;
+		String nation = "";
+		if(nation_ != null && !nation_.equals(""))
+			nation = nation_;
+		String runningtime = "";
+		if(runningtime_ != null && !runningtime_.equals(""))
+			runningtime = runningtime_;
+		String rating = "";
+		if(rating_ != null && !rating_.equals(""))
+			rating = rating_;
+		String prodyear = "";
+		if(prodyear_ != null && !prodyear_.equals(""))
+			prodyear = prodyear_;
+		String posteruri = "";
+		if(posteruri_ != null && !posteruri_.equals(""))
+			posteruri = posteruri_;
+		String genre = "";
+		if(genre_ != null && !genre_.equals(""))
+			genre = genre_;
+		String plot = "";
+		if(plot_ != null && !plot_.equals(""))
+			plot = plot_;
+		String traileruri = "";
+		if(traileruri_ != null && !traileruri_.equals(""))
+			traileruri = traileruri_;
+		
+		switch (sub) {
+		case 1:
+			int deletemovieinfo = service.deleteMovieInfo(docid);
+			
+			break;
+
+		case 2:
+			int updatemovieinfo = service.updateMovieInfo(docid,title,titleorg,nation,runningtime,rating,prodyear,posteruri,genre,plot,traileruri);
+			break;
 		}
+		
+		mv.setViewName("redirect:/admin/moviemanagement");
+		
 
-
+		
 		return mv;
 
 	}

@@ -2,6 +2,8 @@ package kr.or.eutchapedia.admin.movie.service;
 
 import java.util.List;
 
+import kr.or.eutchapedia.admin.movie.entity.CommentDetail;
+import kr.or.eutchapedia.admin.movie.entity.CommentEnrollment;
 import kr.or.eutchapedia.admin.movie.entity.MovieCount;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfo;
@@ -28,6 +30,20 @@ public interface MovieService {
 	List<PickInfo> getPick();
 	List<PickMovieInfo> getPickMovieforId(String pickno, String email, String pickname);
 	int chopickDel(String pickno, String docid);
+	int allpickDel(String fkpickno);
+	List<CommentEnrollment> getNoBlind(int page,int amount);
+	List<MovieCount> getCount();
+	List<MovieCount> getBlindCount();
+	List<CommentDetail> getCommentDetail(String commentno, int page, int amount);
+	List<MovieCount> getCommentCount(String commentno, int page, int amount);
+	int setBlindOn(String commentno);
+	List<CommentEnrollment> getYesBlind(int page, int amount);
+	List<MovieCount> getYesBlindCount();
+	int setBlindOff(String commentindex);
+	MovieInfo getMovie(String movieDocid);
+	int updateMovieInfo(String docid, String title, String titleorg, String nation, String runningtime, String rating,
+			String prodyear, String posteruri, String genre, String plot, String traileruri);
+	int deleteMovieInfo(String docid);
 
 
 	
