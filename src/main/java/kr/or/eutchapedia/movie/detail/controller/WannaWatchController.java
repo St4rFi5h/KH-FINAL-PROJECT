@@ -21,7 +21,7 @@ public class WannaWatchController {
 	WannaWatchDao wannaWatchDao;
 	
 	@RequestMapping(value = "/wannaWatchControl", method = RequestMethod.POST)
-	public Map<String, Object> addToWannaWatch(@RequestParam Map<String, Object> map, HttpSession session) {
+	public Map<String, Object> wannaWatchControl(@RequestParam Map<String, Object> map, HttpSession session) {
 		Map<String, Object> resultMap = new HashMap<>();
 		
 		String memberEmail = (String) session.getAttribute("memberEmail");

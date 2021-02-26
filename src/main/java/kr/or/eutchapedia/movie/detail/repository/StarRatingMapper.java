@@ -8,5 +8,7 @@ import kr.or.eutchapedia.movie.detail.domain.StarRatingVo;
 @Repository
 @Mapper
 public interface StarRatingMapper {
+	public int checkRatedStars(StarRatingVo starRatingVo);	
 	public int rateStars(StarRatingVo starRatingVo);
+	public int cancelRatedStars(StarRatingVo starRatingVo);
 }

@@ -14,15 +14,40 @@ public class StarRatingDao {
 	@Autowired
 	StarRatingMapper mapper;
 	
-	public int rateStars(StarRatingVo starRatingVo) {
+	public int checkRatedStars(StarRatingVo starRatingVo) {
 		int result = 0;
 		
 		try {
-			result = mapper.rateStars(starRatingVo);
+			result = mapper.checkRatedStars(starRatingVo);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+		return result;
+	}
+	
+	public int rateStars(StarRatingVo starRatingVo) {
+		int result = 0;
+		
+		try {
+			mapper.rateStars(starRatingVo);
+			result = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public int cancelRatedStars(StarRatingVo starRatingVo) {
+		int result = 0;
+		
+		try {
+			mapper.cancelRatedStars(starRatingVo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 	

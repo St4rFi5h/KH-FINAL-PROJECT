@@ -5,7 +5,7 @@ public class StarRatingVo {
 	private int starIndex;
 	private String movieDocId;
 	private String memberEmail;
-	private String starRating;
+	private double starRating;
 	
 	
 	public int getStarIndex() {
@@ -26,10 +26,10 @@ public class StarRatingVo {
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
 	}
-	public String getStarRating() {
+	public double getStarRating() {
 		return starRating;
 	}
-	public void setStarRating(String starRating) {
+	public void setStarRating(double starRating) {
 		this.starRating = starRating;
 	}
 	

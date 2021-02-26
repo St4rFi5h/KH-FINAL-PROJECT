@@ -258,7 +258,7 @@
 
                 <div id="star-rating">
                     <p id="star-message">평가하기</p>
-                    <div class="starRev">
+                    <div class="starRev" id="star-rating-member">
                         <span class="star starR1">0.5</span>
                         <span class="star starR2">1</span>
                         <span class="star starR1">1.5</span>
@@ -426,7 +426,7 @@
 													aria-label="Close" id="button-for-cancel">취소</button>
 												<button type="button" class="btn btn-primary" data-toggle="modal"
 													data-target="#report-result-modal" data-dismiss="modal"
-													aria-label="Close" id="button-for-submit" onclick="submitReport(${commentList.commentIndex})">확인</button>
+													aria-label="Close" id="button-for-submit" onclick="submitReport(${commentList.COMMENTINDEX})">확인</button>
 											</div>
 										</div>
 									</div>
@@ -613,6 +613,7 @@
 	    	function submitReport(cIndex) {
 				var commentIndex = cIndex;
 				var reportText = $("#report-modal-comment-zone").val();
+				console.log(commentIndex);
 				console.log(reportText);
 				
 				$.ajax({
@@ -667,6 +668,9 @@
 
 					});
 				})
+				
+			
+
 				
 			   
 

@@ -36,6 +36,8 @@ public class MovieDetailController {
 			int wannaWatchCheck = movieDetailDao.selectWannaWatch(map);
 			mv.addObject("wannaWatchCheck", wannaWatchCheck);
 			
+			
+			
 		}
 		
 		MovieInfoVo movieInfoVo = movieDetailDao.selectMovieInfo(movieDocId);

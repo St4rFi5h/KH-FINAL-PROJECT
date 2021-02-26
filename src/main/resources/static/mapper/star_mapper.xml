@@ -3,10 +3,16 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.or.eutchapedia.movie.detail.repository.StarMapper">
+<mapper namespace="kr.or.eutchapedia.movie.detail.repository.StarRatingMapper">
 
 <!-- 별점 남긴 적 있는지 확인 -->
-
+<select id="checkRatedStars" parameterType="kr.or.eutchapedia.movie.detail.domain.StarRatingVo"
+resultType="int">
+	SELECT COUNT(*)
+	FROM star_rating
+	WHERE fk_member_email = #{memberEmail}
+	AND fk_movie_docid = #{movieDocId}
+</select>
 
 <insert id="rateStars" parameterType="kr.or.eutchapedia.movie.detail.domain.StarRatingVo">
 	INSERT INTO star_rating VALUES(
@@ -14,8 +20,12 @@
 		#{movieDocId},
 		#{memberEmail},
 		#{starRating}
-	
 	)
-
 </insert>
+
+<delete id="cancelRatedStars" parameterType="kr.or.eutchapedia.movie.detail.domain.StarRatingVo">
+	DELETE star_rating
+	WHERE fk_member_email = #{memberEmail}
+	AND fk_movie_docid = #{movieDocId}
+</delete>
 </mapper>
