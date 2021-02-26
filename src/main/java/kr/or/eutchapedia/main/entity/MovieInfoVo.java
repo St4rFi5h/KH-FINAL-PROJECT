@@ -17,7 +17,7 @@ public class MovieInfoVo {
 	private int movieRanking;
 	private String moviePlatform;
 	private int commentLikeCount;
-	
+	private String starRating;
 
 	public String getMovieDocId() {
 		return movieDocId;
@@ -147,5 +147,13 @@ public class MovieInfoVo {
 		this.commentLikeCount = commentLikeCount;
 	}
 
+
+	public String getStarRating() {
+		return starRating;
+	}
+	public void setStarRating(String starRating) {
+		this.starRating = starRating;
+	}
+	
 	
 }

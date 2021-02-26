@@ -1,6 +1,5 @@
 package kr.or.eutchapedia.main.entity;
 
-
 public class StarRatingVo {
 	
 	private int starIndex;
