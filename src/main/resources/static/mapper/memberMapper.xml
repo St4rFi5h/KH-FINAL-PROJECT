@@ -35,8 +35,8 @@
 	</select>
 	
 	<!-- 로그인 확인 -->
-	<select id="loginchk" resultType="kr.or.eutchapedia.login.vo.MemberVoTemp" parameterType="String">
-		SELECT member_email, member_pwd, member_pwd_salt
+	<select id="loginchk" resultMap="MemberVoTemp" parameterType="String">
+		SELECT member_email, member_pwd, member_pwd_salt , member_status
 		FROM member
 		WHERE member_email = #{memberEmail}
 	</select>
@@ -48,10 +48,8 @@
 	</select>
 
 	<!-- 비밀번호 재설정 -->
-	<update id="updatepwd" parameterType="hashMap">
-		UPDATE member SET 
-		member_pwd = #{memberPwd},
-		member_pwd_salt = #{memberPwdSalt},
+	<update id="updatepwd">
+		UPDATE member SET member_pwd = #{memberPwd}
 		WHERE member_email = #{memberEmail}
 	</update>
 
@@ -68,5 +66,14 @@
 		<result column="member_photo" property="memberPhoto" />
 		<result column="member_introduce" property="memberIntroduce" />
 		<result column="member_join_route" property="memberJoinRoute" />
+  </resultMap>
+  
+  
+  <resultMap
+		type="kr.or.eutchapedia.login.vo.MemberVoTemp" id="MemberVoTemp">
+		<result column="member_pwd" property="memberPwd" />
+		<result column="member_pwd_salt" property="memberPwdSalt" />
+		<result column="member_email" property="memberEmail" />
+		<result column="member_status" property="memberStatus" />
   </resultMap>
 </mapper>
