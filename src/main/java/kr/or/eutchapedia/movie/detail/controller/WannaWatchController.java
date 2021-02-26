@@ -20,7 +20,6 @@ public class WannaWatchController {
 	@Autowired
 	WannaWatchDao wannaWatchDao;
 	
-	
 	@RequestMapping(value = "/wannaWatchControl", method = RequestMethod.POST)
 	public Map<String, Object> addToWannaWatch(@RequestParam Map<String, Object> map, HttpSession session) {
 		Map<String, Object> resultMap = new HashMap<>();

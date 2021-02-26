@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.or.eutchapedia.main.entity.StarRatingVo;
+import kr.or.eutchapedia.movie.detail.domain.StarRatingVo;
 import kr.or.eutchapedia.movie.detail.repository.StarRatingMapper;
 
 @Service

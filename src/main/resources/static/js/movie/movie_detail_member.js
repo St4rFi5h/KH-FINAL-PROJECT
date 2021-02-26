@@ -22,7 +22,7 @@ $('.star').on('click', function () {
         var ratedStar = $(this).html();
         var starCount = $(this).prevAll().length / 2 + 0.5;
         ratedStar = starCount;
-
+	
         switch (ratedStar) {
             case 0.5:
                 starMessage.innerText = "최악이에요";

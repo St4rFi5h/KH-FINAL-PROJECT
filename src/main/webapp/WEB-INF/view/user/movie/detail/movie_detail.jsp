@@ -259,16 +259,16 @@
                 <div id="star-rating">
                     <p id="star-message">평가하기</p>
                     <div class="starRev">
-                        <span class="star starR1"></span>
-                        <span class="star starR2"></span>
-                        <span class="star starR1"></span>
-                        <span class="star starR2"></span>
-                        <span class="star starR1"></span>
-                        <span class="star starR2"></span>
-                        <span class="star starR1"></span>
-                        <span class="star starR2"></span>
-                        <span class="star starR1"></span>
-                        <span class="star starR2"></span>
+                        <span class="star starR1">0.5</span>
+                        <span class="star starR2">1</span>
+                        <span class="star starR1">1.5</span>
+                        <span class="star starR2">2</span>
+                        <span class="star starR1">2.5</span>
+                        <span class="star starR2">3</span>
+                        <span class="star starR1">3.5</span>
+                        <span class="star starR2">4</span>
+                        <span class="star starR1">4.5</span>
+                        <span class="star starR2">5</span>
                     </div>
                 </div>
 
