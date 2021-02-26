@@ -31,55 +31,59 @@ public class MemberService {
 			memberVo.setMemberPwd(utils.getEncrypt(memberVo.getMemberPwd(), memberVo.getMemberPwdSalt()));
 
 			resultCnt = memberDao.signup(memberVo);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return resultCnt;
 	}
-	
+
 	//로그인
 	public int login(MemberVo memberVo, HttpSession httpSession) {
-		
+
 		//로그인 객체 확인
 		System.out.println("//로그인 객체 확인 memberVo : " + memberVo);
-		
+
 		utils = new Utils();
-		
+
 		MemberVoTemp vtemp = new MemberVoTemp(); //로그인 확인용
-		
+
 		String memberEmail = memberVo.getMemberEmail(); //사용자 입력 이메일
 		String inputPwd = memberVo.getMemberPwd(); // 사용자 입력 비번
-		
+
 		vtemp = memberDao.loginchk(memberEmail);
-		
+
 		//비밀번호 암호화
 		String salt = vtemp.getMemberPwdSalt(); //솔트
 		System.out.println(salt);
 		String pwd = vtemp.getMemberPwd();
 		String pwdSalt = utils.getEncrypt(inputPwd, salt);
-		
+		String status = vtemp.getMemberStatus();
+		String c = "N";
+
+
 		System.out.println("//로그인 객체 확인 vtemp : " + vtemp);
-		
+		System.out.println("status 값 : " + status);
+
 		//로그인 결과 값
 		int result;
-				
+
 		// 세션에 아이디값 저장
 		httpSession.setAttribute("memberEmail", memberEmail);
 		System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberEmail"));
-		
-		if(pwd.equals(pwdSalt)) {
-			memberDao.login(memberEmail, inputPwd);
-			System.out.println("일치");
+
+		if(pwd.equals(pwdSalt) && status.equals(c) ) {
+			MemberVo loginchk = memberDao.login(memberEmail, inputPwd);
+			System.out.println(loginchk);
 			result = 1;
 		} else {
 			System.out.println("불일치");
 			result = 0;
 		}
 		return result;
-		
+
 	}
-	
+
 	//로그아웃
 	public void logout(HttpSession session) {
 		session.invalidate();
@@ -96,14 +100,14 @@ public class MemberService {
 
 		return memberDao.nicknamechk(memberNickname);
 	}
-	
-	
-//	  public String findpwd(MemberVo memberVo) {
-//	  
-//		  return memberDao.findpwd(memberVo);
-//	  
-//	  }
-	 
+
+
+	//	  public String findpwd(MemberVo memberVo) {
+	//	  
+	//		  return memberDao.findpwd(memberVo);
+	//	  
+	//	  }
+
 }	
 
 

@@ -6,7 +6,15 @@ public class MemberVoTemp {
 	private String memberPwd;
 	private String memberPwdSalt;
 	private String memberEmail;
+	private String memberStatus;
 	
+	
+	public String getMemberStatus() {
+		return memberStatus;
+	}
+	public void setMemberStatus(String memberStatus) {
+		this.memberStatus = memberStatus;
+	}
 	public String getMemberPwd() {
 		return memberPwd;
 	}
