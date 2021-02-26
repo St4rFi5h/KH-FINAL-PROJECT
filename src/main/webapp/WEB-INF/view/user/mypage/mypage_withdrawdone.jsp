@@ -46,7 +46,7 @@
         <div class='body-main'>
 
 	                <div>
-	                    <input type='button' id='inputdiv2' value='메인으로 이동' onclick="location.href='#'"><!--메인뷰연결-->
+	                    <input type='button' id='inputdiv2' value='메인으로 이동' onclick="location.href='/'"><!--메인뷰연결-->
 	                </div>
 
         </div>

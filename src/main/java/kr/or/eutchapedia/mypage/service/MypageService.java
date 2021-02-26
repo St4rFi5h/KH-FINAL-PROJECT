@@ -36,6 +36,16 @@ public interface MypageService {
 	void editprofile(MemberVo vo);
 
 	int nicknamechk(String memberNickname);
+	
+	
+	//sort 테스트중
+	List<WannaWatchVo> wannawatch1(String memberemail);
+
+	List<WannaWatchVo> wannawatch2(String memberemail);
+
+	List<WannaWatchVo> wannawatch3(String memberemail);
+
+	List<WannaWatchVo> wannawatch4(String memberemail);
 
 
 }

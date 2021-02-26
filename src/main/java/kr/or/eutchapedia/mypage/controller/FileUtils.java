@@ -1,50 +1,21 @@
 package kr.or.eutchapedia.mypage.controller;
 
-import java.io.FileInputStream;
-import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.UUID;
 
 public class FileUtils {
-	
-	public static byte[] imageToByteArray (String filePath) throws Exception{
-		byte[] returnValue = null;
+
+	public String uploadFileRename(String originalName ) throws IOException {
+		UUID uuid = UUID.randomUUID();
 		
+		String savedName = uuid.toString()+"_"+originalName;
 		
-		ByteArrayOutputStream baos = null;
-		FileInputStream fis = null;
-		
-		try {
-			baos = new ByteArrayOutputStream();
-			fis = new FileInputStream(filePath);
-			
-			byte[] buf = new byte[1024];
-			int read=0;
-			
-			while ((read=fis.read(buf,0,buf.length)) != -1) {
-				baos.write(buf,0,read);
-			}
-			
-			returnValue = baos.toByteArray();
-					
-		}
-		
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			if(baos != null) {
-				baos.close();
-			}
-			if(fis != null) {
-				fis.close();
-			}
-		}
-		
-		return returnValue;
+		return savedName;
 	}
-}
-	
-	
-	
+}	
+
+
+
 
 
 

@@ -58,6 +58,9 @@
                     </label>
                     
                     <input class='inputbox' name='profileimg' id='fileinput' type='file' accept="image/*" onchange="previewImage(this)" / >
+                  
+                	<input type='hidden' name='memberPhoto' value='${member.memberPhoto}'>
+                
                    
                 </div>
                 <div class='inputbox-div'>

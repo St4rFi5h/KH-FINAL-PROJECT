@@ -23,7 +23,7 @@
 
       <div class='mybody-wrapper'>
         <div class='iconwrapper'>
-            <a  href="/mypage/index">
+            <a  href="/mypage/index_member?id=${id}">
                 <img  data-bs-toggle="tooltip" data-bs-placement="top" title="마이페이지로 이동" src="/img/mypage/arrow-left-short.svg" alt="" width="40" height="40" >
             </a>
         </div>

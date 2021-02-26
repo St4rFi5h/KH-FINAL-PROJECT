@@ -27,13 +27,13 @@
 	    where member_email = #{_parameter}
    </select>
    
-   <!-- 보고싶어요 영화 select -->
-   <select id="selectwannawatch" parameterType="String" resultMap="WannaWatchVo" >
+  <!-- 보고싶어요 영화 select --> 
+   <select id="selectwannawatch" parameterType="String" resultMap="WannaWatchVo2" >
 	    select a.*, b.title, b.prodyear, b.poster_uri  from wanna_watch a join movie_info b 
 	    on a.fk_movie_docid = b.movie_docid 
 	    where a.fk_member_email = #{_parameter}
    </select>
-
+   
   <!-- 탈퇴페이지에서 비밀번호 체크 -->
   <select id="passchk" resultMap="MemberVoTemp" parameterType="kr.or.eutchapedia.mypage.entity.MemberVo">
     select member_pwd , member_pwd_salt , member_email from member where member_email = #{memberEmail}
@@ -125,7 +125,7 @@
   
     
   <resultMap
-		type="kr.or.eutchapedia.mypage.entity.WannaWatchVo" id="WannaWatchVo">
+		type="kr.or.eutchapedia.mypage.entity.WannaWatchVo" id="WannaWatchVo2">
 		<result column="wanna_watch_index" property="wannaWatchIndex" />
 		<result column="fk_member_email" property="memberEmail" />
 		<result column="fk_movie_docid" property="movieDocid" />

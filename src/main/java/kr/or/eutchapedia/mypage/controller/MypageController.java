@@ -1,14 +1,11 @@
 package kr.or.eutchapedia.mypage.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.or.eutchapedia.mypage.entity.LeaveMemberVo;
 import kr.or.eutchapedia.mypage.entity.MemberVo;
 import kr.or.eutchapedia.mypage.entity.StarRatingForMainVo;
 import kr.or.eutchapedia.mypage.entity.WannaWatchVo;
@@ -32,117 +27,8 @@ public class MypageController {
 	
 	@Autowired
 	MypageService service;
-	
 	@Autowired
 	ServletContext ctx;
-	
-		
-		@RequestMapping("/edit")
-		public ModelAndView mypageeditprofile(String memberemail) {
-			ModelAndView mv = new ModelAndView();
-			memberemail = "200@naver.com";
-			MemberVo member = service.getMemberInfo(memberemail);
-			
-			mv.addObject("member", member);
-			mv.setViewName("/user/mypage/mypage_editprofile(ver3)");
-			return mv;
-		}
-		
-		@RequestMapping(value="/edit.do", method= {RequestMethod.GET,RequestMethod.POST})
-		public ModelAndView mypageeditprofileDo(MemberVo vo, MultipartFile profileimg, HttpServletRequest request ) throws Exception {
-			ModelAndView mv = new ModelAndView();
-			
-			long size = profileimg.getSize();
-			String fileName = profileimg.getOriginalFilename();
-			System.out.printf("fimeName:%s, fileSize:%d\n",fileName,size);
-			//ServletContext ctx = request.getServletContext();
-			String webPath = "/static/upload";
-			//String webPath = "/upload";
-			String realPath = ctx.getRealPath(webPath);
-			System.out.printf("realPath : %s\n", realPath);
-			//upload파일이 있는지 없는지 확인
-			File savePath = new File(realPath);
-			if(!savePath.exists())
-				savePath.mkdirs(); //없으면 만들어라
-			 
-			realPath += File.separator + fileName;
-			File saveFile = new File(realPath);
-			profileimg.transferTo(saveFile);
-			
-			if(vo.getMemberPwdChange() != null) {
-				Utils utils = new Utils();
-				vo.setMemberPwdSalt(utils.getSalt());
-				vo.setMemberPwd(utils.getEncrypt(vo.getMemberPwdChange(), vo.getMemberPwdSalt()));
-				
-			}
-			
-			
-			vo.setMemberPhoto(fileName);
-			
-			service.editprofile(vo);
-			
-			
-			String nickname = vo.getMemberNickname();
-			System.out.println(nickname);
-			mv.addObject("nickname",nickname);
-			mv.setViewName("/user/mypage/mypage_edit_complete");
-			return mv;
-		}
-		
-		@RequestMapping("/editsocial")
-		public ModelAndView mypageeditprofilesocial() {
-			ModelAndView mv = new ModelAndView("/user/mypage/mypage_editprofile_social");
-			
-			return mv;
-		}
-	
-	
-	// 닉네임 중복 체크
-		@RequestMapping(value="/nicknamechk", method=RequestMethod.POST)
-		@ResponseBody
-		public int nicknamechk(String memberNickname) throws Exception {
-			int count = 0;
-
-			count =  service.nicknamechk(memberNickname);
-			
-			System.out.println(count);
-			return count;
-		}
-	
-	
-	
-	@RequestMapping("/ratedmovies")
-	public ModelAndView mypageratedmovies(String memberemail) {
-		ModelAndView mv = new ModelAndView();
-		memberemail = "200@naver.com";
-		
-		List <StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
-		List<Map<String,Object>> graphMap = new ArrayList<Map<String, Object>>();
-		graphMap = service.getStarNumDesc(memberemail);
-	
-		list = service.getratinginfo(memberemail);
-		
-		/*test..
-		List<StarRatingForMainVo> test = new ArrayList<StarRatingForMainVo>();
-		
-		float[] point = new float[10];
-		float minPoint = (float) 0.5; 
-			for (int i=0 ; i<point.length; i++) {
-				point[i] = minPoint;
-				minPoint += 0.5;
-				
-			}
-		
-		test = service.getEachStarMovie(memberemail,point);
-		*/
-	
-		
-		
-		mv.addObject("list", list);
-		mv.addObject("point", graphMap);
-		mv.setViewName("/user/mypage/mypage_ratedmoviesfinal");
-		return mv;
-	}
 	
 	@RequestMapping("/index")
 	public ModelAndView mypageindex(HttpSession session) {
@@ -156,15 +42,14 @@ public class MypageController {
 		List<Map<String,Object>> graphMap = new ArrayList<Map<String, Object>>();
 		List<Map<String,Object>> doughnutMap = new ArrayList<Map<String, Object>>();
 		
-		vo = service.getMemberinfo(memberemail);
 		ww = service.wannawatch(memberemail);
 		sr = service.getratinginfo(memberemail);
+		vo = service.getMemberinfo(memberemail);
 		mostRatedStar = service.getmostRatedStar(memberemail);
 		graphMap = service.getStarNum(memberemail);
 		doughnutMap = service.getdoughnutNum(memberemail);
 		
 		// 보고싶어요 개수
-		
 		int wannacount  = ww.size();
 		
 		// 별점영역필요로직
@@ -206,6 +91,11 @@ public class MypageController {
 		
 //		System.out.println("포토유알엘" +vo.getMemberPhoto());
 		
+		int size = ww.size();
+		int ratesize = sr.size();
+		
+		mv.addObject("size", size);
+		mv.addObject("ratesize", ratesize);
 		mv.addObject("member", vo);
 		mv.addObject("wannawatch", ww);
 		mv.addObject("star", sr);
@@ -220,29 +110,74 @@ public class MypageController {
 		mv.setViewName("/user/mypage/mypage");
 		return mv;
 	}
-	
-	@RequestMapping("/index_member")
-	public ModelAndView mypagemember() {
-		ModelAndView mv = new ModelAndView("/user/mypage/mypage_member");
+
+	@RequestMapping("/ratedmovies")
+	public ModelAndView mypageratedmovies(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		String memberemail = (String) session.getAttribute("memberEmail");
 		
+		List <StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
+		List<Map<String,Object>> graphMap = new ArrayList<Map<String, Object>>();
+		graphMap = service.getStarNumDesc(memberemail);
+	
+		list = service.getratinginfo(memberemail);
+		
+		/*test..
+		List<StarRatingForMainVo> test = new ArrayList<StarRatingForMainVo>();
+		
+		float[] point = new float[10];
+		float minPoint = (float) 0.5; 
+			for (int i=0 ; i<point.length; i++) {
+				point[i] = minPoint;
+				minPoint += 0.5;
+				
+			}
+		
+		test = service.getEachStarMovie(memberemail,point);
+		*/
+	
+		mv.addObject("list", list);
+		mv.addObject("point", graphMap);
+		mv.setViewName("/user/mypage/mypage_ratedmoviesfinal");
 		return mv;
 	}
 	
 	@RequestMapping(value="/wannawatch", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView mypageiwantosee(String memberemail) {
+	public ModelAndView mypageiwantosee(HttpSession session, int sort) {
 		ModelAndView mv = new ModelAndView();
 		
-		memberemail = "200@naver.com";
-	
-		List <WannaWatchVo> list = new ArrayList<WannaWatchVo>();
-		System.out.println(memberemail);
-		list = service.wannawatch(memberemail);
+		String memberemail = (String) session.getAttribute("memberEmail");
+		String sortTitle="";
 		
+		System.out.println(sort);
+		List <WannaWatchVo> list = new ArrayList<WannaWatchVo>();
+		//System.out.println(memberemail);
+		
+		switch (sort) {
+		case 1 :
+			list = service.wannawatch1(memberemail);
+			sortTitle = "가나다순";
+			break;
+		case 2 :
+			list = service.wannawatch2(memberemail);
+			sortTitle = "신작순";
+			break;
+		case 3 :
+			list = service.wannawatch3(memberemail);
+			sortTitle = "구작순";
+			break;
+		case 4 :
+			list = service.wannawatch4(memberemail);
+			sortTitle = "담은순";
+			break;
+		}
+		
+	
+		mv.addObject("sortTitle", sortTitle);
 		mv.addObject("list", list);
 		mv.setViewName("/user/mypage/mypage_iwanttosee");
 		return mv;
 	}
-	
 	
 	
 	@RequestMapping("/starviewmore")
@@ -252,39 +187,21 @@ public class MypageController {
 		return mv;
 	}
 	
-	
-	@RequestMapping("/withdraw")
-	public ModelAndView mypagewithdraw() {
-		ModelAndView mv = new ModelAndView("/user/mypage/mypage_withdraw");
-		
-		return mv;
-	}
-	
-	//탈퇴do
-	@RequestMapping(value="/withdraw.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView mypagewithdrawdo(MemberVo vo, LeaveMemberVo vo2) {
-		ModelAndView mv = new ModelAndView();
-		
-		System.out.println(vo.getMemberEmail());
-		System.out.println(vo.getMemberPwd());
-		System.out.println("reason1="+vo2.getReason1()+" reason2="+vo2.getReason2() +" reason3="+vo2.getReason3() +" reason4="+vo2.getReason4());
-	
-		int result= service.withdrawdo(vo,vo2);
-		
-		if(result==1) {
-			//세션invalid추가하기
-			mv.setViewName("/user/mypage/mypage_withdrawdone");
-			
-		}
-		else {
-			mv.addObject("pwdchk", result);	
-			mv.setViewName("/user/mypage/mypage_withdraw");
-		}
-				
-		return mv;
-	}
 
+	// 닉네임 중복 체크
+	@RequestMapping(value="/nicknamechk", method=RequestMethod.POST)
+	@ResponseBody
+	public int nicknamechk(String memberNickname) throws Exception {
+		int count = 0;
+
+		count =  service.nicknamechk(memberNickname);
+			
+		System.out.println(count);
+		return count;
+	}
 	
+
+	/*
 	@RequestMapping("/signup")
 	public ModelAndView mypagesignup() {
 		ModelAndView mv = new ModelAndView("/user/mypage/encryptionforsignup");
@@ -305,9 +222,9 @@ public class MypageController {
 		return mv;
 	}
 
+	*/
 	
 }
-
 
 
 

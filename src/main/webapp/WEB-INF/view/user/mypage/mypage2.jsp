@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="/img/logo_favicon.ico">
     <link rel="icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <link rel="stylesheet" href="/css/mypage/mypagenew.css">
+    <link rel="stylesheet" href="/css/mypage/mypagenew2.css">
     <link rel="stylesheet" href="/css/mypage/indexnew.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -25,7 +25,7 @@
         
     <h3 class="main-title">
         <div class='title-div'>
-         마이페이지
+         ${member.memberNickname } 님의 취향분석
          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bookmark-heart" viewBox="0 0 16 16">
              <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
              <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 
@@ -58,20 +58,15 @@
                 	<p class="info-text">${member.memberIntroduce }</p>
                 </div>
 
-                <div class="sidebar">
-                    <div class='sidebar-menu'><a href="#">코멘트 관리</a></div><p></p>
-                    <div class='sidebar-menu'><a href="#">나의 문의</a></div><p></p>
-                    <div class='sidebar-menu'><a href="/mypage/edit">정보 수정</a></div>
-                </div>
+              
                 
             </div>
-            
             <div class="center">
                 <div class="center1">
                     <p></p>
                     <h4>영화</h4>
                     <span class='sub-title'>보고싶어요</span><span class='starcount'> ${wannacount } </span>
-		            	<a href='/mypage/wannawatch?sort=1'> <!-- 보고싶어요 링크 이동 -->
+		            	<a href='/mypage/wannawatch_member?id=${member.memberEmail }'> <!-- 보고싶어요 링크 이동 -->
 				          <div class='center1-box'>
 				          
 				          	<c:set var="size" value='${size}' />
@@ -80,7 +75,7 @@
 		                		
 		                		<div class='nochoose'>
 		                			<div class='ment'>
-		                				<a href='/'>아직 보고싶은 영화가 없으시군요 ! <br>영화 탐색하러 가기</a>
+		                				아직 보고싶은 영화가 없습니다.
 		                			</div>
 		                		</div>
 		                	</c:when>
@@ -101,7 +96,7 @@
 
                 <div class="center2">
                     <span class='sub-title'>평가한 작품</span><span class='starcount'> ${ratedStarNum } </span>
-                    <a href='/mypage/ratedmovies'> <!-- 평가한작품 링크 이동 -->
+                    <a href='/mypage/ratedmovies_member?id=${member.memberEmail }'> <!-- 평가한작품 링크 이동 -->
 		            	<div class='center2-box'>
 		            		
 		            		<c:set var="ratesize" value='${ratesize}' />
@@ -110,7 +105,7 @@
 		                		
 		                		<div class='nochoose'>
 		                			<div class='ment'>
-		                				<a href='/movie/movierate'>아직 평가하신 영화가 없으시군요 ! <br>읏챠피디아의 다양한 영화 평가 하러 가기</a>
+		                				아직 평가한 영화가 없습니다.
 		                			</div>
 		                		</div>
 		                	</c:when>

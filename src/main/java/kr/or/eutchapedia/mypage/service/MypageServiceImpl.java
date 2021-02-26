@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.eutchapedia.mypage.dao.MypageDao;
+import kr.or.eutchapedia.mypage.dao.MypageSortDao;
 import kr.or.eutchapedia.mypage.entity.LeaveMemberVo;
 import kr.or.eutchapedia.mypage.entity.MemberVo;
 import kr.or.eutchapedia.mypage.entity.MemberVoTemp;
@@ -21,6 +22,9 @@ public class MypageServiceImpl implements MypageService {
 	
 	@Autowired
 	MypageDao Dao;
+	
+	@Autowired
+	MypageSortDao SortDao;
 
 	@Override
 	public int withdrawdo(MemberVo vo, LeaveMemberVo vo2) {
@@ -138,6 +142,33 @@ public class MypageServiceImpl implements MypageService {
 		
 		
 		return Dao.nicknamechk(memberNickname);
+	}
+
+	
+	//sort 테스트중
+	@Override
+	public List<WannaWatchVo> wannawatch1(String memberemail) {
+		
+		List<WannaWatchVo> list = SortDao.selectwwsort1(memberemail);
+		return list;
+	}
+
+	@Override
+	public List<WannaWatchVo> wannawatch2(String memberemail) {
+		List<WannaWatchVo> list = SortDao.selectwwsort2(memberemail);
+		return list;
+	}
+
+	@Override
+	public List<WannaWatchVo> wannawatch3(String memberemail) {
+		List<WannaWatchVo> list = SortDao.selectwwsort3(memberemail);
+		return list;
+	}
+
+	@Override
+	public List<WannaWatchVo> wannawatch4(String memberemail) {
+		List<WannaWatchVo> list = SortDao.selectwwsort4(memberemail);
+		return list;
 	}
 
 
