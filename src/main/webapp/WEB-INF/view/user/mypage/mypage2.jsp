@@ -80,7 +80,7 @@
 		                		</div>
 		                	</c:when>
 		                	<c:when test="${size != 0}">
-		               			 <c:forEach var="n" items="${wannawatch}" begin="1" end="8">
+		               			 <c:forEach var="n" items="${wannawatch}" begin="0" end="7">
 				                	<div class='center-box-img'><img id='posterimg' src="${n.posterUri}" width="110px"; height="135px" alt="포스터없음"></div>
                     			</c:forEach> 
 		                	</c:when>
@@ -110,7 +110,7 @@
 		                		</div>
 		                	</c:when>
 		                	<c:when test="${ratesize != 0}">
-		               			 <c:forEach var="star" items="${star}" begin="1" end="8">
+		               			 <c:forEach var="star" items="${star}" begin="0" end="7">
 				            		<div class='center-box-img'><img id='posterimg'src="${star.posterUri}" width="110px"; height="135px" alt="포스터없음"></div>
 		                  		</c:forEach> 
 		                	</c:when>

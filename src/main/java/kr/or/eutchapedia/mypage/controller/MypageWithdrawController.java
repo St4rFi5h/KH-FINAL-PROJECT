@@ -40,7 +40,8 @@ public class MypageWithdrawController {
 		ModelAndView mv = new ModelAndView();
 		
 		
-		System.out.println("reason1="+vo2.getReason1()+" reason2="+vo2.getReason2() +" reason3="+vo2.getReason3() +" reason4="+vo2.getReason4());
+		System.out.println("reason1="+vo2.getReason1()+" reason2="+vo2.getReason2() 
+		+" reason3="+vo2.getReason3() +" reason4="+vo2.getReason4());
 	
 		int result= service.withdrawdo(vo,vo2);
 		
