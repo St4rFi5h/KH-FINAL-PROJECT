@@ -257,12 +257,13 @@
     vertical-align: top;
 }
 
-.custom_pagination .current {
-    font-weight: 700;
+.custom_pagination .pagenum a:active,
+.custom_pagination .pagenum a:hover{    
+	font-weight: 700;
     color: #000;
 }
 
-.custom_pagination .current, 
+.custom_pagination .pagenum, 
 .custom_pagination .pagenum a {
     display: inline-block;
     min-width: 10px;
@@ -270,7 +271,7 @@
     font-size: 16px;
 }
 
-.custom_pagination .current span {
+.custom_pagination .pagenum span {
     border-bottom: 1px solid #333;
 }
 

@@ -136,18 +136,14 @@
                                         <table width="90%" id="table" cellpadding="0" cellspacing="0" border="0" style="border:solid 1px #f4f4f4; border-collapse:collapse;">
                                             <tbody>
                                                 <tr data-tr_value="1">
-                                                    <td><input type="checkbox" name="checkRow"/></td>
-                                                    <td width="30" nowrap="" align="center">1</td>
                                                     <td width="100%">
-                                                    <input type="file" name="file[]" style="width:50%" class="linebg">
+                                                    <input type="file" multiple="multiple" name="uploadFile" style="width:50%" class="linebg">
                                                     <!-- <input type="button" name="del_btn" id="delete" class="del_btn" value="삭제"/> -->
                                                     </td>
                                                 </tr>
                                                 <tr data-tr_value="2">
-                                                    <td><input type="checkbox" name="checkRow"/></td>
-                                                    <td width="30" nowrap="" align="center">2</td>
                                                     <td width="100%">
-                                                    <input type="file" name="file[]" style="width:50%" class="linebg">
+                                                    <input type="file" multiple="multiple" name="uploadFile" style="width:50%" class="linebg">
                                                     <!-- <input type="button" name="del_btn" id="delete" class="del_btn" value="삭제"/> -->
                                                     </td>
                                                 </tr>

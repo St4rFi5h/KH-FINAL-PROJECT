@@ -1,9 +1,12 @@
 package kr.or.eutchapedia.board.notice.controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.eutchapedia.board.notice.domain.Criteria;
@@ -50,9 +54,20 @@ public class NoticeController {
 	// 글 등록
 	@RequestMapping("/insert.do")
 	public String insertNotice(@ModelAttribute("board") NoticeVo board, Model model) throws Exception {
+		String noticeFiles = null;
+		MultipartFile uploadFile = board.getUploadFile();
+		if (!uploadFile.isEmpty()) {
+			String originalFileName = uploadFile.getOriginalFilename();
+			String ext = FilenameUtils.getExtension(originalFileName);	// 확장자
+			UUID uuid = UUID.randomUUID();	// UUID 구하기
+			noticeFiles = uuid + "." + ext;
+			uploadFile.transferTo(new File("/static/upload" + noticeFiles));
+		}
+		board.setNoticeFiles(noticeFiles);
 		noticeService.insertNotice(board);
 		return "redirect:/notice/list";
 	}
+	
 	
 	/**
 	 * 게시판 수정폼

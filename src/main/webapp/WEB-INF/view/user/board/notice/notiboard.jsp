@@ -306,7 +306,7 @@
 						alert("삭제 성공");
 						location.replace("/notice/list")	// 리스트 페이지로 새로고침
 					}
-					else {
+					else{
 						alert("삭제 실패");
 					}
 				}

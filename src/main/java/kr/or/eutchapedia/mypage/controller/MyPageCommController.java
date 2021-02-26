@@ -16,7 +16,7 @@ public class MyPageCommController {
 	}
 	
 	@RequestMapping("/myq")
-	public ModelAndView mypage_myq() {
+	public ModelAndView mypageQna() {
 		ModelAndView mv = new ModelAndView("/user/mypage/mypage_myq");
 		return mv;
 	}
