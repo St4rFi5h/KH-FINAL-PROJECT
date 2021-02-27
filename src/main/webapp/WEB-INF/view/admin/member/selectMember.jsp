@@ -29,20 +29,25 @@
 			 <form action="/admin/selectmember" method="get">
 				<div id="search-block" class="col-lg-12 ">
 
-					<select class="custom-select" id="select-search">
+					<select class="custom-select" id="select-search"  name="f">
 						<option ${(param.f == "member_email")?"selected":""} value="member_email">이메일</option>
 					   <option ${(param.f == "member_nickname")?"selected":""} value=member_nickname>닉네임</option>
-					</select><input type="text" id="searchbar"name="q" value="${param.q}" class="form-control" placeholder="검색항목" aria-label="Username" aria-describedby="basic-addon1">
+					</select>
+					<input type="text" id="searchbar"name="q" value="${param.q}" class="form-control" placeholder="검색항목" aria-label="Username" aria-describedby="basic-addon1">
 					<button type="submit" class="btn btn-primary " id="search-btn">검색</button>
 					</br>
 
 				</div>
   			</form>
+  			<form action="/admin/selectmember/delete" method="get">
+  			
+  			
 				<div id="table-contorll" class="col-lg-12 ">
 					<table class="table table-hover col-lg-12">
 						<thead>
 							<tr>
-								<th scope="col"></th>
+<!-- 체크박스 -->
+								<th scope="col">선택</th>
 								<th scope="col">이름</th>
 								<th scope="col">이메일</th>
 								<th scope="col">차단여부</th>
@@ -52,13 +57,13 @@
 						<tbody>
 							<c:forEach var="m" items="${memberlist}" end="10">
 								<tr>
-									
-									<td><input class="form-check-input" type="checkbox"
-										value="" id="userSelect"></td>
+<!-- 체크박스 -->
+									<td><input class="form-check-input" type="checkbox" 
+										value= "${m.member_email}" id="userSelect" name="RowCheck"></td>
 									<td>${m.member_nickname}</td>
 									<td>${m.member_email}</td>
 									<td>${m.member_status}</td>
-									<td>${m.member_join_route}</td>
+									<td>${m.member_date}</td>
 								</tr>
 							</c:forEach>
 
@@ -74,14 +79,16 @@
 					</br>
 					<div>
 
-						<select class="custom-select" id="select-block">
-							<option selected>차단 종류를 고르세요</option>
-							<option value="1">영구차단</option>
-							<option value="2">코멘트차단</option>
+
+
+						<select class="custom-select" id="select-block" name="status">
+					<option ${(param.status == "N")?"selected":""} value="N">차단해제</option>
+					<option ${(param.status == "B")?"selected":""} value="B">영차구단</option>
+					<option ${(param.status == "C")?"selected":""} value="C">코멘트차단</option>
 						</select>
 
 						<button type="button" class="btn btn-primary " id="block-btn"
-							data-toggle="modal" data-target="#blockUser">차단</button>
+							data-toggle="modal" data-target="#blockUser">차단설정</button>
 						<button type="button" class="btn btn-primary " id="delete-btn"
 							data-toggle="modal" data-target="#deleteUser">삭제</button>
 
@@ -100,12 +107,11 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-dismiss="modal">취소</button>
-										<button type="button" class="btn btn-primary">확인</button>
+										<button type="submit" name="sub" value="1" class="btn btn-primary">확인</button>
 									</div>
 								</div>
 							</div>
 						</div>
-
 
 						<div class="modal fade" id="deleteUser" tabindex="-1"
 							aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -122,11 +128,14 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-dismiss="modal">취소</button>
-										<button type="button" class="btn btn-primary">확인</button>
+										<button type="submit" name="sub" value="2" class="btn btn-primary">확인</button>
 									</div>
 								</div>
 							</div>
 						</div>
+						</div>
+						</div>
+						</form>
 
 
 
@@ -148,14 +157,7 @@
 						<nav id="dbmanagement-data-page"
 							aria-label="Page navigation example">
 							<ul id="dbmanagement-pagiedit" class="pagination">
-								<c:if test="${startNum-1>0}">
-									<li class="page-item"><a class="page-link"
-										href="?p=${startNum-1}&f=${param.f}&q=${param.q}">이전</a></li>
-								</c:if>
-								<c:if test="${startNum<=1}">
-									<li class="page-item"><a class="page-link"
-										onclick="alert('첫번째 페이지입니다.')">이전</a></li>
-								</c:if>
+
 
 								<c:forEach var="i" begin="0" end="4">
 									<c:if test="${(startNum+i) <= lastNum}">
@@ -165,14 +167,7 @@
 									</c:if>
 
 								</c:forEach>
-								<c:if test="${startNum+4<lastNum}">
-									<li class="page-item"><a class="page-link"
-										href="?p=${startNum+5}&f=${param.f}&q=${param.q}">다음</a></li>
-								</c:if>
-								<c:if test="${startNum+4>=lastNum}">
-									<li class="page-item"><a class="page-link"
-										onclick="alert('다음 페이지가 없습니다.')">다음</a></li>
-								</c:if>
+
 							</ul>
 						</nav>
 					</div>

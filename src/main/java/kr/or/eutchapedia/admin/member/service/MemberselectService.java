@@ -11,6 +11,11 @@ public interface MemberselectService {
 	List<Memberinfo> getmemberList(String field, String query, int page, int amount);
 	List<MemberCount> getmemberCount(String field, String query);
 	List<Memberinfo> getmemberList(int page,int amount);
+	
 
 
+	
+	public void delete (String member_email);
+	int delMember(String memberemail);
+	int updateStatus(String memberemail, String status);
 }

@@ -12,7 +12,8 @@
 		<result column="TITLE" property="title" />
 		<result column="TITLE_ORG" property="title_Org" />
 		<result column="NATION" property="nation" />
-		<result column="MOVIE_RUNNING_TIME" property="movie_running_time" />
+		<result column="MOVIE_RUNNING_TIME"
+			property="movie_running_time" />
 		<result column="RATING" property="rating" />
 		<result column="PRODYEAR" property="prodyear" />
 		<result column="POSTER_URI" property="poster_uri" />
@@ -22,12 +23,16 @@
 		<result column="MOVIE_HIT_COUNT" property="movie_hit_count" />
 	</resultMap>
 
-	<select id="getMovieLists" resultType="Map" parameterType="Map">
-       SELECT * FROM(
-		  SELECT ROWNUM num, m.* FROM (SELECT * FROM movie_info mi LEFT OUTER JOIN star_rating s ON mi.movie_docid = s.fk_movie_docid)m
-		  )WHERE num BETWEEN #{st} AND #{en} 
+	<select id="getMovieLists" resultMap="movierate"
+		resultType="Map" parameterType="hashmap">
+		SELECT * FROM(
+		SELECT ROWNUM NUM, m1.*
+		FROM (SELECT * FROM movie_info m LEFT OUTER JOIN star_rating s ON m.movie_docid = s.fk_movie_docid
+		) m1
+		) WHERE num BETWEEN ${param.st} AND ${param.en}
+
+
 	</select>
-		
 
 
 
@@ -35,13 +40,13 @@
 		parameterType="String">
 
 		select * from(
-    select * from movie_info m, star_rating s, member u
-    where m.movie_docid = s.fk_movie_docid
-    AND s.fk_member_email = u.member_email
-    AND u.member_email != #{email} 	<!--  가데이터 #{}-->
-    order by DBMS_RANDOM.RANDOM
-			)
-	</select> 
+		select * from movie_info m, star_rating s, member u
+		where m.movie_docid = s.fk_movie_docid
+		AND s.fk_member_email = u.member_email
+		AND u.member_email != '123' 	<!-- 가데이터 #{} -->
+		order by DBMS_RANDOM.RANDOM
+		)
+	</select>
 	<!-- movie리스트뽑아오기 -->
 	<!--<select id="getmovieList" resultMap="moviepage" parameterType="map"> 
 		SELECT * FROM( SELECT ROWNUM NUM, m.* FROM (SELECT * FROM MOVIE_INFO WHERE 

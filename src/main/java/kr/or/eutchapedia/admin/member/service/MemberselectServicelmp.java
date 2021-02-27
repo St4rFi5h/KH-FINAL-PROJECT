@@ -15,6 +15,7 @@ public class MemberselectServicelmp implements MemberselectService {
 	@Autowired
 	private MemberselectDao memberselectdao;
 	
+	private static String namespace = "/KH-FINAL-PROJECT/src/main/webapp/WEB-INF/view/admin/member/selectMember.jsp";
 	
 	@Override
  	public List<Memberinfo> getmemberList(){
@@ -44,6 +45,37 @@ public class MemberselectServicelmp implements MemberselectService {
 		List<MemberCount>membercount = memberselectdao.getmemberCount(field,query);
 		return membercount;
 	}
+
+
+
+	
+	
+	
+
+
+
+	@Override
+	public int delMember(String memberemail) {
+		int memberdelete = memberselectdao.delMember(memberemail);
+		return memberdelete;
+	}
+
+
+
+	@Override
+	public int updateStatus(String memberemail, String status) {
+		int updatestatus = memberselectdao.updateStatus(memberemail,status);
+		return updatestatus;
+	}
+
+
+
+	@Override
+	public void delete(String member_email) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 		
 	

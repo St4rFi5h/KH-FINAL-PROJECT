@@ -22,47 +22,68 @@ import kr.or.eutchapedia.movie.rate.service.MovierateService;
 public class MovieRateController {
 	@Autowired
 	private MovierateService service; 
-	
+	int cp_ = 1;
 	@RequestMapping("/movierate")						
 	public ModelAndView movieRate(HttpSession session, Model model) {
-		
-	
-		String email = (String)session.getAttribute("email");
 
+		System.out.println("1단계통과");
+		String email = (String)session.getAttribute("email");
 
 		List<MovierateVo> movies = service.getMovieLists(email);
 		model.addAttribute("movies", movies);
 
+
 		ModelAndView mv = new ModelAndView("user/movie/rating/ratingPage");
 		return mv;
 	}
-	
-	
+
+//밑에가 안도는중
 	@RequestMapping("/ratelist.do")		
 	@ResponseBody
 	public List<MovierateVo> movies(
+
 			@RequestParam(value = "cp" , required = false, defaultValue = "1") int cp,
-				@RequestParam(value = "gr",required = false , defaultValue = "전체")String genre)
-	{		
-		
+			@RequestParam(value = "gr",required = false , defaultValue = "전체")String genre)
+	{				System.out.println("2단계통과");
 		Map<String, Object> param = new HashMap<String, Object>();
-		System.out.println("현재페이지"+cp);
-	//널값 1로  일단 현제 기본값이없음String start_=
-		
+	
+	
+
+
+
+/*
+	if(cp_ == 1) {
+		System.out.println("if문 들어간다잉");
 		Integer start = (cp-1)*10+1;
 		Integer end = start+10-1;
 		param.put("st",start);
 		param.put("en", end);
 		param.put("genre",genre);
 
-		System.out.println(param.get("st"));
-		System.out.println(param.get("en"));
-		System.out.println(genre);
+		cp_ = 0;
 		return  service.getMovieLists(param);
-			
-		
-		
+
 	}
-	
-	
+*/
+	System.out.println("현재페이지"+cp);
+	//널값 1로  일단 현제 기본값이없음String start_=
+
+	Integer start = (cp-1)*10+1;
+	Integer end = start+10-1;
+	System.out.println(start);
+	System.out.println(end);
+	param.put("st",1);
+	param.put("en", 10);
+	param.put("genre",genre);
+
+	System.out.println(param.get("st"));
+	System.out.println(param.get("en"));
+	System.out.println(genre);
+	return  service.getMovieLists(param);
+
+
+
+	}
+
+
 }

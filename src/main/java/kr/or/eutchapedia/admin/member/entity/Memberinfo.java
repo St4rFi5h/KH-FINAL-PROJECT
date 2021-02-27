@@ -12,8 +12,7 @@ public class Memberinfo {
 	private String admin_check;
 	private String member_status;
 	private String member_join_route;
-	
-	
+	private String comment_report_count;
 	
 	
 	public String getNum() {

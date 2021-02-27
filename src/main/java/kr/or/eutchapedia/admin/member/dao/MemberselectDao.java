@@ -12,12 +12,12 @@ import kr.or.eutchapedia.admin.member.entity.Memberinfo;
 @Mapper
 public interface MemberselectDao {
 	
-	
+
 	
 	List<Memberinfo> getmemberList(
-			
 		@Param("field")String field, 
-		@Param("query")String query,
+		@Param("query")String query,	
+
 		@Param("page")int page,
 		@Param("amount")int amount);
 	
@@ -26,6 +26,16 @@ public interface MemberselectDao {
 			
 		@Param("field")String field,
 		@Param("query")String query);
+
+
+
+	int delMember(String memberemail);
+
+
+	int updateStatus(String memberemail, String status);
+
+
+
 
 
 	

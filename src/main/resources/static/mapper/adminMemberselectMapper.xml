@@ -2,9 +2,11 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	<mapper namespace="kr.or.eutchapedia.admin.member.dao.MemberselectDao">
+<mapper
+	namespace="kr.or.eutchapedia.admin.member.dao.MemberselectDao">
 	<resultMap
-		type="kr.or.eutchapedia.admin.member.entity.Memberinfo" id="selectpage">
+		type="kr.or.eutchapedia.admin.member.entity.Memberinfo"
+		id="selectpage">
 		<id column="id" property="id" />
 		<result column="NUM" property="num" />
 		<result column="member_email" property="member_email" />
@@ -18,39 +20,54 @@
 		<result column="member_introduce" property="member_introduce" />
 		<result column="member_join_route" property="member_join_route" />
 	</resultMap>
-	
 
-		<resultMap
-		type="kr.or.eutchapedia.admin.member.entity.MemberCount" id="membercount">
+
+	<resultMap
+		type="kr.or.eutchapedia.admin.member.entity.MemberCount"
+		id="membercount">
 		<result column="NUM" property="num" />
 	</resultMap>
-	
-	
+
+
 	<select id="getmemberList" resultMap="selectpage"
 		parameterType="map">
 
 		SELECT * FROM(
 		SELECT ROWNUM NUM, m.*
 		FROM (SELECT *
-		FROM MEMBER WHERE
+		FROM
+		MEMBER WHERE
 		${field} LIKE '%'||#{query}||'%'
 		) m
 		)
-		WHERE NUM BETWEEN #{page} AND
+		WHERE NUM BETWEEN
+		#{page} AND
 		#{amount}
 	</select>
-	
-		<select id="getmemberCount" resultMap="membercount"
+
+	<select id="getmemberCount" resultMap="membercount"
 		parameterType="map">
 		SELECT * FROM(
 		SELECT ROWNUM NUM, m.*
 		FROM (SELECT *
-		FROM MEMBER WHERE
+		FROM
+		MEMBER WHERE
 		${field} LIKE '%'||#{query}||'%'
 		) m
 		)
-		</select>
-	
+	</select>
+
 
 	
+	<delete id="delMember">
+		DELETE FROM MEMBER WHERE member_email =
+		#{memberemail}
+	</delete>
+	<update id="updateStatus">
+		update MEMBER
+		SET MEMBER_STATUS = #{status}
+		WHERE MEMBER_EMAIL = #{memberemail}
+		
+	</update>
+
 </mapper>
