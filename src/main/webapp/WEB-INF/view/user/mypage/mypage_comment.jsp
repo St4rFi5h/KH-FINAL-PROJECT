@@ -68,6 +68,7 @@
                 <h3 class="myq_tit">
                     나의 코멘트
                 </h3>
+                <h2>${commentList }</h2>
                 <ul class="myq_noti_list">
                     <li class="list">읏챠피디아 코멘트를 통해 나를 표현해 보세요!</li>
                     <li class="list">내가 남긴 코멘트를 한눈에 볼 수 있어요.</li>
