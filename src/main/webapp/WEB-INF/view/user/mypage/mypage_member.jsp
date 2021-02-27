@@ -60,7 +60,7 @@
                     <h4>영화</h4>
                     <span class='sub-title'>보고싶어요</span><span class='starcount'> 156 </span>
                     <!-- center1박스 부분 디브 시작!!! -->
-                    <a href='/mypage/wannawatch'> <!-- 보고싶어요 링크 이동 -->
+                    <a href='/mypage/wannawatch_member'> <!-- 보고싶어요 링크 이동 -->
                     <div class='center1-box'>
                         <div class='center-box-img'><img src="/img/mypage/포스터11.PNG" width="125px"; height="150px" alt="포스터없음"></div>
                         <div class='center-box-img'><img src="/img/mypage/포스터16.PNG" width="125px"; height="150px" alt="포스터없음"></div>
@@ -78,7 +78,7 @@
                 <div class="center2">
                     <span class='sub-title'>평가한 작품</span><span class='starcount'> 251 </span>
                     <!-- center2박스 부분 디브 시작!!! -->
-                    <a href='/mypage/ratedmovies'> <!-- 평가한작품 링크 이동 -->
+                    <a href='/mypage/ratedmovies_member'> <!-- 평가한작품 링크 이동 -->
                     <div class='center2-box'>
                         <div class='center-box-img'><img src="/img/mypage/포스터8.PNG" width="125px"; height="150px" alt="포스터없음"></div>
                         <div class='center-box-img'><img src="/img/mypage/포스터9.PNG" width="125px"; height="150px" alt="포스터없음"></div>

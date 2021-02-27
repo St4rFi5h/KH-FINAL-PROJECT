@@ -5,9 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import kr.or.eutchapedia.mypage.entity.MemberVo;
@@ -58,20 +61,39 @@ public class MypageMemberController {
 		return mv;
 	}
 	
-	
-	@RequestMapping(value="/wannawatch_member", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView mypageiwantosee(String id) {
+	@RequestMapping(value="/wannawatch_member", method= RequestMethod.GET)
+	public ModelAndView mypageiwantosee(@RequestParam String id, @RequestParam int sort) {
 		ModelAndView mv = new ModelAndView();
 		
+		System.out.println( "아이디는" +id);
+		System.out.println( "솔트값은" +sort);
+		String sortTitle="";
 		
-	
 		List <WannaWatchVo> list = new ArrayList<WannaWatchVo>();
-		System.out.println(id);
-		list = service.wannawatch(id);
+		
+		switch (sort) {
+		case 1 :
+			list = service.wannawatch1(id);
+			sortTitle = "가나다순";
+			break;
+		case 2 :
+			list = service.wannawatch2(id);
+			sortTitle = "신작순";
+			break;
+		case 3 :
+			list = service.wannawatch3(id);
+			sortTitle = "구작순";
+			break;
+		case 4 :
+			list = service.wannawatch4(id);
+			sortTitle = "담은순";
+			break;
+		}
 		
 		String key = list.get(0).getMemberEmail();
 		
 		mv.addObject("id", key);
+		mv.addObject("sortTitle", sortTitle);
 		mv.addObject("list", list);
 		mv.setViewName("/user/mypage/mypage_iwanttosee_member");
 		return mv;

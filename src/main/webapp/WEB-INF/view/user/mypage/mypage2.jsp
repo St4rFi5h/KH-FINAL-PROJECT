@@ -66,7 +66,7 @@
                     <p></p>
                     <h4>영화</h4>
                     <span class='sub-title'>보고싶어요</span><span class='starcount'> ${wannacount } </span>
-		            	<a href='/mypage/wannawatch_member?id=${member.memberEmail }'> <!-- 보고싶어요 링크 이동 -->
+		            	<a href='/mypage/wannawatch_member?id=${member.memberEmail }&sort=1'> <!-- 보고싶어요 링크 이동 -->
 				          <div class='center1-box'>
 				          
 				          	<c:set var="size" value='${size}' />
@@ -96,7 +96,7 @@
 
                 <div class="center2">
                     <span class='sub-title'>평가한 작품</span><span class='starcount'> ${ratedStarNum } </span>
-                    <a href='/mypage/ratedmovies_member?id=${member.memberEmail }'> <!-- 평가한작품 링크 이동 -->
+                    <a href='/mypage/ratedmovies_member?id=${member.memberEmail }?sort=1'> <!-- 평가한작품 링크 이동 -->
 		            	<div class='center2-box'>
 		            		
 		            		<c:set var="ratesize" value='${ratesize}' />
