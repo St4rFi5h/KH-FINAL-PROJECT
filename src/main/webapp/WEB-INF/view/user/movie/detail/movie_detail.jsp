@@ -723,8 +723,11 @@
 				var afterCommentDiv = document.getElementById("after-comment-zone");
 				var myCommentZone = document.getElementById("my-comment-zone");
 
-				myCommentZone.innerHTML = commentText;
-				afterCommentDiv.style.display = "block";
+				if (commentIndex != "" && commentText != "") {
+					myCommentZone.innerHTML = commentText;
+					afterCommentDiv.style.display = "block";
+
+					}
 			}
 
 			function submitComment() {

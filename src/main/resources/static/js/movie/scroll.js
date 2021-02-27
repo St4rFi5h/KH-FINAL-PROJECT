@@ -19,8 +19,8 @@ var genre = $("#select-search option:selected").val();
 					
 					$.ajax({
 						type:"GET",
-						url:"ratelist.do",
-						data:{cp:page , gr:genre},
+						url:"/movie/ratelist.do",
+						data:{"cp":page , "gr":genre},
 						dataType:"json",
 						beforeSend: function() {
 							dataloading = true;
