@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.or.eutchapedia.movie.detail.domain.CommentVo;
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffInfoVo;
+import kr.or.eutchapedia.movie.detail.domain.StarRatingVo;
 import kr.or.eutchapedia.movie.detail.service.MovieDetailDao;
 
 @RequestMapping("/movie")
@@ -36,11 +38,16 @@ public class MovieDetailController {
 			int wannaWatchCheck = movieDetailDao.selectWannaWatch(map);
 			mv.addObject("wannaWatchCheck", wannaWatchCheck);
 			
-			double ratedStars = movieDetailDao.checkRatedStars(map);
+			StarRatingVo starRatingVo = movieDetailDao.checkRatedStars(map);
 			
-			if (Double.valueOf(ratedStars) != null) {
-				System.out.println(ratedStars);
-				mv.addObject("ratedStars", ratedStars);
+			if (starRatingVo != null) {
+				mv.addObject("starRatingVo", starRatingVo);
+			}
+			
+			CommentVo commentVo = movieDetailDao.checkCommentData(map);
+			
+			if (commentVo != null) {
+				mv.addObject("commentVo", commentVo);
 			}
 		}
 		

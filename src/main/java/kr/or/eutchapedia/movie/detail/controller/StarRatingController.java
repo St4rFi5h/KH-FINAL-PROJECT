@@ -35,15 +35,17 @@ public class StarRatingController {
 		
 		int result = 0;
 		int selectResult = starRatingDao.checkRatedStars(starRatingVo);
-
+		int starIndex = 0;
 		
 		if (selectResult == 0) {  // 별점 남긴 적 없음 
 			result = starRatingDao.rateStars(starRatingVo); // 별점 남기기 
+			starIndex = starRatingDao.getStarIndex(starRatingVo); // 남긴 별점의 인덱스 가져오기
 		} else if (selectResult == 1) {
 			result = starRatingDao.cancelRatedStars(starRatingVo); // 별점 삭제 
 		}
 		
 		resultMap.put("result", result);
+		resultMap.put("starIndex", starIndex);
 		
 		return resultMap;
 	}

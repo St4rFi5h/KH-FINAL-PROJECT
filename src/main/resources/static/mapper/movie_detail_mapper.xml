@@ -32,11 +32,13 @@
 		SELECT m.title, m.prodyear, s.staff_name,
 		s.staff_role_group,
 		m.movie_docid, m.poster_uri, s.staff_id
-		FROM staffs_info s
+		FROM
+		staffs_info s
 		JOIN movie_info m
 		ON
 		s.fk_movie_docid = m.movie_docid
-		WHERE s.staff_id = #{_parameter}
+		WHERE
+		s.staff_id = #{_parameter}
 		ORDER
 		BY m.prodyear DESC
 
@@ -44,7 +46,8 @@
 
 	<update id="updateHitCount" parameterType="String">
 		UPDATE movie_info
-		SET movie_hit_count = movie_hit_count + 1
+		SET
+		movie_hit_count = movie_hit_count + 1
 		WHERE movie_docid = #{_parameter}
 	</update>
 
@@ -77,12 +80,15 @@
 		sr.star_rating stars
 		FROM eutcha_comment ec
 		INNER JOIN star_rating sr
-		ON ec.fk_star_index = sr.star_index
+		ON
+		ec.fk_star_index = sr.star_index
 		INNER JOIN
 		member m
-		ON sr.fk_member_email = m.member_email
+		ON
+		sr.fk_member_email = m.member_email
 		WHERE sr.fk_movie_docid
-		= #{_parameter}
+		=
+		#{_parameter}
 		<![CDATA[AND ROWNUM < 4]]>
 		AND comment_blind_check = '0'
 		ORDER BY comment_like_count DESC,
@@ -101,16 +107,28 @@
 
 
 	</select>
-	
+
 	<!-- 별점 데이터 체크 -->
 	<select id="checkRatedStars" parameterType="HashMap"
-	resultType="double">
-		SELECT star_rating
+		resultMap="starRating">
+		SELECT star_index, star_rating
 		FROM star_rating
-		WHERE fk_movie_docid = #{movieDocId}
-		AND fk_member_email = #{memberEmail}
-		 
-	
+		WHERE
+		fk_movie_docid = #{movieDocId}
+		AND fk_member_email =
+		#{memberEmail}
+	</select>
+
+	<!-- 코멘트 데이터 체크 -->
+	<select id="checkCommentData" parameterType="HashMap"
+		resultMap="commentVo">
+		SELECT ec.comment_index, ec.comment_text
+		FROM star_rating sr
+		JOIN eutcha_comment ec
+		ON sr.star_index = ec.fk_star_index
+		WHERE sr.fk_member_email = #{memberEmail}
+		AND sr.fk_movie_docid = #{movieDocId}
+
 	</select>
 
 	<!-- resultmap -->
@@ -154,5 +172,27 @@
 		<result column="movie_docid" property="movieDocId" />
 		<result column="poster_uri" property="posterUri" />
 		<result column="staff_id" property="staffId" />
+	</resultMap>
+
+	<resultMap
+		type="kr.or.eutchapedia.movie.detail.domain.StarRatingVo"
+		id="starRating">
+		<result column="star_index" property="starIndex" />
+		<result column="fk_movie_docid" property="movieDocId" />
+		<result column="fk_member_email" property="memberEmail" />
+	</resultMap>
+
+	<resultMap
+		type="kr.or.eutchapedia.movie.detail.domain.CommentVo" id="commentVo">
+		<result column="comment_index" property="commentIndex" />
+		<result column="fk_star_index" property="starIndex" />
+		<result column="comment_text" property="commentText" />
+		<result column="comment_like_count" property="commentLikeCount" />
+		<result column="comment_report_count"
+			property="commentReportCount" />
+		<result column="comment_blind_check"
+			property="commentBlindCheck" />
+		<result column="comment_date" property="commentDate" />
+
 	</resultMap>
 </mapper>

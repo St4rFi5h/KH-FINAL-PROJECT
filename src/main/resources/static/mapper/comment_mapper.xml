@@ -58,5 +58,20 @@
 		WHERE movie_docid = #{_parameter}
 	
 	</select>
+	
+	
+	<!-- comment 등록 -->
+	<insert id="insertComment" parameterType="kr.or.eutchapedia.movie.detail.domain.CommentVo">
+		INSERT INTO eutcha_comment VALUES(
+			seq_eutcha_comment.nextval,
+			#{starIndex},
+			#{commentText},
+			DEFAULT,
+			DEFAULT,
+			DEFAULT,
+			DEFAULT
+		)
+	
+	</insert>
 
 </mapper>

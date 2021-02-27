@@ -27,6 +27,18 @@ public class StarRatingDao {
 		return result;
 	}
 	
+	public int getStarIndex(StarRatingVo starRatingVo) {
+		int starIndex = 0;
+		
+		try {
+			starIndex = mapper.getStarIndex(starRatingVo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return starIndex;
+	}
+	
 	public int rateStars(StarRatingVo starRatingVo) {
 		int result = 0;
 		

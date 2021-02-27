@@ -2,6 +2,7 @@
 var buttonForShowDiv = document.getElementById("star-rating");
 var memberCommentDiv = document.getElementById("member-comment-zone");
 var afterCommentZone = document.getElementById("after-comment-zone");
+var starIndexInput = document.getElementById("starIndex");
 
 $('#star-rating-member > .star').on('click', function () {
 	var target = $(event.target);
@@ -23,6 +24,8 @@ $('#star-rating-member > .star').on('click', function () {
 
 				target.addClass('on').prevAll('span').addClass('on');
 				memberCommentDiv.style.display = "block";
+				starIndexInput.value = resultMap.starIndex;
+				
 				var starMessage = document.getElementById("star-message");
 
 				switch (ratedStar) {

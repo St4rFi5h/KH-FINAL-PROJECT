@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.eutchapedia.movie.detail.domain.CommentListVo;
 import kr.or.eutchapedia.movie.detail.domain.CommentPage;
+import kr.or.eutchapedia.movie.detail.domain.CommentVo;
 import kr.or.eutchapedia.movie.detail.repository.CommentMapper;
 
 @Service
@@ -65,5 +66,18 @@ public class CommentDao {
 			e.printStackTrace();
 		}
 		return title;
+	}
+	
+	public int insertComment(CommentVo commentVo) {
+		int result = 0;
+		
+		try {
+			mapper.insertComment(commentVo);
+			result = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 }

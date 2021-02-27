@@ -16,8 +16,8 @@
 						<img src="${movieInfoVo.posterUri }" alt="">
 					</div>
 					<div id="title-and-year">
-						<div style="font-weight: bold; font-size: 20px;">소울</div>
-						<div>2020</div>
+						<div style="font-weight: bold; font-size: 20px;">${movieInfoVo.title }</div>
+						<div>${movieInfoVo.prodYear }</div>
 					</div>
 				</div>
 				<div id="wanna-watch-or-rating">

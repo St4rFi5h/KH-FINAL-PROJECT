@@ -258,8 +258,8 @@
 
                 <div id="star-rating">
                     <p id="star-message">평가하기</p>
-                    <input type="hidden" id="ratedStars" value="${ratedStars }"/>
-                    
+                    <input type="hidden" id="ratedStars" value="${starRatingVo.starRating }"/>
+                    <input type="hidden" id="starIndex" value="${starRatingVo.starIndex }"/>
                     <div class="starRev" id="star-rating-member">
                         <span class="star starR1">0.5</span>
                         <span class="star starR2">1</span>
@@ -277,6 +277,8 @@
 
             </div>
         </div>
+        <input type="hidden" id="commentIndexOfMember" value="${commentVo.commentIndex }"/>
+        <input type="hidden" id="commentTextOfMember" value="${commentVo.commentText }"/>
         <div id="member-comment-zone">
             <div id="comment-zone-ment">멋진 평가네요. 이지현 님의 생각을 글로 남겨보세요.</div>
             <div><button id="write-comment-button" data-toggle="modal" data-target="#comment-modal"
@@ -284,7 +286,7 @@
         </div>
 
         <div id="after-comment-zone">
-            <div id="my-comment-zone">어쩌구저쩌구</div>
+            <div id="my-comment-zone"></div>
             <div id="buttons-edit-delete">
                 <div><button id="btn-edit" data-toggle="modal" data-target="#comment-edit-modal"
                         onclick="editComment()">수정하기</button></div>
@@ -716,7 +718,49 @@
 
 				}
 
+				var commentIndex = document.getElementById("commentIndexOfMember").value;
+				var commentText = document.getElementById("commentTextOfMember").value;
+				var afterCommentDiv = document.getElementById("after-comment-zone");
+				var myCommentZone = document.getElementById("my-comment-zone");
+
+				myCommentZone.innerHTML = commentText;
+				afterCommentDiv.style.display = "block";
 			}
+
+			function submitComment() {
+				var starIndex = document.getElementById("starIndex").value;
+				var memberComment = document.getElementById("modal-only-comment-zone").value;
+
+				var memberCommentDiv = document.getElementById("member-comment-zone");
+				var afterCommentDiv = document.getElementById("after-comment-zone");
+				var memberCommentZone = document.getElementById("modal-only-comment-zone");
+				var myCommentZone = document.getElementById("my-comment-zone");
+				var commentEditZone = document.getElementById("modal-only-comment-edit-zone");
+
+				
+				console.log(starIndex);
+				console.log(memberComment);
+
+				$.ajax({
+					type : 'POST',
+					url : '/comment/insert',
+					async : false,
+					data : 'starIndex=' + starIndex + '&commentText=' + memberComment,
+					success : function(resultMap) {
+						myCommentZone.innerHTML = memberComment;
+						memberCommentDiv.style.display = "none";
+						afterCommentDiv.style.display = "block";
+						},
+
+					error : function() {
+						alert('error!');
+
+						}
+
+
+					});
+
+				}
 
 				
 			   

@@ -13,21 +13,20 @@
 		<div class="modal-body">
 			<div id="rating-and-comment-modal-contents">
 				<div id="modal-movie-title">
-					<h5>소울</h5>
+					<h5>${movieInfoVo.title }</h5>
 				</div>
 
 				<textarea id="modal-only-comment-zone" row="1" cols="1" rows="1"
 					placeholder="이 영화에 대한 감상평을 자유롭게 남겨주세요."
 					style="resize: none; width: 400px; height: 300px; padding: 10px;"></textarea>
 			</div>
-			<!-- 스포일러 포함/미포함 구현할지 생각해보기 -->
 		</div>
 		<div class="modal-footer" id="footer-buttons">
 			<div>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal"
 					aria-label="Close" id="button-for-cancel">취소</button>
 				<button type="button" class="btn btn-primary"
-					id="button-for-comment-submit" data-dismiss="modal" onclick="val()">확인</button>
+					id="button-for-comment-submit" data-dismiss="modal" onclick="submitComment()">확인</button>
 			</div>
 		</div>
 	</div>
