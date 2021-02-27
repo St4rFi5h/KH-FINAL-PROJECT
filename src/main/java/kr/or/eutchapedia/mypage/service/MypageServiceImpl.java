@@ -142,7 +142,6 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public int nicknamechk(String memberNickname) {
 		
-		
 		return Dao.nicknamechk(memberNickname);
 	}
 

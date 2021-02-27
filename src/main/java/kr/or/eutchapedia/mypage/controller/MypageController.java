@@ -2,6 +2,7 @@ package kr.or.eutchapedia.mypage.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.or.eutchapedia.mypage.entity.MemberVo;
 import kr.or.eutchapedia.mypage.entity.StarRatingForMainVo;
 import kr.or.eutchapedia.mypage.entity.WannaWatchVo;
-import kr.or.eutchapedia.mypage.salt.Utils;
 import kr.or.eutchapedia.mypage.service.MypageService;
 
 @RequestMapping("/mypage")
@@ -48,6 +48,48 @@ public class MypageController {
 		mostRatedStar = service.getmostRatedStar(memberemail);
 		graphMap = service.getStarNum(memberemail);
 		doughnutMap = service.getdoughnutNum(memberemail);
+		
+		float z = 0;
+		float [] starValue = new float[10];
+		int [] staramount = new int[10];
+		
+		float point1 = (float) 0;
+		for(int i=0; i<starValue.length; i++) {
+			point1 += 0.5;
+			starValue[i] = point1;
+			z= starValue[i];
+			
+			System.out.println("현재z값은:" +z);
+			for(int k=0; k<graphMap.size(); k++) {
+					if(z == (float)graphMap.get(k).get("starRating")) {
+						
+						staramount[i] = (int) graphMap.get(k).get("starCount");
+					}
+			}
+			System.out.println(staramount[i]);
+		}
+		
+	
+		for(int j=0; j<staramount.length; j++) {
+			
+			System.out.println(staramount[j]);
+		}
+
+	/*
+	 * for(int k=0; k<graphMap.size(); k++) { if(z ==
+	 * graphMap.get(k).get("starRating")) { staramount[i] = (float)
+	 * graphMap.get(k).get("starcount"); } else { staramount[i] = 0; }
+	 */		
+		
+	/*
+	 * 
+	 * Iterator it = graphMap.iterator();
+	 * 
+	 * 
+	 * while(it.hasNext()) { System.out.println(it.next()); }
+	 * 
+	 * 
+	 */
 		
 		// 보고싶어요 개수
 		int wannacount  = ww.size();
@@ -94,6 +136,7 @@ public class MypageController {
 		int size = ww.size();
 		int ratesize = sr.size();
 		
+		mv.addObject("staramount", staramount);
 		mv.addObject("size", size);
 		mv.addObject("ratesize", ratesize);
 		mv.addObject("member", vo);

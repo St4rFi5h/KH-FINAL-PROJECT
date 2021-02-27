@@ -173,14 +173,15 @@
 
     var ratedNum = [];	
 
-    <c:forEach var="n" items="${graphMap}">
-    	ratedNum.push('${n.starCount}');
+
+    <c:forEach var="n" items="${staramount}">
+    	ratedNum.push('${n}');
     </c:forEach>
     
     //막대그래프
     var myChart = new Chart(ctx3, { 
         type: 'bar', 
-        data: { labels: ['', '1', '', '2', '', '3','','4','','5'], 
+        data: { labels: ['0.5', '1', '1.5', '2', '2.5', '3','3.5','4','4.5','5'], 
                 datasets: [{ label: '별점분포', data: ratedNum, 
                 backgroundColor: [ 'rgba(255, 204, 000)', 
                                    'rgba(255, 204, 000)', 

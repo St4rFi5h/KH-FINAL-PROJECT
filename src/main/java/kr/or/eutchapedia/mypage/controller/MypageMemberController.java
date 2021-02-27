@@ -144,6 +144,32 @@ public class MypageMemberController {
 		graphMap = service.getStarNum(id);
 		doughnutMap = service.getdoughnutNum(id);
 		
+		float z = 0;
+		float [] starValue = new float[10];
+		int [] staramount = new int[10];
+		
+		float point1 = (float) 0;
+		for(int i=0; i<starValue.length; i++) {
+			point1 += 0.5;
+			starValue[i] = point1;
+			z= starValue[i];
+			
+			System.out.println("현재z값은:" +z);
+			for(int k=0; k<graphMap.size(); k++) {
+					if(z == (float)graphMap.get(k).get("starRating")) {
+						
+						staramount[i] = (int) graphMap.get(k).get("starCount");
+					}
+			}
+			System.out.println(staramount[i]);
+		}
+		
+	
+		for(int j=0; j<staramount.length; j++) {
+			
+			System.out.println(staramount[j]);
+		}
+		
 		// 보고싶어요 개수
 		int wannacount  = ww.size();
 
@@ -189,6 +215,7 @@ public class MypageMemberController {
 		int size = ww.size();
 		int ratesize = sr.size();
 		
+		mv.addObject("staramount", staramount);
 		mv.addObject("size", size);
 		mv.addObject("ratesize", ratesize);
 		mv.addObject("member", vo);

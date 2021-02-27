@@ -97,13 +97,13 @@
 	    ORDER BY  star_rating asc
    </select>
    
-   <select id="selectStarNumDesc" parameterType="String" resultMap="starConutMap" >
-	    select star_rating, COUNT(*) starcount 
-	    FROM STAR_RATING WHERE FK_MEMBER_EMAIL = #{_parameter}  
-	    GROUP BY STAR_RATING 
-	    ORDER BY  star_rating desc
+   <select id="selectStarNumDesc" parameterType="String" resultMap="starConutMap">
+   select star_rating, COUNT(*) starcount 
+   FROM STAR_RATING WHERE FK_MEMBER_EMAIL = #{_parameter}
+   GROUP BY STAR_RATING 
+   ORDER BY star_rating desc 
    </select>
-   
+  
    <!--도넛그래프장르개수-->
    <select id="selectDoughnutNum" parameterType="String" resultMap="genreConutMap" >
 	    select c.major_genre, count(a.star_rating)count
