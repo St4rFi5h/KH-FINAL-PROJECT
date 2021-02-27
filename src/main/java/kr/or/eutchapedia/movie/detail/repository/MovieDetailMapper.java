@@ -1,6 +1,5 @@
 package kr.or.eutchapedia.movie.detail.repository;
 
-
 import java.util.List;
 import java.util.Map;
 

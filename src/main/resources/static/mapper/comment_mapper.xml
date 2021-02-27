@@ -73,5 +73,16 @@
 		)
 	
 	</insert>
+	
+	<!-- 코멘트 수정 -->
+	<update id="updateComment" parameterType="kr.or.eutchapedia.movie.detail.domain.CommentVo">
+		UPDATE eutcha_comment SET comment_text = #{commentText} 
+		WHERE comment_index = #{commentIndex}
+	
+	</update>
 
+	<delete id="deleteComment" parameterType="int">
+		DELETE eutcha_comment WHERE comment_index = #{_parameter}
+	
+	</delete>
 </mapper>

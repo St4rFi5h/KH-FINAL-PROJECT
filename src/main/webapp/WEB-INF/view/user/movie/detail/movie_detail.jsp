@@ -508,6 +508,7 @@
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 		<script src="/js/movie/movie_detail_member.js"></script>
+		<script src="/js/movie/commentCRUD.js"></script>
         <script>
 			var starData = [];
 	        var starLabels = [];
@@ -678,10 +679,13 @@
 					var ratedStarsForAddClass = ratedStars * 2;
 					var starMessage = document.getElementById("star-message").innerText;
 					var addClassSelector = 'star-rating-member span:nth-child(' + ratedStarsForAddClass + ')';
+
+					var memberCommentZone = document.getElementById("member-comment-zone");
 					
 					if (	ratedStars > 0) {
 						$('#' + addClassSelector).addClass('on').prevAll('span').addClass('on');
-						
+
+						// not yet
 						switch (ratedStars) {
 						case 0.5:
 							starMessage = '최악이에요'; 
@@ -715,6 +719,8 @@
 							break;
 						
 					}
+					memberCommentZone.style.display = "block";
+					
 
 				}
 
@@ -722,48 +728,21 @@
 				var commentText = document.getElementById("commentTextOfMember").value;
 				var afterCommentDiv = document.getElementById("after-comment-zone");
 				var myCommentZone = document.getElementById("my-comment-zone");
-
+				
+				
 				if (commentIndex != "" && commentText != "") {
 					myCommentZone.innerHTML = commentText;
 					afterCommentDiv.style.display = "block";
 
 					}
+				if (ratedStars > 0 && commentText != "") {
+					memberCommentZone.style.display = "none";
+
+					}
+				
 			}
 
-			function submitComment() {
-				var starIndex = document.getElementById("starIndex").value;
-				var memberComment = document.getElementById("modal-only-comment-zone").value;
-
-				var memberCommentDiv = document.getElementById("member-comment-zone");
-				var afterCommentDiv = document.getElementById("after-comment-zone");
-				var memberCommentZone = document.getElementById("modal-only-comment-zone");
-				var myCommentZone = document.getElementById("my-comment-zone");
-				var commentEditZone = document.getElementById("modal-only-comment-edit-zone");
-
-				
-				console.log(starIndex);
-				console.log(memberComment);
-
-				$.ajax({
-					type : 'POST',
-					url : '/comment/insert',
-					async : false,
-					data : 'starIndex=' + starIndex + '&commentText=' + memberComment,
-					success : function(resultMap) {
-						myCommentZone.innerHTML = memberComment;
-						memberCommentDiv.style.display = "none";
-						afterCommentDiv.style.display = "block";
-						},
-
-					error : function() {
-						alert('error!');
-
-						}
-
-
-					});
-
-				}
+			
 
 				
 			   

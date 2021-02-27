@@ -80,4 +80,30 @@ public class CommentDao {
 		
 		return result;
 	}
+	
+	public int updateComment(CommentVo commentVo) {
+		int result = 0;
+		
+		try {
+			mapper.updateComment(commentVo);
+			result = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public int deleteComment(int commentIndex) {
+		int result = 0;
+		
+		try {
+			mapper.deleteComment(commentIndex);
+			result = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

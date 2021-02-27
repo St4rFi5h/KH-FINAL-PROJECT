@@ -112,29 +112,3 @@ function modalCommentSubmit() {
 	memberCommentDiv.style.display = "none";
 	afterCommentDiv.style.display = "block";
 }
-
-// 코멘트 수정하기
-function editComment() {
-	var commentOfMember = myCommentZone.innerHTML;
-	console.log(commentOfMember);
-
-	commentEditZone.innerHTML = commentOfMember;
-}
-
-// 코멘트 수정 제출
-function editCommentSubmit() {
-	var comment = commentEditZone.value;
-	console.log(comment);
-
-	myCommentZone.innerHTML = comment;
-}
-
-
-// 코멘트 삭제하기
-var buttonForDelete = document.getElementById("button-for-delete-submit");
-
-buttonForDelete.onclick = function () {
-	alert("코멘트가 삭제되었습니다.");
-	afterCommentZone.style.display = "none";
-	memberCommentDiv.style.display = "block";
-}

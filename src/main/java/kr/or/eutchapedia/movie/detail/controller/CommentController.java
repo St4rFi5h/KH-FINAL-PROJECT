@@ -57,4 +57,36 @@ public class CommentController {
 		return resultMap;
 	}
 	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public Map<String, Object> updateComment(@RequestParam Map<String, Object> map) {
+		Map<String, Object> resultMap = new HashMap<>();
+		
+		Integer commentIndex = Integer.parseInt((String) map.get("commentIndex"));
+		String commentText = (String) map.get("commentText");
+		
+		CommentVo commentVo = new CommentVo();
+		commentVo.setCommentIndex(commentIndex);
+		commentVo.setCommentText(commentText);
+		
+		int updateResult = commentDao.updateComment(commentVo);
+		
+		resultMap.put("result", updateResult);
+		
+		return resultMap;
+		
+	}
+	
+	@RequestMapping(value = "/delete.do", method = RequestMethod.POST)
+	public Map<String, Object> deleteComment(@RequestParam Map<String, Object> map) {
+		Map<String, Object> resultMap = new HashMap<>();
+		
+		Integer commentIndex = Integer.parseInt((String) map.get("commentIndex"));
+		System.out.println(commentIndex);
+		int deleteResult = commentDao.deleteComment(commentIndex);
+		
+		resultMap.put("result", deleteResult);
+		
+		return resultMap;
+	}
+	 
 }

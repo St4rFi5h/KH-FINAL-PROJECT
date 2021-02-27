@@ -13,7 +13,7 @@
 		<div class="modal-body">
 			<div id="rating-and-comment-modal-contents">
 				<div id="modal-movie-title">
-					<h5>소울</h5>
+					<h5>${movieInfoVo.title }</h5>
 				</div>
 
 				<textarea id="modal-only-comment-edit-zone" row="1" cols="1"

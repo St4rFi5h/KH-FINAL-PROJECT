@@ -32,7 +32,7 @@
         </div>
         <form method="GET" name="comment_overview" id="comment_overview" onsubmit="return false;">
         <input type="hidden" name="movieDocId" id="movieDocId" value="${movieDocId }"/>
-        <input type="text" value="${page.sortBy }"/>
+        <input type="hidden" value="${page.sortBy }"/>
         <div class="title">코멘트</div>
         <div class="title" id="rating-title">관람객 평점 <span style="font-weight: bold;">${commentCount }</span>건</div>
         <div class="dropdown" id="sort-dropdown">
@@ -213,7 +213,7 @@
 
 			frm.sortBy.value = nowDropdown.value;
 			console.log($(frm).serialize());
-			frm.action ="/comment/overview/member?movieDocId=${movieDocId }&sortBy=${page.sortBy }nowPage=${param.nowPage}";
+			frm.action ="/comment/overview?movieDocId=${movieDocId }&sortBy=${page.sortBy }nowPage=${param.nowPage}";
 			frm.submit();
 			
         }

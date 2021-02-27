@@ -16,7 +16,7 @@
 			<button type="button" class="btn btn-secondary" data-dismiss="modal"
 				id="button-for-cancel">취소</button>
 			<button type="button" class="btn btn-primary" data-dismiss="modal"
-				id="button-for-delete-submit">확인</button>
+				id="button-for-delete-submit" onclick="deleteComment()">확인</button>
 		</div>
 	</div>
 </div>

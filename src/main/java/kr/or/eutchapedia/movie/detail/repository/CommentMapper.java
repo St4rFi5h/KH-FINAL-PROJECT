@@ -16,4 +16,6 @@ public interface CommentMapper {
 	public List<CommentListVo> selectCommentList(CommentPage page);
 	public String selectMovieTitle(String movieDocId);
 	public int insertComment(CommentVo commentVo);
+	public int updateComment(CommentVo commentVo);
+	public int deleteComment(int commentIndex);
 } 
