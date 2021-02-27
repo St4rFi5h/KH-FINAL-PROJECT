@@ -85,6 +85,26 @@
 		<result column="COMMENT_TEXT" property="commentText" />
 		<result column="COMMENT_DATE" property="commentDate" />
 	</resultMap>
+	<resultMap
+		type="kr.or.eutchapedia.admin.movie.entity.Memberdash" id="memberdash">
+		<result column="MEMBER_EMAIL" property="memberEmail" />
+		<result column="MEMBER_NICKNAME" property="memberNickname" />
+		<result column="MEMBER_DATE" property="memberDate" />
+
+	</resultMap>
+	<resultMap
+		type="kr.or.eutchapedia.admin.movie.entity.MovieChart" id="moviechart">
+		<result column="TITLE" property="title" />
+		<result column="MOVIE_HIT_COUNT" property="movieHitCount" />
+
+	</resultMap>
+	<resultMap
+		type="kr.or.eutchapedia.admin.movie.entity.MovieGoodChart"
+		id="moviegoodchart">
+		<result column="TITLE" property="title" />
+		<result column="SUM(COMMENT_LIKE_COUNT)" property="sum" />
+
+	</resultMap>
 
 	<!-- movie리스트뽑아오기 -->
 	<select id="getmovieList" resultMap="moviepage"
@@ -295,7 +315,8 @@
 
 	</select>
 	<update id="setBlindOn">
-		UPDATE EUTCHA_COMMENT SET COMMENT_BLIND_CHECK = 1 WHERE COMMENT_INDEX =
+		UPDATE EUTCHA_COMMENT SET COMMENT_BLIND_CHECK = 1
+		WHERE COMMENT_INDEX =
 		${commentno}
 	</update>
 	<select id="getYesBlind" resultMap="noblind" parameterType="map">
@@ -342,19 +363,76 @@
 		)
 	</select>
 	<update id="setBlindOff">
-		UPDATE EUTCHA_COMMENT SET COMMENT_BLIND_CHECK = 0 WHERE COMMENT_INDEX =
+		UPDATE EUTCHA_COMMENT SET COMMENT_BLIND_CHECK = 0
+		WHERE COMMENT_INDEX =
 		${commentindex}
 	</update>
 	<update id="updateMovieInfo">
 		UPDATE MOVIE_INFO SET TITLE = #{title},
-		TITLE_ORG = #{titleorg},
-		NATION = #{nation}, MOVIE_RUNNING_TIME = #{runningtime}, RATING = #{rating},
-		PRODYEAR = #{prodyear}, POSTER_URI = #{posteruri}, GENRE = #{genre},
-		PLOT = #{plot}, MOVIE_TRAILER = #{traileruri} WHERE MOVIE_DOCID = #{docid}
+		TITLE_ORG =
+		#{titleorg},
+		NATION = #{nation}, MOVIE_RUNNING_TIME = #{runningtime},
+		RATING = #{rating},
+		PRODYEAR = #{prodyear}, POSTER_URI = #{posteruri},
+		GENRE = #{genre},
+		PLOT = #{plot}, MOVIE_TRAILER = #{traileruri} WHERE
+		MOVIE_DOCID = #{docid}
 	</update>
 	<delete id="deleteMovieInfo">
 		DELETE FROM MOVIE_INFO WHERE MOVIE_DOCID = #{docid}
 	</delete>
+	<select id="getMemberInfo" resultMap="memberdash"
+		parameterType="map">
+		select *
+
+		from(
+
+		select *
+
+		from MEMBER
+
+		order by MEMBER_DATE
+		DESC
+
+		)
+
+		where ROWNUM BETWEEN 1 AND 10
+	</select>
+	<select id="getMovieChart" resultMap="moviechart"
+		parameterType="map">
+		select *
+
+		from(
+
+		select *
+
+		from MOVIE_INFO
+
+		order by
+		MOVIE_HIT_COUNT DESC
+
+		)
+
+		where ROWNUM BETWEEN 1 AND 5
+	</select>
+	<select id="getMovieGoodChart" resultMap="moviegoodchart"
+		parameterType="map">
+		select *
+
+		from(
+
+		SELECT mi.title, SUM(comment_like_count)
+		FROM eutcha_comment ec
+		JOIN star_rating sr
+		ON ec.fk_star_index = sr.star_index JOIN MOVIE_INFO mi ON
+		sr.fk_movie_docid = mi.movie_docid
+		GROUP BY mi.title
+
+		)
+
+		where ROWNUM BETWEEN 1 AND 5
+	</select>
+	
 
 
 

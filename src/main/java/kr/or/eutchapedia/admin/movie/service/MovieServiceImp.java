@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import kr.or.eutchapedia.admin.movie.dao.MovieDao;
 import kr.or.eutchapedia.admin.movie.entity.CommentDetail;
 import kr.or.eutchapedia.admin.movie.entity.CommentEnrollment;
+import kr.or.eutchapedia.admin.movie.entity.Memberdash;
+import kr.or.eutchapedia.admin.movie.entity.MovieChart;
 import kr.or.eutchapedia.admin.movie.entity.MovieCount;
+import kr.or.eutchapedia.admin.movie.entity.MovieGoodChart;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfoDummy;
@@ -189,6 +192,25 @@ public class MovieServiceImp implements MovieService {
 		int deletemovieinfo = moviedao.deleteMovieInfo(docid);
 		return deletemovieinfo;
 	}
+
+	@Override
+	public List<Memberdash> getMemberInfo() {
+		List<Memberdash> getmemberinfo = moviedao.getMemberInfo();
+		return getmemberinfo;
+	}
+
+	@Override
+	public List<MovieChart> getMovieChart() {
+		List<MovieChart> getmoviechart = moviedao.getMovieChart();
+		return getmoviechart;
+	}
+
+	@Override
+	public List<MovieGoodChart> getMovieGoodChart() {
+		List<MovieGoodChart> getmoviegoodchart=moviedao.getMovieGoodChart();
+		return getmoviegoodchart;
+	}
+
 
 	
 

@@ -126,6 +126,13 @@
                             
                             </c:forEach>
                             </c:if>
+                            <c:if test="${empty pickmovies}">
+                            <tr>
+                                <td><input type="hidden" name="fkpickno" value="${param.pickno}"></input></td>
+                                
+                             
+                              </tr>
+                            </c:if>
 							
 							
                               

@@ -40,8 +40,8 @@
 				<div class="allcontents">
 					<h1 id="pick-h1">DB관리-수정</h1>
 					<div class="whiteBox" class="col-lg-10">
-						<div id="addpick-input-text">
-							<div id="addpick-mtext" class="input-group mb-3">
+						<div id="db-input-text">
+							<div id="db-mtext" class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><a>영화id</a></span>
 								</div>
@@ -51,8 +51,8 @@
 							</div>
 
 						</div>
-						<div id="addpick-input-text">
-							<div id="addpick-mtext" class="input-group mb-3">
+						<div id="db-input-text">
+							<div id="db-mtext" class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><a>영화제목</a></span>
 								</div>
@@ -62,8 +62,8 @@
 							</div>
 
 						</div>
-						<div id="addpick-input-text">
-							<div id="addpick-mtext" class="input-group mb-3">
+						<div id="db-input-text">
+							<div id="db-mtext" class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><a>원제명</a></span>
 								</div>
@@ -73,8 +73,8 @@
 							</div>
 
 						</div>
-						<div id="addpick-input-text">
-							<div id="addpick-mtext" class="input-group mb-3">
+						<div id="db-input-text">
+							<div id="db-mtext" class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><a>국가</a></span>
 								</div>
@@ -84,8 +84,8 @@
 							</div>
 
 						</div>
-						<div id="addpick-input-text">
-							<div id="addpick-mtext" class="input-group mb-3">
+						<div id="db-input-text">
+							<div id="db-mtext" class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><a>영화시간</a></span>
 								</div>
@@ -95,8 +95,8 @@
 							</div>
 
 						</div>
-						<div id="addpick-input-text">
-							<div id="addpick-mtext" class="input-group mb-3">
+						<div id="db-input-text">
+							<div id="db-mtext" class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><a>관람기준</a></span>
 								</div>
@@ -106,8 +106,8 @@
 							</div>
 
 						</div>
-						<div id="addpick-input-text">
-							<div id="addpick-mtext" class="input-group mb-3">
+						<div id="db-input-text">
+							<div id="db-mtext" class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><a>제작년도</a></span>
 								</div>
@@ -117,8 +117,8 @@
 							</div>
 
 						</div>
-						<div id="addpick-input-text">
-							<div id="addpick-mtext" class="input-group mb-3"
+						<div id="db-input-text">
+							<div id="db-mtext" class="input-group mb-3"
 								style="width: 700px">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><a>포스터URI</a></span>
@@ -130,8 +130,8 @@
 							</div>
 
 						</div>
-						<div id="addpick-input-text">
-							<div id="addpick-mtext" class="input-group mb-3">
+						<div id="db-input-text">
+							<div id="db-mtext" class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><a>장르</a></span>
 								</div>
@@ -150,8 +150,8 @@
 								rows="8">${movie.plot}</textarea>
 						</div>
 
-						<div id="addpick-input-text" style="margin-top: 15px">
-							<div id="addpick-mtext" class="input-group mb-3"
+						<div id="db-input-text" style="margin-top: 15px">
+							<div id="db-mtext" class="input-group mb-3"
 								style="width: 700px">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><a>예고편주소</a></span>

@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.eutchapedia.admin.movie.entity.CommentDetail;
 import kr.or.eutchapedia.admin.movie.entity.CommentEnrollment;
+import kr.or.eutchapedia.admin.movie.entity.Memberdash;
+import kr.or.eutchapedia.admin.movie.entity.MovieChart;
 import kr.or.eutchapedia.admin.movie.entity.MovieCount;
+import kr.or.eutchapedia.admin.movie.entity.MovieGoodChart;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfoDummy;
@@ -86,6 +89,12 @@ public interface MovieDao {
 			@Param("traileruri")String traileruri);
 
 	int deleteMovieInfo(String docid);
+
+	List<Memberdash> getMemberInfo();
+
+	List<MovieChart> getMovieChart();
+
+	List<MovieGoodChart> getMovieGoodChart();
 
 }
 

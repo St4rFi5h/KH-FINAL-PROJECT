@@ -4,7 +4,10 @@ import java.util.List;
 
 import kr.or.eutchapedia.admin.movie.entity.CommentDetail;
 import kr.or.eutchapedia.admin.movie.entity.CommentEnrollment;
+import kr.or.eutchapedia.admin.movie.entity.Memberdash;
+import kr.or.eutchapedia.admin.movie.entity.MovieChart;
 import kr.or.eutchapedia.admin.movie.entity.MovieCount;
+import kr.or.eutchapedia.admin.movie.entity.MovieGoodChart;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfoDummy;
@@ -44,6 +47,9 @@ public interface MovieService {
 	int updateMovieInfo(String docid, String title, String titleorg, String nation, String runningtime, String rating,
 			String prodyear, String posteruri, String genre, String plot, String traileruri);
 	int deleteMovieInfo(String docid);
+	List<Memberdash> getMemberInfo();
+	List<MovieChart> getMovieChart();
+	List<MovieGoodChart> getMovieGoodChart();
 
 
 	

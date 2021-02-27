@@ -28,7 +28,7 @@
 
 #dbmanagement-select-search{
     margin-bottom: 9px;
-    width: 150px
+    width: 110px
 }
 
 #dbmanagement-mtext{
@@ -64,6 +64,6 @@
 #dbmanagement-pagiedit > li > a{
 	    padding: .5rem .60rem;
 }
-#db-info > :last-child{
+#commentdata > :last-child{
 cursor: pointer;
 }

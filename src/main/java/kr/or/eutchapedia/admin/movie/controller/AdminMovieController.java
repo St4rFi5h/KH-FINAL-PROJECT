@@ -1,24 +1,25 @@
 package kr.or.eutchapedia.admin.movie.controller;
 
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.annotations.Param;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.eutchapedia.admin.movie.entity.CommentDetail;
 import kr.or.eutchapedia.admin.movie.entity.CommentEnrollment;
+import kr.or.eutchapedia.admin.movie.entity.Memberdash;
+import kr.or.eutchapedia.admin.movie.entity.MovieChart;
 import kr.or.eutchapedia.admin.movie.entity.MovieCount;
+import kr.or.eutchapedia.admin.movie.entity.MovieGoodChart;
 import kr.or.eutchapedia.admin.movie.entity.MovieInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfo;
 import kr.or.eutchapedia.admin.movie.entity.PickInfoDummy;
@@ -33,14 +34,25 @@ public class AdminMovieController {
 	private MovieService service;
 
 	@RequestMapping("/adminhome")
-	public ModelAndView AdminHome() {
+	public ModelAndView adminHome(Model model,HttpServletRequest res) {
 		ModelAndView mv = new ModelAndView("admin/movie/dashboard");
+		List<Memberdash> getmemberinfo = service.getMemberInfo();
+		List<MovieChart> getmoviechart = service.getMovieChart();
+		List<MovieGoodChart> getmoviegoodchart=service.getMovieGoodChart();
+		System.out.println(getmoviegoodchart.get(0).getSum());
+		model.addAttribute("getmemberinfo", getmemberinfo);
+		model.addAttribute("getmoviechart", getmoviechart);
+		model.addAttribute("getmoviegoodchart", getmoviegoodchart);
+		
 		return mv;
 
 	}
 	@RequestMapping("/pickadd/submit")
-	public ModelAndView pickAddSubmit(Model model,HttpServletRequest req,HttpServletResponse res) throws UnsupportedEncodingException {
+	public ModelAndView pickAddSubmit(Model model,HttpServletRequest req,HttpServletResponse res) throws IOException {
 		ModelAndView mv = new ModelAndView();
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
 		String field_ = req.getParameter("f");
 		String query_ = req.getParameter("q");
 		String number_ = req.getParameter("p");
@@ -68,72 +80,81 @@ public class AdminMovieController {
 		String collection = null;
 		String pickindex = null;
 		List<String> pickmlist = new ArrayList<>();
-		for (int j = 0; j < getpick.size(); j++) {
-			System.out.println("if문진입전");
-			System.out.println("for문번호 = " + j);
-			System.out.println("등록한pick이름 ="+collection_);
-			System.out.println("등록한아이디 = " +userid);
-			System.out.println("비교할컬렉션이름 = "+getpick.get(j).getPickName());
-			System.out.println("비교할이메일 = "+getpick.get(j).getFkMemberEmail());
-			if(collection_.equals(getpick.get(j).getPickName()) && userid.equals(getpick.get(j).getFkMemberEmail()))
-			{
-				System.out.println("첫번째for문 if진입");
-				collection = getpick.get(j).getPickName();
-				pickindex = getpick.get(j).getPickIndex();
-				List<PickInfoDummy> getdummy = service.getDummy(collection,pickindex);
-				System.out.println(collection);
-				System.out.println(pickindex);
-				pickandemail = 1;
-				//픽박스에같은이름이 존재하면 해당픽박스에 영화추가 update
-				for(int i = 0; i<movieids.length;i++) {
-					System.out.println("두번째for문");
-					String movieid;
-					movieid = movieids[i];
-					System.out.println(movieid);
-					int t = 0;
-					for(int k = 0; k<getdummy.size(); k++) {
+		if(movieids != null && collection_!= null && !collection_.equals("")) {
+			
+			for (int j = 0; j < getpick.size(); j++) {
+				System.out.println("if문진입전");
+				System.out.println("for문번호 = " + j);
+				System.out.println("등록한pick이름 ="+collection_);
+				System.out.println("등록한아이디 = " +userid);
+				System.out.println("비교할컬렉션이름 = "+getpick.get(j).getPickName());
+				System.out.println("비교할이메일 = "+getpick.get(j).getFkMemberEmail());
+				if(collection_.equals(getpick.get(j).getPickName()) && userid.equals(getpick.get(j).getFkMemberEmail()))
+				{
+					System.out.println("첫번째for문 if진입");
+					collection = getpick.get(j).getPickName();
+					pickindex = getpick.get(j).getPickIndex();
+					List<PickInfoDummy> getdummy = service.getDummy(collection,pickindex);
+					System.out.println(collection);
+					System.out.println(pickindex);
+					pickandemail = 1;
+					//픽박스에같은이름이 존재하면 해당픽박스에 영화추가 update
+					for(int i = 0; i<movieids.length;i++) {
+						System.out.println("두번째for문");
+						String movieid;
+						movieid = movieids[i];
+						System.out.println(movieid);
+						int t = 0;
+						for(int k = 0; k<getdummy.size(); k++) {
 							System.out.println(getdummy.get(k).getFkMovieDocid().contains(movieid));
 							if(getdummy.get(k).getFkMovieDocid().contains(movieid)) {
 								t++;
 							}
-					}
-					if(t == 0) {
-						pickmlist.add(movieid);
-					}
-								
+						}
+						if(t == 0) {
+							pickmlist.add(movieid);
+						}
 						
+						
+					}
 				}
 			}
 			
-
-		}
-		if(pickandemail == 1) {
-			for(int m = 0; m<pickmlist.size();m++) {
-				String movie = pickmlist.get(m);
-				int addpickmovies = service.addPickMovies(pickindex,movie);
-			}
-		}
-		if(pickandemail == 0) {
-			int addpick = service.addPick(userid,collection_);
-			List<PickInfo> getpick1 = service.getPick();
-			String pickindex1 = null;
-			if( !getpick1.isEmpty() ) {
-				pickindex1 = getpick1.get(getpick1.size() - 1).getPickIndex();
-			}
-			for(int m = 0;m<movieids.length;m++) {
-				String movie;
-				movie = movieids[m];
-				int addpickmovies1 = service.addPickMovies1(pickindex1,movie);
-				System.out.println("어디픽인지 = "+pickindex1);
-				System.out.println("컬럼만들고 영화주입 = "+addpickmovies1);
-				
-			}
 			
+			if(pickandemail == 1) {
+				for(int m = 0; m<pickmlist.size();m++) {
+					String movie = pickmlist.get(m);
+					int addpickmovies = service.addPickMovies(pickindex,movie);
+				}
+				out.println("<script>alert('컬렉션이 추가되었습니다.'); location.href='"+"/admin/pickadd?p="+number+"&q="+java.net.URLEncoder.encode(query, "utf-8")+"&f="+field+"';</script>");
+		     	out.flush();
+			}
+			if(pickandemail == 0) {
+				int addpick = service.addPick(userid,collection_);
+				List<PickInfo> getpick1 = service.getPick();
+				String pickindex1 = null;
+				if( !getpick1.isEmpty() ) {
+					pickindex1 = getpick1.get(getpick1.size() - 1).getPickIndex();
+				}
+				for(int m = 0;m<movieids.length;m++) {
+					String movie;
+					movie = movieids[m];
+					int addpickmovies1 = service.addPickMovies1(pickindex1,movie);
+					System.out.println("어디픽인지 = "+pickindex1);
+					System.out.println("컬럼만들고 영화주입 = "+addpickmovies1);
+					
+				}
+				out.println("<script>alert('컬렉션이 추가되었습니다.'); location.href='"+"/admin/pickadd?p="+number+"&q="+java.net.URLEncoder.encode(query, "utf-8")+"&f="+field+"';</script>");
+		     	out.flush();
+			}
+		}else {
+			out.println("<script>alert('컬렉션 이름과 영화를 추가해주세요.'); location.href='"+"/admin/pickadd?p="+number+"&q="+java.net.URLEncoder.encode(query, "utf-8")+"&f="+field+"';</script>");
+	     	out.flush();
 		}
 		
 
-
-
+		
+		
 
 
 		mv.setViewName("redirect:/admin/pickadd?p="+number
@@ -215,8 +236,11 @@ public class AdminMovieController {
 
 	}
 	@RequestMapping("/pickdelete/delmovie")
-	public ModelAndView pickDelete(HttpServletRequest req) {
+	public ModelAndView pickDelete(HttpServletRequest req,HttpServletResponse res) throws IOException {
 		ModelAndView mv = new ModelAndView();
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
 		String pickno = null;
 		String docid = null;
 		String[] dellist = req.getParameterValues("list");
@@ -228,26 +252,42 @@ public class AdminMovieController {
 		
 		switch (sub) {
 		case 1:
-			for (int i = 0; i < dellist.length; i++) {
-				String[] split = null;
-				split = dellist[i].split(",");
-				for(int j = 0; j<split.length; j++) {
-					
-					if(j == 0) {
-						pickno = split[j];
-					}
-					if(j == 1) {
-						docid = split[j];
-						int chopickdel = service.chopickDel(pickno,docid);
+			if(dellist == null) {
+				out.println("<script>alert('픽 또는 영화를 선택해주세요.'); location.href='/admin/pickdelete';</script>");
+		     	out.flush();
+			}
+				for (int i = 0; i < dellist.length; i++) {
+					String[] split = null;
+					split = dellist[i].split(",");
+					for(int j = 0; j<split.length; j++) {
 						
+						if(j == 0) {
+							pickno = split[j];
+						}
+						if(j == 1) {
+							docid = split[j];
+							int chopickdel = service.chopickDel(pickno,docid);
+							
+						}
 					}
 				}
-			}
+				out.println("<script>alert('삭제 되었습니다.'); location.href='/admin/pickdelete';</script>");
+		     	out.flush();
+
+//			if(dellist.length == 1) {
+//				System.out.println("리스트 1개임");
+//				out.println("<script>alert('1개이상 선택해주세요'); location.href='/admin/pickdelete';</script>");
+//				out.flush();
+//			}
+				
 					
 					
 			break;
-		case 2:
-			
+		case 2:			
+						if(fkpickno == null || fkpickno.equals("")) {
+							out.println("<script>alert('삭제하실 픽을 선택하세요.'); location.href='/admin/pickdelete';</script>");
+					     	out.flush();
+						}
 						int allpickdel = service.allpickDel(fkpickno);
 					
 					
@@ -312,12 +352,19 @@ public class AdminMovieController {
 		return mv;
 	}
 	@RequestMapping("/commentenroll/detail/blindon")
-	public ModelAndView commentblindOn(HttpServletRequest req,Model model) {
+	public ModelAndView commentblindOn(HttpServletRequest req,Model model,HttpServletResponse res) throws IOException {
 		ModelAndView mv = new ModelAndView();
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
 		String commentno = req.getParameter("commentno");
 		System.out.println("커맨트넘버"+commentno);
 		int blindon = service.setBlindOn(commentno);
+		
+		out.println("<script>alert('블라인드 처리가 되었습니다.'); location.href='/admin/commentenroll';</script>");
+     	out.flush();
 		mv.setViewName("redirect:/admin/commentenroll");
+		
 		
 	    
 		
@@ -347,14 +394,23 @@ public class AdminMovieController {
 	}
 	
 	@RequestMapping("/commentcansel/blindoff")
-	public ModelAndView commentBlindOff(Model model,HttpServletRequest req) {
+	public ModelAndView commentBlindOff(Model model,HttpServletRequest req,HttpServletResponse res) throws IOException {
 		ModelAndView mv = new ModelAndView();
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
 		String[] commentindex_ = req.getParameterValues("ci");
 		String commentindex = null;
+		if(commentindex_ == null) {
+			out.println("<script>alert('블라인드 해제할 아이디를 선택하세요.'); location.href='/admin/commentcansel';</script>");
+	     	out.flush();
+		}
 		for(int i = 0; i<commentindex_.length;i++) {
 			commentindex = commentindex_[i];
 			int blindoff = service.setBlindOff(commentindex);
 		}
+		out.println("<script>alert('블라인드 처리가 해제되었습니다.'); location.href='/admin/commentcansel';</script>");
+     	out.flush();
 		mv.setViewName("redirect:/admin/commentcansel");
 	
 		return mv;
@@ -399,7 +455,9 @@ public class AdminMovieController {
 	}
 	@RequestMapping("/moviemanagement/edit")
 	public ModelAndView movieManagementDelete(Model model,HttpServletRequest req) {
+		
 		ModelAndView mv = new ModelAndView("admin/movie/editMovie");
+		
 		String movieDocid = req.getParameter("movieDocid");
 		MovieInfo movieinfo = service.getMovie(movieDocid);
 		
@@ -411,8 +469,12 @@ public class AdminMovieController {
 
 	}
 	@RequestMapping("/moviemanagement/edit/submit")
-	public ModelAndView movieManagementSubmit(Model model,HttpServletRequest req) {
+	public ModelAndView movieManagementSubmit(Model model,HttpServletRequest req,HttpServletResponse res) throws IOException {
 		ModelAndView mv = new ModelAndView();
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
+		
 		String docid_ = req.getParameter("docid");
 		String title_ = req.getParameter("title");
 		String titleorg_ = req.getParameter("titleorg");
@@ -465,11 +527,15 @@ public class AdminMovieController {
 		switch (sub) {
 		case 1:
 			int deletemovieinfo = service.deleteMovieInfo(docid);
+			out.println("<script>alert('해당 데이터가 삭제되었습니다.'); location.href='/admin/moviemanagement';</script>");
+	     	out.flush();
 			
 			break;
 
 		case 2:
 			int updatemovieinfo = service.updateMovieInfo(docid,title,titleorg,nation,runningtime,rating,prodyear,posteruri,genre,plot,traileruri);
+			out.println("<script>alert('해당 데이터의 내용이 수정되었습니다.'); location.href='/admin/moviemanagement';</script>");
+	     	out.flush();
 			break;
 		}
 		
