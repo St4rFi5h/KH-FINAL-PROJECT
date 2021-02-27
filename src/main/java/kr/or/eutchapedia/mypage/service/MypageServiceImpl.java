@@ -145,7 +145,7 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	
-	//sort 테스트중
+	//보고싶어요 sort
 	@Override
 	public List<WannaWatchVo> wannawatch1(String memberemail) {
 		
@@ -168,6 +168,35 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public List<WannaWatchVo> wannawatch4(String memberemail) {
 		List<WannaWatchVo> list = SortDao.selectwwsort4(memberemail);
+		return list;
+	}
+	
+	//평가한작품 sort
+	@Override
+	public List<StarRatingForMainVo> getratinginfo1(String memberemail) {
+		List<StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
+		list = SortDao.selectRMsort1(memberemail);
+		return list;
+	}
+
+	@Override
+	public List<StarRatingForMainVo> getratinginfo2(String memberemail) {
+		List<StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
+		list = SortDao.selectRMsort2(memberemail);
+		return list;
+	}
+
+	@Override
+	public List<StarRatingForMainVo> getratinginfo3(String memberemail) {
+		List<StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
+		list = SortDao.selectRMsort3(memberemail);
+		return list;
+	}
+
+	@Override
+	public List<StarRatingForMainVo> getratinginfo4(String memberemail) {
+		List<StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
+		list = SortDao.selectRMsort4(memberemail);
 		return list;
 	}
 

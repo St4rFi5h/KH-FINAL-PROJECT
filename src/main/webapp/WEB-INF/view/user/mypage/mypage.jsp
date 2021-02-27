@@ -101,7 +101,7 @@
 
                 <div class="center2">
                     <span class='sub-title'>평가한 작품</span><span class='starcount'> ${ratedStarNum } </span>
-                    <a href='/mypage/ratedmovies'> <!-- 평가한작품 링크 이동 -->
+                    <a href='/mypage/ratedmovies?sort=1'> <!-- 평가한작품 링크 이동 -->
 		            	<div class='center2-box'>
 		            		
 		            		<c:set var="ratesize" value='${ratesize}' />

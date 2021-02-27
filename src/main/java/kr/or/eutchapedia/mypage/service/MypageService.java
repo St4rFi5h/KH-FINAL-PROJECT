@@ -38,7 +38,7 @@ public interface MypageService {
 	int nicknamechk(String memberNickname);
 	
 	
-	//sort 테스트중
+	//보고싶어요sort
 	List<WannaWatchVo> wannawatch1(String memberemail);
 
 	List<WannaWatchVo> wannawatch2(String memberemail);
@@ -46,6 +46,16 @@ public interface MypageService {
 	List<WannaWatchVo> wannawatch3(String memberemail);
 
 	List<WannaWatchVo> wannawatch4(String memberemail);
+	
+	//평가한작품sort
+
+	List<StarRatingForMainVo> getratinginfo1(String memberemail);
+
+	List<StarRatingForMainVo> getratinginfo2(String memberemail);
+
+	List<StarRatingForMainVo> getratinginfo3(String memberemail);
+
+	List<StarRatingForMainVo> getratinginfo4(String memberemail);
 
 
 }

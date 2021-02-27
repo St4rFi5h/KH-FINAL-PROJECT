@@ -44,7 +44,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                             <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                         </svg>
-                    가나다순
+                    ${sortTitle}
                     </a>
                     <p></p>
                     <!-- Modal -->
@@ -59,11 +59,10 @@
                             </div>
                             <div class="modal-body">
                                 <div>
-                                    <div id="sorttext"><a  href='#' style="text-decoration:none; color:black" >가나다 순</a></div>
-                                    <div id="sorttext"><a  href='#' style="text-decoration:none; color:black">제작일 순</a></div>
-                                    <!--<div id="sorttext"><a  href='#' style="text-decoration:none; color:black">담은 순</a></div>  -->
-                                    <!-- 별점평가일이없구나,,ㅎ망했네 -->
-                                    <div id="sorttext"><a  href='#' style="text-decoration:none; color:black">평점 순</a></div>
+                                    <div id="sorttext"><a  href='/mypage/ratedmovies?sort=1' style="text-decoration:none; color:black" >가나다 순</a></div>
+                                    <div id="sorttext"><a  href='/mypage/ratedmovies?sort=2' style="text-decoration:none; color:black">구작 순</a></div>
+                                    <div id="sorttext"><a  href='/mypage/ratedmovies?sort=3' style="text-decoration:none; color:black">신작 순</a></div>
+                                    <div id="sorttext"><a  href='/mypage/ratedmovies?sort=4' style="text-decoration:none; color:black">러닝타임 긴 순</a></div>
                                 </div>
                             </div>
                         </div>

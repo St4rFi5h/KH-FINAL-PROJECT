@@ -112,15 +112,36 @@ public class MypageController {
 	}
 
 	@RequestMapping("/ratedmovies")
-	public ModelAndView mypageratedmovies(HttpSession session) {
+	public ModelAndView mypageratedmovies(HttpSession session, int sort) {
 		ModelAndView mv = new ModelAndView();
 		String memberemail = (String) session.getAttribute("memberEmail");
+		String sortTitle="";
 		
+		System.out.println(sort);
 		List <StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
 		List<Map<String,Object>> graphMap = new ArrayList<Map<String, Object>>();
 		graphMap = service.getStarNumDesc(memberemail);
 	
-		list = service.getratinginfo(memberemail);
+		switch (sort) {
+		case 1 :
+			list = service.getratinginfo1(memberemail);
+			sortTitle = "가나다순";
+			break;
+		case 2 :
+			list = service.getratinginfo2(memberemail);
+			sortTitle = "구작순";
+			break;
+		case 3 :
+			list = service.getratinginfo3(memberemail);
+			sortTitle = "신작순";
+			break;
+		case 4 :
+			list = service.getratinginfo4(memberemail);
+			sortTitle = "러닝타임순";
+			break;
+		}
+		
+
 		
 		/*test..
 		List<StarRatingForMainVo> test = new ArrayList<StarRatingForMainVo>();
@@ -135,7 +156,7 @@ public class MypageController {
 		
 		test = service.getEachStarMovie(memberemail,point);
 		*/
-	
+		mv.addObject("sortTitle", sortTitle);
 		mv.addObject("list", list);
 		mv.addObject("point", graphMap);
 		mv.setViewName("/user/mypage/mypage_ratedmoviesfinal");

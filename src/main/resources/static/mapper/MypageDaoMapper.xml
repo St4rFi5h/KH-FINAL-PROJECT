@@ -61,7 +61,7 @@
    </select>
    
    <!-- 평가영화관련 select -->
-   <select id="getratinginfo" parameterType="String" resultMap="StarRatingForMainVo" >
+   <select id="getratinginfo" parameterType="String" resultMap="StarRatingForMainVo2" >
 	    select a. *, 
 		c.title, 
 		c.nation, 
@@ -150,7 +150,7 @@
   </resultMap>
 
 	<resultMap
-		type="kr.or.eutchapedia.mypage.entity.StarRatingForMainVo" id="StarRatingForMainVo">
+		type="kr.or.eutchapedia.mypage.entity.StarRatingForMainVo" id="StarRatingForMainVo2">
 		<result column="star_index" property="starIndex" />
 		<result column="fk_movie_docid" property="movieDocId" />
 		<result column="fk_member_email" property="memberEmail" />
