@@ -1,35 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/movie/index.css">
+    <link rel="shortcut icon" href="img/logo_favicon.ico"> <!--favicon-->
+    <link rel="icon" href="img/logo_favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
     <!--그리드시스템을 위한 css파일-->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
     <!--reboot.css 는 태그속성들이 다른 브라우저에서 호환이 가능하게끔 스타일을 맞춰주는 css파일 -->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
     <!--부트스트랩 기능들의 css-->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/민진/front-end/css/faq.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/민진/front-end/css/index.css">
-    <link rel="shortcut icon" href="/민진/front-end/img/logo_favicon.ico"><!--favicon-->
-    <link rel="icon" href="/민진/front-end/img/logo_favicon.ico">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
-    <link rel="stylesheet" href="css/index.css">
-    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/board/faq_qna/faq_qna.css">
     <title>EUTCHAPEDIA</title>
 </head>
-
 <body>
+    <!-- 헤더 -->
     <header>
         <div class="wrapper">
             <div class="navbar">
                 <div class="navbar_logo">
-                    <img id="logo" src="/민진/front-end/img/logo.png"> <!-- 이미지파일 이동 시 경로 확인!-->
+                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
                 </div>
     
                 <div class="menu">
@@ -87,8 +84,8 @@
                     <div class="search_bar">
                         <form class="hidden">
                               <select name="f">
-                                <option ${(param.f == "notice_title")?"selected":""} value="notice_title">제목</option> 
-                                <option ${(param.f == "notice_content")?"selected":""} value="notice_content">내용</option>
+                                <option ${(param.f == "faq_title")?"selected":""} value="faq_title">제목</option> 
+                                <option ${(param.f == "faq_content")?"selected":""} value="faq_content">내용</option>
                               </select>
                             <input type="text" name="q" value="${param.q}" id="search-box" />  
                             <input type="submit" class="search-btn yb" style="float: none;" value="검색"/>
@@ -112,13 +109,15 @@
                                     <p class="tbl_info_date"></p>
                                 </div>
                             </div>
+                            
+                            <c:forEach var="f" items="${list}">
                             <div class="accordion_title">
                                 <div class="tbl_notice_info">
                                     <div class="infoinner">
                                         <p class="tbl_info_type">
                                             <span class="blind">체크박스</span>
                                         </p>
-                                        <p class="tbl_info_tit">DB정보가 올바르지 않아요.
+                                        <p class="tbl_info_tit">${f.faqTitle}
                                             <span class="blind">제목</span>
                                         </p>
                                         <p class="tbl_info_date">
@@ -131,115 +130,13 @@
                                 <div class="reply_row">
                                     <div class="notice_wrap">
                                         <span class="modi_span">
-                                            <p>이미지, 줄거리 등이 사실과 다를 경우, 앱 내에 "고객센터 > DB 수정/추가 요청하기" 버튼을 눌러 신고해주세요.<br/> 
-                                                최대한 빨리 반영해서 노여움을 풀어드리겠습니다!</p>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_tit">어떻게 별점조작을 차단하나요?
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <span class="modi_span">
-                                            <p>특정 유저를 차단할 수 있습니다. 차단된 유저는 내 프로필, 코멘트, 댓글을 볼 수 없으며 당연히 내 코멘트에 댓글도 달 수 없습니다. 차단을 원하는 유저 프로필 페이지 우측 상단의 “...” 버튼 터치를 통해 차단이 가능하며, 차단목록은 자신의 프로필 페이지 “설정"에서 볼 수 있습니다. 차단시 상호간 댓글이 복구 불가능하게 삭제되기 때문에, 신중히 사용해 주시길 부탁드립니다.</p>
-                                    	</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_tit">보기 싫은 사용자를 차단할 수 있나요?
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <span class="modi_span">
-                                            <p>왓챠피디아는 소위 '평점알바' 및 '평점놀이 하는 사용자'의 사용 행태와 평가 패턴 등을 여러가지 방식으로 정의하고 있습니다. 그렇게 의심되는 사용자들이 시스템에 의해 발견되면, 해당 사용자들의 별점 평가 및 코멘트가 다른 사용자에게 보이지 않도록 차단하고, 동시에 해당 사용자의 별점이 평균 별점이나 타인의 예상 별점에 영향을 주지 않도록 차단합니다.</p>
-                                    	</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_tit">부적절한 댓글은 어떻게 신고하나요?
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <span class="modi_span">
-                                            <p>“취향 존중의 원칙"에 부합하지 않는 코멘트/댓글은 우측 “...” 버튼 터치를 통해 신고가 가능합니다. 신고 기준은 “취향 존중의 원칙"에 기반하며, 다수의 신고를 받은 게시글은 보이지 않게 처리됩니다. 동시에, “취향 존중의 원칙"을 준수한 게시글임에도 특정한 의도를 갖고 반복적으로 신고하는 “허위 신고자"도 막을 수 있도록 노력하겠습니다.                
+                                            <p>${f.faqContent}
                                             </p>
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_tit">'파트너 설정' 메뉴에 친구가 보이지 않아요.
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <span class="modi_span">
-                                            <p>'왓챠피디아 파트너'는 친구분의 예상 별점을 바탕으로 서로간의 취향을 공유하는 기능이에요. 예상 별점을 제공 받으시기 위해서는 최소 15개 이상의 작품 평가를 해주셔야 합니다. 그렇기 때문에 평가 수가 15개 미만인 회원의 경우 '왓챠피디아 파트너' 목록에서 노출이 되지 않는 점 참고해 주세요.
-                                            </p>
-                                        </span>
-                                    </div>
-                                    </div>
-                                </div>
-                           
+                            </c:forEach>
                             <!---->
 
                             <!-- 관리자 버튼-->

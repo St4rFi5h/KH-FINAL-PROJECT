@@ -38,6 +38,9 @@ border: 1px solid gray;
   text-align: center;
   font-family: "Noto Sans KR", sans-serif;
   margin-bottom: 100px;
+  background-color: white;
+  margin-top : 100px;
+  margin-bottom: 250px;
 }
 
 #complainbox {
@@ -108,4 +111,8 @@ border: 1px solid gray;
 
 #reason {
   font-size: 1.2rem;
+}
+
+.logosize {
+	margin-left : 30px;
 }

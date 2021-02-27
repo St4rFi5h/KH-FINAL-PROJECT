@@ -13,7 +13,7 @@
 }
 .mybody-wrapper {
   position: relative;
-  height: 150%;
+  height: 170%;
   margin: 0 auto;
   width: 500px;
   font-family: "Noto Sans KR", sans-serif;
@@ -69,7 +69,6 @@ textarea {
   padding: 10px;
   font-weight: bold;
   color: rgb(111, 110, 110);
-  letter-spacing: 0.2rem;
   /* border-radius: 10px; */
   border: 2px solid rgb(218, 216, 218);
 }

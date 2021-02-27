@@ -33,7 +33,7 @@
   display: block;
   width: 900px;
   height: 650px;
-  background-color: rgb(6, 3, 79);
+  background-color:  rgb(70, 75, 87);
   /* background-color: rgb(16, 16, 31); */
   border: 10px double rgb(70, 75, 87);
   text-align: center;
@@ -48,7 +48,8 @@
   margin: 30px 25% 0 25%;
   text-align: left;
   /* background-color: rgb(204, 142, 163); */
-  background-color: rgb(8, 14, 187);
+  background-color: rgb(255,7,88);
+  border : 3px solid white;
   width: 450px;
   height: 160px;
   display: block;
@@ -67,7 +68,7 @@
   padding: 20px;
   font-size: 1.5rem;
   text-align: center;
-  color: rgb(16, 40, 221);
+  color: rgb(70, 75, 87);
   border: 0;
   background-color: white;
   border: 3px solid rgb(70, 75, 87);
@@ -80,7 +81,7 @@
 }
 
 #ment2 {
-  color: rgb(201, 195, 195);
+  color: rgb(151, 150, 151);
 }
 
 #inputdiv2 {
@@ -106,4 +107,14 @@
 
 #reason {
   font-size: 1.2rem;
+}
+
+.logosize {
+	margin-left : 30px;
+}
+
+
+#info {
+	display : none;
+	color : red;
 }

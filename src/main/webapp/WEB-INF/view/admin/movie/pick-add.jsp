@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,9 +42,9 @@
                             <option ${(param.f == "title")?"selected":""} value="title">제목</option>
                             <option ${(param.f == "nation")?"selected":""} value="nation">제작국가</option>
                             <option ${(param.f == "genre")?"selected":""} value="genre">장르</option>
-                            
-                            
                           </select>
+                            
+                            
                         </div>
                         <div id="addpick-input-text">
                             <div id="addpick-mtext" class="input-group mb-3">
@@ -91,13 +92,14 @@
                               
                             </tbody>
                           </table>
-                          <div style="margin-bottom:30px ">
-                              <span>현재페이지 1/1 page</span>
-                          </div>
-                          <nav id="addpick-data-page" aria-label="Page navigation example">
                               <c:set var="page" value="${(param.p == null)?1:param.p}"/>
                               <c:set var="startNum" value="${page-(page-1)%5}" />
-                              <c:set var="lastNum" value="200"/>
+                              <c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"/>
+                          <div style="margin-bottom:30px ">
+                              <span>현재페이지 ${(empty param.p)?1:param.p}</span>
+                              /${lastNum} page
+                          </div>
+                          <nav id="addpick-data-page" aria-label="Page navigation example">
                               <ul id="pagiedit" class="pagination">
                               <c:if test="${startNum-1>0}">
                                 <li class="page-item" ><a class="page-link" href="?p=${startNum-1}&f=${param.f}&q=${param.q}">이전</a></li>
@@ -106,14 +108,16 @@
                                 <li class="page-item" ><a class="page-link" onclick="alert('첫번째 페이지입니다.')">이전</a></li>
                               </c:if>
                               
-                              
                                 <c:forEach var="i" begin="0" end="4">
-                                <li class="page-item"><a class="page-link" href="?p=${startNum+i}&f=${param.f}&q=${param.q}">${startNum+i}</a></li>
-                                </c:forEach>
-                                <c:if test="${startNum+5<lastNum}">
-                                <li class="page-item"><a class="page-link" href="?p=${startNum+5}&f=&q=">다음</a></li>
+                                <c:if test="${(startNum+i) <= lastNum}">
+                                <li class="page-item ${(page==(startNum+i))?'active':''}"><a class="page-link" href="?p=${startNum+i}&f=${param.f}&q=${param.q}">${startNum+i}</a></li>
                                 </c:if>
-                                <c:if test="${startNum+5>=lastNum}">
+                                
+                                </c:forEach>
+                                <c:if test="${startNum+4<lastNum}">
+                                <li class="page-item"><a class="page-link" href="?p=${startNum+5}&f=${param.f}&q=${param.q}">다음</a></li>
+                                </c:if>
+                                <c:if test="${startNum+4>=lastNum}">
                                 <li class="page-item"><a class="page-link" onclick="alert('다음 페이지가 없습니다.')">다음</a></li>
                                 </c:if>
                               </ul>
@@ -123,24 +127,25 @@
                              
                              
                        
+                   <form action="/admin/pickadd/submit" method="get">
                     <div id="addpick-input-title" >
                         <div id="addpick-ctitle">
                             <h5>컬렉션이름</h3>
                             </div>
 
                         <div id="addpick-input-cname">
-                            <input type="text" class="form-control" placeholder="컬렉션이름" aria-label="cname" aria-describedby="basic-addon1">  
+                            <input type="text" name="cbname" value="${param.cbname}" class="form-control" placeholder="컬렉션이름" aria-label="cname" aria-describedby="basic-addon1">  
 
                         </div>
 
                     </div>
-                   
                     <div id="follow-data-container">
                         <table id="follow-data" class="table table-sm" class="col-lg-12">
                             <thead>
                               <tr>
                               
                                 <th scope="col">삭제</th>
+                                <th scope="col">영화id</th>
                                 <th scope="col">영화제목</th>
                                 <th scope="col">제작국가</th>
                                 <th scope="col">장르</th>
@@ -156,8 +161,12 @@
                               
 
                     <div id="addpick-submit">
-                        <button type="button" class="btn btn-primary">추가하기</button>
+                        <button type="submit" class="btn btn-primary">추가하기</button>
                     </div>
+                    <input type="hidden" name="f" value="${param.f}">
+                    <input type="hidden" name="q" value="${param.q}">
+                    <input type="hidden" name="p" value="${param.p}">
+                   </form>
 
                     
                 </div>
@@ -170,6 +179,7 @@
 
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/admin/adminmovie/js/accordion.js"></script>
+    <script src="plugins/cookie/jquery.cookie.js"></script>  
     <script>
       $("#send-table-data tbody tr").click(function(){
         
@@ -183,23 +193,24 @@
         var tr = $(this);
         var td = tr.children();
         //값저장
+        var mid = td.eq(0).text();
         var mname = td.eq(1).text();
-        var name = td.eq(2).text();
+        var nation = td.eq(2).text();
         var genre = td.eq(3).text();
-        var type = td.eq(4).text();
-        
-
+        var hit = td.eq(4).text();
         var html = ""
-          
       html += '<tr>';
       html += '<td><button id="delbtn" type="button" class="btn btn-primary btn-sm">삭제</button></td>';
+      html += '<td>' + mid + '</td>';
       html += '<td>' + mname + '</td>';
-      html += '<td>' + name + '</td>';
+      html += '<td>' + nation + '</td>';
       html += '<td>' + genre + '</td>';
-      html += '<td>' + type + '</td>';
+      html += '<td>' + hit + '</td>';
+      html += '<input type="hidden" name="mid" value='+mid+'>'+'</td>';
       html += '</tr>';
-      
       $("#get-table-data").append(html);
+        $.cookie('html',html);  
+      	$.cookie('html');
       
       //삭제
       
@@ -215,26 +226,6 @@
 
       </script>
       
-      <script>
-$("#addpick-select-button").on("click","button" function({
-	
-	var string = movienameval
-      $.ajax({
-    		type: "GET", //요청 메소드 방식
-    		url:"/AjaxTest/ex01.do",
-    		dataType:"text", //서버가 요청 URL을 통해서 응답하는 내용의 타입
-    		success : function(result){
-    			//서버의 응답데이터가 클라이언트에게 도착하면 자동으로 실행되는함수(콜백)
-    			//result - 응답데이터
-    			//$('#result').text(result);
-    			alert(result);
-    		},
-    		error : function(a, b, c){
-    			//통신 실패시 발생하는 함수(콜백)
-    			alert(a + b + c);
-    		}
-    	});
-}))
-      </script>
+ 
 </body>
 </html>

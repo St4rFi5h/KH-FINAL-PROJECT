@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 
  <header id="header">
  
@@ -8,13 +8,13 @@
         
           <div class="navbar_logo">
             <a href="/"><img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-          	</a></div>
+             </a></div>
 
           <div class="menu">
             <ul>
-              <li><a href="aboutus">ABOUT US</a></li>
-              <li><a href="movierate">평가하기</a></li>
-              <li><a href="faq_list">고객센터</a></li>
+              <li><a href="/aboutus">ABOUT US</a></li>
+              <li><a href="/movie/movierate">평가하기</a></li>
+              <li><a href="/notice/list">고객센터</a></li>
             </ul>
           </div>
 
@@ -31,25 +31,38 @@
             </form>
           </div>
 
-<%	if(session.getAttribute("id") == null) {	%>
+    <%   if(session.getAttribute("memberEmail") != null) {   %>
 
-          <div class="menu">
+        <div class="menu">
             <ul>
-              <li><a href="login">로그인</a></li>
-              <li><a href="#">회원가입</a></li>
+              <li><a href="/logout">로그아웃</a></li>
+              <li><a href="/mypage/index"><i class="far fa-user" id="usermy"></i></a></li><!-- 마이페이지 -->
             </ul>
           </div>
           
-        <% } else { %> 
         
+        <% } else if (session.getAttribute("admincheck") != null) { %> 
+        
+         
           <div class="menu">
             <ul>
-              <li><a href="logout">로그아웃</a></li>
-              <li><a href="mypage"><i class="far fa-user" id="usermy"></i></a></li><!-- 마이페이지 -->
+              <li><a href="#" id="admin_home">관리자 홈</a></li><!-- 관리자 홈으로  -->
+              <li><a href="/logout">로그아웃</a></li>
+              <li><a href="/mypage/index"><i class="far fa-user" id="usermy"></i></a></li><!-- 마이페이지 -->
             </ul>
           </div>
           
- 		<% } %>  
+        
+         <% } else { %> 
+             
+            <div class="menu">
+            <ul>
+              <li><a href="/login">로그인</a></li>
+              <li><a href="/signup">회원가입</a></li>
+            </ul>
+          </div>
+          
+       <% } %>  
    
          </div>
       </div> 

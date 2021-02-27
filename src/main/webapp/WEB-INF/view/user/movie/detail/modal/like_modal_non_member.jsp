@@ -24,7 +24,8 @@
 					id="button-for-signup" onclick="location.href='/signup'">회원가입</button>
 			</div>
 			<div>
-				<button type="button" class="btn btn-primary" id="button-for-signin">로그인</button>
+				<button type="button" class="btn btn-primary" id="button-for-signin"
+				onclick="location.href='/login'">로그인</button>
 			</div>
 		</div>
 	</div>

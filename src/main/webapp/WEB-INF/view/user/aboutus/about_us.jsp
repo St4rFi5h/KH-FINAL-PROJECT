@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EUTCHAPEDIA | About Us</title>
+<title>EUTCHAPEDIA</title>
 	<link rel="stylesheet" href="/css/movie/index.css">
 	<link rel="stylesheet" href="/css/main/about_us.css">
 	<!--favicon-->

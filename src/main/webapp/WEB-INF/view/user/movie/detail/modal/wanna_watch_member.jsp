@@ -11,26 +11,26 @@
 		<div class="modal-body">
 			<div id="modal-contents">
 				<div id="movie-info">
+				<input type="hidden" id = "movieDocIdInModal" value="${movieInfoVo.movieDocId }"/>
 					<div id="modal-movie-poster">
-						<img src="img/220px-영화_소울.jpg" alt="">
+						<img src="${movieInfoVo.posterUri }" alt="">
 					</div>
 					<div id="title-and-year">
-						<div style="font-weight: bold; font-size: 20px;">소울</div>
-						<div>2020</div>
+						<div style="font-weight: bold; font-size: 20px;">${movieInfoVo.title }</div>
+						<div>${movieInfoVo.prodYear }</div>
 					</div>
 				</div>
 				<div id="wanna-watch-or-rating">
-					<a href="" data-dismiss="modal" aria-label="Close"
-						onclick="afterWannaWatch()">
+					<a href="" data-dismiss="modal" aria-label="Close">
 						<div id="wanna-watch-button">
-							<img src="img/bookmark_gray.svg" alt="">
+							<img src="/img/movie/bookmark_gray.svg" alt="">
 							<div>보고싶어요</div>
 						</div>
 					</a> <a href="" data-toggle="modal"
 						data-target="#rating-and-comment-modal" data-dismiss="modal"
 						aria-label="Close">
 						<div id="rating-button">
-							<img src="img/comment.svg">
+							<img src="/img/movie/comment.svg">
 							<div>별점 및</div>
 							<div>코멘트 남기기</div>
 						</div>

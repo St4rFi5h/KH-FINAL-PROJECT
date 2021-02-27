@@ -1,14 +1,29 @@
 package kr.or.eutchapedia.board.entity;
 
+import java.util.Date;
+
 public class Faq {
 	private int faqNo;			//faq게시판 식별자
 	private String memberEmail;	//아이디
 	private String faqTitle;	//faq 제목
 	private String faqContent;	//faq 내용
+	private boolean faqPub;			//faq 공개여부
 	private String faqFiles;	//faq 파일 디비 수정해야함!!!!!!!
-	private int faqPub;			//faq 공개여부
+	private Date faqRegdate;
 	
 	public Faq() {
+	}
+
+	public Faq(int faqNo, String memberEmail, String faqTitle, String faqContent, boolean faqPub, String faqFiles,
+			Date faqRegdate) {
+		super();
+		this.faqNo = faqNo;
+		this.memberEmail = memberEmail;
+		this.faqTitle = faqTitle;
+		this.faqContent = faqContent;
+		this.faqPub = faqPub;
+		this.faqFiles = faqFiles;
+		this.faqRegdate = faqRegdate;
 	}
 
 	public int getFaqNo() {
@@ -43,6 +58,14 @@ public class Faq {
 		this.faqContent = faqContent;
 	}
 
+	public boolean getFaqPub() {
+		return faqPub;
+	}
+
+	public void setFaqPub(boolean faqPub) {
+		this.faqPub = faqPub;
+	}
+
 	public String getFaqFiles() {
 		return faqFiles;
 	}
@@ -51,18 +74,19 @@ public class Faq {
 		this.faqFiles = faqFiles;
 	}
 
-	public int getFaqPub() {
-		return faqPub;
+	public Date getFaqRegdate() {
+		return faqRegdate;
 	}
 
-	public void setFaqPub(int faqPub) {
-		this.faqPub = faqPub;
+	public void setFaqRegdate(Date faqRegdate) {
+		this.faqRegdate = faqRegdate;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Faq [faqNo=" + faqNo + ", memberEmail=" + memberEmail + ", faqTitle=" + faqTitle + ", faqContent="
-				+ faqContent + ", faqFiles=" + faqFiles + ", faqPub=" + faqPub + "]";
+				+ faqContent + ", faqPub=" + faqPub + ", faqFiles=" + faqFiles + ", faqRegdate=" + faqRegdate + "]";
 	}
 	
 	

@@ -2,7 +2,6 @@ package kr.or.eutchapedia.mypage.entity;
 
 import java.util.Date;
 
-//resultmap 만들기 귀찮아서 그냥 컬럼명이랑 동일하게..
 public class WannaWatchVo {
 	
 	int wannaWatchIndex;

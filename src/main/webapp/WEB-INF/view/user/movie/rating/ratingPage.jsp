@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
 <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
 <link rel="stylesheet" href="/css/movie/giveStar.css">
-    <script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
 	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
 	crossorigin="anonymous"></script>
@@ -43,197 +44,130 @@
 
 			<select class="custom-select" id="select-search">
 				<option selected>장르</option>
-				<option value="1">액션</option>
-				<option value="2">로멘스</option>
-				<option value="3">스릴러</option>
+				<option ${(param.f == "action")?"selected":""} value="action">액션</option>
+				<option ${(param.f == "romance")?"selected":""} value="romance">로멘스</option>
+				<option ${(param.f == "thriller")?"selected":""} value="thriller">스릴러</option>
+				<option ${(param.f == "sf")?"selected":""} value="sf">SF</option>
+				<option ${(param.f == "adventure")?"selected":""} value="adventure">어드벤처</option>
+				<option ${(param.f == "drama")?"selected":""} value="drama">드라마</option>
+				<option ${(param.f == "family")?"selected":""} value="family">가족</option>
+				<option ${(param.f == "animation")?"selected":""} value="animation">애니메이션</option>
+				<option ${(param.f == "comedy")?"selected":""} value="comedy">코미디</option>
+
+
 			</select>
 		</div>
-		<div id="mid_wrap">
-			<ul class="movie">
-				<li class="eachMovie">
+		
+		<c:forEach var="m" items="${movies}" varStatus="vs" end="10">
+			<div id="mid_wrap">
+				<ul class="movie">
+					<li class="eachMovie">
 
-					<div class="movie_poster">
-						<div class="movie_wrap">
-							<img class="movie_image" src="img/poster.jpg">
-						</div>
-					</div>
-
-					<div class="movie_name">
-						<h3 class="movie_title">
-							뮬란
-							<div class="modal_button">
-								<button class="fas fa-ellipsis-v" id="modal_btn"
-									data-toggle="modal" data-target="#exampleModal"></button>
+						<div class="movie_poster">
+							<div class="movie_wrap">
+								<img class="movie_image" src="${m.poster_uri}">
 							</div>
-						</h3>
-						<div class="movie_info">2009-미국</div>
-						<div id="star-rating-zone">
-							<div class="starRev">
-								<span class="star starR1">0.5</span> <span class="star starR2">1</span>
-								<span class="star starR1">1.5</span> <span class="star starR2">2</span>
-								<span class="star starR1">2.5</span> <span class="star starR2">3</span>
-								<span class="star starR1">3.5</span> <span class="star starR2">4</span>
-								<span class="star starR1">4.5</span> <span class="star starR2">5</span>
-							</div>
-
 						</div>
 
+						<div class="movie_name">
+							<h3 class="movie_title">
+								${m.title}
+								<div class="modal_button">
+									<button class="fas fa-ellipsis-v" id="modal_btn"
+										data-toggle="modal" data-target="#exampleModal${vs.index}"></button>
+								</div>
+							</h3>
+							<div class="movie_info">${m.prodyear}-${m.nation}</div>
+							<div id="star-rating-zone">
+								<div class="starRev">
+									<span class="star starR1">0.5</span> <span class="star starR2">1</span>
+									<span class="star starR1">1.5</span> <span class="star starR2">2</span>
+									<span class="star starR1">2.5</span> <span class="star starR2">3</span>
+									<span class="star starR1">3.5</span> <span class="star starR2">4</span>
+									<span class="star starR1">4.5</span> <span class="star starR2">5</span>
+								</div>
 
-					</div>
-				</li>
-			</ul>
-		</div>
-		<!---------------------------------------- 임시시작 ---------------------------------------------->
-		<div id="mid_wrap">
-			<ul class="movie">
-				<li class="eachMovie">
-
-					<div class="movie_poster">
-						<div class="movie_wrap">
-							<img class="movie_image"
-								src="https://upload.wikimedia.org/wikipedia/ko/7/74/%EC%97%85_%28%EC%98%81%ED%99%94%29_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg">
-						</div>
-					</div>
-
-					<div class="movie_name">
-						<h3 class="movie_title">
-							업
-							<div class="modal_button">
-								<button class="fas fa-ellipsis-v" id="modal_btn"
-									data-toggle="modal" data-target="#exampleModal"></button>
 							</div>
-						</h3>
-						<div class="movie_info">2016-미국</div>
-
-						<div id="star-rating-zone">
-							<div class="starRev">
-								<span class="star starR1">0.5</span> <span class="star starR2">1</span>
-								<span class="star starR1">1.5</span> <span class="star starR2">2</span>
-								<span class="star starR1">2.5</span> <span class="star starR2">3</span>
-								<span class="star starR1">3.5</span> <span class="star starR2">4</span>
-								<span class="star starR1">4.5</span> <span class="star starR2">5</span>
-							</div>
-
 						</div>
+					</li>
+				</ul>
+			</div>
 
 
 
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div id="mid_wrap">
-			<ul class="movie">
-				<li class="eachMovie">
-
-					<div class="movie_poster">
-						<div class="movie_wrap">
-							<a href="/LJH/views/movie_detail_member.html"> <img
-								class="movie_image"
-								src="https://images.chosun.com/resizer/yZQMvczOQBMWykTxGL5NAwPUPhE=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/YN2NTUMNSAEY3HUC4YCXVNUZZA.jpg">
-							</a>
-						</div>
-					</div>
-
-					<div class="movie_name">
-						<h3 class="movie_title">
-							소울
-							<div class="modal_button">
-								<button class="fas fa-ellipsis-v" id="modal_btn"
-									data-toggle="modal" data-target="#exampleModal"></button>
-							</div>
-						</h3>
-						<div class="movie_info">2020-미국</div>
-						<div id="star-rating-zone">
-							<div class="starRev">
-								<span class="star starR1">0.5</span> <span class="star starR2">1</span>
-								<span class="star starR1">1.5</span> <span class="star starR2">2</span>
-								<span class="star starR1">2.5</span> <span class="star starR2">3</span>
-								<span class="star starR1">3.5</span> <span class="star starR2">4</span>
-								<span class="star starR1">4.5</span> <span class="star starR2">5</span>
-							</div>
-
-						</div>
-
-
-
-					</div>
-				</li>
-			</ul>
-		</div>
-		<!---------------------------------------- 임시끝---------------------------------------------->
-		<!--  <div class="movielist">
+			<!--  <div class="movielist">
             <h1>Page 1</h1>
         </div>
         <div class="movielist">
             <h1>Page 2</h1>
         </div>
         -->
-	</div>
 
-	<div class="modal fade" id="exampleModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel"></h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
+			<div class="modal fade" id="exampleModal${vs.index}" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel"></h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
 
-					<div class="movie_content">
-						<div class="movie_poster">
+							<div class="movie_content">
+								<div class="movie_poster">
 
-							<div class="movie_wrap">
+									<div class="movie_wrap">
 
-								<img class="movie_image" src="img/poster.jpg">
+										<img class="movie_image" src="${m.poster_uri}">
 
+									</div>
+								</div>
+								<div class=" css-1sondvb-ContentInfo e1pa47va1 ">
+									<div class="movie_name">
+
+										<h3 class="movie_title">
+											${m.title}
+
+											<div class="modal_button"></div>
+										</h3>
+										<div class="movie_info">${m.prodyear}-${m.nation}</div>
+									</div>
+								</div>
+							</div>
+							<div class="css-1k6r5nr-RowActionButtons e1pa47va5">
+								<div aria-label="wished" role="button"
+									class="css-1s4ktoa-RowActionButton-WishButton e1pa47va7">
+									<img src="/img/movie/bookmark.svg" alt="wished"><span>보고싶어요</span>
+								</div>
+								<div aria-label="watching" role="button"
+									class="css-9gb35z-RowActionButton-WatchingButton e1pa47va8">
+									<img src="/img/movie/cloud.svg" alt="wished"><span>코멘트
+										작성하기</span>
+								</div>
+							</div>
+
+
+
+							<div class="modal-footer">
+								<div aria-label="cancel" role="button"
+									class="css-4w0dnp-ColumnActionButton-CancelButton e1pa47va11"
+									data-dismiss="modal">취소</div>
 							</div>
 						</div>
-						<div class=" css-1sondvb-ContentInfo e1pa47va1 ">
-							<div class="movie_name">
-
-								<h3 class="movie_title">
-									뮬란
-
-									<div class="modal_button"></div>
-								</h3>
-								<div class="movie_info">2009-미국</div>
-							</div>
-						</div>
-					</div>
-					<div class="css-1k6r5nr-RowActionButtons e1pa47va5">
-						<div aria-label="wished" role="button"
-							class="css-1s4ktoa-RowActionButton-WishButton e1pa47va7">
-							<img src="svg/bookmark.svg" alt="wished"><span>보고싶어요</span>
-						</div>
-						<div aria-label="watching" role="button"
-							class="css-9gb35z-RowActionButton-WatchingButton e1pa47va8">
-							<img src="svg/cloud.svg" alt="wished"><span>코멘트 작성하기</span>
-						</div>
 					</div>
 
-
-
-					<div class="modal-footer">
-						<div aria-label="cancel" role="button"
-							class="css-4w0dnp-ColumnActionButton-CancelButton e1pa47va11"
-							data-dismiss="modal">취소</div>
-
-					</div>
 				</div>
 			</div>
-		</div>
+		</c:forEach>
 	</div>
-	
 
-		<script src="/js/movie/star.js"></script>
-		<script src="/js/movie/scroll.js"></script>
-		<script src="/js/jquery.min.js"></script>
-		<script src="/js/bootstrap.bundle.min.js"></script>
-		
+	<script src="/js/movie/star.js"></script>
+	<script src="/js/movie/scroll.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

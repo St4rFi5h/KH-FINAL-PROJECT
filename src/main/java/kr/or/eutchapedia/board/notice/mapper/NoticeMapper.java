@@ -4,9 +4,16 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kr.or.eutchapedia.board.notice.domain.Criteria;
 import kr.or.eutchapedia.board.notice.domain.NoticeVo;
 
 @Mapper
 public interface NoticeMapper {
-	List<NoticeVo> selectList() throws Exception;
+	public void insertNotice(NoticeVo board) throws Exception;
+	public void updateNotice(NoticeVo board) throws Exception;
+	public void deleteNotice(long noticeNo) throws Exception;
+	
+	public List<NoticeVo> boardList(Criteria cri) throws Exception;
+	public int totalCnt(Criteria cri) throws Exception;
+	public NoticeVo boardDetail(long noticeNo) throws Exception;
 }

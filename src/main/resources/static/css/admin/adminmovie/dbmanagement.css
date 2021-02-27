@@ -28,7 +28,7 @@
 
 #dbmanagement-select-search{
     margin-bottom: 9px;
-    width: 150px
+    width: 110px
 }
 
 #dbmanagement-mtext{
@@ -56,11 +56,14 @@
     margin-top: 20px;
 }
 #dbmanagement-data-page{
-    width: 216px;
-    margin-top: 80px;
+    width: 35%;
+    text-align:center;
     margin-left: auto;
     margin-right: auto;
 }
-#db-info > :last-child{
+#dbmanagement-pagiedit > li > a{
+	    padding: .5rem .60rem;
+}
+#commentdata > :last-child{
 cursor: pointer;
 }

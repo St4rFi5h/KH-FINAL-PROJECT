@@ -1,7 +1,10 @@
 package kr.or.eutchapedia.movie.detail.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.or.eutchapedia.movie.detail.domain.CommentVo;
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffInfoVo;
-import kr.or.eutchapedia.movie.detail.service.CommentDao;
+import kr.or.eutchapedia.movie.detail.domain.StarRatingVo;
 import kr.or.eutchapedia.movie.detail.service.MovieDetailDao;
 
 @RequestMapping("/movie")
@@ -20,19 +24,39 @@ import kr.or.eutchapedia.movie.detail.service.MovieDetailDao;
 public class MovieDetailController {
 	
 	@Autowired
-	MovieDetailDao dao;
-	
+	MovieDetailDao movieDetailDao;
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public ModelAndView movieDetail(String movieDocId) {
+	public ModelAndView movieDetail(String movieDocId, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
-		MovieInfoVo movieInfoVo = dao.selectMovieInfo(movieDocId);
-		List<StaffInfoVo> staffList = dao.selectStaffList(movieDocId);
-		Map<String, Object> starAvgMap = dao.selectStarAvg(movieDocId);
-		List<Map<String, Object>> starDataList = dao.selectStarData(movieDocId);
-		List<Map<String, Object>> commentList = dao.selectComments(movieDocId);
-		dao.updateHitCount(movieDocId);
+		String memberEmail = (String) session.getAttribute("memberEmail");
+		if (memberEmail != null) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("movieDocId", movieDocId);
+			map.put("memberEmail", memberEmail);
+			int wannaWatchCheck = movieDetailDao.selectWannaWatch(map);
+			mv.addObject("wannaWatchCheck", wannaWatchCheck);
+			
+			StarRatingVo starRatingVo = movieDetailDao.checkRatedStars(map);
+			
+			if (starRatingVo != null) {
+				mv.addObject("starRatingVo", starRatingVo);
+			}
+			
+			CommentVo commentVo = movieDetailDao.checkCommentData(map);
+			
+			if (commentVo != null) {
+				mv.addObject("commentVo", commentVo);
+			}
+		}
+		
+		MovieInfoVo movieInfoVo = movieDetailDao.selectMovieInfo(movieDocId);
+		List<StaffInfoVo> staffList = movieDetailDao.selectStaffList(movieDocId);
+		Map<String, Object> starAvgMap = movieDetailDao.selectStarAvg(movieDocId);
+		List<Map<String, Object>> starDataList = movieDetailDao.selectStarData(movieDocId);
+		List<Map<String, Object>> commentList = movieDetailDao.selectComments(movieDocId);
+		movieDetailDao.updateHitCount(movieDocId);
 		
 		mv.addObject("movieInfoVo", movieInfoVo);
 		mv.addObject("staffList", staffList);
@@ -49,7 +73,7 @@ public class MovieDetailController {
 	public ModelAndView movieDetailOverview(String movieDocId) {
 		ModelAndView mv = new ModelAndView();
 		
-		MovieInfoVo movieInfoVo = dao.selectMovieInfo(movieDocId);
+		MovieInfoVo movieInfoVo = movieDetailDao.selectMovieInfo(movieDocId);
 		
 		mv.addObject("movieInfoVo", movieInfoVo);
 		
@@ -62,7 +86,7 @@ public class MovieDetailController {
 	public ModelAndView staffDetail(String staffId) {
 		ModelAndView mv = new ModelAndView();
 		
-		List<StaffFilmoVo> staffFilmoList = dao.selectStaffFilmo(staffId);
+		List<StaffFilmoVo> staffFilmoList = movieDetailDao.selectStaffFilmo(staffId);
 		String staffName = staffFilmoList.get(0).getStaffName();
 		String staffRole = staffFilmoList.get(0).getStaffRoleGroup();	
 		
@@ -75,13 +99,4 @@ public class MovieDetailController {
 		return mv;
 	}
 	
-	// 모달 확인용(임시) 
-	@RequestMapping("/detail/member")
-	public ModelAndView movieDetailMember() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("/user/movie/detail/movie_detail_member");
-		
-		return mv;
-	}
 }

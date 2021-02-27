@@ -34,7 +34,7 @@
     <div id="main-container">
         <div id="basic-info-and-rating">
             <div id="poster">
-                <img alt="" src="img/220px-영화_소울.jpg" style="width: 160px; height: 240px" />
+                <img alt="" src="/img/220px-영화_소울.jpg" style="width: 160px; height: 240px" />
             </div>
             <div id="basic-info">
                 <h1 id="title">소울</h1>
@@ -155,7 +155,7 @@
                         <div class='slider-elements'>
                             <!-- a태그가 안먹힌다.. 어떻게 제어해야하지? -->
                             <a href="staff_detail.html">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">피트 닥터</div>
                                     <div class="staff-role">감독</div>
@@ -164,7 +164,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">켐프 파워스</div>
                                     <div class="staff-role">감독</div>
@@ -173,7 +173,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">제이미 폭스</div>
                                     <div class="staff-role">성우 | 조 가드너</div>
@@ -182,7 +182,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">티나 페이</div>
                                     <div class="staff-role">성우 | 22</div>
@@ -191,7 +191,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">그레이엄 노튼</div>
                                     <div class="staff-role">성우 | 문윈드</div>
@@ -200,7 +200,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">레이첼 하우스</div>
                                     <div class="staff-role">성우 | 테리</div>
@@ -209,7 +209,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">엘리스 브라가</div>
                                     <div class="staff-role">성우 | 제리</div>
@@ -218,7 +218,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">리처드 아이오아디</div>
                                     <div class="staff-role">성우 | 제리</div>
@@ -227,7 +227,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">도넬 로우링스</div>
                                     <div class="staff-role">성우 | 데즈</div>
@@ -236,7 +236,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">아미어-칼리브 톰슨</div>
                                     <div class="staff-role">성우 | 컬리</div>
@@ -245,7 +245,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">안젤라 바셋</div>
                                     <div class="staff-role">성우 | 도로시아</div>
@@ -254,7 +254,7 @@
                         </div>
                         <div class='slider-elements'>
                             <a href="">
-                                <img src="img/profile.svg" class="profile-img">
+                                <<img src="/img/profile.svg" class="profile-img">
                                 <div class="name-and-role">
                                     <div class="staff-name">다비드 딕스</div>
                                     <div class="staff-role">성우 | 폴</div>
@@ -274,80 +274,77 @@
                     <h4>코멘트</h4>
                     <span class="more-info"><a href="rating_more_member.html">더보기</a></span>
                     <div id="comment-zone">
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="img/profile.svg" class="profile-img" />
-                                <div class="user-nickname">지니어스현</div>
-                                <div class="comment-star-rating">★ 5.0</div>
-                            </div>
-                            <div class="comment">
-                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt mollit anim id est laborum.</p>
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="img/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button id="like-button">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="img/profile.svg" class="profile-img" />
-                                <div class="user-nickname">김은규</div>
-                                <div class="comment-star-rating">★ 4.5</div>
-                            </div>
-                            <div class="comment">
-                                <p>인생영화 각</p>
+                       <c:forEach var="commentList" items="${commentList }">
+	                        <div class="comment-card">
+	                            <div class="user-info-and-rating">
+	                            		<input type="hidden" id="commentIndex" class="commentIndex" name="commentIndex" value="${commentList.COMMENTINDEX }"/>
+	                                <img src="${commentList.PHOTO }" class="profile-img">
+	                                <div class="user-nickname">${commentList.NICKNAME }</div>
+	                                <div class="comment-star-rating">★ ${commentList.STARS }</div>
+	                            </div>
+	                            <div class="comment">
+	                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
+	                                <p>${commentList.TEXT }</p>
+	                            </div>
+	                            <div class="like-count-zone">
+	                                <img src="/img/movie/like.svg" id="like-thumb" />
+	                                <span id="like-count${commentList.COMMENTINDEX }" class="like-count">${commentList.LIKECOUNT }</span>
+	                            </div>
+	                            <div class="like-and-report">
+	                                <span><button data-toggle="modal" id="like-button${commentList.COMMENTINDEX }" class="like-button"
+	                                onclick="clickLikeButton(${commentList.COMMENTINDEX})">좋아요</button></span>
+	                                <span><button data-toggle="modal" id="report-button"
+	                                        data-target="#report-modal${commentList.COMMENTINDEX }">신고하기</button></span>
+	                            </div>
+		
+		                        <!-- siren Modal(member) -->
+		                        <div class="modal fade" id="report-modal${commentList.COMMENTINDEX }" tabindex="-1" role="dialog"
+		                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+									
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header" id="modal-title-wrapper">
+												<h5 class="modal-title" id="exampleModalLabel">신고하기</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<div id="report-modal-contents">
+													<div id="report-modal-movie-title">
+														<h5>제목</h5>
+														<div>${movieInfoVo.title }</div>
+													</div>
+													<div id="report-modal-author">
+														<h5>작성자</h5>
+														<div>${commentList.NICKNAME }</div>
+													</div>
+													<div id="report-modal-comment-contents">
+														<h5>내용</h5>
+														<p>${commentList.TEXT }</p>
+													</div>
+													<textarea id="report-modal-comment-zone" name="reportText" row="1" cols="1" rows="1"
+														placeholder="신고하시는 이유를 작성해주세요."
+														style="resize: none; width: 450px; height: 300px; padding: 10px;"></textarea>
+												</div>
+											</div>
+											<div class="modal-footer" id="footer-buttons">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal"
+													aria-label="Close" id="button-for-cancel">취소</button>
+												<button type="button" class="btn btn-primary" data-toggle="modal"
+													data-target="#report-result-modal" data-dismiss="modal"
+													aria-label="Close" id="button-for-submit">확인</button>
+											</div>
+										</div>
+									</div>
+									
+									
+		                        </div>
+		                        <!-- modal 끝 -->
+	                        </div>
+	                    </c:forEach>
 
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="img/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
-
-                        <div class="comment-card">
-                            <div class="user-info-and-rating">
-                                <img src="img/profile.svg" class="profile-img" />
-                                <div class="user-nickname">박서우</div>
-                                <div class="comment-star-rating">★ 5.0</div>
-                            </div>
-                            <div class="comment">
-                                <p>읏챠피디아를 뒤집어 놓으셨다</p>
-                                <p>최고의 영화</p>
-                            </div>
-                            <div class="like-count-zone">
-                                <img src="img/like.svg" id="like-thumb" />
-                                <span id="like-count">123</span>
-                            </div>
-                            <div class="like-and-report">
-                                <span><button data-toggle="modal" id="like-button"
-                                        data-target="#like-modal">좋아요</button></span>
-                                <span><button data-toggle="modal" id="report-button"
-                                        data-target="#report-modal">신고하기</button></span>
-                            </div>
-                        </div>
-
-                        <!-- siren Modal(member) -->
-                        <div class="modal fade" id="report-modal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<jsp:include page="modal/report_modal_member.jsp"/>
-                        </div>
                     </div>
 
                     <!-- 신고 결과 모달 -->
@@ -356,6 +353,7 @@
                         <jsp:include page="modal/report_modal_complete.jsp"/>
                     </div>
                 </div>
+                  
                 <div class="detail-info" id="collection">
                     <h4>이 작품이 담긴 컬렉션</h4>
                     <div>
@@ -409,7 +407,46 @@
         <!------------ footer ------------>
 		<jsp:include page="/WEB-INF/view/user/footer.jsp"/>
 		<!-- footer 끝 -->
+		<script>
+			function clickLikeButton(cIndex) {
+				var commentIndex = cIndex;
+				var idx = $(event.target);
+				
+				var likeCountIndex = "like-count" + commentIndex;
+				
+				console.log(idx.parents('div').find('.like-count'));
+				$.ajax({
+					type : 'POST',
+					url : '/commentLike',
+					async : false,
+					data : "commentIndex=" + commentIndex,
+					success : function(result) {
+						
+						if (result.likeCheck == 1) {
+							idx.css("background-color", "rgb(255, 7, 88)");
+							idx.css("color", "white");
+							
+						} else if (result.likeCheck == 0) {
+							idx.css("background-color", "#e3e3e3")
+							idx.css("color", "black");
 
+							}
+						$("#" + likeCountIndex).empty();
+						$("#" + likeCountIndex).append(result.likeCount);
+						
+
+						},
+					error : function() {
+						alert("error!");
+
+						}
+
+					});
+					
+
+				}
+
+		</script>
 
 
         <!-- scripts -->

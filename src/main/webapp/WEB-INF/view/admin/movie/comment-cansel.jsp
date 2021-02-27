@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,21 +35,24 @@
                       </div>
 
                     <div id="comment-move-container">
-                        <div id="comment-move-enrollment" OnClick="location.href ='comment-enrollment.html'">
+                        <div id="comment-move-enrollment" OnClick="location.href ='/admin/commentenroll'">
                             <h2>등록</h2>
                         </div>
                         <div id="comment-move-cancel"style="background-color: #3498DB;">
                             <h2>취소</h2>
                         </div>
                     </div>
+                    <form action="/admin/commentcansel/blindoff">
+                    
+                    
                     <div id="comment-input-data" class="col-lg-12">
                         <table class="table table-hover">
                             <thead>
                               <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">선택</th>
-                                <th scope="col">신고NO</th>
-                                <th scope="col">이름</th>
+                                <th scope="col">코맨트번호</th>
+                                <th scope="col">영화ID</th>
+                                <th scope="col">아이디</th>
                                 <th scope="col">블라인드 여부</th>
                                 <th scope="col">신고횟수</th>
                                 
@@ -55,65 +60,54 @@
                               </tr>
                             </thead>
                             <tbody>
+                            <c:forEach items="${getyesblind}" var="b">
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td><input type="checkbox"/></td>
-                                    <td>4</td>
-                                    <td>김민진</td>
-                                    <td>o</td>
-                                    <td>1412</td>
+                                    <td><input type="checkbox" name="ci" value="${b.commentIndex}"/></td>
+                                    <td>${b.commentIndex}</td>
+                                    <td>${b.fkMovieDocid}</td>
+                                    <td>${b.fkMemberEmail}</td>
+                                    <td>${b.commentBlindCheck}</td>
+                                    <td>${b.commentReportCount}</td>
                                   </tr>
-                                  <tr>
-                                    <th scope="row">2</th>
-                                    <td><input type="checkbox"/></td>
-                                    <td>3</td>
-                                    <td>박서우</td>
-                                    <td>x</td>
-                                    <td>2133</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">3</th>
-                                    <td><input type="checkbox"/></td>
-                                    <td>2</td>
-                                    <td>백종웅</td>
-                                    <td>x</td>
-                                    <td>41515</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">4</th>
-                                    <td><input type="checkbox"/></td>
-                                    <td>1</td>
-                                    <td>김은규</td>
-                                    <td>x</td>
-                                    <td>1234</td>
-                                  </tr>
+                            </c:forEach>
+                                  
                             </tbody>
                           </table>
                               
                         </div>
+                        <c:set var="page" value="${(param.p == null)?1:param.p}"/>
+                              <c:set var="startNum" value="${page-(page-1)%5}" />
+                              <c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"/>
+                        <div style="margin-bottom:30px ">
+                              <span>현재페이지 ${(empty param.p)?1:param.p}</span>
+                              /${lastNum} page
+                          </div>
+                        <nav id="comment-data-page" aria-label="Page navigation example">
+                             <ul class="pagination">
+                               <c:if test="${startNum-1>0}">
+                                <li class="page-item" ><a class="page-link" href="?p=${startNum-1}">이전</a></li>
+                              </c:if>
+                              <c:if test="${startNum<=1}">
+                                <li class="page-item" ><a class="page-link" onclick="alert('첫번째 페이지입니다.')">이전</a></li>
+                              </c:if>
+                              
+                                <c:forEach var="i" begin="0" end="4">
+                                <c:if test="${(startNum+i) <= lastNum}">
+                                <li class="page-item ${(page==(startNum+i))?'active':''}"><a class="page-link" href="?p=${startNum+i}">${startNum+i}</a></li>
+                                </c:if>
+                                
+                                </c:forEach>
+                                <c:if test="${startNum+4<lastNum}">
+                                <li class="page-item"><a class="page-link" href="?p=${startNum+5}">다음</a></li>
+                                </c:if>
+                                <c:if test="${startNum+4>=lastNum}">
+                                <li class="page-item"><a class="page-link" onclick="alert('다음 페이지가 없습니다.')">다음</a></li>
+                                </c:if>
+                            </ul>
+                          </nav>
                         <div id="btn-container">
-                            <button id="comment-del-one" type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-del-one">선택취소</button>
-                            <!--modal1-->
-                            <div class="modal fade" id="c-del-one" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">해제</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                     선택 취소를 하시겠습니까?
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                                      <button type="button" class="btn btn-primary">확인</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            <button id="comment-del-all" type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-del-all">전체취소</button>
+                            
+                            <button id="comment-del-all" type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-del-all">선택취소</button>
                             <!--modal2-->
                             <div class="modal fade" id="c-del-all" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -125,26 +119,19 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                    전체 취소를 하시겠습니까?
+                                    취소를 하시겠습니까?
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                                      <button type="button" class="btn btn-primary">확인</button>
+                                      <button type="submit" class="btn btn-primary">확인</button>
                                     </div>
                                   </div>
                                 </div>
                               </div>
 
                         </div>
-                        <nav id="comment-data-page" aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">다음</a></li>
-                            </ul>
-                          </nav>
+                        </form>
+                        
                       </div>
                       </div>
 

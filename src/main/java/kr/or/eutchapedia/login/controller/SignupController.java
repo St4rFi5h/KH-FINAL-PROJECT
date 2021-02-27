@@ -16,7 +16,7 @@ public class SignupController {
 	private MemberService memberService;
 	
 	//회원가입 ㅍㅔ이지
-	@RequestMapping(value="/form")
+	@RequestMapping(value="/signup")
 	public ModelAndView signupPage() {
 		ModelAndView mv = new ModelAndView("user/member/signup");
 		
@@ -25,7 +25,7 @@ public class SignupController {
 	
 	
 	//회원가입 컨트롤러
-	@RequestMapping(value="/signup", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value="/signup.do", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView signup(MemberVo memberVo) {
 		ModelAndView mv = new ModelAndView("user/member/signup_complete");
 		//회원가입 메서드

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,10 +28,12 @@
 <!-- header 끝 -->
 
   <div class="section">
+  
     <main>
 	
       <section id="movie" style="margin: auto; display: inline-block;">
 
+      
         <!--박스오피스 슬라이드 -->
         <div class="main_slider">
           <h1 class="slider_title">박스오피스</h1>
@@ -245,852 +249,125 @@
 
           </div>
         </div>
+		        <!--왓챠 영화 순위 슬라이드 -->
+		        <div class="main_slider" id="watchaList">
+		          <h1 class="slider_title">왓챠 영화 순위</h1>
+		          <div class="movie_slider" id="watcha_slider">
+			
+			         <c:forEach items="${watchaList}" var="MovieInfoVo" begin="0" end="9" >
+			         
+			            <div class="movie_box">
+						  <a href="/movie/detail?movieDocId=${MovieInfoVo.movieDocId}"><!-- detail페이지 연결해야함  -->
+			              <div class="poster">
+			                  <img src="${MovieInfoVo.posterUri}" alt="" class="movie_img">
+			                  <div class="rank">${MovieInfoVo.movieRanking}</div>
+			                  <div class="movie_info">
+			                    <h4 class="movie_title">${MovieInfoVo.title}</h4>
+			                    <p><div class="movie_yearNnation">
+			                    <fmt:parseDate value='${MovieInfoVo.prodYear}' var='prodYear' pattern="yyyyMMdd" scope="page"/>
+			                    <fmt:formatDate value="${prodYear}" pattern="yyyy"/>
+			                    <span>·</span>${MovieInfoVo.nation}</div></p>
+			                    <p><div class="movie_average">평균<span>★</span>4.4</div></p>
+			                  </div>
+			               </div>
+			               </a>
+			            </div>
+			            
+			         </c:forEach>
+			            
+				 </div>
+				</div>
+				
+			
+		        <!--넷플릭스 영화 순위 슬라이드 -->
+		        <div class="main_slider">
+		          <h1 class="slider_title">넷플릭스 영화 순위</h1>
+		          <div class="movie_slider" id="netflix_slider">
+		
+				   <c:forEach items="${netflixList}" var="MovieInfoVo" begin="0" end="9" >
+			     
+			            <div class="movie_box">
+					      <a href="/movie/detail?movieDocId=${MovieInfoVo.movieDocId}">
+			                <div class="poster">
+			                  <img src="${MovieInfoVo.posterUri}" alt="" class="movie_img">
+			                  <div class="rank">${MovieInfoVo.movieRanking}</div> 
+			                  <div class="movie_info">
+			                    <h4 class="movie_title">${MovieInfoVo.title}</h4>
+			                    <p><div class="movie_yearNation">
+			                    <fmt:parseDate value='${MovieInfoVo.prodYear}' var='prodYear' pattern="yyyyMMdd" scope="page"/>
+		                    	<fmt:formatDate value="${prodYear}" pattern="yyyy"/>
+			                    <span>·</span>${MovieInfoVo.nation}</div></p>
+			                    <p><div class="movie_average">평균<span>★</span>4.0</div></p>
+			                  </div>
+			                </div>
+			              </a>
+			            </div>
+			            
+			       </c:forEach>
+			          
+	          </div>
+	        </div>
 
-        <!--왓챠 영화 순위 슬라이드 -->
-        <div class="main_slider">
-          <h1 class="slider_title">왓챠 영화 순위</h1>
-          <div class="movie_slider" id="watcha_slider">
+	
+	        <!--슬라이드 (읏챠피디아 검색 TOP !) -->
+	        <div class="main_slider">
+	          <h1 class="slider_title">읏챠피디아 검색 TOP</h1>
+	          <div class="movie_slider" id="search_slider">
+	
+	 		   <c:forEach items="${searchList}" var="MovieInfoVo" begin="0" end="9" >
+	
+	           	   <div class="movie_box">  
+						<a href="/movie/detail?movieDocId=${MovieInfoVo.movieDocId}">
+			                <div class="poster">
+			                  <img src="${MovieInfoVo.posterUri}" alt="" class="movie_img"> 
+	     					  <div class="rank">${MovieInfoVo.movieRankingIndex}</div> 
+			                  <div class="movie_info">
+			                    <h4 class="movie_title">${MovieInfoVo.title}</h4>
+			                    <p><div class="movie_yearNation">
+			                    <fmt:parseDate value='${MovieInfoVo.prodYear}' var='prodYear' pattern="yyyyMMdd" scope="page"/>
+		                    	<fmt:formatDate value="${prodYear}" pattern="yyyy"/>
+			                    <span>·</span>${MovieInfoVo.nation}</div></p>
+			                    <p><div class="movie_average">평균<span>★</span>3.3</div></p>
+			                  </div>
+			                </div>
+			              </a>
+			           </div>
+			           
+			       </c:forEach>
+		
+		          </div>
+		        </div>
+	
 
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1540036404/zwkzpuxypnsrr5d5ebcv.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">1</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">해리포터와 마법사의 돌</h4>
-                    <p>
-                    <div class="movie_yearNnation">2001<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.3</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1549620830/u12z5sc75bq2cklu6ytm.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">2</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">해리포터와 비밀의 방</h4>
-                    <p>
-                    <div class="movie_yearNnation">2002<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.2</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1575260997/tlhbhw7fzmpfiqawooi9.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">3</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">백두산</h4>
-                    <p>
-                    <div class="movie_yearNnation">2019<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>2.4</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466068215/ancxjvkih7rkpcse9xi4.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">4</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">해리포터와 혼혈왕자</h4>
-                    <p>
-                    <div class="movie_yearNnation">2009<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.1</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466065477/rcfepo7df81n27hy2suy.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">5</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">해리포터와 아즈카반의 죄수</h4>
-                    <p>
-                    <div class="movie_yearNnation">2004<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.3</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- 추가 -->
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1605512451/ck9svslwdwkn1o4bf5pv.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">6</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">조제</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>2.7</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1519955226/vvnr4dqs6rxnxbc4mgvq.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">7</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">지금 만나러 갑니다</h4>
-                    <p>
-                    <div class="movie_yearNnation">2017<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.9</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1511292612/ritobaaal7nub51vhchp.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">8</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">이프온리</h4>
-                    <p>
-                    <div class="movie_yearNnation">2004<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.0</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/b89f051acb35c22408133f662fdd6537.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeU56VXdOekV5TmpNek9EVXlNVEV6SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LkpDNXZISFE3dEVNb0dPam8xa0tKUXplVFZPcl9mdGMxWEx2VmVtU2ZzQ00"
-                    alt="" class="movie_img">
-                  <div class="rank">9</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">미션 파서블</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>2.1</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1584332815/iztgzqnncfzizjujcqlq.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">10</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">주디</h4>
-                    <p>
-                    <div class="movie_yearNnation">2019<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.4</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-          </div>
-        </div>
-
-        <!--넷플릭스 영화 순위 슬라이드 -->
-        <div class="main_slider">
-          <h1 class="slider_title">넷플릭스 영화 순위</h1>
-          <div class="movie_slider" id="netflix_slider">
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/12df6a89cf13443c181f2ea716b1f63e.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFd05qQTRPVGd5TXpjME9EYzVNalk1SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnFIeFZyYVh2Smh5aHpjdFZNd2xKTldhSzZqVU1qR3dOOWIzaUhLSFllNGs"
-                    alt="" class="movie_img">
-                  <div class="rank">1</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">승리호</h4>
-                    <p>
-                    <div class="movie_yearNnation">2019<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.1</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1602653039/kjdvdyucvpq6mb9kpxbj.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">2</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">삼진그룹 영어토익반</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>2.9</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1588552655/uibnepxhilqts4wgwpgx.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">3</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">헌트</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.0</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/143d833ee975bd43e6694b8263eddf4b.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE5UVTBNVEEzTnpjNE1EZzJOalF4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnpEM0FpLS14SGZyRGI2U3NBOVZ5ekRGeUxCVXdTVW5qdnlhTm12MWVCVkU"
-                    alt="" class="movie_img">
-                  <div class="rank">4</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">빌로우제로</h4>
-                    <p>
-                    <div class="movie_yearNnation">2021<span>·</span>스페인</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>2.7</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1585634628/hqqqrmqejgejsg3wqgdu.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">5</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">트롤</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.0</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- 추가 -->
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1589763058/rkm96kgksw2jryfpje9u.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">6</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">날씨의 아이</h4>
-                    <p>
-                    <div class="movie_yearNnation">2019<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.2</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1494335756/ivj6rq72wxwzrp8wxd3u.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">7</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">겟 아웃</h4>
-                    <p>
-                    <div class="movie_yearNnation">2017<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.7</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1588552655/uibnepxhilqts4wgwpgx.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">8</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">헌트</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.0</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/143d833ee975bd43e6694b8263eddf4b.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE5UVTBNVEEzTnpjNE1EZzJOalF4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnpEM0FpLS14SGZyRGI2U3NBOVZ5ekRGeUxCVXdTVW5qdnlhTm12MWVCVkU"
-                    alt="" class="movie_img">
-                  <div class="rank">9</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">빌로우제로</h4>
-                    <p>
-                    <div class="movie_yearNnation">2021<span>·</span>스페인</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>2.7</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1503023644/q0mrixbkqdhu9fa6lvbu.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">10</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">청년경찰</h4>
-                    <p>
-                    <div class="movie_yearNnation">2017<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.8</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-          </div>
-        </div>
-
-
-        <!--슬라이드 (이번주 검색 TOP !) -->
-        <div class="main_slider">
-          <h1 class="slider_title">이번주 검색 TOP!</h1>
-          <div class="movie_slider" id="search_slider">
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466062122/axkk3v81flbf0o1kz0co.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">1</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">귀를 기울이면</h4>
-                    <p>
-                    <div class="movie_yearNnation">1995<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.8</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466064258/x8yowmjhm0jnl2ukqans.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">2</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">하울의 움직이는 성</h4>
-                    <p>
-                    <div class="movie_yearNnation">2004<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.2</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1559555586/miwd1umtsyo1oivmebot.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">3</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">이웃집 토토로</h4>
-                    <p>
-                    <div class="movie_yearNnation">1988<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.0</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1559138313/xwqkbklmvpevyzafufbr.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">4</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">기생충</h4>
-                    <p>
-                    <div class="movie_yearNnation">2019<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.7</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1607183466/pcynw0x0uewpepasol7k.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">5</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">더 디그</h4>
-                    <p>
-                    <div class="movie_yearNnation">2021<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.3</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- 추가 -->
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1606989380/ef94pwvtokrxfny6xz3a.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">6</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">꽃다발같은 사랑을 했다</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.2</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1587435957/byltsexidgn7rebayp7h.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">7</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">실</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>2.9</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1570899847/depz6qjrcakjnbpih8or.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">8</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">82년생 김지영</h4>
-                    <p>
-                    <div class="movie_yearNnation">2019<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.8</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1511551419/gx7kxjewsp6tn7d17lbd.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">9</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">미스테이러스 스킨</h4>
-                    <p>
-                    <div class="movie_yearNnation">2004<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.6</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1589766437/twkoxyi9dyhl0bvrxt71.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">10</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">미스비헤이비어</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.8</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-          </div>
-        </div>
-
-
-        <!--슬라이드 (이번주 리뷰 TOP !) -->
-        <div class="main_slider">
-          <h1 class="slider_title">이번주 리뷰 TOP!</h1>
-          <div class="movie_slider" id="review_slider">
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/019eb913f9f7589b0bb2e57bdb5bb76f.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFd05ERTFPVFF3TVRZMk1ESXpNakUySWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnVtVUw5TmFTZ3JpamVBamF5NEpLU29ZMlVRZnBXU0Z1S2pRcno0SWtJMFU"
-                    alt="" class="movie_img">
-                  <div class="rank">1</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">비포 미드나잇</h4>
-                    <p>
-                    <div class="movie_year">2013<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.9</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466091327/s9thkbzfsjo5wylvqid7.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">2</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">미드나잇 인 파리</h4>
-                    <p>
-                    <div class="movie_year">2011<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.8</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1575596060/oketahpvj6milejraoif.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">3</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">나이보스 아웃</h4>
-                    <p>
-                    <div class="movie_year">2019<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.0</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1591666357/icvpyutx9etvcgaeooko.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">4</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">콜 미 바이 유어 네임</h4>
-                    <p>
-                    <div class="movie_year">2017<span>·</span>이탈리아</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.0</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1553140014/ez1vxznfdnaqplmoyrpy.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">5</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">그랜드 부다페스트 호텔</h4>
-                    <p>
-                    <div class="movie_year">2014<span>·</span>독일</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.0</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-
-            <!-- 추가 -->
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1504852689/mbpzkjhecpuy2aauueb7.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">6</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">나는 내일, 어제의 너와 만난다</h4>
-                    <p>
-                    <div class="movie_year">2016<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.9</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1580693070/tmybyccxiwkvsvj6ioan.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">7</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">작은 아씨들</h4>
-                    <p>
-                    <div class="movie_year">2019<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.0</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466062864/gdiffhahfnpsqn0sw7va.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">8</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">토이 스토리</h4>
-                    <p>
-                    <div class="movie_year">1995<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.1</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466062816/ykldf9sazup0otph9jzu.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">9</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">500일의 썸머</h4>
-                    <p>
-                    <div class="movie_year">2009<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.9</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466162784/bxdpnkpw0rjelo1p8ubo.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">10</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">곡성(哭聲)</h4>
-                    <p>
-                    <div class="movie_year">2015<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.8</div>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-          </div>
-        </div>
+		        <!--슬라이드 (읏챠피디아 리뷰 TOP !) -->
+		        <div class="main_slider">
+		          <h1 class="slider_title">읏챠피디아 리뷰 TOP</h1>
+		          <div class="movie_slider" id="review_slider">
+		
+		    	  <c:forEach items="${reviewList}" var="MovieInfoVo" begin="0" end="9" >
+		
+		         	   <div class="movie_box">
+							<a href="/movie/detail?movieDocId=${MovieInfoVo.movieDocId}">
+			                <div class="poster">
+			                  <img src="${MovieInfoVo.posterUri}" alt="" class="movie_img">
+	     					  <div class="rank">${MovieInfoVo.movieRankingIndex}</div> 
+			                  <div class="movie_info">
+			                    <h4 class="movie_title">${MovieInfoVo.title}</h4>
+			                    <p><div class="movie_yearNation">
+			                    <fmt:parseDate value='${MovieInfoVo.prodYear}' var='prodYear' pattern="yyyyMMdd" scope="page"/>
+		                    	<fmt:formatDate value="${prodYear}" pattern="yyyy"/>
+			                    <span>·</span>${MovieInfoVo.nation}</div></p>
+			                    <p><div class="movie_average">평균<span>★</span>3.8</div></p>
+			                  </div>
+			                  </div>
+				             </a>
+				          </div>
+				            
+				  </c:forEach>
+				
+		
+		          </div>
+		        </div>
 
 
         <!--슬라이드 (읏챠피디아 컬렉션) -->
@@ -1234,7 +511,11 @@
 
       </section>
 
+<!--  <button onclick="txt()">영화 정보 요청</button>
+    <div id="box"></div>
 
+
+ -->
 
     </main>
 </div>
@@ -1242,6 +523,24 @@
 <!-- footer -->
 <jsp:include page="footer.jsp"/>
 <!-- footer 끝 -->
+<!--  <script>
+        function txt(){
+            // 클릭할때마다 안에 글자들만 꺼내온다.
+            $.ajax({
+                // 내가 튜닝한 url을 넣어준다.
+                url : "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=79497ecabb6e26ac7267da5539baa52f&targetDt=20210222",
+                type : "GET",
+                success : function(res){
+                    alert('연결 성공');
+                },
+                error : function(){
+                    alert("연결 실패");
+                }
+            })
+        }
+    </script>
+ -->
+
 
 
 
@@ -1250,5 +549,10 @@
   <script src="/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="/js/main/movieslider.js"></script>
+  
+ <!-- <script src="/js/main/boxoffice.js"></script>  
+    <script src="/js/main/boxoffice2.js"></script> 
+  
+  <script src="/js/main/boxoffice1.js"></script> --> 
 </body>
 </html>

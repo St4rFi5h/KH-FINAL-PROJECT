@@ -63,5 +63,4 @@ public class CommentListVo {
 		this.stars = stars;
 	}
 	
-	
 }

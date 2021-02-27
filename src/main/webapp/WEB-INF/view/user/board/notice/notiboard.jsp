@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +86,7 @@
                 <div class="notiboard_section">
                     <div class="head_aticle">
                     	<!-- test -->
-                    	<h3>${list }</h3>
+
                     	<!-- test -->
                         <h3 class="tit">
                             공지사항
@@ -95,33 +96,33 @@
                         </h3>
                         <div class="tt_tbl"></div>
                     </div>
-                    <form name="notiboard_frm" action="">
                         <div class="accordion_banner" id="tbl_notice">
                             <div class="tbl_notice_tit">
                                 <div class="tbl_notice_info">
-                                    <p class="tbl_info_type"><input type="checkbox" class="checkall"/></p>
-                                    <p class="tbl_info_type">번호</p>
-                                    <p class="tbl_info_tit">제목</p>
-                                    <p class="tbl_info_date">작성일</p>
+	                                    <p class="tbl_info_type"><input type="checkbox" class="checkall"/></p>
+	                                    <p class="tbl_info_type">번호</p>
+	                                    <p class="tbl_info_tit">제목</p>
+	                                    <p class="tbl_info_date">작성일</p>
                                 </div>
                             </div>
+                            <!---->
+                            <c:forEach var="board" items="${list }">
                             <div class="accordion_title">
                                 <div class="tbl_notice_info">
                                     <div class="infoinner">
-                                    <c:forEach var="l" items="${list }">
                                         <p class="tbl_info_type"><input type="checkbox" name="del-id" value="" class="checkbox">
                                             <span class="blind">체크박스</span>
                                         </p>
-                                        <p class="tbl_info_type">${l.noticeIdx }
+                                        <p class="tbl_info_type">${board.noticeNo }
                                             <span class="blind">번호</span>
                                         </p>
-                                        <p class="tbl_info_tit">${l.noticeTitle }
+                                        <p class="tbl_info_tit">${board.noticeTitle }
                                             <span class="blind">제목</span>
                                         </p>
-                                        <p class="tbl_info_date">${l.noticeDate }
+                                        <p class="tbl_info_date">${board.noticeDate }
                                             <span class="blind">작성일</span>
                                         </p>
-                                    </c:forEach>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -129,341 +130,65 @@
                                 <div class="reply_row">
                                     <div class="notice_wrap">
                                         <div>
-                                        <c:forEach var="l" items="${list }">
-                                        	<p>${l.noticeContent }</p>
+                                            <p>${board.noticeContent }</p>
                                                 <span class="modi_span">
-                                                    <a href="notiboard(admin_modify).html" class="modi_btn">수정</a>
-                                                </span>
-                                        </c:forEach>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_type">17
-                                            <span class="blind">번호</span>
-                                        </p>
-                                        <p class="tbl_info_tit">[공지] 개인정보 처리방침 변경 사전 안내
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">2020-12-29
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <div>
-                                            <p>안녕하세요</p>
-                                            <p>읏챠피디아 입니다.</p>
-                                            <p>더 나은 서비스를 제공할 수 있도록 개인정보 처리방침 문서를
-                                                변경하였음을 알려드립니다.</p>
-
-                                                <span class="modi_span">
-                                                    <a href="notiboard(admin_modify).html" class="modi_btn">수정</a>
+                                                    <a href="${path }/notice/updateView?noticeNo=${board.noticeNo}" class="modi_btn">수정</a>
                                                 </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_type">17
-                                            <span class="blind">번호</span>
-                                        </p>
-                                        <p class="tbl_info_tit">[공지] 개인정보 처리방침 변경 사전 안내
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">2020-12-29
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <div>
-                                            <p>안녕하세요</p>
-                                            <p>읏챠피디아 입니다.</p>
-                                            <p>더 나은 서비스를 제공할 수 있도록 개인정보 처리방침 문서를
-                                                변경하였음을 알려드립니다.</p>
-
-                                                <span class="modi_span">
-                                                    <a href="notiboard(admin_modify).html" class="modi_btn">수정</a>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_type">17
-                                            <span class="blind">번호</span>
-                                        </p>
-                                        <p class="tbl_info_tit">[공지] 개인정보 처리방침 변경 사전 안내
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">2020-12-29
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <div>
-                                            <p>안녕하세요</p>
-                                            <p>읏챠피디아 입니다.</p>
-                                            <p>더 나은 서비스를 제공할 수 있도록 개인정보 처리방침 문서를
-                                                변경하였음을 알려드립니다.</p>
-
-                                                <span class="modi_span">
-                                                    <a href="notiboard(admin_modify).html" class="modi_btn">수정</a>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_type">17
-                                            <span class="blind">번호</span>
-                                        </p>
-                                        <p class="tbl_info_tit">[공지] 개인정보 처리방침 변경 사전 안내
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">2020-12-29
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <div>
-                                            <p>안녕하세요</p>
-                                            <p>읏챠피디아 입니다.</p>
-                                            <p>더 나은 서비스를 제공할 수 있도록 개인정보 처리방침 문서를
-                                                변경하였음을 알려드립니다.</p>
-
-                                                <span class="modi_span">
-                                                    <a href="notiboard(admin_modify).html" class="modi_btn">수정</a>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_type">17
-                                            <span class="blind">번호</span>
-                                        </p>
-                                        <p class="tbl_info_tit">[공지] 개인정보 처리방침 변경 사전 안내
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">2020-12-29
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <div>
-                                            <p>안녕하세요</p>
-                                            <p>읏챠피디아 입니다.</p>
-                                            <p>더 나은 서비스를 제공할 수 있도록 개인정보 처리방침 문서를
-                                                변경하였음을 알려드립니다.</p>
-
-                                                <span class="modi_span">
-                                                    <a href="notiboard(admin_modify).html" class="modi_btn">수정</a>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_type">17
-                                            <span class="blind">번호</span>
-                                        </p>
-                                        <p class="tbl_info_tit">[공지] 개인정보 처리방침 변경 사전 안내
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">2020-12-29
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <div>
-                                            <p>안녕하세요</p>
-                                            <p>읏챠피디아 입니다.</p>
-                                            <p>더 나은 서비스를 제공할 수 있도록 개인정보 처리방침 문서를
-                                                변경하였음을 알려드립니다.</p>
-
-                                                <span class="modi_span">
-                                                    <a href="notiboard(admin_modify).html" class="modi_btn">수정</a>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_type">17
-                                            <span class="blind">번호</span>
-                                        </p>
-                                        <p class="tbl_info_tit">[공지] 개인정보 처리방침 변경 사전 안내
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">2020-12-29
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <div>
-                                            <p>안녕하세요</p>
-                                            <p>읏챠피디아 입니다.</p>
-                                            <p>더 나은 서비스를 제공할 수 있도록 개인정보 처리방침 문서를
-                                                변경하였음을 알려드립니다.</p>
-
-                                            <span class="modi_span">
-                                                <a href="notiboard(admin_modify).html" class="modi_btn">수정</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!---->
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="${n.nno}" class="checkbox">
-                                            <span class="blind">체크박스</span>
-                                        </p>
-                                        <p class="tbl_info_type">17
-                                            <span class="blind">번호</span>
-                                        </p>
-                                        <p class="tbl_info_tit">[공지] 개인정보 처리방침 변경 사전 안내
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">2020-12-29
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <div>
-                                            <p>안녕하세요</p>
-                                            <p>읏챠피디아 입니다.</p>
-                                            <p>더 나은 서비스를 제공할 수 있도록 개인정보 처리방침 문서를
-                                                변경하였음을 알려드립니다.</p>
-                                            
-                                            <span class="modi_span">
-                                                <a href="notiboard(admin_modify).html" class="modi_btn">수정</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </c:forEach>
 
                             <!-- 관리자 버튼-->
                             <div class="buttons">
-                                <a href="notiboard(admin_write).html"><input type="button" class="write_btn yb" value="글쓰기"/></a>
+                                <a href="/notice/insertView"><input type="button" class="write_btn yb" value="글쓰기"/></a>
                                 <input type="submit" class="write_btn yb" name="cmd" value="삭제" onclick="return confirm('정말로 삭제하시겠습니까?')"/>
                                 <input type="submit" class="write_btn yb" name="cmd" value="공개"/>
                             </div>
 
                             <!-- 페이징 -->
-                            <div class="pagination_section">
+							<div class="pagination_section">
                                 <div class="custom_pagination">
-                                    <span class="pagination_prev disabled">
-                                        <a href="">
-                                            <ruler-svg-icon-prev>
-                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
-                                                    <path d="M143.492,221.863L336.226,29.129c6.663-6.664,6.663-17.468,0-24.132c-6.665-6.662-17.468-6.662-24.132,0l-204.8,204.8
-                                                        c-6.662,6.664-6.662,17.468,0,24.132l204.8,204.8c6.78,6.548,17.584,6.36,24.132-0.42c6.387-6.614,6.387-17.099,0-23.712
-                                                        L143.492,221.863z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
-                                                </svg>
-                                            </ruler-svg-icon-prev>
-                                        </a>
-                                    </span>
-                                    <span class="pagenum current">
-                                        <span>1</span>
-                                    </span>
-                                    <span class="pagenum">
-                                        <a>2</a>
-                                    </span>
-                                    <span class="pagination_next">
-                                        <a href="">
-                                            <ruler-svg-icon-next width="11" height="22" stroke="#000">
-                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
-                                                    <path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
-                                                            L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
-                                                            C342.889,227.058,342.889,216.255,336.226,209.591z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
-                                                </svg>
-                                            </ruler-svg-icon-next>
-                                        </a>
-                                    </span>
+		                            <c:if test="${paging.prev }">
+	                                    <span class="pagination_button prev">
+	                                        <a href="${paging.startPage - 1}">
+	                                            <ruler-svg-icon-prev>
+	                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+	                                                    <path d="M143.492,221.863L336.226,29.129c6.663-6.664,6.663-17.468,0-24.132c-6.665-6.662-17.468-6.662-24.132,0l-204.8,204.8
+	                                                        c-6.662,6.664-6.662,17.468,0,24.132l204.8,204.8c6.78,6.548,17.584,6.36,24.132-0.42c6.387-6.614,6.387-17.099,0-23.712
+	                                                        L143.492,221.863z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
+	                                                </svg>
+	                                            </ruler-svg-icon-prev>
+	                                        </a>
+	                                    </span>
+	                                </c:if>
+	                                <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
+        								<span class="paginate_button pagenum" ${paging.cri.pageNum == num ? 'active':'' }><a href="${num }">${num}</a></span>
+   									 </c:forEach>
+   									 <c:if test="${paging.next && paging.endPage > 0}">
+	                                    <span class="paginate_button next">
+	                                        <a href="${paging.endPage + 1}">
+	                                            <ruler-svg-icon-next width="11" height="22" stroke="#000">
+	                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+	                                                    <path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
+	                                                            L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
+	                                                            C342.889,227.058,342.889,216.255,336.226,209.591z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
+	                                                </svg>
+	                                            </ruler-svg-icon-next>
+	                                        </a>
+	                                    </span>
+	                                 </c:if>
                                 </div>
+                                
+                                <form id="pagingFrm" name="pagingFrm" action="/notice/list" method="get">
+									<input type="hidden" id="pageNum" name="pageNum" value="${paging.cri.pageNum }">
+									<input type="hidden" id="amount" name="amount" value="${paging.cri.amount }">
+								</form>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -539,5 +264,19 @@
             }
         });
     });
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var actionForm = $("#pagingFrm");
+		
+		$(".paginate_button a").on("click", function(e){
+			e.preventDefault();
+			console.log('click');
+			
+			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+			actionForm.submit();
+		});
+
+	});
 </script>
 </html>

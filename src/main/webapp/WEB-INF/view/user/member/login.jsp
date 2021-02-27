@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,44 +24,8 @@
 </head>
 
 <body>
-    <div class="wrap">
-        <header>
-            <div class="wrapper">
-                <div class="navbar">
-                    <div class="navbar_logo">
-                        <a href="main.html"><img id="logo" src="img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                    </div> </a>
-
-                    <div class="menu">
-                        <ul>
-                            <li><a href="about_us.html">ABOUT US</a></li>
-                            <li><a href="#">평가하기</a></li>
-                            <li><a href="#">고객센터</a></li>
-                        </ul>
-                    </div>
-
-                    <!--검색창-->
-                    <div class="searchbar">
-                        <form action="#" autocomplete="on">
-                            <div class="search_box">
-                                <div class="icon"><i class="fas fa-search"></i>
-                                    <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                                    <button class="search_btn" type="submit"> <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="menu">
-                        <ul>
-                            <li><a href="#">로그인</a></li>
-                            <li><a href="#">회원가입</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
+<!-- 헤더 -->
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
 
         <main class="main-body">
             <div class="login-main">
@@ -69,14 +34,14 @@
                 </div>
                 <h2 class="title">로그인</h2>
                 <div class="login-form">
-                    <form method="POST" id="login-form" action="login" onsubmit="return login();">
+                    <form method="POST" id="login-form" action="/login.do" onsubmit="return login();">
                         <p>
-                            <input class="input-email" type="email" name="email" id="email" placeholder="이메일">
+                            <input class="input-email" type="email" name="memberEmail" id="email" placeholder="이메일">
                             <span id="searchclear"><i class="fas fa-times"></i></span>
                             </input>
                         </p>
                         <p>
-                            <input class="input" type="password" name="pwd" id="pwd" placeholder="비밀번호">
+                            <input class="input" type="password" name="memberPwd" id="pwd" placeholder="비밀번호">
                             <!-- <span id="searchclear"><i class="fas fa-times"></i></span> -->
                             </input>
                         </p>
@@ -86,15 +51,14 @@
                     </form>
                 </div>
                 <div class="password-block">
-                    <button type="button" onclick="location.href='findpassword'">비밀번호를 잊어버리셨나요?</button>
+                    <button type="button" onclick="location.href='/findpassword'">비밀번호를 잊어버리셨나요?</button>
                 </div>
                 <div class="signup-block">
                     계정이 없으신가요?
-                    <button type="button" onclick="location.href='signup'">회원가입</button>
+                    <button type="button" onclick="location.href='/signup'">회원가입</button>
                 </div>
-                <hr class="bottom-line">
+                <hr class="bottom-line" >
 
-                </hr>
                 <div id="naver-login">
                     <a href="#"><img src="img/member/naver.PNG" style="width: 311px; height: 44px;" /></a>
                 </div>
@@ -103,45 +67,13 @@
 
         <!------------ footer ------------>
 
-        <footer>
-
-            <section class="count-space">
-                <span class="count">지금까지<em> ★ 123,534,545 개의 평가가 </em> 쌓였어요.</span>
-            </section>
-
-            <div class="footer-right">
-                <div class="social-icons">
-                    <span><a href="#"><i class="fab fa-instagram"></i></a></span>
-                    <span><a href="#"><i class="fab fa-facebook-f"></i></a></span>
-                    <span><a href="#"><i class="fab fa-twitter"></i></a></span>
-                </div>
-            </div>
-
-            <div class="footer-left">
-                <div>
-                    <a href="#"> 서비스 이용약관</a>
-                    <a href="#"> 개인정보 처리방침</a>
-                    <a href="#"> 회사 안내</a>
-                </div>
-
-                <div>
-                    <p>
-                        고객센터<span> | </span>cs@eutchapedia.com, 02-123-4567 <br />
-                        제휴 및 대외 협력<span> | </span>contact@eutcha.com</p>
-                    <p>
-                        주식회사 읏챠<span> | </span>대표 이지현<span> | </span>서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F,20F<br />
-                        사업자 등록 번호 211-12-34567<br />
-                        © 2021 by EUTCHA, Inc. All rights reserved.
-                    </p>
-                </div>
-            </div>
-
-        </footer>
-    </div>
+        <jsp:include page="/WEB-INF/view/user/footer.jsp"/>
+   
 
     <!-- scripts -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/member/login.js"></script>
     <script>
         var $ipt = $('#email'),
             $clearIpt = $('#searchclear');

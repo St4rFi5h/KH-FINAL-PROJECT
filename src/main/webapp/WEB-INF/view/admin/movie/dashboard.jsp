@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,44 +52,20 @@
                                 </div>
                                 <!--new 사용자 반복-->
                                 <div id="newperson-main" style="height: 50px;">
-                                    <div id="dash-main-img" style="display: inline-block;">
-                                        <img src="/img/admin/person.png" alt="" style="width: 30px; height: 30px; margin-bottom: 20px;">
-                                    </div>
-                                    <div id="dash-main-info" style="display: inline-block; font-size: 14px;">
-                                    <span>박서우</span>
+                                    <c:forEach var="m" items="${getmemberinfo}">
+                                    
+                                    <div id="dash-main-info" style="display: inline-block; font-size: 14px; margin-top: 15px">
+                                    <span>${m.memberNickname}</span>
                                         <br>                                    
-                                    <span>khasdo1200</span>
+                                    <span>${m.memberEmail}</span>
                                     <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-                                    <span>2011/05/21</span>
+                                    <span>${m.memberDate}</span>
                                     </div>
+                                    </c:forEach>
 
                                 </div>
-                                <div id="newperson-main" style="height: 50px;">
-                                    <div id="dash-main-img" style="display: inline-block;">
-                                        <img src="img/person.png" alt="" style="width: 30px; height: 30px; margin-bottom: 20px;">
-                                    </div>
-                                    <div id="dash-main-info" style="display: inline-block; font-size: 14px;">
-                                    <span>김민진</span>
-                                        <br>                                    
-                                    <span>khasasdf131</span>
-                                    <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-                                    <span>2011/05/21</span>
-                                    </div>
-
-                                </div>
-                                <div id="newperson-main" style="height: 50px;">
-                                    <div id="dash-main-img" style="display: inline-block;">
-                                        <img src="img/person.png" alt="" style="width: 30px; height: 30px; margin-bottom: 20px;">
-                                    </div>
-                                    <div id="dash-main-info" style="display: inline-block; font-size: 14px;">
-                                    <span>제윤지</span>
-                                        <br>                                    
-                                    <span>kh231200</span>
-                                    <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-                                    <span>2011/05/21</span>
-                                    </div>
-
-                                </div>
+                                
+                                
                                
 
                             </div>
@@ -106,20 +84,30 @@
     <script>
         let commentc = document.getElementById('commentc').getContext('2d');
         let comments = document.getElementById('comments').getContext('2d');
+        var chartLabels = [];
+        var hitcount = [];
+
+        <c:forEach var="mc" items="${getmoviechart}">
+        chartLabels.push('${mc.title}');
+        hitcount.push('${mc.movieHitCount}');
+        </c:forEach>
+
+        var goodmovieLabels = [];
+        var goodcount = [];
+
+        <c:forEach var="mgc" items="${getmoviegoodchart}">
+        goodmovieLabels.push('${mgc.title}');
+        goodcount.push('${mgc.sum}');
+        </c:forEach>
 
         let barChart = new Chart(commentc, {
             type : 'bar',
             data : {
-                labels : ['가오갤', '아저씨','어바웃타임','명탐정코난','뽀로로'],
+                labels : chartLabels,
                 datasets : [{
-                    label : '리뷰 영화순위',
-                    data : [
-                        633,
-                        1200,
-                        1562,
-                        3455,
-                        7453
-                    ],
+                    label : '조회수',
+                    data : hitcount
+                        ,
                     backgroundColor:[
                         'red',
                         'blue',
@@ -132,16 +120,10 @@
         let barChart2 = new Chart(comments, {
             type : 'bar',
             data : {
-                labels : ['가오갤', '아저씨','어바웃타임','명탐정코난','뽀로로'],
+                labels : goodmovieLabels,
                 datasets : [{
-                    label : '검색 영화순위',
-                    data : [
-                        32200,
-                        50222,
-                        60033,
-                        70001,
-                        90112
-                    ],
+                    label : '좋아요',
+                    data : goodcount,
                     backgroundColor:[
                         'red',
                         'blue',

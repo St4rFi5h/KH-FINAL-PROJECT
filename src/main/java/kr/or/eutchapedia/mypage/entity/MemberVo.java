@@ -4,8 +4,10 @@ import java.sql.Date;
 
 public class MemberVo {
 	
+	private String memberEmail;
 	private String memberNickname;
 	private String memberPwd;
+	private String memberPwdChange;
 	private String memberPwdSalt;
 	private Date memberDate;
 	private String adminCheck;
@@ -13,8 +15,13 @@ public class MemberVo {
 	private String memberPhoto;
 	private String memberIntroduce;
 	private String memberJoinRoute;
-	private String memberEmail;
 	
+	public String getMemberPwdChange() {
+		return memberPwdChange;
+	}
+	public void setMemberPwdChange(String memberPwdChange) {
+		this.memberPwdChange = memberPwdChange;
+	}
 	
 	public String getMemberEmail() {
 		return memberEmail;
@@ -58,6 +65,7 @@ public class MemberVo {
 	public void setMemberStatus(String memberStatus) {
 		this.memberStatus = memberStatus;
 	}
+	
 	public String getMemberPhoto() {
 		return memberPhoto;
 	}

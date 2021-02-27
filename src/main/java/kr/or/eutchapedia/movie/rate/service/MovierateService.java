@@ -1,9 +1,19 @@
 package kr.or.eutchapedia.movie.rate.service;
+
 import java.util.List;
-import org.springframework.stereotype.Service;
+import java.util.Map;
 
-import kr.or.eutchapedia.movierate.entity.MovierateVo;
+import kr.or.eutchapedia.login.vo.MemberVo;
+import kr.or.eutchapedia.movie.rate.entity.MovierateVo;
 
-public class MovierateService {
-	List<MovierateVo> getmovieList();
+public interface MovierateService {
+
+	List<MovierateVo> getMovieLists(Map<String, Object> param);
+	List<MovierateVo> getmovierateList(String email, String genre );
+	List<MovierateVo> getMovieLists(String email);
+
+
+
+
+
 }

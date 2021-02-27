@@ -369,7 +369,7 @@ header a:hover {
 	margin: 8px 10px 10px;
 }
 
-#like-count {
+.like-count {
 	width: 100px;
 	height: 40px;
 	padding: 10px 0;

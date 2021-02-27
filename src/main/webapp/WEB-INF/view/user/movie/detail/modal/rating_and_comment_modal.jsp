@@ -13,7 +13,7 @@
 		<div class="modal-body">
 			<div id="rating-and-comment-modal-contents">
 				<div id="modal-movie-title">
-					<h5>소울</h5>
+					<h5>${movieInfoVo.title }</h5>
 				</div>
 				<div id="star-rating-zone">
 					<div class="starRev" id="star-rating-in-modal">
@@ -33,7 +33,6 @@
 					placeholder="이 영화에 대한 감상평을 자유롭게 남겨주세요."
 					style="resize: none; width: 400px; height: 300px; padding: 10px;"></textarea>
 			</div>
-			<!-- 스포일러 포함/미포함 구현할지 생각해보기 -->
 		</div>
 		<div class="modal-footer" id="footer-buttons">
 			<div>

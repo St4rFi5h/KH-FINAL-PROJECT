@@ -7,15 +7,16 @@
 	namespace="kr.or.eutchapedia.movie.detail.repository.CommentMapper">
 
 	<!-- 페이징 -->
-	<select id="totalListSize" parameterType="String"
+	<select id="totalListSize" parameterType="kr.or.eutchapedia.movie.detail.domain.CommentPage"
 		resultType="int">
 		SELECT COUNT(*) FROM eutcha_comment ec 
 		JOIN star_rating sr
 		ON ec.fk_star_index = sr.star_index
-		WHERE sr.fk_movie_docid = #{_parameter}
+		WHERE sr.fk_movie_docid = #{movieDocId}
+		AND ec.comment_blind_check = '0'
 	
 	</select>
-	<!-- 코멘트 더보기 기본 select -->
+	<!-- 코멘트 더보기 기본 select(좋아요 높은 순 + 최신순) -->
 	<select id="selectCommentList" parameterType="kr.or.eutchapedia.movie.detail.domain.CommentPage"
 		resultType="kr.or.eutchapedia.movie.detail.domain.CommentListVo" >
 		SELECT * FROM (
@@ -31,10 +32,57 @@
 				ON sr.fk_member_email = m.member_email
 				WHERE sr.fk_movie_docid = #{movieDocId}
 				AND comment_blind_check = '0'
-				ORDER BY comment_like_count DESC,
-				comment_date DESC
+				ORDER BY 
+				<choose>
+					<when test="sortBy == 'HighStars'">
+						sr.star_rating DESC
+					</when>
+					<when test="sortBy == 'Likes'">
+						comment_like_count DESC
+					</when>
+					<when test="sortBy == 'LowStars'">
+						sr.star_rating ASC
+					</when>
+					<otherwise>
+						comment_date DESC, comment_like_count DESC
+					</otherwise>
+				</choose>
 			) eclist
 		) WHERE no BETWEEN #{startNo} AND #{endNo}
 	</select>
+	
+	<!-- 신고하기 모달을 위한 title 얻어오기 -->
+	<select id="selectMovieTitle" parameterType="String" resultType="String">
+		SELECT title 
+		FROM movie_info
+		WHERE movie_docid = #{_parameter}
+	
+	</select>
+	
+	
+	<!-- comment 등록 -->
+	<insert id="insertComment" parameterType="kr.or.eutchapedia.movie.detail.domain.CommentVo">
+		INSERT INTO eutcha_comment VALUES(
+			seq_eutcha_comment.nextval,
+			#{starIndex},
+			#{commentText},
+			DEFAULT,
+			DEFAULT,
+			DEFAULT,
+			DEFAULT
+		)
+	
+	</insert>
+	
+	<!-- 코멘트 수정 -->
+	<update id="updateComment" parameterType="kr.or.eutchapedia.movie.detail.domain.CommentVo">
+		UPDATE eutcha_comment SET comment_text = #{commentText} 
+		WHERE comment_index = #{commentIndex}
+	
+	</update>
 
+	<delete id="deleteComment" parameterType="int">
+		DELETE eutcha_comment WHERE comment_index = #{_parameter}
+	
+	</delete>
 </mapper>
