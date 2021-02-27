@@ -35,12 +35,8 @@
             </div>
             <p></p>
             <div>
-                <p class='ment' style="color:blue">${nickname} 님 
-                
-                </p>
-                <div id='ment2'>
-                정보가 정상적으로 수정되었습니다.
-                </div>
+                <p class='ment' style="color:blue">${nickname} 님 </p>
+                <div id='ment2'>정보가 정상적으로 수정되었습니다.</div>
             </div>
         </div>
         <div class='body-main'>

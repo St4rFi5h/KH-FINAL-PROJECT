@@ -98,7 +98,7 @@
                     <label>변경할 비밀번호 확인<br>
                     <span class="infopwd2"></span>
                     </label>
-                    <input class='inputbox' type='password'>
+                    <input class='inputbox' id='password2' type='password'>
                 </div>
               </div>
                 <div class='inputbox-div'>

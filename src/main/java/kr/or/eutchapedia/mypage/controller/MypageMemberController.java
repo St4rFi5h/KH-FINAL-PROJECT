@@ -179,7 +179,7 @@ public class MypageMemberController {
 		mv.addObject("avg", avg2);
 		mv.addObject("graphMap", graphMap);
 		mv.addObject("doughnutMap", doughnutMap);
-		mv.setViewName("/user/mypage/mypage2");
+		mv.setViewName("/user/mypage/mypageMember");
 		return mv;
 		
 	}

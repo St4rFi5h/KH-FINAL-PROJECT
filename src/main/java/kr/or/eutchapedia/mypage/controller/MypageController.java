@@ -204,7 +204,7 @@ public class MypageController {
 	/*
 	@RequestMapping("/signup")
 	public ModelAndView mypagesignup() {
-		ModelAndView mv = new ModelAndView("/user/mypage/encryptionforsignup");
+		ModelAndView mv = new ModelAndView("/user/mypage/unUse/encryptionforsignup");
 		
 		return mv;
 	}
@@ -218,7 +218,7 @@ public class MypageController {
 		
 		service.signupdo(vo);
 		
-	    mv = new ModelAndView("/user/mypage/encryptionforsignupdone");//임시
+	    mv = new ModelAndView("/user/mypage/unUse/encryptionforsignupdone");//임시
 		return mv;
 	}
 
