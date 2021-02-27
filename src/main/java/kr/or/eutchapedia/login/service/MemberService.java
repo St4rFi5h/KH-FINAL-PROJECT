@@ -58,9 +58,11 @@ public class MemberService {
 		System.out.println(salt);
 		String pwd = vtemp.getMemberPwd();
 		String pwdSalt = utils.getEncrypt(inputPwd, salt);
-		String status = vtemp.getMemberStatus();
-				String c = "N";
 		
+		//회원 상태
+		String status = vtemp.getMemberStatus();
+		String c = "N";
+		String a = "C";
 		
 		System.out.println("//로그인 객체 확인 vtemp : " + vtemp);
 		System.out.println("status 값 : " + status);
@@ -72,7 +74,7 @@ public class MemberService {
 		httpSession.setAttribute("memberEmail", memberEmail);
 		System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberEmail"));
 		
-		if(pwd.equals(pwdSalt) && status.equals(c) ) {
+		if(pwd.equals(pwdSalt) && status.equals(c) || status.equals(a) ) {
 			MemberVo loginchk = memberDao.login(memberEmail, inputPwd);
 			System.out.println(loginchk);
 				result = 1;

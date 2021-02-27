@@ -31,7 +31,7 @@
 	<main class="main-body">
 		<div class="find-password-main">
 			<div class="first-title">
-				<p class="x" onclick="location.href='#'">X</p>
+				<p class="x" onclick="location.href='/login'">X</p>
 				<h2 class="password-reset">비밀번호 변경</h2>
 			</div>
 			<hr class="bottom-line">
@@ -39,7 +39,7 @@
 				<div class="password-eamil">
 					<h2 class="password-forget">비밀번호를 받으셨나요?</h2>
 					<p class="write-email">입력하신 이메일을 확인 후,</p>
-					<p class="write-email">이메일로 전송된 인증번호를 입력해 주세요</p>
+					<p class="write-email">이메일로 전송된 인증번호를 입력해 주세요.</p>
 				</div>
 			</div>
 			<div class="find-password-form">
@@ -63,6 +63,9 @@
 	<script src="js/jquery.min.js"></script>
 	<!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
 	<script src="js/bootstrap.bundle.min.js"></script>
+	<script>window.onload=function(){ 
+		alert("이메일이 발송되었습니다. 인증번호를 입력해주세요."); }
+	</script>
 </body>
 
 

@@ -48,9 +48,11 @@
 	</select>
 
 	<!-- 비밀번호 재설정 -->
-	<update id="updatepwd">
-		UPDATE member SET member_pwd = #{memberPwd}
-		WHERE member_email = #{memberEmail}
+	<update id="updatepwd" parameterType="hashMap">		
+		UPDATE member SET 		
+		member_pwd = #{memberPwd},	
+		member_pwd_salt = #{memberPwdSalt},	
+		WHERE member_email = #{memberEmail}			
 	</update>
 
 

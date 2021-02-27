@@ -51,11 +51,11 @@
                     </form>
                 </div>
                 <div class="password-block">
-                    <button type="button" onclick="location.href='findpassword'">비밀번호를 잊어버리셨나요?</button>
+                    <button type="button" onclick="location.href='/findpassword'">비밀번호를 잊어버리셨나요?</button>
                 </div>
                 <div class="signup-block">
                     계정이 없으신가요?
-                    <button type="button" onclick="location.href='signup'">회원가입</button>
+                    <button type="button" onclick="location.href='/signup'">회원가입</button>
                 </div>
                 <hr class="bottom-line" >
 

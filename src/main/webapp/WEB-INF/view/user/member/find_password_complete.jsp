@@ -31,7 +31,7 @@
 	<main class="main-body">
 		<div class="find-password-main">
 			<div class="first-title">
-				<p class="x" onclick="location.href='/'">X</p>
+				<p class="x" onclick="location.href='/login'">X</p>
 				<h2 class="password-reset">비밀번호 변경</h2>
 			</div>
 			<hr class="bottom-line">

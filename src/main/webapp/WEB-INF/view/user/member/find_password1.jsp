@@ -31,7 +31,7 @@
 	<main class="main-body">
 		<div class="find-password-main">
 			<div class="first-title">
-				<p class="x" onclick="location.href='#'">X</p>
+				<p class="x" onclick="location.href='/login'">X</p>
 				<h2 class="password-reset">비밀번호 재설정</h2>
 			</div>
 			<hr class="bottom-line">
@@ -39,13 +39,13 @@
 				<div class="password-eamil">
 					<h2 class="password-forget">비밀번호를 잊으셨나요?</h2>
 					<p class="write-email">가입했던 이메일을 적어주세요.</p>
-					<p class="write-email">입력하신 주소로 비밀번호 변경 메일을 보낼게요</p>
+					<p class="write-email">입력하신 주소로 비밀번호 변경 메일을 보낼게요.</p>
 				</div>
 			</div>
 			<div class="find-password-form">
-				<form method="POST" action="#">
+				<form method="POST" action="/findpassword">
 					<p>
-						<input class="input-email" type="email" name="email" id="email" placeholder="이메일" />
+						<input class="input-email" type="email" name="memberEmail" id="email" placeholder="이메일" />
 					</p>
 					<p>
 						<input class="find-password-button" type="submit" value="비밀번호 인증 이메일 보내기" />

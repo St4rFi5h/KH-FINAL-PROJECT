@@ -31,15 +31,15 @@
 	<main class="main-body">
 		<div class="find-password-main">
 			<div class="first-title">
-				<p class="x" onclick="location.href='#'">X</p>
+				<p class="x" onclick="location.href='/login'">X</p>
 				<h2 class="password-reset">비밀번호 변경</h2>
 			</div>
 			<hr class="bottom-line">
 			<div class="second-title">
 				<div class="password-eamil">
-					<h2 class="password-forget">비밀번호를 받으셨나요?</h2>
-					<p class="write-email">입력하신 이메일을 확인 후,</p>
-					<p class="write-email">이메일로 전송된 인증번호를 입력해 주세요</p>
+					<h2 class="password-forget">인증번호를 받으셨나요?</h2>
+					<p class="write-email">비밀번호를 다시 설정해주세요.</p>
+					<p class="write-email">앞으로 이 비밀번호로 접속하시면 됩니다.</p>
 				</div>
 			</div>
 			<div class="find-password-form">
