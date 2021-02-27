@@ -32,9 +32,6 @@
         </div>
      </h3>
 
-     <!-- <div class='maintitle'> 
-         <h1 class='bodytitle'>회원탈퇴</h1>
-     </div> -->
 
     <div class='mybody-wrapper'>
         <div class='body-header'>
@@ -56,8 +53,8 @@
             </div>
         </div>
         <div class='body-main'>
-            <form method="post" id='delForm' action="/mypage/withdraw.do" onsubmit="return check();">
-            	<input type='hidden'  id='hiddenemail' name='memberEmail' value="${memberemail}">
+            <form method="post" id='delForm' action="/mypage/withdraw.do2" onsubmit="return check();">
+            	<input type='hidden'  id='hiddenemail' name='memberEmail' value="${memberemail}"> 
 	              <div id='complainbox'>
 	                <div id='complain-check'>
 	                    <input id='check1' type="checkbox" name="checkbox">
@@ -81,7 +78,7 @@
 	                </div>
 	            </div>
 	                <div>
-	                    <input id='inputdiv' type='password'  name='memberPwd'  placeholder="비밀번호입력">
+	                    <input id='inputdiv' type='password'  name='inputpwd'  placeholder="비밀번호입력">
 	                </div>
 	                <c:if test="${pwdchk==0 }">
 	                	<p style="color:red">비밀번호가 일치하지 않습니다.</p>

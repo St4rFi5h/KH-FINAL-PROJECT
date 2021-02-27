@@ -45,6 +45,8 @@ public class MypageServiceImpl implements MypageService {
 		System.out.println("인풋비번&DB솔트해시 =" +hash);
 			
 		if (origin.equals(hash)) {
+			vo.setMemberPwdSalt(salt);
+			vo.setMemberPwd(hash);
 			Dao.insertleavemember(vo2);
 			Dao.updatestatus(vo);
 			System.out.println("일치!");

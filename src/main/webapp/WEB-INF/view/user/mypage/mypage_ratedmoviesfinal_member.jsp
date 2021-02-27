@@ -59,11 +59,10 @@
                             </div>
                             <div class="modal-body">
                                 <div>
-                                    <div id="sorttext"><a  href='#' style="text-decoration:none; color:black" >가나다 순</a></div>
-                                    <div id="sorttext"><a  href='#' style="text-decoration:none; color:black">제작일 순</a></div>
-                                    <!--<div id="sorttext"><a  href='#' style="text-decoration:none; color:black">담은 순</a></div>  -->
-                                    <!-- 별점평가일이없구나,,ㅎ망했네 -->
-                                    <div id="sorttext"><a  href='#' style="text-decoration:none; color:black">평점 순</a></div>
+                                    <div id="sorttext"><a  href='/mypage/ratedmovies_member?id=${id }&sort=1' style="text-decoration:none; color:black" >가나다 순</a></div>
+                                    <div id="sorttext"><a  href='/mypage/ratedmovies_member?id=${id }&sort=2' style="text-decoration:none; color:black">구작 순</a></div>
+                                    <div id="sorttext"><a  href='/mypage/ratedmovies_member?id=${id }&sort=3' style="text-decoration:none; color:black">신작 순</a></div>
+                                    <div id="sorttext"><a  href='/mypage/ratedmovies_member?id=${id }&sort=4' style="text-decoration:none; color:black">러닝타임 긴 순</a></div>
                                 </div>
                             </div>
                         </div>

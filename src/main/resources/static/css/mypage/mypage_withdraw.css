@@ -112,3 +112,9 @@
 .logosize {
 	margin-left : 30px;
 }
+
+
+#info {
+	display : none;
+	color : red;
+}

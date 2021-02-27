@@ -30,14 +30,36 @@ public class MypageMemberController {
 	
 		
 	@RequestMapping("/ratedmovies_member")
-	public ModelAndView mypageratedmovies(String id) {
+	public ModelAndView mypageratedmovies(@RequestParam String id, @RequestParam int sort) {
 		ModelAndView mv = new ModelAndView();
 		
+		String sortTitle="";
+		
+		System.out.println(sort);
 		List <StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
 		List<Map<String,Object>> graphMap = new ArrayList<Map<String, Object>>();
 		graphMap = service.getStarNumDesc(id);
 	
-		list = service.getratinginfo(id);
+		switch (sort) {
+		case 1 :
+			list = service.getratinginfo1(id);
+			sortTitle = "가나다순";
+			break;
+		case 2 :
+			list = service.getratinginfo2(id);
+			sortTitle = "구작순";
+			break;
+		case 3 :
+			list = service.getratinginfo3(id);
+			sortTitle = "신작순";
+			break;
+		case 4 :
+			list = service.getratinginfo4(id);
+			sortTitle = "러닝타임순";
+			break;
+		}
+		
+
 		
 		/*test..
 		List<StarRatingForMainVo> test = new ArrayList<StarRatingForMainVo>();
@@ -52,6 +74,7 @@ public class MypageMemberController {
 		
 		test = service.getEachStarMovie(memberemail,point);
 		*/
+		
 		String key = list.get(0).getMemberEmail();
 		
 		mv.addObject("id", key);

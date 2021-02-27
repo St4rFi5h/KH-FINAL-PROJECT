@@ -27,9 +27,11 @@ public class MypageWithdrawController {
 	@RequestMapping("/withdraw")
 	public ModelAndView mypagewithdraw(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		String memberemail = (String) session.getAttribute("memberEmail");
-		
-		mv.addObject("memberemail", memberemail);	
+		/*
+		 * String memberemail = (String) session.getAttribute("memberEmail");
+		 * 
+		 * mv.addObject("memberemail", memberemail);
+		 */
 		mv.setViewName("/user/mypage/mypage_withdraw");
 		return mv;
 	}
@@ -57,10 +59,35 @@ public class MypageWithdrawController {
 				
 		return mv;
 	}
+	
+	//탈퇴do
+		@RequestMapping(value="/withdraw.do2", method= {RequestMethod.GET,RequestMethod.POST})
+		public ModelAndView mypagewithdrawdo(String inputpwd, LeaveMemberVo vo2, HttpSession session) {
+			ModelAndView mv = new ModelAndView();
+			MemberVo vo = new MemberVo();
+			
+			String memberemail = (String) session.getAttribute("memberEmail");
+			vo.setMemberEmail(memberemail);
+			vo.setMemberPwd(inputpwd);
+			vo2.setMemberEmail(memberemail);
+			System.out.println("reason1="+vo2.getReason1()+" reason2="+vo2.getReason2() 
+			+" reason3="+vo2.getReason3() +" reason4="+vo2.getReason4());
+		
+			int result= service.withdrawdo(vo,vo2);
+			
+			if(result==1) {
+				session.invalidate();
+				mv.setViewName("/user/mypage/mypage_withdrawdone");
+				
+			}
+			else {
+				mv.addObject("pwdchk", result);	
+				mv.setViewName("/user/mypage/mypage_withdraw");
+			}
+					
+			return mv;
+		}
 
 	
 }
-
-
-
 
