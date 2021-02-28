@@ -44,7 +44,7 @@ public class LoginController {
 		if(result == 1) {
 			mv.setViewName("/user/index_main"); //경로 임시
 		} else if(result == 0) {
-			out.println("<script>alert('아이디 또는 비밀번호를 확인해 주세요.');</script>");
+			out.println("<script>alert('차단된 유저 혹은 아이디와 비밀번호를 확인해 주세요.');</script>");
 			mv.setViewName("/user/member/login");
 			out.flush();
 		}

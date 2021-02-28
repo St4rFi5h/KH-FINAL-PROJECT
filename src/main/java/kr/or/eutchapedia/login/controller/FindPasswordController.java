@@ -1,5 +1,7 @@
 package kr.or.eutchapedia.login.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +13,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.eutchapedia.login.service.MemberService;
@@ -52,9 +56,9 @@ public class FindPasswordController {
 		Random r = new Random();
 		int dice = r.nextInt(157211)+48271;
 
-		String setfrom = "eutchapedia.contact@gmail.com";
+		String setfrom = "eutchapedia@gmail.com";
 		String tomail = memberEmail;   //받는 사람의 이메일
-		String title = "비밀번호 찾기 인증 이메일 입니다.";    //제목
+		String title = "[EUTCHAPEDIA]비밀번호 찾기 인증 이메일입니다.";    //제목
 		String content =
 
 				System.getProperty("line.separator")+
@@ -96,17 +100,50 @@ public class FindPasswordController {
 		////        out_email.println("<script>alert('이메일이 발송되었습니다. 인증번호를 입력해주세요.');</script>");
 		////        out_email.flush();
 		//        
-
 		//return mv;
 		return "/user/member/find_password2";
 
 	}
 
 
-	@RequestMapping(value = "/findpassword2")
-	public ModelAndView findpassword2() {
-		ModelAndView mv = new ModelAndView("user/member/find_password2");
-
+	@RequestMapping(value = "/findpassword2{dice},{memberEmail}", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView findpassword2(String number, @PathVariable String dice, @PathVariable String memberEmail, HttpServletResponse response_equals ) throws IOException {
+		
+		System.out.println("number : " + number);
+		System.out.println("dice : " + dice);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("user/member/find_password2");
+		mv.addObject("memberEmail", memberEmail);
+		
+		if(number.equals(dice))  {
+			//인증번호 일치할 경우 비밀번호 변경 창 이동
+			
+			mv.setViewName("user/member/find_password3");
+//			mv.addObject("memberEmail", memberEmail);
+//			
+//			response_equals.setContentType("text/html; charset=UTF-8");
+//			PrintWriter out_equals = response_equals.getWriter();
+//            out_equals.println("<script>alert('인증번호가 일치하였습니다. 비밀번호 변경창으로 이동합니다.');</script>");
+//            out_equals.flush();
+            
+            return mv;
+            
+		} else if(number != dice) {
+			
+			ModelAndView mv2 = new ModelAndView();
+			
+			mv2.setViewName("user/member/find_password2");
+			
+			response_equals.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_equals = response_equals.getWriter();
+            out_equals.println("<script>alert('인증번호가 일치하지 않습니다. 인증번호를 다시 입력해 주세요.'); history.go(-1);</script>");
+            out_equals.flush();
+            
+    
+            return mv2;
+		}
+		
 		return mv;
 	}
 
