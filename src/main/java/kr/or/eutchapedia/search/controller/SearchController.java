@@ -20,13 +20,16 @@ public class SearchController {
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public ModelAndView search(String findStr) {
+		
+		if (findStr == "") {
+			
+		}
 		ModelAndView mv = new ModelAndView("user/search/searchpage");
 		
 		List<SearchMovieVo> searchTopList = searchDao.selectTopResult(findStr);
 		List<SearchMovieVo> searchMovieList = searchDao.selectMovieResult(findStr);
 		List<SearchMemberVo> searchMemberList = searchDao.selectMemberResult(findStr);
 		
-		System.out.println(searchMovieList.get(0).getPosterUri());
 		
 		mv.addObject("searchTopList", searchTopList);
 		mv.addObject("searchMovieList", searchMovieList);

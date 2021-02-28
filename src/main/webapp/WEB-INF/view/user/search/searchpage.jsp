@@ -45,7 +45,7 @@
                     <c:forEach var="searchTopList" items="${searchTopList }">
                         <ul class="content_poster_list" >
                             <div class="top_result_elements">
-                                <a title="소울" href="">
+                                <a title="" href="/movie/detail?movieDocId=${searchTopList.movieDocId }">
                                     <div class="content_poster_block">
                                         <div class="lazy_loading_image">
                                             <img class="styled_img"
@@ -80,7 +80,7 @@
                             <!-- 블럭 하나 -->
                             <c:forEach var="searchTopList" items="${searchTopList }">
                             <li class="stackable_item">
-                                <a title="소울" href="">
+                                <a title="" href="/movie/detail?movieDocId=${searchTopList.movieDocId }">
                                     <div class="poster_block">
                                         <div class="item_styled_img">
                                             <span class="styled_background" style="background-image: url(${searchTopList.posterUri});"></span>
@@ -99,7 +99,7 @@
 							
             				<c:forEach var="searchMovieList" items="${searchMovieList }">
                             <li class="stackable_item">
-                                <a title="소울" href="">
+                                <a title="" href="/movie/detail?movieDocId=${searchMovieList.movieDocId }">
                                     <div class="poster_block">
                                         <div class="item_styled_img">
                                             <span class="styled_background" style="background-image: url(${searchMovieList.posterUri});"></span>
@@ -138,17 +138,17 @@
                         	
                             <li class="user_info_item">
                                 <!-- 마이페이지 연결 -->
-                                <a title="소울" href="">
+                                <a title="소울" href="/mypage/index_member?id=${searchMemberList.memberEmail}">
                                     <div class="user_loading_img">
                                         <div class="user_img_block">
-                                            <div class="profile_image"></div>
+                                            <div class="profile_image"><img src="${searchMemberList.memberPhoto }"/></div>
                                         </div>
                                     </div>
                                     <!-- 사용자 내용 -->
                                     <div class="info_block">
                                         <div class="item_info">
-                                            <div class="item_title">${searchMemberList.nickname }</div>
-                                            <div class="item_subtitle">평가 17</div>
+                                            <div class="item_title">${searchMemberList.memberNickname }</div>
+                                            
                                         </div>
                                     </div>
                                 </a>
