@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="kr.or.eutchapedia.mypage.dao.MyCommMapper">
-		<resultMap
-				type="kr.or.eutchapedia.movie.detail.domain.CommentVo" id="commentVo">
-				<result column="comment_index" property="commentIndex" />
-				<result column="fk_star_index" property="starIndex" />
-				<result column="comment_text" property="commentText" />
-				<result column="comment_like_count" property="commentLikeCount" />
-				<result column="comment_report_count"
-					property="commentReportCount" />
-				<result column="comment_blind_check"
-					property="commentBlindCheck" />
-				<result column="comment_date" property="commentDate" />
-		
-		</resultMap>
-		<resultMap
-			type="kr.or.eutchapedia.movie.detail.domain.StarRatingVo"
-			id="starRatingVo">
-			<result column="star_index" property="starIndex" />
-			<result column="fk_movie_docid" property="movieDocId" />
-			<result column="fk_member_email" property="memberEmail" />
-		</resultMap>
-		
-		<select id="selectComment" parameterType="kr.or.eutchapedia.mypage.entity.CommVo">
-				SELECT a.comment_text
-						, a.comment_date
-						, b.fk_member_email
-						, b.fk_movie_docid
-						, b.star_rating 
-					FROM 
-						eutcha_comment a
-					JOIN 
-						star_rating b
-					ON 
-						a.fk_star_index = b.star_index
-					WHERE
-						b.fk_member_email = #{memberEmail}
-		</select>
+<mapper namespace="kr.or.eutchapedia.mypage.dao.MyCommMapper">
+
+	<resultMap type="kr.or.eutchapedia.mypage.entity.StarRatingVo" id="StarRatingVo">
+		<result column="star_index" property="starIndex"/>
+		<result column="fk_movie_docid" property="movieDocId"/>
+		<result column="fk_member_email" property="memberEmail"/>
+		<result column="star_rating" property="starRating"/>
+	</resultMap>
+	
+	<resultMap type="kr.or.eutchapedia.mypage.entity.CommentVo" id="CommentVo">
+		<result column="comment_index" property="commentIndex"/>
+		<result column="fk_star_index" property="starIndex"/>
+		<result column="comment_text" property="commentText"/>
+		<result column="comment_like_count" property="commentLikeCount"/>
+		<result column="comment_report_count" property="commentReportCount"/>
+		<result column="comment_blind_check" property="commentBlindCheck"/>
+		<result column="comment_date" property="commentDate"/>
+		<collection property="starRatingVo" resultMap="kr.or.eutchapedia.mypage.entity.StarRatingVo"/>
+	</resultMap>
+	
+
+	<select id="selectComm" resultType="kr.or.eutchapedia.mypage.entity.CommentVo" 
+							parameterType="kr.or.eutchapedia.mypage.entity.CommentVo">
+			SELECT ec.comment_text
+					, ec.comment_date 
+					, sr.fk_movie_docid
+					, sr.fk_member_email
+					, sr.star_rating 
+				FROM 
+					eutcha_comment ec
+				JOIN 
+					star_rating sr
+				ON 
+					ec.fk_star_index = sr.star_index
+				where 
+                    sr.fk_member_email = 'orange@naver.com'
+	</select>
+
 </mapper>

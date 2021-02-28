@@ -2,10 +2,10 @@ package kr.or.eutchapedia.mypage.service;
 
 import java.util.List;
 
-import kr.or.eutchapedia.mypage.entity.CommVo;
+import kr.or.eutchapedia.mypage.entity.CommentVo;
 
 public interface MyCommService {
 
-	public List<CommVo> commentList() throws Exception;
+	List<CommentVo> selectComm();
 
 }
