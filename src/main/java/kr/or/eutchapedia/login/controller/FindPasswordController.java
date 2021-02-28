@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.eutchapedia.login.service.MemberService;
+import kr.or.eutchapedia.login.vo.MemberVo;
 
 @Controller
 
@@ -47,15 +48,18 @@ public class FindPasswordController {
 	}
 
 	@PostMapping("/findpassword")
-	public String findpassword(HttpServletRequest request, String memberEmail, HttpServletResponse response_email) {
+	public String findpassword(HttpServletRequest request, String memberEmail, HttpServletResponse response_email, Model model) {
 
 
 		//랜덤한 난수 (인증번호)를 생성해서 이메일로 보내고 그 인증번호를 입력하면 비밀번호를 변경할 수 있는 페이지로 이동시킴
 		System.out.println(memberEmail);
 
 		Random r = new Random();
-		int dice = r.nextInt(157211)+48271;
-
+		int dice = r.nextInt(89999)+10000;
+		
+		model.addAttribute("dice", dice);
+		model.addAttribute("memberEmail", memberEmail);
+		
 		String setfrom = "eutchapedia@gmail.com";
 		String tomail = memberEmail;   //받는 사람의 이메일
 		String title = "[EUTCHAPEDIA]비밀번호 찾기 인증 이메일입니다.";    //제목
@@ -104,10 +108,16 @@ public class FindPasswordController {
 		return "/user/member/find_password2";
 
 	}
+	
+	@GetMapping("/findpassword2")
+	public String findpassword2Get() {
+		return "/user/member/find_password2";
+	}
+	
 
-
-	@RequestMapping(value = "/findpassword2{dice},{memberEmail}", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView findpassword2(String number, @PathVariable String dice, @PathVariable String memberEmail, HttpServletResponse response_equals ) throws IOException {
+	//인증번호 입력 페이지
+	@PostMapping("/findpassword2")
+	public ModelAndView findpassword2(String number, int dice, String memberEmail, HttpServletResponse response_equals ) throws IOException {
 		
 		System.out.println("number : " + number);
 		System.out.println("dice : " + dice);
@@ -116,7 +126,7 @@ public class FindPasswordController {
 		mv.setViewName("user/member/find_password2");
 		mv.addObject("memberEmail", memberEmail);
 		
-		if(number.equals(dice))  {
+		if(number.equals(Integer.toString(dice)))  {
 			//인증번호 일치할 경우 비밀번호 변경 창 이동
 			
 			mv.setViewName("user/member/find_password3");
@@ -129,7 +139,7 @@ public class FindPasswordController {
             
             return mv;
             
-		} else if(number != dice) {
+		} else {
 			
 			ModelAndView mv2 = new ModelAndView();
 			
@@ -144,13 +154,27 @@ public class FindPasswordController {
             return mv2;
 		}
 		
-		return mv;
+		
 	}
 
-	@RequestMapping(value = "/findpassword3")
-	public ModelAndView findpassword3() {
-		ModelAndView mv = new ModelAndView("user/member/find_password3");
+	@RequestMapping(value = "/findpassword3", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView findpassword3(MemberVo memberVo) {
+		
+		ModelAndView mv = new ModelAndView();
 
+		String pwd = memberVo.getMemberPwd();
+		String pwd2 = memberVo.getMemberPwdChange();
+		
+		
+		if(!pwd2.equals("")) {
+			Utils utils = new Utils(); 
+			memberVo.setMemberPwdSalt(utils.getSalt());
+			memberVo.setMemberPwd(utils.getEncrypt(memberVo.getMemberPwdChange(), memberVo.getMemberPwdSalt()));
+		}
+		else {
+			memberVo.setMemberPwd(pwd);
+		}
+		mv.setViewName("user/member/find_password_complete");
 		return mv;
 	}
 

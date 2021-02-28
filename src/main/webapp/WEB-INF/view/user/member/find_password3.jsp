@@ -45,10 +45,10 @@
 			<div class="find-password-form">
 				<form method="POST" action="#">
 					<p>
-						<input class="new-password" type="password" name="password" placeholder="새 비밀번호" />
+						<input class="new-password" type="password" name="memberPwdChange" placeholder="새 비밀번호" />
 					</p>
 					<p>
-						<input class="input-password" type="password" name="password" placeholder="재입력 해주세요" />
+						<input class="input-password" type="password" placeholder="재입력 해주세요" />
 					</p>
 					<p>
 						<input class="find-password-button" type="submit" value="비밀번호 변경하기" onclick="location.href='#'">

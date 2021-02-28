@@ -103,12 +103,11 @@ public class MemberService {
 		return memberDao.nicknamechk(memberNickname);
 	}
 	
-	
-//	  public String findpwd(MemberVo memberVo) {
-//	  
-//		  return memberDao.findpwd(memberVo);
-//	  
-//	  }
+	//비밀번호 변경
+	public void updatepwd(MemberVo memberVo) {
+		
+		memberDao.updatepwd(memberVo);
+	}
 	 
 }	
 

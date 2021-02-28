@@ -43,8 +43,10 @@
 				</div>
 			</div>
 			<div class="find-password-form">
-				<form method="POST" action="/findpassword2${dice},${memberEmail}">
+				<form method="POST" action="/findpassword2">
 					<p>
+						<input type="hidden" name="dice" value="${dice}">
+						<input type="hidden" name="memberEmail" value="${memberEmail}">					
 						<input class="input" type="text" name="number" placeholder="인증번호" />
 					</p>
 					<p>

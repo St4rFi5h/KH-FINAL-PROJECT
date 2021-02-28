@@ -48,7 +48,7 @@
 	</select>
 
 	<!-- 비밀번호 재설정 -->
-	<update id="updatepwd" parameterType="hashMap">		
+	<update id="updatepwd" parameterType="kr.or.eutchapedia.login.vo.MemberVo">		
 		UPDATE member SET 		
 		member_pwd = #{memberPwd},	
 		member_pwd_salt = #{memberPwdSalt},	
