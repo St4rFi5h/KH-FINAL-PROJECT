@@ -2,6 +2,8 @@ package kr.or.eutchapedia.board.notice.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,6 +54,7 @@ public class NoticeController {
 		return "redirect:/notice/list";
 	}
 	
+	
 	/**
 	 * 게시판 수정폼
 	 * @param board
@@ -64,6 +67,7 @@ public class NoticeController {
 	@RequestMapping(value="/updateView", method = RequestMethod.GET)
 	public ModelAndView updateForm(@RequestParam long noticeNo) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("페이지 = " +noticeNo);
 		NoticeVo board = noticeService.boardDetail(noticeNo);
 		mv.addObject("board", board);
 		mv.setViewName("/user/board/notice/notiboard(admin_modify)");
@@ -79,13 +83,29 @@ public class NoticeController {
 		noticeService.updateNotice(board);
 		return "redirect:/notice/list";
 	}
-
-	// 삭제
-	@RequestMapping(value="/delete", method = RequestMethod.POST)
-	public String deleteNotice(NoticeVo board) throws Exception {
-		noticeService.deleteNotice(board.getNoticeNo());
+	
+	/**
+	 * 글 삭제
+	 * @return
+	 * */
+	@RequestMapping(value="/delete", method = {RequestMethod.GET, RequestMethod.POST})
+	public String deleteNotice(@RequestParam("noticeNo") String noticeNo) throws Exception {
+		noticeService.deleteNotice(noticeNo);
 		return "redirect:/notice/list";
 	}
-
+	
+	/**
+	 * 글 선택 삭제
+	 * @throws Exception 
+	 * */
+	@RequestMapping(value = "/deleteChk")
+	public String ajaxTest(HttpServletRequest request) throws Exception {
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i=0; i<size; i++) {
+			noticeService.deleteNotice(ajaxMsg[i]);
+		}
+		return "redirect:/notice/list";
+	}
 	
 }
