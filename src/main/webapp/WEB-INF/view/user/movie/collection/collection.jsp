@@ -31,22 +31,23 @@
             <p class="x" onclick="location.href='javascript:history.back();'">←</p>
             <h2 class="tag-title">${pickName }</h2>
         </div>
-        <div class="row-space-movie">
-        <c:forEach var="collectionList" items="${collectionList }">
-            <div class="col-space-movie">
-                <ul class="movie-list">
-                    <li class="movie-detail">
-                        <img src="${collectionList.posterUri }" style="width: 132.06px; height: 192.88px;">
-                        <a href="/movie/detail?movieDocId=${collectionList.movieDocId }">
-                            <div class="movie-name">${collectionList.title }</div>
-                            <div class="movie-value">${collectionList.prodYear } ${collectionList.nation }</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            </c:forEach>
-            </div>
-<!--             <div class="col-space-movie">
+		<div class="row-space-movie">
+			<c:forEach var="collectionList" items="${collectionList }">
+				<div class="col-space-movie">
+					<ul class="movie-list">
+						<li class="movie-detail"><a
+							href="/movie/detail?movieDocId=${collectionList.movieDocId }">
+								<img src="${collectionList.posterUri }"
+								style="width: 132.06px; height: 192.88px;">
+								<div class="movie-name">${collectionList.title }</div>
+								<div class="movie-value">${collectionList.prodYear }
+									${collectionList.nation }</div></li>
+						</a>
+					</ul>
+				</div>
+			</c:forEach>
+		</div>
+		<!--             <div class="col-space-movie">
                 <ul class="movie-list">
                     <li class="movie-detail">
                         <img src="image/라라랜드.jpg" style="width: 132.06px; height: 192.88px; border-radius: 6px;">

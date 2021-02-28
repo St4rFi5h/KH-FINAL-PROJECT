@@ -61,8 +61,10 @@ public class MovieDetailController {
 		movieDetailDao.updateHitCount(movieDocId);
 		
 		if (collectionList != null) {
+			int pickIndex = collectionList.get(0).getPickIndex(); // 컬렉션 많아지면 코드 손봐야함 
 			String pickName = collectionList.get(0).getPickName();
 			mv.addObject("pickName", pickName);
+			mv.addObject("pickIndex", pickIndex);
 			mv.addObject("collectionList", collectionList);
 		}
 		

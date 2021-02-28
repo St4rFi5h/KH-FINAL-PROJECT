@@ -7,7 +7,7 @@
 	namespace="kr.or.eutchapedia.movie.collection.repository.CollectionMapper">
 
 	<!-- moviedocid 넘겨서 컬렉션 가져오기 -->
-	<select id="selectCollectionInfo" parameterType="String"
+	<select id="selectCollectionInfo" parameterType="int"
 		resultMap="collectionVo">
 		SELECT p.pick_name, p.pick_index, mi.movie_docid, mi.title,
 		mi.prodyear,
@@ -19,11 +19,7 @@
 		ON p.pick_index =
 		mp.fk_pick_index
 		WHERE fk_pick_index =
-		(SELECT p.pick_index
-		FROM pick p
-		JOIN movie_pick mp
-		ON p.pick_index = mp.fk_pick_index
-		WHERE fk_movie_docid = #{_parameter} )
+		#{_parameter}
 
 
 	</select>

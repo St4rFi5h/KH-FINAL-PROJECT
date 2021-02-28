@@ -18,13 +18,12 @@ public class CollectionController {
 	CollectionDao collectionDao;
 	
 	@RequestMapping(value = "/collection", method = RequestMethod.GET)
-	public ModelAndView selectCollectionList(String movieDocId) {
+	public ModelAndView selectCollectionList(int pickIndex) {
 		ModelAndView mv = new ModelAndView();
 
-		List<CollectionVo> collectionList = collectionDao.selectCollectionInfo(movieDocId);
+		List<CollectionVo> collectionList = collectionDao.selectCollectionInfo(pickIndex);
 		
 		if (collectionList != null ) {
-			int pickIndex = collectionList.get(0).getPickIndex();
 			String pickName = collectionList.get(0).getPickName();
 			
 			mv.addObject("pickIndex", pickIndex);

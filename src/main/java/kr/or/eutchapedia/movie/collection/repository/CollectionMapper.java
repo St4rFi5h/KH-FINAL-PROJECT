@@ -10,6 +10,6 @@ import kr.or.eutchapedia.movie.collection.domain.CollectionVo;
 @Repository
 @Mapper
 public interface CollectionMapper {
-	public List<CollectionVo> selectCollectionInfo(String movieDocId);
+	public List<CollectionVo> selectCollectionInfo(int pickIndex);
 
 }

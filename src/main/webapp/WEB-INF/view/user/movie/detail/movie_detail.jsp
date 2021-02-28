@@ -173,7 +173,8 @@
 						<div>
 							<div class="my-slider" id="collection-slider">
 								<div class="collection-zone">
-									<a href="/collection?movieDocId=${movieInfoVo.movieDocId }">
+								<input type="hidden" value=${pickIndex }/>
+									<a href="/collection?pickIndex=${pickIndex }">
 										<div class="collection-card">
 											<ul class="photo_list">
 												<c:forEach var="collectionList" items="${collectionList }">
@@ -446,7 +447,8 @@
 							<div>
 								<div class="my-slider" id="collection-slider">
 									<div class="collection-zone">
-										<a href="/collection?movieDocId=${movieInfoVo.movieDocId }">
+										<input type="hidden" value=${pickIndex } /> <a
+											href="/collection?pickIndex=${pickIndex }">
 											<div class="collection-card">
 												<ul class="photo_list">
 													<c:forEach var="collectionList" items="${collectionList }">
