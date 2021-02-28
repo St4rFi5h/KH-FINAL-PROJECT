@@ -2,7 +2,7 @@
 
 .page_search_sction {
     display: block;
-    height: auto !important;
+    height: 2000px;
     box-sizing: border-box;
     padding-top: 72px;
 
@@ -53,21 +53,25 @@
 }
 
 .container_inner .content_poster_list {
+	display: inline-block;
     list-style: none;
     padding: 0;
     white-space: nowrap;
     margin-right: -5px !important;
     margin-left: -5px !important;
     margin: 14px 0 0;
+    width: 200px;
+    height: 330px;
 }
 
-.content_poster_list li {
+.top_result_elements {
     display: inline-block;
     vertical-align: top;
     box-sizing: border-box;
     padding: 0 5px;
     margin: 0 0 24px;
-    width: 14.2%;
+    width: 200px;
+    height: 330px;
 }
 
 .content_poster_list a {
