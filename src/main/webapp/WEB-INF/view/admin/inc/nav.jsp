@@ -32,8 +32,8 @@
                               <ul>
                                  <li class='has-sub'><a href='#'><span>회원관리</span></a>
                                     <ul>
-                                       <li><a href='/PJW/selectMember.html'><span>회원조회</span></a></li>
-                                       <li class='last'><a href='/PJW/blockMember.html'><span>블랙리스트 관리</span></a></li>
+                                       <li><a href='/admin/selectmember'><span>회원조회</span></a></li>
+                                      <!--  <li class='last'><a href='/admin/blockmember.html'><span>블랙리스트 관리</span></a></li> -->
                                     </ul>
                                  </li>
                                 
