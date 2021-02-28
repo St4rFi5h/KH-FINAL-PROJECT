@@ -26,11 +26,6 @@ public class MovieRateController {
 	@RequestMapping("/movierate")						
 	public ModelAndView movieRate(HttpSession session, Model model) {
 
-		System.out.println("1단계통과");
-		String email = (String)session.getAttribute("email");
-
-		List<MovierateVo> movies = service.getMovieLists(email);
-		model.addAttribute("movies", movies);
 
 
 		ModelAndView mv = new ModelAndView("user/movie/rating/ratingPage");

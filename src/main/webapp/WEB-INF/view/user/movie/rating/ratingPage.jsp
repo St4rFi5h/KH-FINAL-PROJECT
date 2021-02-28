@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -57,8 +56,8 @@
 
 			</select>
 		</div>
-		
-		<c:forEach var="m" items="${movies}" varStatus="vs" end="10">
+		<!--  
+		<c:forEach var="m" items="${movies}" varStatus="vs" end="5">
 			<div id="mid_wrap">
 				<ul class="movie">
 					<li class="eachMovie">
@@ -95,13 +94,13 @@
 
 
 
-			<!--  <div class="movielist">
+		 <div class="movielist">
             <h1>Page 1</h1>
         </div>
         <div class="movielist">
             <h1>Page 2</h1>
         </div>
-        -->
+     
 
 			<div class="modal fade" id="exampleModal${vs.index}" tabindex="-1"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -162,6 +161,7 @@
 				</div>
 			</div>
 		</c:forEach>
+		-->
 	</div>
 
 	<script src="/js/movie/star.js"></script>

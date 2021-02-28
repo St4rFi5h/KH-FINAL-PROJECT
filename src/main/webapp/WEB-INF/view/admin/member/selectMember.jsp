@@ -70,14 +70,8 @@
 						</tbody>
 					</table>
 					</br>
-					</br>
-					</br>
-					</br>
-					</br>
-					</br>
-					</br>
-					</br>
-					<div>
+			
+					<div id="chooseBox">
 
 
 
@@ -152,11 +146,11 @@
 							value="${fn:substringBefore(Math.ceil(count/10),'.')}" />
 
 						<div style="margin-bottom: 30px">
-							<span>현재페이지 ${(empty param.p)?1:param.p}</span> /${lastNum} page
+							<span>현재페이지 ${(empty param.p)?1:param.p}</span> /${lastNum}
 						</div>
-						<nav id="dbmanagement-data-page"
+						<nav id="select-pagination"
 							aria-label="Page navigation example">
-							<ul id="dbmanagement-pagiedit" class="pagination">
+							<ul id="select-page" class="pagination">
 
 
 								<c:forEach var="i" begin="0" end="4">

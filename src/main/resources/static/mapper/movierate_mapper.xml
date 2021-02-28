@@ -29,7 +29,7 @@
 		SELECT ROWNUM NUM, m1.*
 		FROM (SELECT * FROM movie_info m LEFT OUTER JOIN star_rating s ON m.movie_docid = s.fk_movie_docid
 		) m1
-		) WHERE num BETWEEN #{st} AND #{en}
+		) WHERE NUM BETWEEN #{start} AND #{end}
 
 
 	</select>
