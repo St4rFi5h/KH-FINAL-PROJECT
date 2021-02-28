@@ -118,7 +118,43 @@
             </div>
 
             <!---------------- 페이징 처리 ---------------->
-
+			<div class="pagination_section">
+                <div class="custom_pagination">
+                    <span class="pagination_prev disabled">
+                        <a href="">
+                            <ruler-svg-icon-prev>
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+                                    <path d="M143.492,221.863L336.226,29.129c6.663-6.664,6.663-17.468,0-24.132c-6.665-6.662-17.468-6.662-24.132,0l-204.8,204.8
+                                        c-6.662,6.664-6.662,17.468,0,24.132l204.8,204.8c6.78,6.548,17.584,6.36,24.132-0.42c6.387-6.614,6.387-17.099,0-23.712
+                                        L143.492,221.863z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
+                                </svg>
+                            </ruler-svg-icon-prev>
+                        </a>
+                    </span>
+                    <span class="pagenum current">
+                        <span>1</span>
+                    </span>
+                    <span class="pagenum">
+                        <a>2</a>
+                    </span>
+                    <span class="pagination_next">
+                        <a href="">
+                            <ruler-svg-icon-next width="11" height="22" stroke="#000">
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+                                    <path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
+                                            L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
+                                            C342.889,227.058,342.889,216.255,336.226,209.591z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
+                                </svg>
+                            </ruler-svg-icon-next>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+     </div>
+  </section>
     
     <!-------------- 푸터 --------------->
     <footer>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.eutchapedia.mypage.dao.MyCommMapper">
+	<resultMap type="kr.or.eutchapedia.mypage.entity.CommentVo" id="CommentVo">
+		<result column="comment_index" property="commentIndex"/>
+		<result column="comment_text" property="commentText"/>
+		<result column="comment_date" property="commentDate"/>
+		<result column="title" property="title"/>
+		<result column="fk_movie_docid" property="movieDocId"/>
+		<result column="movie_docid" property="movie_docid"/>
+		<result column="fk_member_email" property="memberEmail"/>
+		<result column="star_rating" property="starRating"/>
+	</resultMap>
+	
+	<select id="selectComm" resultType="kr.or.eutchapedia.mypage.entity.CommentVo" 
+							parameterType="kr.or.eutchapedia.mypage.entity.CommentVo">
+			SELECT mi.title
+					, mi.movie_docid
+                    , ec.comment_text
+					, ec.comment_date 
+					, sr.fk_member_email
+					, sr.star_rating 
+				FROM 
+					eutcha_comment ec
+				JOIN 
+					star_rating sr
+				ON 
+					ec.fk_star_index = sr.star_index
+					JOIN
+						movie_info mi
+					ON
+						sr.fk_movie_docid = mi.movie_docid
+				where 
+                    sr.fk_member_email = 'kaoo238@naver.com'
+	</select>
+
+</mapper>
