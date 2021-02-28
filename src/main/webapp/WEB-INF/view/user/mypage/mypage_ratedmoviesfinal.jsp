@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,33 +87,194 @@
         </div> 
         <!--tabone 끝-->
 
-        <!-- tabtwo시작 -->
+       <!-- tabtwo시작 -->
         <div class='tabtwo' id='tab2'>
-	            <div class='dividestar'>
-	            
-        		<c:forEach var="n" items="${point}" >
-	                <div class="title-sub">${n.starRating }점 준 영화
-	                    <span class='starcount'> ${n.starCount} </span>
-	                    <span ><a  class='starallview' href='/mypage/starviewmore'>더보기</a></span>
-	                </div>
-				
-	            
-	       		 <%-- <c:forEach var="n" items="${list}" > --%>
+        
+            <div class='dividestar'>
+                <div class="title-sub">5.0점 준 영화
+                    <span class='starcount'> ${fn:length(five)} </span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore?sort=1'>더보기</a></span>
+
+                </div> 
+                
+                <c:forEach var="n" items="${five}" begin="0" end="8" >
 	                <div class='moviewrapper'>
 	                    <div class='movie-div'>
-	                        <a href="#"> 
-	                            <img class="poster" src="/img/mypage/포스터2.PNG" width="150px";  height="200px"; alt="포스터없음">
+	                        <a href="/movie/detail?movieDocId=${n.movieDocId }"> 
+	                            <img class="poster" src="${n.posterUri}" width="150px";  height="200px"; alt="포스터없음">
 	                        </a>
-	                        <div class="movietitle">기생충</div>
+	                        <li class="movietitle">${n.title }</li>
 	                        <!-- <li>2018 | 드라마</li> -->
 	                    </div>
 	                </div>
-	         	</c:forEach>
-	         		<%-- </c:forEach> --%>
-	            </div>
+                </c:forEach>
+        
+            </div>
             
-                    </div>
+            <div class='dividestar'>
+                <div class="title-sub">4.5점 준 영화
+                    <span class='starcount'>${fn:length(fourdot)}</span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore?sort=2'>더보기</a></span>
+                </div> 
+                <c:forEach var="n" items="${fourdot}" begin="0" end="8" >
+	                <div class='moviewrapper'>
+	                    <div class='movie-div'>
+	                        <a href="/movie/detail?movieDocId=${n.movieDocId }"> 
+	                            <img class="poster" src="${n.posterUri}" width="150px";  height="200px"; alt="포스터없음">
+	                        </a>
+	                        <li class="movietitle">${n.title }</li>
+	                        <!-- <li>2018 | 드라마</li> -->
+	                    </div>
+	                </div>
+                </c:forEach>
+            </div>
+    
+            <div class='dividestar'>
+                <div class="title-sub">4.0점 준 영화
+                    <span class='starcount'>${fn:length(four)}</span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore?sort=3'>더보기</a></span>
+                </div> 
+                <c:forEach var="n" items="${four}" begin="0" end="8" >
+	                <div class='moviewrapper'>
+	                    <div class='movie-div'>
+	                        <a href="/movie/detail?movieDocId=${n.movieDocId }"> 
+	                            <img class="poster" src="${n.posterUri}" width="150px";  height="200px"; alt="포스터없음">
+	                        </a>
+	                        <li class="movietitle">${n.title }</li>
+	                        <!-- <li>2018 | 드라마</li> -->
+	                    </div>
+	                </div>
+                </c:forEach>
+            </div>
+    
+            <div class='dividestar'>
+                <div class="title-sub">3.5점 준 영화
+                    <span class='starcount'>${fn:length(threedot)} </span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore?sort=4'>더보기</a></span>
+                </div> 
+                <c:forEach var="n" items="${threedot}" begin="0" end="8" >
+	                <div class='moviewrapper'>
+	                    <div class='movie-div'>
+	                        <a href="/movie/detail?movieDocId=${n.movieDocId }"> 
+	                            <img class="poster" src="${n.posterUri}" width="150px";  height="200px"; alt="포스터없음">
+	                        </a>
+	                        <li class="movietitle">${n.title }</li>
+	                        <!-- <li>2018 | 드라마</li> -->
+	                    </div>
+	                </div>
+                </c:forEach>
+            </div>
+    
+            <div class='dividestar'>
+                <div class="title-sub">3.0점 준 영화
+                    <span class='starcount'> ${fn:length(three)}</span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore?sort=5'>더보기</a></span>
+                </div> 
+                <c:forEach var="n" items="${three}" begin="0" end="8" >
+	                <div class='moviewrapper'>
+	                    <div class='movie-div'>
+	                        <a href="/movie/detail?movieDocId=${n.movieDocId }"> 
+	                            <img class="poster" src="${n.posterUri}" width="150px";  height="200px"; alt="포스터없음">
+	                        </a>
+	                        <li class="movietitle">${n.title }</li>
+	                        <!-- <li>2018 | 드라마</li> -->
+	                    </div>
+	                </div>
+                </c:forEach>
+            </div>
+    
+            <div class='dividestar'>
+                <div class="title-sub">2.5점 준 영화
+                    <span class='starcount'>${fn:length(twodot)}</span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore?sort=6'>더보기</a></span>
+                </div> 
+                <c:forEach var="n" items="${twodot}" begin="0" end="8">
+	                <div class='moviewrapper'>
+	                    <div class='movie-div'>
+	                        <a href="/movie/detail?movieDocId=${n.movieDocId }"> 
+	                            <img class="poster" src="${n.posterUri}" width="150px";  height="200px"; alt="포스터없음">
+	                        </a>
+	                        <li class="movietitle">${n.title }</li>
+	                        <!-- <li>2018 | 드라마</li> -->
+	                    </div>
+	                </div>
+                </c:forEach>
+            </div>
+    
+            <div class='dividestar'>
+                <div class="title-sub">2.0점 준 영화
+                    <span class='starcount'>${fn:length(two)}</span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore?sort=7'>더보기</a></span>
+                </div> 
+                <c:forEach var="n" items="${two}" begin="0" end="8" >
+	                <div class='moviewrapper'>
+	                    <div class='movie-div'>
+	                        <a href="/movie/detail?movieDocId=${n.movieDocId }"> 
+	                            <img class="poster" src="${n.posterUri}" width="150px";  height="200px"; alt="포스터없음">
+	                        </a>
+	                        <li class="movietitle">${n.title }</li>
+	                        <!-- <li>2018 | 드라마</li> -->
+	                    </div>
+	                </div>
+                </c:forEach>
+            </div>
+    
+            <div class='dividestar'>
+                <div class="title-sub">1.5점 준 영화
+                    <span class='starcount'>${fn:length(onedot)}</span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore?sort=8'>더보기</a></span>
+                </div> 
+                <c:forEach var="n" items="${onedot}" begin="0" end="8" >
+	                <div class='moviewrapper'>
+	                    <div class='movie-div'>
+	                        <a href="/movie/detail?movieDocId=${n.movieDocId }"> 
+	                            <img class="poster" src="${n.posterUri}" width="150px";  height="200px"; alt="포스터없음">
+	                        </a>
+	                        <li class="movietitle">${n.title }</li>
+	                        <!-- <li>2018 | 드라마</li> -->
+	                    </div>
+	                </div>
+                </c:forEach>
+            </div>
+    
+            <div class='dividestar'>
+                <div class="title-sub">1.0점 준 영화
+                    <span class='starcount'>${fn:length(one)}</span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore?sort=9'>더보기</a></span>
+                </div> 
+                <c:forEach var="n" items="${one}" begin="0" end="8" >
+	                <div class='moviewrapper'>
+	                    <div class='movie-div'>
+	                        <a href="/movie/detail?movieDocId=${n.movieDocId }"> 
+	                            <img class="poster" src="${n.posterUri}" width="150px";  height="200px"; alt="포스터없음">
+	                        </a>
+	                        <li class="movietitle">${n.title }</li>
+	                        <!-- <li>2018 | 드라마</li> -->
+	                    </div>
+	                </div>
+                </c:forEach>
+            </div>
+    
+            <div class='dividestar'>
+                <div class="title-sub">0.5점 준 영화
+                    <span class='starcount'>${fn:length(dot)}</span>
+                    <span ><a  class='starallview' href='/mypage/starviewmore?sort=10'>더보기</a></span>
+                <c:forEach var="n" items="${dot}"  begin="0" end="8">
+	                <div class='moviewrapper'>
+	                    <div class='movie-div'>
+	                        <a href="/movie/detail?movieDocId=${n.movieDocId }"> 
+	                            <img class="poster" src="${n.posterUri}" width="150px";  height="200px"; alt="포스터없음">
+	                        </a>
+	                        <li class="movietitle">${n.title }</li>
+	                        <!-- <li>2018 | 드라마</li> -->
+	                    </div>
+	                </div>
+                </c:forEach>
+            </div>
+
+        </div>
         <!--tabtwo끝-->
+        </div>
 
     </div>
 	<jsp:include page="/WEB-INF/view/user/footer.jsp"/>

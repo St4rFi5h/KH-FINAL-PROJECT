@@ -23,7 +23,7 @@
 
       <div class='mybody-wrapper'>
         <div class='iconwrapper'>
-            <a href="/mypage/ratedmovies?sort=1">
+            <a href="/mypage/ratedmovies_member?id=${fk}&sort=1">
                 <img  data-bs-toggle="tooltip" data-bs-placement="top" title="평가한 작품으로 이동" src="/img/mypage/arrow-left-short.svg" alt="" width="40" height="40" >
             </a>
         </div>

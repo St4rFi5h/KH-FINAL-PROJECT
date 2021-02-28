@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
 
 .mybody-wrapper {
+margin-left : 30px;
   height: 400%;
   /* height 약간 애매함.... 데이터 많이 집어넣고 다시 확인해볼것.. */
   font-family: "Noto Sans KR", sans-serif;
-  margin-left: 30px;
 }
 .title {
   margin-left: 20px;

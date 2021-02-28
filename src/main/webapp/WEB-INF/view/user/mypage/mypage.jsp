@@ -41,13 +41,13 @@
                 	<c:set var="name" value='/img/mypage/originprofile.jpg' />
             		<c:set var="name2" value='${member.memberPhoto}' />    
                     <c:choose>
-            		<c:when test="${name == name2}"> 
-                		<img  src='${member.memberPhoto}' width="200px"; height="250px">
-                	</c:when>
-                	<c:when test="${name != name2}">
-               			 <img src='/static/upload/${member.memberPhoto}' width="200px"; height="250px">
-                	</c:when>
-				</c:choose>
+	            		<c:when test="${name == name2}"> 
+	                		<img  src='${member.memberPhoto}' width="200px"; height="250px">
+	                	</c:when>
+	                	<c:when test="${name != name2}">
+	               			 <img src='/static/upload/${member.memberPhoto}' width="200px"; height="250px">
+	                	</c:when>
+					</c:choose>
                 </div>
                 
                 <h4 id='nickname'>${member.memberNickname }</h4>
