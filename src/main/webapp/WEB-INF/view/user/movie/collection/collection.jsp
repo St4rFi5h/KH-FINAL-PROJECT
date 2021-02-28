@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>    
@@ -27,11 +28,25 @@
     
     <main class="main-body">
         <div class="main-header">
-            <p class="x" onclick="location.href='#'">X</p>
-            <h2 class="tag-title">전주국제영화제 수상작</h2>
+            <p class="x" onclick="location.href='javascript:history.back();'">←</p>
+            <h2 class="tag-title">${pickName }</h2>
         </div>
         <div class="row-space-movie">
+        <c:forEach var="collectionList" items="${collectionList }">
             <div class="col-space-movie">
+                <ul class="movie-list">
+                    <li class="movie-detail">
+                        <img src="${collectionList.posterUri }" style="width: 132.06px; height: 192.88px;">
+                        <a href="/movie/detail?movieDocId=${collectionList.movieDocId }">
+                            <div class="movie-name">${collectionList.title }</div>
+                            <div class="movie-value">${collectionList.prodYear } ${collectionList.nation }</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </c:forEach>
+            </div>
+<!--             <div class="col-space-movie">
                 <ul class="movie-list">
                     <li class="movie-detail">
                         <img src="image/라라랜드.jpg" style="width: 132.06px; height: 192.88px; border-radius: 6px;">
@@ -139,20 +154,8 @@
                             <div class="movie-value">평균 ★ 3.2</div>
                         </a>
                     </li>
-                </ul>
-            </div>
-            <div class="col-space-movie">
-                <ul class="movie-list">
-                    <li class="movie-detail">
-                        <img src="image/라라랜드.jpg" style="width: 132.06px; height: 192.88px; border-radius: 6px;">
-                        <a href="#">
-                            <div class="movie-name">라라랜드</div>
-                            <div class="movie-value">평균 ★ 3.2</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                </ul>-->
+
     </main>
     
     <!------------ footer ------------>

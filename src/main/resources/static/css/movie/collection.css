@@ -46,9 +46,10 @@
     width: 100%;
 }
 .row-space-movie {
+	margin-left: 50px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    
 }
 
 .col-space-movie {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.or.eutchapedia.movie.collection.domain.CollectionVo;
 import kr.or.eutchapedia.movie.detail.domain.CommentVo;
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
@@ -56,7 +57,14 @@ public class MovieDetailController {
 		Map<String, Object> starAvgMap = movieDetailDao.selectStarAvg(movieDocId);
 		List<Map<String, Object>> starDataList = movieDetailDao.selectStarData(movieDocId);
 		List<Map<String, Object>> commentList = movieDetailDao.selectComments(movieDocId);
+		List<CollectionVo> collectionList = movieDetailDao.selectCollectionInfo(movieDocId);
 		movieDetailDao.updateHitCount(movieDocId);
+		
+		if (collectionList != null) {
+			String pickName = collectionList.get(0).getPickName();
+			mv.addObject("pickName", pickName);
+			mv.addObject("collectionList", collectionList);
+		}
 		
 		mv.addObject("movieInfoVo", movieInfoVo);
 		mv.addObject("staffList", staffList);

@@ -168,53 +168,32 @@
                     	</div>
 
                 </div>
-                <div class="detail-info" id="collection">
-                    <h4>이 작품이 담긴 컬렉션</h4>
-                    <div>
-                        <div class="my-slider" id="collection-slider">
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">읏챠피디아 엄선 컬렉션</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">디즈니&픽사 완전 정복</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 윤지 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 은규 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 지현 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 종웅 PICK!</div>
-                                </div>
-                            </a>
-                        </div>
-                        
-                    </div>
-                </div>
+					<div class="detail-info" id="collection">
+						<h4>이 작품이 담긴 컬렉션</h4>
+						<div>
+							<div class="my-slider" id="collection-slider">
+								<div class="collection-zone">
+									<a href="/collection?movieDocId=${movieInfoVo.movieDocId }">
+										<div class="collection-card">
+											<ul class="photo_list">
+												<c:forEach var="collectionList" items="${collectionList }">
+													<li class="photo_box"><img class="photo-img"
+														src="${collectionList.posterUri }"></li>
+
+												</c:forEach>
+											</ul>
+
+										</div>
+									</a>
+									<div class="collection-title">${pickName }</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
 
 
-            </div>
+				</div>
         </div>
         
         <%} else { %>
@@ -340,164 +319,155 @@
                 </div>
             </div>
 
-            <div id="staffs">
-                <div class="detail-info">
-                    <h4 id="actor-and-pd">출연/제작</h4>
-                    <div class="my-slider" id="staffs-slider">
-                        <c:forEach var="staffList" items="${staffList }">
-							<div class='slider-elements'>
-		                        <a href="/movie/detail/staff?staffId=${staffList.staffId}">
-		                                <img src="/img/movie/profile.svg" class="profile-img">
-		                                <div class="name-and-role">
-		                                	<input type="hidden" value="${staffList.staffId }"/>
-		                                    <div class="staff-name">${staffList.staffName }</div>
-		                                    <div class="staff-role">${staffList.staffRoleGroup }</div>
-		                                    <div>${staffList.staffRole }</div>
-		                                    
-		                                </div>
-	                        	</a>
-	                       </div>
-	                    </c:forEach>
-                    </div>
-                </div>
-                <div class="detail-info">
-                    <h4>별점 그래프</h4>
-                    <div id="chart-container">
-                        <canvas id="myChart" style="width: 600px; height: 300px;"></canvas>
-                    </div>
-                </div>
-                <div class="detail-info">
-                    <h4>코멘트</h4>
-                    <span class="more-info"><a href="/comment/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
-                    <div id="comment-zone">
-                       <c:forEach var="commentList" items="${commentList }">
-	                        <div class="comment-card">
-	                            <div class="user-info-and-rating">
-	                            		<input type="hidden" id="commentIndex" class="commentIndex" name="commentIndex" value="${commentList.COMMENTINDEX }"/>
-	                                <img src="${commentList.PHOTO }" class="profile-img">
-	                                <div class="user-nickname">${commentList.NICKNAME }</div>
-	                                <div class="comment-star-rating">★ ${commentList.STARS }</div>
-	                            </div>
-	                            <div class="comment">
-	                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
-	                                <p>${commentList.TEXT }</p>
-	                            </div>
-	                            <div class="like-count-zone">
-	                                <img src="/img/movie/like.svg" id="like-thumb" />
-	                                <span id="like-count${commentList.COMMENTINDEX }" class="like-count">${commentList.LIKECOUNT }</span>
-	                            </div>
-	                            <div class="like-and-report">
-	                                <span><button data-toggle="modal" id="like-button${commentList.COMMENTINDEX }" class="like-button"
-	                                onclick="clickLikeButton(${commentList.COMMENTINDEX})">좋아요</button></span>
-	                                <span><button data-toggle="modal" id="report-button"
-	                                        data-target="#report-modal${commentList.COMMENTINDEX }">신고하기</button></span>
-	                            </div>
-		
-		                        <!-- siren Modal(member) -->
-		                        <div class="modal fade" id="report-modal${commentList.COMMENTINDEX }" tabindex="-1" role="dialog"
-		                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-									
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header" id="modal-title-wrapper">
-												<h5 class="modal-title" id="exampleModalLabel">신고하기</h5>
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
+					<div id="staffs">
+						<div class="detail-info">
+							<h4 id="actor-and-pd">출연/제작</h4>
+							<div class="my-slider" id="staffs-slider">
+								<c:forEach var="staffList" items="${staffList }">
+									<div class='slider-elements'>
+										<a href="/movie/detail/staff?staffId=${staffList.staffId}">
+											<img src="/img/movie/profile.svg" class="profile-img">
+											<div class="name-and-role">
+												<input type="hidden" value="${staffList.staffId }" />
+												<div class="staff-name">${staffList.staffName }</div>
+												<div class="staff-role">${staffList.staffRoleGroup }</div>
+												<div>${staffList.staffRole }</div>
+
 											</div>
-											<div class="modal-body">
-												<div id="report-modal-contents">
-													<div id="report-modal-movie-title">
-														<h5>제목</h5>
-														<div>${movieInfoVo.title }</div>
+										</a>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+						<div class="detail-info">
+							<h4>별점 그래프</h4>
+							<div id="chart-container">
+								<canvas id="myChart" style="width: 600px; height: 300px;"></canvas>
+							</div>
+						</div>
+						<div class="detail-info">
+							<h4>코멘트</h4>
+							<span class="more-info"><a
+								href="/comment/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
+							<div id="comment-zone">
+								<c:forEach var="commentList" items="${commentList }">
+									<div class="comment-card">
+										<div class="user-info-and-rating">
+											<input type="hidden" id="commentIndex" class="commentIndex"
+												name="commentIndex" value="${commentList.COMMENTINDEX }" />
+											<img src="${commentList.PHOTO }" class="profile-img">
+											<div class="user-nickname">${commentList.NICKNAME }</div>
+											<div class="comment-star-rating">★ ${commentList.STARS }</div>
+										</div>
+										<div class="comment">
+											<!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
+											<p>${commentList.TEXT }</p>
+										</div>
+										<div class="like-count-zone">
+											<img src="/img/movie/like.svg" id="like-thumb" /> <span
+												id="like-count${commentList.COMMENTINDEX }"
+												class="like-count">${commentList.LIKECOUNT }</span>
+										</div>
+										<div class="like-and-report">
+											<span><button data-toggle="modal"
+													id="like-button${commentList.COMMENTINDEX }"
+													class="like-button"
+													onclick="clickLikeButton(${commentList.COMMENTINDEX})">좋아요</button></span>
+											<span><button data-toggle="modal" id="report-button"
+													data-target="#report-modal${commentList.COMMENTINDEX }">신고하기</button></span>
+										</div>
+
+										<!-- siren Modal(member) -->
+										<div class="modal fade"
+											id="report-modal${commentList.COMMENTINDEX }" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel"
+											aria-hidden="true">
+
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header" id="modal-title-wrapper">
+														<h5 class="modal-title" id="exampleModalLabel">신고하기</h5>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
 													</div>
-													<div id="report-modal-author">
-														<h5>작성자</h5>
-														<div>${commentList.NICKNAME }</div>
+													<div class="modal-body">
+														<div id="report-modal-contents">
+															<div id="report-modal-movie-title">
+																<h5>제목</h5>
+																<div>${movieInfoVo.title }</div>
+															</div>
+															<div id="report-modal-author">
+																<h5>작성자</h5>
+																<div>${commentList.NICKNAME }</div>
+															</div>
+															<div id="report-modal-comment-contents">
+																<h5>내용</h5>
+																<p>${commentList.TEXT }</p>
+															</div>
+															<textarea id="report-modal-comment-zone"
+																name="reportText" row="1" cols="1" rows="1"
+																placeholder="신고하시는 이유를 작성해주세요."
+																style="resize: none; width: 450px; height: 300px; padding: 10px;"></textarea>
+														</div>
 													</div>
-													<div id="report-modal-comment-contents">
-														<h5>내용</h5>
-														<p>${commentList.TEXT }</p>
+													<div class="modal-footer" id="footer-buttons">
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal" aria-label="Close"
+															id="button-for-cancel">취소</button>
+														<button type="button" class="btn btn-primary"
+															data-toggle="modal" data-target="#report-result-modal"
+															data-dismiss="modal" aria-label="Close"
+															id="button-for-submit"
+															onclick="submitReport(${commentList.COMMENTINDEX})">확인</button>
 													</div>
-													<textarea id="report-modal-comment-zone" name="reportText" row="1" cols="1" rows="1"
-														placeholder="신고하시는 이유를 작성해주세요."
-														style="resize: none; width: 450px; height: 300px; padding: 10px;"></textarea>
 												</div>
 											</div>
-											<div class="modal-footer" id="footer-buttons">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal"
-													aria-label="Close" id="button-for-cancel">취소</button>
-												<button type="button" class="btn btn-primary" data-toggle="modal"
-													data-target="#report-result-modal" data-dismiss="modal"
-													aria-label="Close" id="button-for-submit" onclick="submitReport(${commentList.COMMENTINDEX})">확인</button>
-											</div>
+
+
 										</div>
+										<!-- modal 끝 -->
 									</div>
-									
-									
-		                        </div>
-		                        <!-- modal 끝 -->
-	                        </div>
-	                    </c:forEach>
+								</c:forEach>
 
-                    </div>
+							</div>
 
-                    <!-- 신고 결과 모달 -->
-                    <div class="modal fade" id="report-result-modal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <jsp:include page="modal/report_modal_complete.jsp"/>
-                    </div>
-                </div>
-                  
-                <div class="detail-info" id="collection">
-                    <h4>이 작품이 담긴 컬렉션</h4>
-                    <div>
-                        <div class="my-slider" id="collection-slider">
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">읏챠피디아 엄선 컬렉션</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">디즈니&픽사 완전 정복</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 윤지 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 은규 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 지현 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 종웅 PICK!</div>
-                                </div>
-                            </a>
-                        </div>
-                        </a>
-                    </div>
-                </div>
+							<!-- 신고 결과 모달 -->
+							<div class="modal fade" id="report-result-modal" tabindex="-1"
+								role="dialog" aria-labelledby="exampleModalLabel"
+								aria-hidden="true">
+								<jsp:include page="modal/report_modal_complete.jsp" />
+							</div>
+						</div>
+
+						<div class="detail-info" id="collection">
+							<h4>이 작품이 담긴 컬렉션</h4>
+							<div>
+								<div class="my-slider" id="collection-slider">
+									<div class="collection-zone">
+										<a href="/collection?movieDocId=${movieInfoVo.movieDocId }">
+											<div class="collection-card">
+												<ul class="photo_list">
+													<c:forEach var="collectionList" items="${collectionList }">
+														<li class="photo_box"><img class="photo-img"
+															src="${collectionList.posterUri }"></li>
+
+													</c:forEach>
+												</ul>
+
+											</div>
+										</a>
+										<div class="collection-title">${pickName }</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
 
 
-            </div>
-        </div>
+					</div>
+				</div>
         
         <%} %>
         <!-- 여기부터 footer-->

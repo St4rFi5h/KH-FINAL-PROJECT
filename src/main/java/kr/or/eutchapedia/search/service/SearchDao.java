@@ -40,6 +40,11 @@ public class SearchDao {
 
 		try { 
 			searchMovieList = mapper.selectMovieResult(findStr);
+			
+
+			for (SearchMovieVo vo : searchMovieList) {
+				vo.setProdYear(vo.getProdYear().substring(0, 4));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

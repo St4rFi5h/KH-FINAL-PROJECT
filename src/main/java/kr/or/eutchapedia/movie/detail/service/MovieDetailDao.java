@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.eutchapedia.movie.collection.domain.CollectionVo;
 import kr.or.eutchapedia.movie.detail.domain.CommentVo;
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
@@ -164,22 +165,37 @@ public class MovieDetailDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return starRatingVo;
 
 	}
-	
+
 	public CommentVo checkCommentData(Map<String, Object> map) {
 		CommentVo commentVo = new CommentVo();
-		
+
 		try {
 			commentVo = mapper.checkCommentData(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return commentVo;
 	}
-	
-	
+
+	public List<CollectionVo> selectCollectionInfo(String movieDocId) {
+		List<CollectionVo> collectionList = new ArrayList<>();
+
+		try {
+			collectionList = mapper.selectCollectionInfo(movieDocId);
+			for (CollectionVo vo : collectionList) {
+				vo.setProdYear(vo.getProdYear().substring(0, 4));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return collectionList;
+	}
+
+
 }

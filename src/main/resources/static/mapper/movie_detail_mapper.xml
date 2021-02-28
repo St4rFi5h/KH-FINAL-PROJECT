@@ -130,6 +130,29 @@
 		AND sr.fk_movie_docid = #{movieDocId}
 
 	</select>
+	
+		<!-- moviedocid 넘겨서 컬렉션 가져오기 -->
+	<select id="selectCollectionInfo" parameterType="String"
+		resultMap="collectionVo">
+		SELECT p.pick_name, p.pick_index, mi.movie_docid, mi.title,
+		mi.prodyear,
+		mi.nation, mi.poster_uri FROM movie_pick mp
+		JOIN movie_info
+		mi
+		ON mp.fk_movie_docid = mi.movie_docid
+		JOIN pick p
+		ON p.pick_index =
+		mp.fk_pick_index
+		WHERE fk_pick_index =
+		(SELECT p.pick_index
+		FROM pick p
+		JOIN movie_pick mp
+		ON p.pick_index = mp.fk_pick_index
+		WHERE fk_movie_docid = #{_parameter} )
+
+
+	</select>
+	
 
 	<!-- resultmap -->
 
@@ -193,6 +216,19 @@
 		<result column="comment_blind_check"
 			property="commentBlindCheck" />
 		<result column="comment_date" property="commentDate" />
+
+	</resultMap>
+	
+	<resultMap id="collectionVo"
+		type="kr.or.eutchapedia.movie.collection.domain.CollectionVo">
+		<result column="pick_name" property="pickName" />
+		<result column="pick_index" property="pickIndex" />
+		<result column="movie_docid" property="movieDocId" />
+		<result column="title" property="title" />
+		<result column="prodyear" property="prodYear" />
+		<result column="nation" property="nation" />
+		<result column="poster_uri" property="posterUri" />
+
 
 	</resultMap>
 </mapper>
