@@ -267,7 +267,7 @@
 			                    <fmt:parseDate value='${MovieInfoVo.prodYear}' var='prodYear' pattern="yyyyMMdd" scope="page"/>
 			                    <fmt:formatDate value="${prodYear}" pattern="yyyy"/>
 			                    <span>·</span>${MovieInfoVo.nation}</div></p>
-			                    <p><div class="movie_average">평균<span>★</span>4.4</div></p>
+			                    <p><div class="movie_average">평균<span>★</span>${MovieInfoVo.ratingAvg}</div></p>
 			                  </div>
 			               </div>
 			               </a>
@@ -297,7 +297,7 @@
 			                    <fmt:parseDate value='${MovieInfoVo.prodYear}' var='prodYear' pattern="yyyyMMdd" scope="page"/>
 		                    	<fmt:formatDate value="${prodYear}" pattern="yyyy"/>
 			                    <span>·</span>${MovieInfoVo.nation}</div></p>
-			                    <p><div class="movie_average">평균<span>★</span>4.0</div></p>
+			                    <p><div class="movie_average">평균<span>★</span>${MovieInfoVo.ratingAvg}</div></p>
 			                  </div>
 			                </div>
 			              </a>
@@ -327,7 +327,7 @@
 			                    <fmt:parseDate value='${MovieInfoVo.prodYear}' var='prodYear' pattern="yyyyMMdd" scope="page"/>
 		                    	<fmt:formatDate value="${prodYear}" pattern="yyyy"/>
 			                    <span>·</span>${MovieInfoVo.nation}</div></p>
-			                    <p><div class="movie_average">평균<span>★</span>3.3</div></p>
+			                    <p><div class="movie_average">평균<span>★</span>${MovieInfoVo.ratingAvg}</div></p>
 			                  </div>
 			                </div>
 			              </a>
@@ -357,7 +357,7 @@
 			                    <fmt:parseDate value='${MovieInfoVo.prodYear}' var='prodYear' pattern="yyyyMMdd" scope="page"/>
 		                    	<fmt:formatDate value="${prodYear}" pattern="yyyy"/>
 			                    <span>·</span>${MovieInfoVo.nation}</div></p>
-			                    <p><div class="movie_average">평균<span>★</span>3.8</div></p>
+			                    <p><div class="movie_average">평균<span>★</span>${MovieInfoVo.ratingAvg}</div></p>
 			                  </div>
 			                  </div>
 				             </a>
