@@ -126,12 +126,14 @@
 		FROM star_rating sr
 		JOIN eutcha_comment ec
 		ON sr.star_index = ec.fk_star_index
-		WHERE sr.fk_member_email = #{memberEmail}
-		AND sr.fk_movie_docid = #{movieDocId}
+		WHERE
+		sr.fk_member_email = #{memberEmail}
+		AND sr.fk_movie_docid =
+		#{movieDocId}
 
 	</select>
-	
-		<!-- moviedocid 넘겨서 컬렉션 가져오기 -->
+
+	<!-- moviedocid 넘겨서 컬렉션 가져오기 -->
 	<select id="selectCollectionInfo" parameterType="String"
 		resultMap="collectionVo">
 		SELECT p.pick_name, p.pick_index, mi.movie_docid, mi.title,
@@ -143,17 +145,40 @@
 		JOIN pick p
 		ON p.pick_index =
 		mp.fk_pick_index
-		WHERE fk_pick_index =
+		WHERE fk_pick_index IN
 		(SELECT p.pick_index
 		FROM pick p
 		JOIN movie_pick mp
 		ON p.pick_index = mp.fk_pick_index
-		WHERE fk_movie_docid = #{_parameter} )
+		WHERE
+		fk_movie_docid = #{_parameter} )
 
 
 	</select>
-	
 
+	<!-- 컬렉션 이름만 따로 가져오기 -->
+	<select id="selectCollectionName" parameterType="String"
+		resultType="String">
+		SELECT p.pick_name
+		FROM pick p
+		JOIN movie_pick mp
+		ON
+		p.pick_index = mp.fk_pick_index
+		WHERE fk_movie_docid = #{_parameter}
+	</select>
+
+
+	<!-- 컬렉션 번호만 따로 가져오기 -->
+	<select id="selectCollectionIndex" parameterType="String"
+		resultType="Integer">
+		SELECT p.pick_index
+		FROM pick p
+		JOIN movie_pick mp
+		ON p.pick_index = mp.fk_pick_index
+		WHERE fk_movie_docid = #{_parameter}
+
+
+	</select>
 	<!-- resultmap -->
 
 	<resultMap
@@ -218,7 +243,7 @@
 		<result column="comment_date" property="commentDate" />
 
 	</resultMap>
-	
+
 	<resultMap id="collectionVo"
 		type="kr.or.eutchapedia.movie.collection.domain.CollectionVo">
 		<result column="pick_name" property="pickName" />

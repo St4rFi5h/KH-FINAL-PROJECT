@@ -196,6 +196,29 @@ public class MovieDetailDao {
 
 		return collectionList;
 	}
+	
+	public List<String> selectCollectionName(String movieDocId) {
+		List<String> collectionNameList = new ArrayList<>();
+		
+		try {
+			collectionNameList = mapper.selectCollectionName(movieDocId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return collectionNameList;
+	}
 
+	public List<Integer> selectCollectionIndex(String movieDocId) {
+		List<Integer> collectionIndexList = new ArrayList<>();
+		
+		try {
+			collectionIndexList = mapper.selectCollectionIndex(movieDocId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return collectionIndexList;
+	}
 
 }

@@ -6,7 +6,7 @@
 <mapper
 	namespace="kr.or.eutchapedia.movie.collection.repository.CollectionMapper">
 
-	<!-- moviedocid 넘겨서 컬렉션 가져오기 -->
+	
 	<select id="selectCollectionInfo" parameterType="int"
 		resultMap="collectionVo">
 		SELECT p.pick_name, p.pick_index, mi.movie_docid, mi.title,
@@ -20,6 +20,7 @@
 		mp.fk_pick_index
 		WHERE fk_pick_index =
 		#{_parameter}
+		ORDER BY prodyear desc
 
 
 	</select>

@@ -27,4 +27,6 @@ public interface MovieDetailMapper {
 	public StarRatingVo checkRatedStars(Map<String, Object> map);
 	public CommentVo checkCommentData(Map<String, Object> map); 
 	public List<CollectionVo> selectCollectionInfo(String movieDocId);
+	public List<String> selectCollectionName(String movieDocId);
+	public List<Integer> selectCollectionIndex(String movieDocId);
 } 
