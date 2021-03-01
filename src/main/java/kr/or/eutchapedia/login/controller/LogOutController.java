@@ -25,8 +25,7 @@ public class LogOutController {
 		
 		memberService.logout(session);
 		
-		mv.setViewName("/user/index_main");
-		mv.addObject("msg", "logout");
+		mv.setViewName("redirect:/");
 		
 		return mv;
 		}
