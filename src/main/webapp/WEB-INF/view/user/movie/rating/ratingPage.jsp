@@ -40,21 +40,20 @@
 			<h1 id="howMany">5</h1>
 
 			<h1 id="count_comment">와우 이만큼 평가하셨어요</h1>
-
-			<select class="custom-select" id="select-search">
-				<option selected>장르</option>
-				<option ${(param.f == "action")?"selected":""} value="action">액션</option>
-				<option ${(param.f == "romance")?"selected":""} value="romance">로멘스</option>
-				<option ${(param.f == "thriller")?"selected":""} value="thriller">스릴러</option>
-				<option ${(param.f == "sf")?"selected":""} value="sf">SF</option>
-				<option ${(param.f == "adventure")?"selected":""} value="adventure">어드벤처</option>
-				<option ${(param.f == "drama")?"selected":""} value="drama">드라마</option>
-				<option ${(param.f == "family")?"selected":""} value="family">가족</option>
-				<option ${(param.f == "animation")?"selected":""} value="animation">애니메이션</option>
-				<option ${(param.f == "comedy")?"selected":""} value="comedy">코미디</option>
-
+	 <form action="/move/movierate" method="get">
+			<select class="custom-select" id="select-search" name ="genre"  onchange="formChange(this.form)"  name="f">
+					
+				<option ${(param.f == "액션/스릴러/범죄")?"selected":""} value="액션/스릴러/범죄">액션/스릴러/범죄</option>
+				<option ${(param.f == "멜로/로맨스")?"selected":""} value="멜로/로맨스">멜로/로맨스</option>
+				<option ${(param.f == "판타지/SF")?"selected":""} value="판타지/SF">판타지/SF</option>
+				<option ${(param.f == "드라마")?"selected":""} value="드라마">드라마</option>
+				<option ${(param.f == "공포")?"selected":""} value="공포">공포</option>
+				<option ${(param.f == "기타")?"selected":""} value="기타">기타</option>
+				
 
 			</select>
+					<button type="submit" class="btn btn-primary " id="search-btn">검색</button>
+			</form>
 		</div>
 
 		<c:forEach var="m" items="${movies}" varStatus="vs" end="10">

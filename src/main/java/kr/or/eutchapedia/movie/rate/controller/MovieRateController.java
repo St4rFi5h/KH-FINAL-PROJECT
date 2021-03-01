@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,54 +25,49 @@ public class MovieRateController {
 	private MovierateService service; 
 	int cp_ = 1;
 	@RequestMapping("/movierate")						
-	public ModelAndView movieRate(HttpSession session, Model model) {
+	public ModelAndView movieRate(HttpSession session, Model model , HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView("user/movie/rating/ratingPage");
 
+		String genre_ = req.getParameter("f");
+		String genre = "액션/스릴러/범죄"; 
+		if(genre_ != null && !genre_.equals(""))
+			genre = genre_;
+		
 
-	
 		String email = (String)session.getAttribute("email");	
 
-		List<MovierateVo> movies = service.getMovieListsS(email);	
+		List<MovierateVo> movies = service.getMovieListsS(email,genre);	
 		model.addAttribute("movies", movies);
 		
 
-		ModelAndView mv = new ModelAndView("user/movie/rating/ratingPage");
 		return mv;
 	}
 
-//밑에가 안도는중
+
 	@RequestMapping("/ratelist.do")		
 	@ResponseBody
 	public List<MovierateVo> movies(
 
 			@RequestParam(value = "cp" , required = false, defaultValue = "1") int cp,
-			@RequestParam(value = "gr",required = false , defaultValue = "전체")String genre)
+			@RequestParam(value = "gr",required = false , defaultValue = "액션/스릴러/범죄")String genre
+			,  HttpServletRequest req)
 	{		
 		Map<String, Object> param = new HashMap<String, Object>();
 	
 	
-
-
-
-/*
-	if(cp_ == 1) {
-		System.out.println("if문 들어간다잉");
-		Integer start = (cp-1)*10+1;
-		Integer end = start+10-1;
-		param.put("st",start);
-		param.put("en", end);
-		param.put("genre",genre);
-
-		cp_ = 0;
-		return  service.getMovieLists(param);
-
-	}
-*/
 	System.out.println("현재페이지"+cp);
-	//널값 1로  일단 현제 기본값이없음String start_=
 
+
+		String genre_ = req.getParameter("f");
+
+		if(genre_ != null && !genre_.equals(""))
+			genre = genre_;
+		
+		
 	Integer start = (cp-1)*10+1;
 	Integer end = start+10-1;
 	System.out.println(start);
+	System.out.println(genre);
 	System.out.println(end);
 	param.put("st",start);
 	param.put("en", end);
