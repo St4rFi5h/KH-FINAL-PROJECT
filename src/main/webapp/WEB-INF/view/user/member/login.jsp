@@ -30,7 +30,7 @@
         <main class="main-body">
             <div class="login-main">
                 <div class="logo">
-                    <img src="img/original.png" width="198px" height="38px">
+                    <img src="img/original.png">
                 </div>
                 <h2 class="title">로그인</h2>
                 <div class="login-form">
@@ -57,11 +57,11 @@
                     계정이 없으신가요?
                     <button type="button" onclick="location.href='/signup'">회원가입</button>
                 </div>
-                <hr class="bottom-line" >
+                <!-- <hr class="bottom-line" >
 
                 <div id="naver-login">
                     <a href="#"><img src="img/member/naver.PNG" style="width: 311px; height: 44px;" /></a>
-                </div>
+                </div> -->
             </div>
         </main>
 

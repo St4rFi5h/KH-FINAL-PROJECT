@@ -16,18 +16,21 @@ $("#input-nickname").focusout(function () {
 			$("#nickname-required").html("닉네임을 입력해 주세요.");
 			$("#nickname-required").css("display", "inline-block");
 			$("#nickname-required").css("color", "rgb(245, 0, 0)");
+			$("#input-nickname").css({"background-color": "rgb(255, 240, 240)", "border" : "1px solid rgb(245, 0, 0)", "color": "black"});
 			requiredCheck = false;
 
 		} else if (!nicknameCheckRegExp.test(nickname)) {
 			$("#nickname-required").html("정확하지 않은 닉네임입니다.");
 			$("#nickname-required").css("display", "inline-block");
 			$("#nickname-required").css("color", "rgb(245, 0, 0)");
+			$("#input-nickname").css({"background-color": "rgb(255, 240, 240)", "border" : "1px solid rgb(245, 0, 0)", "color": "black"});
 			requiredCheck = false;
 
 		} else if (nicknameCheckRegExp.test(nickname)) {
 			$("#nickname-required").html("사용 가능한 닉네임입니다.");
 			$("#nickname-required").css("display", "inline-block");
-			$("#nickname-required").css("color", "rgb(245, 0, 0)");
+			$("#nickname-required").css("color", "rgb(23, 173, 0)");
+			$("#input-nickname").css({"background-color": "rgb(220, 250, 218)", "border" : "1px solid rgb(218, 216, 218)", "color": "black"});
 			requiredCheck = true;
 		}
 	}
@@ -45,6 +48,7 @@ $("#input-nickname").focusout(function () {
 				$("#nickname-required").html("사용 중인 닉네임입니다.");
 				$("#nickname-required").css("display", "inline-block");
 				$("#nickname-required").css("color", "rgb(245, 0, 0)");
+				$("#input-nickname").css({"background-color": "rgb(255, 240, 240)", "border" : "1px solid rgb(245, 0, 0)", "color": "black"});
 				requiredCheck = false;
 
 			} else if (result == 0) {
@@ -76,18 +80,21 @@ $("#input-email").focusout(function () {
 			$("#email-required").html("이메일을 입력해 주세요.");
 			$("#email-required").css("display", "inline-block");
 			$("#email-required").css("color", "rgb(245, 0, 0)");
+			$("#input-email").css({"background-color": "rgb(255, 240, 240)", "border" : "1px solid rgb(245, 0, 0)", "color": "black"});
 			requiredCheck = false;
 
 		} else if (!emailCheckRegExp.test(email)) {
 			$("#email-required").html("이메일 형식에 맞지 않습니다.");
 			$("#email-required").css("display", "inline-block");
 			$("#email-required").css("color", "rgb(245, 0, 0)");
+			$("#input-email").css({"background-color": "rgb(255, 240, 240)", "border" : "1px solid rgb(245, 0, 0)", "color": "black"});
 			requiredCheck = false;
 
 		} else if (emailCheckRegExp.test(email)) {
 			$("#email-required").html("사용 가능한 이메일입니다.");
 			$("#email-required").css("display", "inline-block");
-			$("#email-required").css("color", "rgb(245, 0, 0)");
+			$("#email-required").css("color", "rgb(23, 173, 0)");
+			$("#input-email").css({"background-color": "rgb(220, 250, 218)", "border" : "1px solid rgb(218, 216, 218)", "color": "black"});
 			requiredCheck = true;
 
 		}
@@ -107,6 +114,7 @@ $("#input-email").focusout(function () {
 				$("#email-required").html("사용 중인 이메일 주소입니다.");
 				$("#email-required").css("display", "inline-block");
 				$("#email-required").css("color", "rgb(245, 0, 0)");
+				$("#input-email").css({"background-color": "rgb(255, 240, 240)", "border" : "1px solid rgb(245, 0, 0)", "color": "black"});
 				requiredCheck = false;
 				emailExists = result;
 
@@ -139,12 +147,14 @@ $("#input-password").focusout(function () {
 		$("#password-required").html("비밀번호는 필수 정보입니다.");
 		$("#password-required").css("display", "inline-block");
 		$("#password-required").css("color", "rgb(245, 0, 0)");
+		$("#input-password").css({"background-color": "rgb(255, 240, 240)", "border" : "1px solid rgb(245, 0, 0)", "color": "black"});
 		requiredCheck = false;
 
 	} else if (password.length < 8) {
 		$("#password-required").html("8자리 이상 입력해주세요.");
 		$("#password-required").css("display", "inline-block");
 		$("#password-required").css("color", "rgb(245, 0, 0)");
+		$("#input-password").css({"background-color": "rgb(255, 240, 240)", "border" : "1px solid rgb(245, 0, 0)", "color": "black"});
 		requiredCheck = false;
 		return false;
 
@@ -152,6 +162,7 @@ $("#input-password").focusout(function () {
 		$("#password-required").html("비밀번호에는 공백을 사용할 수 없습니다.");
 		$("#password-required").css("display", "inline-block");
 		$("#password-required").css("color", "rgb(245, 0, 0)");
+		$("#input-password").css({"background-color": "rgb(255, 240, 240)", "border" : "1px solid rgb(245, 0, 0)", "color": "black"});
 		requiredCheck = false;
 		return false;
 
@@ -159,6 +170,7 @@ $("#input-password").focusout(function () {
 		$("#password-required").html("영문, 숫자, 특수문자를 혼합하여 입력해주세요.");
 		$("#password-required").css("display", "inline-block");
 		$("#password-required").css("color", "rgb(245, 0, 0)");
+		$("#input-password").css({"background-color": "rgb(255, 240, 240)", "border" : "1px solid rgb(245, 0, 0)", "color": "black"});
 		requiredCheck = false;
 		return false;
 

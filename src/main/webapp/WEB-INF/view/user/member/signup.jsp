@@ -28,7 +28,7 @@
     <main class="main-body">
         <div class="login-main">
             <div class="logo">
-                <img src="img/original.png" width="198px" height="38px">
+                <img src="img/original.png" >
             </div>
             <h2 class="title">회원가입</h2>
             <div class="login-form">
@@ -49,7 +49,7 @@
                         <label>
                             <input class="input" type="password" name="memberPwd" id="input-password" placeholder="비밀번호" autocomplete="off" required />
                         </label>
-                        <span class="error" id="password-required">비밀번호는 필수입니다.</span>
+                        <span class="error" id="password-required" style="padding:8px 0 5px 10px;">비밀번호는 필수입니다.</span>
                     </div>
                     <p>
                         <input class="login-button" type="submit" value="회원가입" />
@@ -61,11 +61,11 @@
                 이미 가입하셨나요?
                 <button type="button" onclick="location.href='login'">로그인</button>
             </div>
-            <hr class="bottom-line">
+            <!-- <hr class="bottom-line">
 
             <div id="naver-login">
                 <a href="#"><img src="img/member/naver.PNG"  style="width: 311px; height: 44px;" /></a>
-            </div>
+            </div> -->
         </div>
     </main>
   
