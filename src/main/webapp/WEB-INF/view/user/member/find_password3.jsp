@@ -43,15 +43,18 @@
 				</div>
 			</div>
 			<div class="find-password-form">
-				<form method="POST" action="#">
+				<form method="POST" action="/findpassword3" onsubmit="return checkForm(this)">
 					<p>
-						<input class="new-password" type="password" name="memberPwdChange" placeholder="새 비밀번호" />
+						<input class="new-password" type="password" name="memberPwd" id="chgpwd1" placeholder="새 비밀번호" />
+						<input type="hidden" name="memberEmail" value="${memberEmail}">				
+						<span class="error" id="chgpwd1">비밀번호를 다시 설정해 주세요.</span>
 					</p>
 					<p>
-						<input class="input-password" type="password" placeholder="재입력 해주세요" />
+						<input class="input-password" type="password" id='password2' placeholder="재입력 해주세요" />
+						<span class="infopwd2"></span>
 					</p>
 					<p>
-						<input class="find-password-button" type="submit" value="비밀번호 변경하기" onclick="location.href='#'">
+						<input class="find-password-button" type="submit" value="비밀번호 변경하기" />
 					</p>
 				</form>
 			</div>
@@ -66,6 +69,7 @@
 	<script src="js/jquery.min.js"></script>
 	<!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
 	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/member/find_password3.js"></script>
 </body>
 
 

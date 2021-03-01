@@ -41,17 +41,12 @@
 		WHERE member_email = #{memberEmail}
 	</select>
 	
-	<!-- 비밀번호 찾기 -->
-	<select id="findpwd" parameterType="kr.or.eutchapedia.login.vo.MemberVo" resultType="kr.or.eutchapedia.login.vo.MemberVo">
-		SELECT member_email from member
-		WHERE member_email = {member_Email}
-	</select>
 
 	<!-- 비밀번호 재설정 -->
 	<update id="updatepwd" parameterType="kr.or.eutchapedia.login.vo.MemberVo">		
 		UPDATE member SET 		
 		member_pwd = #{memberPwd},	
-		member_pwd_salt = #{memberPwdSalt},	
+		member_pwd_salt = #{memberPwdSalt}	
 		WHERE member_email = #{memberEmail}			
 	</update>
 

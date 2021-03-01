@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -106,7 +107,8 @@ public class FindPasswordController {
 		//        
 		//return mv;
 		return "/user/member/find_password2";
-
+		
+		
 	}
 	
 	@GetMapping("/findpassword2")
@@ -123,19 +125,19 @@ public class FindPasswordController {
 		System.out.println("dice : " + dice);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("user/member/find_password2");
+		mv.setViewName("/findpassword3");
 		mv.addObject("memberEmail", memberEmail);
 		
 		if(number.equals(Integer.toString(dice)))  {
 			//인증번호 일치할 경우 비밀번호 변경 창 이동
 			
 			mv.setViewName("user/member/find_password3");
-//			mv.addObject("memberEmail", memberEmail);
-//			
-//			response_equals.setContentType("text/html; charset=UTF-8");
-//			PrintWriter out_equals = response_equals.getWriter();
-//            out_equals.println("<script>alert('인증번호가 일치하였습니다. 비밀번호 변경창으로 이동합니다.');</script>");
-//            out_equals.flush();
+			mv.addObject("memberEmail", memberEmail);
+			
+			response_equals.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_equals = response_equals.getWriter();
+            out_equals.println("<script>alert('인증번호가 일치하였습니다. 비밀번호 변경창으로 이동합니다.');</script>");
+            out_equals.flush();
             
             return mv;
             
@@ -158,18 +160,25 @@ public class FindPasswordController {
 	}
 
 	@RequestMapping(value = "/findpassword3", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView findpassword3(MemberVo memberVo) {
+	public ModelAndView findpassword3(MemberVo memberVo, HttpSession session, String memberEmail) {
 		
 		ModelAndView mv = new ModelAndView();
 
 		String pwd = memberVo.getMemberPwd();
-		String pwd2 = memberVo.getMemberPwdChange();
 		
 		
-		if(!pwd2.equals("")) {
+		if(!pwd.equals("") || pwd!=null) {
 			Utils utils = new Utils(); 
 			memberVo.setMemberPwdSalt(utils.getSalt());
-			memberVo.setMemberPwd(utils.getEncrypt(memberVo.getMemberPwdChange(), memberVo.getMemberPwdSalt()));
+			memberVo.setMemberPwd(utils.getEncrypt( memberVo.getMemberPwdSalt()));
+			memberVo.setMemberEmail(memberEmail);
+			
+			System.out.println("memberpwd: " + memberVo.getMemberPwd()); 
+			System.out.println("memberemail:" + memberVo.getMemberEmail());
+			
+			String msg = memberService.updatepwd(memberVo);
+			System.out.println(msg);
+			mv.addObject("memberEmail", memberEmail);
 		}
 		else {
 			memberVo.setMemberPwd(pwd);
@@ -180,9 +189,12 @@ public class FindPasswordController {
 
 
 	@RequestMapping(value = "/findpasswordcomplete")
-	public ModelAndView findpasswordcomplete() {
-		ModelAndView mv = new ModelAndView("user/member/find_password_complete");
-
+	public ModelAndView findpasswordcomplete(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		String memberemail = (String) session.getAttribute("memberEmail");
+		
+		mv.addObject("memberemail", memberemail);
+		mv.setViewName("/user/member/find_password_complete");
 		return mv;
 	}
 }

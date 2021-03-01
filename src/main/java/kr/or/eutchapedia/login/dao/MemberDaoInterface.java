@@ -31,5 +31,5 @@ public interface MemberDaoInterface {
 	void logout(HttpSession session);
 	
 	//비밀번호 변경
-	void updatepwd(MemberVo memberVo);
+	int updatepwd(MemberVo memberVo);
 }

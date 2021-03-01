@@ -65,10 +65,10 @@
 	<script src="js/jquery.min.js"></script>
 	<!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
 	<script src="js/bootstrap.bundle.min.js"></script>
-<!-- 	<script>
+	<script>
 		window.onload=function(){ 
 		alert("이메일이 발송되었습니다. 인증번호를 입력해주세요."); }
-	</script> -->
+	</script>
 </body>
 
 
