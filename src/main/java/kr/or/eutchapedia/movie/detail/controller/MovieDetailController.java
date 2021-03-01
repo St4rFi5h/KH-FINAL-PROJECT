@@ -60,14 +60,14 @@ public class MovieDetailController {
 		List<CollectionVo> collectionList = movieDetailDao.selectCollectionInfo(movieDocId);
 		movieDetailDao.updateHitCount(movieDocId);
 		
-		if (collectionList != null) {
+		if (!collectionList.isEmpty()) {
 			int pickIndex = collectionList.get(0).getPickIndex(); // 컬렉션 많아지면 코드 손봐야함 
 			String pickName = collectionList.get(0).getPickName();
 			mv.addObject("pickName", pickName);
 			mv.addObject("pickIndex", pickIndex);
-			mv.addObject("collectionList", collectionList);
 		}
 		
+		mv.addObject("collectionList", collectionList);
 		mv.addObject("movieInfoVo", movieInfoVo);
 		mv.addObject("staffList", staffList);
 		mv.addObject("starAvgMap", starAvgMap);

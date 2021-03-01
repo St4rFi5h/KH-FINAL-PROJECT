@@ -447,20 +447,23 @@
 							<div>
 								<div class="my-slider" id="collection-slider">
 									<div class="collection-zone">
-										<input type="hidden" value=${pickIndex } /> <a
-											href="/collection?pickIndex=${pickIndex }">
-											<div class="collection-card">
-												<ul class="photo_list">
-													<c:forEach var="collectionList" items="${collectionList }">
-														<li class="photo_box"><img class="photo-img"
-															src="${collectionList.posterUri }"></li>
-
-													</c:forEach>
-												</ul>
-
-											</div>
-										</a>
-										<div class="collection-title">${pickName }</div>
+										<c:if test="${!empty collectionList }">
+											<input type="hidden" value=${pickIndex } />
+											<a href="/collection?pickIndex=${pickIndex }">
+												<div class="collection-card">
+													<ul class="photo_list">
+														<c:forEach var="collectionList" items="${collectionList }">
+															<li class="photo_box"><img class="photo-img"
+																src="${collectionList.posterUri }"></li>
+														</c:forEach>
+													</ul>
+												</div>
+											</a>
+											<div class="collection-title">${pickName }</div>
+										</c:if>
+										<c:if test="${empty collectionList }">
+										<div>컬렉션 데이터가 없습니다.</div>
+										</c:if>
 									</div>
 								</div>
 
