@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.eutchapedia.login.service.MemberService;
 import kr.or.eutchapedia.login.vo.MemberVo;
+import kr.or.eutchapedia.login.vo.MemberVoTemp;
 
 @Controller
 
@@ -129,6 +130,7 @@ public class FindPasswordController {
 		mv.addObject("memberEmail", memberEmail);
 		
 		if(number.equals(Integer.toString(dice)))  {
+			
 			//인증번호 일치할 경우 비밀번호 변경 창 이동
 			
 			mv.setViewName("user/member/find_password3");
@@ -141,6 +143,7 @@ public class FindPasswordController {
             
             return mv;
             
+            //비밀번호 틀렸을 때
 		} else {
 			
 			ModelAndView mv2 = new ModelAndView();
@@ -159,31 +162,33 @@ public class FindPasswordController {
 		
 	}
 
+	//비밀번호 변경 페이지
 	@RequestMapping(value = "/findpassword3", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView findpassword3(MemberVo memberVo, HttpSession session, String memberEmail) {
 		
 		ModelAndView mv = new ModelAndView();
 
 		String pwd = memberVo.getMemberPwd();
-		
-		
+			
 		if(!pwd.equals("") || pwd!=null) {
 			Utils utils = new Utils(); 
 			memberVo.setMemberPwdSalt(utils.getSalt());
-			memberVo.setMemberPwd(utils.getEncrypt( memberVo.getMemberPwdSalt()));
+			memberVo.setMemberPwd(utils.getEncrypt(memberVo.getMemberPwd(),memberVo.getMemberPwdSalt()));
 			memberVo.setMemberEmail(memberEmail);
 			
 			System.out.println("memberpwd: " + memberVo.getMemberPwd()); 
+			System.out.println("memberpwdSalt: " + memberVo.getMemberPwdSalt()); 
 			System.out.println("memberemail:" + memberVo.getMemberEmail());
 			
+			System.out.println("서비스 전");
 			String msg = memberService.updatepwd(memberVo);
+			System.out.println("서비스 완");
 			System.out.println(msg);
+			
 			mv.addObject("memberEmail", memberEmail);
+			mv.setViewName("user/member/find_password_complete");
 		}
-		else {
-			memberVo.setMemberPwd(pwd);
-		}
-		mv.setViewName("user/member/find_password_complete");
+		
 		return mv;
 	}
 
@@ -191,9 +196,7 @@ public class FindPasswordController {
 	@RequestMapping(value = "/findpasswordcomplete")
 	public ModelAndView findpasswordcomplete(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		String memberemail = (String) session.getAttribute("memberEmail");
 		
-		mv.addObject("memberemail", memberemail);
 		mv.setViewName("/user/member/find_password_complete");
 		return mv;
 	}

@@ -55,10 +55,9 @@ public class MemberService {
 
 		//비밀번호 암호화
 		String salt = vtemp.getMemberPwdSalt(); //솔트
-		System.out.println(salt);
-		String pwd = vtemp.getMemberPwd();
-		String pwdSalt = utils.getEncrypt(inputPwd, salt);
-
+		String pwd = vtemp.getMemberPwd(); //db에서 가져온 최종pwd해시
+		String pwdSalt = utils.getEncrypt(inputPwd, salt); //사용자 입력후 해시한 값
+		
 		//회원 상태
 		String status = vtemp.getMemberStatus();
 		String c = "N";
@@ -66,7 +65,7 @@ public class MemberService {
 
 		System.out.println("//로그인 객체 확인 vtemp : " + vtemp);
 		System.out.println("status 값 : " + status);
-
+		
 		//로그인 결과 값
 		int result;
 
@@ -107,8 +106,12 @@ public class MemberService {
 	public String updatepwd(MemberVo memberVo) {
 
 		String msg = "비번변경 성공";
+		int cnt = 0;
+		
 		try {
-			int cnt = memberDao.updatepwd(memberVo);
+			cnt = memberDao.updatepwd(memberVo);
+			
+			System.out.println("service cnt : " + cnt);
 			if (cnt < 1) {
 				msg = "비번변경중 오류";
 			}

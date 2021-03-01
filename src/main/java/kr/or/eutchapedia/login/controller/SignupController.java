@@ -30,7 +30,11 @@ public class SignupController {
 		ModelAndView mv = new ModelAndView("user/member/signup_complete");
 		//회원가입 메서드
 		System.out.println(memberService.signup(memberVo));
+		System.out.println(memberVo.getMemberEmail());
 		
+		String memberEmail = memberVo.getMemberEmail();
+		
+		mv.addObject("memberEmail", memberEmail);
 		return mv;
 	}
 	

@@ -47,7 +47,7 @@
 		UPDATE member SET 		
 		member_pwd = #{memberPwd},	
 		member_pwd_salt = #{memberPwdSalt}	
-		WHERE member_email = #{memberEmail}			
+		WHERE member_email = #{memberEmail}
 	</update>
 
 

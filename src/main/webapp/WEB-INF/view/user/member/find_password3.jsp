@@ -51,7 +51,7 @@
 					</p>
 					<p>
 						<input class="input-password" type="password" id='password2' placeholder="재입력 해주세요" />
-						<span class="infopwd2"></span>
+						<span class="infopwd2"  id='password2'></span>
 					</p>
 					<p>
 						<input class="find-password-button" type="submit" value="비밀번호 변경하기" />
