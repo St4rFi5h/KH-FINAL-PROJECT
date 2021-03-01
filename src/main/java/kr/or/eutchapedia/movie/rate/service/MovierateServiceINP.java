@@ -12,7 +12,12 @@ public class MovierateServiceINP implements MovierateService {
 	@Autowired
 	private MovierateDao dao; 
 
+	@Override	
+	public List<MovierateVo> getMovieListsS(String email) {	
+		List<MovierateVo> movies = dao.getMovieListsS(email);	
 
+		return movies;	
+	}
 	
 	@Override //목록출력
 	public List<MovierateVo> getmovierateList(String email, String genre ) {

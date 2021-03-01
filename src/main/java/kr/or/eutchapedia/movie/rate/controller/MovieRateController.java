@@ -27,6 +27,12 @@ public class MovieRateController {
 	public ModelAndView movieRate(HttpSession session, Model model) {
 
 
+	
+		String email = (String)session.getAttribute("email");	
+
+		List<MovierateVo> movies = service.getMovieListsS(email);	
+		model.addAttribute("movies", movies);
+		
 
 		ModelAndView mv = new ModelAndView("user/movie/rating/ratingPage");
 		return mv;
@@ -39,7 +45,7 @@ public class MovieRateController {
 
 			@RequestParam(value = "cp" , required = false, defaultValue = "1") int cp,
 			@RequestParam(value = "gr",required = false , defaultValue = "전체")String genre)
-	{				System.out.println("2단계통과");
+	{		
 		Map<String, Object> param = new HashMap<String, Object>();
 	
 	
@@ -67,8 +73,8 @@ public class MovieRateController {
 	Integer end = start+10-1;
 	System.out.println(start);
 	System.out.println(end);
-	param.put("st",1);
-	param.put("en", 10);
+	param.put("st",start);
+	param.put("en", end);
 	param.put("genre",genre);
 
 	System.out.println(param.get("st"));

@@ -56,8 +56,8 @@
 
 			</select>
 		</div>
-		<!--  
-		<c:forEach var="m" items="${movies}" varStatus="vs" end="5">
+
+		<c:forEach var="m" items="${movies}" varStatus="vs" end="10">
 			<div id="mid_wrap">
 				<ul class="movie">
 					<li class="eachMovie">
@@ -93,14 +93,14 @@
 			</div>
 
 
-
+<!--  
 		 <div class="movielist">
             <h1>Page 1</h1>
         </div>
         <div class="movielist">
             <h1>Page 2</h1>
         </div>
-     
+     -->
 
 			<div class="modal fade" id="exampleModal${vs.index}" tabindex="-1"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -139,11 +139,11 @@
 							<div class="css-1k6r5nr-RowActionButtons e1pa47va5">
 								<div aria-label="wished" role="button"
 									class="css-1s4ktoa-RowActionButton-WishButton e1pa47va7">
-									<img src="/img/movie/bookmark.svg" alt="wished"><span>보고싶어요</span>
+									<img src="/img/movie/bookmark_gray.svg" alt="wished"><span>보고싶어요</span>
 								</div>
 								<div aria-label="watching" role="button"
 									class="css-9gb35z-RowActionButton-WatchingButton e1pa47va8">
-									<img src="/img/movie/cloud.svg" alt="wished"><span>코멘트
+									<img src="/img/movie/comment.svg" alt="wished"><span>코멘트
 										작성하기</span>
 								</div>
 							</div>
@@ -161,7 +161,7 @@
 				</div>
 			</div>
 		</c:forEach>
-		-->
+	
 	</div>
 
 	<script src="/js/movie/star.js"></script>

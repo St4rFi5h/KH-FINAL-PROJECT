@@ -29,12 +29,21 @@
 		SELECT ROWNUM NUM, m1.*
 		FROM (SELECT * FROM movie_info m LEFT OUTER JOIN star_rating s ON m.movie_docid = s.fk_movie_docid
 		) m1
-		) WHERE NUM BETWEEN #{start} AND #{end}
+		) WHERE NUM BETWEEN ${st} AND ${en}
 
 
 	</select>
 
+	<select id="getMovieListsS" resultMap="movierate"
+		resultType="Map" parameterType="String">
+		SELECT * FROM(
+		SELECT ROWNUM NUM, m1.*
+		FROM (SELECT * FROM movie_info m LEFT OUTER JOIN star_rating s ON m.movie_docid = s.fk_movie_docid
+		) m1
+		) WHERE NUM BETWEEN 1 AND 10
 
+
+	</select>
 
 	<select id="getmovierateList" resultMap="movierate"
 		parameterType="String">

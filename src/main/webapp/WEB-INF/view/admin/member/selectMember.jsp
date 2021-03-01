@@ -77,7 +77,7 @@
 
 						<select class="custom-select" id="select-block" name="status">
 					<option ${(param.status == "N")?"selected":""} value="N">차단해제</option>
-					<option ${(param.status == "B")?"selected":""} value="B">영차구단</option>
+					<option ${(param.status == "B")?"selected":""} value="B">영구차단</option>
 					<option ${(param.status == "C")?"selected":""} value="C">코멘트차단</option>
 						</select>
 
