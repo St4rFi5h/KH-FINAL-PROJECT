@@ -19,7 +19,9 @@
     <!--부트스트랩 기능들의 css-->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/board/faq_qna/faq_qna.css">
-    <title>EUTCHAPEDIA</title>
+   	<!-- 네이버 스마트 에디터 -->
+    <script type="text/javascript" src="/js/board/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+	<title>EUTCHAPEDIA</title>
 
     <style>
     .notice_wrap .qatype {
