@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/board/notice/notiboard.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/movie/index.css"">
+    <link rel="stylesheet" href="/css/movie/index.css">
     <link rel="shortcut icon" href="/img/logo_favicon.ico"> <!--favicon-->
     <link rel="icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
@@ -25,43 +25,8 @@
 	<title>EUTCHAPEDIA</title>
 </head>
 <body>
-        <!-- 헤더 -->
-        <header>
-            <div class="wrapper">
-                <div class="navbar">
-                    <div class="navbar_logo">
-                        <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                    </div>
-    
-                <div class="menu">
-                <ul>
-                    <span><li><a href="#">ABOUT US</a></li></span>
-                    <span><li><a href="#">평가하기</a></li></span>
-                    <span><li><a href="#">고객센터</a></li></span>
-                </ul>
-                </div>
-    
-                <!--검색창-->
-                <div class="searchbar">
-                    <form action="#">
-                        <div class="search_box"> 
-                            <div class="icon"><i class="fas fa-search"></i> 
-                                <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-    
-                <div class="menu">
-                    <ul>
-                        <span><li><a href="#">로그인</a></li></span>
-                        <span><li><a href="#">회원가입</a></li></span>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-
+    <!-- 헤더 -->
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
     <!-- 공지사항 -->
     <section class="page_notiboard_sction">
         <div class="notiboard_wrap">

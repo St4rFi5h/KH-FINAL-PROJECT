@@ -25,41 +25,7 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <header>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="navbar_logo">
-                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                </div>
-    
-                <div class="menu">
-                <ul>
-                    <span><li><a href="#">ABOUT US</a></li></span>
-                    <span> <li><a href="#">평가하기</a></li></span>
-                    <span> <li><a href="#">고객센터</a></li></span>
-                </ul>
-                </div>
-    
-                <!--검색창-->
-                <div class="searchbar">
-                    <form action="#">
-                        <div class="search_box"> 
-                            <div class="icon"><i class="fas fa-search"></i> 
-                                <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-    
-                <div class="menu">
-                    <ul>
-                        <span><li><a href="#">로그인</a></li></span>
-                        <span><li><a href="#">회원가입</a></li></span>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
 
     <!-- 공지사항 -->
     <section class="page_notiboard_sction">
@@ -124,7 +90,7 @@
                                         <!-- textarea -->
                                         <!-- <textarea id="contents" name="contents" style="width: 100%; height: 474px;" class="editing_area" required="" fld_essential="" label="내용"></textarea>-->
                                         
-                                        <textarea name="noticeContent" id="noticeContent" value="noticeContent" rows="10" cols="123"></textarea>
+                                        <textarea name="noticeContent" id="noticeContent" value="noticeContent" rows="10" cols="122"></textarea>
                                         <!---->
                                         
                                         </td>

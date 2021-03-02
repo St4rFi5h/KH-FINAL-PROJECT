@@ -27,41 +27,7 @@
 </head>
 <body>
     <!-------------- 헤더 --------------->
-    <header>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="navbar_logo">
-                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                </div>
-
-                <div class="menu">
-                <ul>
-                <span><li><a href="#">ABOUT US</a></li></span>
-                <span><li><a href="#">평가하기</a></li></span>
-                <span><li><a href="#">고객센터</a></li></span>
-                </ul>
-                </div>
-
-                <!--검색창-->
-                <div class="searchbar">
-                    <form action="#">
-                    <div class="search_box"> 
-                        <div class="icon"><i class="fas fa-search"></i> 
-                            <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                        </div>
-                    </div>
-                    </form>
-                </div>
-
-                <div class="menu">
-                    <ul>
-                    <span><li><a href="#">로그인</a></li></span>
-                    <span><li><a href="#">회원가입</a></li></span>
-                </ul>
-            </div>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
 
     <!-------------- 바디 --------------->
     <section class="mypage_comment">
@@ -97,7 +63,6 @@
                             <th scope="col">내용</th>
                             <th scope="col">별점</th>
                             <th scope="col">작성일</th>
-                            <th scope="col">movieDocId</th>
 
                         </tr>
                         </thead>
@@ -108,7 +73,6 @@
                             <td class="myq_item_content">${c.commentText }</td>
                             <td>★${c.starRating }</td>
                             <td>${c.commentDate }</td>
-                            <td>${c.movieDocId }</td>
                         </tr>
                         </c:forEach>
                         </tbody>
@@ -134,9 +98,6 @@
                     </span>
                     <span class="pagenum current">
                         <span>1</span>
-                    </span>
-                    <span class="pagenum">
-                        <a>2</a>
                     </span>
                     <span class="pagination_next">
                         <a href="">

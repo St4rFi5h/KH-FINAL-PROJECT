@@ -10,7 +10,7 @@ public class Paging {
 	private boolean next;
 	
 	private int total;
-	private int displayPageNum = 10;
+	private int displayPageNum = 5;
 
 	private Criteria cri;
 	

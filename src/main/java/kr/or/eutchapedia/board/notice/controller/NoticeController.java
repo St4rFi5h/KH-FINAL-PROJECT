@@ -3,6 +3,7 @@ package kr.or.eutchapedia.board.notice.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ public class NoticeController {
 	private NoticeService noticeService;
 
 	@RequestMapping("/list")
-	public String boardList(Criteria cri, Model model) throws Exception {
+	public String boardList(Criteria cri, Model model, HttpSession session) throws Exception {
 		List<NoticeVo> list = noticeService.boardList(cri);
 		int total = noticeService.totalCnt(cri);
 
@@ -36,7 +37,7 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/list/{noticeIdx}")
-	public String boardDetail(long noticeNo, Model model) throws Exception {
+	public String boardDetail(long noticeNo, Model model, HttpSession session) throws Exception {
 		model.addAttribute("detail", noticeService.boardDetail(noticeNo));
 		return "redirect:/notice/list";
 	}
@@ -49,11 +50,10 @@ public class NoticeController {
 	
 	// 글 등록
 	@RequestMapping("/insert.do")
-	public String insertNotice(@ModelAttribute("board") NoticeVo board, Model model) throws Exception {
+	public String insertNotice(@ModelAttribute("board") NoticeVo board, Model model, HttpSession session) throws Exception {
 		noticeService.insertNotice(board);
 		return "redirect:/notice/list";
 	}
-	
 	
 	/**
 	 * 게시판 수정폼
@@ -65,7 +65,7 @@ public class NoticeController {
 	 * */
 	
 	@RequestMapping(value="/updateView", method = RequestMethod.GET)
-	public ModelAndView updateForm(@RequestParam long noticeNo) throws Exception {
+	public ModelAndView updateForm(@RequestParam long noticeNo, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("페이지 = " +noticeNo);
 		NoticeVo board = noticeService.boardDetail(noticeNo);
@@ -79,7 +79,7 @@ public class NoticeController {
 	 * @return
 	 * */
 	@RequestMapping(value="/update.do", method = RequestMethod.POST)
-	public String updateNotice(@ModelAttribute("board") NoticeVo board, Model model) throws Exception {
+	public String updateNotice(@ModelAttribute("board") NoticeVo board, Model model, HttpSession session) throws Exception {
 		noticeService.updateNotice(board);
 		return "redirect:/notice/list";
 	}
@@ -89,7 +89,7 @@ public class NoticeController {
 	 * @return
 	 * */
 	@RequestMapping(value="/delete", method = {RequestMethod.GET, RequestMethod.POST})
-	public String deleteNotice(@RequestParam("noticeNo") String noticeNo) throws Exception {
+	public String deleteNotice(@RequestParam("noticeNo") String noticeNo, HttpSession session) throws Exception {
 		noticeService.deleteNotice(noticeNo);
 		return "redirect:/notice/list";
 	}
@@ -99,7 +99,7 @@ public class NoticeController {
 	 * @throws Exception 
 	 * */
 	@RequestMapping(value = "/deleteChk")
-	public String ajaxTest(HttpServletRequest request) throws Exception {
+	public String ajaxTest(HttpServletRequest request, HttpSession session) throws Exception {
 		String[] ajaxMsg = request.getParameterValues("valueArr");
 		int size = ajaxMsg.length;
 		for(int i=0; i<size; i++) {

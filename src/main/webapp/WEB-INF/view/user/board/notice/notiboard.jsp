@@ -23,7 +23,8 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <header>
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
+    
         <div class="wrapper">
             <div class="navbar">
                 <div class="navbar_logo">
@@ -148,7 +149,6 @@
                             <div class="buttons">
                                 <a href="/notice/insertView"><input type="button" class="write_btn yb" value="글쓰기"/></a>
                                 <input type="button" class="write_btn yb" name="delete_btn" value="선택삭제" onclick="deleteValue();"/>
-                                <input type="button" class="write_btn yb" name="cmd" value="공개"/>
                             </div>
 
                             <!-- 페이징 -->
