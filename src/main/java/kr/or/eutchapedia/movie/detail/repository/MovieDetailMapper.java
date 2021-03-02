@@ -26,7 +26,7 @@ public interface MovieDetailMapper {
 	public int selectWannaWatch(Map<String, Object> map);
 	public StarRatingVo checkRatedStars(Map<String, Object> map);
 	public CommentVo checkCommentData(Map<String, Object> map); 
-	public List<CollectionVo> selectCollectionInfo(String movieDocId);
+	public List<CollectionVo> selectCollectionInfo(Integer pickIndex);
 	public List<String> selectCollectionName(String movieDocId);
 	public List<Integer> selectCollectionIndex(String movieDocId);
 } 

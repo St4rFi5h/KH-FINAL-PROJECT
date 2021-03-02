@@ -182,11 +182,11 @@ public class MovieDetailDao {
 		return commentVo;
 	}
 
-	public List<CollectionVo> selectCollectionInfo(String movieDocId) {
+	public List<CollectionVo> selectCollectionInfo(Integer pickIndex) {
 		List<CollectionVo> collectionList = new ArrayList<>();
-
+		
 		try {
-			collectionList = mapper.selectCollectionInfo(movieDocId);
+			collectionList = mapper.selectCollectionInfo(pickIndex);
 			for (CollectionVo vo : collectionList) {
 				vo.setProdYear(vo.getProdYear().substring(0, 4));
 			}

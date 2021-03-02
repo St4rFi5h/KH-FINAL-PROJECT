@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EUTCHAPEDIA</title>
     <link rel="shortcut icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="/css/movie/index.css" type="text/css" />
     <link rel="stylesheet" href="/css/movie/staff_detail.css" type="text/css" />

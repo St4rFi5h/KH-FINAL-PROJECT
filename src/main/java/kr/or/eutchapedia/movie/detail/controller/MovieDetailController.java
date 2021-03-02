@@ -58,26 +58,35 @@ public class MovieDetailController {
 		Map<String, Object> starAvgMap = movieDetailDao.selectStarAvg(movieDocId);
 		List<Map<String, Object>> starDataList = movieDetailDao.selectStarData(movieDocId);
 		List<Map<String, Object>> commentList = movieDetailDao.selectComments(movieDocId);
-		List<CollectionVo> collectionList = movieDetailDao.selectCollectionInfo(movieDocId);
-		
+
 		movieDetailDao.updateHitCount(movieDocId);
 
-		if (!collectionList.isEmpty()) {
-			List<Integer> collectionIndexList = movieDetailDao.selectCollectionIndex(movieDocId);
-			List<String> collectionNameList = movieDetailDao.selectCollectionName(movieDocId);
+		List<Integer> collectionIndexList = movieDetailDao.selectCollectionIndex(movieDocId);
+		List<String> collectionNameList = movieDetailDao.selectCollectionName(movieDocId);
+		if (!collectionIndexList.isEmpty()) {
+			Map<String, List<CollectionVo>> collectionMap = new HashMap<>();
 			
+			List<CollectionVo> collectionList = new ArrayList<>();
+			
+			for (Integer pickIndex : collectionIndexList) {
+				collectionList = movieDetailDao.selectCollectionInfo(pickIndex);
+				collectionMap.put("list" + pickIndex, collectionList);
+				System.out.println(collectionMap.get("list" + pickIndex));
+			}
 			mv.addObject("collectionIndexList", collectionIndexList);
 			mv.addObject("collectionNameList", collectionNameList);
+			System.out.println(collectionMap.keySet());
 			
-			
+			mv.addObject("collectionMap", collectionMap);
+			mv.addObject("collectionList", collectionList);
 		}
+		
 
 		mv.addObject("movieInfoVo", movieInfoVo);
 		mv.addObject("staffList", staffList);
 		mv.addObject("starAvgMap", starAvgMap);
 		mv.addObject("starDataList", starDataList);
 		mv.addObject("commentList", commentList);
-		mv.addObject("collectionList", collectionList);
 
 		mv.setViewName("/user/movie/detail/movie_detail");
 

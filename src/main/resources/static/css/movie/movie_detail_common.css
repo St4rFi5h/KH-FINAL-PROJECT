@@ -467,9 +467,9 @@ header a:hover {
     border-radius: 2px;
      
 } */
-.photo_box .photo-img {
+/* .photo_box .photo-img {
     width: 100px;
-    height: auto;
+    height: 140px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -479,7 +479,7 @@ header a:hover {
     border: 1px outset #e9e4e4;
     border-radius: 5px;
 
-}
+} */
 
 
 .collection-title {

@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eutchapedia</title>
+    <title>EUTCHAPEDIA</title>
     <link rel="shortcut icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="/css/movie/index.css" type="text/css" />
     <link rel="stylesheet" href="/css/movie/movie_detail_common.css" type="text/css" />
@@ -188,26 +188,23 @@
 					<div>
 						<div class="my-slider" id="collection-slider">
 							<div class="collection-zone">
-								<c:if test="${!empty collectionList }">
-									<c:forEach var="index" items="${collectionIndexList }">
-										<div class="collection-card">
-											<a href="/collection?pickIndex=${index }">
+								<c:if test="${!empty collectionMap }">
+									<c:forEach var="collectionMap" items="${collectionMap}">
+										<c:forEach var="items" items="${collectionMap.value }"
+											begin="0" end="0">
+											<div class="collection-card">
 												<ul class="photo_list">
 
-													<c:forEach var="collectionList" items="${collectionList }"
-														begin="0" end="3">
-														<c:if test="${collectionList.pickIndex eq index }">
-
-															<li class="photo_box"><img class="photo-img"
-																src="${collectionList.posterUri }"></li>
-														</c:if>
-													</c:forEach>
+													<a href="/collection?pickIndex=${items.pickIndex }">
+														<li class="photo_box"><img class="photo-img"
+															src="${items.posterUri }"></li>
+													</a>
 
 												</ul>
-											</a>
-										</div>
-										<c:forEach items="${collectionNameList}" var="name">
-											<div class="collection-title">${name }</div>
+											</div>
+
+											<div class="collection-title">${items.pickName }</div>
+
 										</c:forEach>
 									</c:forEach>
 								</c:if>

@@ -134,7 +134,7 @@
 	</select>
 
 	<!-- moviedocid 넘겨서 컬렉션 가져오기 -->
-	<select id="selectCollectionInfo" parameterType="String"
+	<select id="selectCollectionInfo" parameterType="Integer"
 		resultMap="collectionVo">
 		SELECT p.pick_name, p.pick_index, mi.movie_docid, mi.title,
 		mi.prodyear,
@@ -145,15 +145,8 @@
 		JOIN pick p
 		ON p.pick_index =
 		mp.fk_pick_index
-		WHERE fk_pick_index IN
-		(SELECT p.pick_index
-		FROM pick p
-		JOIN movie_pick mp
-		ON p.pick_index = mp.fk_pick_index
-		WHERE
-		fk_movie_docid = #{_parameter} )
-
-
+		WHERE fk_pick_index = #{_parameter}
+		
 	</select>
 
 	<!-- 컬렉션 이름만 따로 가져오기 -->
