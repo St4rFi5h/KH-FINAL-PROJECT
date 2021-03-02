@@ -36,7 +36,6 @@ public class CommentDao {
 			}
 			
 			page.pageCompute();
-			System.out.println(page.getMovieDocId());
 			commentList = mapper.selectCommentList(page);
 			for (CommentListVo vo : commentList) {
 				if (vo.getPhoto() == null) {

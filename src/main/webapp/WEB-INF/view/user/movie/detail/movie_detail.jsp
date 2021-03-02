@@ -481,21 +481,25 @@
 						<div>
 							<div class="my-slider" id="collection-slider">
 								<div class="collection-zone">
-									<c:if test="${!empty collectionList }">
-										<c:forEach var="collectionNameList" items="${collectionNameList }">
-											<div class="collection-card">
-												<a href="/collection?pickIndex=${pickIndex }">
+									<c:if test="${!empty collectionMap }">
+										<c:forEach var="collectionMap" items="${collectionMap}">
+											<c:forEach var="items" items="${collectionMap.value }"
+												begin="0" end="0">
+												<div class="collection-card">
 													<ul class="photo_list">
-														<c:forEach var="collectionList" begin="0" end="3"
-															items="${collectionList }">
+
+														<a href="/collection?pickIndex=${items.pickIndex }">
 															<li class="photo_box"><img class="photo-img"
-																src="${collectionList.posterUri }"></li>
-														</c:forEach>
+																src="${items.posterUri }"></li>
+														</a>
+
 													</ul>
-												</a>
-											</div>
-											<div class="collection-title">${collectionNameList }</div>
+												</div>
+
+												<div class="collection-title">${items.pickName }</div>
+
 											</c:forEach>
+										</c:forEach>
 									</c:if>
 									<c:if test="${empty collectionList }">
 										<div class="data-empty-message">컬렉션 데이터가 없습니다.</div>
