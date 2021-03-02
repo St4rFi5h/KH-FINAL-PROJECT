@@ -81,7 +81,7 @@ var dataloading = false;
 								
 										row+=	"					<div class='movie_wrap'>";
 								
-										row+=	"						<img class='movie_image' src='"+list.poster_uri+"'>";
+										row+=	"						<img class='movie_image' src='"+list.poster_uri+"' >";
 								
 										row+=	"					</div>";
 										row+=	"				</div>";
