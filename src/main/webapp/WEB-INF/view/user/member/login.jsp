@@ -36,9 +36,9 @@
                 <div class="login-form">
                     <form method="POST" id="login-form" action="/login.do" onsubmit="return login();">
                         <p>
-                            <input class="input-email" type="email" name="memberEmail" id="email" placeholder="이메일">
-                            <span id="searchclear"><i class="fas fa-times"></i></span>
-                            </input>
+                            <input class="input-email" type="email" name="memberEmail" id="email" placeholder="이메일" />
+                           <!--  <span id="searchclear"><i class="fas fa-times"></i></span> -->
+                            
                         </p>
                         <p>
                             <input class="input" type="password" name="memberPwd" id="pwd" placeholder="비밀번호">
@@ -74,7 +74,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/member/login.js"></script>
-    <script>
+    <!-- <script>
         var $ipt = $('#email'),
             $clearIpt = $('#searchclear');
 
@@ -101,7 +101,7 @@
             $(this).hide();
         });
 
-    </script>
+    </script> -->
 
 </body>
 

@@ -155,11 +155,9 @@ public class FindPasswordController {
             out_equals.println("<script>alert('인증번호가 일치하지 않습니다. 인증번호를 다시 입력해 주세요.'); history.go(-1);</script>");
             out_equals.flush();
             
-    
             return mv2;
 		}
-		
-		
+				
 	}
 
 	//비밀번호 변경 페이지

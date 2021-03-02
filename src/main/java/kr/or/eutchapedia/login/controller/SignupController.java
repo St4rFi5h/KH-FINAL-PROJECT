@@ -1,5 +1,11 @@
 package kr.or.eutchapedia.login.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,8 +23,16 @@ public class SignupController {
 	
 	//회원가입 ㅍㅔ이지
 	@RequestMapping(value="/signup")
-	public ModelAndView signupPage() {
+	public ModelAndView signupPage(HttpSession httpSession, HttpServletResponse response) throws IOException {
 		ModelAndView mv = new ModelAndView("user/member/signup");
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+//		if(httpSession.getAttribute("memberEmail") != null) {
+//			out.println("<script>alert('로그인 한 상태입니다.');history.go(-1);</script>");
+//			out.flush();
+//		}
 		
 		return mv;
 	}
