@@ -27,26 +27,28 @@
 
 	<select id="getMovieLists" resultMap="movierate"
 		resultType="Map" parameterType="hashmap">
-		SELECT * FROM(
+            
+            		SELECT * FROM(
 		SELECT ROWNUM NUM, m1.*
-		FROM (SELECT * FROM movie_info m LEFT OUTER JOIN star_rating s ON m.movie_docid = s.fk_movie_docid
+		FROM (SELECT * FROM movie_info m 
                             LEFT OUTER JOIN MAJOR_GENRE g ON m.movie_docid = g.fk_movie_docid
 		WHERE MAJOR_GENRE LIKE '%'||#{genre1}||'%') m1
 		) WHERE NUM BETWEEN ${st} AND ${en}
-
-
+            
+            
 	</select>
 
 	<select id="getMovieListsS" resultMap="movierate"
 		resultType="Map" parameterType="String">
-		SELECT * FROM(
+            
+            		SELECT * FROM(
 		SELECT ROWNUM NUM, m1.*
-		FROM (SELECT * FROM movie_info m LEFT OUTER JOIN star_rating s ON m.movie_docid = s.fk_movie_docid
+		FROM (SELECT * FROM movie_info m 
                             LEFT OUTER JOIN MAJOR_GENRE g ON m.movie_docid = g.fk_movie_docid
-		WHERE MAJOR_GENRE LIKE '%'||#{genre}||'%' ) m1
+		WHERE MAJOR_GENRE LIKE '%'||#{genre}||'%') m1
 		) WHERE NUM BETWEEN 1 AND 10
-
-
+            
+            
 	</select>
 
 	<select id="getmovierateList" resultMap="movierate"

@@ -34,8 +34,8 @@ var dataloading = false;
 	
 							$.each(result , function(index , list){
 								
-		
-									
+										
+															
 									var row =	"<div id='mid_wrap'>";
 										row+=	"<ul class='movie'>";
 										row+=	"	<li class='eachMovie'>";
