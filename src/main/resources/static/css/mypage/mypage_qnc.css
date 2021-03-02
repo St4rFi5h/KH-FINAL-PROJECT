@@ -216,6 +216,11 @@
     top:1px;
 }
 
+.btnArea a {
+    text-decoration: none;
+}
+
+
 .qna_list_block .answer_block {
     margin-top: 25px;
     padding-top: 25px;
