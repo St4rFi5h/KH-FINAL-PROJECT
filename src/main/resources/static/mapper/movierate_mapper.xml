@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+	
 <mapper namespace="kr.or.eutchapedia.movie.rate.dao.MovierateDao">
 	<resultMap
 		type="kr.or.eutchapedia.movie.rate.entity.MovierateVo" id="movierate">
@@ -30,7 +31,7 @@
 		SELECT ROWNUM NUM, m1.*
 		FROM (SELECT * FROM movie_info m LEFT OUTER JOIN star_rating s ON m.movie_docid = s.fk_movie_docid
                             LEFT OUTER JOIN MAJOR_GENRE g ON m.movie_docid = g.fk_movie_docid
-		WHERE MAJOR_GENRE LIKE '%'||#{genre}||'%') m1
+		WHERE MAJOR_GENRE LIKE '%'||#{genre1}||'%') m1
 		) WHERE NUM BETWEEN ${st} AND ${en}
 
 

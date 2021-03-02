@@ -1,6 +1,6 @@
 var page = 2;
 var dataloading = false;
-var genre = $("#select-search option:selected").val();
+
 
 
 		
@@ -8,7 +8,8 @@ var genre = $("#select-search option:selected").val();
 			var scrollTop = $(this).scrollTop();
 			var boxheight = $(this).height();
 			var listheight = 0;	
-			
+			var genre = $("#select-search option:selected").val();
+				console.log(genre)
 			$(this).find('.list-box').each(function(index, box) {
 				listheight += $(box).height();
 			})

@@ -40,18 +40,23 @@
 			<h1 id="howMany">5</h1>
 
 			<h1 id="count_comment">와우 이만큼 평가하셨어요</h1>
-	 <form action="/move/movierate" method="get">
-			<select class="custom-select" id="select-search" name ="genre"  onchange="formChange(this.form)"  name="f">
+	 <form action="/movie/movierate" method="get">
+			<select class="custom-select" id="select-search"   onchange="formChange(this.form)"  name="f">
 					
-				<option ${(param.f == "액션/스릴러/범죄")?"selected":""} value="액션/스릴러/범죄">액션/스릴러/범죄</option>
-				<option ${(param.f == "멜로/로맨스")?"selected":""} value="멜로/로맨스">멜로/로맨스</option>
-				<option ${(param.f == "판타지/SF")?"selected":""} value="판타지/SF">판타지/SF</option>
-				<option ${(param.f == "드라마")?"selected":""} value="드라마">드라마</option>
-				<option ${(param.f == "공포")?"selected":""} value="공포">공포</option>
-				<option ${(param.f == "기타")?"selected":""} value="기타">기타</option>
+				<option ${(param.f == "action")?"selected":""} value="action" >액션/스릴러/범죄</option>
+				<option ${(param.f == "romance")?"selected":""} value="romance">멜로/로맨스</option>
+				<option ${(param.f == "sf")?"selected":""} value="sf">판타지/SF</option>
+				<option ${(param.f == "drama")?"selected":""} value="drama">드라마</option>
+				<option ${(param.f == "horror")?"selected":""} value="horror">공포</option>
+				<option ${(param.f == "etc")?"selected":""} value="etc">기타</option>
 				
 
 			</select>
+			
+	
+			
+
+			
 					<button type="submit" class="btn btn-primary " id="search-btn">검색</button>
 			</form>
 		</div>
@@ -163,6 +168,28 @@
 	
 	</div>
 
+			<script th:inline="javascript">    
+ 
+    var selectedYear = [[${genre}]]; 
+    
+    if(genre == action){
+        $('#action').attr('selected','selected');
+    } else if(genre == romance){
+        $('#romance').attr('selected','selected');
+    } else if(genre == sf){
+        $('#sf').attr('selected','selected');
+    } else if(genre == drama){
+        $('#drama').attr('selected','selected');
+    }  else if(genre == horror){
+        $('#horror').attr('selected','selected');
+    }  else if(genre == etc){
+        $('#etc').attr('selected','selected');
+    } 
+
+
+
+    
+</script>
 	<script src="/js/movie/star.js"></script>
 	<script src="/js/movie/scroll.js"></script>
 	<script src="/js/jquery.min.js"></script>
