@@ -40,7 +40,7 @@ public class MovieRateController {
 		req.setCharacterEncoding("UTF-8");
 
 		if (genre_==null){
-			genre = "액션/ 스릴러/ 범죄" ;
+			genre = "액션/스릴러/범죄" ;
 		}
 		
 		
@@ -127,7 +127,6 @@ public class MovieRateController {
 			genre1 = "기타" ;
 		}
 	
-
 		
 		
 	Integer start = (cp-1)*10+1;

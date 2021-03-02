@@ -37,9 +37,9 @@
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<div id="allcontents">
 		<div id="top_wrap">
-			<h1 id="howMany">5</h1>
+			<h1 id="howMany">오늘은 어떤영화를 보셨나요?</h1>
 
-			<h1 id="count_comment">와우 이만큼 평가하셨어요</h1>
+			<h1 id="count_comment"></h1>
 	 <form action="/movie/movierate" method="get">
 			<select class="custom-select" id="select-search"   onchange="formChange(this.form)"  name="f">
 					
@@ -53,7 +53,7 @@
 
 			</select>
 			
-	
+
 			
 
 			
@@ -168,28 +168,7 @@
 	
 	</div>
 
-			<script th:inline="javascript">    
- 
-    var selectedYear = [[${genre}]]; 
-    
-    if(genre == action){
-        $('#action').attr('selected','selected');
-    } else if(genre == romance){
-        $('#romance').attr('selected','selected');
-    } else if(genre == sf){
-        $('#sf').attr('selected','selected');
-    } else if(genre == drama){
-        $('#drama').attr('selected','selected');
-    }  else if(genre == horror){
-        $('#horror').attr('selected','selected');
-    }  else if(genre == etc){
-        $('#etc').attr('selected','selected');
-    } 
 
-
-
-    
-</script>
 	<script src="/js/movie/star.js"></script>
 	<script src="/js/movie/scroll.js"></script>
 	<script src="/js/jquery.min.js"></script>

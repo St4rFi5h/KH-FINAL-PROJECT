@@ -17,7 +17,6 @@ var dataloading = false;
 			if (!dataloading) {
 				
 				if($(window).scrollTop() == $(document).height() - $(window).height()){
-					
 					$.ajax({
 						type:"GET",
 						url:"/movie/ratelist.do",
