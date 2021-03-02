@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.eutchapedia.board.notice.domain.Criteria;
+import kr.or.eutchapedia.board.notice.domain.MemberCheckVo;
 import kr.or.eutchapedia.board.notice.domain.NoticeVo;
 import kr.or.eutchapedia.board.notice.domain.Paging;
 import kr.or.eutchapedia.board.notice.service.NoticeService;
@@ -29,8 +30,11 @@ public class NoticeController {
 	@RequestMapping("/list")
 	public String boardList(Criteria cri, Model model, HttpSession session) throws Exception {
 		List<NoticeVo> list = noticeService.boardList(cri);
+		String member = (String)session.getAttribute("memberEmail");
+		MemberCheckVo getmember = noticeService.getMember(member);
+		
 		int total = noticeService.totalCnt(cri);
-
+		model.addAttribute("getmember",getmember);
 		model.addAttribute("list", list);
 		model.addAttribute("paging", new Paging(cri, total));
 		return "/user/board/notice/notiboard";

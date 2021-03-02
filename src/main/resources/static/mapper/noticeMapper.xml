@@ -79,4 +79,7 @@
 			WHERE
 				NOTICE_NO = ${noticeNo,jdbcType=LONGVARCHAR}
 	</delete>
+	<select id="getMember" resultType="kr.or.eutchapedia.board.notice.domain.MemberCheckVo">
+		SELECT * FROM MEMBER WHERE member_email = #{member}
+	</select>
 </mapper>

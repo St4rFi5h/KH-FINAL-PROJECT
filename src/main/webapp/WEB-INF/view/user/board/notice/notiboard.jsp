@@ -100,7 +100,10 @@
                         <div class="accordion_banner" id="tbl_notice">
                             <div class="tbl_notice_tit">
                                 <div class="tbl_notice_info">
-	                                    <p class="tbl_info_type"><input type="checkbox" name="allCheck" class="checkall"/></p>
+                                <p class="tbl_info_type">
+                                <c:if test="${getmember.adminCheck == 'A'}">
+	                                    <input type="checkbox" name="allCheck" class="checkall"/>
+                                </c:if></p>
 	                                    <p class="tbl_info_type">번호</p>
 	                                    <p class="tbl_info_tit">제목</p>
 	                                    <p class="tbl_info_date">작성일</p>
@@ -112,7 +115,9 @@
                                 <div class="tbl_notice_info">
                                     <div class="infoinner">
                                         <p class="tbl_info_type">
+                                        <c:if test="${getmember.adminCheck == 'A'}">
                                         	<input type="checkbox" name="RowCheck" class="checkbox" value="${board.noticeNo }"/>
+                                        </c:if>
                                             <span class="blind">체크박스</span>
                                         </p>
                                         <p class="tbl_info_type">${board.noticeNo }
@@ -133,12 +138,14 @@
                                     <div class="notice_wrap">
                                         <div>
                                             <p>${board.noticeContent }</p>
+                                            	<c:if test="${getmember.adminCheck == 'A'}">
                                                 <span class="modi_span">
                                                     <a href="${path }/notice/updateView?noticeNo=${board.noticeNo}" class="modi_btn">수정</a>
                                                 </span>
                                                 <span class="modi_span">
                                                     <a href="${path }/notice/delete?noticeNo=${board.noticeNo}" class="modi_btn">삭제</a>
                                         		</span>
+                                        		</c:if>
                                         </div>
                                     </div>
                                 </div>
@@ -146,10 +153,12 @@
                             </c:forEach>
 
                             <!-- 관리자 버튼-->
+                            <c:if test="${getmember.adminCheck == 'A'}">
                             <div class="buttons">
                                 <a href="/notice/insertView"><input type="button" class="write_btn yb" value="글쓰기"/></a>
                                 <input type="button" class="write_btn yb" name="delete_btn" value="선택삭제" onclick="deleteValue();"/>
                             </div>
+                            </c:if>
 
                             <!-- 페이징 -->
 							<div class="pagination_section">
