@@ -29,7 +29,7 @@
 	
 	<!-- 로그인 -->
 	<select id="login" resultType="kr.or.eutchapedia.login.vo.MemberVo">
-		SELECT COUNT(*) FROM member
+		SELECT * FROM member
 		WHERE member_email = #{memberEmail}
 		AND member_pwd = #{memberPwd} AND member_status = 'N'
 	</select>

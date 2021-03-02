@@ -70,8 +70,8 @@ public class AdminMovieController {
 		System.out.println(query);
 		System.out.println(number);
 
-		String userid = "jhlee@naver.com";
-//		String userid = "kaoo238@naver.com";
+	//	String userid = "jhlee@naver.com";
+		String userid = "kaoo238@naver.com";
 		String collection_ = req.getParameter("cbname");
 		String[] movieids = req.getParameterValues("mid");
 		List<PickInfo> getpick = service.getPick();

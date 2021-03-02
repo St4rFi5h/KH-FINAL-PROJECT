@@ -75,7 +75,7 @@
 				<c:set var="lastNum"
 					value="${fn:substringBefore(Math.ceil(count/10),'.')}" />
 				<c:set var="commentno" value="${ci}" />
-				<div style="margin-bottom: 30px">
+				<div style="margin-bottom: 30px; text-align: center;">
 					<span>현재페이지 ${(empty param.p)?1:param.p}</span> /${lastNum} page
 				</div>
 				<nav id="comment-data-page" aria-label="Page navigation example">

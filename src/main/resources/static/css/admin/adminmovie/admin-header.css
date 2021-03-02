@@ -19,12 +19,14 @@ margin-right: 100px;
 #gohome{
     width: 40px;
     height: 40px;
-    
     display: inline-block;
     border-radius: 10px;
-    
     margin-right: 100px;
 }
+#gohome :hover{
+	cursor: pointer;
+}    
+    
 #gohome > img{
     width: 100%;
 }
@@ -37,6 +39,9 @@ margin-right: 100px;
    
     display: inline-block;
     border-radius: 10px;
+}
+#logout :hover{
+	cursor: pointer;
 }
 #logout > img {
     width: 100%;

@@ -74,7 +74,8 @@ public class MemberService {
 		System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberEmail"));
 
 		if(pwd.equals(pwdSalt) && status.equals(c) || status.equals(a) ) {
-			MemberVo loginchk = memberDao.login(memberEmail, inputPwd);
+			MemberVo loginchk = memberDao.login(memberEmail, pwdSalt);
+			httpSession.setAttribute("loginchk", loginchk);
 			System.out.println(loginchk);
 			result = 1;
 		} else {
