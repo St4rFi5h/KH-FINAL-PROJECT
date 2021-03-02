@@ -43,7 +43,7 @@
 	 <form action="/movie/movierate" method="get">
 			<select class="custom-select" id="select-search"   onchange="formChange(this.form)"  name="f">
 					
-				<option ${(param.f == "action")?"selected":""} value="action" >액션/스릴러/범죄</option>
+				<option ${(param.f == "action")?"selected":""} value="action"  >액션/스릴러/범죄</option>
 				<option ${(param.f == "romance")?"selected":""} value="romance">멜로/로맨스</option>
 				<option ${(param.f == "sf")?"selected":""} value="sf">판타지/SF</option>
 				<option ${(param.f == "drama")?"selected":""} value="drama">드라마</option>
@@ -68,12 +68,12 @@
 
 						<div class="movie_poster">
 							<div class="movie_wrap">
-								<img class="movie_image" src="${m.poster_uri}">
+								<img class="movie_image" src="${m.poster_uri}" onClick="location.href='/movie/detail?movieDocId=${m.movie_docid}'">
 							</div>
 						</div>
 
 						<div class="movie_name">
-							<h3 class="movie_title">
+							<h3 class="movie_title" onClick="location.href='/movie/detail?movieDocId=${m.movie_docid}'">
 								${m.title}
 								<div class="modal_button">
 									<button class="fas fa-ellipsis-v" id="modal_btn"

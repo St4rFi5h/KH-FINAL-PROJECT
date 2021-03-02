@@ -16,8 +16,7 @@ public class MovierateVo {
 	private int movie_hit_count;
 	private String MAJOR_GENRE;
 	
-	
-	
+
 	public String getMAJOR_GENRE() {
 		return MAJOR_GENRE;
 	}
