@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,13 +13,14 @@
 <div id="nav-col" class="col-lg-2">
     
                     <!--nav영역-->
-    
+    			
                     <!--어드민 정보-->
+                    <c:set var="id" value="${memberEmail}"></c:set>
                     <div id="admin-info">
                         <img class="col-lg-12" src="/img/admin/person3.png" alt="">
                         <br />
                         <div id="admin-id" class="col-lg-12">
-                            <strong>kimeungyu</strong>
+                            <strong>${id}</strong>
     
                         </div>
                     </div>
