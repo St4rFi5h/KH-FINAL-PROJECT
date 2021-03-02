@@ -1,5 +1,7 @@
 package kr.or.eutchapedia.board.controller.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +51,44 @@ public class FaqServiceImp implements FaqService{
 		return list;
 	}
 	
+	@Override
+	public int updatePubAll(int[] oids, int[] cids) {
+		List<String> oidsList = new ArrayList<>();
+		for(int i=0; i<oids.length; i++)
+			oidsList.add(String.valueOf(oids[i]));
+		
+		List<String> cidsList = new ArrayList<>();
+		for(int i=0; i<cids.length; i++)
+			cidsList.add(String.valueOf(cids[i]));
+		
+		return faqDao.updatePubAll(oidsList, cidsList);
+	}
+	
+	
+	@Override
+	public int updatePubAll(List<String> oids, List<String> cids) {
+
+		String oidsCSV = String.join(",", oids);
+		String cidsCSV = String.join(",", cids);
+		
+		return faqDao.updatePubAll(oidsCSV, cidsCSV);
+	}
+	
+	@Override
+	public int updatePubAll(String oidsCSV, String cidsCSV) {
+		
+
+		int result = 0;
+		result += faqDao.updatePubAll(oidsCSV, cidsCSV);
+		return result;
+	}
+	
+	//@Override
+	//public int updateAll(int[] pubIds, int[] closeIds) {
+	//	return faqDao.updatePubAll(pubIds, closeIds);
+	//}
+	
+	
 	//목록에 대한 개수
 	@Override
 	public int getCount() {
@@ -70,11 +110,6 @@ public class FaqServiceImp implements FaqService{
 	}
 
 
-	@Override
-	public int updateAll(int[] pubIds, int[] closeIds) {
-		// TODO Auto-generated method stub
-		return faqDao.updatePubAll(pubIds, closeIds);
-	}
 
 	@Override
 	public int deleteAll(int[] ids) {
@@ -111,6 +146,5 @@ public class FaqServiceImp implements FaqService{
 		// TODO Auto-generated method stub
 		
 	}
-	
 	
 }

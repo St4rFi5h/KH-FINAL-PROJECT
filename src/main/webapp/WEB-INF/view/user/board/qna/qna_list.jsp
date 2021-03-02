@@ -1,35 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/movie/index.css">
+    <link rel="shortcut icon" href="img/logo_favicon.ico"> <!--favicon-->
+    <link rel="icon" href="img/logo_favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
     <!--그리드시스템을 위한 css파일-->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
     <!--reboot.css 는 태그속성들이 다른 브라우저에서 호환이 가능하게끔 스타일을 맞춰주는 css파일 -->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
     <!--부트스트랩 기능들의 css-->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/민진/front-end/css/faq.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/민진/front-end/css/index.css">
-    <link rel="shortcut icon" href="/민진/front-end/img/logo_favicon.ico"><!--favicon-->
-    <link rel="icon" href="/민진/front-end/img/logo_favicon.ico">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
-    <link rel="stylesheet" href="css/index.css">
-    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/board/faq_qna/faq_qna.css">
     <title>EUTCHAPEDIA</title>
 </head>
-
 <body>
+    <!-- 헤더 -->
     <header>
         <div class="wrapper">
             <div class="navbar">
                 <div class="navbar_logo">
-                    <img id="logo" src="/민진/front-end/img/logo.png"> <!-- 이미지파일 이동 시 경로 확인!-->
+                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
                 </div>
     
                 <div class="menu">

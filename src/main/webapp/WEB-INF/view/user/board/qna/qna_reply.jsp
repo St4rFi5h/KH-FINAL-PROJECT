@@ -1,37 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/movie/index.css">
+    <link rel="shortcut icon" href="img/logo_favicon.ico"> <!--favicon-->
+    <link rel="icon" href="img/logo_favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
     <!--그리드시스템을 위한 css파일-->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
     <!--reboot.css 는 태그속성들이 다른 브라우저에서 호환이 가능하게끔 스타일을 맞춰주는 css파일 -->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
     <!--부트스트랩 기능들의 css-->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/민진/front-end/css/faq.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/민진/front-end/css/index.css">
-    <link rel="shortcut icon" href="/민진/front-end/img/logo_favicon.ico"><!--favicon-->
-    <link rel="icon" href="/민진/front-end/img/logo_favicon.ico">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
-    <link rel="stylesheet" href="css/index.css">
-     <!-- 네이버 스마트에디터 -->
-     <script type="text/javascript" src="/민진/front-end/html/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
-    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/board/faq_qna/faq_qna.css">
     <title>EUTCHAPEDIA</title>
 </head>
-
 <body>
+    <!-- 헤더 -->
     <header>
         <div class="wrapper">
             <div class="navbar">
                 <div class="navbar_logo">
-                    <img id="logo" src="/민진/front-end/img/logo.png"> <!-- 이미지파일 이동 시 경로 확인!-->
+                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
                 </div>
 
     
@@ -92,7 +88,8 @@
                         <div class="q_wrap">    
                             <span _ngcontent-dui-c129="" class="qatype">Q.</span>
                             <div>
-                                <p>왓챠피디아에 입사하려면 어떻게 해야하나요? <br/>
+                            <c:set var="qna" value="${qnaContent }"/> 
+                                <p>${qna}<br/>
                                      </p>
                             </div>
                         </div>
@@ -100,9 +97,11 @@
                 </div>
                 </div>
                 
-               
                 <div class="xans-board-write">
-                <form name="fm" id="fm" method="post" action="/shop/mypage/indb.php" enctype="multipart/form-data" onsubmit="return chkForm(this)" style="height: 100%;">
+                <form action="/qna/reply.do" method="post" enctype="multipart/form-data" style="height: 100%;">
+				<!-- 확인 -->
+               	
+                
                 <input type="hidden" name="mode" value="add_qna">
                 <input type="hidden" name="itemcd" value="">
                 <input type="hidden" name="sno" value="0">
@@ -111,19 +110,19 @@
                 </colgroup>
                 <tbody>
                 <tr>
-                <th class="input_txt" style="padding-top:20px;">제목</th>
+                <th class="input_txt" style="padding-top:20px;"></th>
                 <td><br>
-                <input type="text" name="subject" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="">
+                
                 </td>
                 </tr>
                 <tr>
-                <th class="input_txt">내용</th>
+                <th class="input_txt">답변내용</th>
                 <td class="edit_area" style="position: relative;">
                 <strong class="tit qna_public"></strong>             
                 <dl class="list qna_public">
                 </dl>
                 <!-- <textarea name="contents" style="width:100%;height:474px;" class="editing_area" required="" fld_esssential="" label="내용"></textarea> -->
-                <textarea name="ir1" id="ir1" rows="10" cols="137">에디터에 기본으로 삽입할 글(수정 모드)이 없다면 이 value 값을 지정하지 않으시면 됩니다.</textarea>
+                <textarea path="qnaContent" name="qnaContent" id="qnaContent" value="qnaContent" rows="10" cols="137"></textarea>
                 </td>
                 </tr>
                 <tr>
@@ -163,10 +162,8 @@
                 <table width="60%">
                 <tbody><tr>
                 <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
-                <input type="submit" class="bhs_button yb" value="저장" style="float:none;">
-                <a href="qna_list(admin).html">
-                    <input type="button" class="cancel_btn" value="취소"/>
-                </a>
+                <input type="submit" id="write" class="bhs_button yb" value="저장" style="float:none;" onclick="location.href='qna_list(amin)'"/>
+                <button type="button" class="cancel_btn" onclick="location.href='qna_list(admin)'">취소</button>
                 </td>
                 </tr>
                 </tbody></table>
@@ -211,31 +208,41 @@
     
       </footer>
     
-        <!-- scripts -->
+         <!-- scripts -->
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
-        </body>
-        <script type="text/javascript">
-            var oEditors = [];
-            nhn.husky.EZCreator.createInIFrame({
-             oAppRef: oEditors,
-             elPlaceHolder: "ir1",
-             sSkinURI: "/민진/front-end/html/se2/SmartEditor2Skin.html",
-             fCreator: "createSEditor2"
-            });
-        </script>
-        <script>
-		            // ‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
-		  function submitContents(elClickedObj) {
-		  // 에디터의 내용이 textarea에 적용된다.
-		  oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-		  
-		  // 에디터의 내용에 대한 값 검증은 이곳에서
-		  // document.getElementById("ir1").value를 이용해서 처리한다.
-		  
-		  try {
-		     elClickedObj.form.submit();
-		  } catch(e) {}
-		            }
-        </script>
-    </html>
+       </body>
+       <script type="text/javascript">
+		    var oEditors = [];
+		    nhn.husky.EZCreator.createInIFrame({
+		     oAppRef: oEditors,
+		     elPlaceHolder: "qnaContent",
+		     sSkinURI: "/js/board/se2/SmartEditor2Skin.html",
+		     fCreator: "createSEditor2"
+		    });
+		</script>
+		<script>
+		$("#write").click(function(){ 
+				oEditors.getById["qnaContent"].exec("UPDATE_CONTENTS_FIELD", []); 
+				$("#frm").submit(); 
+		})
+		</script>
+		<script type="text/javascript">
+		$(document).ready(function (e){
+			$('#write').click(function(){
+					var frmArr = ["qnaContent","qnaContent"];
+					//입력 값 널 체크
+					for(var i=0;i<frmArr.length;i++){
+						//alert(arr[i]);
+						if($.trim($('#'+frmArr[i]).val()) == ''){
+							alert('빈 칸을 모두 입력해 주세요.');
+							$('#'+frmArr[i]).focus();
+							return false;
+						}
+					}
+					//전송
+					$('#frm').submit();
+			});
+		});
+		</script>
+  </html>

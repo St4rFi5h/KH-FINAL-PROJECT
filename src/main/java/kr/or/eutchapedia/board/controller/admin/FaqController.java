@@ -32,24 +32,32 @@ public class FaqController {
     * @Autowired private Faq faq;
     */
    
-   
+   //목록 
    @RequestMapping("/faq_list(admin)") 
    public String list(Model model, HttpServletRequest request) {
 	   String[] openIds = request.getParameterValues("open-id");
 	   String cmd = request.getParameter("cmd");
-	   //String ids_ = request.getParameter("ids");
-	  // System.out.println("ids_ : " + ids_ );
-	  // String[] ids = ids_.split(" ");
+	   /*
+	   String ids_ = request.getParameter("ids");
+	  
+	   System.out.println("ids_ : " + ids_ );
+	  
 	   
-	   
-	   //for(String openId : openIds)
-      //    System.out.printf("open id :%s\n", openId);
-
-	   //List<String> oids = Arrays.asList(openIds);
-	   //List<String> cids = new ArrayList(Arrays.asList(ids));
-	   //cids.removeAll(oids);
-	   //System.out.println(cids);
-      //service.pubList(openIds);
+	   String[] ids = ids_.trim().split(" ");
+	  
+		 for(String openId : openIds) 
+			 System.out.printf("open id :%s\n", openId);
+		  
+		 List<String> oids = Arrays.asList(openIds);
+		 List<String> cids = new ArrayList(Arrays.asList(ids)); 
+		 cids.removeAll(oids);
+		 
+		 System.out.println("ids: " + Arrays.asList(ids)); 
+		 System.out.println("oids: " + oids);
+		 System.out.println("cids: " + cids);
+		  
+		// int result = service.updatePubAll(oids, cids);
+		 
      // service.closeList(closeIds);
  
 	  /**/
@@ -79,6 +87,7 @@ public class FaqController {
       return "/user/board/faq/faq_list(admin)";  
    }
    
+   //상세페이지 
    @RequestMapping("/faq_list(admin)/{faqNo}")
    public String detail(int faqNo, Model model) throws Exception {
       model.addAttribute("detail", service.detail(faqNo));
@@ -121,6 +130,7 @@ public class FaqController {
    @RequestMapping(value="/updateView", method = RequestMethod.GET)
    public ModelAndView updateForm(@RequestParam int faqNo) throws Exception{
       ModelAndView mv = new ModelAndView();
+      
       System.out.println("페이지 = " + faqNo);
       
       Faq faq = service.detail(faqNo);
