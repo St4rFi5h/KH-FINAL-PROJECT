@@ -32,11 +32,11 @@ public class LoginController {
 		PrintWriter out = response.getWriter();
 
 		
-//		  if(httpSession.getAttribute("memberEmail") != null) {
-//			  out.println("<script>alert('로그인 한 상태입니다.');history.go(-1);</script>");
-//			  out.flush(); 
-//		  }
-//		 
+		  if(httpSession.getAttribute("memberEmail") != null) {
+			  out.println("<script>alert('로그인 한 상태로 접근이 불가능합니다.');history.go(-1);</script>");
+			  out.flush(); 
+		  }
+		 
 
 		return mv;
 	}

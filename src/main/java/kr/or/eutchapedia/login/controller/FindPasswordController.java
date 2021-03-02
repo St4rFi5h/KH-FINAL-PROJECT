@@ -174,8 +174,8 @@ public class FindPasswordController {
 			memberVo.setMemberPwd(utils.getEncrypt(memberVo.getMemberPwd(),memberVo.getMemberPwdSalt()));
 			memberVo.setMemberEmail(memberEmail);
 			
-			System.out.println("memberpwd: " + memberVo.getMemberPwd()); 
-			System.out.println("memberpwdSalt: " + memberVo.getMemberPwdSalt()); 
+			//System.out.println("memberpwd: " + memberVo.getMemberPwd()); 
+			//System.out.println("memberpwdSalt: " + memberVo.getMemberPwdSalt()); 
 			System.out.println("memberemail:" + memberVo.getMemberEmail());
 			
 			System.out.println("서비스 전");
