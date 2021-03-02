@@ -475,7 +475,7 @@
 
           </div>
         </div>
-
+ <a id="MOVE_TOP_BTN" href="#"><i class="fas fa-arrow-up" id="up"></i></a> <!-- 스크롤 이벤트용 -->
       </section>
 
     </main>
@@ -486,6 +486,7 @@
 <!-- footer 끝 -->
 
   <script src="/js/main/movieslider.js"></script> <!-- 제일 위에 와야 함 -->
+  <script src="/js/main/scroll.js"></script> 
   <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

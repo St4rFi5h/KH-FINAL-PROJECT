@@ -257,15 +257,7 @@ main {
     border-radius: 2px;
 }
 
-/* .photo_box {
-    display: inline-flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    vertical-align: top;
-    background-color:rgba(230, 223, 223, 0.349);
-    border-radius: 2px;
-     
-} */
+
 .photo_box .photo-img {
     width: 100px;
     height: auto;
@@ -291,6 +283,23 @@ main {
 
 .movie_box a:link {
     text-decoration: none;
+}
+
+
+
+/*스크롤 */
+a#MOVE_TOP_BTN {
+    position: fixed;
+    right: 2%;
+    bottom: 50px;
+    display: none;
+    z-index: 999;
+    
+}
+
+#up{
+  font-size: 30px;
+  color: RGB(255, 7, 88);
 }
 
 
