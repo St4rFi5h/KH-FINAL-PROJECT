@@ -14,9 +14,9 @@
 	
 		$.fn.show = function(data) {
 			$.each(data, function (index, value) {
-				if(index<5) {
+				if(index<10) {
 					if(index>0) {
-						$('test').append($('#poster-0').clone().attr('id', 'poster-'+index));
+						$('poster_img').append($('#poster-0').clone().attr('id', 'poster-'+index));
 					}
 					divTag.children('.movie').attr('src', 'https://image.tmdb.org/t/p/w200'+value.poster_path);
 				}

@@ -33,162 +33,30 @@
 	
       <section id="movie" style="margin: auto; display: inline-block;">
 
-    <!--   
-        박스오피스 슬라이드
-       <div class="main_slider">
-  	    <h1 class="slider_title">박스오피스 도라이야</h1>
-          
-       <div class="movie_slider" id="box_office">  
-         
-
-		<div class="movie_box" id="test">
-				<a href="#">
-				  <div class="poster"id="poster-0">
-					<img alt="" class="movie">
-					<div class="rank">6</div>
-					<div class="movie_info">
-					  <h4 class="movie_title">아이</h4>
-					  <p><div class="movie_yearNnation">2020<span>·</span>한국</div>  </p>
-					  <p> <div class="movie_average">평균<span>★</span>3.4</div>  </p>
-					  <div class="movie_total">예매율 4.1%<span>·</span>누적 관객 2만명</div>
-					</div>
-				  </div>
-				</a>
-			</div>
-                 
-           </div>
-        </div>           -->
-         <!-- 추가 -->
-<!--             <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/758b715a1c9e777f0f6d318f5903fc4d.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE5UVTRNekl3TnpZME1qVTFOak0ySWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5Lk1uVFdmVEpJTWNraDVxZE5mXzBYLVlVaFZEYzNuclctR2FKNExNakRPUms"
-                    alt="" class="movie_img">
-                  <div class="rank">6</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">아이</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.4</div>
-                    </p>
-                    <div class="movie_total">예매율 4.1%<span>·</span>누적 관객 2만명</div>
-                  </div>
-                </div>
-              </a>
-            </div>
--->
-  
         <!--박스오피스 슬라이드 -->
         <div class="main_slider">
           <h1 class="slider_title">박스오피스</h1>
-          <div class="movie_slider" id="box_office">
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img src="https://an2-img.amz.wtchn.net/image/v2/612c4dc5b5b7b0df57bcf7aa02402dd2.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpBNU9UZzFNakE1TURjeU56VTFNVEkzSWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5Lmp3NllkRWtRTkE1UFBRTWdRMFRPOGRRRDMwcE1xLVY2RnBNbTY2UWNaWWs" alt="" class="movie_img">
-                  <div class="rank">1</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">소울</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.2</div>
-                    </p>
-                    <div class="movie_total">예매율 25%<span>·</span>누적 관객 113만명</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/c630199272ddb9a3fdee668009d04582.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9UQTJOakkxTWpFek1UVXdOemt4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnM2OEU4Yk1GVm1vR3pIMU5BaThuSno5cnQxeHVkWjNiaE1kdV9mbVE1bjg"
-                    alt="" class="movie_img">
-                  <div class="rank">2</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">극장판 귀멸의 칼날 무한열차편</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.2</div>
-                    </p>
-                    <div class="movie_total">예매율 21%<span>·</span>누적 관객 39만명</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/b4b406e42af330ba2e5cbd3b8a934020.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeU9USXlNekUyTURjeE56UXhNell5SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LnQ4M1owa3pIR0ZhdGJGTGc0REtfTVJqTE9hNFVKZ1NrZjgwbTlia3BjN28"
-                    alt="" class="movie_img">
-                  <div class="rank">3</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">해리포터와 불의 잔</h4>
-                    <p>
-                    <div class="movie_yearNnation">2005<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.0</div>
-                    </p>
-                    <div class="movie_total">예매율 10%<span>·</span>누적 관객 345만명</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/01d44d62013f186a9062cc32a1aa93d7.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeE9EQXdPVGs0TmprME1qQXdPVFl3SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LjM1Vy1qZmk3UmhYTG41TzBkeDUzSTlSVzlsblE3MHdXS1N5amVXZktLbm8"
-                    alt="" class="movie_img">
-                  <div class="rank">4</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">새해전야</h4>
-                    <p>
-                    <div class="movie_yearNnation">2019<span>·</span>한국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>2.6</div>
-                    </p>
-                    <div class="movie_total">예매율 9.1%<span>·</span>누적 관객 7만명</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/0e1500ec349833f0484e9875e94fc60c.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFd05UZzBNVFk0TXpNeU1qQTJNRFE1SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LkFDcm1kTmlKVXpNaGhOa2g5LUpOQWNlWWc3dFFMemZ6eTNlVGIzWmpabzA"
-                    alt="" class="movie_img">
-                  <div class="rank">5</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">명탐정 코난: 진홍의 수학여행</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>일본</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.0</div>
-                    </p>
-                    <div class="movie_total">예매율 6%<span>·</span>누적 관객 5만명</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- 추가 -->
+        	 <div class="movie_slider" id="box_office">
+          
+			<div class="movie_box" id="poster-0">
+					<a href="#">
+					  <div class="poster">
+						<img alt="" class="poster_img">
+						<div class="rank">6</div>
+						<div class="movie_info">
+						  <h4 class="movie_title">아이</h4>
+						  <p>
+						  <div class="movie_yearNnation">2020<span>·</span>한국</div>
+						  </p>
+						  <p>
+						  <div class="movie_average">평균<span>★</span>3.4</div>
+						  </p>
+						  <div class="movie_total">예매율 4.1%<span>·</span>누적 관객 2만명</div>
+						</div>
+					  </div>
+					</a>
+				</div>
+            <!-- 추가 
             <div class="movie_box">
               <a href="#">
                 <div class="poster">
@@ -208,91 +76,7 @@
                   </div>
                 </div>
               </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/f9a8d4378d48879659679fb50ef97af1.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeU56Y3hNalE0TWpJME1qSXpORFF4SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LjZJOVNpbVhrbldHRFZtazV4ZWdMd1NxZEhhbGkwSHJUZy02aUpEX2tQNGc"
-                    alt="" class="movie_img">
-                  <div class="rank">7</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">뉴스 오브 더 월드</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>미국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.3</div>
-                    </p>
-                    <div class="movie_total">예매율 3%<span>·</span>누적 관객 1만명</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/6b6b48fdf383198c8fc2eee29f135d5e.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFd05ERTFNVGcyT1RVek56WTFNemMzSWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LldqQUp5NXY0Snk1ZTBBbjFYMmFoRms1VENpeXVHdlZDa1dsd0R0bEdydW8"
-                    alt="" class="movie_img">
-                  <div class="rank">8</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">드림빌더</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>덴마크</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>2.4</div>
-                    </p>
-                    <div class="movie_total">예매율 2.2%<span>·</span>누적 관객 9,436명</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v2/cfc17ab3a41866cb42de195f030701af.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSmpjbTl3SWpwMGNuVmxMQ0pvWldsbmFIUWlPalF3TUN3aWNHRjBhQ0k2SWk5Mk1pOXpkRzl5WlM5cGJXRm5aUzh4TmpFeU9UTXpOVEl4TlRJeU56VTJPVEV3SWl3aWNYVmhiR2wwZVNJNk9EQXNJbmRwWkhSb0lqb3lPREI5LkxuNkRyMjQtYlFkSGs3S01QemVJeS1uODdwTk9JMjIzRXp3TzFTMTNRa2c"
-                    alt="" class="movie_img">
-                  <div class="rank">9</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">퍼펙트 케어</h4>
-                    <p>
-                    <div class="movie_yearNnation">2020<span>·</span>영국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>3.5</div>
-                    </p>
-                    <div class="movie_total">예매율 2%<span>·</span>누적 관객 6,265명</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <div class="poster">
-                  <img
-                    src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1585549176/sv2cue5mvz2vvgjkuupo.jpg"
-                    alt="" class="movie_img">
-                  <div class="rank">10</div>
-                  <div class="movie_info">
-                    <h4 class="movie_title">먼 훗날 우리</h4>
-                    <p>
-                    <div class="movie_yearNnation">2018<span>·</span>중국</div>
-                    </p>
-                    <p>
-                    <div class="movie_average">평균<span>★</span>4.0</div>
-                    </p>
-                    <div class="movie_total">예매율 1%<span>·</span>누적 관객 5,674명</div>
-                  </div>
-                </div>
-              </a>
-            </div>
+            </div>-->
 
           </div>
         </div>
@@ -428,7 +212,7 @@
           <div class="movie_slider" id="collection_slider">
 
             <div class="movie_box">
-              <a href="#">
+              <a href="/collection?pickIndex=1">
                 <ul class="photo_list">
                   <li class="photo_box">
                     <img class="photo-img"
@@ -453,7 +237,7 @@
             </div>
 
             <div class="movie_box">
-              <a href="#">
+            <a href="/collection?pickIndex=2">
                 <ul class="photo_list">
                   <li class="photo_box">
                     <img class="photo-img"
@@ -461,41 +245,44 @@
                   </li>
                   <li class="photo_box">
                     <img class="photo-img"
-                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466062131/e4xg75gbbfa6rjwy0d7k.jpg">
-                  </li>
-                  <li class="photo_box">
-                    <img class="photo-img"
                       src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1563771680/stqfo8sj3erjrplai4fq.jpg">
                   </li>
-                  <li class="photo_box">
-                    <img class="photo-img"
-                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466061035/fwwrjqhqwfuhzkk2hn7p.jpg">
-                  </li>
-                </ul>
-
-                <h4 class="collection_title"> 읏챠피디아 별점 TOP! </h4>
-              </a>
-            </div>
-
-            <div class="movie_box">
-              <a href="#">
-                <ul class="photo_list">
                   <li class="photo_box">
                     <img class="photo-img"
                       src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1467961113/i0gyod9uxmixi9bdziik.jpg">
                   </li>
                   <li class="photo_box">
                     <img class="photo-img"
-                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1482381369/lzr9boofuml7ny1sczkx.jpg">
+                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1548728649/xks96jzaouihrjensfiv.jpg">
+                  </li>
+                </ul>
+
+                <h4 class="collection_title"> 개발자 서우 PICK! </h4>
+              </a>
+            </div>
+
+            <div class="movie_box">
+             <a href="/collection?pickIndex=5">
+             
+                <ul class="photo_list">
+                  <li class="photo_box">
+                    <img class="photo-img"
+                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1467959937/lhlkhmc5gp2fnxkqirtf.jpg">
                   </li>
                   <li class="photo_box">
+                    <img class="photo-img"
+                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466103370/ywdt1mrrwekmz8qwaypr.jpg">
+                  </li>
+                  <li class="photo_box">
+                    <img class="photo-img"
+                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466158401/ai7yjv6viugghweedb8p.jpg">
+                  </li>
+                      <li class="photo_box">
                     <img class="photo-img"
                       src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466069575/iqtwt0y5dejjkmwewtbk.jpg">
                   </li>
-                  <li class="photo_box">
-                    <img class="photo-img"
-                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1492052122/fzjkzwtyleffkuxpph2s.jpg">
-                  </li>
+        
+      
                 </ul>
 
                 <h4 class="collection_title"> 읏챠 엄선 컬렉션!</h4>
@@ -503,7 +290,7 @@
             </div>
 
             <div class="movie_box">
-              <a href="#">
+              <a href="/collection?pickIndex=3">
                 <ul class="photo_list">
                   <li class="photo_box">
                     <img class="photo-img"
@@ -515,7 +302,7 @@
                   </li>
                   <li class="photo_box">
                     <img class="photo-img"
-                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466069658/ctiknd85dpdqptbaxq3e.jpg">
+                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1494335756/ivj6rq72wxwzrp8wxd3u.jpg">
                   </li>
                   <li class="photo_box">
                     <img class="photo-img"
@@ -528,7 +315,7 @@
             </div>
 
             <div class="movie_box">
-              <a href="#">
+              <a href="/collection?pickIndex=4">
                 <ul class="photo_list">
                   <li class="photo_box">
                     <img class="photo-img"
@@ -540,7 +327,7 @@
                   </li>
                   <li class="photo_box">
                     <img class="photo-img"
-                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1466064082/x6valqmosc71cpwmka0n.jpg">
+                      src="https://an2-img.amz.wtchn.net/image/v1/watcha/image/upload/c_fill,h_400,q_80,w_280/v1515140175/eobxmkw3eego39udca86.jpg">
                   </li>
                   <li class="photo_box">
                     <img class="photo-img"
@@ -548,7 +335,7 @@
                   </li>
                 </ul>
 
-                <h4 class="collection_title"> 개발자 종웅 PICK! </h4>
+                <h4 class="collection_title"> 개발자 윤지 PICK! </h4>
               </a>
             </div>
 
@@ -598,9 +385,9 @@
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 		crossorigin="anonymous" ></script>
  -->
-  <script src="/js/bootstrap.bundle.min.js"></script>
-  <script src="/js/main/movieslider.js"></script>
    <script src="/js/main/boxoffice7.js"></script>
+  <script src="/js/main/movieslider.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
  <!--  <script src="/js/main/boxoffice7.js"></script> -->
  <!-- <script src="/js/main/boxoffice.js"></script>  
     <script src="/js/main/boxoffice2.js"></script> 
