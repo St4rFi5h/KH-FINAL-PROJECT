@@ -171,21 +171,6 @@ main {
     border: 1px outset #e9e4e4;
 }
 
-.poster .movie_img {
-    /* margin-top: -5px; */
-    vertical-align: top;
-    width: 200px;
-    height: 250px;
-    opacity: 1;
-    object-fit: cover;
-    vertical-align: top;
-    border: 1px solid none;
-    box-sizing: border-box;
-    border-radius: 5px;
-    box-sizing: border-box;
-    border: 1px outset #e9e4e4;
-}
-
 .poster .rank {
     margin-top: 5px;
     position: absolute;
