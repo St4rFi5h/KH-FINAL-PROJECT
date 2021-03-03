@@ -76,7 +76,8 @@ public class MovieRateController {
 		System.out.println("나는장르다: "+ genre);
 		String email = (String)session.getAttribute("email");	
 
-		List<MovierateVo> movies = service.getMovieListsS(email,genre);	
+		List<MovierateVo> movies = service.getMovieListsS(email,genre);
+		System.out.println(movies);
 		model.addAttribute("movies", movies);
 		
 

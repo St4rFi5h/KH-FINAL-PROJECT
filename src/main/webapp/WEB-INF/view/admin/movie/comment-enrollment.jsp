@@ -100,51 +100,7 @@
                                 </c:if>
                             </ul>
                           </nav>
-                        <div id="btn-container">
-                            <button id="comment-del-one" type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-del-one">선택블라인드</button>
-                            <!--modal1-->
-                            <div class="modal fade" id="c-del-one" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">해제</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                      선택블라인드 하시겠습니까?
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                                      <button type="button" class="btn btn-primary">확인</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            <button id="comment-del-all" type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-del-all">전체블라인드</button>
-                            <!--modal2-->
-                            <div class="modal fade" id="c-del-all" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">해제</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                      전체블라인드 하시겠습니까?
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                                      <button type="button" class="btn btn-primary">확인</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                           
-                        </div>
+                       
                        
                       </div>
 				

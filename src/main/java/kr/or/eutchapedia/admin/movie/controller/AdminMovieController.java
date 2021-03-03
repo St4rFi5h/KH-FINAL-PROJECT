@@ -39,7 +39,7 @@ public class AdminMovieController {
 		List<Memberdash> getmemberinfo = service.getMemberInfo();
 		List<MovieChart> getmoviechart = service.getMovieChart();
 		List<MovieGoodChart> getmoviegoodchart=service.getMovieGoodChart();
-		System.out.println(getmoviegoodchart.get(0).getSum());
+		System.out.println("차트정보"+getmoviegoodchart.get(0).getSum());
 		model.addAttribute("getmemberinfo", getmemberinfo);
 		model.addAttribute("getmoviechart", getmoviechart);
 		model.addAttribute("getmoviegoodchart", getmoviegoodchart);
