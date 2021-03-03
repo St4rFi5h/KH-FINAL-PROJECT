@@ -46,7 +46,7 @@
          
           <div class="menu">
             <ul>
-              <li><a href="#" id="admin_home">관리자 홈</a></li><!-- 관리자 홈으로  -->
+              <li><a href="/admin/adminhome" id="admin_home">관리자 홈</a></li><!-- 관리자 홈으로  -->
               <li><a href="/logout">로그아웃</a></li>
               <li><a href="/mypage/index"><i class="far fa-user" id="usermy"></i></a></li><!-- 마이페이지 -->
             </ul>

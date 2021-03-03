@@ -34,14 +34,14 @@
 		AND member_pwd = #{memberPwd} AND member_status = 'N'
 	</select>
 	
+	
 	<!-- 로그인 확인 -->
 	<select id="loginchk" resultMap="MemberVoTemp" parameterType="String">
-		SELECT member_email, member_pwd, member_pwd_salt , member_status
+		SELECT member_email, member_pwd, member_pwd_salt , member_status, admin_check
 		FROM member
 		WHERE member_email = #{memberEmail}
 	</select>
 	
-
 	<!-- 비밀번호 재설정 -->
 	<update id="updatepwd" parameterType="kr.or.eutchapedia.login.vo.MemberVo">		
 		UPDATE member SET 		
@@ -72,5 +72,6 @@
 		<result column="member_pwd_salt" property="memberPwdSalt" />
 		<result column="member_email" property="memberEmail" />
 		<result column="member_status" property="memberStatus" />
+		<result column="admin_check" property="adminCheck" />
   </resultMap>
 </mapper>
