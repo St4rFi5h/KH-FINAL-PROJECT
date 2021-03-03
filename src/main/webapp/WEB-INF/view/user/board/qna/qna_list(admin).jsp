@@ -35,41 +35,7 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <header>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="navbar_logo">
-                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                </div>
-    
-                <div class="menu">
-                <ul>
-                  <span><li><a href="#">ABOUT US</a></li></span>
-                  <span> <li><a href="#">평가하기</a></li></span>
-                    <span> <li><a href="#">고객센터</a></li></span>
-                </ul>
-                </div>
-    
-                <!--검색창-->
-                <div class="searchbar">
-                    <form action="#">
-                      <div class="search_box"> 
-                         <div class="icon"><i class="fas fa-search"></i> 
-                            <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                         </div>
-                      </div>
-                    </form>
-                </div>
-    
-                <div class="menu">
-                    <ul>
-                      <span><li><a href="#">로그인</a></li></span>
-                      <span><li><a href="#">회원가입</a></li></span>
-                </ul>
-              </div>
-            </div>
-        </div>
-      </header>
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
     <section class="page_notiboard_sction">
         <div class="notiboard_wrap">
 
@@ -79,13 +45,13 @@
                     <div class="inner_snb">
                         <ul class="list_menu">
                             <li class="list_menu">
-                                <a href="">공지사항</a>
+                                <a href="/notice/list">공지사항</a>
                             </li>
                             <li class="list_menu">
-                                <a href="/user/board/faq/faq_list(admin)">자주하는 질문</a>
+                                <a href="/faq/faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu on">
-                                <a href="list.do">1:1 문의</a>
+                                <a href="/qna/list.do">1:1 문의</a>
                             </li>
                         </ul>
                     </div>
@@ -105,7 +71,6 @@
                             <input type="submit" class="search-btn yb" style="float: none;" value="검색"/>
                         </form>
                     </div>
-					<input type="button" class="write_btn yb" value="글쓰기" onclick="location.href='/qna/writeForm.do'"/>
                     
                     <div class="head_aticle">
                         <h3 class="tit">
@@ -156,15 +121,20 @@
 										</c:if>	 	                                        
                                             <span class="blind">작성일</span>
                                         </p>
+                                        <c:if test="${getmember.adminCheck == 'A'}"> 
                                         <p class="tbl_info_date">
                                         <c:if test="${empty q.aContent}">
-                                        	<input type="button" class="write_btn yb" value="답변달기" onclick="location.href='${path}/qna/reply?qnaNo=${q.qnaNo}&qna=${q.qnaContent}'"/>
+                                        	<input type="button" class="write_btn yb" value="답변달기" onclick="location.href='/qna/reply?qnaNo=${q.qnaNo}&qna=${q.qnaContent}'"/>
                                         </c:if>
                                         <c:if test="${!empty q.aContent}">
                                         	<input type="button" class="end_btn" value="답변완료"/>
                                         </c:if>   
                                             <span class="blind">답변버튼</span>
                                         </p>
+                                        </c:if>
+                                        
+                                       
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -191,12 +161,13 @@
                             </div>
                             </c:forEach>
                             <!---->
-                            
-                            <!-- 관리자 버튼-->
-                            <div class="">
-                                
-                            </div>
 
+                            <!-- 글쓰기 버튼 -->
+                            <c:if test="${getmember.adminCheck != 'A'}"> 
+                            <div style="padding-top:20px; text-align:right; padding-right:30px;">
+                                <input type="button" class="write_btn yb" value="1:1문의하기" onclick="location.href='/qna/writeForm.do'"/>
+                            </div>
+							</c:if>
                             <!-- 페이징 -->
                             <div class="pagination_section">
                                 <div class="custom_pagination">

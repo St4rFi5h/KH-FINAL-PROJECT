@@ -52,9 +52,9 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public void reply(QnaVO vo) {
+	public void reply(QnaVO vo,String aContent, String qnaNo) {
 		// TODO Auto-generated method stub
-		qnaDao.reply(vo);
+		qnaDao.reply(vo,aContent,qnaNo);
 	}
 	
 	

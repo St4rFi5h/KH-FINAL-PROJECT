@@ -23,41 +23,7 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <header>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="navbar_logo">
-                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                </div>
-    
-                <div class="menu">
-                <ul>
-                  <span><li><a href="#">ABOUT US</a></li></span>
-                  <span> <li><a href="#">평가하기</a></li></span>
-                    <span> <li><a href="#">고객센터</a></li></span>
-                </ul>
-                </div>
-    
-                <!--검색창-->
-                <div class="searchbar">
-                    <form action="#">
-                      <div class="search_box"> 
-                         <div class="icon"><i class="fas fa-search"></i> 
-                            <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                         </div>
-                      </div>
-                    </form>
-                </div>
-    
-                <div class="menu">
-                    <ul>
-                      <span><li><a href="#">로그인</a></li></span>
-                      <span><li><a href="#">회원가입</a></li></span>
-                </ul>
-              </div>
-            </div>
-        </div>
-      </header>
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
     <section class="page_notiboard_sction">
         <div class="notiboard_wrap">
 
@@ -67,13 +33,13 @@
                     <div class="inner_snb">
                         <ul class="list_menu">
                             <li class="list_menu">
-                                <a href="">공지사항</a>
+                                <a href="/notice/list">공지사항</a>
                             </li>
                             <li class="list_menu on">
-                                <a href="faq_list(admin).html">자주하는 질문</a>
+                                <a href="/faq/faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu">
-                                <a href="qna_list(admin).html">1:1 문의</a>
+                                <a href="/qna/list.do">1:1 문의</a>
                             </li>
                         </ul>
                     </div>
@@ -105,8 +71,13 @@
                         <div class="accordion_banner" id="tbl_notice">
                             <div class="tbl_notice_tit">
                                 <div class="tbl_notice_info">
+                                   <c:if test="${getmember.adminCheck == 'A'}"> 
                                     <p class="tbl_info_type">삭제</p>
                                     <p class="tbl_info_type">공개</p>
+                                   </c:if> 
+                                   <c:if test="${getmember.adminCheck != 'A'}"> 
+                                    <p class="tbl_info_type"></p>
+                                   </c:if> 
                                     <p class="tbl_info_tit">제목</p>
                                     <p class="tbl_info_date"></p>
                                 </div>
@@ -122,12 +93,20 @@
                             <div class="accordion_title">
                                 <div class="tbl_notice_info">
                                     <div class="infoinner">
+                                    <c:if test="${getmember.adminCheck == 'A'}">
                                     	<p class="tbl_info_type"><input type="checkbox" name="del-id" class="checkbox" value="${f.faqNo}">
                                             <span class="blind">체크박스</span>
                                         </p>
                                         <p class="tbl_info_type"><input type="checkbox" name="open-id" ${open} class="checkbox" value="${f.faqNo}">
                                             <span class="blind">체크박스</span>
                                         </p>
+									</c:if>
+									<c:if test="${getmember.adminCheck != 'A'}">
+                                    	<p class="tbl_info_type">
+                                            <span class="blind">체크박스</span>
+                                        </p>
+                                        
+									</c:if>                                           
                                         <p class="tbl_info_tit">${f.faqTitle}
                                             <span class="blind">제목</span>
                                         </p>

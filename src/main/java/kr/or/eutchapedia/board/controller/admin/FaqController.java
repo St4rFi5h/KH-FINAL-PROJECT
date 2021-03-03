@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,14 +19,18 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.or.eutchapedia.board.controller.service.FaqService;
 import kr.or.eutchapedia.board.entity.Faq;
 import kr.or.eutchapedia.board.entity.FaqView;
+import kr.or.eutchapedia.board.notice.domain.MemberCheckVo;
+import kr.or.eutchapedia.board.notice.service.NoticeService;
 
 
-@Controller("adminFaqController")
-@RequestMapping("/user/board/faq")
+@Controller
+@RequestMapping("/faq")
 public class FaqController {
    
    @Autowired
    private FaqService service;
+   @Autowired
+   private NoticeService noticeService;
    
    /*
     * @Autowired private Faq faq;
@@ -34,7 +38,14 @@ public class FaqController {
    
    //목록 
    @RequestMapping("/faq_list(admin)") 
-   public String list(Model model, HttpServletRequest request) {
+   public String list(Model model, HttpServletRequest request, HttpSession session) {
+	   
+	   String member = (String)session.getAttribute("memberEmail");
+	   
+	   MemberCheckVo getmember = noticeService.getMember(member);
+		
+		model.addAttribute("getmember",getmember);
+	   
 	   String[] openIds = request.getParameterValues("open-id");
 	   String cmd = request.getParameter("cmd");
 	   /*
@@ -91,7 +102,7 @@ public class FaqController {
    @RequestMapping("/faq_list(admin)/{faqNo}")
    public String detail(int faqNo, Model model) throws Exception {
       model.addAttribute("detail", service.detail(faqNo));
-      return "redirect:/user/board/faq/faq_list(admin)";
+      return "redirect:/faq/faq_list(admin)";
    }
    
    //등록페이지
@@ -122,7 +133,7 @@ public class FaqController {
       
       int result = service.insert(faq);
       
-      return "redirect:/user/board/faq/faq_list(admin)";
+      return "redirect:/faq/faq_list(admin)";
       
    }
    
@@ -143,7 +154,7 @@ public class FaqController {
    @RequestMapping(value="/update.do", method = RequestMethod.POST)
    public String updateFaq(@ModelAttribute("faq") Faq faq, Model model)throws Exception {
          	service.update(faq);
-         return "redirect:/user/board/faq/faq_list(admin)";
+         return "redirect:/faq/faq_list(admin)";
    }
    
    
@@ -151,7 +162,7 @@ public class FaqController {
    @RequestMapping(value="/delete", method = {RequestMethod.GET, RequestMethod.POST})
    public String delete(@RequestParam("faqNo")String faqNo) throws Exception {
 	   		service.delete(faqNo);		
-	   	return "redirect:/user/board/faq/faq_list(admin)";
+	   	return "redirect:/faq/faq_list(admin)";
    }
 
    
@@ -163,7 +174,7 @@ public class FaqController {
 		for(int i=0; i<size; i++) {
 			service.delete(ajaxMsg[i]);
 		}
-	   	return "redirect:/user/board/faq/faq_list(admin)";
+	   	return "redirect:/faq/faq_list(admin)";
 	}
    
    //@RequestMapping()

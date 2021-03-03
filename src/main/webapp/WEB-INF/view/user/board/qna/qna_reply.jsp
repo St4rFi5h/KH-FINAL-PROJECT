@@ -26,42 +26,7 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <header>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="navbar_logo">
-                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                </div>
-
-    
-                <div class="menu">
-                <ul>
-                  <span><li><a href="#">ABOUT US</a></li></span>
-                  <span> <li><a href="#">평가하기</a></li></span>
-                    <span> <li><a href="#">고객센터</a></li></span>
-                </ul>
-                </div>
-    
-                <!--검색창-->
-                <div class="searchbar">
-                    <form action="#">
-                      <div class="search_box"> 
-                         <div class="icon"><i class="fas fa-search"></i> 
-                            <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                         </div>
-                      </div>
-                    </form>
-                </div>
-    
-                <div class="menu">
-                    <ul>
-                      <span><li><a href="#">로그인</a></li></span>
-                      <span><li><a href="#">회원가입</a></li></span>
-                </ul>
-              </div>
-            </div>
-        </div>
-      </header>
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
     <section class="page_notiboard_sction">
         <div class="notiboard_wrap">
 
@@ -74,7 +39,7 @@
                                 <a href="/notice/list">공지사항</a>
                             </li>
                             <li class="list_menu">
-                                <a href="faq_list(admin)">자주하는 질문</a>
+                                <a href="/faq/faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu on">
                                 <a href="/qna/list.do">1:1 문의</a>
@@ -165,6 +130,7 @@
                 <table width="60%">
                 <tbody><tr>
                 <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
+                <input type="hidden" name="qnaNo" value="${param.qnaNo}"/>
                 <input type="submit" id="write" class="bhs_button yb" value="저장" style="float:none;"/>
                 <button type="button" class="cancel_btn" onclick="location.href='qna_list(admin)'">취소</button>
                 </td>

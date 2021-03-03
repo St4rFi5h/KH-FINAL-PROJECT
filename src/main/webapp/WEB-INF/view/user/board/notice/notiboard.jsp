@@ -73,7 +73,7 @@
                                 <a href="/notice/list">공지사항</a>
                             </li>
                             <li class="list_menu">
-                                <a href="/user/board/faq/faq_list">자주하는 질문</a>
+                                <a href="/faq/faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu">
                                 <a href="/qna/list.do">1:1 문의</a>

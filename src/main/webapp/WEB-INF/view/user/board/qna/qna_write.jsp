@@ -22,9 +22,9 @@
     <title>EUTCHAPEDIA</title>
 </head>
 <body>
-    <!-- 헤더 -->
-    <header>
-        <div class="wrapper">
+   <!-- 헤더 -->
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
+        <div class="wrapper"> 
             <div class="navbar">
                 <div class="navbar_logo">
                     <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
@@ -71,7 +71,7 @@
                                 <a href="/notice/list">공지사항</a>
                             </li>
                             <li class="list_menu">
-                                <a href="faq_list">자주하는 질문</a>
+                                <a href="/faq/faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu on">
                                 <a href="/qna/list.do">1:1 문의</a>

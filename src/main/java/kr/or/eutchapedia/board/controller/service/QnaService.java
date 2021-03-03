@@ -18,7 +18,7 @@ public interface QnaService {
 
 	QnaVO detail(int qnaNo);
 
-	void reply(QnaVO vo);
+	void reply(QnaVO vo,String aContent, String qnaNo);
 
 	//수정
 	 void update(QnaVO vo);

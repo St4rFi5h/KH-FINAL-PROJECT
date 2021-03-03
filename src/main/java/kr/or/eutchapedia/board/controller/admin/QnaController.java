@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +19,16 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.or.eutchapedia.board.controller.service.QnaService;
 import kr.or.eutchapedia.board.entity.Faq;
 import kr.or.eutchapedia.board.entity.QnaVO;
+import kr.or.eutchapedia.board.notice.domain.MemberCheckVo;
+import kr.or.eutchapedia.board.notice.service.NoticeService;
 
 @Controller
+@RequestMapping("/qna")
 public class QnaController {
 	@Autowired
     private QnaService service;
+	@Autowired
+	  private NoticeService noticeService;
     
     /**
      * 게시판 조회
@@ -31,11 +37,15 @@ public class QnaController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value="/qna/list.do")
-    public String boardList(@ModelAttribute("vo") QnaVO vo, Model model) throws Exception{
+    @RequestMapping(value="/list.do")
+    public String boardList(@ModelAttribute("vo") QnaVO vo, Model model, HttpSession session) throws Exception{
         String memberEmail = "admin@admin.com";
         List<QnaVO> list = service.selectBoardList(vo, memberEmail);
-
+        
+        String member = (String)session.getAttribute("memberEmail");
+        MemberCheckVo getmember = noticeService.getMember(member);
+		
+		model.addAttribute("getmember",getmember);
         
         model.addAttribute("list", list);
         
@@ -47,7 +57,7 @@ public class QnaController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value="/qna/writeForm.do")
+    @RequestMapping(value="/writeForm.do")
     public String writeBoardForm() throws Exception{
         
         return "/user/board/qna/qna_write";
@@ -60,7 +70,7 @@ public class QnaController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value="/qna/write.do")
+    @RequestMapping(value="/write.do")
     public String write(@ModelAttribute("vo") QnaVO vo, Model model, HttpServletRequest request) throws Exception{
     	String qnaTitle = request.getParameter("qnaTitle");
         String qnaContent = request.getParameter("qnaContent");   
@@ -82,7 +92,7 @@ public class QnaController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value="/qna/viewContent.do")
+    @RequestMapping(value="/viewContent.do")
     public String viewForm(@ModelAttribute("vo") QnaVO vo, Model model, HttpServletRequest request) throws Exception{
         
         int qnaNo = Integer.parseInt(request.getParameter("qnaNo"));
@@ -154,7 +164,7 @@ public class QnaController {
     
     
     //답글페이지
-    @RequestMapping(value="/qna/reply", method = RequestMethod.GET)
+    @RequestMapping(value="/reply", method = RequestMethod.GET)
     public ModelAndView replyPage(@RequestParam int qnaNo, HttpServletRequest request, Model model) throws Exception {
     	String qnaContent = request.getParameter("qna");
     	System.out.println("들어온거니????????????????"+qnaContent);
@@ -175,11 +185,11 @@ public class QnaController {
     }
     
     //답글 등록
-    @RequestMapping(value="/qna/reply.do", method = RequestMethod.POST)
+    @RequestMapping(value="/reply.do", method = RequestMethod.POST)
     public String reply(@ModelAttribute("vo") QnaVO vo, BindingResult result, HttpServletRequest request, Model model) {
-    	service.reply(vo);
     	String aContent = request.getParameter("aContent");
-    	System.out.println("들어온거니????????????????"+aContent);
+    	String qnaNo = request.getParameter("qnaNo");
+    	service.reply(vo, aContent, qnaNo);
     	
     	/*
     	try {
