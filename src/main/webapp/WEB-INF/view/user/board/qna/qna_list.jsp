@@ -20,6 +20,18 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/board/faq_qna/faq_qna.css">
     <title>EUTCHAPEDIA</title>
+
+    <style>
+    .notice_wrap .qatype {
+        top: -8px;
+        left: 0;
+        padding: 0;
+        font-size: 35px;
+        font-weight: 700;
+        color: #000;
+        line-height: 55px;
+    }
+    </style>
 </head>
 <body>
     <!-- 헤더 -->
@@ -82,6 +94,18 @@
 
             <div class="article_right">
                 <div class="notiboard_section">
+                <!-- 삽입 -->
+                <div class="search_bar">
+                        <form class="hidden">
+                              <select name="search">
+                                <option ${(page.search == "qna_title")?"selected":""} value="qna_title">제목</option> 
+                                <option ${(page.search == "qna_content")?"selected":""} value="qna_content">내용</option>
+                              </select>
+                            <input type="text" name="keyword" value="${page.keyword }" id="search-box" />  
+                            <input type="submit" class="search-btn yb" style="float: none;" value="검색"/>
+                        </form>
+                    </div>
+               		<input type="button" class="write_btn yb" value="글쓰기" onclick="location.href='/qna/writeForm.do'"/>
                     <div class="head_aticle">
                         <h3 class="tit">
                             1:1문의

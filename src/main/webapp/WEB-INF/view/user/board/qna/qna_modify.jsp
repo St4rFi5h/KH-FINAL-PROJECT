@@ -19,21 +19,9 @@
     <!--부트스트랩 기능들의 css-->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/board/faq_qna/faq_qna.css">
-   	<!-- 네이버 스마트 에디터 -->
+  	<!-- 네이버 스마트 에디터 -->
     <script type="text/javascript" src="/js/board/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 	<title>EUTCHAPEDIA</title>
-
-    <style>
-    .notice_wrap .qatype {
-        top: -8px;
-        left: 0;
-        padding: 0;
-        font-size: 35px;
-        font-weight: 700;
-        color: #000;
-        line-height: 55px;
-    }
-    </style>
 </head>
 <body>
     <!-- 헤더 -->
@@ -43,6 +31,7 @@
                 <div class="navbar_logo">
                     <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
                 </div>
+
     
                 <div class="menu">
                 <ul>
@@ -87,217 +76,185 @@
                                 <a href="faq_list(admin).html">자주하는 질문</a>
                             </li>
                             <li class="list_menu on">
-                                <a href="qna_list(admin).html">1:1 문의</a>
+                                <a href="">1:1 문의</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-
-            <div class="article_right">
-                <div class="notiboard_section">
-                <!-- 삽입 -->
-                <div class="search_bar">
-                        <form class="hidden">
-                              <select name="search">
-                                <option ${(page.search == "qna_title")?"selected":""} value="qna_title">제목</option> 
-                                <option ${(page.search == "qna_content")?"selected":""} value="qna_content">내용</option>
-                              </select>
-                            <input type="text" name="keyword" value="${page.keyword }" id="search-box" />  
-                            <input type="submit" class="search-btn yb" style="float: none;" value="검색"/>
-                        </form>
-                    </div>
-               		<input type="button" class="write_btn yb" value="글쓰기" onclick="location.href='/qna/writeForm.do'"/>
-                    <div class="head_aticle">
-                        <h3 class="tit">
-                            1:1문의
-                            <span class="tit_sub">
-                                궁금한 사항들을 모두 질문해주세요.
-                            </span>
-                        </h3>
-                        <div class="tt_tbl"></div>
-                    </div>
-
-                    <form method="post" action="/qna/list.do" id="list">
-                    <!-- 테스트 -->
-                    <input type="text" name="curPage" value="1" /> 
-                        <div class="accordion_banner" id="tbl_notice">
-                            <div class="tbl_notice_tit">
-                                <div class="tbl_notice_info">
-                                    <p class="tbl_info_type">NO</p>
-                                    <p class="tbl_info_tit">제목</p>
-                                    <p class="tbl_info_date">작성일</p>
-                                    <p class="tbl_info_date">답변유무</p>
-                                    <p class="tbl_info_date"></p>
-                                </div>
-                            </div>
+            <div class="page_section section_qna">
+                <div class="head_aticle">
+                <h2 class="tit"><strong>1:1문의</strong></h2>
+                </div>
+                
+                <div class="xans-board-write">
+                <form action="update.qna" method="post" enctype="multipart/form-data" style="height: 100%;">
+                <!-- 확인 -->
+                <input type="text" name="id" value="${vo.qnaNo }"/>
+                <input type="hidden" name="attach" />
+                
+                <input type="hidden" name="mode" value="add_qna">
+                <input type="hidden" name="itemcd" value="">
+                <input type="hidden" name="sno" value="0">
+                <table id="table_after" class="boardWrite2" width="100%">
+                <colgroup><col width="14%" align="right">
+                </colgroup><tbody><tr>
+              
+                <th class="input_txt" style="padding-top:20px;">제목</th>
+                <td><br>
+                <input type="text" name="qnaTitle" style="width:100%; height:25px;" required="" fld_esssential="" label="제목" value="${vo.qnaTitle }">
+                </td>
+                </tr>
+                <tr>
+                <th class="input_txt">내용</th>
+                <td class="edit_area" style="position: relative;">
+                <strong class="tit qna_public"></strong>             
+                <dl class="list qna_public">
+                </dl>
+                
+                
+                
+                <!-- <textarea name="contents" style="width:100%;height:474px;" class="editing_area" required="" fld_esssential="" label="내용"></textarea> -->
+                <textarea name="qnaContent" id="qnaContent" rows="10" cols="137">${vo.qnaContent }</textarea>
+                </td>
+                </tr>
+                <tr>
+                <th class="input_txt">이미지</th>
+                <td>
+                <section id="section">
+                <table width="90%" id="table" cellpadding="0" cellspacing="0" border="0" style="border:solid 1px #f4f4f4; border-collapse:collapse;">
+                    <tbody>
+                        <tr data-tr_value="1">
+                            <td><input type="checkbox" name="checkRow"/></td>
+                            <td width="30" nowrap="" align="center">1</td>
+                            <td width="100%">
+                            <label>
+                            <input id="attach-file" type="file" name="file[]" style="width:50%" class="linebg">
+                            </label>
+                            <span id="file-name">${vo.qnaFilename }</span>
+							<span id="delete-file" style="display:${empty vo.qnaFilename ? 'none' : 'inline'}; color:red; margin-left:20px;"><i class="fas fa-times font-img"></i></span>
                             
-                            <c:forEach var="q" items="${list}">
-           
-                            <div class="accordion_title">
-                                <div class="tbl_notice_info">
-                                    <div class="infoinner">
-                                        <p class="tbl_info_type">${q.qnaNo}
-                                            <span class="blind">번호</span>
-                                        </p>
-                                        <p class="tbl_info_tit">
-	                                     
-											<a href="detail.qna>qnaNo?=${q.qnaNo}"></a>
-												${q.qnaTitle}
-                                            <span class="blind">제목</span>
-                                        </p>
-                                        <p class="tbl_info_date">${q.qnaDate}
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                        <p class="tbl_info_date">
-                                        <c:if test="${empty q.aContent}">
-                                       	<span style="font-size:18px; color:gray;"><strong>NO</strong></span>
-										</c:if>
-										<c:if test="${!empty q.aContent}">
-                                        <span style="font-size:18px;"><strong>YES</strong></span>
-										</c:if>	 	                                        
-                                            <span class="blind">작성일</span>
-                                        </p>
-                                        <p class="tbl_info_date">
-                                        <c:if test="${empty q.aContent}">
-                                        	<input type="button" class="write_btn yb" value="답변달기" onclick="location.href='${path}/qna/reply?qnaNo=${q.qnaNo}&qna=${q.qnaContent}'"/>
-                                        </c:if>
-                                        <c:if test="${!empty q.aContent}">
-                                        	<input type="button" class="end_btn" value="답변완료"/>
-                                        </c:if>   
-                                            <span class="blind">답변버튼</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion_sub">
-                                <div class="reply_row">
-                                    <div class="notice_wrap">
-                                        <div class="q_wrap">    
-                                            <span _ngcontent-dui-c129="" class="qatype">Q.</span>
-                                            <div>
-                                                <p>${q.qnaContent}</p>
-                                            </div>
-                                        </div>
-                                        <div _ngcontent-dui-c129="" class="a_wrap" style="padding-top: 20px;">
-                                            <c:if test="${empty q.aContent}">
-                                            	<span></span>
-                                            </c:if>
-                                            <c:if test="${!empty q.aContent}">
-                                            <span _ngcontent-dui-c129="" class="qatype">A.</span>
-                                            <p _ngcontent-dui-c129="">${q.aContent}</p>
-                                        	</c:if>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </c:forEach>
-                            <!---->
-                            
-                            <!-- 관리자 버튼-->
-                            <div class="">
-                                
-                            </div>
-
-                            <!-- 페이징 -->
-                            <div class="pagination_section">
-                                <div class="custom_pagination">
-                                    <span class="pagination_prev disabled">
-                                        <a href="">
-                                            <ruler-svg-icon-prev>
-                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
-                                                    <path d="M143.492,221.863L336.226,29.129c6.663-6.664,6.663-17.468,0-24.132c-6.665-6.662-17.468-6.662-24.132,0l-204.8,204.8
-                                                        c-6.662,6.664-6.662,17.468,0,24.132l204.8,204.8c6.78,6.548,17.584,6.36,24.132-0.42c6.387-6.614,6.387-17.099,0-23.712
-                                                        L143.492,221.863z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
-                                                </svg>
-                                            </ruler-svg-icon-prev>
-                                        </a>
-                                    </span>
-                                    <span class="pagenum current">
-                                        <span>1</span>
-                                    </span>
-                                    <span class="pagination_next">
-                                        <a href="">
-                                            <ruler-svg-icon-next width="11" height="22" stroke="#000">
-                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
-                                                    <path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
-                                                            L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
-                                                            C342.889,227.058,342.889,216.255,336.226,209.591z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
-                                                </svg>
-                                            </ruler-svg-icon-next>
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                            <!-- <input type="button" name="del_btn" id="delete" class="del_btn" value="삭제"/> -->
+                            </td>
+                        </tr>
+                        <tr data-tr_value="2">
+                            <td><input type="checkbox" name="checkRow"/></td>
+                            <td width="30" nowrap="" align="center">2</td>
+                            <td width="100%">
+                            <label>
+                            <input id="attach-file" type="file" name="file[]" style="width:50%" class="linebg">
+                            </label>
+                            <span id="file-name">${vo.qnaFilename }</span>
+							<span id="delete-file" style="display:${empty vo.qnaFilename ? 'none' : 'inline'}; color:red; margin-left:20px;"><i class="fas fa-times font-img"></i></span>
+                            <!-- <input type="button" name="del_btn" id="delete" class="del_btn" value="삭제"/> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                    <div style="padding-left: 630px;">
+                      <input type="button" name="del_btn" id="delete" class="del_button" value="삭제"/>
+                    </div>    
+                </table>
+                </section>
+                <table><tbody><tr><td height="2"></td></tr></tbody></table>
+                <div width="100%" style="padding:5px; padding-top:10px;" class="stxt">
+                <div>
+                    - 상품 불량 및 오배송의 경우, 해당 제품 사진을 등록 부탁드립니다. <br/>
+                    - 파일명은 영문만 가능하며, 파일당 최대 10MB 의<br/>
+                    　용량 제한이 있습니다.<br/>
+                    - 가로사이즈가 450pixel을 초과하는 경우 자동으로<br/>
+                    　450픽셀로 조정됩니다.<br/>
+                    - 첨부파일은 최대 2개까지 등록가능합니다.<br/>
+                </div>
+                </div>
+                </td>
+                </tr>
+                </tbody></table>
+                
+                <table width="60%">
+                <tbody><tr>
+                <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
+                <button type="submit" id="write" name="write" class="bhs_button yb" style="float:none;" onclick="if( necessary() ) { $('[name=attach]').val($('#file-name').text()); $('form').submit(); }">저장</button>
+                <button type="button" class="cancel_btn" onclick="location.href='qna_list(admin)'">취소</button>
+                </td>
+                </tr>
+                </tbody></table>
+                </form>
                 </div>
             </div>
         </div>
     </section>
- <!-- footer -->
- <footer>
+    <!-- footer -->
+    <footer>
 
-    <section class="count-space">
-      <span class="count">지금까지<em> ★ 123,534,545 개의 평가가 </em> 쌓였어요.</span>
-    </section>
-
-    <div class="footer-right">
-      <div class="social-icons">
-        <span><a href="#"><i class="fab fa-instagram"></i></a></span>
-        <span><a href="#"><i class="fab fa-facebook-f"></i></a></span>
-        <span><a href="#"><i class="fab fa-twitter"></i></a></span>
-      </div>
-    </div>
-
-    <div class="footer-left">
-      <div>
-        <a href="#"> 서비스 이용약관</a>
-        <a href="#"> 개인정보 처리방침</a>
-        <a href="#"> 회사 안내</a>
-      </div>
-
-      <div>
-        <p>
-          고객센터<span> | </span>cs@eutchapedia.com, 02-123-4567 <br />
-          제휴 및 대외 협력<span> | </span>contact@eutcha.com</p>
-        <p>
-          주식회사 읏챠<span> | </span>대표 이지현<span> | </span>서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F,20F<br />
-          사업자 등록 번호 211-12-34567<br />
-          © 2021 by EUTCHA, Inc. All rights reserved.
-        </p>
-      </div>
-    </div>
-
-  </footer>
-
-    <!-- scripts -->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
+        <section class="count-space">
+          <span class="count">지금까지<em> ★ 123,534,545 개의 평가가 </em> 쌓였어요.</span>
+        </section>
+    
+        <div class="footer-right">
+          <div class="social-icons">
+            <span><a href="#"><i class="fab fa-instagram"></i></a></span>
+            <span><a href="#"><i class="fab fa-facebook-f"></i></a></span>
+            <span><a href="#"><i class="fab fa-twitter"></i></a></span>
+          </div>
+        </div>
+    
+        <div class="footer-left">
+          <div>
+            <a href="#"> 서비스 이용약관</a>
+            <a href="#"> 개인정보 처리방침</a>
+            <a href="#"> 회사 안내</a>
+          </div>
+    
+          <div>
+            <p>
+              고객센터<span> | </span>cs@eutchapedia.com, 02-123-4567 <br />
+              제휴 및 대외 협력<span> | </span>contact@eutcha.com</p>
+            <p>
+              주식회사 읏챠<span> | </span>대표 이지현<span> | </span>서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F,20F<br />
+              사업자 등록 번호 211-12-34567<br />
+              © 2021 by EUTCHA, Inc. All rights reserved.
+            </p>
+          </div>
+        </div>
+    
+      </footer>
+    
+       <!-- scripts -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
     </body>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $(".accordion_banner .accordion_title").click(function() {
-            if($(this).next("div").is(":visible")){
-            $(this).next("div").slideUp("fast");
-            } else {
-                $(".accordion_banner .accordion_sub").slideUp("fast");
-                $(this).next("div").slideToggle("fast");
-            }
-        });
-    });
-    </script>
-    <script>
-    $(document).ready(function(){
-        $(".checkall").click(function(){
-            if($(".checkall").prop("checked")){
-                $("input[name=del-id]").prop("checked",true);
-            }else{
-                $("input[name=del-id]").prop("checked",false);
-            }
-        })
-    })
-    </script>
-</html>
+	<script type="text/javascript">
+		    var oEditors = [];
+		    nhn.husky.EZCreator.createInIFrame({
+		     oAppRef: oEditors,
+		     elPlaceHolder: "qnaContent",
+		     sSkinURI: "/js/board/se2/SmartEditor2Skin.html",
+		     fCreator: "createSEditor2"
+		    });
+		</script>
+		<script>
+		$("#write").click(function(){ 
+				oEditors.getById["qnaContent"].exec("UPDATE_CONTENTS_FIELD", []); 
+				$("#frm").submit(); 
+		})
+		</script>
+		<script type="text/javascript">
+		$(document).ready(function (e){
+			$('#write').click(function(){
+					var frmArr = ["qnaTitle","qnaContent"];
+					//입력 값 널 체크
+					for(var i=0;i<frmArr.length;i++){
+						//alert(arr[i]);
+						if($.trim($('#'+frmArr[i]).val()) == ''){
+							alert('빈 칸을 모두 입력해 주세요.');
+							$('#'+frmArr[i]).focus();
+							return false;
+						}
+					}
+					//전송
+					$('#frm').submit();
+			});
+		});
+		</script>
+		<script type="text/javascript" src="/js/board/file_attach.js"></script>
+  </html>

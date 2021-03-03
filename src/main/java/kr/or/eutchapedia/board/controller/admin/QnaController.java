@@ -175,9 +175,12 @@ public class QnaController {
     }
     
     //답글 등록
-    @RequestMapping("/qna/reply.do")
-    public String reply(QnaVO vo, BindingResult result, HttpServletRequest request) {
+    @RequestMapping(value="/qna/reply.do", method = RequestMethod.POST)
+    public String reply(@ModelAttribute("vo") QnaVO vo, BindingResult result, HttpServletRequest request, Model model) {
     	service.reply(vo);
+    	String aContent = request.getParameter("aContent");
+    	System.out.println("들어온거니????????????????"+aContent);
+    	
     	/*
     	try {
     	String qnaTitle = request.getParameter("qnaTitle");

@@ -19,9 +19,9 @@ public interface QnaService {
 
 	QnaVO detail(long qnaNo);
 
-	public int reply(QnaVO vo);
+	void reply(QnaVO vo);
 
 	//수정
-	public void update(QnaVO vo);
+	 void update(QnaVO vo);
 	
 }

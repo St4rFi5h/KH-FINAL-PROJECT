@@ -23,7 +23,7 @@ public interface QnaDAO {
 	
 	QnaVO detail(@Param("qnaNo")long qnaNo);
 	
-	public int reply(QnaVO vo);
+	void reply(QnaVO vo);
 	
 	//수정
 	void update(QnaVO vo);

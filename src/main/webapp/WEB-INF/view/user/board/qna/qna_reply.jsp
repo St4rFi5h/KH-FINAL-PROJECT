@@ -20,10 +20,10 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/board/faq_qna/faq_qna.css">
     <!-- 네이버 스마트 에디터 -->
-    <script type="text/javascript" src="/js/board/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+    <%-- 
+    <script type="text/javascript" src="/js/board/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>--%>
 	<title>EUTCHAPEDIA</title>
 </head>
-   
 <body>
     <!-- 헤더 -->
     <header>
@@ -101,7 +101,7 @@
                 </div>
                 
                 <div class="xans-board-write">
-                <form action="/qna/reply.do" method="post" enctype="multipart/form-data" style="height: 100%;">
+                <form action="/qna/reply.do" method="post" style="height: 100%;">
 				<!-- 확인 -->
                	
                 
@@ -125,7 +125,7 @@
                 <dl class="list qna_public">
                 </dl>
                 <!-- <textarea name="contents" style="width:100%;height:474px;" class="editing_area" required="" fld_esssential="" label="내용"></textarea> -->
-                <textarea path="qnaContent" name="qnaContent" id="qnaContent" value="qnaContent" rows="10" cols="137"></textarea>
+                <textarea path="aContent" name="aContent" id="aContent" value="aContent" rows="10" cols="137"></textarea>
                 </td>
                 </tr>
                 <tr>
@@ -165,7 +165,7 @@
                 <table width="60%">
                 <tbody><tr>
                 <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
-                <input type="submit" id="write" class="bhs_button yb" value="저장" style="float:none;" onclick="location.href='qna_list(amin)'"/>
+                <input type="submit" id="write" class="bhs_button yb" value="저장" style="float:none;"/>
                 <button type="button" class="cancel_btn" onclick="location.href='qna_list(admin)'">취소</button>
                 </td>
                 </tr>
@@ -219,21 +219,21 @@
 		    var oEditors = [];
 		    nhn.husky.EZCreator.createInIFrame({
 		     oAppRef: oEditors,
-		     elPlaceHolder: "qnaContent",
+		     elPlaceHolder: "aContent",
 		     sSkinURI: "/js/board/se2/SmartEditor2Skin.html",
 		     fCreator: "createSEditor2"
 		    });
 		</script>
 		<script>
 		$("#write").click(function(){ 
-				oEditors.getById["qnaContent"].exec("UPDATE_CONTENTS_FIELD", []); 
+				oEditors.getById["aContent"].exec("UPDATE_CONTENTS_FIELD", []); 
 				$("#frm").submit(); 
 		})
 		</script>
 		<script type="text/javascript">
 		$(document).ready(function (e){
 			$('#write').click(function(){
-					var frmArr = ["qnaContent","qnaContent"];
+					var frmArr = ["aContent","aContent"];
 					//입력 값 널 체크
 					for(var i=0;i<frmArr.length;i++){
 						//alert(arr[i]);

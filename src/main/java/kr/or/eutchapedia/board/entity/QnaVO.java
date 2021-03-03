@@ -22,9 +22,6 @@ public class QnaVO {
 	private String rDate;
 	*/
 	
-	public QnaVO() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public QnaVO(long qnaNo, String memberEmail, String qnaTitle, String qnaContent, Date qnaDate, String qnaFilename,
 			String qnaFilepath, String aContent) {

@@ -82,10 +82,10 @@
                                 <a href="">공지사항</a>
                             </li>
                             <li class="list_menu">
-                                <a href="faq_list(admin).html">자주하는 질문</a>
+                                <a href="/user/board/faq/faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu on">
-                                <a href="qna_list(admin).html">1:1 문의</a>
+                                <a href="list.do">1:1 문의</a>
                             </li>
                         </ul>
                     </div>
@@ -105,7 +105,8 @@
                             <input type="submit" class="search-btn yb" style="float: none;" value="검색"/>
                         </form>
                     </div>
-               		<input type="button" class="write_btn yb" value="글쓰기" onclick="location.href='/qna/writeForm.do'"/>
+					<input type="button" class="write_btn yb" value="글쓰기" onclick="location.href='/qna/writeForm.do'"/>
+                    
                     <div class="head_aticle">
                         <h3 class="tit">
                             1:1문의
@@ -118,7 +119,6 @@
 
                     <form method="post" action="/qna/list.do" id="list">
                     <!-- 테스트 -->
-                    <input type="text" name="curPage" value="1" /> 
                         <div class="accordion_banner" id="tbl_notice">
                             <div class="tbl_notice_tit">
                                 <div class="tbl_notice_info">
