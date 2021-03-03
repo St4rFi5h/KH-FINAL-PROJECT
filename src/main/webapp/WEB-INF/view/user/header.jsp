@@ -18,13 +18,13 @@
             </ul>
           </div>
 
-          <!--검색창-->
+          <!--검색창 -->
           <div class="searchbar">
-            <form action="#" autocomplete="on">
+            <form method="GET" action="/search?findStr=${param.findStr }" autocomplete="on">
               <div class="search_box">
                 <div class="icon"><i class="fas fa-search"></i>
-                  <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                  <button class="search_btn" type="submit"> <i class="fas fa-times"></i>
+                  <input type="text" name="findStr" value="${param.findStr }" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
+                  <button class="search_btn" type="submit"> <i class="fas fa-times" id="delete"></i> 
                   </button>
                 </div>
               </div>
@@ -46,7 +46,7 @@
          
           <div class="menu">
             <ul>
-              <li><a href="#" id="admin_home">관리자 홈</a></li><!-- 관리자 홈으로  -->
+              <li><a href="/admin/adminhome" id="admin_home">관리자 홈</a></li><!-- 관리자 홈으로  -->
               <li><a href="/logout">로그아웃</a></li>
               <li><a href="/mypage/index"><i class="far fa-user" id="usermy"></i></a></li><!-- 마이페이지 -->
             </ul>
@@ -66,5 +66,5 @@
    
          </div>
       </div> 
-      
+
     </header>

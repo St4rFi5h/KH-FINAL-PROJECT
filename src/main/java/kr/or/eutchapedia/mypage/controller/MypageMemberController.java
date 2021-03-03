@@ -40,6 +40,17 @@ public class MypageMemberController {
 		List<Map<String,Object>> graphMap = new ArrayList<Map<String, Object>>();
 		graphMap = service.getStarNumDesc(id);
 	
+		List<StarRatingForMainVo> five = new ArrayList<>();
+		List<StarRatingForMainVo> fourdot = new ArrayList<>();
+		List<StarRatingForMainVo> four = new ArrayList<>();
+		List<StarRatingForMainVo> threedot = new ArrayList<>();
+		List<StarRatingForMainVo> three = new ArrayList<>();
+		List<StarRatingForMainVo> twodot = new ArrayList<>();
+		List<StarRatingForMainVo> two = new ArrayList<>();
+		List<StarRatingForMainVo> onedot = new ArrayList<>();
+		List<StarRatingForMainVo> one = new ArrayList<>();
+		List<StarRatingForMainVo> dot = new ArrayList<>();
+		
 		switch (sort) {
 		case 1 :
 			list = service.getratinginfo1(id);
@@ -60,23 +71,54 @@ public class MypageMemberController {
 		}
 		
 
-		
-		/*test..
-		List<StarRatingForMainVo> test = new ArrayList<StarRatingForMainVo>();
-		
-		float[] point = new float[10];
-		float minPoint = (float) 0.5; 
-			for (int i=0 ; i<point.length; i++) {
-				point[i] = minPoint;
-				minPoint += 0.5;
-				
+		for(int s=0; s<list.size(); s++) { 
+			if(list.get(s).getStarRating().equals("5")) {
+				five.add(list.get(s));
 			}
+			if(list.get(s).getStarRating().equals("4.5")) {
+				fourdot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("4")) {
+				four.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("3.5")) {
+				threedot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("3")) {
+				three.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("2.5")) {
+				twodot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("2")) {
+				two.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("1.5")) {
+				onedot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("1")) {
+				one.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("0.5")) {
+				dot.add(list.get(s));
+			}
+		}
+	
 		
-		test = service.getEachStarMovie(memberemail,point);
-		*/
-		
+		mv.addObject("five", five);
+		mv.addObject("fourdot", fourdot);
+		mv.addObject("four", four);
+		mv.addObject("threedot", threedot);
+		mv.addObject("three", three);
+		mv.addObject("twodot", twodot);
+		mv.addObject("two", two);
+		mv.addObject("onedot", onedot);
+		mv.addObject("one", one);
+		mv.addObject("dot", dot);
+
 		String key = list.get(0).getMemberEmail();
 		
+		mv.addObject("sortTitle", sortTitle);
 		mv.addObject("id", key);
 		mv.addObject("list", list);
 		mv.addObject("point", graphMap);
@@ -232,6 +274,109 @@ public class MypageMemberController {
 		mv.setViewName("/user/mypage/mypageMember");
 		return mv;
 		
+	}
+	
+	@RequestMapping(value="/starviewmore_member", method=RequestMethod.GET)
+	public ModelAndView mypagestarviewmore(@RequestParam String id,int sort) {
+		ModelAndView mv = new ModelAndView();
+		String fk= id;
+		List<StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
+		list = service.getratinginfo1(id);
+		
+		List<StarRatingForMainVo> five = new ArrayList<>();
+		List<StarRatingForMainVo> fourdot = new ArrayList<>();
+		List<StarRatingForMainVo> four = new ArrayList<>();
+		List<StarRatingForMainVo> threedot = new ArrayList<>();
+		List<StarRatingForMainVo> three = new ArrayList<>();
+		List<StarRatingForMainVo> twodot = new ArrayList<>();
+		List<StarRatingForMainVo> two = new ArrayList<>();
+		List<StarRatingForMainVo> onedot = new ArrayList<>();
+		List<StarRatingForMainVo> one = new ArrayList<>();
+		List<StarRatingForMainVo> dot = new ArrayList<>();
+		
+		for(int s=0; s<list.size(); s++) { 
+			if(list.get(s).getStarRating().equals("5")) {
+				five.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("4.5")) {
+				fourdot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("4")) {
+				four.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("3.5")) {
+				threedot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("3")) {
+				three.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("2.5")) {
+				twodot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("2")) {
+				two.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("1.5")) {
+				onedot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("1")) {
+				one.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("0.5")) {
+				dot.add(list.get(s));
+			}
+		}
+		
+		float point =0;
+		
+		switch (sort) {
+		case 1 :
+			list = five;
+			point = (float) 5.0;
+			break;
+		case 2 :
+			list = fourdot;
+			point = (float) 4.5;
+			break;
+		case 3 :
+			list = four;
+			point = (float) 4.0;
+			break;
+		case 4 :
+			list = threedot;
+			point = (float) 3.5;
+			break;
+		case 5 :
+			list = three;
+			point = (float) 3.0;
+			break;
+		case 6 :
+			list = twodot;
+			point = (float) 2.5;
+			break;
+		case 7 :
+			list = two;
+			point = (float) 2.0;
+			break;
+		case 8 :
+			list = onedot;
+			point = (float) 1.5;
+			break;
+		case 9 :
+			list = one;
+			point = (float) 1.0;
+			break;
+		case 10 :
+			list = dot;
+			point = (float) 0.5;
+			break;
+		}
+		
+		mv.addObject("fk", fk);
+		mv.addObject("point", point);
+		mv.addObject("list", list);
+		mv.setViewName("/user/mypage/mypage_starviewmore_member");
+		return mv;
 	}
 	
 }

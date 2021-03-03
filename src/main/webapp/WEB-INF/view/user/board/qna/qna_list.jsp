@@ -1,35 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/movie/index.css">
+    <link rel="shortcut icon" href="img/logo_favicon.ico"> <!--favicon-->
+    <link rel="icon" href="img/logo_favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
     <!--그리드시스템을 위한 css파일-->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
     <!--reboot.css 는 태그속성들이 다른 브라우저에서 호환이 가능하게끔 스타일을 맞춰주는 css파일 -->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
     <!--부트스트랩 기능들의 css-->
-    <link rel="stylesheet" href="/민진/front-end/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/민진/front-end/css/faq.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/민진/front-end/css/index.css">
-    <link rel="shortcut icon" href="/민진/front-end/img/logo_favicon.ico"><!--favicon-->
-    <link rel="icon" href="/민진/front-end/img/logo_favicon.ico">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
-    <link rel="stylesheet" href="css/index.css">
-    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/board/faq_qna/faq_qna.css">
     <title>EUTCHAPEDIA</title>
-</head>
 
+    <style>
+    .notice_wrap .qatype {
+        top: -8px;
+        left: 0;
+        padding: 0;
+        font-size: 35px;
+        font-weight: 700;
+        color: #000;
+        line-height: 55px;
+    }
+    </style>
+</head>
 <body>
+    <!-- 헤더 -->
     <header>
         <div class="wrapper">
             <div class="navbar">
                 <div class="navbar_logo">
-                    <img id="logo" src="/민진/front-end/img/logo.png"> <!-- 이미지파일 이동 시 경로 확인!-->
+                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
                 </div>
     
                 <div class="menu">
@@ -69,13 +79,13 @@
                     <div class="inner_snb">
                         <ul class="list_menu">
                             <li class="list_menu">
-                                <a href="">공지사항</a>
+                                <a href="/notice/list">공지사항</a>
                             </li>
-                            <li class="list_menu">
-                                <a href="faq_list(admin).html">자주하는 질문</a>
+                            <li class="list_menu ">
+                                <a href="faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu on">
-                                <a href="qna_list(admin).html">1:1 문의</a>
+                                <a href="/qna/list.do">1:1 문의</a>
                             </li>
                         </ul>
                     </div>
@@ -84,6 +94,18 @@
 
             <div class="article_right">
                 <div class="notiboard_section">
+                <!-- 삽입 -->
+                <div class="search_bar">
+                        <form class="hidden">
+                              <select name="search">
+                                <option ${(page.search == "qna_title")?"selected":""} value="qna_title">제목</option> 
+                                <option ${(page.search == "qna_content")?"selected":""} value="qna_content">내용</option>
+                              </select>
+                            <input type="text" name="keyword" value="${page.keyword }" id="search-box" />  
+                            <input type="submit" class="search-btn yb" style="float: none;" value="검색"/>
+                        </form>
+                    </div>
+               		<input type="button" class="write_btn yb" value="글쓰기" onclick="location.href='/qna/writeForm.do'"/>
                     <div class="head_aticle">
                         <h3 class="tit">
                             1:1문의

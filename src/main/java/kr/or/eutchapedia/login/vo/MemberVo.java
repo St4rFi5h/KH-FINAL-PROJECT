@@ -15,6 +15,8 @@ public class MemberVo {
 	private String memberIntroduce;
 	private String memberJoinRoute;
 	
+	
+
 	public String getMemberEmail() {
 		return memberEmail;
 	}

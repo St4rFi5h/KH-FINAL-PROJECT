@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -38,26 +37,30 @@
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<div id="allcontents">
 		<div id="top_wrap">
-			<h1 id="howMany">5</h1>
+			<h1 id="howMany">오늘은 어떤영화를 보셨나요?</h1>
 
-			<h1 id="count_comment">와우 이만큼 평가하셨어요</h1>
-
-			<select class="custom-select" id="select-search">
-				<option selected>장르</option>
-				<option ${(param.f == "action")?"selected":""} value="action">액션</option>
-				<option ${(param.f == "romance")?"selected":""} value="romance">로멘스</option>
-				<option ${(param.f == "thriller")?"selected":""} value="thriller">스릴러</option>
-				<option ${(param.f == "sf")?"selected":""} value="sf">SF</option>
-				<option ${(param.f == "adventure")?"selected":""} value="adventure">어드벤처</option>
+			<h1 id="count_comment"></h1>
+	 <form action="/movie/movierate" method="get">
+			<select class="custom-select" id="select-search"   onchange="formChange(this.form)"  name="f">
+					
+				<option ${(param.f == "action")?"selected":""} value="action"  >액션/스릴러/범죄</option>
+				<option ${(param.f == "romance")?"selected":""} value="romance">멜로/로맨스</option>
+				<option ${(param.f == "sf")?"selected":""} value="sf">판타지/SF</option>
 				<option ${(param.f == "drama")?"selected":""} value="drama">드라마</option>
-				<option ${(param.f == "family")?"selected":""} value="family">가족</option>
-				<option ${(param.f == "animation")?"selected":""} value="animation">애니메이션</option>
-				<option ${(param.f == "comedy")?"selected":""} value="comedy">코미디</option>
-
+				<option ${(param.f == "horror")?"selected":""} value="horror">공포</option>
+				<option ${(param.f == "etc")?"selected":""} value="etc">기타</option>
+				
 
 			</select>
+			
+
+			
+
+			
+					<button type="submit" class="btn btn-primary " id="search-btn">검색</button>
+			</form>
 		</div>
-		
+
 		<c:forEach var="m" items="${movies}" varStatus="vs" end="10">
 			<div id="mid_wrap">
 				<ul class="movie">
@@ -65,12 +68,12 @@
 
 						<div class="movie_poster">
 							<div class="movie_wrap">
-								<img class="movie_image" src="${m.poster_uri}">
+								<img class="movie_image" src="${m.poster_uri}" onClick="location.href='/movie/detail?movieDocId=${m.movie_docid}'">
 							</div>
 						</div>
 
 						<div class="movie_name">
-							<h3 class="movie_title">
+							<h3 class="movie_title" >
 								${m.title}
 								<div class="modal_button">
 									<button class="fas fa-ellipsis-v" id="modal_btn"
@@ -94,14 +97,14 @@
 			</div>
 
 
-
-			<!--  <div class="movielist">
+<!--  
+		 <div class="movielist">
             <h1>Page 1</h1>
         </div>
         <div class="movielist">
             <h1>Page 2</h1>
         </div>
-        -->
+     -->
 
 			<div class="modal fade" id="exampleModal${vs.index}" tabindex="-1"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -140,11 +143,11 @@
 							<div class="css-1k6r5nr-RowActionButtons e1pa47va5">
 								<div aria-label="wished" role="button"
 									class="css-1s4ktoa-RowActionButton-WishButton e1pa47va7">
-									<img src="/img/movie/bookmark.svg" alt="wished"><span>보고싶어요</span>
+									<img src="/img/movie/bookmark_gray.svg" alt="wished"><span>보고싶어요</span>
 								</div>
 								<div aria-label="watching" role="button"
 									class="css-9gb35z-RowActionButton-WatchingButton e1pa47va8">
-									<img src="/img/movie/cloud.svg" alt="wished"><span>코멘트
+									<img src="/img/movie/comment.svg" alt="wished"><span>코멘트
 										작성하기</span>
 								</div>
 							</div>
@@ -162,7 +165,9 @@
 				</div>
 			</div>
 		</c:forEach>
+	
 	</div>
+
 
 	<script src="/js/movie/star.js"></script>
 	<script src="/js/movie/scroll.js"></script>

@@ -30,6 +30,6 @@ public interface MemberDaoInterface {
 	//로그아웃
 	void logout(HttpSession session);
 	
-	//비밀번호 찾기
-	void findpwd(MemberVo memberVo);
+	//비밀번호 변경
+	int updatepwd(MemberVo memberVo);
 }

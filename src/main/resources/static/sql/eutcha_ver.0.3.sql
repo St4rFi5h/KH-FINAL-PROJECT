@@ -367,11 +367,11 @@ INCREMENT BY 1
 NOCYCLE;
 
 
-/* movie_info ?��?���? ?��?�� */
+/* movie_info add column */
 ALTER TABLE movie_info ADD(movie_trailer varchar2(1000));
 ALTER TABLE movie_info ADD(movie_hit_count NUMBER DEFAULT 0 NOT NULL);
 
-/* staff_info ?��?���? ?��?�� - ?��?��?�� 고유번호 컬럼 추�?*/
+/* staff_info add column*/
 ALTER TABLE staffs_info ADD(staff_id VARCHAR2(1000));
 
 /* 20210222 LMY - add major_genre table */

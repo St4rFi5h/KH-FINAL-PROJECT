@@ -11,7 +11,7 @@ import kr.or.eutchapedia.movie.rate.entity.MovierateVo;
 @Mapper
 public interface MovierateDao {
 
-	List<MovierateVo> getMovieLists(String email);
+	List<MovierateVo> getMovieListsS(String email , String genre );
 	List<MovierateVo> getmovierateList(String email, String genre );
 	List<MovierateVo> getMovieLists(Map<String, Object> param);
 

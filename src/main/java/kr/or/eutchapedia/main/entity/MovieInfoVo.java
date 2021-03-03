@@ -1,6 +1,7 @@
 package kr.or.eutchapedia.main.entity;
 
 public class MovieInfoVo {
+	
 	private String movieDocId;
 	private String title;
 	private String titleOrg;
@@ -18,6 +19,7 @@ public class MovieInfoVo {
 	private String moviePlatform;
 	private int commentLikeCount;
 	private String starRating;
+	private float ratingAvg;
 
 	public String getMovieDocId() {
 		return movieDocId;
@@ -155,5 +157,14 @@ public class MovieInfoVo {
 		this.starRating = starRating;
 	}
 	
+
+	public float getRatingAvg() {
+		return ratingAvg;
+	}
+
+	public void setRatingAvg(float ratingAvg) {
+		this.ratingAvg = ratingAvg;
+	}
+
 	
 }

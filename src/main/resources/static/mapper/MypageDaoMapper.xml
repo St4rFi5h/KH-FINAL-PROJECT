@@ -77,8 +77,27 @@
 		and a.fk_movie_docid = c.movie_docid
    </select>
    
-    
+   <!--serch결과  --> 
+ <select id="selectSearchMovies" parameterType="String" resultMap="StarRatingForMainVo2" >
+	    select a. *, 
+		c.title, 
+		c.nation, 
+		c.movie_running_time, 
+		c.prodyear, 
+		c.poster_uri, 
+		c.genre, 
+		c.major_genre
+		from star_rating a, 
+			 (SELECT A.*, B.MAJOR_GENRE 
+			 FROM MOVIE_INFO A JOIN MAJOR_GENRE B 
+			 ON A.MOVIE_DOCID = B.FK_MOVIE_DOCID ) c
+		where a.fk_member_email = #{memberemail}
+		and a.fk_movie_docid = c.movie_docid
+		and c.title LIKE '%${findstr}%'
+   </select>
+   
  
+   
    
    <select id="selectmostRatedStar" parameterType="String" resultMap="starHashMap" >
 	    SELECT ROWNUM, c.star_rating as star

@@ -15,6 +15,12 @@ public interface FaqDao {
 	//공개여부
 	List<FaqView> getViewPubList(int offset, int size, String field, String query);
 	
+	public int updatePubAll(int[] oids, int[] cids); 
+	
+	public int updatePubAll(List<String> oids, List<String> cids); 
+	
+	public int updatePubAll(String oidsCSV, String cidsCSV);
+	
 	int getCount(String field, String query);	
 	//자세한 페이지 요청할 때 
 	FaqView getView(int faqNo);
@@ -32,8 +38,8 @@ public interface FaqDao {
 	//일괄삭제 요청할 때
 	int deleteAll(int[] faqNos);
 	//일괄공개 
-	int updatePubAll(int[] pubIds, int[] closeIds);
-	int updatePubAll(int[] faqNos, boolean pub);
+	//int updatePubAll(int[] pubIds, int[] closeIds);
+	//int updatePubAll(int[] faqNos, boolean pub);
 	
 	String pubList(String[] openIds);
 	

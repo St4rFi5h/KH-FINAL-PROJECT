@@ -14,6 +14,15 @@ public class MovierateVo {
 	private String plot;
 	private String movie_trailer;
 	private int movie_hit_count;
+	private String MAJOR_GENRE;
+	
+
+	public String getMAJOR_GENRE() {
+		return MAJOR_GENRE;
+	}
+	public void setMAJOR_GENRE(String mAJOR_GENRE) {
+		MAJOR_GENRE = mAJOR_GENRE;
+	}
 	public String getNum() {
 		return num;
 	}

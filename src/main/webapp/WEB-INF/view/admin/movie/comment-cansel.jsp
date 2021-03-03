@@ -78,7 +78,7 @@
                         <c:set var="page" value="${(param.p == null)?1:param.p}"/>
                               <c:set var="startNum" value="${page-(page-1)%5}" />
                               <c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"/>
-                        <div style="margin-bottom:30px ">
+                        <div style="margin-bottom:30px;text-align: center; ">
                               <span>현재페이지 ${(empty param.p)?1:param.p}</span>
                               /${lastNum} page
                           </div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,41 +23,7 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <header>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="navbar_logo">
-                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                </div>
-    
-                <div class="menu">
-                <ul>
-                  <span><li><a href="#">ABOUT US</a></li></span>
-                  <span> <li><a href="#">평가하기</a></li></span>
-                    <span> <li><a href="#">고객센터</a></li></span>
-                </ul>
-                </div>
-    
-                <!--검색창-->
-                <div class="searchbar">
-                    <form action="#">
-                      <div class="search_box"> 
-                         <div class="icon"><i class="fas fa-search"></i> 
-                            <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                         </div>
-                      </div>
-                    </form>
-                </div>
-    
-                <div class="menu">
-                    <ul>
-                      <span><li><a href="#">로그인</a></li></span>
-                      <span><li><a href="#">회원가입</a></li></span>
-                </ul>
-              </div>
-            </div>
-        </div>
-      </header>
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
     <section class="page_notiboard_sction">
         <div class="notiboard_wrap">
 
@@ -66,13 +33,13 @@
                     <div class="inner_snb">
                         <ul class="list_menu">
                             <li class="list_menu">
-                                <a href="">공지사항</a>
+                                <a href="/notice/list">공지사항</a>
                             </li>
                             <li class="list_menu on">
-                                <a href="faq_list(admin).html">자주하는 질문</a>
+                                <a href="/faq/faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu">
-                                <a href="qna_list(admin).html">1:1 문의</a>
+                                <a href="/qna/list.do">1:1 문의</a>
                             </li>
                         </ul>
                     </div>
@@ -90,7 +57,7 @@
                             <input type="text" name="q" value="${param.q}" id="search-box" />  
                             <input type="submit" class="search-btn yb" style="float: none;" value="검색"/>
                         </form>
-                        </div>
+                    </div>
                     <div class="head_aticle">
                         <h3 class="tit">
                             자주하는 질문
@@ -104,8 +71,13 @@
                         <div class="accordion_banner" id="tbl_notice">
                             <div class="tbl_notice_tit">
                                 <div class="tbl_notice_info">
+                                   <c:if test="${getmember.adminCheck == 'A'}"> 
                                     <p class="tbl_info_type">삭제</p>
                                     <p class="tbl_info_type">공개</p>
+                                   </c:if> 
+                                   <c:if test="${getmember.adminCheck != 'A'}"> 
+                                    <p class="tbl_info_type"></p>
+                                   </c:if> 
                                     <p class="tbl_info_tit">제목</p>
                                     <p class="tbl_info_date"></p>
                                 </div>
@@ -121,12 +93,20 @@
                             <div class="accordion_title">
                                 <div class="tbl_notice_info">
                                     <div class="infoinner">
+                                    <c:if test="${getmember.adminCheck == 'A'}">
                                     	<p class="tbl_info_type"><input type="checkbox" name="del-id" class="checkbox" value="${f.faqNo}">
                                             <span class="blind">체크박스</span>
                                         </p>
                                         <p class="tbl_info_type"><input type="checkbox" name="open-id" ${open} class="checkbox" value="${f.faqNo}">
                                             <span class="blind">체크박스</span>
                                         </p>
+									</c:if>
+									<c:if test="${getmember.adminCheck != 'A'}">
+                                    	<p class="tbl_info_type">
+                                            <span class="blind">체크박스</span>
+                                        </p>
+                                        
+									</c:if>                                           
                                         <p class="tbl_info_tit">${f.faqTitle}
                                             <span class="blind">제목</span>
                                         </p>
@@ -141,7 +121,7 @@
                                     <div class="notice_wrap">
                                         <span class="modi_span">
                                           <a href="${path}/user/board/faq/updateView?faqNo=${f.faqNo }" class="modi_btn">수정</a>
-                                          <a href="${path }/user/board/faq/delete?faqNo=${f.faqNo}" class="modi_btn">삭제</a>
+                                          <a href="${path}/user/board/faq/delete?faqNo=${f.faqNo}" class="modi_btn">삭제</a>
                                         </span>
                                             <div style="padding-left:140px;">
                                             	<p>${f.faqContent}</p>
@@ -158,8 +138,8 @@
                             <c:forEach var="f" items="${list}">
                             	<c:set var="ids" value="${ids} ${f.faqNo}"/>
                             </c:forEach>
-                            <input type="hidden" id="ids" name="ids" value="${ids}"/>
-                                <a href="faq_reg(admin)"><input type="button" class="write_btn yb" value="글쓰기"/></a>
+                            <input type="text" id="ids" name="ids" value="${ids}"/>
+                               <input type="button" class="write_btn yb" value="글쓰기" onclick="location.href='faq_reg(admin)'"/>
                               <input type="submit" class="write_btn yb" name="cmd" value="선택삭제" onclick="deleteValue();"/>
                               <input type="submit" class="write_btn yb" name="cmd" value="공개" style="float: none"/>  
                             </div>
@@ -169,45 +149,84 @@
 
 							
 		                    <!-- 페이징 -->
-		                    <div class="pagination_section">
-		                        <div class="custom_pagination">
-		                            <span class="pagination_prev disabled">
-		                                <a href="">
-		                                    <ruler-svg-icon-prev>
-		                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-		                                            viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
-		                                            <path d="M143.492,221.863L336.226,29.129c6.663-6.664,6.663-17.468,0-24.132c-6.665-6.662-17.468-6.662-24.132,0l-204.8,204.8
-		                                                c-6.662,6.664-6.662,17.468,0,24.132l204.8,204.8c6.78,6.548,17.584,6.36,24.132-0.42c6.387-6.614,6.387-17.099,0-23.712
-		                                                L143.492,221.863z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
-		                                        </svg>
-		                                    </ruler-svg-icon-prev>
-		                                </a>
-		                            </span>
-		                            <span class="pagenum current">
-		                                <span>1</span>
-		                            </span>
-		                            <span class="pagenum">
-		                                <a>2</a>
-		                            </span>
-		                            <span class="pagination_next">
-		                                <a href="">
-		                                    <ruler-svg-icon-next width="11" height="22" stroke="#000">
-		                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-		                                            viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
-		                                            <path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
-		                                                    L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
-		                                                    C342.889,227.058,342.889,216.255,336.226,209.591z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
-		                                        </svg>
-		                                    </ruler-svg-icon-next>
-		                                </a>
-		                            </span>
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		    </section>
-		    <!-- footer -->
+		                    <c:set var="page" value="${(empty param.p)?1:param.p}"/> 
+                            <c:set var="startNum" value="${page-(page-1)%5}"/>
+                            <c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"/>
+                            <div>
+                            	<div style="text-align:right; font-size:13px; padding-top:20px;"><span>${(empty param.p)?1:param.p}</span> / ${lastNum }pages</div>
+                            </div>
+                            <div class="pagination_section">
+                                <div class="custom_pagination">
+                                    <span class="pagination_prev disabled">
+                                       <div>
+                                          <c:if test="${startNum>1}">
+                                            <a href="?p=${startNum-1}&t=&q=">
+                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+                                                    <path d="M143.492,221.863L336.226,29.129c6.663-6.664,6.663-17.468,0-24.132c-6.665-6.662-17.468-6.662-24.132,0l-204.8,204.8
+                                                        c-6.662,6.664-6.662,17.468,0,24.132l204.8,204.8c6.78,6.548,17.584,6.36,24.132-0.42c6.387-6.614,6.387-17.099,0-23.712
+                                                        L143.492,221.863z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
+                                                </svg>
+                                              </a>
+                                           </c:if>
+                                           <c:if test="${startNum<=1}">
+                                           <span onclick="alert('이전 페이지가 없습니다.');">
+                                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+                                                    <path d="M143.492,221.863L336.226,29.129c6.663-6.664,6.663-17.468,0-24.132c-6.665-6.662-17.468-6.662-24.132,0l-204.8,204.8
+                                                        c-6.662,6.664-6.662,17.468,0,24.132l204.8,204.8c6.78,6.548,17.584,6.36,24.132-0.42c6.387-6.614,6.387-17.099,0-23.712
+                                                        L143.492,221.863z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
+                                             </svg>
+                                           </span>
+                                         </c:if>
+                                       </div>
+                                    </span>
+                                    
+                                    <c:forEach var="i" begin="0" end="4">
+                                    <span class="pagenum">
+                                    	<c:if test="${(startNum+i) <= lastNum}">
+	                                        <span><a ${(page==(startNum+i))?'style="font-weight:bold; color:black;"':''} href="?p=${startNum+i}&f=${param.f}&q=${param.q}">${startNum+i}</a></span>
+                                    	</c:if>
+                                    </span>
+                                    </c:forEach>
+                                    <!-- <span class="pagenum">
+                                        <a>2</a>
+                                    </span> -->
+                                    <span class="pagination_next">
+                                        <a href="">
+                                          <div>
+                                          <c:if test="${startNum+4<lastNum}">
+                                          	 <a href="?p=${startNum+5}&t=&q=" width="11" height="22" stroke="#000">
+                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+                                                    <path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
+                                                            L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
+                                                            C342.889,227.058,342.889,216.255,336.226,209.591z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
+                                                </svg>
+                                             </a>
+                                           </c:if>
+                                           <c:if test="${startNum+4>=lastNum}">
+                                            <span width="11" height="22" stroke="#000" onclick="alert('다음 페이지가 없습니다.');">
+                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
+                                                    <path d="M336.226,209.591l-204.8-204.8c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.712l192.734,192.734
+                                                            L107.294,414.391c-6.663,6.664-6.663,17.468,0,24.132c6.665,6.663,17.468,6.663,24.132,0l204.8-204.8
+                                                            C342.889,227.058,342.889,216.255,336.226,209.591z" style="stroke: rgb(0,0,0); stroke-width: 22;"/>
+                                                </svg>
+                                            </span>
+                                            </c:if>
+                                          </div>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- footer -->
 		    <footer>
 
         <section class="count-space">

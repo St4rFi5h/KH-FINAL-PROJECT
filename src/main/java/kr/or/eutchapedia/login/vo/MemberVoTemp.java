@@ -7,6 +7,7 @@ public class MemberVoTemp {
 	private String memberPwdSalt;
 	private String memberEmail;
 	private String memberStatus;
+	private String adminCheck;
 	
 	
 	public String getMemberStatus() {
@@ -32,5 +33,11 @@ public class MemberVoTemp {
 	}
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
+	}
+	public String getAdminCheck() {
+		return adminCheck;
+	}
+	public void setAdminCheck(String adminCheck) {
+		this.adminCheck = adminCheck;
 	}
 }

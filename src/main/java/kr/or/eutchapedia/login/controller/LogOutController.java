@@ -1,5 +1,9 @@
 package kr.or.eutchapedia.login.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +20,12 @@ public class LogOutController {
 	private MemberService memberService;
 	
 	@RequestMapping(value = "/logout")
-	public ModelAndView logout(HttpSession session) {
+	public ModelAndView logout(HttpSession session) throws IOException {
 		ModelAndView mv = new ModelAndView();
+		
 		memberService.logout(session);
 		
-		mv.setViewName("/user/index_main");
-		mv.addObject("msg", "logout");
+		mv.setViewName("redirect:/");
 		
 		return mv;
 		}

@@ -29,30 +29,25 @@
 	
 	<!-- 로그인 -->
 	<select id="login" resultType="kr.or.eutchapedia.login.vo.MemberVo">
-		SELECT COUNT(*) FROM member
+		SELECT * FROM member
 		WHERE member_email = #{memberEmail}
 		AND member_pwd = #{memberPwd} AND member_status = 'N'
 	</select>
 	
+	
 	<!-- 로그인 확인 -->
 	<select id="loginchk" resultMap="MemberVoTemp" parameterType="String">
-		SELECT member_email, member_pwd, member_pwd_salt , member_status
+		SELECT member_email, member_pwd, member_pwd_salt , member_status, admin_check
 		FROM member
 		WHERE member_email = #{memberEmail}
 	</select>
 	
-	<!-- 비밀번호 찾기 -->
-	<select id="findpwd" parameterType="kr.or.eutchapedia.login.vo.MemberVo" resultType="kr.or.eutchapedia.login.vo.MemberVo">
-		SELECT member_email from member
-		WHERE member_email = {member_Email}
-	</select>
-
 	<!-- 비밀번호 재설정 -->
-	<update id="updatepwd" parameterType="hashMap">		
+	<update id="updatepwd" parameterType="kr.or.eutchapedia.login.vo.MemberVo">		
 		UPDATE member SET 		
 		member_pwd = #{memberPwd},	
-		member_pwd_salt = #{memberPwdSalt},	
-		WHERE member_email = #{memberEmail}			
+		member_pwd_salt = #{memberPwdSalt}	
+		WHERE member_email = #{memberEmail}
 	</update>
 
 
@@ -77,5 +72,6 @@
 		<result column="member_pwd_salt" property="memberPwdSalt" />
 		<result column="member_email" property="memberEmail" />
 		<result column="member_status" property="memberStatus" />
+		<result column="admin_check" property="adminCheck" />
   </resultMap>
 </mapper>

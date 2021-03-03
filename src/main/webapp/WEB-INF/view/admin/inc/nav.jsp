@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,13 +13,14 @@
 <div id="nav-col" class="col-lg-2">
     
                     <!--nav영역-->
-    
+    			
                     <!--어드민 정보-->
+                    <c:set var="id" value="${memberEmail}"></c:set>
                     <div id="admin-info">
                         <img class="col-lg-12" src="/img/admin/person3.png" alt="">
                         <br />
                         <div id="admin-id" class="col-lg-12">
-                            <strong>kimeungyu</strong>
+                            <strong>${id}</strong>
     
                         </div>
                     </div>
@@ -32,8 +35,8 @@
                               <ul>
                                  <li class='has-sub'><a href='#'><span>회원관리</span></a>
                                     <ul>
-                                       <li><a href='/PJW/selectMember.html'><span>회원조회</span></a></li>
-                                       <li class='last'><a href='/PJW/blockMember.html'><span>블랙리스트 관리</span></a></li>
+                                       <li><a href='/admin/selectmember'><span>회원조회</span></a></li>
+                                      <!--  <li class='last'><a href='/admin/blockmember.html'><span>블랙리스트 관리</span></a></li> -->
                                     </ul>
                                  </li>
                                 

@@ -25,41 +25,7 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <header>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="navbar_logo">
-                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                </div>
-    
-                <div class="menu">
-                <ul>
-                    <span><li><a href="#">ABOUT US</a></li></span>
-                    <span> <li><a href="#">평가하기</a></li></span>
-                    <span> <li><a href="#">고객센터</a></li></span>
-                </ul>
-                </div>
-    
-                <!--검색창-->
-                <div class="searchbar">
-                    <form action="#">
-                        <div class="search_box"> 
-                            <div class="icon"><i class="fas fa-search"></i> 
-                                <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-    
-                <div class="menu">
-                    <ul>
-                        <span><li><a href="#">로그인</a></li></span>
-                        <span><li><a href="#">회원가입</a></li></span>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
 
     <!-- 바디 -->
     <section class="mypage_content">
@@ -82,13 +48,13 @@
                     <input type="hidden" name="sortMethod" value="all">
                     <div class="myq_service">
                         <p>
-                            <strong>5건의 문의가 있습니다.</strong>
                         </p>
                     </div>
                 </form>
 
                 <div class="myq_item_list">
                     <!------------------ 내역 ------------------->
+                 <c:forEach var="q" items="${member }">
                     <div class="qitem_grouping">
                         <div class="my_item">
                             <div class="qna_list_block">
@@ -97,11 +63,11 @@
                                         <img src="/img/mypage/q.svg" alt="질문">
                                     </div>
                                     <div class="acc_block">
-                                        <p>안녕하세요 어쪼고 어쩌고 저쩌고 되나요?</p>
-                                        <div>2020/12/17</div>
+                                        <p>${q.qnaTitle }<br>${q.qnaContent }</p>
+                                        <div>${q.qnaDate }</div>
                                         <div class="btnArea">
                                             <!-- 삭제 버튼 -->
-                                            <button type="button" class="myButton">삭제</button>
+                                            <a href="${path }/mypage/myq/delete?qnaNo=${q.qnaNo}" class="myButton">삭제</a>
                                         </div>
                                     </div>
                                 </div>
@@ -110,124 +76,16 @@
                                         <img src="/img/mypage/a.svg" alt="답변">
                                     </div>
                                     <div class="acc_block">
-                                        <p>안녕하세요. 읏챠피디아입니다.
-                                            <br>
-                                            <br>
-                                            어쩌고 저쩌고 어쩌구 해드리겠습니다.
-                                            <br>
-                                            좋은 하루 되세요.
-                                        </p>
+                                        <p>${q.answerContent }</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                 </c:forEach>
+                    
 
-                    <!------------------ 내역 ------------------->
-                    <div class="qitem_grouping">
-                        <div class="my_item">
-                            <div class="qna_list_block">
-                                <div class="question_block">
-                                    <div class="title_img">
-                                        <img src="/img/mypage/q.svg" alt="질문">
-                                    </div>
-                                    <div class="acc_block">
-                                        <p>안녕하세요 어쪼고 어쩌고 저쩌고 되나요?</p>
-                                        <div>2020/12/17</div>
-                                        <div class="btnArea">
-                                            <!-- 삭제 버튼 -->
-                                            <button type="button" class="myButton">삭제</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="answer_block">
-                                    <div class="title_img">
-                                        <img src="/img/mypage/a.svg" alt="답변">
-                                    </div>
-                                    <div class="acc_block">
-                                        <p>안녕하세요. 읏챠피디아입니다.
-                                            <br>
-                                            <br>
-                                            어쩌고 저쩌고 어쩌구 해드리겠습니다.
-                                            <br>
-                                            좋은 하루 되세요.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!------------------ 내역 ------------------->
-                    <div class="qitem_grouping">
-                        <div class="my_item">
-                            <div class="qna_list_block">
-                                <div class="question_block">
-                                    <div class="title_img">
-                                        <img src="/img/mypage/q.svg" alt="질문">
-                                    </div>
-                                    <div class="acc_block">
-                                        <p>안녕하세요 어쪼고 어쩌고 저쩌고 되나요?</p>
-                                        <div>2020/12/17</div>
-                                        <div class="btnArea">
-                                            <!-- 삭제 버튼 -->
-                                            <button type="button" class="myButton">삭제</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="answer_block">
-                                    <div class="title_img">
-                                        <img src="/img/mypage/a.svg" alt="답변">
-                                    </div>
-                                    <div class="acc_block">
-                                        <p>안녕하세요. 읏챠피디아입니다.
-                                            <br>
-                                            <br>
-                                            어쩌고 저쩌고 어쩌구 해드리겠습니다.
-                                            <br>
-                                            좋은 하루 되세요.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!------------------ 내역 ------------------->
-                    <div class="qitem_grouping">
-                        <div class="my_item">
-                            <div class="qna_list_block">
-                                <div class="question_block">
-                                    <div class="title_img">
-                                        <img src="/img/mypage/q.svg" alt="질문">
-                                    </div>
-                                    <div class="acc_block">
-                                        <p>안녕하세요 어쪼고 어쩌고 저쩌고 되나요?</p>
-                                        <div>2020/12/17</div>
-                                        <div class="btnArea">
-                                            <!-- 삭제 버튼 -->
-                                            <button type="button" class="myButton">삭제</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="answer_block">
-                                    <div class="title_img">
-                                        <img src="/img/mypage/a.svg" alt="답변">
-                                    </div>
-                                    <div class="acc_block">
-                                        <p>안녕하세요. 읏챠피디아입니다.
-                                            <br>
-                                            <br>
-                                            어쩌고 저쩌고 어쩌구 해드리겠습니다.
-                                            <br>
-                                            좋은 하루 되세요.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+ 
 
                 <!---------------- 페이징 처리 ---------------->
                 <div class="pagination_section">
@@ -246,9 +104,6 @@
                         </span>
                         <span class="pagenum current">
                             <span>1</span>
-                        </span>
-                        <span class="pagenum">
-                            <a>2</a>
                         </span>
                         <span class="pagination_next">
                             <a href="">

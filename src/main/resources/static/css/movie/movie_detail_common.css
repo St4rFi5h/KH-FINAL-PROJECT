@@ -14,6 +14,25 @@ html, body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
+
+a:link,
+a {
+    line-height: normal;
+    outline: none;
+    text-decoration: none;
+}
+
+ul,li {
+
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 0;
+}
+
 header {
 	position: fixed;
 	width: 100%;
@@ -423,8 +442,45 @@ header a:hover {
 	width: 220px;
 	height: 300px;
 	margin-top: 10px;
-	background-color: #e3e3e3;
+	
 }
+
+/*collection*/
+.photo_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 200px;
+    height: 250px;
+    background-color: transparent;
+    background-color: rgba(230, 223, 223, 0.349);
+    border-radius: 2px;
+}
+
+/* .photo_box {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    vertical-align: top;
+    background-color:rgba(230, 223, 223, 0.349);
+    border-radius: 2px;
+     
+} */
+/* .photo_box .photo-img {
+    width: 100px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    object-fit: cover;
+    box-sizing: border-box;
+    border: 1px outset #e9e4e4;
+    border-radius: 5px;
+
+} */
+
 
 .collection-title {
 	font-size: 20px;
@@ -463,4 +519,13 @@ header a:hover {
 .starR2.on {
 	background: url('/img/movie/star_rated.svg') no-repeat right 0;
 	background-position: -23px 0;
+}
+
+.data-empty-message {
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+	height: 100px;
+	padding-top: 20px;
 }

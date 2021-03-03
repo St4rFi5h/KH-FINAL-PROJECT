@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.eutchapedia.movie.collection.domain.CollectionVo;
+import kr.or.eutchapedia.movie.detail.domain.CommentLikeVo;
 import kr.or.eutchapedia.movie.detail.domain.CommentVo;
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
@@ -164,22 +166,72 @@ public class MovieDetailDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return starRatingVo;
 
 	}
-	
+
 	public CommentVo checkCommentData(Map<String, Object> map) {
 		CommentVo commentVo = new CommentVo();
-		
+
 		try {
 			commentVo = mapper.checkCommentData(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return commentVo;
 	}
+
+	public List<CollectionVo> selectCollectionInfo(Integer pickIndex) {
+		List<CollectionVo> collectionList = new ArrayList<>();
+		
+		try {
+			collectionList = mapper.selectCollectionInfo(pickIndex);
+			for (CollectionVo vo : collectionList) {
+				vo.setProdYear(vo.getProdYear().substring(0, 4));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return collectionList;
+	}
 	
+	public List<Integer> selectCollectionIndex(String movieDocId) {
+		List<Integer> collectionIndexList = new ArrayList<>();
+		
+		try {
+			collectionIndexList = mapper.selectCollectionIndex(movieDocId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return collectionIndexList;
+	}
 	
+	public List<CommentLikeVo> selectLikeData(Map<String, Object> map) {
+		List<CommentLikeVo> likeDataList = new ArrayList<>();
+		
+		try {
+			likeDataList = mapper.selectLikeData(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return likeDataList;
+	}
+	
+	public String selectMemberNickname(String memberEmail) {
+		String memberNickname = "";
+		
+		try {
+			memberNickname = mapper.selectMemberNickname(memberEmail);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return memberNickname;
+ 	}
+
 }

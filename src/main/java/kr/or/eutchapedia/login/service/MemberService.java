@@ -1,7 +1,9 @@
 package kr.or.eutchapedia.login.service;
 
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,61 +33,70 @@ public class MemberService {
 			memberVo.setMemberPwd(utils.getEncrypt(memberVo.getMemberPwd(), memberVo.getMemberPwdSalt()));
 
 			resultCnt = memberDao.signup(memberVo);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return resultCnt;
 	}
-	
+
 	//로그인
 	public int login(MemberVo memberVo, HttpSession httpSession) {
-		
+
 		//로그인 객체 확인
 		System.out.println("//로그인 객체 확인 memberVo : " + memberVo);
-		
+
 		utils = new Utils();
-		
+
 		MemberVoTemp vtemp = new MemberVoTemp(); //로그인 확인용
-		
+
 		String memberEmail = memberVo.getMemberEmail(); //사용자 입력 이메일
 		String inputPwd = memberVo.getMemberPwd(); // 사용자 입력 비번
-		
+		System.out.println("여기까지");
 		vtemp = memberDao.loginchk(memberEmail);
-		
-		//비밀번호 암호화
-		String salt = vtemp.getMemberPwdSalt(); //솔트
-		System.out.println(salt);
-		String pwd = vtemp.getMemberPwd();
-		String pwdSalt = utils.getEncrypt(inputPwd, salt);
-		
-		//회원 상태
-		String status = vtemp.getMemberStatus();
-		String c = "N";
-		String a = "C";
-		
-		System.out.println("//로그인 객체 확인 vtemp : " + vtemp);
-		System.out.println("status 값 : " + status);
-		
-		//로그인 결과 값
-		int result;
-				
-		// 세션에 아이디값 저장
-		httpSession.setAttribute("memberEmail", memberEmail);
-		System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberEmail"));
-		
-		if(pwd.equals(pwdSalt) && status.equals(c) || status.equals(a) ) {
-			MemberVo loginchk = memberDao.login(memberEmail, inputPwd);
-			System.out.println(loginchk);
+		System.out.println("vtemp 작동");
+		int result = 0;
+		if(vtemp != null) {
+
+			//비밀번호 암호화
+			String salt = vtemp.getMemberPwdSalt(); //솔트
+			String pwd = vtemp.getMemberPwd(); //db에서 가져온 최종pwd해시
+			String pwdSalt = utils.getEncrypt(inputPwd, salt); //사용자 입력후 해시한 값
+
+			//회원 상태
+			String status = vtemp.getMemberStatus();
+			String adminCheck = vtemp.getAdminCheck();
+			
+			System.out.println("//로그인 객체 확인 vtemp : " + vtemp);
+			System.out.println("status 값 : " + status);
+			System.out.println("admincheck: " + adminCheck);
+			//로그인 결과 값
+			
+			// 세션에 아이디값 저장
+			if (adminCheck.equals("N")) {
+				httpSession.setAttribute("memberEmail", memberEmail);
+				System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberEmail"));				
+			} else if (adminCheck.equals("A")) {
+				httpSession.setAttribute("admincheck", adminCheck);
+				httpSession.setAttribute("memberEmail", memberEmail);
+				System.out.println("관리자 세션 : " + httpSession.getAttribute("admincheck"));
+			}
+
+			if(pwd.equals(pwdSalt) && status.equals("N") || status.equals("C") || vtemp == null ) {
+				MemberVo loginchk = memberDao.login(memberEmail, pwdSalt);
+				httpSession.setAttribute("loginchk", loginchk);
+				System.out.println(loginchk);
 				result = 1;
-		} else {
-			System.out.println("불일치");
-			result = 0;
+			} else {
+				System.out.println("불일치");
+				result = 0;
+			}
 		}
 		return result;
-		
+
+
 	}
-	
+
 	//로그아웃
 	public void logout(HttpSession session) {
 		session.invalidate();
@@ -102,14 +113,26 @@ public class MemberService {
 
 		return memberDao.nicknamechk(memberNickname);
 	}
-	
-	
-//	  public String findpwd(MemberVo memberVo) {
-//	  
-//		  return memberDao.findpwd(memberVo);
-//	  
-//	  }
-	 
+
+	//비밀번호 변경
+	public String updatepwd(MemberVo memberVo) {
+
+		String msg = "비번변경 성공";
+		int cnt = 0;
+
+		try {
+			cnt = memberDao.updatepwd(memberVo);
+
+			System.out.println("service cnt : " + cnt);
+			if (cnt < 1) {
+				msg = "비번변경중 오류";
+			}
+		} catch (Exception e) {
+			msg = e.getMessage();
+		}
+		return msg;
+	}
+
 }	
 
 

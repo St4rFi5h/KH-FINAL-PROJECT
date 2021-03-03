@@ -5,7 +5,7 @@ public class StarRatingForMainVo {
 	private int starIndex;
 	private String movieDocId;
 	private String memberEmail;
-	private String starRating;
+	private String starRating; 
 	private String title;
 	private String nation;
 	private String movieRunningTime;
@@ -81,6 +81,7 @@ public class StarRatingForMainVo {
 	public void setStarRating(String starRating) {
 		this.starRating = starRating;
 	}
+	
 	
 	
 }

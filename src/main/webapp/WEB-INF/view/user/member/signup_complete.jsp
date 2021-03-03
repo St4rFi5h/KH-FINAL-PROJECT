@@ -36,7 +36,7 @@
 			<img class=logo src="img/original.png" width="300px" height="50px">
 			<h2 class="title">EUTCHAPEDIA의 회원이 되신것을 환영합니다.</h2>
 			<div class="member-email">
-				<span>회원님의 메일주소는 <b><%= session.getAttribute("memberEmail") %></b>입니다.
+				<span>회원님의 메일주소는 <b>${memberEmail }</b>입니다.
 				</span>
 			</div>
 		</div>

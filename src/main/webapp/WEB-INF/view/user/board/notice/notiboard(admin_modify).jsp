@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/board/notice/notiboard.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/movie/index.css"">
+    <link rel="stylesheet" href="/css/movie/index.css">
     <link rel="shortcut icon" href="/img/logo_favicon.ico"> <!--favicon-->
     <link rel="icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> <!--icon-->
@@ -25,43 +25,8 @@
 	<title>EUTCHAPEDIA</title>
 </head>
 <body>
-        <!-- 헤더 -->
-        <header>
-            <div class="wrapper">
-                <div class="navbar">
-                    <div class="navbar_logo">
-                        <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                    </div>
-    
-                <div class="menu">
-                <ul>
-                    <span><li><a href="#">ABOUT US</a></li></span>
-                    <span><li><a href="#">평가하기</a></li></span>
-                    <span><li><a href="#">고객센터</a></li></span>
-                </ul>
-                </div>
-    
-                <!--검색창-->
-                <div class="searchbar">
-                    <form action="#">
-                        <div class="search_box"> 
-                            <div class="icon"><i class="fas fa-search"></i> 
-                                <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-    
-                <div class="menu">
-                    <ul>
-                        <span><li><a href="#">로그인</a></li></span>
-                        <span><li><a href="#">회원가입</a></li></span>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-
+    <!-- 헤더 -->
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
     <!-- 공지사항 -->
     <section class="page_notiboard_sction">
         <div class="notiboard_wrap">
@@ -72,13 +37,13 @@
                     <div class="inner_snb">
                         <ul class="list_menu">
                             <li class="list_menu on">
-                                <a href="">공지사항</a>
+                                <a href="/notice/list">공지사항</a>
                             </li>
                             <li class="list_menu">
-                                <a href="">자주하는 질문</a>
+                                <a href="/faq/faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu">
-                                <a href="">1:1 문의</a>
+                                <a href="/qna/list.do">1:1 문의</a>
                             </li>
                         </ul>
                     </div>
@@ -99,8 +64,8 @@
                     
                     <div class="page_section section_qna">
                         <div class="xans-board-write">
-                        <c:url var="updateUrl" value="${path }/update.do"/>
-                        <form:form name="frm" id="frm" method="post" action="${updateUrl }" enctype="multipart/form-data" style="height: 100%;" modelAttribute="board">
+                        <c:url var="updateUrl" value="${path }/notice/update.do"/>
+                        <form:form name="board" id="frm" method="post" action="${updateUrl }" enctype="multipart/form-data" style="height: 100%;" modelAttribute="board">
 						<form:input type="hidden" path="noticeNo" value="${board.noticeNo }"/>
 						<form:input type="hidden" path="memberEmail" value="${board.memberEmail }"/>
                         <table id="table_after" class="boardWrite2" width="100%">
@@ -135,16 +100,12 @@
                         <table width="90%" id="table" cellpadding="0" cellspacing="0" border="0" style="border:solid 1px #f4f4f4; border-collapse:collapse;">
                             <tbody>
                                 <tr data-tr_value="1">
-                                    <td><input type="checkbox" name="checkRow"/></td>
-                                    <td width="30" nowrap="" align="center">1</td>
                                     <td width="100%">
                                     <input type="file" name="file[]" style="width:50%" class="linebg">
                                     <!-- <input type="button" name="del_btn" id="delete" class="del_btn" value="삭제"/> -->
                                     </td>
                                 </tr>
                                 <tr data-tr_value="2">
-                                    <td><input type="checkbox" name="checkRow"/></td>
-                                    <td width="30" nowrap="" align="center">2</td>
                                     <td width="100%">
                                     <input type="file" name="file[]" style="width:50%" class="linebg">
                                     <!-- <input type="button" name="del_btn" id="delete" class="del_btn" value="삭제"/> -->

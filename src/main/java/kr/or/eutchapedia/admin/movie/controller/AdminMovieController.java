@@ -39,7 +39,7 @@ public class AdminMovieController {
 		List<Memberdash> getmemberinfo = service.getMemberInfo();
 		List<MovieChart> getmoviechart = service.getMovieChart();
 		List<MovieGoodChart> getmoviegoodchart=service.getMovieGoodChart();
-		System.out.println(getmoviegoodchart.get(0).getSum());
+		System.out.println("차트정보"+getmoviegoodchart.get(0).getSum());
 		model.addAttribute("getmemberinfo", getmemberinfo);
 		model.addAttribute("getmoviechart", getmoviechart);
 		model.addAttribute("getmoviegoodchart", getmoviegoodchart);
@@ -70,8 +70,8 @@ public class AdminMovieController {
 		System.out.println(query);
 		System.out.println(number);
 
-		String userid = "jhlee@naver.com";
-//		String userid = "kaoo238@naver.com";
+	//	String userid = "jhlee@naver.com";
+		String userid = "kaoo238@naver.com";
 		String collection_ = req.getParameter("cbname");
 		String[] movieids = req.getParameterValues("mid");
 		List<PickInfo> getpick = service.getPick();

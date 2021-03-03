@@ -126,11 +126,64 @@
 		FROM star_rating sr
 		JOIN eutcha_comment ec
 		ON sr.star_index = ec.fk_star_index
-		WHERE sr.fk_member_email = #{memberEmail}
-		AND sr.fk_movie_docid = #{movieDocId}
+		WHERE
+		sr.fk_member_email = #{memberEmail}
+		AND sr.fk_movie_docid =
+		#{movieDocId}
 
 	</select>
 
+	<!-- moviedocid 넘겨서 컬렉션 가져오기 -->
+	<select id="selectCollectionInfo" parameterType="Integer"
+		resultMap="collectionVo">
+		SELECT p.pick_name, p.pick_index, mi.movie_docid, mi.title,
+		mi.prodyear,
+		mi.nation, mi.poster_uri FROM movie_pick mp
+		JOIN movie_info
+		mi
+		ON mp.fk_movie_docid = mi.movie_docid
+		JOIN pick p
+		ON p.pick_index =
+		mp.fk_pick_index
+		WHERE fk_pick_index = #{_parameter}
+
+	</select>
+
+
+	<!-- 컬렉션 번호만 따로 가져오기 -->
+	<select id="selectCollectionIndex" parameterType="String"
+		resultType="Integer">
+		SELECT p.pick_index
+		FROM pick p
+		JOIN movie_pick mp
+		ON
+		p.pick_index = mp.fk_pick_index
+		WHERE fk_movie_docid = #{_parameter}
+
+	</select>
+
+	<select id="selectLikeData" parameterType="HashMap"
+		resultMap="commentLikeVo">
+		SELECT * FROM
+		(SELECT * FROM comment_like
+		WHERE fk_comment_index IN
+		(SELECT ec.comment_index FROM star_rating sr
+		JOIN eutcha_comment ec
+		ON sr.star_index = ec.fk_star_index
+		WHERE sr.fk_movie_docid = #{movieDocId}))
+		where fk_member_email = #{memberEmail}
+
+	</select>
+	
+	<select id="selectMemberNickname" parameterType="String" resultType="String">
+		SELECT member_nickname 
+		FROM member
+		WHERE member_email = #{_parameter}
+		
+	</select>
+	
+	
+	
 	<!-- resultmap -->
 
 	<resultMap
@@ -195,4 +248,24 @@
 		<result column="comment_date" property="commentDate" />
 
 	</resultMap>
+
+	<resultMap id="collectionVo"
+		type="kr.or.eutchapedia.movie.collection.domain.CollectionVo">
+		<result column="pick_name" property="pickName" />
+		<result column="pick_index" property="pickIndex" />
+		<result column="movie_docid" property="movieDocId" />
+		<result column="title" property="title" />
+		<result column="prodyear" property="prodYear" />
+		<result column="nation" property="nation" />
+		<result column="poster_uri" property="posterUri" />
+	</resultMap>
+
+	<resultMap id="commentLikeVo"
+		type="kr.or.eutchapedia.movie.detail.domain.CommentLikeVo">
+		<result column="like_index" property="likeIndex" />
+		<result column="fk_comment_index" property="commentIndex" />
+		<result column="fk_member_email" property="memberEmail" />
+		<result column="like_check" property="likeCheck" />
+	</resultMap>
+
 </mapper>

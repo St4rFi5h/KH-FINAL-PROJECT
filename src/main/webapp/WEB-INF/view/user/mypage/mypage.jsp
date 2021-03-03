@@ -41,13 +41,13 @@
                 	<c:set var="name" value='/img/mypage/originprofile.jpg' />
             		<c:set var="name2" value='${member.memberPhoto}' />    
                     <c:choose>
-            		<c:when test="${name == name2}"> 
-                		<img  src='${member.memberPhoto}' width="200px"; height="250px">
-                	</c:when>
-                	<c:when test="${name != name2}">
-               			 <img src='/static/upload/${member.memberPhoto}' width="200px"; height="250px">
-                	</c:when>
-				</c:choose>
+	            		<c:when test="${name == name2}"> 
+	                		<img  src='${member.memberPhoto}' width="200px"; height="250px">
+	                	</c:when>
+	                	<c:when test="${name != name2}">
+	               			 <img src='/static/upload/${member.memberPhoto}' width="200px"; height="250px">
+	                	</c:when>
+					</c:choose>
                 </div>
                 
                 <h4 id='nickname'>${member.memberNickname }</h4>
@@ -59,8 +59,8 @@
                 </div>
 
                 <div class="sidebar">
-                    <div class='sidebar-menu'><a href="#">코멘트 관리</a></div><p></p>
-                    <div class='sidebar-menu'><a href="#">나의 문의</a></div><p></p>
+                    <div class='sidebar-menu'><a href="/mypage/mycomment">코멘트 관리</a></div><p></p>
+                    <div class='sidebar-menu'><a href="/mypage/myq">나의 문의</a></div><p></p>
                     <div class='sidebar-menu'><a href="/mypage/edit">정보 수정</a></div>
                 </div>
                 
@@ -121,11 +121,6 @@
 		                	</c:when>
 						</c:choose>
 		            	
-		                	<%-- 
-		                	<c:forEach var="star" items="${star}" begin="1" end="8">
-				            	<div class='center-box-img'><img id='posterimg'src="${star.posterUri}" width="110px"; height="135px" alt="포스터없음"></div>
-		                  	</c:forEach> 
-		                  	--%> 
 		                </div>
                      </a>
                 </div>
@@ -183,27 +178,27 @@
         type: 'bar', 
         data: { labels: ['0.5', '1', '1.5', '2', '2.5', '3','3.5','4','4.5','5'], 
                 datasets: [{ label: '별점분포', data: ratedNum, 
-                backgroundColor: [ 'rgba(255, 204, 000)', 
-                                   'rgba(255, 204, 000)', 
-                                   'rgba(255, 204, 000)', 
-                                   'rgba(255, 204, 000)', 
-                                   'rgba(255, 204, 000)', 
-                                   'rgba(255, 204, 000)',
-                                   'rgba(255, 204, 000)',
-                                   'rgba(255, 204, 000)',
-                                   'rgba(255, 204, 000)',
-                                   'rgba(255, 204, 000)'
+                backgroundColor: [ '#F6CADA', 
+                                   '#F4BDD0', 
+                                   '#EFAFC5', 
+                                   '#EAA2BB', 
+                                   '#DF99B1', 
+                                   '#D58EA7',
+                                   '#D38BA4',
+                                   '#D387A2',
+                                   '#CC869E',
+                                   '#D884A1'
                                  ], 
-                borderColor: [     'rgba(255, 204, 000)', 
-    					           'rgba(255, 204, 000)', 
-    					           'rgba(255, 204, 000)', 
-    					           'rgba(255, 204, 000)', 
-    					           'rgba(255, 204, 000)', 
-    					           'rgba(255, 204, 000)',
-    					           'rgba(255, 204, 000)',
-    					           'rgba(255, 204, 000)',
-    					           'rgba(255, 204, 000)',
-    					           'rgba(255, 204, 000)'], 
+                borderColor: [     '#F6CADA', 
+    					           '#F4BDD0', 
+    					           '#F4BDD0', 
+    					           '#EFAFC5', 
+    					           '#EAA2BB', 
+    					           '#DF99B1',
+    					           '#D58EA7',
+    					           '#D38BA4',
+    					           '#CC869E',
+    					           '#D884A1'], 
                 borderWidth: 1 
                 }] 
               }, 
@@ -245,7 +240,7 @@
               datasets: [ { 
                 data: num, 
                 backgroundColor: [ 
-                  "#f79546", "#9bba57", "#4f81bb", "#5f497a", "#a94069", "#ff5f34", "#41774e"], 
+                  "#EFA9AB", "#F2C7A9", "#F1E976", "#C6EBA7", "#A5E4EA", "#A0C4E5", "#C6AFED"], 
                 borderWidth: 0, 
                 label: "Dataset 1" 
               }] 

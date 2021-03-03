@@ -243,6 +243,20 @@
     font-size: 14px;
   }
   
+  
+  .end_btn {
+  padding-left: 10px;
+    padding-right: 10px;
+    
+    display: inline-block;
+    line-height: 25px;
+    text-align: center;
+    background-color:gray;
+    border: 1px solid gray;
+    color: #fff;
+    font-size: 14px;
+    }
+    
   .board_write_btn {
     text-align: center;
   }
@@ -283,7 +297,7 @@
 }
 
 .modi_span {
-    padding-left: 960px;
+    padding-left: 900px;
 }
 
 /*글쓰기 페이지*/

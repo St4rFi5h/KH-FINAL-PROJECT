@@ -5,7 +5,7 @@
 }
 
 .h1{
-    font-weight:
+    font-weight: "Noto Sans KR", sans-serif;
 }
 
 #title {
@@ -61,7 +61,7 @@
 
 #table-contorll{
 
-    height: 570px;
+    height: 670px;
     text-align: center;
     background-color: white;
 
@@ -88,3 +88,20 @@
     float: left;
 }
 
+#navigation{
+
+	text-align: center;
+}
+
+
+#chooseBox{
+	margin: auto;
+}
+ul#select-page {
+  
+    margin-left: 430px;
+}
+.page-link{
+	text-align: center;
+	margin: auto;
+}

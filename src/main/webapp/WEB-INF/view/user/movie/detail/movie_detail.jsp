@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eutchapedia</title>
+    <title>EUTCHAPEDIA</title>
     <link rel="shortcut icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="/css/movie/index.css" type="text/css" />
     <link rel="stylesheet" href="/css/movie/movie_detail_common.css" type="text/css" />
@@ -82,7 +82,7 @@
                     <h4>예고편</h4>
                 </div>
                 <div id="video-zone">
-                    <iframe width="900" height="550" src="https://www.youtube.com/embed/Q0zFPlArth0" frameborder="0"
+                    <iframe width="900" height="550" src="${movieInfoVo.movieTrailer }" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                 </div>
@@ -120,101 +120,105 @@
 	                    </c:forEach>
                     </div>
                 </div>
-                <div class="detail-info">
-                    <h4>별점 그래프</h4>
-                    <div id="chart-container">
-                        <canvas id="myChart" style="width: 600px; height: 300px;"></canvas>
-                    </div>
-                </div>
-                <div class="detail-info">
-                    <h4>코멘트</h4>
-                    <span class="more-info"><a href="/comment/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
-                    <div id="comment-zone">
-	                    <c:forEach var="commentList" items="${commentList }">
-	                        <div class="comment-card">
-	                            <div class="user-info-and-rating">
-	                            		<input type="hidden" name="commentIndex" value="${commentList.COMMENTINDEX }"/>
-	                                <img src="${commentList.PHOTO }" class="profile-img">
-	                                <div class="user-nickname">${commentList.NICKNAME }</div>
-	                                <div class="comment-star-rating">★ ${commentList.STARS }</div>
-	                            </div>
-	                            <div class="comment">
-	                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
-	                                <p>${commentList.TEXT }</p>
-	                            </div>
-	                            <div class="like-count-zone">
-	                                <img src="/img/movie/like.svg" id="like-thumb" />
-	                                <span id="like-count">${commentList.LIKECOUNT }</span>
-	                            </div>
-	                            <div class="like-and-report">
-	                                <span><button data-toggle="modal" id="like-button"
-	                                        data-target="#like-modal">좋아요</button></span>
-	                                <span><button data-toggle="modal" id="report-button"
-	                                        data-target="#report-modal">신고하기</button></span>
-	                            </div>
-	                        </div>
-	                    </c:forEach>
-                        
-                        <!-- like Modal -->
-                        <div class="modal fade" id="like-modal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <jsp:include page="modal/like_modal_non_member.jsp"/>
-                        </div>
+				<div class="detail-info">
+					<h4>별점 그래프</h4>
+					<div id="chart-container">
+						<c:if test="${!empty starDataList }">
+							<canvas id="myChart" style="width: 600px; height: 300px;"></canvas>
+						</c:if>
+						<c:if test="${empty starDataList }">
+							<div class="data-empty-message">별점 데이터가 없습니다.<br/>지금 바로 평가해보세요!</div>
+						</c:if>
+					</div>
+				</div>
+				<div class="detail-info">
+					<h4>코멘트</h4>
+					<c:if test="${!empty commentList }">
+						<span class="more-info"><a
+							href="/comment/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
+						<div id="comment-zone">
+							<c:forEach var="commentList" items="${commentList }">
+								<div class="comment-card">
+									<div class="user-info-and-rating">
+										<input type="hidden" name="commentIndex"
+											value="${commentList.COMMENTINDEX }" /> <img
+											src="${commentList.PHOTO }" class="profile-img">
+										<div class="user-nickname">${commentList.NICKNAME }</div>
+										<div class="comment-star-rating">★ ${commentList.STARS }</div>
+									</div>
+									<div class="comment">
+										<!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
+										<p>${commentList.TEXT }</p>
+									</div>
+									<div class="like-count-zone">
+										<img src="/img/movie/like.svg" id="like-thumb" /> <span
+											id="like-count">${commentList.LIKECOUNT }</span>
+									</div>
+									<div class="like-and-report">
+										<span><button data-toggle="modal" id="like-button"
+												data-target="#like-modal">좋아요</button></span> <span><button
+												data-toggle="modal" id="report-button"
+												data-target="#report-modal">신고하기</button></span>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+					</c:if>
+					<c:if test="${empty commentList }">
+						<div class="data-empty-message">
+							코멘트 데이터가 없습니다.<br />지금 바로 평가해보세요!
+						</div>
+					</c:if>
+					<!-- like Modal -->
+					<div class="modal fade" id="like-modal" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<jsp:include page="modal/like_modal_non_member.jsp" />
+					</div>
 
-                        <!-- siren Modal -->
-                        <div class="modal fade" id="report-modal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <jsp:include page="modal/report_modal_non_member.jsp"/>
-                    	</div>
+					<!-- siren Modal -->
+					<div class="modal fade" id="report-modal" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<jsp:include page="modal/report_modal_non_member.jsp" />
+					</div>
 
-                </div>
-                <div class="detail-info" id="collection">
-                    <h4>이 작품이 담긴 컬렉션</h4>
-                    <div>
-                        <div class="my-slider" id="collection-slider">
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">읏챠피디아 엄선 컬렉션</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">디즈니&픽사 완전 정복</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 윤지 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 은규 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 지현 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 종웅 PICK!</div>
-                                </div>
-                            </a>
-                        </div>
-                        
-                    </div>
-                </div>
+				</div>
+				<div class="detail-info" id="collection">
+					<h4>이 작품이 담긴 컬렉션</h4>
+					<div>
+						<div class="my-slider" id="collection-slider">
+							<div class="collection-zone">
+								<c:if test="${!empty collectionMap }">
+									<c:forEach var="collectionMap" items="${collectionMap}">
+										<c:forEach var="items" items="${collectionMap.value }"
+											begin="0" end="0">
+											<div class="collection-card">
+												<ul class="photo_list">
+
+													<a href="/collection?pickIndex=${items.pickIndex }">
+														<li class="photo_box"><img class="photo-img"
+															src="${items.posterUri }"></li>
+													</a>
+
+												</ul>
+											</div>
+
+											<div class="collection-title">${items.pickName }</div>
+
+										</c:forEach>
+									</c:forEach>
+								</c:if>
+								<c:if test="${empty collectionMap }">
+									<div class="data-empty-message">컬렉션 데이터가 없습니다.</div>
+								</c:if>
+							</div>
+						</div>
+
+					</div>
+				</div>
 
 
-            </div>
+			</div>
         </div>
         
         <%} else { %>
@@ -239,9 +243,7 @@
 					</c:otherwise>
 					</c:choose>
                 </div>
-
-				<!-- if session.getAttribute("id") != null -->
-				<!-- css 합칠 때 아이디값 바꿔야 함 -->
+                
                 <!-- 보고싶어요/별점 및 코멘트 남기기 Modal -->
                 <div class="modal fade" id="wanna-watch-modal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -280,7 +282,7 @@
         <input type="hidden" id="commentIndexOfMember" value="${commentVo.commentIndex }"/>
         <input type="hidden" id="commentTextOfMember" value="${commentVo.commentText }"/>
         <div id="member-comment-zone">
-            <div id="comment-zone-ment">멋진 평가네요. 이지현 님의 생각을 글로 남겨보세요.</div>
+            <div id="comment-zone-ment">멋진 평가네요. ${memberNickname } 님의 생각을 글로 남겨보세요.</div>
             <div><button id="write-comment-button" data-toggle="modal" data-target="#comment-modal"
                     data-dismiss="modal">코멘트 남기기</button></div>
         </div>
@@ -316,190 +318,202 @@
 
 
 		<!-- 공통 -->
-        <div id="main-info-container">
-            <div id="trailer-zone" class="detail-info">
-                <div id="trailer-title">
-                    <h4>예고편</h4>
-                </div>
-                <div id="video-zone">
-                    <iframe width="900" height="550" src="https://www.youtube.com/embed/Q0zFPlArth0" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-            </div>
-                        <div class="detail-info" id="movie-basic-info">
-                <div>
-                    <h4>기본 정보</h4>
-                    <span class="more-info"><a href="/movie/detail/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
-                </div>
-                <div>${movieInfoVo.titleOrg }</div>
-                <div>${movieInfoVo.prodYear }・${movieInfoVo.genre }・${movieInfoVo.nation }</div>
-                <div>${movieInfoVo.movieRunningTime }분</div>
-                <div id="plot">
-                    <p>${movieInfoVo.plot}</p>
-                </div>
-            </div>
+			<div id="main-info-container">
+				<div id="trailer-zone" class="detail-info">
+					<div id="trailer-title">
+						<h4>예고편</h4>
+					</div>
+					<div id="video-zone">
+						<iframe width="900" height="550"
+							src="https://www.youtube.com/embed/Q0zFPlArth0" frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen></iframe>
+					</div>
+				</div>
+				<div class="detail-info" id="movie-basic-info">
+					<div>
+						<h4>기본 정보</h4>
+						<span class="more-info"><a
+							href="/movie/detail/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
+					</div>
+					<div>${movieInfoVo.titleOrg }</div>
+					<div>${movieInfoVo.prodYear }・${movieInfoVo.genre }・${movieInfoVo.nation }</div>
+					<div>${movieInfoVo.movieRunningTime }분</div>
+					<div id="plot">
+						<p>${movieInfoVo.plot}</p>
+					</div>
+				</div>
 
-            <div id="staffs">
-                <div class="detail-info">
-                    <h4 id="actor-and-pd">출연/제작</h4>
-                    <div class="my-slider" id="staffs-slider">
-                        <c:forEach var="staffList" items="${staffList }">
-							<div class='slider-elements'>
-		                        <a href="/movie/detail/staff?staffId=${staffList.staffId}">
-		                                <img src="/img/movie/profile.svg" class="profile-img">
-		                                <div class="name-and-role">
-		                                	<input type="hidden" value="${staffList.staffId }"/>
-		                                    <div class="staff-name">${staffList.staffName }</div>
-		                                    <div class="staff-role">${staffList.staffRoleGroup }</div>
-		                                    <div>${staffList.staffRole }</div>
-		                                    
-		                                </div>
-	                        	</a>
-	                       </div>
-	                    </c:forEach>
-                    </div>
-                </div>
-                <div class="detail-info">
-                    <h4>별점 그래프</h4>
-                    <div id="chart-container">
-                        <canvas id="myChart" style="width: 600px; height: 300px;"></canvas>
-                    </div>
-                </div>
-                <div class="detail-info">
-                    <h4>코멘트</h4>
-                    <span class="more-info"><a href="/comment/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
-                    <div id="comment-zone">
-                       <c:forEach var="commentList" items="${commentList }">
-	                        <div class="comment-card">
-	                            <div class="user-info-and-rating">
-	                            		<input type="hidden" id="commentIndex" class="commentIndex" name="commentIndex" value="${commentList.COMMENTINDEX }"/>
-	                                <img src="${commentList.PHOTO }" class="profile-img">
-	                                <div class="user-nickname">${commentList.NICKNAME }</div>
-	                                <div class="comment-star-rating">★ ${commentList.STARS }</div>
-	                            </div>
-	                            <div class="comment">
-	                                <!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
-	                                <p>${commentList.TEXT }</p>
-	                            </div>
-	                            <div class="like-count-zone">
-	                                <img src="/img/movie/like.svg" id="like-thumb" />
-	                                <span id="like-count${commentList.COMMENTINDEX }" class="like-count">${commentList.LIKECOUNT }</span>
-	                            </div>
-	                            <div class="like-and-report">
-	                                <span><button data-toggle="modal" id="like-button${commentList.COMMENTINDEX }" class="like-button"
-	                                onclick="clickLikeButton(${commentList.COMMENTINDEX})">좋아요</button></span>
-	                                <span><button data-toggle="modal" id="report-button"
-	                                        data-target="#report-modal${commentList.COMMENTINDEX }">신고하기</button></span>
-	                            </div>
-		
-		                        <!-- siren Modal(member) -->
-		                        <div class="modal fade" id="report-modal${commentList.COMMENTINDEX }" tabindex="-1" role="dialog"
-		                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-									
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header" id="modal-title-wrapper">
-												<h5 class="modal-title" id="exampleModalLabel">신고하기</h5>
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												<div id="report-modal-contents">
-													<div id="report-modal-movie-title">
-														<h5>제목</h5>
-														<div>${movieInfoVo.title }</div>
+				<div id="staffs">
+					<div class="detail-info">
+						<h4 id="actor-and-pd">출연/제작</h4>
+						<div class="my-slider" id="staffs-slider">
+							<c:forEach var="staffList" items="${staffList }">
+								<div class='slider-elements'>
+									<a href="/movie/detail/staff?staffId=${staffList.staffId}">
+										<img src="/img/movie/profile.svg" class="profile-img">
+										<div class="name-and-role">
+											<input type="hidden" value="${staffList.staffId }" />
+											<div class="staff-name">${staffList.staffName }</div>
+											<div class="staff-role">${staffList.staffRoleGroup }</div>
+											<div>${staffList.staffRole }</div>
+
+										</div>
+									</a>
+								</div>
+							</c:forEach>
+						</div>
+					</div>
+					<div class="detail-info">
+						<h4>별점 그래프</h4>
+						<div id="chart-container">
+						<c:if test="${!empty starDataList }">
+							<canvas id="myChart" style="width: 600px; height: 300px;"></canvas>
+						</c:if>
+						<c:if test="${empty starDataList }">
+							<div class="data-empty-message">별점 데이터가 없습니다.<br/>지금 바로 평가해보세요!</div>
+						</c:if>
+						</div>
+					</div>
+					<div class="detail-info">
+						<h4>코멘트</h4>
+						<c:if test="${!empty commentList }">
+						<span class="more-info"><a
+							href="/comment/overview?movieDocId=${movieInfoVo.movieDocId }">더보기</a></span>
+						<div id="comment-zone">
+							<c:forEach var="commentList" items="${commentList }">
+								<div class="comment-card">
+									<div class="user-info-and-rating">
+										<input type="hidden" id="commentIndex" class="commentIndex"
+											name="commentIndex" value="${commentList.COMMENTINDEX }" />
+										<img src="${commentList.PHOTO }" class="profile-img">
+										<div class="user-nickname">${commentList.NICKNAME }</div>
+										<div class="comment-star-rating">★ ${commentList.STARS }</div>
+									</div>
+									<div class="comment">
+										<!-- 데이터 받아올 때 하나의 p태그에 넣고 줄바꿈은 br 태그로 처리 -->
+										<p>${commentList.TEXT }</p>
+									</div>
+									<div class="like-count-zone">
+										<img src="/img/movie/like.svg" id="like-thumb" /> <span
+											id="like-count${commentList.COMMENTINDEX }"
+											class="like-count">${commentList.LIKECOUNT }</span>
+									</div>
+									<div class="like-and-report">
+										<span><button data-toggle="modal"
+												id="like-button${commentList.COMMENTINDEX }"
+												class="like-button"
+												onclick="clickLikeButton(${commentList.COMMENTINDEX})">좋아요</button></span>
+										<span><button data-toggle="modal" id="report-button"
+												data-target="#report-modal${commentList.COMMENTINDEX }">신고하기</button></span>
+									</div>
+
+									<!-- siren Modal(member) -->
+									<div class="modal fade"
+										id="report-modal${commentList.COMMENTINDEX }" tabindex="-1"
+										role="dialog" aria-labelledby="exampleModalLabel"
+										aria-hidden="true">
+
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header" id="modal-title-wrapper">
+													<h5 class="modal-title" id="exampleModalLabel">신고하기</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<div id="report-modal-contents">
+														<div id="report-modal-movie-title">
+															<h5>제목</h5>
+															<div>${movieInfoVo.title }</div>
+														</div>
+														<div id="report-modal-author">
+															<h5>작성자</h5>
+															<div>${commentList.NICKNAME }</div>
+														</div>
+														<div id="report-modal-comment-contents">
+															<h5>내용</h5>
+															<p>${commentList.TEXT }</p>
+														</div>
+														<textarea id="report-modal-comment-zone" name="reportText"
+															row="1" cols="1" rows="1" placeholder="신고하시는 이유를 작성해주세요."
+															style="resize: none; width: 450px; height: 300px; padding: 10px;"></textarea>
 													</div>
-													<div id="report-modal-author">
-														<h5>작성자</h5>
-														<div>${commentList.NICKNAME }</div>
-													</div>
-													<div id="report-modal-comment-contents">
-														<h5>내용</h5>
-														<p>${commentList.TEXT }</p>
-													</div>
-													<textarea id="report-modal-comment-zone" name="reportText" row="1" cols="1" rows="1"
-														placeholder="신고하시는 이유를 작성해주세요."
-														style="resize: none; width: 450px; height: 300px; padding: 10px;"></textarea>
+												</div>
+												<div class="modal-footer" id="footer-buttons">
+													<button type="button" class="btn btn-secondary"
+														data-dismiss="modal" aria-label="Close"
+														id="button-for-cancel">취소</button>
+													<button type="button" class="btn btn-primary"
+														data-toggle="modal" data-target="#report-result-modal"
+														data-dismiss="modal" aria-label="Close"
+														id="button-for-submit"
+														onclick="submitReport(${commentList.COMMENTINDEX})">확인</button>
 												</div>
 											</div>
-											<div class="modal-footer" id="footer-buttons">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal"
-													aria-label="Close" id="button-for-cancel">취소</button>
-												<button type="button" class="btn btn-primary" data-toggle="modal"
-													data-target="#report-result-modal" data-dismiss="modal"
-													aria-label="Close" id="button-for-submit" onclick="submitReport(${commentList.COMMENTINDEX})">확인</button>
-											</div>
 										</div>
+
+
 									</div>
-									
-									
-		                        </div>
-		                        <!-- modal 끝 -->
-	                        </div>
-	                    </c:forEach>
+									<!-- modal 끝 -->
+								</div>
+							</c:forEach>
 
-                    </div>
+						</div>
+						</c:if>
+						<c:if test="${empty commentList }">
+						<div class="data-empty-message">
+							코멘트 데이터가 없습니다.<br />지금 바로 평가해보세요!
+						</div>
+						</c:if>
+						<!-- 신고 결과 모달 -->
+						<div class="modal fade" id="report-result-modal" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalLabel"
+							aria-hidden="true">
+							<jsp:include page="modal/report_modal_complete.jsp" />
+						</div>
+					</div>
 
-                    <!-- 신고 결과 모달 -->
-                    <div class="modal fade" id="report-result-modal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <jsp:include page="modal/report_modal_complete.jsp"/>
-                    </div>
-                </div>
-                  
-                <div class="detail-info" id="collection">
-                    <h4>이 작품이 담긴 컬렉션</h4>
-                    <div>
-                        <div class="my-slider" id="collection-slider">
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">읏챠피디아 엄선 컬렉션</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">디즈니&픽사 완전 정복</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 윤지 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 은규 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 지현 PICK!</div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="collection-zone">
-                                    <div class="collection-card">컬렉션입니다</div>
-                                    <div class="collection-title">개발자 종웅 PICK!</div>
-                                </div>
-                            </a>
-                        </div>
-                        </a>
-                    </div>
-                </div>
+					<div class="detail-info" id="collection">
+						<h4>이 작품이 담긴 컬렉션</h4>
+						<div>
+							<div class="my-slider" id="collection-slider">
+								<div class="collection-zone">
+									<c:if test="${!empty collectionMap }">
+										<c:forEach var="collectionMap" items="${collectionMap}">
+											<c:forEach var="items" items="${collectionMap.value }"
+												begin="0" end="0">
+												<div class="collection-card">
+													<ul class="photo_list">
 
+														<a href="/collection?pickIndex=${items.pickIndex }">
+															<li class="photo_box"><img class="photo-img"
+																src="${items.posterUri }"></li>
+														</a>
 
-            </div>
-        </div>
-        
-        <%} %>
+													</ul>
+												</div>
+
+												<div class="collection-title">${items.pickName }</div>
+
+											</c:forEach>
+										</c:forEach>
+									</c:if>
+									<c:if test="${empty collectionMap }">
+										<div class="data-empty-message">컬렉션 데이터가 없습니다.</div>
+									</c:if>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<%} %>
         <!-- 여기부터 footer-->
         <jsp:include page="/WEB-INF/view/user/footer.jsp"/>
         <!-- footer 끝 -->
@@ -685,43 +699,25 @@
 					if (	ratedStars > 0) {
 						$('#' + addClassSelector).addClass('on').prevAll('span').addClass('on');
 
-						// not yet
-						switch (ratedStars) {
-						case 0.5:
-							starMessage = '최악이에요'; 
-							break;
-						case 1:
-							$('#star-message').html("싫어요");
-							break;
-						case 1.5:
-							$('#star-message').html("재미없어요");
-							break;
-						case 2:
-							$('#star-message').html("별로예요");
-							break;
-						case 2.5:
-							$('#star-message').html("부족해요");
-							break;
-						case 3:
-							$('#star-message').html("보통이에요");
-							break;
-						case 3.5:
-							starMessage = '볼만해요'; 
-							break;
-						case 4:
-							$('#star-message').html("재미있어요");
-							break;
-						case 4.5:
-							$('#star-message').html("훌륭해요!");
-							break;
-						case 5:
-							$('#star-message').html("최고예요!");
-							break;
-						
-					}
 					memberCommentZone.style.display = "block";
-					
 
+					// 좋아요 누른 데이터 있으면 색칠되게 해놓기 완료 
+					let likeMap = new Map();
+
+			        <c:forEach var="likeDataList" items="${likeDataList}">
+			        	likeMap.set("${likeDataList.commentIndex}", "${likeDataList.likeCheck}");
+						var likeButton = "like-button" + "${likeDataList.commentIndex}";
+			        	
+						if (likeMap.get("${likeDataList.commentIndex}") == 1) {
+							$("#" + likeButton).css("background-color", "rgb(255, 7, 88)");
+							$("#" + likeButton).css("color", "white");
+							}
+
+						
+			        </c:forEach>
+
+			        console.log(likeMap);
+						
 				}
 
 				var commentIndex = document.getElementById("commentIndexOfMember").value;
@@ -741,12 +737,7 @@
 					}
 				
 			}
-
 			
-
-				
-			   
-
         </script>
         <script src="/js/movie/myslider.js"></script>
 </body>

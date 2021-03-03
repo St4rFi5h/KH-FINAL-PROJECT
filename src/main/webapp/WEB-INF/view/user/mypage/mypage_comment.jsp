@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,41 +27,7 @@
 </head>
 <body>
     <!-------------- 헤더 --------------->
-    <header>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="navbar_logo">
-                    <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                </div>
-
-                <div class="menu">
-                <ul>
-                <span><li><a href="#">ABOUT US</a></li></span>
-                <span><li><a href="#">평가하기</a></li></span>
-                <span><li><a href="#">고객센터</a></li></span>
-                </ul>
-                </div>
-
-                <!--검색창-->
-                <div class="searchbar">
-                    <form action="#">
-                    <div class="search_box"> 
-                        <div class="icon"><i class="fas fa-search"></i> 
-                            <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                        </div>
-                    </div>
-                    </form>
-                </div>
-
-                <div class="menu">
-                    <ul>
-                    <span><li><a href="#">로그인</a></li></span>
-                    <span><li><a href="#">회원가입</a></li></span>
-                </ul>
-            </div>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
 
     <!-------------- 바디 --------------->
     <section class="mypage_comment">
@@ -68,15 +36,14 @@
                 <h3 class="myq_tit">
                     나의 코멘트
                 </h3>
+
                 <ul class="myq_noti_list">
                     <li class="list">읏챠피디아 코멘트를 통해 나를 표현해 보세요!</li>
                     <li class="list">내가 남긴 코멘트를 한눈에 볼 수 있어요.</li>
                 </ul>
             </div>
             <div class="myq_service">
-                <p>
-                    <strong>6건의 코멘트가 있습니다.</strong>
-                </p>
+
                 <select title="코멘트 정렬 옵션 선택" class="myq_list_option" 
                         style="width: 98px;" onchange="">
                     <option value="1" selected>최근 작성순</option>
@@ -92,7 +59,6 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">영화명</th>
                             <th scope="col">내용</th>
                             <th scope="col">별점</th>
@@ -101,82 +67,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr href="">
-                            <th scope="row">1</th>
-                            <td>기생충</td>
-                            <td class="myq_item_content">우리의 마음에는 무엇이 기생하는가. 무엇이 우리를 ‘무계획이 계획’인 삶으로 몰아넣는가.</td>
-                            <td>★ 4.5</td>
-                            <td>2021-01-02</td>
+                        <c:forEach var="c" items="${list }" varStatus="status">
+                        <tr onClick="location.href='/comment/overview?movieDocId=${c.movieDocId  }'">
+                            <td>${c.title }</td>
+                            <td class="myq_item_content">${c.commentText }</td>
+                            <td>★${c.starRating }</td>
+                            <td>${c.commentDate }</td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>소울</td>
-                            <td class="myq_item_content">
-                                꿈에 그리던 최고의 밴드와 재즈 클럽에서 연주하게 된 그 날, 
-                                예기치 못한 사고로 영혼이 되어 ‘태어나기 전 세상’에 떨어진다. 
-                                </td>
-                            <td>★ 4.5</td>
-                            <td>2021-01-04</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>해리포터 어쩌구 저쩌구</td>
-                            <td class="myq_item_content">
-                                어둠의 마왕인 볼드모트 경을 해리의 부모님에게 이끌어 죽음으로 몰고 간 당사자. 
-                                설상가상으로 영혼을 빨아들이는 아즈카반의 무시무시한 간수 ‘디멘터’가 호그와트에 
-                                </td>
-                            <td>★ 4.5</td>
-                            <td>2021-01-04</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Jacob</td>
-                            <td>어쩌구 ㅈ쩌구 저쩌고 마술사</td>
-                            <td>★ 4.5</td>
-                            <td>2021-01-04</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Jacob</td>
-                            <td>어쩌구 ㅈ쩌구 저쩌고 마술사</td>
-                            <td>★ 4.5</td>
-                            <td>2021-01-04</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">6</th>
-                            <td>Jacob</td>
-                            <td>어쩌구 ㅈ쩌구 저쩌고 마술사</td>
-                            <td>★ 4.5</td>
-                            <td>2021-01-04</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">7</th>
-                            <td>Jacob</td>
-                            <td>어쩌구 ㅈ쩌구 저쩌고 마술사</td>
-                            <td>★ 4.5</td>
-                            <td>2021-01-04</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">8</th>
-                            <td>Jacob</td>
-                            <td>어쩌구 ㅈ쩌구 저쩌고 마술사</td>
-                            <td>★ 4.5</td>
-                            <td>2021-01-04</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">9</th>
-                            <td>Jacob</td>
-                            <td>어쩌구 ㅈ쩌구 저쩌고 마술사</td>
-                            <td>★ 4.5</td>
-                            <td>2021-01-04</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">10</th>
-                            <td>Jacob</td>
-                            <td>어쩌구 ㅈ쩌구 저쩌고 마술사</td>
-                            <td>★ 4.5</td>
-                            <td>2021-01-04</td>
-                        </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
 
@@ -184,7 +82,7 @@
             </div>
 
             <!---------------- 페이징 처리 ---------------->
-            <div class="pagination_section">
+			<div class="pagination_section">
                 <div class="custom_pagination">
                     <span class="pagination_prev disabled">
                         <a href="">
@@ -201,9 +99,6 @@
                     <span class="pagenum current">
                         <span>1</span>
                     </span>
-                    <span class="pagenum">
-                        <a>2</a>
-                    </span>
                     <span class="pagination_next">
                         <a href="">
                             <ruler-svg-icon-next width="11" height="22" stroke="#000">
@@ -218,9 +113,9 @@
                     </span>
                 </div>
             </div>
-            
         </div>
-    </section>
+     </div>
+  </section>
     
     <!-------------- 푸터 --------------->
     <footer>

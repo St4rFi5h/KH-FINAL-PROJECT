@@ -85,4 +85,26 @@
 		DELETE eutcha_comment WHERE comment_index = #{_parameter}
 	
 	</delete>
+	
+	<!-- 좋아요 누른 코멘트 불러오기 -->
+	<select id="selectLikeData" parameterType="HashMap"
+		resultMap="commentLikeVo">
+		SELECT * FROM
+		(SELECT * FROM comment_like
+		WHERE fk_comment_index IN
+		(SELECT ec.comment_index FROM star_rating sr
+		JOIN eutcha_comment ec
+		ON sr.star_index = ec.fk_star_index
+		WHERE sr.fk_movie_docid = #{movieDocId}))
+		where fk_member_email = #{memberEmail}
+	</select>
+	
+	
+	
+	<resultMap id="commentLikeVo" type="kr.or.eutchapedia.movie.detail.domain.CommentLikeVo">
+		<result column="like_index" property="likeIndex"/>
+		<result column="fk_comment_index" property="commentIndex"/>
+		<result column="fk_member_email" property="memberEmail"/>
+		<result column="like_check" property="likeCheck"/> 
+	</resultMap>
 </mapper>

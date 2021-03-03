@@ -7,6 +7,13 @@ ul{
    list-style: none;
 }
 
+.movie_image{
+cursor: pointer;
+}
+
+.movie_title{
+	cursor: pointer;
+}
 
 .movie_title {
 
@@ -72,6 +79,15 @@ padding: 0px;
 }
 
 
+
+#search-btn{
+	width: 600px;
+	margin-top: 5px;
+	margin-bottom: 10px; 
+	background-color: #ff0458;
+	border-color: #ff0458;
+}
+
 .movie_content{
     display: flex;
 }
@@ -113,6 +129,7 @@ padding: 0px;
 }
 
 .movie_poster{
+	    cursor: pointer;
     margin-left: 30px;
     width: 76px;
     height: 110px;

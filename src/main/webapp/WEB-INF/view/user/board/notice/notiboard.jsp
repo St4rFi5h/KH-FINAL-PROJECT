@@ -23,7 +23,8 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <header>
+    <jsp:include page="/WEB-INF/view/user/header.jsp"/>
+    
         <div class="wrapper">
             <div class="navbar">
                 <div class="navbar_logo">
@@ -69,13 +70,13 @@
                     <div class="inner_snb">
                         <ul class="list_menu">
                             <li class="list_menu on">
-                                <a href="">공지사항</a>
+                                <a href="/notice/list">공지사항</a>
                             </li>
                             <li class="list_menu">
-                                <a href="">자주하는 질문</a>
+                                <a href="/faq/faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu">
-                                <a href="">1:1 문의</a>
+                                <a href="/qna/list.do">1:1 문의</a>
                             </li>
                         </ul>
                     </div>
@@ -99,7 +100,10 @@
                         <div class="accordion_banner" id="tbl_notice">
                             <div class="tbl_notice_tit">
                                 <div class="tbl_notice_info">
-	                                    <p class="tbl_info_type"><input type="checkbox" class="checkall"/></p>
+                                <p class="tbl_info_type">
+                                <c:if test="${getmember.adminCheck == 'A'}">
+	                                    <input type="checkbox" name="allCheck" class="checkall"/>
+                                </c:if></p>
 	                                    <p class="tbl_info_type">번호</p>
 	                                    <p class="tbl_info_tit">제목</p>
 	                                    <p class="tbl_info_date">작성일</p>
@@ -110,7 +114,10 @@
                             <div class="accordion_title">
                                 <div class="tbl_notice_info">
                                     <div class="infoinner">
-                                        <p class="tbl_info_type"><input type="checkbox" name="del-id" value="" class="checkbox">
+                                        <p class="tbl_info_type">
+                                        <c:if test="${getmember.adminCheck == 'A'}">
+                                        	<input type="checkbox" name="RowCheck" class="checkbox" value="${board.noticeNo }"/>
+                                        </c:if>
                                             <span class="blind">체크박스</span>
                                         </p>
                                         <p class="tbl_info_type">${board.noticeNo }
@@ -131,9 +138,14 @@
                                     <div class="notice_wrap">
                                         <div>
                                             <p>${board.noticeContent }</p>
+                                            	<c:if test="${getmember.adminCheck == 'A'}">
                                                 <span class="modi_span">
                                                     <a href="${path }/notice/updateView?noticeNo=${board.noticeNo}" class="modi_btn">수정</a>
                                                 </span>
+                                                <span class="modi_span">
+                                                    <a href="${path }/notice/delete?noticeNo=${board.noticeNo}" class="modi_btn">삭제</a>
+                                        		</span>
+                                        		</c:if>
                                         </div>
                                     </div>
                                 </div>
@@ -141,18 +153,19 @@
                             </c:forEach>
 
                             <!-- 관리자 버튼-->
+                            <c:if test="${getmember.adminCheck == 'A'}">
                             <div class="buttons">
                                 <a href="/notice/insertView"><input type="button" class="write_btn yb" value="글쓰기"/></a>
-                                <input type="submit" class="write_btn yb" name="cmd" value="삭제" onclick="return confirm('정말로 삭제하시겠습니까?')"/>
-                                <input type="submit" class="write_btn yb" name="cmd" value="공개"/>
+                                <input type="button" class="write_btn yb" name="delete_btn" value="선택삭제" onclick="deleteValue();"/>
                             </div>
+                            </c:if>
 
                             <!-- 페이징 -->
 							<div class="pagination_section">
                                 <div class="custom_pagination">
 		                            <c:if test="${paging.prev }">
 	                                    <span class="pagination_button prev">
-	                                        <a href="${paging.startPage - 1}">
+	                                        <a href="?pageNum=${paging.startPage - 1}&amount=10">
 	                                            <ruler-svg-icon-prev>
 	                                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	                                                    viewBox="0 0 443.52 443.52" style="width: 11px; height: 22px; enable-background:new 0 0 443.52 443.52;" xml:space="preserve">
@@ -165,7 +178,7 @@
 	                                    </span>
 	                                </c:if>
 	                                <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-        								<span class="paginate_button pagenum" ${paging.cri.pageNum == num ? 'active':'' }><a href="${num }">${num}</a></span>
+        								<span class="paginate_button pagenum" ${paging.cri.pageNum == num ? 'active':'' }><a href="${num}">${num}</a></span>
    									 </c:forEach>
    									 <c:if test="${paging.next && paging.endPage > 0}">
 	                                    <span class="paginate_button next">
@@ -254,16 +267,61 @@
         });
     });
 </script>
-<script>
-    $(document).ready(function(){
-        $(".checkall").click(function(){
-            if($(".checkall").prop("checked")){
-                $("input[name=del-id]").prop("checked",true);
-            }else{
-                $("input[name=del-id]").prop("checked",false);
-            }
-        });
-    });
+<script type="text/javascript">
+	$(function (){
+		var chkObj = document.getElementsByName("RowCheck");
+		var rowCnt = chkObj.length;
+
+		$("input[name='allCheck']").click(function(){
+			var chk_listArr = $("input[name='RowCheck']");
+			for (var i=0; i<chk_listArr.length; i++) {
+				chk_listArr[i].checked = this.checked;
+			}
+		});
+
+		$("input[name='RowCheck']").click(function(){
+			if($("input[name='RowCheck']:checked").length == rowCnt) {
+				$("input[name='allCheck']")[0].checked = true;
+			}
+			else {
+				$("input[name='allCheck']")[0].checked = false;
+			}
+		});
+	});
+
+	function deleteValue() {
+		var url = "/notice/deleteChk";	// controller로 보내고자 하는 url
+		var valueArr = new Array();
+		var list = $("input[name='RowCheck']");
+		for(var i=0; i<list.length; i++) {
+			if(list[i].checked){		// 선택되어 있으면 배열에 값을 저장~!~!
+				valueArr.push(list[i].value);
+			}
+		}
+		if(valueArr.length == 0) {
+			alert("선택된 게시글이 없습니다.");
+		}
+		else {
+			var chk = confirm("정말 삭제하시겠습니까?");
+			$.ajax({
+				url : url,					// 전송 url
+				type : 'POST',				// POST 방식
+				traditional: true,
+				data : {
+					valueArr : valueArr		// 보내고자 하는 data 변수 설정
+				},
+				success: function(jdata) {
+					if(jdata = 1) {
+						alert("삭제 성공");
+						location.replace("/notice/list")	// 리스트 페이지로 새로고침
+					}
+					else{
+						alert("삭제 실패");
+					}
+				}
+			});
+		}	
+	}
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){

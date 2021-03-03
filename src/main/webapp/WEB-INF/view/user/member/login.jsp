@@ -30,15 +30,15 @@
         <main class="main-body">
             <div class="login-main">
                 <div class="logo">
-                    <img src="img/original.png" width="198px" height="38px">
+                    <img src="img/original.png">
                 </div>
                 <h2 class="title">로그인</h2>
                 <div class="login-form">
                     <form method="POST" id="login-form" action="/login.do" onsubmit="return login();">
                         <p>
-                            <input class="input-email" type="email" name="memberEmail" id="email" placeholder="이메일">
-                            <span id="searchclear"><i class="fas fa-times"></i></span>
-                            </input>
+                            <input class="input-email" type="email" name="memberEmail" id="email" placeholder="이메일" />
+                           <!--  <span id="searchclear"><i class="fas fa-times"></i></span> -->
+                            
                         </p>
                         <p>
                             <input class="input" type="password" name="memberPwd" id="pwd" placeholder="비밀번호">
@@ -57,11 +57,11 @@
                     계정이 없으신가요?
                     <button type="button" onclick="location.href='/signup'">회원가입</button>
                 </div>
-                <hr class="bottom-line" >
+                <!-- <hr class="bottom-line" >
 
                 <div id="naver-login">
                     <a href="#"><img src="img/member/naver.PNG" style="width: 311px; height: 44px;" /></a>
-                </div>
+                </div> -->
             </div>
         </main>
 
@@ -74,7 +74,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/member/login.js"></script>
-    <script>
+    <!-- <script>
         var $ipt = $('#email'),
             $clearIpt = $('#searchclear');
 
@@ -101,7 +101,7 @@
             $(this).hide();
         });
 
-    </script>
+    </script> -->
 
 </body>
 

@@ -22,47 +22,11 @@
 	<title>EUTCHAPEDIA</title>
 </head>
 <body>
-    <!-- 헤더 -->
-    <header>
-        <div class="wrapper">
-            <div class="navbar">
-                <div class="navbar_logo">
-                    <a href="#">
-                        <img id="logo" src="/img/original.png"> <!-- 이미지파일 이동 시 경로 확인!-->
-                    </a>
-                </div>
-    
-                <div class="menu">
-                  <ul>
-                     <li><a href="#">ABOUT US</a></li>
-                     <li><a href="#">평가하기</a></li>
-                     <li><a href="#">고객센터</a></li>
-                  </ul>
-                </div>
-    
-                 <!--검색창-->
-                 <div class="searchbar">
-                  <form action="#">
-                    <div class="search_box"> 
-                       <div class="icon"><i class="fas fa-search"></i> 
-                          <input type="text" value="" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                            <button class="search_btn" type="submit"> <i class="fas fa-times"></i>
-                         </button> 
-                       </div>
-                    </div>
-                  </form>
-              </div>
-    
-                <div class="menu">
-                    <ul>
-                      <li><a href="#">로그인</a></li>
-                      <li><a href="#">회원가입</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-    
+<!-- header -->
+ <jsp:include page="/WEB-INF/view/user/header.jsp"/>
+<!-- header 끝 -->
+
+
     <!-- 검색 바디 -->
     <article class="page_search_sction">
         <div class="search_wrap">
@@ -78,23 +42,24 @@
                 </div>
                 <div class="search_info_container">
                     <div class="container_inner">
-                        <ul class="content_poster_list">
-                            <li>
-                                <a title="소울" href="">
+                    <c:forEach var="searchTopList" items="${searchTopList }">
+                        <ul class="content_poster_list" >
+                            <div class="top_result_elements">
+                                <a title="" href="/movie/detail?movieDocId=${searchTopList.movieDocId }">
                                     <div class="content_poster_block">
                                         <div class="lazy_loading_image">
                                             <img class="styled_img"
-                                                src="/img/search/poster1.jpeg">
+                                                src="${searchTopList.posterUri }">
                                         </div>
                                     </div>
                                     <div class="content_info">
-                                        <div class="result_title">소울</div>
-                                        <div class="result_extra_info">2020 미국</div>
-                                        <div class="result_content_type">영화</div>
+                                        <div class="result_title">${searchTopList.title }</div>
+                                        <div class="result_extra_info">${searchTopList.prodYear } 미국</div>
                                     </div>
                                 </a>
-                            </li>
+                            </div>
                         </ul>
+                        </c:forEach>
                     </div>
                 </div>
                 <hr class="container_line">
@@ -113,94 +78,44 @@
                     <div class="container_inner">
                         <ul class="content_stackable">
                             <!-- 블럭 하나 -->
+                            <c:forEach var="searchTopList" items="${searchTopList }">
                             <li class="stackable_item">
-                                <a title="소울" href="">
+                                <a title="" href="/movie/detail?movieDocId=${searchTopList.movieDocId }">
                                     <div class="poster_block">
                                         <div class="item_styled_img">
-                                            <span class="styled_background" style="background-image: url(/img/search/poster1.jpeg);"></span>
+                                            <span class="styled_background" style="background-image: url(${searchTopList.posterUri});"></span>
                                         </div>
                                     </div>
                                     <div class="info_block">
                                         <div class="item_info">
-                                            <div class="item_title">소울</div>
-                                            <div class="item_extra_info">2020 미국</div>
+                                            <div class="item_title">${searchTopList.title }</div>
+                                            <div class="item_extra_info">${searchTopList.prodYear } ${searchTopList.nation }</div>
                                         </div>
                                         <div></div>
                                     </div>
                                 </a>
                             </li>
+							</c:forEach>
+							
+            				<c:forEach var="searchMovieList" items="${searchMovieList }">
+                            <li class="stackable_item">
+                                <a title="" href="/movie/detail?movieDocId=${searchMovieList.movieDocId }">
+                                    <div class="poster_block">
+                                        <div class="item_styled_img">
+                                            <span class="styled_background" style="background-image: url(${searchMovieList.posterUri});"></span>
+                                        </div>
+                                    </div>
+                                    <div class="info_block">
+                                        <div class="item_info">
+                                            <div class="item_title">${searchMovieList.title }</div>
+                                            <div class="item_extra_info">${searchMovieList.prodYear } ${searchMovieList.nation }</div>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                </a>
+                            </li>
+                            </c:forEach>
 
-                            <!--2-->
-                            <li class="stackable_item">
-                                <a title="소울" href="">
-                                    <div class="poster_block">
-                                        <div class="item_styled_img">
-                                            <span class="styled_background" style="background-image: url(/img/search/poster1.jpeg);"></span>
-                                        </div>
-                                    </div>
-                                    <div class="info_block">
-                                        <div class="item_info">
-                                            <div class="item_title">소울</div>
-                                            <div class="item_extra_info">2020 미국</div>
-                                        </div>
-                                        <div></div>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <!--3-->
-                            <li class="stackable_item">
-                                <a title="소울" href="">
-                                    <div class="poster_block">
-                                        <div class="item_styled_img">
-                                            <span class="styled_background" style="background-image: url(/img/search/poster1.jpeg);"></span>
-                                        </div>
-                                    </div>
-                                    <div class="info_block">
-                                        <div class="item_info">
-                                            <div class="item_title">소울</div>
-                                            <div class="item_extra_info">2020 미국</div>
-                                        </div>
-                                        <div></div>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <!--4-->
-                            <li class="stackable_item">
-                                <a title="소울" href="">
-                                    <div class="poster_block">
-                                        <div class="item_styled_img">
-                                            <span class="styled_background" style="background-image: url(/img/search/poster1.jpeg);"></span>
-                                        </div>
-                                    </div>
-                                    <div class="info_block">
-                                        <div class="item_info">
-                                            <div class="item_title">소울</div>
-                                            <div class="item_extra_info">2020 미국</div>
-                                        </div>
-                                        <div></div>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <!--5-->
-                            <li class="stackable_item">
-                                <a title="소울" href="">
-                                    <div class="poster_block">
-                                        <div class="item_styled_img">
-                                            <span class="styled_background" style="background-image: url(/img/search/poster1.jpeg);"></span>
-                                        </div>
-                                    </div>
-                                    <div class="info_block">
-                                        <div class="item_info">
-                                            <div class="item_title">소울</div>
-                                            <div class="item_extra_info">2020 미국</div>
-                                        </div>
-                                        <div></div>
-                                    </div>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -219,23 +134,26 @@
                 <div class="search_info_container">
                     <div class="container_inner">
                         <ul class="user_info_list">
+                        	<c:forEach var="searchMemberList" items="${searchMemberList }">
+                        	
                             <li class="user_info_item">
                                 <!-- 마이페이지 연결 -->
-                                <a title="소울" href="">
+                                <a title="소울" href="/mypage/index_member?id=${searchMemberList.memberEmail}">
                                     <div class="user_loading_img">
                                         <div class="user_img_block">
-                                            <div class="profile_image"></div>
+                                            <div class="profile_image"><img src="${searchMemberList.memberPhoto }"/></div>
                                         </div>
                                     </div>
                                     <!-- 사용자 내용 -->
                                     <div class="info_block">
                                         <div class="item_info">
-                                            <div class="item_title">소울</div>
-                                            <div class="item_subtitle">평가 17</div>
+                                            <div class="item_title">${searchMemberList.memberNickname }</div>
+                                            
                                         </div>
                                     </div>
                                 </a>
                             </li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>
@@ -245,43 +163,9 @@
         </div>
     </article>
 
-    <!-- 푸터 -->
-    <footer>
-
-        <section class="count-space">
-          <span class="count">지금까지<em> ★ 123,534,545 개의 평가가 </em> 쌓였어요.</span>
-        </section>
-
-        <div class="footer-right">
-          <div class="social-icons">
-            <span><a href="#"><i class="fab fa-instagram"></i></a></span> 
-            <span><a href="#"><i class="fab fa-facebook-f"></i></a></span> 
-            <span><a href="#"><i class="fab fa-twitter"></i></a></span> 
-          </div>
-        </div>
-
-        <div class="footer-left">
-          <div>
-              <a href="#"> 서비스 이용약관</a>
-              <a href="#"> 개인정보 처리방침</a>
-              <a href="#"> 회사 안내</a>
-          </div>
-
-          <div>
-            <p>
-              고객센터<span> | </span>cs@eutchapedia.com, 02-123-4567 <br/>
-              제휴 및 대외 협력<span> | </span>contact@eutcha.com</p>
-            <p>
-              주식회사 읏챠<span> | </span>대표 이지현<span> | </span>서울특별시 영등포구 선유동2로 57 이레빌딩(구관) 19F,20F<br/>
-              사업자 등록 번호 211-12-34567<br/>
-              © 2021 by EUTCHA, Inc. All rights reserved.
-            </p>
-          </div>
-        </div>
-
-    </footer>
-
-
+	<!-- footer 시작 -->
+	<jsp:include page="/WEB-INF/view/user/footer.jsp"/>
+	<!-- footer 끝 -->
 
 
     <!--부트스트랩이 jquery를 사용하고있어 어떠한 js파일보다 상위에 있어야함-->

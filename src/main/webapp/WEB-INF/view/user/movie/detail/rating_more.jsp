@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eutchapedia</title>
+    <title>EUTCHAPEDIA</title>
     <link rel="shortcut icon" href="/img/logo_favicon.ico">
     <link rel="stylesheet" href="/css/movie/index.css" type="text/css" />
     <link rel="stylesheet" href="/css/movie/rating_more.css" type="text/css" />
@@ -37,11 +37,11 @@
         <div class="title" id="rating-title">관람객 평점 <span style="font-weight: bold;">${commentCount }</span>건</div>
         <div class="dropdown" id="sort-dropdown">
             <select id="sort-dropdown-select" name="sortBy" onchange="selectOpt(this.options[this.selectedIndex.value])">
-                <option value="">정렬 기준 선택</option>
-                <option value="Likes">좋아요 많은 순</option>
-                <option value="Latest">최신순</option>
-                <option value="HighStars">평점 높은 순</option>
-                <option value="LowStars">평점 낮은 순</option>
+                <option value="" ${page.sortBy == '' ? 'selected="selected"' : ''}>정렬 기준 선택</option>
+                <option value="Likes" ${page.sortBy == 'Likes' ? 'selected="selected"' : ''}>좋아요 많은 순</option>
+                <option value="Latest" ${page.sortBy == 'Latest' ? 'selected="selected"' : ''}>최신순</option>
+                <option value="HighStars" ${page.sortBy == 'HighStars' ? 'selected="selected"' : ''}>평점 높은 순</option>
+                <option value="LowStars" ${page.sortBy == 'LowStars' ? 'selected="selected"' : ''}>평점 낮은 순</option>
             </select>
         </div>
         <div class="rating-zone" id="rating-zone">
@@ -200,9 +200,9 @@
 			var nowDropdown = document.getElementById('sort-dropdown-select');
 
 			frm.nowPage.value = page;
-			frm.sortBy.selectedIndex.value = nowDropdown.selectedIndex.value;
+			
 			console.log($(frm).serialize());
-			frm.action ="/comment/overview/member?movieDocId=${movieDocId }&sortBy=${page.sortBy }nowPage=${param.nowPage}";
+			frm.action ="/comment/overview?movieDocId=${movieDocId }&sortBy=${page.sortBy }nowPage=${param.nowPage}";
 			frm.submit();
         }
 
@@ -213,6 +213,7 @@
 
 			frm.sortBy.value = nowDropdown.value;
 			console.log($(frm).serialize());
+			$(option).attr('selected', "selected");
 			frm.action ="/comment/overview?movieDocId=${movieDocId }&sortBy=${page.sortBy }nowPage=${param.nowPage}";
 			frm.submit();
 			
@@ -278,6 +279,27 @@
 				});
 				
         	}
+
+    	window.onload = function() {
+    		// 좋아요 누른 데이터 있으면 색칠되게 해놓기 완료 
+			let likeMap = new Map();
+
+	        <c:forEach var="likeDataList" items="${likeDataList}">
+	        	likeMap.set("${likeDataList.commentIndex}", "${likeDataList.likeCheck}");
+				var likeButton = "like-button" + "${likeDataList.commentIndex}";
+	        	
+				if (likeMap.get("${likeDataList.commentIndex}") == 1) {
+					$("#" + likeButton).css("background-color", "rgb(255, 7, 88)");
+					$("#" + likeButton).css("color", "white");
+					}
+
+				
+	        </c:forEach>
+
+	        console.log(likeMap);
+
+        	}
+    	
     	
         </script>
         

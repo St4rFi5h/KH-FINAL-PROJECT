@@ -70,20 +70,14 @@
 						</tbody>
 					</table>
 					</br>
-					</br>
-					</br>
-					</br>
-					</br>
-					</br>
-					</br>
-					</br>
-					<div>
+			
+					<div id="chooseBox">
 
 
 
 						<select class="custom-select" id="select-block" name="status">
 					<option ${(param.status == "N")?"selected":""} value="N">차단해제</option>
-					<option ${(param.status == "B")?"selected":""} value="B">영차구단</option>
+					<option ${(param.status == "B")?"selected":""} value="B">영구차단</option>
 					<option ${(param.status == "C")?"selected":""} value="C">코멘트차단</option>
 						</select>
 
@@ -152,11 +146,11 @@
 							value="${fn:substringBefore(Math.ceil(count/10),'.')}" />
 
 						<div style="margin-bottom: 30px">
-							<span>현재페이지 ${(empty param.p)?1:param.p}</span> /${lastNum} page
+							<span>현재페이지 ${(empty param.p)?1:param.p}</span> /${lastNum}
 						</div>
-						<nav id="dbmanagement-data-page"
+						<nav id="select-pagination"
 							aria-label="Page navigation example">
-							<ul id="dbmanagement-pagiedit" class="pagination">
+							<ul id="select-page" class="pagination">
 
 
 								<c:forEach var="i" begin="0" end="4">

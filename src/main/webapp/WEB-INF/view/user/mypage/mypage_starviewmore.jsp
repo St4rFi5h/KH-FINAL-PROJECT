@@ -23,13 +23,13 @@
 
       <div class='mybody-wrapper'>
         <div class='iconwrapper'>
-            <a href="/mypage/ratedmovies">
+            <a href="/mypage/ratedmovies?sort=1">
                 <img  data-bs-toggle="tooltip" data-bs-placement="top" title="평가한 작품으로 이동" src="/img/mypage/arrow-left-short.svg" alt="" width="40" height="40" >
             </a>
         </div>
 
         <div class='titlewrapper'>
-            <p class="title">5.0점 준 영화</p> <!--5.0 ~ 0.5 까지 -->
+            <p class="title">${point} 점 준 영화</p> <!--5.0 ~ 0.5 까지 -->
         </div>
 
         <!-- 각 별 더보기에선 정렬없어서 일단 빼놓기
@@ -65,123 +65,20 @@
     -->
 
         
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터2.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터3.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터4.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터5.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터6.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터7.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터8.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터9.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터10.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터11.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터12.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터13.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
-        <div class='moviewrapper'>
-            <div class='movie-div'>
-                <a href="#"> 
-                    <img class="poster" src="/img/mypage/포스터14.PNG" width="150px";  height="200px"; alt="포스터없음">
-                </a>
-                <li class="movietitle">기생충</li>
-                <!-- <li>2018 | 드라마</li> -->
-            </div>
-        </div>
+        <c:forEach var="n" items="${list}" >
+	                <div class='moviewrapper'>
+	                    <div class='movie-div'>
+	                        <a href="/movie/detail?movieDocId=${n.movieDocId }"> 
+	                            <img class="poster" src="${n.posterUri}" width="150px";  height="200px"; alt="포스터없음">
+	                        </a>
+	                        <li class="movietitle">${n.title }</li>
+	                        <!-- <li>2018 | 드라마</li> -->
+	                    </div>
+	                </div>
+        </c:forEach>
+        
+        
+       
 
         </div>
     <jsp:include page="/WEB-INF/view/user/footer.jsp"/>

@@ -37,18 +37,20 @@
 			<hr class="bottom-line">
 			<div class="second-title">
 				<div class="password-eamil">
-					<h2 class="password-forget">비밀번호를 받으셨나요?</h2>
+					<h2 class="password-forget">인증번호를 받으셨나요?</h2>
 					<p class="write-email">입력하신 이메일을 확인 후,</p>
 					<p class="write-email">이메일로 전송된 인증번호를 입력해 주세요.</p>
 				</div>
 			</div>
 			<div class="find-password-form">
-				<form method="POST" action="#">
+				<form method="POST" action="/findpassword2">
 					<p>
+						<input type="hidden" name="dice" value="${dice}">
+						<input type="hidden" name="memberEmail" value="${memberEmail}">					
 						<input class="input" type="text" name="number" placeholder="인증번호" />
 					</p>
 					<p>
-						<input class="find-password-button" type="submit" value="인증번호 입력하기" onclick="location.href='#'">
+						<input class="find-password-button" type="submit" value="인증번호 입력하기" >
 					</p>
 				</form>
 			</div>
@@ -63,7 +65,8 @@
 	<script src="js/jquery.min.js"></script>
 	<!--부트스트랩 4버전부터 popper.js가필요함 bundle.min.js에 popper.js가 포함되어있음-->
 	<script src="js/bootstrap.bundle.min.js"></script>
-	<script>window.onload=function(){ 
+	<script>
+		window.onload=function(){ 
 		alert("이메일이 발송되었습니다. 인증번호를 입력해주세요."); }
 	</script>
 </body>

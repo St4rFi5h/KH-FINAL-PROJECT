@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
 
 .mybody-wrapper {
-  height: 400%;
-  /* height 약간 애매함.... 데이터 많이 집어넣고 다시 확인해볼것.. */
+margin-left : 30px;
+  height: 450%;
+  /* height �빟媛� �븷留ㅽ븿.... �뜲�씠�꽣 留롮씠 吏묒뼱�꽔怨� �떎�떆 �솗�씤�빐蹂쇨쾬.. */
   font-family: "Noto Sans KR", sans-serif;
-  margin-left: 30px;
 }
 .title {
   margin-left: 20px;
@@ -171,3 +171,21 @@
 	border-radius: 5px;
 }
 
+
+.search {
+	margin : 0 72px 0 auto;
+	
+}
+
+#search {
+	height : 35px;
+	border :1px solid #D8D8D8;
+	background-color: white;
+	
+}
+.sbtn {
+	height : 35px;
+	border :1px solid rgb(255,7,88);
+	background-color: rgb(255,7,88) !important;
+	color: white;
+}

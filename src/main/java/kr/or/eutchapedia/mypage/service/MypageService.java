@@ -56,6 +56,11 @@ public interface MypageService {
 	List<StarRatingForMainVo> getratinginfo3(String memberemail);
 
 	List<StarRatingForMainVo> getratinginfo4(String memberemail);
+	
+
+	List<StarRatingForMainVo> getSearchResult(String memberemail, String findstr);
+
+	List<WannaWatchVo> getWWSearchResult(String memberemail, String findstr);
 
 
 }

@@ -2,7 +2,6 @@ package kr.or.eutchapedia.mypage.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,10 +30,16 @@ public class MypageController {
 	@Autowired
 	ServletContext ctx;
 	
+
+	
 	@RequestMapping("/index")
 	public ModelAndView mypageindex(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
+		
+		
+		if((String) session.getAttribute("memberEmail") != null){
+			
 		String memberemail = (String) session.getAttribute("memberEmail");
 		List<WannaWatchVo> ww = new ArrayList<WannaWatchVo>();
 		List<StarRatingForMainVo> sr = new ArrayList<StarRatingForMainVo>();
@@ -59,14 +65,14 @@ public class MypageController {
 			starValue[i] = point1;
 			z= starValue[i];
 			
-			System.out.println("현재z값은:" +z);
+			//System.out.println("현재z값은:" +z);
 			for(int k=0; k<graphMap.size(); k++) {
 					if(z == (float)graphMap.get(k).get("starRating")) {
 						
 						staramount[i] = (int) graphMap.get(k).get("starCount");
 					}
 			}
-			System.out.println(staramount[i]);
+			//System.out.println(staramount[i]);
 		}
 		
 	
@@ -75,21 +81,6 @@ public class MypageController {
 			System.out.println(staramount[j]);
 		}
 
-	/*
-	 * for(int k=0; k<graphMap.size(); k++) { if(z ==
-	 * graphMap.get(k).get("starRating")) { staramount[i] = (float)
-	 * graphMap.get(k).get("starcount"); } else { staramount[i] = 0; }
-	 */		
-		
-	/*
-	 * 
-	 * Iterator it = graphMap.iterator();
-	 * 
-	 * 
-	 * while(it.hasNext()) { System.out.println(it.next()); }
-	 * 
-	 * 
-	 */
 		
 		// 보고싶어요 개수
 		int wannacount  = ww.size();
@@ -135,6 +126,7 @@ public class MypageController {
 		
 		int size = ww.size();
 		int ratesize = sr.size();
+
 		
 		mv.addObject("staramount", staramount);
 		mv.addObject("size", size);
@@ -151,24 +143,56 @@ public class MypageController {
 		mv.addObject("graphMap", graphMap);
 		mv.addObject("doughnutMap", doughnutMap);
 		mv.setViewName("/user/mypage/mypage");
+	
+		}
+		
+		else{
+			mv.setViewName("/user/mypage/inaccessible");
+		}
+		
 		return mv;
 	}
 
 	@RequestMapping("/ratedmovies")
-	public ModelAndView mypageratedmovies(HttpSession session, int sort) {
+	public ModelAndView mypageratedmovies(HttpSession session,int sort, @RequestParam(name="str" ,required =false) String findstr) {
 		ModelAndView mv = new ModelAndView();
+
+		if((String) session.getAttribute("memberEmail") == null) {
+			mv.setViewName("/user/mypage/inaccessible");
+			
+		}
+		
+		else {
 		String memberemail = (String) session.getAttribute("memberEmail");
 		String sortTitle="";
 		
-		System.out.println(sort);
+		//System.out.println(sort);
 		List <StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
 		List<Map<String,Object>> graphMap = new ArrayList<Map<String, Object>>();
 		graphMap = service.getStarNumDesc(memberemail);
+		
+
+		List<StarRatingForMainVo> five = new ArrayList<>();
+		List<StarRatingForMainVo> fourdot = new ArrayList<>();
+		List<StarRatingForMainVo> four = new ArrayList<>();
+		List<StarRatingForMainVo> threedot = new ArrayList<>();
+		List<StarRatingForMainVo> three = new ArrayList<>();
+		List<StarRatingForMainVo> twodot = new ArrayList<>();
+		List<StarRatingForMainVo> two = new ArrayList<>();
+		List<StarRatingForMainVo> onedot = new ArrayList<>();
+		List<StarRatingForMainVo> one = new ArrayList<>();
+		List<StarRatingForMainVo> dot = new ArrayList<>();
 	
 		switch (sort) {
 		case 1 :
+			if(findstr == null) {
 			list = service.getratinginfo1(memberemail);
 			sortTitle = "가나다순";
+			}
+			else {
+				list = service.getSearchResult(memberemail,findstr);
+				sortTitle = "가나다순";
+			}
 			break;
 		case 2 :
 			list = service.getratinginfo2(memberemail);
@@ -184,43 +208,86 @@ public class MypageController {
 			break;
 		}
 		
+		
 
-		
-		/*test..
-		List<StarRatingForMainVo> test = new ArrayList<StarRatingForMainVo>();
-		
-		float[] point = new float[10];
-		float minPoint = (float) 0.5; 
-			for (int i=0 ; i<point.length; i++) {
-				point[i] = minPoint;
-				minPoint += 0.5;
-				
+		for(int s=0; s<list.size(); s++) { 
+			if(list.get(s).getStarRating().equals("5")) {
+				five.add(list.get(s));
 			}
+			if(list.get(s).getStarRating().equals("4.5")) {
+				fourdot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("4")) {
+				four.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("3.5")) {
+				threedot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("3")) {
+				three.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("2.5")) {
+				twodot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("2")) {
+				two.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("1.5")) {
+				onedot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("1")) {
+				one.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("0.5")) {
+				dot.add(list.get(s));
+			}
+		}
+	
 		
-		test = service.getEachStarMovie(memberemail,point);
-		*/
+		mv.addObject("five", five);
+		mv.addObject("fourdot", fourdot);
+		mv.addObject("four", four);
+		mv.addObject("threedot", threedot);
+		mv.addObject("three", three);
+		mv.addObject("twodot", twodot);
+		mv.addObject("two", two);
+		mv.addObject("onedot", onedot);
+		mv.addObject("one", one);
+		mv.addObject("dot", dot);
 		mv.addObject("sortTitle", sortTitle);
 		mv.addObject("list", list);
 		mv.addObject("point", graphMap);
 		mv.setViewName("/user/mypage/mypage_ratedmoviesfinal");
+		}
+		
 		return mv;
 	}
 	
 	@RequestMapping(value="/wannawatch", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView mypageiwantosee(HttpSession session, int sort) {
+	public ModelAndView mypageiwantosee(HttpSession session, int sort, @RequestParam(name="str" ,required =false) String findstr) {
 		ModelAndView mv = new ModelAndView();
+
+		if( (String) session.getAttribute("memberEmail") == null) {
+			mv.setViewName("/user/mypage/inaccessible");
+		}
 		
+		else {
 		String memberemail = (String) session.getAttribute("memberEmail");
 		String sortTitle="";
 		
 		System.out.println(sort);
 		List <WannaWatchVo> list = new ArrayList<WannaWatchVo>();
-		//System.out.println(memberemail);
 		
 		switch (sort) {
 		case 1 :
+			if(findstr == null) {
 			list = service.wannawatch1(memberemail);
 			sortTitle = "가나다순";
+			}
+			else {
+			list = service.getWWSearchResult(memberemail,findstr);
+			sortTitle = "가나다순";	
+			}
 			break;
 		case 2 :
 			list = service.wannawatch2(memberemail);
@@ -235,18 +302,123 @@ public class MypageController {
 			sortTitle = "담은순";
 			break;
 		}
-		
 	
 		mv.addObject("sortTitle", sortTitle);
 		mv.addObject("list", list);
 		mv.setViewName("/user/mypage/mypage_iwanttosee");
+		}
+		
 		return mv;
 	}
 	
 	
-	@RequestMapping("/starviewmore")
-	public ModelAndView mypagestarviewmore() {
-		ModelAndView mv = new ModelAndView("/user/mypage/mypage_starviewmore");
+	@RequestMapping(value="/starviewmore", method=RequestMethod.GET)
+	public ModelAndView mypagestarviewmore(HttpSession session,int sort) {
+		ModelAndView mv = new ModelAndView();
+
+		if((String) session.getAttribute("memberEmail") == null) {
+			mv.setViewName("/user/mypage/inaccessible");
+		}
+		
+		else {
+		String memberemail = (String) session.getAttribute("memberEmail");
+		List<StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
+		list = service.getratinginfo1(memberemail);
+		
+		List<StarRatingForMainVo> five = new ArrayList<>();
+		List<StarRatingForMainVo> fourdot = new ArrayList<>();
+		List<StarRatingForMainVo> four = new ArrayList<>();
+		List<StarRatingForMainVo> threedot = new ArrayList<>();
+		List<StarRatingForMainVo> three = new ArrayList<>();
+		List<StarRatingForMainVo> twodot = new ArrayList<>();
+		List<StarRatingForMainVo> two = new ArrayList<>();
+		List<StarRatingForMainVo> onedot = new ArrayList<>();
+		List<StarRatingForMainVo> one = new ArrayList<>();
+		List<StarRatingForMainVo> dot = new ArrayList<>();
+		
+		for(int s=0; s<list.size(); s++) { 
+			if(list.get(s).getStarRating().equals("5")) {
+				five.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("4.5")) {
+				fourdot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("4")) {
+				four.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("3.5")) {
+				threedot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("3")) {
+				three.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("2.5")) {
+				twodot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("2")) {
+				two.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("1.5")) {
+				onedot.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("1")) {
+				one.add(list.get(s));
+			}
+			if(list.get(s).getStarRating().equals("0.5")) {
+				dot.add(list.get(s));
+			}
+		}
+		
+		float point =0;
+		
+		switch (sort) {
+		case 1 :
+			list = five;
+			point = (float) 5.0;
+			break;
+		case 2 :
+			list = fourdot;
+			point = (float) 4.5;
+			break;
+		case 3 :
+			list = four;
+			point = (float) 4.0;
+			break;
+		case 4 :
+			list = threedot;
+			point = (float) 3.5;
+			break;
+		case 5 :
+			list = three;
+			point = (float) 3.0;
+			break;
+		case 6 :
+			list = twodot;
+			point = (float) 2.5;
+			break;
+		case 7 :
+			list = two;
+			point = (float) 2.0;
+			break;
+		case 8 :
+			list = onedot;
+			point = (float) 1.5;
+			break;
+		case 9 :
+			list = one;
+			point = (float) 1.0;
+			break;
+		case 10 :
+			list = dot;
+			point = (float) 0.5;
+			break;
+		}
+		
+		mv.addObject("point", point);
+		mv.addObject("list", list);
+		mv.setViewName("/user/mypage/mypage_starviewmore");
+		
+		}
 		
 		return mv;
 	}
