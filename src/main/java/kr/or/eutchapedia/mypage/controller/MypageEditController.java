@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,17 +29,26 @@ public class MypageEditController {
 	@RequestMapping("/edit")
 	public ModelAndView mypageeditprofile(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+
+		if((String) session.getAttribute("memberEmail") == null) {
+			mv.setViewName("/user/mypage/inaccessible");
+		}
+		else {
 		String memberemail = (String) session.getAttribute("memberEmail");
 		MemberVo member = service.getMemberInfo(memberemail);
 		
 		mv.addObject("member", member);
 		mv.setViewName("/user/mypage/mypage_editprofile(ver3)");
+		}
+		
 		return mv;
 	}
 	
 	@RequestMapping(value="/edit.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView mypageeditprofileDo(MemberVo vo, MultipartFile profileimg, HttpServletRequest request ) throws Exception {
+		
 		ModelAndView mv = new ModelAndView();
+		
 		FileUtils file = new FileUtils(); //uuid 이용해서 파일 리네임 생성해보자....
 		String newfilename ="";
 		String photo = vo.getMemberPhoto(); 

@@ -36,6 +36,13 @@
 	    order by a.wanna_watch_date desc
    </select>
    
+     <select id="selectwwSearch" parameterType="String" resultMap="WannaWatchVo" >
+	    select a.*, b.title, b.prodyear, b.poster_uri  from wanna_watch a join movie_info b 
+	    on a.fk_movie_docid = b.movie_docid 
+	    where a.fk_member_email = #{memberemail}
+	    and b.title LIKE '%' || #{findstr} || '%'
+	    order by b.title asc
+   </select>
    
    <!-- 평가영화관련 select 가나다순 -->
    <select id="selectRMsort1" parameterType="String" resultMap="StarRatingForMainVo" >

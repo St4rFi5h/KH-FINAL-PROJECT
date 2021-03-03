@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,6 +36,10 @@ public class MypageController {
 	public ModelAndView mypageindex(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
+		
+		
+		if((String) session.getAttribute("memberEmail") != null){
+			
 		String memberemail = (String) session.getAttribute("memberEmail");
 		List<WannaWatchVo> ww = new ArrayList<WannaWatchVo>();
 		List<StarRatingForMainVo> sr = new ArrayList<StarRatingForMainVo>();
@@ -60,14 +65,14 @@ public class MypageController {
 			starValue[i] = point1;
 			z= starValue[i];
 			
-			System.out.println("현재z값은:" +z);
+			//System.out.println("현재z값은:" +z);
 			for(int k=0; k<graphMap.size(); k++) {
 					if(z == (float)graphMap.get(k).get("starRating")) {
 						
 						staramount[i] = (int) graphMap.get(k).get("starCount");
 					}
 			}
-			System.out.println(staramount[i]);
+			//System.out.println(staramount[i]);
 		}
 		
 	
@@ -121,6 +126,7 @@ public class MypageController {
 		
 		int size = ww.size();
 		int ratesize = sr.size();
+
 		
 		mv.addObject("staramount", staramount);
 		mv.addObject("size", size);
@@ -137,12 +143,26 @@ public class MypageController {
 		mv.addObject("graphMap", graphMap);
 		mv.addObject("doughnutMap", doughnutMap);
 		mv.setViewName("/user/mypage/mypage");
+	
+		}
+		
+		else{
+			mv.setViewName("/user/mypage/inaccessible");
+		}
+		
 		return mv;
 	}
 
 	@RequestMapping("/ratedmovies")
-	public ModelAndView mypageratedmovies(HttpSession session, int sort) {
+	public ModelAndView mypageratedmovies(HttpSession session,int sort, @RequestParam(name="str" ,required =false) String findstr) {
 		ModelAndView mv = new ModelAndView();
+
+		if((String) session.getAttribute("memberEmail") == null) {
+			mv.setViewName("/user/mypage/inaccessible");
+			
+		}
+		
+		else {
 		String memberemail = (String) session.getAttribute("memberEmail");
 		String sortTitle="";
 		
@@ -165,8 +185,14 @@ public class MypageController {
 	
 		switch (sort) {
 		case 1 :
+			if(findstr == null) {
 			list = service.getratinginfo1(memberemail);
 			sortTitle = "가나다순";
+			}
+			else {
+				list = service.getSearchResult(memberemail,findstr);
+				sortTitle = "가나다순";
+			}
 			break;
 		case 2 :
 			list = service.getratinginfo2(memberemail);
@@ -228,29 +254,40 @@ public class MypageController {
 		mv.addObject("onedot", onedot);
 		mv.addObject("one", one);
 		mv.addObject("dot", dot);
-		
 		mv.addObject("sortTitle", sortTitle);
 		mv.addObject("list", list);
 		mv.addObject("point", graphMap);
 		mv.setViewName("/user/mypage/mypage_ratedmoviesfinal");
+		}
+		
 		return mv;
 	}
 	
 	@RequestMapping(value="/wannawatch", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView mypageiwantosee(HttpSession session, int sort) {
+	public ModelAndView mypageiwantosee(HttpSession session, int sort, @RequestParam(name="str" ,required =false) String findstr) {
 		ModelAndView mv = new ModelAndView();
+
+		if( (String) session.getAttribute("memberEmail") == null) {
+			mv.setViewName("/user/mypage/inaccessible");
+		}
 		
+		else {
 		String memberemail = (String) session.getAttribute("memberEmail");
 		String sortTitle="";
 		
 		System.out.println(sort);
 		List <WannaWatchVo> list = new ArrayList<WannaWatchVo>();
-		//System.out.println(memberemail);
 		
 		switch (sort) {
 		case 1 :
+			if(findstr == null) {
 			list = service.wannawatch1(memberemail);
 			sortTitle = "가나다순";
+			}
+			else {
+			list = service.getWWSearchResult(memberemail,findstr);
+			sortTitle = "가나다순";	
+			}
 			break;
 		case 2 :
 			list = service.wannawatch2(memberemail);
@@ -265,11 +302,12 @@ public class MypageController {
 			sortTitle = "담은순";
 			break;
 		}
-		
 	
 		mv.addObject("sortTitle", sortTitle);
 		mv.addObject("list", list);
 		mv.setViewName("/user/mypage/mypage_iwanttosee");
+		}
+		
 		return mv;
 	}
 	
@@ -277,6 +315,12 @@ public class MypageController {
 	@RequestMapping(value="/starviewmore", method=RequestMethod.GET)
 	public ModelAndView mypagestarviewmore(HttpSession session,int sort) {
 		ModelAndView mv = new ModelAndView();
+
+		if((String) session.getAttribute("memberEmail") == null) {
+			mv.setViewName("/user/mypage/inaccessible");
+		}
+		
+		else {
 		String memberemail = (String) session.getAttribute("memberEmail");
 		List<StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
 		list = service.getratinginfo1(memberemail);
@@ -373,6 +417,9 @@ public class MypageController {
 		mv.addObject("point", point);
 		mv.addObject("list", list);
 		mv.setViewName("/user/mypage/mypage_starviewmore");
+		
+		}
+		
 		return mv;
 	}
 	

@@ -30,11 +30,21 @@
             </a>
         </div>
 
-        <div class="title">평가한 작품들</div> 
+        <div class="title">평가한 작품들
+        
+        
+        </div> 
         <div class='option-wrapper'>
             <ul class="tabui">
                 <li class="listyle" id='tab1' data-tab="tab1">전체</li>
                 <li class="listyle2" id='tab2' data-tab="tab1">별점 순</li>
+                <div class='search'>
+                 <form method="get" action="/mypage/ratedmovies?sort=1&str=${param.str }" onsubmit="#" >
+			        <input type='hidden' name='sort' value=1>
+			        <input  id='search' name ='str' type='text' placeholder='영화를 검색해 보세요' value='${param.str }'>
+			        <input class='sbtn'  type='submit' value='검색'>
+		        </form>
+		        </div>
             </ul>
         </div>
 
@@ -287,7 +297,6 @@
     <script>
     	
         $(function() {
-
              $('#tab2').click(function() {
                  $('.tabone').css("display","none");
                  $('.tabtwo').css("display", 'block');
@@ -295,9 +304,7 @@
                  $('.listyle2').css("border-bottom", '3px solid rgb(255, 47, 110)');
                  $('.listyle').css("color", 'rgb(120, 120, 120)');
                  $('.listyle').css("border-bottom", '0');
-
             })
-
             $('#tab1').click(function() {
                  $('.tabone').css("display","block");
                  $('.tabtwo').css("display", 'none');
@@ -305,8 +312,6 @@
                  $('.listyle2').css("border-bottom", '0');
                  $('.listyle').css("color", 'rgb(255, 47, 110)');
                  $('.listyle').css("border-bottom", '3px solid rgb(255, 47, 110)');
-
-
                 
             })
         });

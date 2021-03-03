@@ -201,6 +201,21 @@ public class MypageServiceImpl implements MypageService {
 		return list;
 	}
 
+	@Override
+	public List<StarRatingForMainVo> getSearchResult(String memberemail, String findstr) {
+		List<StarRatingForMainVo> list = new ArrayList<StarRatingForMainVo>();
+		list = Dao.selectSearchMovies(memberemail,findstr);
+		return list;
+		
+	}
+
+	@Override
+	public List<WannaWatchVo> getWWSearchResult(String memberemail, String findstr) {
+
+		List<WannaWatchVo> list =  SortDao.selectwwSearch(memberemail, findstr);
+		return list;
+	}
+
 
 	
 

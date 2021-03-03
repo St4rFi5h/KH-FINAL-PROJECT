@@ -2,6 +2,7 @@ package kr.or.eutchapedia.mypage.dao;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import kr.or.eutchapedia.mypage.entity.StarRatingForMainVo;
 import kr.or.eutchapedia.mypage.entity.WannaWatchVo;
@@ -22,6 +23,8 @@ public interface MypageSortDao {
 	public List<StarRatingForMainVo> selectRMsort2(String memberemail);
 	public List<StarRatingForMainVo> selectRMsort3(String memberemail);
 	public List<StarRatingForMainVo> selectRMsort4(String memberemail);
+	
+	public List<WannaWatchVo> selectwwSearch(@Param("memberemail")String memberemail, @Param("findstr") String findstr);
 	
 	
 

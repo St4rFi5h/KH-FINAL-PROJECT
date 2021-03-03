@@ -30,7 +30,15 @@
 
         <div class='titlewrapper'>
             <p class="title">보고싶어요</p>
+            
         </div>
+        <div class='search'>
+                 <form method="get" action="/mypage/wannawatch?sort=1&str=${param.str }" onsubmit="#" >
+			        <input type='hidden' name='sort' value=1>
+			        <input  id='search' name ='str' type='text' placeholder='영화를 검색해 보세요' value='${param.str }'>
+			        <input class='sbtn'  type='submit' value='검색'>
+		        </form>
+		    </div>
         <div class='sortwrapper'>
             <a class="sortbtn" data-toggle="modal" href="#myModal" style="text-decoration:none; color:black">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
@@ -76,7 +84,7 @@
 			                    <img class="poster" src="${n.posterUri }" width="140px";  height="200px"; alt="포스터없음">
 			                </a>
 			                <div class="movietitle">${n.title }</div>
-			                <!-- <li>2018 | 드라마</li> -->
+			                
 			            </div>
 		       </div>
 			</c:forEach>
