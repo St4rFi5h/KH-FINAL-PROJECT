@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.eutchapedia.movie.detail.domain.CommentLikeVo;
 import kr.or.eutchapedia.movie.detail.domain.CommentListVo;
 import kr.or.eutchapedia.movie.detail.domain.CommentPage;
 import kr.or.eutchapedia.movie.detail.domain.CommentVo;
@@ -105,4 +106,17 @@ public class CommentDao {
 		
 		return result;
 	}
+	
+	public List<CommentLikeVo> selectLikeData(Map<String, Object> map) {
+		List<CommentLikeVo> likeDataList = new ArrayList<>();
+		
+		try {
+			likeDataList = mapper.selectLikeData(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return likeDataList;
+	}
+
 }

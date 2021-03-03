@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.eutchapedia.movie.collection.domain.CollectionVo;
+import kr.or.eutchapedia.movie.detail.domain.CommentLikeVo;
 import kr.or.eutchapedia.movie.detail.domain.CommentVo;
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
@@ -197,18 +198,6 @@ public class MovieDetailDao {
 		return collectionList;
 	}
 	
-	public List<String> selectCollectionName(String movieDocId) {
-		List<String> collectionNameList = new ArrayList<>();
-		
-		try {
-			collectionNameList = mapper.selectCollectionName(movieDocId);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return collectionNameList;
-	}
-
 	public List<Integer> selectCollectionIndex(String movieDocId) {
 		List<Integer> collectionIndexList = new ArrayList<>();
 		
@@ -220,5 +209,29 @@ public class MovieDetailDao {
 		
 		return collectionIndexList;
 	}
+	
+	public List<CommentLikeVo> selectLikeData(Map<String, Object> map) {
+		List<CommentLikeVo> likeDataList = new ArrayList<>();
+		
+		try {
+			likeDataList = mapper.selectLikeData(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return likeDataList;
+	}
+	
+	public String selectMemberNickname(String memberEmail) {
+		String memberNickname = "";
+		
+		try {
+			memberNickname = mapper.selectMemberNickname(memberEmail);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return memberNickname;
+ 	}
 
 }

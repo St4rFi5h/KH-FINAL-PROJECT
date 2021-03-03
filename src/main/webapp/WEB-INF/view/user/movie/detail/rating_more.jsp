@@ -279,6 +279,27 @@
 				});
 				
         	}
+
+    	window.onload = function() {
+    		// 좋아요 누른 데이터 있으면 색칠되게 해놓기 완료 
+			let likeMap = new Map();
+
+	        <c:forEach var="likeDataList" items="${likeDataList}">
+	        	likeMap.set("${likeDataList.commentIndex}", "${likeDataList.likeCheck}");
+				var likeButton = "like-button" + "${likeDataList.commentIndex}";
+	        	
+				if (likeMap.get("${likeDataList.commentIndex}") == 1) {
+					$("#" + likeButton).css("background-color", "rgb(255, 7, 88)");
+					$("#" + likeButton).css("color", "white");
+					}
+
+				
+	        </c:forEach>
+
+	        console.log(likeMap);
+
+        	}
+    	
     	
         </script>
         

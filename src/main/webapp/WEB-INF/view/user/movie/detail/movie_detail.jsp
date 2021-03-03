@@ -208,7 +208,7 @@
 										</c:forEach>
 									</c:forEach>
 								</c:if>
-								<c:if test="${empty collectionList }">
+								<c:if test="${empty collectionMap }">
 									<div class="data-empty-message">컬렉션 데이터가 없습니다.</div>
 								</c:if>
 							</div>
@@ -282,7 +282,7 @@
         <input type="hidden" id="commentIndexOfMember" value="${commentVo.commentIndex }"/>
         <input type="hidden" id="commentTextOfMember" value="${commentVo.commentText }"/>
         <div id="member-comment-zone">
-            <div id="comment-zone-ment">멋진 평가네요. 이지현 님의 생각을 글로 남겨보세요.</div>
+            <div id="comment-zone-ment">멋진 평가네요. ${memberNickname } 님의 생각을 글로 남겨보세요.</div>
             <div><button id="write-comment-button" data-toggle="modal" data-target="#comment-modal"
                     data-dismiss="modal">코멘트 남기기</button></div>
         </div>
@@ -501,7 +501,7 @@
 											</c:forEach>
 										</c:forEach>
 									</c:if>
-									<c:if test="${empty collectionList }">
+									<c:if test="${empty collectionMap }">
 										<div class="data-empty-message">컬렉션 데이터가 없습니다.</div>
 									</c:if>
 								</div>
@@ -509,7 +509,6 @@
 
 						</div>
 					</div>
-
 
 				</div>
 			</div>
@@ -700,43 +699,25 @@
 					if (	ratedStars > 0) {
 						$('#' + addClassSelector).addClass('on').prevAll('span').addClass('on');
 
-						// not yet
-						switch (ratedStars) {
-						case 0.5:
-							starMessage = '최악이에요'; 
-							break;
-						case 1:
-							$('#star-message').html("싫어요");
-							break;
-						case 1.5:
-							$('#star-message').html("재미없어요");
-							break;
-						case 2:
-							$('#star-message').html("별로예요");
-							break;
-						case 2.5:
-							$('#star-message').html("부족해요");
-							break;
-						case 3:
-							$('#star-message').html("보통이에요");
-							break;
-						case 3.5:
-							starMessage = '볼만해요'; 
-							break;
-						case 4:
-							$('#star-message').html("재미있어요");
-							break;
-						case 4.5:
-							$('#star-message').html("훌륭해요!");
-							break;
-						case 5:
-							$('#star-message').html("최고예요!");
-							break;
-						
-					}
 					memberCommentZone.style.display = "block";
-					
 
+					// 좋아요 누른 데이터 있으면 색칠되게 해놓기 완료 
+					let likeMap = new Map();
+
+			        <c:forEach var="likeDataList" items="${likeDataList}">
+			        	likeMap.set("${likeDataList.commentIndex}", "${likeDataList.likeCheck}");
+						var likeButton = "like-button" + "${likeDataList.commentIndex}";
+			        	
+						if (likeMap.get("${likeDataList.commentIndex}") == 1) {
+							$("#" + likeButton).css("background-color", "rgb(255, 7, 88)");
+							$("#" + likeButton).css("color", "white");
+							}
+
+						
+			        </c:forEach>
+
+			        console.log(likeMap);
+						
 				}
 
 				var commentIndex = document.getElementById("commentIndexOfMember").value;
@@ -756,9 +737,7 @@
 					}
 				
 			}
-
-			   
-
+			
         </script>
         <script src="/js/movie/myslider.js"></script>
 </body>

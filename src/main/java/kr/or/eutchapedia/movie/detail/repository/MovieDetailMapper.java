@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import kr.or.eutchapedia.movie.collection.domain.CollectionVo;
+import kr.or.eutchapedia.movie.detail.domain.CommentLikeVo;
 import kr.or.eutchapedia.movie.detail.domain.CommentVo;
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
@@ -27,6 +28,7 @@ public interface MovieDetailMapper {
 	public StarRatingVo checkRatedStars(Map<String, Object> map);
 	public CommentVo checkCommentData(Map<String, Object> map); 
 	public List<CollectionVo> selectCollectionInfo(Integer pickIndex);
-	public List<String> selectCollectionName(String movieDocId);
 	public List<Integer> selectCollectionIndex(String movieDocId);
+	public List<CommentLikeVo> selectLikeData(Map<String, Object> map);
+	public String selectMemberNickname(String memberEmail);
 } 

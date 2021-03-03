@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.eutchapedia.movie.collection.domain.CollectionVo;
+import kr.or.eutchapedia.movie.detail.domain.CommentLikeVo;
 import kr.or.eutchapedia.movie.detail.domain.CommentVo;
 import kr.or.eutchapedia.movie.detail.domain.MovieInfoVo;
 import kr.or.eutchapedia.movie.detail.domain.StaffFilmoVo;
@@ -41,16 +42,24 @@ public class MovieDetailController {
 			mv.addObject("wannaWatchCheck", wannaWatchCheck);
 
 			StarRatingVo starRatingVo = movieDetailDao.checkRatedStars(map);
-
 			if (starRatingVo != null) {
 				mv.addObject("starRatingVo", starRatingVo);
 			}
 
 			CommentVo commentVo = movieDetailDao.checkCommentData(map);
-
 			if (commentVo != null) {
 				mv.addObject("commentVo", commentVo);
 			}
+			
+			List<CommentLikeVo> likeDataList = movieDetailDao.selectLikeData(map);
+			if (likeDataList != null) {
+				System.out.println(likeDataList);
+				mv.addObject("likeDataList", likeDataList);
+			}
+			
+			String memberNickname = movieDetailDao.selectMemberNickname(memberEmail);
+			mv.addObject("memberNickname", memberNickname);
+			
 		}
 
 		MovieInfoVo movieInfoVo = movieDetailDao.selectMovieInfo(movieDocId);
@@ -62,7 +71,7 @@ public class MovieDetailController {
 		movieDetailDao.updateHitCount(movieDocId);
 
 		List<Integer> collectionIndexList = movieDetailDao.selectCollectionIndex(movieDocId);
-		List<String> collectionNameList = movieDetailDao.selectCollectionName(movieDocId);
+		
 		if (!collectionIndexList.isEmpty()) {
 			Map<String, List<CollectionVo>> collectionMap = new HashMap<>();
 			
@@ -71,14 +80,11 @@ public class MovieDetailController {
 			for (Integer pickIndex : collectionIndexList) {
 				collectionList = movieDetailDao.selectCollectionInfo(pickIndex);
 				collectionMap.put("list" + pickIndex, collectionList);
-				System.out.println(collectionMap.get("list" + pickIndex));
+				
 			}
-			mv.addObject("collectionIndexList", collectionIndexList);
-			mv.addObject("collectionNameList", collectionNameList);
-			System.out.println(collectionMap.keySet());
 			
 			mv.addObject("collectionMap", collectionMap);
-			mv.addObject("collectionList", collectionList);
+			
 		}
 		
 
