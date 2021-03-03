@@ -37,7 +37,7 @@
 			<hr class="bottom-line">
 			<div class="second-title">
 				<div class="password-eamil">
-					<h2 class="password-forget">비밀번호를 받으셨나요?</h2>
+					<h2 class="password-forget">인증번호를 받으셨나요?</h2>
 					<p class="write-email">입력하신 이메일을 확인 후,</p>
 					<p class="write-email">이메일로 전송된 인증번호를 입력해 주세요.</p>
 				</div>
