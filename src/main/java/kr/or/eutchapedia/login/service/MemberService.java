@@ -78,6 +78,7 @@ public class MemberService {
 				System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberEmail"));				
 			} else if (adminCheck.equals("A")) {
 				httpSession.setAttribute("admincheck", adminCheck);
+				httpSession.setAttribute("memberEmail", memberEmail);
 				System.out.println("관리자 세션 : " + httpSession.getAttribute("admincheck"));
 			}
 
