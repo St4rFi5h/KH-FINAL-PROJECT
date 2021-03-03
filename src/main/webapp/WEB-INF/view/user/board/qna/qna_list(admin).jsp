@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,6 +90,7 @@
                                 <div class="tbl_notice_info">
                                     <p class="tbl_info_type">NO</p>
                                     <p class="tbl_info_tit">제목</p>
+                                    <p class="tbl_info_date">작성자</p>
                                     <p class="tbl_info_date">작성일</p>
                                     <p class="tbl_info_date">답변유무</p>
                                     <p class="tbl_info_date"></p>
@@ -109,7 +111,11 @@
 												${q.qnaTitle}
                                             <span class="blind">제목</span>
                                         </p>
-                                        <p class="tbl_info_date">${q.qnaDate}
+                                        <p class="tbl_info_date">${q.memberNickname}
+                                        <span class="blind">작성자</span>
+                                        </p>
+                                        <p class="tbl_info_date">
+                                        <fmt:formatDate pattern="yyyy-MM-dd" value="${q.qnaDate}"/>
                                             <span class="blind">작성일</span>
                                         </p>
                                         <p class="tbl_info_date">
@@ -185,6 +191,18 @@
                                     </span>
                                     <span class="pagenum current">
                                         <span>1</span>
+                                    </span>
+                                    <span class="pagenum">
+                                        <a>2</a>
+                                    </span>
+                                    <span class="pagenum">
+                                        <a>3</a>
+                                    </span>
+                                    <span class="pagenum">
+                                        <a>4</a>
+                                    </span>
+                                    <span class="pagenum">
+                                        <a>5</a>
                                     </span>
                                     <span class="pagination_next">
                                         <a href="">

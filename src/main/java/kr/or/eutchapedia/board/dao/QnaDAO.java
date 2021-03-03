@@ -7,11 +7,12 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.or.eutchapedia.board.entity.Faq;
 import kr.or.eutchapedia.board.entity.QnaVO;
+import kr.or.eutchapedia.board.entity.QnaView;
 
 @Mapper
 public interface QnaDAO {
 	//게시물 리스트 조회
-	public List<QnaVO> selectBoardList(@Param("vo")QnaVO vo,@Param("memberEmail")String memberEmail);
+	public List<QnaView> selectBoardList(@Param("vo")QnaVO vo,@Param("memberEmail")String memberEmail);
 	//게시물 작성
 	public int insertBoard(QnaVO vo);
 	//게시물 수정

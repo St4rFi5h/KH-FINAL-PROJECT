@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.or.eutchapedia.board.controller.service.QnaService;
 import kr.or.eutchapedia.board.entity.Faq;
 import kr.or.eutchapedia.board.entity.QnaVO;
+import kr.or.eutchapedia.board.entity.QnaView;
 import kr.or.eutchapedia.board.notice.domain.MemberCheckVo;
 import kr.or.eutchapedia.board.notice.service.NoticeService;
 
@@ -40,7 +41,7 @@ public class QnaController {
     @RequestMapping(value="/list.do")
     public String boardList(@ModelAttribute("vo") QnaVO vo, Model model, HttpSession session) throws Exception{
         String memberEmail = "admin@admin.com";
-        List<QnaVO> list = service.selectBoardList(vo, memberEmail);
+        List<QnaView> list = service.selectBoardList(vo, memberEmail);
         
         String member = (String)session.getAttribute("memberEmail");
         MemberCheckVo getmember = noticeService.getMember(member);

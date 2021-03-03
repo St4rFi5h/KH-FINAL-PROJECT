@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.or.eutchapedia.board.dao.QnaDAO;
 import kr.or.eutchapedia.board.entity.Faq;
 import kr.or.eutchapedia.board.entity.QnaVO;
+import kr.or.eutchapedia.board.entity.QnaView;
 
 @Service
 public class QnaServiceImpl implements QnaService {
@@ -16,8 +17,8 @@ public class QnaServiceImpl implements QnaService {
 	private QnaDAO qnaDao;
 	
 	@Override
-	public List<QnaVO> selectBoardList(QnaVO vo, String memberEmail) throws Exception {
-		List<QnaVO> list = null;
+	public List<QnaView> selectBoardList(QnaVO vo, String memberEmail) throws Exception {
+		List<QnaView> list = null;
         list = qnaDao.selectBoardList(vo, memberEmail);
         return list;
 	}
