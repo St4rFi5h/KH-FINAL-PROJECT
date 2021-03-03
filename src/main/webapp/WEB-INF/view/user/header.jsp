@@ -18,13 +18,13 @@
             </ul>
           </div>
 
-          <!--검색창-->
+          <!--검색창 -->
           <div class="searchbar">
             <form method="GET" action="/search?findStr=${param.findStr }" autocomplete="on">
               <div class="search_box">
                 <div class="icon"><i class="fas fa-search"></i>
                   <input type="text" name="findStr" value="${param.findStr }" placeholder=" 작품 제목, 배우,감독을 검색해보세요.">
-                  <button class="search_btn" type="submit"> <i class="fas fa-times"></i>
+                  <button class="search_btn" type="submit"> <i class="fas fa-times" id="delete"></i> 
                   </button>
                 </div>
               </div>
@@ -66,5 +66,5 @@
    
          </div>
       </div> 
-      
+
     </header>
