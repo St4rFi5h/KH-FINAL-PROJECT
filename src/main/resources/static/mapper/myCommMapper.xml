@@ -47,6 +47,7 @@
 						sr.fk_movie_docid = mi.movie_docid
 				where 
                     sr.fk_member_email = #{memberEmail}
+                    ORDER BY ec.comment_date DESC
      </select>
      <select id="selectQna" resultType="kr.or.eutchapedia.mypage.entity.MyQnaVo"
      						parameterType="kr.or.eutchapedia.mypage.entity.MyQnaVo">
