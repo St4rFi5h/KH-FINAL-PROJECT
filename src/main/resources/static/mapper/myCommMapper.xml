@@ -20,9 +20,12 @@
 		<result column="qna_content" property="qnaContent"/>
 		<result column="qna_date" property="qnaDate"/>
 		<result column="qna_files" property="qnaFiles"/>
+		<result column="qna_filename" property="qnaFilename"/>
 		<result column="qna_answer" property="qnaAnswer"/>
 		<result column="answer_content" property="answerContent"/>
 		<result column="answer_files" property="answerFiles"/>
+		<result column="a_content" property="aContent"/>
+		<result column="qna_filepath" property="qnaFilepath"/>
 	</resultMap>
 	<select id="selectComm" resultType="kr.or.eutchapedia.mypage.entity.CommentVo" 
 							parameterType="kr.or.eutchapedia.mypage.entity.CommentVo">

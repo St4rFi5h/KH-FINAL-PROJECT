@@ -2,7 +2,7 @@ alter table notice drop primary key;
 alter table notice add constraint notice_pk primary key(notice_no);
 select *from notice;
 select * from member;
-insert into member values ('admin@eutcha.com', '관리자', 'qwer1234', 'qwer1234', DEFAULT, 'Y', 'N', '', '', DEFAULT);
+insert into member values ('admin@eutcha.com', '관리자', 'qwer1234', 'qwer1234', DEFAULT, 'A', 'N', '', '', DEFAULT);
 
 
 INSERT INTO NOTICE (NOTICE_NO, MEMBER_EMAIL, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_FILES, NOTICE_PUB) VALUES (NOTICE_SEQ.NEXTVAL,'admin@eutcha.com','개인정보 처리방침 변경 안내','안녕하세요<br>읏챠피디아 입니다.<br><br>더 나은 서비스를 제공할 수 있도록 개인정보 처리방침 문서를 변경하였음을 알려드립니다.<br>',DEFAULT,DEFAULT,0);

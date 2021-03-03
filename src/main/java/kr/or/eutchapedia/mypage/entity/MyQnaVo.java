@@ -9,9 +9,12 @@ public class MyQnaVo {
 	private String qnaContent;	//qna 내용
 	private Date qnaDate;		//qna 등록날짜
 	private String qnaFiles;	//qna 파일
+	private String qnaFilename;
 	private int qnaAnswer;		//qna 답변여부
 	private String answerContent;//qna 답변내용
-	private String answerFiles; 
+	private String answerFiles;
+	private String aContent;
+	private String qnaFilepath;
 	
 	public int getQnaNo() {
 		return qnaNo;
@@ -67,12 +70,32 @@ public class MyQnaVo {
 	public void setAnswerFiles(String answerFiles) {
 		this.answerFiles = answerFiles;
 	}
+	public String getQnaFilename() {
+		return qnaFilename;
+	}
+	public void setQnaFilename(String qnaFilename) {
+		this.qnaFilename = qnaFilename;
+	}
+	public String getaContent() {
+		return aContent;
+	}
+	public void setaContent(String aContent) {
+		this.aContent = aContent;
+	}
+	public String getQnaFilepath() {
+		return qnaFilepath;
+	}
+	public void setQnaFilepath(String qnaFilepath) {
+		this.qnaFilepath = qnaFilepath;
+	}
 	@Override
 	public String toString() {
 		return "MyQnaVo [qnaNo=" + qnaNo + ", memberEmail=" + memberEmail + ", qnaTitle=" + qnaTitle + ", qnaContent="
-				+ qnaContent + ", qnaDate=" + qnaDate + ", qnaFiles=" + qnaFiles + ", qnaAnswer=" + qnaAnswer
-				+ ", answerContent=" + answerContent + ", answerFiles=" + answerFiles + "]";
+				+ qnaContent + ", qnaDate=" + qnaDate + ", qnaFiles=" + qnaFiles + ", qnaFilename=" + qnaFilename
+				+ ", qnaAnswer=" + qnaAnswer + ", answerContent=" + answerContent + ", answerFiles=" + answerFiles
+				+ ", aContent=" + aContent + ", qnaFilepath=" + qnaFilepath + "]";
 	}
+
 
 
 }
