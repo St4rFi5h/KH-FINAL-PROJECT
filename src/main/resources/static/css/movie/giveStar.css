@@ -84,6 +84,8 @@ padding: 0px;
 	width: 600px;
 	margin-top: 5px;
 	margin-bottom: 10px; 
+	background-color: #ff0458;
+	border-color: #ff0458;
 }
 
 .movie_content{

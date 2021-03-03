@@ -73,7 +73,7 @@
 						</div>
 
 						<div class="movie_name">
-							<h3 class="movie_title" onClick="location.href='/movie/detail?movieDocId=${m.movie_docid}'">
+							<h3 class="movie_title" >
 								${m.title}
 								<div class="modal_button">
 									<button class="fas fa-ellipsis-v" id="modal_btn"
