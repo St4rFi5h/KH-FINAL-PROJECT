@@ -19,9 +19,7 @@
     <!--부트스트랩 기능들의 css-->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/board/faq_qna/faq_qna.css">
-    <!-- 네이버 스마트 에디터 -->
-    <script type="text/javascript" src="/js/board/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
-	<title>EUTCHAPEDIA</title>
+    <title>EUTCHAPEDIA</title>
 </head>
 <body>
     <!-- 헤더 -->
@@ -70,13 +68,13 @@
                     <div class="inner_snb">
                         <ul class="list_menu">
                             <li class="list_menu">
-                                <a href="">공지사항</a>
+                                <a href="/notice/list">공지사항</a>
                             </li>
                             <li class="list_menu">
-                                <a href="faq_list(admin).html">자주하는 질문</a>
+                                <a href="faq_list">자주하는 질문</a>
                             </li>
                             <li class="list_menu on">
-                                <a href="">1:1 문의</a>
+                                <a href="/qna/list.do">1:1 문의</a>
                             </li>
                         </ul>
                     </div>
@@ -236,7 +234,6 @@
 				$("#frm").submit(); 
 		})
 		</script>
-		<%-- 
 		<script type="text/javascript">
 		$(document).ready(function (e){
 			$('#write').click(function(){
@@ -255,6 +252,4 @@
 			});
 		});
 		</script>
-		--%>
-		
   </html>

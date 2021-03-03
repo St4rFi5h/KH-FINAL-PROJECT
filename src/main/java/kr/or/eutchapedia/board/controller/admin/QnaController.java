@@ -155,7 +155,7 @@ public class QnaController {
     
     //답글페이지
     @RequestMapping(value="/qna/reply", method = RequestMethod.GET)
-    public ModelAndView replyPage(@RequestParam long qnaNo, HttpServletRequest request, Model model) throws Exception {
+    public ModelAndView replyPage(@RequestParam int qnaNo, HttpServletRequest request, Model model) throws Exception {
     	String qnaContent = request.getParameter("qna");
     	System.out.println("들어온거니????????????????"+qnaContent);
     	

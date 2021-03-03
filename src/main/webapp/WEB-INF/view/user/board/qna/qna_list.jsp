@@ -79,13 +79,13 @@
                     <div class="inner_snb">
                         <ul class="list_menu">
                             <li class="list_menu">
-                                <a href="">공지사항</a>
+                                <a href="/notice/list">공지사항</a>
                             </li>
-                            <li class="list_menu">
-                                <a href="faq_list(admin).html">자주하는 질문</a>
+                            <li class="list_menu ">
+                                <a href="faq_list(admin)">자주하는 질문</a>
                             </li>
                             <li class="list_menu on">
-                                <a href="qna_list(admin).html">1:1 문의</a>
+                                <a href="/qna/list.do">1:1 문의</a>
                             </li>
                         </ul>
                     </div>

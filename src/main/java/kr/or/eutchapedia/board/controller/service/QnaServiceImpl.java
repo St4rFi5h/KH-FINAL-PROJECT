@@ -46,7 +46,7 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public QnaVO detail(long qnaNo) {
+	public QnaVO detail(int qnaNo) {
 		// TODO Auto-generated method stub
 		return qnaDao.detail(qnaNo);
 	}

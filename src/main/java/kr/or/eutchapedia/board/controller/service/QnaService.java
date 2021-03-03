@@ -2,7 +2,6 @@ package kr.or.eutchapedia.board.controller.service;
 
 import java.util.List;
 
-import kr.or.eutchapedia.board.entity.Faq;
 import kr.or.eutchapedia.board.entity.QnaVO;
 
 public interface QnaService {
@@ -17,7 +16,7 @@ public interface QnaService {
 	
 	public QnaVO selectBoardByCode(QnaVO vo)throws Exception ;
 
-	QnaVO detail(long qnaNo);
+	QnaVO detail(int qnaNo);
 
 	void reply(QnaVO vo);
 
