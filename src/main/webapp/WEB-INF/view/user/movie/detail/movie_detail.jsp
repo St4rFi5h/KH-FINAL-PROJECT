@@ -325,7 +325,7 @@
 					</div>
 					<div id="video-zone">
 						<iframe width="900" height="550"
-							src="https://www.youtube.com/embed/Q0zFPlArth0" frameborder="0"
+							src="${movieInfoVo.movieTrailer }"  frameborder="0"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 							allowfullscreen></iframe>
 					</div>
