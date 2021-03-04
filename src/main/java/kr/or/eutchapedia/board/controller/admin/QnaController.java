@@ -43,7 +43,10 @@ public class QnaController {
         String memberEmail = "admin@admin.com";
         List<QnaView> list = service.selectBoardList(vo, memberEmail);
         
-        String member = (String)session.getAttribute("memberEmail");
+        String member = (String)session.getAttribute("memberEmail1");
+		if(member == null) {
+			member = (String)session.getAttribute("memberEmail");
+		}
         MemberCheckVo getmember = noticeService.getMember(member);
 		
 		model.addAttribute("getmember",getmember);
