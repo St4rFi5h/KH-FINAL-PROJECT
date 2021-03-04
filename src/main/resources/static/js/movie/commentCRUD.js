@@ -40,6 +40,7 @@ function submitComment() {
 // 코멘트 수정하기
 function editComment() {
 	commentEditZone.innerHTML = commentText;
+	console.log(commentEditZone.innerHTML);
 }
 
 // 코멘트 수정 제출

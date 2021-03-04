@@ -656,7 +656,7 @@
 
 
 			$("#wanna-watch-button").on('click', function() {
-				var movieDocId = $("#movieDocIdInModal").val();
+				var movieDocId = document.getElementById("movieDocIdInModal").value;
 				console.log(movieDocId);
 				var bookmarkDiv = $(event.target);
 				
@@ -711,7 +711,7 @@
 						if (likeMap.get("${likeDataList.commentIndex}") == 1) {
 							$("#" + likeButton).css("background-color", "rgb(255, 7, 88)");
 							$("#" + likeButton).css("color", "white");
-							}
+						}
 
 						
 			        </c:forEach>

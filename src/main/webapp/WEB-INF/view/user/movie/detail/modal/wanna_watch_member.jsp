@@ -11,7 +11,7 @@
 		<div class="modal-body">
 			<div id="modal-contents">
 				<div id="movie-info">
-				<input type="hidden" id = "movieDocIdInModal" value="${movieInfoVo.movieDocId }"/>
+				<input type="text" id = "movieDocIdInModal" value="${movieInfoVo.movieDocId }"/>
 					<div id="modal-movie-poster">
 						<img src="${movieInfoVo.posterUri }" alt="">
 					</div>
