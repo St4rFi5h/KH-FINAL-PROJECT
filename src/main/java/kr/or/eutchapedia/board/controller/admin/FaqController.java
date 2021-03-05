@@ -40,7 +40,10 @@ public class FaqController {
    @RequestMapping("/faq_list(admin)") 
    public String list(Model model, HttpServletRequest request, HttpSession session) {
 	   
-	   String member = (String)session.getAttribute("memberEmail");
+	   String member = (String)session.getAttribute("memberEmail1");
+		if(member == null) {
+			member = (String)session.getAttribute("memberEmail");
+		}
 	   
 	   MemberCheckVo getmember = noticeService.getMember(member);
 		

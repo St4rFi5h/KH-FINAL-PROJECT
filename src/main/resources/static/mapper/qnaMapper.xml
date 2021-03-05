@@ -12,11 +12,11 @@
 		<result property="qnaFilepath" column="QNA_FILEPATH"></result>
 		<result property="aContent" column="A_CONTENT"></result>
 	</resultMap>
-	<select id="selectBoardList" parameterType="kr.or.eutchapedia.board.entity.QnaVO" resultType="kr.or.eutchapedia.board.entity.QnaVO">
+	<select id="selectBoardList" parameterType="kr.or.eutchapedia.board.entity.QnaView" resultType="kr.or.eutchapedia.board.entity.QnaView">
         SELECT 
 			*
 			FROM 
-			    QNA 
+			    QNA_VIEW
 			    ORDER BY QNA_DATE DESC
 			
     </select>

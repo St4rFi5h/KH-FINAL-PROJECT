@@ -66,26 +66,26 @@ public class MemberService {
 			//회원 상태
 			String status = vtemp.getMemberStatus();
 			String adminCheck = vtemp.getAdminCheck();
-			
+
 			System.out.println("//로그인 객체 확인 vtemp : " + vtemp);
 			System.out.println("status 값 : " + status);
 			System.out.println("admincheck: " + adminCheck);
 			//로그인 결과 값
-			
-			// 세션에 아이디값 저장
-			if (adminCheck.equals("N")) {
-				httpSession.setAttribute("memberEmail", memberEmail);
-				System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberEmail"));				
-			} else if (adminCheck.equals("A")) {
-				httpSession.setAttribute("admincheck", adminCheck);
-				httpSession.setAttribute("memberEmail", memberEmail);
-				System.out.println("관리자 세션 : " + httpSession.getAttribute("admincheck"));
-			}
 
 			if(pwd.equals(pwdSalt) && status.equals("N") || status.equals("C") || vtemp == null ) {
 				MemberVo loginchk = memberDao.login(memberEmail, pwdSalt);
 				httpSession.setAttribute("loginchk", loginchk);
 				System.out.println(loginchk);
+				
+				// 세션에 아이디값 저장
+				if (adminCheck.equals("N")) {
+					httpSession.setAttribute("memberEmail", memberEmail);
+					System.out.println("회원 이메일 세션 : " + httpSession.getAttribute("memberEmail"));				
+				} else if (adminCheck.equals("A")) {
+					httpSession.setAttribute("admincheck", adminCheck);
+					httpSession.setAttribute("memberEmail1", memberEmail);
+					System.out.println("관리자 세션 : " + httpSession.getAttribute("admincheck"));
+				}
 				result = 1;
 			} else {
 				System.out.println("불일치");
@@ -93,8 +93,6 @@ public class MemberService {
 			}
 		}
 		return result;
-
-
 	}
 
 	//로그아웃

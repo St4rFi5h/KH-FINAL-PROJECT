@@ -5,8 +5,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -48,7 +50,7 @@ public class AdminMovieController {
 
 	}
 	@RequestMapping("/pickadd/submit")
-	public ModelAndView pickAddSubmit(Model model,HttpServletRequest req,HttpServletResponse res) throws IOException {
+	public ModelAndView pickAddSubmit(Model model,HttpServletRequest req,HttpServletResponse res,HttpSession session) throws IOException {
 		ModelAndView mv = new ModelAndView();
 		res.setCharacterEncoding("utf-8");
 		res.setContentType("text/html; charset=UTF-8");
@@ -71,7 +73,8 @@ public class AdminMovieController {
 		System.out.println(number);
 
 	//	String userid = "jhlee@naver.com";
-		String userid = "kaoo238@naver.com";
+//		String userid = "kaoo238@naver.com";
+		String userid = (String)session.getAttribute("memberEmail");
 		String collection_ = req.getParameter("cbname");
 		String[] movieids = req.getParameterValues("mid");
 		List<PickInfo> getpick = service.getPick();

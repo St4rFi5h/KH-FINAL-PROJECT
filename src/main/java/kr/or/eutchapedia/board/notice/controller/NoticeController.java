@@ -30,7 +30,10 @@ public class NoticeController {
 	@RequestMapping("/list")
 	public String boardList(Criteria cri, Model model, HttpSession session) throws Exception {
 		List<NoticeVo> list = noticeService.boardList(cri);
-		String member = (String)session.getAttribute("memberEmail");
+		String member = (String)session.getAttribute("memberEmail1");
+		if(member == null) {
+			member = (String)session.getAttribute("memberEmail");
+		}
 		MemberCheckVo getmember = noticeService.getMember(member);
 		
 		int total = noticeService.totalCnt(cri);

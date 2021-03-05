@@ -138,7 +138,7 @@
                             <c:forEach var="f" items="${list}">
                             	<c:set var="ids" value="${ids} ${f.faqNo}"/>
                             </c:forEach>
-                            <input type="text" id="ids" name="ids" value="${ids}"/>
+                            <input type="hidden" id="ids" name="ids" value="${ids}"/>
                                <input type="button" class="write_btn yb" value="글쓰기" onclick="location.href='faq_reg(admin)'"/>
                               <input type="submit" class="write_btn yb" name="cmd" value="선택삭제" onclick="deleteValue();"/>
                               <input type="submit" class="write_btn yb" name="cmd" value="공개" style="float: none"/>  

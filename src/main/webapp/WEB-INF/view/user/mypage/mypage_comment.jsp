@@ -68,7 +68,7 @@
                         </thead>
                         <tbody>
                         <c:forEach var="c" items="${list }" varStatus="status">
-                        <tr onClick="location.href='/comment/overview?movieDocId=${c.movieDocId  }'">
+                        <tr onClick="location.href='/movie/detail?movieDocId=${c.movieDocId  }'">
                             <td>${c.title }</td>
                             <td class="myq_item_content">${c.commentText }</td>
                             <td>★${c.starRating }</td>
