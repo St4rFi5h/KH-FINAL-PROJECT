@@ -141,7 +141,22 @@
                                 <a title="소울" href="/mypage/index_member?id=${searchMemberList.memberEmail}">
                                     <div class="user_loading_img">
                                         <div class="user_img_block">
-                                            <div class="profile_image"><img src="${searchMemberList.memberPhoto }"/></div>
+												
+												<div class="profile_image">
+												
+												<c:set var="name" value='/img/mypage/originprofile.jpg' />
+												<c:set var="name2" value='${searchMemberList.memberPhoto}' />
+												<c:choose>
+													<c:when test="${name == name2}">
+														<img src='${searchMemberList.memberPhoto}' class="profile-img">
+													</c:when>
+													<c:when test="${name != name2}">
+														<img src='/static/upload/${searchMemberList.memberPhoto}'
+															class="profile-img">
+													</c:when>
+												</c:choose>
+												
+												</div>
                                         </div>
                                     </div>
                                     <!-- 사용자 내용 -->

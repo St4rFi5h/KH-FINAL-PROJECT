@@ -49,7 +49,16 @@
 	            <div class="comment-card">
 	                <div class="profile-and-rating">
 	                    <div class="profile">
-	                        <img src="${commentList.photo }" alt="">
+	                        <c:set var="name" value='/img/mypage/originprofile.jpg' />
+            		<c:set var="name2" value='${commentList.photo}' />    
+                    <c:choose>
+	            		<c:when test="${name == name2}"> 
+	                		<img  src='${commentList.photo}'class="profile-img">
+	                	</c:when>
+	                	<c:when test="${name != name2}">
+	               			 <img src='/static/upload/${commentList.photo}' class="profile-img">
+	                	</c:when>
+					</c:choose>
 	                        <span class="nickname">${commentList.nickname }</span>
 	                    </div>
 	                    <div class="rating">
@@ -193,92 +202,25 @@
 
         <!-- scripts -->
         <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/movie/likeAndReportInCommentOverview.js"></script>
         <script>
     	function goPage(page) {
     		var frm = document.getElementById("comment_overview");
-			/* var nowPage = document.getElementById('nowPage'); */
-			var nowDropdown = document.getElementById('sort-dropdown-select');
-
 			frm.nowPage.value = page;
 			
-			console.log($(frm).serialize());
 			frm.action ="/comment/overview?movieDocId=${movieDocId }&sortBy=${page.sortBy }nowPage=${param.nowPage}";
 			frm.submit();
         }
 
         function selectOpt(option) {
     		var frm = document.getElementById("comment_overview");
-			/* var nowPage = document.getElementById('nowPage'); */
-			var nowDropdown = document.getElementById('sort-dropdown-select');
-
-			frm.sortBy.value = nowDropdown.value;
-			console.log($(frm).serialize());
-			$(option).attr('selected', "selected");
+			
 			frm.action ="/comment/overview?movieDocId=${movieDocId }&sortBy=${page.sortBy }nowPage=${param.nowPage}";
 			frm.submit();
 			
         }
 
-        function clickLikeButton(cIndex) {
-			var commentIndex = cIndex;
-			var idx = $(event.target);
-			
-			var likeCountIndex = "like-count" + commentIndex;
-			
-			$.ajax({
-				type : 'POST',
-				url : '/commentLike',
-				/* async : false, */
-				data : "commentIndex=" + commentIndex,
-				success : function(result) {
-					
-					if (result.likeCheck == 1) {
-						idx.css("background-color", "rgb(255, 7, 88)");
-						idx.css("color", "white");
-						
-					} else if (result.likeCheck == 0) {
-						idx.css("background-color", "white")
-						idx.css("color", "black");
 
-						}
-					$("#" + likeCountIndex).empty();
-					$("#" + likeCountIndex).append(result.likeCount);
-					
-
-					},
-				error : function() {
-					alert("error!");
-
-					}
-
-				});
-				
-
-			}
-
-    	function submitReport(cIndex) {
-			var commentIndex = cIndex;
-			var reportText = $("#report-modal-comment-zone").val();
-			console.log(reportText);
-			
-			$.ajax({
-				type : 'POST',
-				url : '/reportComment',
-				async : false,
-				data : "commentIndex=" + commentIndex + "&reportText=" + reportText,
-				success : function(result) {
-					console.log(result);
-
-					} ,
-
-				error: function() {
-					alert('error!');
-	
-					}
-
-				});
-				
-        	}
 
     	window.onload = function() {
     		// 좋아요 누른 데이터 있으면 색칠되게 해놓기 완료 
@@ -296,7 +238,6 @@
 				
 	        </c:forEach>
 
-	        console.log(likeMap);
 
         	}
     	

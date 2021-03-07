@@ -53,7 +53,6 @@ public class MovieDetailController {
 			
 			List<CommentLikeVo> likeDataList = movieDetailDao.selectLikeData(map);
 			if (likeDataList != null) {
-				System.out.println(likeDataList);
 				mv.addObject("likeDataList", likeDataList);
 			}
 			
