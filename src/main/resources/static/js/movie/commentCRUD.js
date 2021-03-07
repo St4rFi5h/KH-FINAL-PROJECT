@@ -16,6 +16,8 @@ var commentText = document.getElementById("commentTextOfMember").value;
 function submitComment() {
 	var memberComment = $("#modal-only-comment-zone").val();
 	console.log(memberComment);
+	console.log(starIndex);
+	
 	$.ajax({
 		type: 'POST',
 		url: '/comment/insert',
@@ -68,7 +70,7 @@ function deleteComment() {
 	 
 	$.ajax({
 		type: 'POST',
-		url: '/comment/delete.do',
+		url: '/comment/delete',
 		async: false,
 		data: 'commentIndex=' + commentIndex,
 		success: function (resultMap) {

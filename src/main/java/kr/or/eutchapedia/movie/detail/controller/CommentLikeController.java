@@ -52,7 +52,7 @@ public class CommentLikeController {
 				dao.cancelLikeCount(commentIndex);
 			}
 			likeCount = dao.selectLikeCount(commentIndex);
-			System.out.println(likeCount);
+
 			resultMap.put("likeCheck", likeCheck);
 			resultMap.put("likeCount", likeCount);
 			

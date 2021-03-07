@@ -141,8 +141,17 @@
 								<div class="comment-card">
 									<div class="user-info-and-rating">
 										<input type="hidden" name="commentIndex"
-											value="${commentList.COMMENTINDEX }" /> <img
-											src="${commentList.PHOTO }" class="profile-img">
+											value="${commentList.COMMENTINDEX }" />
+											<c:set var="name" value='/img/mypage/originprofile.jpg' />
+            		<c:set var="name2" value='${commentList.PHOTO}' />    
+                    <c:choose>
+	            		<c:when test="${name == name2}"> 
+	                		<img  src='${commentList.PHOTO}'class="profile-img">
+	                	</c:when>
+	                	<c:when test="${name != name2}">
+	               			 <img src='/static/upload/${commentList.PHOTO}' class="profile-img">
+	                	</c:when>
+					</c:choose>
 										<div class="user-nickname">${commentList.NICKNAME }</div>
 										<div class="comment-star-rating">★ ${commentList.STARS }</div>
 									</div>
@@ -234,12 +243,10 @@
                 <div id="watch-or-comment">
 					<c:choose>
 	                <c:when test="${wannaWatchCheck eq '0' }">
-	                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="wanna-watch"
-	                        data-target="#wanna-watch-modal">보고싶어요</button>
+	                    <button type="button" id="wanna-watch" class="wannawatchButton">보고싶어요</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="wanna-watch-after"
-	                        data-target="#wanna-watch-modal">+ 보고싶어요</button>
+						<button type="button" id="wanna-watch-after" class="wannawatchButton">+ 보고싶어요</button>
 					</c:otherwise>
 					</c:choose>
                 </div>
@@ -386,8 +393,18 @@
 									<div class="user-info-and-rating">
 										<input type="hidden" id="commentIndex" class="commentIndex"
 											name="commentIndex" value="${commentList.COMMENTINDEX }" />
-										<img src="${commentList.PHOTO }" class="profile-img">
-										<div class="user-nickname">${commentList.NICKNAME }</div>
+										<c:set var="name" value='/img/mypage/originprofile.jpg' />
+											<c:set var="name2" value='${commentList.PHOTO}' />
+											<c:choose>
+												<c:when test="${name == name2}">
+													<img src='${commentList.PHOTO}' class="profile-img">
+												</c:when>
+												<c:when test="${name != name2}">
+													<img src='/static/upload/${commentList.PHOTO}'
+														class="profile-img">
+												</c:when>
+											</c:choose>
+											<div class="user-nickname">${commentList.NICKNAME }</div>
 										<div class="comment-star-rating">★ ${commentList.STARS }</div>
 									</div>
 									<div class="comment">
@@ -512,10 +529,10 @@
 
 				</div>
 			</div>
-
 			<%} %>
         <!-- 여기부터 footer-->
         <jsp:include page="/WEB-INF/view/user/footer.jsp"/>
+		</div>
         <!-- footer 끝 -->
     <!-- scripts -->
 
@@ -523,6 +540,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 		<script src="/js/movie/movie_detail_member.js"></script>
 		<script src="/js/movie/commentCRUD.js"></script>
+		<script src="/js/movie/likeAndReport.js"></script>
         <script>
 			var starData = [];
 	        var starLabels = [];
@@ -589,104 +607,6 @@
 	            }
 	        }
 	        );
-
-			function clickLikeButton(cIndex) {
-				var commentIndex = cIndex;
-				var idx = $(event.target);
-				
-				var likeCountIndex = "like-count" + commentIndex;
-				
-				console.log(idx.parents('div').find('.like-count'));
-				$.ajax({
-					type : 'POST',
-					url : '/commentLike',
-					async : false,
-					data : "commentIndex=" + commentIndex,
-					success : function(result) {
-						
-						if (result.likeCheck == 1) {
-							idx.css("background-color", "rgb(255, 7, 88)");
-							idx.css("color", "white");
-							
-						} else if (result.likeCheck == 0) {
-							idx.css("background-color", "#e3e3e3")
-							idx.css("color", "black");
-
-							}
-						$("#" + likeCountIndex).empty();
-						$("#" + likeCountIndex).append(result.likeCount);
-						
-
-						},
-					error : function() {
-						alert("error!");
-
-						}
-
-					});
-					
-
-				}
-			
-
-	    	function submitReport(cIndex) {
-				var commentIndex = cIndex;
-				var reportText = $("#report-modal-comment-zone").val();
-				console.log(commentIndex);
-				console.log(reportText);
-				
-				$.ajax({
-					type : 'POST',
-					url : '/reportComment',
-					async : false,
-					data : "commentIndex=" + commentIndex + "&reportText=" + reportText,
-					success : function(result) {
-						console.log(result);
-
-						} ,
-
-					error: function() {
-						alert('error!');
-		
-						}
-
-					});
-					
-	        	}
-
-
-			$("#wanna-watch-button").on('click', function() {
-				var movieDocId = document.getElementById("movieDocIdInModal").value;
-				console.log(movieDocId);
-				var bookmarkDiv = $(event.target);
-				
-				$.ajax({
-					type : 'POST',
-					url : '/wannaWatchControl',
-					async : false,
-					data : "movieDocId=" + movieDocId,
-					success : function(resultMap) {
-						if (resultMap.result == 0) {
-							$('#wanna-watch-after').text("보고싶어요");
-							$('#wanna-watch-after').attr("id", "wanna-watch")
-						    $('#wanna-watch-button').css('background-color', 'white');
-						    
-						} else if (resultMap.result == 1) {
-							$('#wanna-watch').text("+ 보고싶어요");
-						    $('#wanna-watch').attr("id", "wanna-watch-after")
-						    $('#wanna-watch-button').css('background-color', '#eee');
-						    
-						} 
-
-					},
-					error : function() {
-						alert('error!');
-						
-						}
-
-
-					});
-				})
 				
 				window.onload = function() {
 					var ratedStars = document.getElementById("ratedStars").value;

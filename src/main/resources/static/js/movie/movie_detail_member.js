@@ -25,7 +25,7 @@ $('#star-rating-member > .star').on('click', function () {
 				target.addClass('on').prevAll('span').addClass('on');
 				memberCommentDiv.style.display = "block";
 				starIndexInput.value = resultMap.starIndex;
-				
+
 				var starMessage = document.getElementById("star-message");
 
 				switch (ratedStar) {
@@ -68,7 +68,7 @@ $('#star-rating-member > .star').on('click', function () {
 				starMessage.innerText = "평가하기";
 				memberCommentDiv.style.display = "none";
 				afterCommentZone.style.display = "none";
-
+				starIndexInput.value = "";
 			}
 		},
 		error: function () {
@@ -112,3 +112,98 @@ function modalCommentSubmit() {
 	memberCommentDiv.style.display = "none";
 	afterCommentDiv.style.display = "block";
 }
+
+
+
+
+function clickLikeButton(cIndex) {
+	var commentIndex = cIndex;
+	var idx = $(event.target);
+
+	var likeCountIndex = "like-count" + commentIndex;
+	
+	$.ajax({
+		type: 'POST',
+		url: '/commentLike',
+		async: false,
+		data: "commentIndex=" + commentIndex,
+		success: function (result) {
+
+			if (result.likeCheck == 1) {
+				idx.css("background-color", "rgb(255, 7, 88)");
+				idx.css("color", "white");
+
+			} else if (result.likeCheck == 0) {
+				idx.css("background-color", "#e3e3e3")
+				idx.css("color", "black");
+
+			}
+			$("#" + likeCountIndex).empty();
+			$("#" + likeCountIndex).append(result.likeCount);
+
+
+		},
+		error: function () {
+			alert("error!");
+
+		}
+
+	});
+
+
+}
+
+
+function submitReport(cIndex) {
+	var commentIndex = cIndex;
+	var reportText = $("#report-modal-comment-zone").val();
+
+
+	$.ajax({
+		type: 'POST',
+		url: '/reportComment',
+		async: false,
+		data: "commentIndex=" + commentIndex + "&reportText=" + reportText,
+		success: function (result) {
+			console.log(result);
+
+		},
+
+		error: function () {
+			alert('error!');
+
+		}
+
+	});
+
+}
+
+
+$(".wannawatchButton").on('click', function () {
+	var movieDocId = document.getElementById("movieDocIdInModal").value;
+
+	$.ajax({
+		type: 'POST',
+		url: '/wannaWatchControl',
+		async: false,
+		data: "movieDocId=" + movieDocId,
+		success: function (resultMap) {
+			if (resultMap.result == 0) {
+				$('#wanna-watch-after').text("보고싶어요");
+				$('#wanna-watch-after').attr("id", "wanna-watch")
+
+			} else if (resultMap.result == 1) {
+				$('#wanna-watch').text("+ 보고싶어요");
+				$('#wanna-watch').attr("id", "wanna-watch-after")
+
+			}
+
+		},
+		error: function () {
+			alert('error!');
+
+		}
+
+
+	});
+})
