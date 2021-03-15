@@ -130,7 +130,7 @@
                 <tbody><tr>
                 <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
                 <input type="hidden" name="qnaNo" value="${param.qnaNo}"/>
-                <input type="submit" id="write" class="bhs_button yb" value="저장" style="float:none;"/>
+                <input type="submit" id="write" class="bhs_button yb" value="등록" style="float:none;"/>
                 <button type="button" class="cancel_btn" onclick="location.href='qna_list(admin)'">취소</button>
                 </td>
                 </tr>

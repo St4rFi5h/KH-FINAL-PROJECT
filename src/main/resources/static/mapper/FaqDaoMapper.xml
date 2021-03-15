@@ -58,7 +58,7 @@
 					,FAQ_FILES = #{faqFiles, jdbcType=NVARCHAR}
 					,FAQ_PUB = #{faqPub}
 				where 
-					FAQ_NO = #{faqNo}
+					FAQ_NO = 1
 	</update>
 	<insert id="insert" parameterType="kr.or.eutchapedia.board.entity.Faq">
 		insert into FAQ(
@@ -93,7 +93,7 @@
 	<update id="updatePubAll">
 		update FAQ
 			set 
-			FAQ_PUB = #{faqPub}
+			FAQ_PUB = 1
 		where FAQ_NO in 
 		<foreach item="id" index="index" collection="ids"
 		      open="(" separator="," close=")">

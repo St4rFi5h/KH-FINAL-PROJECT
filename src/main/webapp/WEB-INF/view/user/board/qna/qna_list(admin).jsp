@@ -120,7 +120,7 @@
                                         </p>
                                         <p class="tbl_info_date">
                                         <c:if test="${empty q.aContent}">
-                                       	<span style="font-size:18px; color:gray;"><strong>NO</strong></span>
+                                       	<span style="font-size:18px; color:#e2e2e2;"><strong>NO</strong></span>
 										</c:if>
 										<c:if test="${!empty q.aContent}">
                                         <span style="font-size:18px;"><strong>YES</strong></span>
@@ -150,7 +150,8 @@
                                         <div class="q_wrap">    
                                             <span _ngcontent-dui-c129="" class="qatype">Q.</span>
                                             <div>
-                                                <p>${q.qnaContent}</p>
+                                                <p>${q.qnaTitle}</p>
+		                                        <p>${q.qnaContent}</p>
                                             </div>
                                         </div>
                                         <div _ngcontent-dui-c129="" class="a_wrap" style="padding-top: 20px;">

@@ -120,8 +120,8 @@
                                 <div class="reply_row">
                                     <div class="notice_wrap">
                                         <span class="modi_span">
-                                          <a href="${path}/user/board/faq/updateView?faqNo=${f.faqNo }" class="modi_btn">수정</a>
-                                          <a href="${path}/user/board/faq/delete?faqNo=${f.faqNo}" class="modi_btn">삭제</a>
+                                          <a href="${path}/faq/updateView?faqNo=${f.faqNo }" class="modi_btn">수정</a>
+                                          <a href="${path}/faq/delete?faqNo=${f.faqNo}" class="modi_btn">삭제</a>
                                         </span>
                                             <div style="padding-left:140px;">
                                             	<p>${f.faqContent}</p>

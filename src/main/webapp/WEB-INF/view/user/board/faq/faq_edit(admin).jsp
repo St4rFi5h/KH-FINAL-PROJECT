@@ -55,7 +55,7 @@
                 </div>
                 
                 <div class="xans-board-write">
-                <c:url var="updateUrl" value="${path}/user/board/faq/update.do"/>
+                <c:url var="updateUrl" value="${path}/faq/update.do"/>
                 <form:form name="board" id="frm" method="post" action="${updateUrl}" enctype="multipart/form-data" style="height: 100%;" modelAttribute="faq">
 		                <form:input type="hidden" path="faqNo" value="${faq.faqNo}"/>
 		                <form:input type="hidden" path="memberEmail" value="${faq.memberEmail}"/>
@@ -121,7 +121,7 @@
                 <table width="60%">
                 <tbody><tr>
                 <td align="right" style="padding-top:20px; border:none;" id="avoidDbl">
-                <button type="submit" id="write" name="write" class="bhs_button yb" style="float:none;">저장</button>
+                <button type="submit" id="write" name="write" class="bhs_button yb" style="float:none;">수정</button>
                 <a href="faq_list(admin)">
                     <input type="button" class="cancel_btn" value="취소"/>
                 </a>
